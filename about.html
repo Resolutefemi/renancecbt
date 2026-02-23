@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | FUTA Practice Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --accent: #60a5fa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem; }
+
+        header { text-align: center; margin-bottom: 4rem; }
+        .badge { background: rgba(96, 165, 250, 0.1); color: var(--accent); padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+        h1 { font-size: 2.2rem; margin-top: 1rem; font-weight: 700; letter-spacing: -1px; }
+
+        .section { background: var(--card); padding: 2rem; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 1.5rem; }
+        h2 { font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+        p { margin-bottom: 1.2rem; color: var(--text-muted); font-size: 1rem; text-align: justify; }
+
+        .dev-footer { text-align: center; margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .dev-name { font-weight: 600; color: var(--text-main); font-size: 1.2rem; margin-bottom: 1.5rem; }
+        
+        .social-links { display: flex; justify-content: center; gap: 15px; }
+        .social-links a { 
+            width: 45px; height: 45px; border-radius: 12px; background: var(--card); border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center; text-decoration: none;
+            color: var(--text-muted); transition: 0.2s;
+        }
+        .social-links a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+
+        .back-link { position: fixed; top: 20px; left: 20px; text-decoration: none; color: var(--text-muted); font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
+        .back-link:hover { color: var(--accent); }
+
+        @media (max-width: 600px) { h1 { font-size: 1.8rem; } .container { padding-top: 5rem; } }
+    </style>
+</head>
+<body>
+
+    <a href="dashboard.html" class="back-link"><i data-lucide="chevron-left" size="18"></i> Dashboard</a>
+
+    <div class="container">
+        <header>
+            <span class="badge">Project Overview</span>
+            <h1>FUTA Student Practice Portal</h1>
+        </header>
+
+        <div class="section">
+            <h2><i data-lucide="terminal"></i> Objective</h2>
+            <p>
+                This platform was engineered specifically for FUTA students to simplify the transition into Computer Based Testing (CBT). For many 100L students, the pressure of a timed digital exam can be a barrier to performance. This dashboard provides a standard environment to practice MTH 101, PHY 101, CSC 101, and other core courses.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2><i data-lucide="layers"></i> Functionality</h2>
+            <p>
+                Built with a focus on speed and accuracy, the portal mirrors the actual exam interface. It allows students to familiarize themselves with the navigation logic and question formats used in the university's CBT centers, ensuring that technical unfamiliarity doesn't hinder academic success.
+            </p>
+        </div>
+
+        <div class="dev-footer">
+            <div class="dev-name">RESOLUTE FEMI</div>
+            
+            <div class="social-links">
+                <a href="https://x.com/resolutefemi" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://facebook.com/resolutefemi" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://wa.me/2347046203544" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

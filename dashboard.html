@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RENANCE CBT | Dashboard</title>
+    
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-body: #f1f5f9;
+            --sidebar: #0f172a;
+            --card-bg: #ffffff;
+            --primary-accent: #2563eb;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --whatsapp-green: #25d366;
+            --glass: rgba(15, 23, 42, 0.95);
+        }
+
+        .dark-mode {
+            --bg-body: #0f172a;
+            --sidebar: #020617;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --primary-accent: #60a5fa;
+            --glass: rgba(2, 6, 23, 0.95);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+        body { background-color: var(--bg-body); display: flex; min-height: 100vh; color: var(--text-main); overflow-x: hidden; }
+
+        /* --- SIDEBAR --- */
+        nav {
+            width: 280px; background: var(--glass); backdrop-filter: blur(12px);
+            color: white; padding: 1.5rem; display: flex; flex-direction: column;
+            position: fixed; left: 0; top: 0; height: 100vh; z-index: 2000;
+            transform: translateX(0); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.5rem; }
+        .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 700; color: #f8fafc; }
+        .nav-close { display: none; cursor: pointer; color: var(--text-muted); }
+
+        .nav-menu-content { flex-grow: 1; }
+        .nav-item {
+            display: flex; align-items: center; gap: 15px; padding: 12px 16px;
+            text-decoration: none; color: #94a3b8; border-radius: 12px;
+            margin-bottom: 8px; transition: 0.3s; font-weight: 500;
+        }
+        .nav-item:hover { background: rgba(255, 255, 255, 0.05); color: white; }
+        .nav-item.active {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(37, 99, 235, 0.05));
+            color: var(--primary-accent); border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+
+        .nav-footer {
+            padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .mini-profile { display: flex; align-items: center; gap: 10px; }
+        .mini-avatar {
+            width: 38px; height: 38px; background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.8rem; color: white;
+        }
+        .logout-pill {
+            background: rgba(239, 68, 68, 0.1); border: none; color: #ef4444;
+            padding: 10px; border-radius: 10px; cursor: pointer; transition: 0.2s;
+        }
+
+        main { flex-grow: 1; margin-left: 280px; padding: 3rem; max-width: 1400px; width: 100%; }
+        
+        .mobile-top-bar {
+            display: none; position: fixed; top: 0; left: 0; right: 0;
+            background: var(--sidebar); color: white; padding: 1rem 1.5rem;
+            z-index: 1500; justify-content: space-between; align-items: center;
+        }
+
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; }
+        .user-profile-card {
+            display: flex; align-items: center; gap: 12px; background: var(--card-bg);
+            padding: 10px 18px; border-radius: 12px; border: 1px solid var(--border-color);
+            text-decoration: none; color: inherit;
+        }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .stat-card { background: var(--card-bg); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); display: flex; align-items: center; gap: 1rem; }
+        
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .course-card { 
+            background: var(--card-bg); border: 1px solid var(--border-color); 
+            border-radius: 20px; padding: 1.8rem; cursor: pointer; position: relative;
+            display: flex; flex-direction: column; gap: 1.2rem; transition: 0.3s;
+        }
+        .course-card:hover { transform: translateY(-5px); border-color: var(--primary-accent); }
+        
+        .icon-box { width: 48px; height: 48px; background: rgba(37, 99, 235, 0.1); color: var(--primary-accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .card-footer { margin-top: auto; padding-top: 1.2rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 0.85rem; color: var(--primary-accent); }
+
+        @media (max-width: 1024px) {
+            nav { transform: translateX(-100%); }
+            nav.open { transform: translateX(0); }
+            main { margin-left: 0; padding: 6rem 1.5rem 2rem; }
+            .mobile-top-bar { display: flex; }
+            .nav-close { display: block; }
+            .header-top { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-top-bar">
+        <i data-lucide="menu" onclick="toggleNav()"></i>
+        <span style="font-weight: 700; letter-spacing: 1px;">RENANCE CBT</span>
+        <i data-lucide="moon" onclick="toggleTheme()" id="mobileThemeIcon"></i>
+    </div>
+
+    <nav id="sidebar">
+        <div class="nav-header">
+            <div class="logo-area"><i data-lucide="graduation-cap"></i><span>RENANCE FUTA CBT</span></div>
+            <i data-lucide="x" class="nav-close" onclick="toggleNav()"></i>
+        </div>
+        
+        <div class="nav-menu-content">
+            <a href="#" class="nav-item active"><i data-lucide="layout-dashboard"></i> <span>Dashboard</span></a>
+            <a href="Tips.html" class="nav-item"><i data-lucide="lightbulb"></i> <span>Study Tips</span></a>
+            <a href="about.html" class="nav-item"><i data-lucide="info"></i> <span>About Portal</span></a>
+            <a href="coming-soon.html" class="nav-item"><i data-lucide="book"></i> <span>PDFs</span></a>
+            <a href="gpa.html" class="nav-item"><i data-lucide="calculator"></i> <span>My GPA calculator</span></a>
+            <a href="ai.html" class="nav-item"><i data-lucide="bot"></i> <span>Renance AI Assistant</span></a>
+            <a href="registration.html" class="nav-item"><i data-lucide="user"></i> <span>My Profile</span></a>
+        </div>
+
+        <div class="nav-footer">
+            <div class="mini-profile">
+                <div class="mini-avatar" id="navInitials">??</div>
+                <div class="mini-info">
+                    <p id="navUserName" style="font-size: 0.85rem; font-weight: 600;">Student</p>
+                    <small style="color: #64748b; font-size: 0.7rem;">100 Level</small>
+                </div>
+            </div>
+            <button class="logout-pill" onclick="logout()"><i data-lucide="log-out" size="18"></i></button>
+        </div>
+    </nav>
+
+    <main>
+        <div class="header-top">
+            <div>
+                <h1 style="font-size: 1.8rem; font-weight: 800; letter-spacing: -1px;">Student Dashboard</h1>
+                <p style="color: var(--text-muted);">Select a course to begin your CBT practice.</p>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <button class="logout-pill" onclick="toggleTheme()" style="background: var(--card-bg); color: var(--text-main); border: 1px solid var(--border-color);">
+                    <i data-lucide="moon" id="desktopThemeIcon"></i>
+                </button>
+                <a href="registration.html" class="user-profile-card">
+                    <div style="text-align: right;">
+                        <div id="displayUserName" style="font-weight: 700; font-size: 0.9rem;">Loading...</div>
+                        <div id="displayUserDept" style="font-size: 0.75rem; color: var(--text-muted);">Department</div>
+                    </div>
+                    <div class="mini-avatar" id="displayInitials" style="width: 42px; height: 42px;">??</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="icon-box"><i data-lucide="activity"></i></div>
+                <div><p style="font-size: 0.7rem; color: var(--text-muted); font-weight: 700;">TESTS TAKEN</p><p style="font-weight: 800; font-size: 1.2rem;">12</p></div>
+            </div>
+            <div class="stat-card">
+                <div class="icon-box" style="color: #22c55e;"><i data-lucide="award"></i></div>
+                <div><p style="font-size: 0.7rem; color: var(--text-muted); font-weight: 700;">AVG SCORE</p><p style="font-weight: 800; font-size: 1.2rem;">84%</p></div>
+            </div>
+        </div>
+
+        <h2 style="margin-bottom: 1.5rem; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+            <i data-lucide="book-open" size="20"></i> Available Courses
+        </h2>
+        <div class="course-grid" id="courseGrid"></div>
+    </main>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzi_gmAaK5O5qFQVKeNXkuBLHfO15flL443EmrR5q0eSl9oajuOPbpsYuEPJSxwWwIy/exec";
+
+        const courses = [
+            { id: 'CSC 101', title: 'INTRODUCTION TO COMPUTER', icon: 'cpu', isReady: true },
+            { id: 'GNS 103', title: 'INFORMATION LITERACY', icon: 'library', isReady: true },
+            { id: 'STA 111', title: 'DISCRIPTIVE STATISTICS', icon: 'bar-chart', isReady: true },
+            { id: 'MTH 101', title: 'ELEMENTARY MATHEMATICS I', icon: 'calculator', isReady: true },
+            { id: 'PHY 101', title: 'GENERAL PHYSICS I', icon: 'atom', isReady: true },
+            { id: 'GST 111', title: 'COMMUNICATION IN ENGLISH', icon: 'languages', isReady: true },
+            { id: 'BIO 101', title: 'GENERAL BIOLOGY I', icon: 'dna', isReady: false },
+            { id: 'CHE 101', title: 'GENERAL CHEMISTRY I', icon: 'beaker', isReady: false },
+            
+
+        ];
+
+        function toggleNav() { document.getElementById('sidebar').classList.toggle('open'); }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateIcons(isDark);
+        }
+
+        function updateIcons(isDark) {
+            const iconName = isDark ? 'sun' : 'moon';
+            document.getElementById('desktopThemeIcon').setAttribute('data-lucide', iconName);
+            document.getElementById('mobileThemeIcon').setAttribute('data-lucide', iconName);
+            lucide.createIcons();
+        }
+
+        // --- GOOGLE SHEETS SYNC LOGIC ---
+        function syncDataWithSheet(name, dept) {
+            // Only sync if data exists and hasn't been synced this session
+            if (name && name !== "FUTA Student" && !sessionStorage.getItem('synced')) {
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: name,
+                        department: dept,
+                        timestamp: new Date().toLocaleString()
+                    })
+                }).then(() => {
+                    sessionStorage.setItem('synced', 'true');
+                    console.log("Data synced to Google Sheets successfully.");
+                }).catch(err => console.error("Sync failed:", err));
+            }
+        }
+
+        function loadUserData() {
+            const name = localStorage.getItem('studentName') || "FUTA Student";
+            const dept = localStorage.getItem('studentDept') || "FUTA Department";
+            
+            document.getElementById('displayUserName').innerText = name;
+            document.getElementById('displayUserDept').innerText = dept;
+            document.getElementById('navUserName').innerText = name.split(' ')[0];
+            
+            const initials = name.trim().split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+            document.getElementById('displayInitials').innerText = initials || "??";
+            document.getElementById('navInitials').innerText = initials || "??";
+
+            // Trigger the sync
+            syncDataWithSheet(name, dept);
+        }
+
+        function renderCourses() {
+            const grid = document.getElementById('courseGrid');
+            courses.forEach(course => {
+                const card = document.createElement('div');
+                card.className = 'course-card';
+                if (!course.isReady) card.style.opacity = "0.6";
+
+                card.innerHTML = `
+                    <div class="icon-box"><i data-lucide="${course.isReady ? course.icon : 'lock'}"></i></div>
+                    <div>
+                        <h3 style="font-size: 1rem; font-weight: 700;">${course.id}</h3>
+                        <p style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">${course.title}</p>
+                    </div>
+                    <div class="card-footer">
+                        <span>${course.isReady ? 'START PRACTICE' : 'COMING SOON'}</span>
+                        <i data-lucide="${course.isReady ? 'chevron-right' : 'clock'}" size="16"></i>
+                    </div>
+                `;
+
+                card.onclick = () => {
+                    window.location.href = course.isReady ? 
+                        course.id.toLowerCase().replace(/\s+/g, '') + '.html' : 'coming-soon.html';
+                };
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        window.onload = () => {
+            loadUserData();
+            renderCourses();
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                updateIcons(true);
+            }
+            lucide.createIcons();
+        };
+
+        function logout() {
+            localStorage.clear();
+            sessionStorage.clear();
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

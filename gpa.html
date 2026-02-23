@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator | Resolutefemi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS Variables for easy theme switching */
+        :root {
+            --bg-body: #f1f2f6;
+            --bg-card: #ffffff;
+            --text-main: #1e272e;
+            --text-muted: #666;
+            --border: #ddd;
+            --brand-blue: #0984e3;
+            --brand-green: #27ae60;
+            --brand-red: #d63031;
+            --table-head: #f8f9fa;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f1f2f6;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --table-head: #334155;
+        }
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: var(--bg-body); 
+            color: var(--text-main);
+            margin: 0; padding: 20px; 
+            display: flex; justify-content: center; 
+            transition: all 0.3s ease;
+        }
+
+        .calc-card { 
+            width: 100%; max-width: 700px; 
+            background: var(--bg-card); 
+            padding: 35px; border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            position: relative;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: absolute; top: 20px; right: 20px;
+            background: none; border: none; color: var(--text-main);
+            font-size: 1.2rem; cursor: pointer;
+        }
+
+        .header { text-align: center; border-bottom: 2px solid var(--border); margin-bottom: 25px; padding-bottom: 15px; }
+        .header h1 { margin: 0; color: var(--text-main); font-size: 1.8rem; }
+        .header p { margin: 5px 0 0; color: var(--brand-blue); font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
+
+        /* Inputs */
+        .input-area { display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 10px; margin-bottom: 25px; }
+        input, select, .btn { 
+            padding: 12px; border-radius: 8px; 
+            border: 1px solid var(--border); 
+            background: var(--bg-card); color: var(--text-main);
+            outline: none; 
+        }
+        .btn-add { background: var(--text-main); color: var(--bg-card); cursor: pointer; border: none; font-weight: bold; }
+
+        /* Table */
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th { background: var(--table-head); color: var(--text-muted); padding: 12px; text-align: left; font-size: 0.75rem; text-transform: uppercase; }
+        td { padding: 12px; border-bottom: 1px solid var(--border); }
+        [contenteditable="true"]:focus { background: rgba(9, 132, 227, 0.1); border-radius: 4px; }
+
+        /* GPA Display */
+        .gpa-display { background: var(--brand-blue); color: white; padding: 20px; border-radius: 10px; text-align: center; margin: 20px 0; }
+        .gpa-val { font-size: 3rem; font-weight: 800; display: block; color: #55efc4; }
+
+        /* Controls */
+        .controls { display: flex; gap: 10px; }
+        .btn-print { flex: 2; background: var(--brand-green); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .btn-reset { flex: 1; background: var(--brand-red); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; padding: 15px; }
+
+        /* Footer */
+        .footer { text-align: center; margin-top: 30px; border-top: 1px solid var(--border); padding-top: 20px; }
+        .socials a { text-decoration: none; color: var(--text-main); margin: 0 12px; font-size: 1.4rem; transition: 0.3s; }
+        .socials a:hover { color: var(--brand-blue); }
+
+        @media print {
+            .no-print { display: none !important; }
+            :root { --bg-body: white; --text-main: black; --bg-card: white; --border: #000; }
+            .calc-card { box-shadow: none; border: 1px solid #eee; }
+            .gpa-display { background: #eee !important; color: black !important; border: 1px solid #000; }
+            .gpa-val { color: black !important; }
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+<div class="calc-card">
+    <button class="theme-toggle no-print" onclick="toggleTheme()" id="themeBtn">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="header">
+        <h1>GPA Calculator</h1>
+        <p>POWERED BY RESOLUTEFEMI</p>
+    </div>
+
+    <div class="input-area no-print">
+        <input type="text" id="courseCode" placeholder="Course Code">
+        <input type="number" id="courseUnit" placeholder="Unit">
+        <select id="courseGrade">
+            <option value="5">A (5)</option>
+            <option value="4">B (4)</option>
+            <option value="3">C (3)</option>
+            <option value="2">D (2)</option>
+            <option value="1">E (1)</option>
+            <option value="0">F (0)</option>
+        </select>
+        <button class="btn btn-add" onclick="addCourse()">Add</button>
+    </div>
+
+    <div id="printSection">
+        <table id="gpaTable">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Units</th>
+                    <th>Grade</th>
+                    <th class="no-print">Action</th>
+                </tr>
+            </thead>
+            <tbody id="courseBody"></tbody>
+        </table>
+
+        <div class="gpa-display">
+            <small>CUMULATIVE GPA</small>
+            <span class="gpa-val" id="gpaScore">0.00</span>
+        </div>
+    </div>
+
+    <div class="controls no-print">
+        <button class="btn-print" onclick="window.print()"><i class="fa fa-print"></i> Print Slip</button>
+        <button class="btn-reset" onclick="resetAll()"><i class="fa fa-refresh"></i> Reset</button>
+    </div>
+
+    <div class="footer no-print">
+        <p>Developed by <strong>Resolutefemi</strong></p>
+        <div class="socials">
+            <a href="https://facebook.com/resolutefemi" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://x.com/resolutefemi" target="_blank"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://wa.me/2347046203544" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+</div>
+
+<script>
+    let courses = [];
+
+    // --- Theme Logic ---
+    function toggleTheme() {
+        const body = document.body;
+        const btn = document.getElementById('themeBtn');
+        if (body.getAttribute('data-theme') === 'light') {
+            body.setAttribute('data-theme', 'dark');
+            btn.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            body.setAttribute('data-theme', 'light');
+            btn.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+    }
+
+    // --- Calculator Logic ---
+    function addCourse() {
+        const code = document.getElementById('courseCode').value || "COURSE";
+        const unit = parseInt(document.getElementById('courseUnit').value) || 0;
+        const gradeVal = parseInt(document.getElementById('courseGrade').value);
+
+        if (unit <= 0) { alert("Please enter valid units"); return; }
+
+        courses.push({ code: code.toUpperCase(), unit, gradeVal });
+        document.getElementById('courseCode').value = '';
+        document.getElementById('courseUnit').value = '';
+        render();
+    }
+
+    function render() {
+        const tbody = document.getElementById('courseBody');
+        tbody.innerHTML = '';
+        let tPoints = 0; let tUnits = 0;
+
+        courses.forEach((c, index) => {
+            tPoints += (c.unit * c.gradeVal);
+            tUnits += c.unit;
+            tbody.innerHTML += `
+                <tr>
+                    <td contenteditable="true" oninput="updateData(${index}, 'code', this.innerText)">${c.code}</td>
+                    <td contenteditable="true" oninput="updateData(${index}, 'unit', this.innerText)">${c.unit}</td>
+                    <td>
+                        <select onchange="updateData(${index}, 'gradeVal', this.value)" style="background:transparent; border:none; color:inherit; font:inherit;">
+                            <option value="5" ${c.gradeVal==5?'selected':''}>A</option>
+                            <option value="4" ${c.gradeVal==4?'selected':''}>B</option>
+                            <option value="3" ${c.gradeVal==3?'selected':''}>C</option>
+                            <option value="2" ${c.gradeVal==2?'selected':''}>D</option>
+                            <option value="1" ${c.gradeVal==1?'selected':''}>E</option>
+                            <option value="0" ${c.gradeVal==0?'selected':''}>F</option>
+                        </select>
+                    </td>
+                    <td class="no-print"><i class="fa fa-trash" style="color:var(--brand-red); cursor:pointer" onclick="removeCourse(${index})"></i></td>
+                </tr>`;
+        });
+        calculateOnly(tPoints, tUnits);
+    }
+
+    function updateData(index, key, value) {
+        if (key === 'unit' || key === 'gradeVal') {
+            courses[index][key] = parseInt(value) || 0;
+        } else {
+            courses[index][key] = value;
+        }
+        
+        // Recalculate
+        let tP = 0; let tU = 0;
+        courses.forEach(c => { tP += (c.unit * c.gradeVal); tU += c.unit; });
+        calculateOnly(tP, tU);
+    }
+
+    function calculateOnly(tp, tu) {
+        const score = tu > 0 ? (tp / tu).toFixed(2) : "0.00";
+        document.getElementById('gpaScore').innerText = score;
+    }
+
+    function removeCourse(index) {
+        courses.splice(index, 1);
+        render();
+    }
+
+    function resetAll() {
+        if(confirm("Clear all data?")) {
+            courses = [];
+            render();
+        }
+    }
+</script>
+</body>
+</html>

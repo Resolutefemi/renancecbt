@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="rust.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>COS 101 - Login</title>  
+    <style>
+        /* --- Styled Message Box --- */
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            display: none; /* Hidden by default */
+            transition: all 0.3s ease;
+        }
+
+        /* Error state styling */
+        .error-msg {
+            display: block !important;
+            background: rgba(239, 68, 68, 0.15); 
+            color: #ff4d4d;
+            border: 1px solid #ef4444;
+            animation: shake 0.4s ease-in-out;
+        }
+
+        /* Shake Animation */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            50% { transform: translateX(8px); }
+            75% { transform: translateX(-8px); }
+        }
+
+        .input-box { position: relative; margin-bottom: 20px; }
+        #togglePassword {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: rgba(255,255,255,0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="loginForm">
+            <h1>LOGIN</h1>
+            
+            <div class="input-box">
+                <input type="text" name="matric" id="matric" placeholder="Matric No. (ABC/25/1234)" required pattern="[A-Z]{3}/[0-9]{2}/[0-9]{4}">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="input-box">
+                <input type="password" name="password" id="password" placeholder="Password" required/>
+                <i class="fa-solid fa-eye" id="togglePassword"></i>
+            </div>
+
+            <div class="remember-forgot">
+                <label><input type="checkbox"/> Remember me</label>
+                <a href="#" id="forgotPassLink">Forgot password?</a>
+            </div>
+            
+            <button type="submit" class="btn" id="loginBtn">Login</button>
+            
+            <div id="message"></div>
+            
+            <div class="register-link"> 
+                <p>Don't have an account? <a href="index.html">Signup</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // --- PASSWORD TOGGLE ---
+        const togglePassword = document.querySelector('#togglePassword');
+        const passwordField = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // --- FORGOT PASSWORD ---
+        document.getElementById('forgotPassLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            const savedUser = JSON.parse(localStorage.getItem('user'));
+            
+            if (!savedUser) {
+                alert("No account found. Please register first.");
+                return;
+            }
+
+            const verifyMatric = prompt("Enter Matric No. to recover password:");
+            if (verifyMatric === savedUser.matric) {
+                alert("Verification Successful! Your password is: " + savedUser.password);
+            } else if (verifyMatric !== null) {
+                alert("Incorrect Matric Number.");
+            }
+        });
+
+        // --- LOGIN & NOTIFICATION ---
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+            const matricInput = document.getElementById('matric').value;
+            const passInput = document.getElementById('password').value;
+            const savedUser = JSON.parse(localStorage.getItem('user'));
+            const messageBox = document.getElementById('message');
+            const loginBtn = document.getElementById('loginBtn');
+
+            // Reset animation
+            messageBox.style.animation = 'none';
+            messageBox.offsetHeight; // trigger reflow
+            messageBox.style.animation = null;
+
+            if (savedUser && matricInput === savedUser.matric && passInput === savedUser.password) {
+                
+                // Set the Login Flag
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('student_name', savedUser.matric);
+
+                // UI Feedback
+                loginBtn.innerText = "Redirecting...";
+                messageBox.style.display = 'none';
+
+                // Email Notification
+                fetch("https://formsubmit.co/ajax/resolutefemi2@gmail.com", {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        Alert: "User Logged In",
+                        MatricNo: matricInput,
+                        Time: new Date().toLocaleString()
+                    })
+                });
+
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html'; 
+                }, 800);
+                
+            } else {
+                // Show Styled Error
+                messageBox.textContent = "Invalid Matric No. or Password!";
+                messageBox.className = "error-msg";
+            }
+        });
+    </script>
+</body>
+</html>
