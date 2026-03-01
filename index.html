@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="rust.css">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <title>Signup</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -60,81 +61,93 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script>
-        
-        const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
-        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
-        if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-        const db = window._sb;
+    // 1. INITIALIZE SUPABASE
+    const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+    if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const db = window._sb;
 
-        
-        document.getElementById('togglePassword').addEventListener('click', function () {
-            const pass = document.getElementById('password');
-            if (pass.type === 'password') {
-                pass.type = 'text';
-                this.classList.remove('fa-eye');
-                this.classList.add('fa-eye-slash');
-            } else {
-                pass.type = 'password';
-                this.classList.remove('fa-eye-slash');
-                this.classList.add('fa-eye');
-            }
-        });
+    // 2. PASSWORD TOGGLE
+    document.getElementById('togglePassword').addEventListener('click', function () {
+        const pass = document.getElementById('password');
+        if (pass.type === 'password') {
+            pass.type = 'text';
+            this.classList.remove('fa-eye');
+            this.classList.add('fa-eye-slash');
+        } else {
+            pass.type = 'password';
+            this.classList.remove('fa-eye-slash');
+            this.classList.add('fa-eye');
+        }
+    });
 
-        
-        document.getElementById('signupForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
+    // 3. SIGNUP FORM LOGIC
+    document.getElementById('signupForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
 
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.innerText = "Processing... ⏳";
-            submitBtn.disabled = true;
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.innerText = "Processing... ⏳";
+        submitBtn.disabled = true;
 
-            const fullname    = document.getElementById('fullname').value.trim();
-            const matric      = document.getElementById('matric').value.trim();
-            const password    = document.getElementById('password').value;
-            const email       = document.getElementById('email').value.trim();
-            const department  = document.getElementById('dep').value.trim();
-            const countryCode = document.getElementById('countryCode').value;
-            const phone       = countryCode + document.getElementById('phone').value.trim();
+        const fullname    = document.getElementById('fullname').value.trim();
+        const matric      = document.getElementById('matric').value.trim();
+        const password    = document.getElementById('password').value;
+        const email       = document.getElementById('email').value.trim();
+        const department  = document.getElementById('dep').value.trim();
+        const countryCode = document.getElementById('countryCode').value;
+        const phone       = countryCode + document.getElementById('phone').value.trim();
 
-            try {
-                
-                const { data: authData, error: authError } = await db.auth.signUp({
-                    email: email,
-                    password: password,
-                });
+        try {
+            // STEP 1: CHECK IF MATRIC NUMBER ALREADY EXISTS
+            const { data: existingStudent, error: checkError } = await db
+                .from('students')
+                .select('matric')
+                .eq('matric', matric)
+                .maybeSingle();
 
-                if (authError) throw authError;
-
-                
-                const userId = authData.user ? authData.user.id : null;
-
-                if (userId) {
-                    
-                    const { error: dbError } = await db
-                        .from('students')
-                        .insert([{
-                            id: userId,
-                            fullname: fullname,
-                            matric: matric,
-                            email: email,
-                            department: department,
-                            phone: phone
-                        }]);
-
-                    if (dbError) throw dbError;
-                }
-
-                
-                alert('Registration Successful! 🎉');
-                window.location.href = 'login.html';
-
-            } catch (err) {
-                console.error("Signup Error:", err);
-                alert('Signup Failed ❌\n\n' + (err.message || "Unknown error. Open browser console (F12) for details."));
+            if (existingStudent) {
+                alert('This Matric Number is already registered! ❌');
                 submitBtn.innerText = "Register";
                 submitBtn.disabled = false;
+                return; // Stop the signup process
             }
-        });
-    </script>
+
+            // STEP 2: CREATE AUTH USER
+            const { data: authData, error: authError } = await db.auth.signUp({
+                email: email,
+                password: password,
+            });
+
+            if (authError) throw authError;
+
+            // STEP 3: INSERT STUDENT DETAILS
+            const userId = authData.user ? authData.user.id : null;
+
+            if (userId) {
+                const { error: dbError } = await db
+                    .from('students')
+                    .insert([{
+                        id: userId,
+                        fullname: fullname,
+                        matric: matric,
+                        email: email,
+                        department: department,
+                        phone: phone
+                    }]);
+
+                if (dbError) throw dbError;
+            }
+
+            alert('Registration Successful! 🎉');
+            window.location.href = 'login.html';
+
+        } catch (err) {
+            console.error("Signup Error:", err);
+            alert('Signup Failed ❌\n\n' + (err.message || "Unknown error. Check console."));
+            submitBtn.innerText = "Register";
+            submitBtn.disabled = false;
+        }
+    });
+</script>
 </body>
 </html>
