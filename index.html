@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="rust.css">
     <title>Signup</title>
-    <link rel="" href="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -25,7 +24,7 @@
             
             <div class="input-box">
                 <input type="password" name="password" id="password" placeholder="Password" required/>
-                <i class="fa-solid fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
+                <i class="fa-solid fa-eye" id="togglePassword" style="cursor: pointer;"></i>
             </div>
 
             <div class="input-box" style="display: flex; align-items: center; border: 2px solid rgba(255, 255, 255, .2); border-radius: 40px; padding: 0 20px; background: transparent;">
@@ -58,55 +57,83 @@
         </form>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script>
-        // Toggle Password visibility
-        document.getElementById('togglePassword').addEventListener('click', function() {
+        
+        const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+        if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        const db = window._sb;
+
+        
+        document.getElementById('togglePassword').addEventListener('click', function () {
             const pass = document.getElementById('password');
-            pass.type = pass.type === 'password' ? 'text' : 'password';
-            this.classList.toggle('fa-eye-slash');
+            if (pass.type === 'password') {
+                pass.type = 'text';
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+            } else {
+                pass.type = 'password';
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+            }
         });
 
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            
+        
+        document.getElementById('signupForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
             const submitBtn = document.getElementById('submitBtn');
-            submitBtn.innerText = "Saving Account...";
+            submitBtn.innerText = "Processing... ⏳";
             submitBtn.disabled = true;
 
-            const formData = new FormData(this);
-            const userData = Object.fromEntries(formData.entries());
+            const fullname    = document.getElementById('fullname').value.trim();
+            const matric      = document.getElementById('matric').value.trim();
+            const password    = document.getElementById('password').value;
+            const email       = document.getElementById('email').value.trim();
+            const department  = document.getElementById('dep').value.trim();
+            const countryCode = document.getElementById('countryCode').value;
+            const phone       = countryCode + document.getElementById('phone').value.trim();
 
-            // 1. SAVE LOCALLY (For Dashboard sync)
-            localStorage.setItem('studentName', userData.fullname);
-            localStorage.setItem('studentDept', userData.department);
-            localStorage.setItem('user', JSON.stringify(userData));
+            try {
+                
+                const { data: authData, error: authError } = await db.auth.signUp({
+                    email: email,
+                    password: password,
+                });
 
-            // 2. GOOGLE SHEETS BACKEND
-            const googleScriptURL = "https://script.google.com/macros/s/AKfycbzi_gmAaK5O5qFQVKeNXkuBLHfO15flL443EmrR5q0eSl9oajuOPbpsYuEPJSxwWwIy/exec";
+                if (authError) throw authError;
 
-            fetch(googleScriptURL, {
-                method: "POST",
-                mode: "no-cors", // Required for Google Scripts
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    name: userData.fullname,
-                    matric: userData.matric,
-                    dept: userData.department,
-                    password: userData.password,
-                    phone: userData.countryCode + userData.phone,
-                    email: userData.email
-                })
-            })
-            .then(() => {
-                alert('Registration Successful!');
+                
+                const userId = authData.user ? authData.user.id : null;
+
+                if (userId) {
+                    
+                    const { error: dbError } = await db
+                        .from('students')
+                        .insert([{
+                            id: userId,
+                            fullname: fullname,
+                            matric: matric,
+                            email: email,
+                            department: department,
+                            phone: phone
+                        }]);
+
+                    if (dbError) throw dbError;
+                }
+
+                
+                alert('Registration Successful! 🎉');
                 window.location.href = 'login.html';
-            })
-            .catch(err => {
-                console.error("Error:", err);
-                alert("Storage error. Please try again.");
+
+            } catch (err) {
+                console.error("Signup Error:", err);
+                alert('Signup Failed ❌\n\n' + (err.message || "Unknown error. Open browser console (F12) for details."));
                 submitBtn.innerText = "Register";
                 submitBtn.disabled = false;
-            });
+            }
         });
     </script>
 </body>

@@ -1,19 +1,23 @@
 
-function validate()
-{
-    var username=document.getElementById("username").ariaValueMax;
-    var password=document.getElementById("password").ariaValueMax;
-    if(username==null||username==""){
-        alert("Please enter a username");
+// Simple form validator (keeps old callers working if referenced)
+function validate() {
+    const matricEl = document.getElementById('matric');
+    const passEl = document.getElementById('password');
+    const matric = matricEl ? matricEl.value.trim() : '';
+    const password = passEl ? passEl.value : '';
+
+    if (!matric) {
+        alert('Please enter your Matric number');
         return false;
     }
-    if(password==null||password==""){
-        alert("Please enter a username");
+    if (!password) {
+        alert('Please enter your password');
         return false;
     }
-    alert("Login Successful");
+    return true;
 }
-function get_getsomething()
-{
-    document.getElementById("login successful").innerHTML="Login successful"
+
+function get_getsomething() {
+    const el = document.getElementById('login-successful') || document.getElementById('login successful');
+    if (el) el.innerText = 'Login successful';
 }

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GNS 103 - Information Literacy Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e40af; 
+            --bg: #f8fafc; 
+            --card-bg: #ffffff; 
+            --text: #1e293b;
+            --success: #16a34a; 
+            --danger: #dc2626; 
+            --accent: #ea580c;
+        }
+        .dark-mode { --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc; }
+        
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: 0.3s; }
+        nav { background: var(--card-bg); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        main { padding: 2rem 5%; max-width: 900px; margin: 0 auto; }
+        
+        #dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+        .box { background: var(--card-bg); padding: 1.5rem; border-radius: 12px; text-align: center; cursor: pointer; transition: 0.3s; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .box:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .box-random { background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; }
+        
+        .option-btn { display: block; width: 100%; padding: 1rem; margin: 0.75rem 0; border: 2px solid #e2e8f0; border-radius: 10px; background: var(--card-bg); color: var(--text); text-align: left; cursor: pointer; font-size: 1rem; transition: 0.2s; }
+        .option-btn:not(:disabled):hover { background: #f1f5f9; }
+        
+        /* Instant Feedback Styles */
+        .option-btn.correct { background-color: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: bold; }
+        .option-btn.wrong { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
+        
+        .feedback-container { margin-top: 1.5rem; animation: fadeIn 0.3s; }
+        .feedback-status { padding: 1rem; border-radius: 10px; font-weight: bold; text-align: center; border: 1px solid; margin-bottom: 0.5rem; }
+        
+        /* New Explanation Box Style */
+        .explanation-box { background: rgba(30, 64, 175, 0.1); border-left: 5px solid var(--primary); padding: 1rem; border-radius: 4px; color: var(--text); line-height: 1.6; }
+        .dark-mode .explanation-box { background: rgba(30, 64, 175, 0.2); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .controls { display: flex; justify-content: space-between; margin-top: 2rem; }
+        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; background: var(--primary); color: white; transition: 0.2s; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div id="user-info" style="font-weight: 600;">MTS 101 Practice Portal</div>
+    <div style="display: flex; gap: 15px;">
+        <button class="btn" style="background:var(--accent); display:none;" id="resume-btn" onclick="resumeExam()">Resume</button>
+        <button class="btn" style="background:#64748b" onclick="document.body.classList.toggle('dark-mode')"><i class="fa-solid fa-circle-half-stroke"></i></button>
+    </div>
+</nav>
+
+<main>
+    <div id="dashboard"></div>
+
+    <div id="setup-screen" style="display:none; text-align: center; background: var(--card-bg); padding: 2rem; border-radius: 15px;">
+        <h2 id="setup-title"></h2>
+        <div id="random-settings" style="margin: 1.5rem 0;">
+            <label>Question Quantity:</label><br>
+            <input type="number" id="q-count" value="50" style="padding: 10px; border-radius: 5px; width: 80px;">
+        </div>
+        <div style="margin: 1.5rem 0;">
+            <label>Time (Minutes):</label><br>
+            <input type="number" id="t-limit" value="30" style="padding: 10px; border-radius: 5px; width: 80px;">
+        </div>
+        <button class="btn" onclick="startExam()">Start Practice</button>
+    </div>
+
+    <div id="quiz-interface" style="display:none;">
+        <div style="display:flex; justify-content: space-between; font-weight: bold; margin-bottom: 10px;">
+            <span>Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
+            <span id="timer" style="color:var(--danger)">30:00</span>
+        </div>
+        <div style="background: var(--card-bg); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h3 id="question-text" style="line-height: 1.5;"></h3>
+            <div id="options-box"></div>
+            <div id="feedback-area"></div>
+        </div>
+        <div class="controls">
+            <button class="btn" style="background:#64748b" id="prev-btn" onclick="move(-1)">Previous</button>
+            <button class="btn" id="next-btn" onclick="move(1)">Next Question</button>
+            <button class="btn" id="submit-btn" style="background:var(--success); display:none;" onclick="showResults()">Submit Exam</button>
+        </div>
+    </div>
+</main>
+
+<script>
+        const MASTER_POOL = [
+ 
+    ];
+
+    let currentExamData = [];
+    let userAnswers = {};
+    let currentIndex = 0;
+    let timeRemaining = 0;
+    let timerId;
+
+    window.onload = () => {
+        initDashboard();
+        if(localStorage.getItem('saved_gns_exam')) document.getElementById('resume-btn').style.display = 'block';
+    };
+
+    function initDashboard() {
+        const board = document.getElementById('dashboard');
+        board.innerHTML = '';
+        const totalQuestions = MASTER_POOL.length;
+        const parts = Math.ceil(totalQuestions / 50);
+
+        const rand = document.createElement('div');
+        rand.className = 'box box-random';
+        rand.innerHTML = `<i class="fa-solid fa-shuffle"></i><h3>Random Mode</h3><p>Full Shuffle</p>`;
+        rand.onclick = () => openSetup('random', 0);
+        board.appendChild(rand);
+
+        for (let i = 1; i <= parts; i++) {
+            const card = document.createElement('div');
+            const start = (i - 1) * 50 + 1;
+            const end = Math.min(i * 50, totalQuestions);
+            card.className = 'box';
+            card.innerHTML = `<i class="fa-solid fa-book-open"></i><h3>Part ${i}</h3><p>Q${start} - Q${end}</p>`;
+            card.onclick = () => openSetup('part', i);
+            board.appendChild(card);
+        }
+    }
+
+    function openSetup(mode, partNum) {
+        window.examMode = mode;
+        window.partNum = partNum;
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('setup-screen').style.display = 'block';
+        document.getElementById('setup-title').innerText = mode === 'random' ? "Random Exam Setup" : `:MTS 101 Part ${partNum}`;
+        document.getElementById('random-settings').style.display = (mode === 'random') ? 'block' : 'none';
+    }
+
+    function startExam() {
+        const timeInput = document.getElementById('t-limit').value;
+        timeRemaining = timeInput * 60;
+
+        if (window.examMode === 'random') {
+            const qty = document.getElementById('q-count').value;
+            currentExamData = [...MASTER_POOL].sort(() => 0.5 - Math.random()).slice(0, qty);
+        } else {
+            const start = (window.partNum - 1) * 50;
+            currentExamData = MASTER_POOL.slice(start, start + 50);
+        }
+
+        document.getElementById('setup-screen').style.display = 'none';
+        document.getElementById('quiz-interface').style.display = 'block';
+        document.getElementById('total-idx').innerText = currentExamData.length;
+        
+        runTimer();
+        renderQuestion();
+    }
+
+    function runTimer() {
+        if(timerId) clearInterval(timerId);
+        timerId = setInterval(() => {
+            timeRemaining--;
+            let m = Math.floor(timeRemaining / 60);
+            let s = timeRemaining % 60;
+            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
+            if(timeRemaining <= 0) showResults();
+        }, 1000);
+    }
+
+    function renderQuestion() {
+        const q = currentExamData[currentIndex];
+        const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
+        
+        document.getElementById('cur-idx').innerText = currentIndex + 1;
+        document.getElementById('question-text').innerText = q.question;
+        
+        const optBox = document.getElementById('options-box');
+        const feedbackArea = document.getElementById('feedback-area');
+        optBox.innerHTML = '';
+        feedbackArea.innerHTML = '';
+        
+        Object.entries(q.options).forEach(([key, val], index) => {
+            const btn = document.createElement('button');
+            btn.className = `option-btn`;
+            const letter = String.fromCharCode(65 + index); // A, B, C, D...
+            
+            if (hasAnswered) {
+                if (key === q.answer) {
+                    btn.classList.add('correct');
+                } else if (userAnswers[currentIndex] === key) {
+                    btn.classList.add('wrong');
+                }
+                btn.disabled = true;
+            }
+
+            btn.innerHTML = `<strong>${letter}.</strong> ${val}`;
+            btn.onclick = () => { 
+                if (!hasAnswered) {
+                    userAnswers[currentIndex] = key; 
+                    saveState(); 
+                    renderQuestion();
+                }
+            };
+            optBox.appendChild(btn);
+        });
+
+        if (hasAnswered) {
+            const isCorrect = userAnswers[currentIndex] === q.answer;
+            // Check if explanation exists in the JSON data, otherwise show generic message
+            const explanationText = q.explanation ? `<strong>Explanation:</strong> ${q.explanation}` : '';
+
+            feedbackArea.innerHTML = `
+                <div class="feedback-container">
+                    <div class="feedback-status" style="border-color: ${isCorrect ? '#22c55e' : '#ef4444'}; background: ${isCorrect ? '#dcfce7' : '#fee2e2'}; color: ${isCorrect ? '#166534' : '#991b1b'}">
+                        ${isCorrect ? '✔ Correct Answer!' : '✘ Incorrect. The correct answer is (' + q.answer + ') ' + q.options[q.answer]}
+                    </div>
+                    ${explanationText ? `<div class="explanation-box">${explanationText}</div>` : ''}
+                </div>
+            `;
+        }
+
+        document.getElementById('prev-btn').disabled = currentIndex === 0;
+        document.getElementById('next-btn').style.display = (currentIndex === currentExamData.length - 1) ? 'none' : 'block';
+        document.getElementById('submit-btn').style.display = (currentIndex === currentExamData.length - 1) ? 'block' : 'none';
+    }
+
+    function move(dir) {
+        if(currentIndex + dir >= 0 && currentIndex + dir < currentExamData.length) {
+            currentIndex += dir;
+            renderQuestion();
+        }
+    }
+
+    function saveState() {
+        const state = { currentExamData, userAnswers, currentIndex, timeRemaining };
+        localStorage.setItem('saved_gns_exam', JSON.stringify(state));
+    }
+
+    function resumeExam() {
+        const state = JSON.parse(localStorage.getItem('saved_gns_exam'));
+        currentExamData = state.currentExamData;
+        userAnswers = state.userAnswers;
+        currentIndex = state.currentIndex;
+        timeRemaining = state.timeRemaining;
+        
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('resume-btn').style.display = 'none';
+        document.getElementById('quiz-interface').style.display = 'block';
+        document.getElementById('total-idx').innerText = currentExamData.length;
+        runTimer();
+        renderQuestion();
+    }
+
+    function showResults() {
+        clearInterval(timerId);
+        let score = 0;
+        currentExamData.forEach((q, i) => { 
+            if(userAnswers[i] === q.answer) score++; 
+        });
+        alert(`Practice Complete!\nYour Score: ${score} / ${currentExamData.length}`);
+        localStorage.removeItem('saved_gns_exam');
+        location.reload();
+    }
+</script>
+</body>
+</html>

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPA Calculator | Resolutefemi</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* CSS Variables for easy theme switching */
+        /* CSS Variables */
         :root {
             --bg-body: #f1f2f6;
             --bg-card: #ffffff;
@@ -16,6 +16,7 @@
             --brand-blue: #0984e3;
             --brand-green: #27ae60;
             --brand-red: #d63031;
+            --whatsapp-green: #25d366;
             --table-head: #f8f9fa;
         }
 
@@ -32,70 +33,97 @@
             font-family: 'Segoe UI', sans-serif; 
             background: var(--bg-body); 
             color: var(--text-main);
-            margin: 0; padding: 20px; 
+            margin: 0; padding: 10px;
             display: flex; justify-content: center; 
             transition: all 0.3s ease;
+        }
+
+        /* --- WHATSAPP FLOATING BUTTON --- */
+        .whatsapp-float {
+            position: fixed;
+            width: 55px;
+            height: 55px;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--whatsapp-green);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(5deg);
+            color: white;
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
         }
 
         .calc-card { 
             width: 100%; max-width: 700px; 
             background: var(--bg-card); 
-            padding: 35px; border-radius: 15px; 
+            padding: 20px;
+            border-radius: 15px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
             position: relative;
+            margin-top: 10px;
         }
 
-        /* Theme Toggle Button */
         .theme-toggle {
-            position: absolute; top: 20px; right: 20px;
+            position: absolute; top: 15px; right: 15px;
             background: none; border: none; color: var(--text-main);
             font-size: 1.2rem; cursor: pointer;
         }
 
-        .header { text-align: center; border-bottom: 2px solid var(--border); margin-bottom: 25px; padding-bottom: 15px; }
-        .header h1 { margin: 0; color: var(--text-main); font-size: 1.8rem; }
-        .header p { margin: 5px 0 0; color: var(--brand-blue); font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
+        .header { text-align: center; border-bottom: 2px solid var(--border); margin-bottom: 20px; padding-bottom: 15px; }
+        .header h1 { margin: 0; color: var(--text-main); font-size: 1.5rem; }
+        .header p { margin: 5px 0 0; color: var(--brand-blue); font-weight: bold; font-size: 0.7rem; letter-spacing: 1px; }
 
-        /* Inputs */
-        .input-area { display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 10px; margin-bottom: 25px; }
-        input, select, .btn { 
-            padding: 12px; border-radius: 8px; 
-            border: 1px solid var(--border); 
-            background: var(--bg-card); color: var(--text-main);
-            outline: none; 
+        .input-area { display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px; }
+        input, select, .btn { padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); outline: none; font-size: 16px; }
+        .btn-add { background: var(--text-main); color: var(--bg-card); cursor: pointer; border: none; font-weight: bold; width: 100%; }
+
+        .table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        table { width: 100%; border-collapse: collapse; min-width: 450px; margin-bottom: 20px; }
+        th { background: var(--table-head); color: var(--text-muted); padding: 10px; text-align: left; font-size: 0.7rem; text-transform: uppercase; }
+        td { padding: 10px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+
+        .gpa-display { background: var(--brand-blue); color: white; padding: 15px; border-radius: 10px; text-align: center; margin: 20px 0; }
+        .gpa-val { font-size: 2.5rem; font-weight: 800; display: block; color: #55efc4; }
+
+        .controls { display: flex; flex-direction: column; gap: 10px; }
+        .btn-print { background: var(--brand-green); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; padding: 15px; text-align: center; }
+        .btn-reset { background: var(--brand-red); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; padding: 15px; }
+
+        @media (min-width: 600px) {
+            .calc-card { padding: 35px; }
+            .header h1 { font-size: 1.8rem; }
+            .input-area { display: grid; grid-template-columns: 2fr 1fr 1.5fr auto; }
+            .controls { flex-direction: row; }
+            .btn-add { width: auto; }
         }
-        .btn-add { background: var(--text-main); color: var(--bg-card); cursor: pointer; border: none; font-weight: bold; }
 
-        /* Table */
-        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-        th { background: var(--table-head); color: var(--text-muted); padding: 12px; text-align: left; font-size: 0.75rem; text-transform: uppercase; }
-        td { padding: 12px; border-bottom: 1px solid var(--border); }
-        [contenteditable="true"]:focus { background: rgba(9, 132, 227, 0.1); border-radius: 4px; }
-
-        /* GPA Display */
-        .gpa-display { background: var(--brand-blue); color: white; padding: 20px; border-radius: 10px; text-align: center; margin: 20px 0; }
-        .gpa-val { font-size: 3rem; font-weight: 800; display: block; color: #55efc4; }
-
-        /* Controls */
-        .controls { display: flex; gap: 10px; }
-        .btn-print { flex: 2; background: var(--brand-green); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
-        .btn-reset { flex: 1; background: var(--brand-red); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; padding: 15px; }
-
-        /* Footer */
         .footer { text-align: center; margin-top: 30px; border-top: 1px solid var(--border); padding-top: 20px; }
-        .socials a { text-decoration: none; color: var(--text-main); margin: 0 12px; font-size: 1.4rem; transition: 0.3s; }
-        .socials a:hover { color: var(--brand-blue); }
+        .socials { margin-top: 10px; }
+        .socials a { text-decoration: none; color: var(--text-main); margin: 0 10px; font-size: 1.2rem; }
 
         @media print {
-            .no-print { display: none !important; }
-            :root { --bg-body: white; --text-main: black; --bg-card: white; --border: #000; }
-            .calc-card { box-shadow: none; border: 1px solid #eee; }
-            .gpa-display { background: #eee !important; color: black !important; border: 1px solid #000; }
-            .gpa-val { color: black !important; }
+            .no-print, .whatsapp-float { display: none !important; }
+            body { padding: 0; }
+            .calc-card { box-shadow: none; border: none; max-width: 100%; width: 100%; }
         }
     </style>
 </head>
 <body data-theme="light">
+
+<a href="https://wa.me/2347046203544" class="whatsapp-float" target="_blank" title="Chat with Resolutefemi">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 <div class="calc-card">
     <button class="theme-toggle no-print" onclick="toggleTheme()" id="themeBtn">
@@ -122,17 +150,19 @@
     </div>
 
     <div id="printSection">
-        <table id="gpaTable">
-            <thead>
-                <tr>
-                    <th>Course</th>
-                    <th>Units</th>
-                    <th>Grade</th>
-                    <th class="no-print">Action</th>
-                </tr>
-            </thead>
-            <tbody id="courseBody"></tbody>
-        </table>
+        <div class="table-container">
+            <table id="gpaTable">
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Units</th>
+                        <th>Grade</th>
+                        <th class="no-print">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="courseBody"></tbody>
+            </table>
+        </div>
 
         <div class="gpa-display">
             <small>CUMULATIVE GPA</small>
@@ -142,7 +172,7 @@
 
     <div class="controls no-print">
         <button class="btn-print" onclick="window.print()"><i class="fa fa-print"></i> Print Slip</button>
-        <button class="btn-reset" onclick="resetAll()"><i class="fa fa-refresh"></i> Reset</button>
+        <button class="btn-reset" onclick="resetAll()"><i class="fa fa-refresh"></i> Reset All</button>
     </div>
 
     <div class="footer no-print">
@@ -158,90 +188,77 @@
 <script>
     let courses = [];
 
-    // --- Theme Logic ---
     function toggleTheme() {
         const body = document.body;
         const btn = document.getElementById('themeBtn');
-        if (body.getAttribute('data-theme') === 'light') {
-            body.setAttribute('data-theme', 'dark');
-            btn.innerHTML = '<i class="fas fa-sun"></i>';
-        } else {
-            body.setAttribute('data-theme', 'light');
-            btn.innerHTML = '<i class="fas fa-moon"></i>';
-        }
+        const theme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', theme);
+        localStorage.setItem('gpaTheme', theme);
+        btn.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     }
 
-    // --- Calculator Logic ---
+    function saveToLocal() { localStorage.setItem('savedCourses', JSON.stringify(courses)); }
+
+    function loadFromLocal() {
+        const savedTheme = localStorage.getItem('gpaTheme');
+        if (savedTheme === 'dark') toggleTheme();
+        const savedData = localStorage.getItem('savedCourses');
+        if (savedData) { courses = JSON.parse(savedData); render(); }
+    }
+
     function addCourse() {
-        const code = document.getElementById('courseCode').value || "COURSE";
-        const unit = parseInt(document.getElementById('courseUnit').value) || 0;
-        const gradeVal = parseInt(document.getElementById('courseGrade').value);
-
+        const codeInput = document.getElementById('courseCode');
+        const unitInput = document.getElementById('courseUnit');
+        const gradeSelect = document.getElementById('courseGrade');
+        const unit = parseInt(unitInput.value) || 0;
         if (unit <= 0) { alert("Please enter valid units"); return; }
-
-        courses.push({ code: code.toUpperCase(), unit, gradeVal });
-        document.getElementById('courseCode').value = '';
-        document.getElementById('courseUnit').value = '';
-        render();
+        courses.push({ code: (codeInput.value || "COURSE").toUpperCase(), unit, gradeVal: parseInt(gradeSelect.value) });
+        codeInput.value = ''; unitInput.value = '';
+        saveToLocal(); render();
     }
 
     function render() {
         const tbody = document.getElementById('courseBody');
         tbody.innerHTML = '';
         let tPoints = 0; let tUnits = 0;
-
         courses.forEach((c, index) => {
             tPoints += (c.unit * c.gradeVal);
             tUnits += c.unit;
-            tbody.innerHTML += `
-                <tr>
-                    <td contenteditable="true" oninput="updateData(${index}, 'code', this.innerText)">${c.code}</td>
-                    <td contenteditable="true" oninput="updateData(${index}, 'unit', this.innerText)">${c.unit}</td>
-                    <td>
-                        <select onchange="updateData(${index}, 'gradeVal', this.value)" style="background:transparent; border:none; color:inherit; font:inherit;">
-                            <option value="5" ${c.gradeVal==5?'selected':''}>A</option>
-                            <option value="4" ${c.gradeVal==4?'selected':''}>B</option>
-                            <option value="3" ${c.gradeVal==3?'selected':''}>C</option>
-                            <option value="2" ${c.gradeVal==2?'selected':''}>D</option>
-                            <option value="1" ${c.gradeVal==1?'selected':''}>E</option>
-                            <option value="0" ${c.gradeVal==0?'selected':''}>F</option>
-                        </select>
-                    </td>
-                    <td class="no-print"><i class="fa fa-trash" style="color:var(--brand-red); cursor:pointer" onclick="removeCourse(${index})"></i></td>
-                </tr>`;
+            tbody.innerHTML += `<tr>
+                <td contenteditable="true" onblur="updateData(${index}, 'code', this.innerText)">${c.code}</td>
+                <td contenteditable="true" onblur="updateData(${index}, 'unit', this.innerText)">${c.unit}</td>
+                <td>
+                    <select onchange="updateData(${index}, 'gradeVal', this.value)" style="background:transparent; border:none; color:inherit; font:inherit; width:100%;">
+                        <option value="5" ${c.gradeVal==5?'selected':''}>A</option>
+                        <option value="4" ${c.gradeVal==4?'selected':''}>B</option>
+                        <option value="3" ${c.gradeVal==3?'selected':''}>C</option>
+                        <option value="2" ${c.gradeVal==2?'selected':''}>D</option>
+                        <option value="1" ${c.gradeVal==1?'selected':''}>E</option>
+                        <option value="0" ${c.gradeVal==0?'selected':''}>F</option>
+                    </select>
+                </td>
+                <td class="no-print"><i class="fa fa-trash" style="color:var(--brand-red); cursor:pointer" onclick="removeCourse(${index})"></i></td>
+            </tr>`;
         });
         calculateOnly(tPoints, tUnits);
     }
 
     function updateData(index, key, value) {
-        if (key === 'unit' || key === 'gradeVal') {
-            courses[index][key] = parseInt(value) || 0;
-        } else {
-            courses[index][key] = value;
-        }
-        
-        // Recalculate
-        let tP = 0; let tU = 0;
-        courses.forEach(c => { tP += (c.unit * c.gradeVal); tU += c.unit; });
-        calculateOnly(tP, tU);
+        courses[index][key] = (key === 'code') ? value.toUpperCase() : parseInt(value) || 0;
+        saveToLocal(); render();
     }
 
     function calculateOnly(tp, tu) {
-        const score = tu > 0 ? (tp / tu).toFixed(2) : "0.00";
-        document.getElementById('gpaScore').innerText = score;
+        document.getElementById('gpaScore').innerText = tu > 0 ? (tp / tu).toFixed(2) : "0.00";
     }
 
-    function removeCourse(index) {
-        courses.splice(index, 1);
-        render();
-    }
+    function removeCourse(index) { courses.splice(index, 1); saveToLocal(); render(); }
 
     function resetAll() {
-        if(confirm("Clear all data?")) {
-            courses = [];
-            render();
-        }
+        if(confirm("Clear all data?")) { courses = []; localStorage.removeItem('savedCourses'); render(); }
     }
+
+    window.onload = loadFromLocal;
 </script>
 </body>
 </html>

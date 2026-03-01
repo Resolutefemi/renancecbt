@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RENANCE CBT | Dashboard</title>
     
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -38,6 +37,47 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
         body { background-color: var(--bg-body); display: flex; min-height: 100vh; color: var(--text-main); overflow-x: hidden; }
 
+        /* --- SEARCH BAR STYLES --- */
+        .search-wrapper {
+            position: relative;
+            margin-bottom: 2rem;
+            width: 100%;
+            max-width: 500px;
+        }
+        .search-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+        .search-input {
+            width: 100%;
+            padding: 14px 14px 14px 45px;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-input:focus {
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        /* --- WHATSAPP FLOATING BUTTON --- */
+        .whatsapp-float {
+            position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px;
+            background-color: var(--whatsapp-green); color: #FFF; border-radius: 50px;
+            text-align: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 3000; display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); color: white; }
+
         /* --- SIDEBAR --- */
         nav {
             width: 280px; background: var(--glass); backdrop-filter: blur(12px);
@@ -46,11 +86,9 @@
             transform: translateX(0); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border-right: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         .nav-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.5rem; }
         .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 700; color: #f8fafc; }
         .nav-close { display: none; cursor: pointer; color: var(--text-muted); }
-
         .nav-menu-content { flex-grow: 1; }
         .nav-item {
             display: flex; align-items: center; gap: 15px; padding: 12px 16px;
@@ -58,66 +96,55 @@
             margin-bottom: 8px; transition: 0.3s; font-weight: 500;
         }
         .nav-item:hover { background: rgba(255, 255, 255, 0.05); color: white; }
-        .nav-item.active {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(37, 99, 235, 0.05));
-            color: var(--primary-accent); border: 1px solid rgba(96, 165, 250, 0.2);
-        }
+        .nav-item.active { background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(37, 99, 235, 0.05)); color: var(--primary-accent); border: 1px solid rgba(96, 165, 250, 0.2); }
 
-        .nav-footer {
-            padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex; align-items: center; justify-content: space-between;
-        }
+        .nav-footer { padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: space-between; }
         .mini-profile { display: flex; align-items: center; gap: 10px; }
-        .mini-avatar {
-            width: 38px; height: 38px; background: linear-gradient(135deg, #2563eb, #7c3aed);
-            border-radius: 10px; display: flex; align-items: center; justify-content: center;
-            font-weight: 700; font-size: 0.8rem; color: white;
-        }
-        .logout-pill {
-            background: rgba(239, 68, 68, 0.1); border: none; color: #ef4444;
-            padding: 10px; border-radius: 10px; cursor: pointer; transition: 0.2s;
-        }
+        .mini-avatar { width: 38px; height: 38px; background: linear-gradient(135deg, #2563eb, #7c3aed); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; color: white; }
+        .logout-pill { background: rgba(239, 68, 68, 0.1); border: none; color: #ef4444; padding: 10px; border-radius: 10px; cursor: pointer; transition: 0.2s; }
 
         main { flex-grow: 1; margin-left: 280px; padding: 3rem; max-width: 1400px; width: 100%; }
-        
-        .mobile-top-bar {
-            display: none; position: fixed; top: 0; left: 0; right: 0;
-            background: var(--sidebar); color: white; padding: 1rem 1.5rem;
-            z-index: 1500; justify-content: space-between; align-items: center;
-        }
+        .mobile-top-bar { display: none; position: fixed; top: 0; left: 0; right: 0; background: var(--sidebar); color: white; padding: 1rem 1.5rem; z-index: 1500; justify-content: space-between; align-items: center; }
 
         .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; }
-        .user-profile-card {
-            display: flex; align-items: center; gap: 12px; background: var(--card-bg);
-            padding: 10px 18px; border-radius: 12px; border: 1px solid var(--border-color);
-            text-decoration: none; color: inherit;
-        }
+        .user-profile-card { display: flex; align-items: center; gap: 12px; background: var(--card-bg); padding: 10px 18px; border-radius: 12px; border: 1px solid var(--border-color); text-decoration: none; color: inherit; }
 
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
         .stat-card { background: var(--card-bg); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); display: flex; align-items: center; gap: 1rem; }
         
         .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
-        .course-card { 
-            background: var(--card-bg); border: 1px solid var(--border-color); 
-            border-radius: 20px; padding: 1.8rem; cursor: pointer; position: relative;
-            display: flex; flex-direction: column; gap: 1.2rem; transition: 0.3s;
-        }
+        .course-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 1.8rem; cursor: pointer; position: relative; display: flex; flex-direction: column; gap: 1.2rem; transition: 0.3s; }
         .course-card:hover { transform: translateY(-5px); border-color: var(--primary-accent); }
         
         .icon-box { width: 48px; height: 48px; background: rgba(37, 99, 235, 0.1); color: var(--primary-accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
         .card-footer { margin-top: auto; padding-top: 1.2rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 0.85rem; color: var(--primary-accent); }
 
+        /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 1024px) {
             nav { transform: translateX(-100%); }
             nav.open { transform: translateX(0); }
-            main { margin-left: 0; padding: 6rem 1.5rem 2rem; }
+            main { margin-left: 0; padding: 6rem 1.2rem 2rem; }
             .mobile-top-bar { display: flex; }
             .nav-close { display: block; }
             .header-top { display: none; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .stat-card { padding: 1rem; }
+            .search-wrapper { max-width: 100%; }
+            .course-grid { grid-template-columns: 1fr; } /* Stack courses on mobile */
+            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 25px; }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
+
+    <a href="https://wa.me/2347046203544" class="whatsapp-float" target="_blank" title="Contact Support">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <div class="mobile-top-bar">
         <i data-lucide="menu" onclick="toggleNav()"></i>
@@ -133,11 +160,11 @@
         
         <div class="nav-menu-content">
             <a href="#" class="nav-item active"><i data-lucide="layout-dashboard"></i> <span>Dashboard</span></a>
+            <a href="pdf.html" class="nav-item"><i data-lucide="book"></i> <span>PDFs</span></a>
+            <a href="gpa.html" class="nav-item"><i data-lucide="calculator"></i> <span>GPA Calculator</span></a>
+            <a href="ai.html" class="nav-item"><i data-lucide="bot"></i> <span>Renance AI</span></a>
             <a href="Tips.html" class="nav-item"><i data-lucide="lightbulb"></i> <span>Study Tips</span></a>
             <a href="about.html" class="nav-item"><i data-lucide="info"></i> <span>About Portal</span></a>
-            <a href="coming-soon.html" class="nav-item"><i data-lucide="book"></i> <span>PDFs</span></a>
-            <a href="gpa.html" class="nav-item"><i data-lucide="calculator"></i> <span>My GPA calculator</span></a>
-            <a href="ai.html" class="nav-item"><i data-lucide="bot"></i> <span>Renance AI Assistant</span></a>
             <a href="registration.html" class="nav-item"><i data-lucide="user"></i> <span>My Profile</span></a>
         </div>
 
@@ -185,9 +212,15 @@
             </div>
         </div>
 
-        <h2 style="margin-bottom: 1.5rem; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+        <h2 style="margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
             <i data-lucide="book-open" size="20"></i> Available Courses
         </h2>
+
+        <div class="search-wrapper">
+            <i data-lucide="search" size="20"></i>
+            <input type="text" id="courseSearch" class="search-input" placeholder="Search by course code or title..." onkeyup="filterCourses()">
+        </div>
+
         <div class="course-grid" id="courseGrid"></div>
     </main>
 
@@ -195,7 +228,7 @@
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzi_gmAaK5O5qFQVKeNXkuBLHfO15flL443EmrR5q0eSl9oajuOPbpsYuEPJSxwWwIy/exec";
 
         const courses = [
-            { id: 'CSC 101', title: 'INTRODUCTION TO COMPUTER', icon: 'cpu', isReady: true },
+            { id: 'COS 101', title: 'INTRODUCTION TO COMPUTER', icon: 'cpu', isReady: true },
             { id: 'GNS 103', title: 'INFORMATION LITERACY', icon: 'library', isReady: true },
             { id: 'STA 111', title: 'DISCRIPTIVE STATISTICS', icon: 'bar-chart', isReady: true },
             { id: 'MTH 101', title: 'ELEMENTARY MATHEMATICS I', icon: 'calculator', isReady: true },
@@ -203,8 +236,6 @@
             { id: 'GST 111', title: 'COMMUNICATION IN ENGLISH', icon: 'languages', isReady: true },
             { id: 'BIO 101', title: 'GENERAL BIOLOGY I', icon: 'dna', isReady: false },
             { id: 'CHE 101', title: 'GENERAL CHEMISTRY I', icon: 'beaker', isReady: false },
-            
-
         ];
 
         function toggleNav() { document.getElementById('sidebar').classList.toggle('open'); }
@@ -223,46 +254,21 @@
             lucide.createIcons();
         }
 
-        // --- GOOGLE SHEETS SYNC LOGIC ---
-        function syncDataWithSheet(name, dept) {
-            // Only sync if data exists and hasn't been synced this session
-            if (name && name !== "FUTA Student" && !sessionStorage.getItem('synced')) {
-                fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    cache: 'no-cache',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        name: name,
-                        department: dept,
-                        timestamp: new Date().toLocaleString()
-                    })
-                }).then(() => {
-                    sessionStorage.setItem('synced', 'true');
-                    console.log("Data synced to Google Sheets successfully.");
-                }).catch(err => console.error("Sync failed:", err));
-            }
-        }
-
-        function loadUserData() {
-            const name = localStorage.getItem('studentName') || "FUTA Student";
-            const dept = localStorage.getItem('studentDept') || "FUTA Department";
-            
-            document.getElementById('displayUserName').innerText = name;
-            document.getElementById('displayUserDept').innerText = dept;
-            document.getElementById('navUserName').innerText = name.split(' ')[0];
-            
-            const initials = name.trim().split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
-            document.getElementById('displayInitials').innerText = initials || "??";
-            document.getElementById('navInitials').innerText = initials || "??";
-
-            // Trigger the sync
-            syncDataWithSheet(name, dept);
-        }
-
-        function renderCourses() {
+        function renderCourses(filterText = "") {
             const grid = document.getElementById('courseGrid');
-            courses.forEach(course => {
+            grid.innerHTML = "";
+            
+            const filtered = courses.filter(c => 
+                c.id.toLowerCase().includes(filterText.toLowerCase()) || 
+                c.title.toLowerCase().includes(filterText.toLowerCase())
+            );
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<p style="color: var(--text-muted); padding: 20px;">No courses found matching "${filterText}"</p>`;
+                return;
+            }
+
+            filtered.forEach(course => {
                 const card = document.createElement('div');
                 card.className = 'course-card';
                 if (!course.isReady) card.style.opacity = "0.6";
@@ -280,12 +286,31 @@
                 `;
 
                 card.onclick = () => {
-                    window.location.href = course.isReady ? 
-                        course.id.toLowerCase().replace(/\s+/g, '') + '.html' : 'coming-soon.html';
+                    if(course.isReady) {
+                        window.location.href = course.id.toLowerCase().replace(/\s+/g, '') + '.html';
+                    } else {
+                        alert("This course is currently under development. Stay tuned!");
+                    }
                 };
                 grid.appendChild(card);
             });
             lucide.createIcons();
+        }
+
+        function filterCourses() {
+            const val = document.getElementById('courseSearch').value;
+            renderCourses(val);
+        }
+
+        function loadUserData() {
+            const name = localStorage.getItem('studentName') || "FUTA Student";
+            const dept = localStorage.getItem('studentDept') || "FUTA Department";
+            document.getElementById('displayUserName').innerText = name;
+            document.getElementById('displayUserDept').innerText = dept;
+            document.getElementById('navUserName').innerText = name.split(' ')[0];
+            const initials = name.trim().split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+            document.getElementById('displayInitials').innerText = initials || "??";
+            document.getElementById('navInitials').innerText = initials || "??";
         }
 
         window.onload = () => {
@@ -299,9 +324,10 @@
         };
 
         function logout() {
-            localStorage.clear();
-            sessionStorage.clear();
-            window.location.href = 'login.html';
+            if(confirm("Are you sure you want to logout?")) {
+                localStorage.clear();
+                window.location.href = 'login.html';
+            }
         }
     </script>
 </body>

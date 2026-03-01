@@ -645,6 +645,12 @@
         renderQuestion();
     }
 
+
+     fetch(" https://florencia-prorefugee-unindustriously.ngrok-free.dev", {
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ matric: studentMatric })
+});
     function showResults() {
         clearInterval(timerId);
         let score = 0;

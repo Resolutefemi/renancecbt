@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Materials | Academic Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        
+        body { 
+            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            background: #f8f9fa; 
+            margin: 0; 
+            padding: 15px; 
+        }
+        
+        .wrapper { 
+            max-width: 950px; 
+            margin: auto; 
+            background: white; 
+            border: 1px solid #ddd; 
+            padding: 20px; /* Responsive padding */
+            border-radius: 12px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+        }
+        
+        header { 
+            border-bottom: 3px solid #dee2e6; 
+            margin-bottom: 20px; 
+            padding-bottom: 15px; 
+            display: flex; 
+            flex-direction: column; /* Stack header on mobile */
+            align-items: center; 
+            text-align: center;
+            gap: 15px;
+        }
+        
+        .status-header { 
+            background: #fff3cd; 
+            color: #856404; 
+            padding: 6px 15px; 
+            border-radius: 20px; 
+            font-size: 11px; 
+            font-weight: bold; 
+            border: 1px solid #ffeeba; 
+        }
+        
+        h1 { margin: 0; color: #2c3e50; font-size: 20px; }
+
+        /* Search Bar Responsive */
+        .search-container { position: relative; margin-bottom: 25px; width: 100%; }
+        .search-container i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #adb5bd; }
+        #courseSearch { 
+            width: 100%; 
+            padding: 14px 12px 14px 45px; /* Larger tap target */
+            border-radius: 8px; 
+            border: 2px solid #eee; 
+            font-size: 16px; /* Prevents iOS auto-zoom on focus */
+            outline: none; 
+            transition: 0.3s; 
+            box-sizing: border-box;
+        }
+
+        /* Grid - Default 1 Column (Mobile) */
+        .grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 15px; 
+        }
+
+        .course-card { 
+            border: 1px solid #e0e0e0; 
+            border-radius: 10px; 
+            padding: 15px; 
+            background: #fff; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .code { font-weight: bold; color: #1a73e8; font-size: 12px; }
+        .name { 
+            font-size: 16px; 
+            margin: 8px 0 15px 0; 
+            color: #333; 
+            font-weight: 600; 
+            line-height: 1.3;
+        }
+
+        .btn-link, .btn-disabled { 
+            display: block; 
+            text-align: center; 
+            padding: 14px; /* Touch-friendly height */
+            border-radius: 8px; 
+            font-size: 13px; 
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .btn-link { background: #1a73e8; color: white; }
+        .btn-disabled { background: #e9ecef; color: #adb5bd; cursor: not-allowed; border: 1px solid #dee2e6; }
+
+        .coming-soon-tag { font-size: 10px; color: #dc3545; text-transform: uppercase; font-weight: bold; margin-top: 10px; text-align: center; }
+
+        /* WhatsApp Floating Icon - Smaller for Mobile */
+        .whatsapp-float {
+            position: fixed; width: 55px; height: 55px; bottom: 20px; right: 20px;
+            background-color: #25d366; color: #FFF; border-radius: 50%;
+            text-align: center; font-size: 25px; box-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000; display: flex; align-items: center; justify-content: center;
+            text-decoration: none;
+        }
+
+        footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; }
+        .contact-info { display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: #4a4a4a; }
+
+        /* Desktop & Tablet Adjustments */
+        @media (min-width: 650px) {
+            body { padding: 40px; }
+            .wrapper { padding: 30px; }
+            header { flex-direction: row; text-align: left; justify-content: space-between; }
+            h1 { font-size: 24px; }
+            .grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+            .contact-info { flex-direction: row; justify-content: center; gap: 20px; }
+            .name { height: 45px; } /* Consistent card height on desktop */
+        }
+
+        @media print { .whatsapp-float, .search-container { display: none; } }
+    </style>
+</head>
+<body>
+
+<a href="https://wa.me/2347046203544" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<div class="wrapper">
+    <header>
+        <div>
+            <h1>Academic Resource Portal</h1>
+            <p style="margin: 5px 0; color: #6c757d; font-size: 14px;">Official Course Note Repository</p>
+        </div>
+        <div class="status-header">SYSTEM UPDATE IN PROGRESS</div>
+    </header>
+
+    <div class="search-container">
+        <i class="fa fa-search"></i>
+        <input type="text" id="courseSearch" placeholder="Search courses (e.g. MTH101)..." onkeyup="filterCourses()">
+    </div>
+
+    <div class="grid" id="courseGrid">
+        </div>
+
+    <footer>
+        <p style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">Connect with the Admin</p>
+        <div class="contact-info">
+            <span><b>WhatsApp:</b> 07046203544</span>
+            <span><b>Facebook:</b> @resolutefemi</span>
+            <span><b>Twitter:</b> @resolutefemi</span>
+        </div>
+    </footer>
+</div>
+
+<script>
+    const courses = [
+        {code: "GNS103", name: "Information Literacy", available: true},
+        {code: "MTH101", name: "General Mathematics I", available: false},
+        {code: "PHY101", name: "General Physics I", available: false},
+        {code: "CHM101", name: "General Chemistry I", available: false},
+        {code: "BIO101", name: "General Biology I", available: false},
+        {code: "GST101", name: "Use of English", available: false},
+        {code: "COC101", name: "Introduction to Computing", available: false},
+        {code: "MEE101", name: "Engineering Drawing", available: false}
+    ];
+
+    function renderCourses(filter = "") {
+        const container = document.getElementById('courseGrid');
+        container.innerHTML = "";
+        
+        const filtered = courses.filter(c => 
+            c.code.toLowerCase().includes(filter.toLowerCase()) || 
+            c.name.toLowerCase().includes(filter.toLowerCase())
+        );
+
+        if (filtered.length === 0) {
+            container.innerHTML = `<p style="text-align: center; color: #999; padding: 20px;">No courses match your search.</p>`;
+            return;
+        }
+
+        filtered.forEach(c => {
+            const buttonContent = c.available ? `DOWNLOAD ${c.code}` : "LOCKED";
+            const link = c.available ? `${c.code}.pdf` : "javascript:alert('This material is coming soon!')";
+            const btnClass = c.available ? "btn-link" : "btn-disabled";
+            const status = !c.available ? '<span class="coming-soon-tag">COMING SOON</span>' : '';
+
+            container.innerHTML += `
+                <div class="course-card">
+                    <div>
+                        <span class="code">${c.code}</span>
+                        <h2 class="name">${c.name}</h2>
+                    </div>
+                    <div>
+                        <a href="${link}" class="${btnClass}">${buttonContent}</a>
+                        ${status}
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    function filterCourses() {
+        const query = document.getElementById('courseSearch').value;
+        renderCourses(query);
+    }
+
+    renderCourses();
+</script>
+
+</body>
+</html>

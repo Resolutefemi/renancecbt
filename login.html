@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>COS 101 - Login</title>  
     <style>
-        /* --- Styled Message Box --- */
         #message {
             text-align: center;
             margin-top: 15px;
@@ -15,11 +14,9 @@
             border-radius: 8px;
             font-size: 14px;
             font-weight: 500;
-            display: none; /* Hidden by default */
+            display: none; 
             transition: all 0.3s ease;
         }
-
-        /* Error state styling */
         .error-msg {
             display: block !important;
             background: rgba(239, 68, 68, 0.15); 
@@ -27,15 +24,12 @@
             border: 1px solid #ef4444;
             animation: shake 0.4s ease-in-out;
         }
-
-        /* Shake Animation */
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-8px); }
             50% { transform: translateX(8px); }
             75% { transform: translateX(-8px); }
         }
-
         .input-box { position: relative; margin-bottom: 20px; }
         #togglePassword {
             position: absolute;
@@ -44,6 +38,52 @@
             transform: translateY(-50%);
             cursor: pointer;
             color: rgba(255,255,255,0.7);
+        }
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; 
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            padding: 30px; 
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            color: #fff; 
+            position: relative;
+            text-align: center;
+        }
+        .close-btn {
+            position: absolute; 
+            right: 20px; 
+            top: 15px;
+            color: white; 
+            font-size: 28px; 
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .close-btn:hover { color: #ff4d4d; }
+        .modal h2 { margin-bottom: 10px; font-size: 24px; }
+        .modal p { font-size: 14px; margin-bottom: 20px; color: rgba(255,255,255,0.8); }
+        .modal .input-box input {
+            width: 100%;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, .2);
+            border-radius: 40px;
+            padding: 15px 20px;
+            color: #fff;
+            outline: none;
         }
     </style>
 </head>
@@ -77,79 +117,128 @@
         </form>
     </div>
 
-    <script>
-        // --- PASSWORD TOGGLE ---
-        const togglePassword = document.querySelector('#togglePassword');
-        const passwordField = document.querySelector('#password');
+    <div id="forgotModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h2>Reset Password</h2>
+            <p>Enter your Matric Number to request a reset link from the administrator.</p>
+            <div class="input-box" style="margin-bottom: 20px;">
+                <input type="text" id="resetMatric" placeholder="Matric No. (ABC/25/1234)" required>
+                <i class="fa-solid fa-user-graduate" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); color:rgba(255,255,255,0.7);"></i>
+            </div>
+            <button class="btn" id="sendResetBtn" style="width: 100%; background: #fff; color: #333; font-weight: bold; padding: 10px; border-radius: 40px; border: none; cursor: pointer;">Request Reset</button>
+            <div id="resetFeedback" style="margin-top: 15px; font-size: 14px; font-weight: bold; display: none;"></div>
+        </div>
+    </div>
 
-        togglePassword.addEventListener('click', function () {
-            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordField.setAttribute('type', type);
-            this.classList.toggle('fa-eye-slash');
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        // 1. INITIALIZE SUPABASE (safe - only created once)
+        const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+        if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        const db = window._sb;
+
+        // 2. PASSWORD TOGGLE
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const pass = document.getElementById('password');
+            if (pass.type === 'password') {
+                pass.type = 'text';
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+            } else {
+                pass.type = 'password';
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+            }
         });
 
-        // --- FORGOT PASSWORD ---
+        // 3. FORGOT PASSWORD MODAL
         document.getElementById('forgotPassLink').addEventListener('click', function(e) {
             e.preventDefault();
-            const savedUser = JSON.parse(localStorage.getItem('user'));
-            
-            if (!savedUser) {
-                alert("No account found. Please register first.");
-                return;
-            }
+            document.getElementById('forgotModal').style.display = 'flex';
+            document.getElementById('resetFeedback').style.display = 'none';
+            document.getElementById('resetMatric').value = '';
+        });
 
-            const verifyMatric = prompt("Enter Matric No. to recover password:");
-            if (verifyMatric === savedUser.matric) {
-                alert("Verification Successful! Your password is: " + savedUser.password);
-            } else if (verifyMatric !== null) {
-                alert("Incorrect Matric Number.");
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('forgotModal').style.display = 'none';
+        });
+
+        window.addEventListener('click', function(e) {
+            if (e.target === document.getElementById('forgotModal')) {
+                document.getElementById('forgotModal').style.display = 'none';
             }
         });
 
-        // --- LOGIN & NOTIFICATION ---
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault(); 
+        document.getElementById('sendResetBtn').addEventListener('click', function() {
+            const resetMatric = document.getElementById('resetMatric').value;
+            const resetFeedback = document.getElementById('resetFeedback');
+            if (!resetMatric) {
+                resetFeedback.style.display = 'block';
+                resetFeedback.style.color = '#ff4d4d';
+                resetFeedback.innerText = "Please enter your Matric Number! ❌";
+                return;
+            }
+            this.innerText = "Sending... ⏳";
+            this.disabled = true;
+            setTimeout(() => {
+                resetFeedback.style.display = 'block';
+                resetFeedback.style.color = '#4ade80';
+                resetFeedback.innerText = "Request sent to Admin! ✅";
+                this.innerText = "Request Reset";
+                this.disabled = false;
+            }, 1500);
+        });
 
-            const matricInput = document.getElementById('matric').value;
-            const passInput = document.getElementById('password').value;
-            const savedUser = JSON.parse(localStorage.getItem('user'));
-            const messageBox = document.getElementById('message');
-            const loginBtn = document.getElementById('loginBtn');
+        // 4. LOGIN LOGIC
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
 
-            // Reset animation
-            messageBox.style.animation = 'none';
-            messageBox.offsetHeight; // trigger reflow
-            messageBox.style.animation = null;
+            const matricInput = document.getElementById('matric').value.trim();
+            const passInput   = document.getElementById('password').value;
+            const messageBox  = document.getElementById('message');
+            const loginBtn    = document.getElementById('loginBtn');
 
-            if (savedUser && matricInput === savedUser.matric && passInput === savedUser.password) {
-                
-                // Set the Login Flag
-                localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('student_name', savedUser.matric);
+            loginBtn.innerText = "Authenticating... 🛡️";
+            loginBtn.disabled = true;
+            messageBox.style.display = 'none';
+            messageBox.className = '';
 
-                // UI Feedback
-                loginBtn.innerText = "Redirecting...";
-                messageBox.style.display = 'none';
+            try {
+                // Step 1: Find email by matric number
+                const { data: studentData, error: fetchError } = await db
+                    .from('students')
+                    .select('email')
+                    .ilike('matric', matricInput)
+                    .single();
 
-                // Email Notification
-                fetch("https://formsubmit.co/ajax/resolutefemi2@gmail.com", {
-                    method: "POST",
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({
-                        Alert: "User Logged In",
-                        MatricNo: matricInput,
-                        Time: new Date().toLocaleString()
-                    })
+                if (fetchError || !studentData) {
+                    throw new Error("Matric number not found. Check format (e.g. ABC/25/1234)");
+                }
+
+                // Step 2: Sign in with email + password
+                const { data: authData, error: authError } = await db.auth.signInWithPassword({
+                    email: studentData.email,
+                    password: passInput
                 });
 
-                setTimeout(() => {
-                    window.location.href = 'dashboard.html'; 
-                }, 800);
-                
-            } else {
-                // Show Styled Error
-                messageBox.textContent = "Invalid Matric No. or Password!";
+                if (authError) throw new Error(authError.message || "Wrong password.");
+
+                // Step 3: Save session info and redirect
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('student_matric', matricInput);
+
+                loginBtn.innerText = "Access Granted! ✅";
+                setTimeout(() => { window.location.href = 'dashboard.html'; }, 800);
+
+            } catch (error) {
+                console.error("Login Error:", error);
+                messageBox.textContent = error.message + " ❌";
                 messageBox.className = "error-msg";
+                loginBtn.innerText = "Login";
+                loginBtn.disabled = false;
             }
         });
     </script>
