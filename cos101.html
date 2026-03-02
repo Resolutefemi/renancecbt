@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COS 101</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e40af; 
+            --bg: #f8fafc; 
+            --card-bg: #ffffff; 
+            --text: #1e293b;
+            --success: #16a34a; 
+            --danger: #dc2626; 
+            --accent: #ea580c;
+        }
+        .dark-mode { --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc; }
+        
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: 0.3s; }
+        nav { background: var(--card-bg); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        main { padding: 2rem 5%; max-width: 900px; margin: 0 auto; }
+        
+        #dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+        .box { background: var(--card-bg); padding: 1.5rem; border-radius: 12px; text-align: center; cursor: pointer; transition: 0.3s; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .box:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .box-random { background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; }
+        
+        .option-btn { display: block; width: 100%; padding: 1rem; margin: 0.75rem 0; border: 2px solid #e2e8f0; border-radius: 10px; background: var(--card-bg); color: var(--text); text-align: left; cursor: pointer; font-size: 1rem; transition: 0.2s; }
+        .option-btn:not(:disabled):hover { background: #f1f5f9; }
+        
+        /* Instant Feedback Styles */
+        .option-btn.correct { background-color: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: bold; }
+        .option-btn.wrong { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
+        
+        .feedback-container { margin-top: 1.5rem; animation: fadeIn 0.3s; }
+        .feedback-status { padding: 1rem; border-radius: 10px; font-weight: bold; text-align: center; border: 1px solid; margin-bottom: 0.5rem; }
+        
+        /* New Explanation Box Style */
+        .explanation-box { background: rgba(30, 64, 175, 0.1); border-left: 5px solid var(--primary); padding: 1rem; border-radius: 4px; color: var(--text); line-height: 1.6; }
+        .dark-mode .explanation-box { background: rgba(30, 64, 175, 0.2); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .controls { display: flex; justify-content: space-between; margin-top: 2rem; }
+        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; background: var(--primary); color: white; transition: 0.2s; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div id="user-info" style="font-weight: 600;">COS 101 Practice Portal</div>
+    <div style="display: flex; gap: 15px;">
+        <button class="btn" style="background:var(--accent); display:none;" id="resume-btn" onclick="resumeExam()">Resume</button>
+        <button class="btn" style="background:#64748b" onclick="document.body.classList.toggle('dark-mode')"><i class="fa-solid fa-circle-half-stroke"></i></button>
+    </div>
+</nav>
+
+<main>
+    <div id="dashboard"></div>
+
+    <div id="setup-screen" style="display:none; text-align: center; background: var(--card-bg); padding: 2rem; border-radius: 15px;">
+        <h2 id="setup-title"></h2>
+        <div id="random-settings" style="margin: 1.5rem 0;">
+            <label>Question Quantity:</label><br>
+            <input type="number" id="q-count" value="50" style="padding: 10px; border-radius: 5px; width: 80px;">
+        </div>
+        <div style="margin: 1.5rem 0;">
+            <label>Time (Minutes):</label><br>
+            <input type="number" id="t-limit" value="30" style="padding: 10px; border-radius: 5px; width: 80px;">
+        </div>
+        <button class="btn" onclick="startExam()">Start Practice</button>
+    </div>
+
+    <div id="quiz-interface" style="display:none;">
+        <div style="display:flex; justify-content: space-between; font-weight: bold; margin-bottom: 10px;">
+            <span>Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
+            <span id="timer" style="color:var(--danger)">30:00</span>
+        </div>
+        <div style="background: var(--card-bg); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h3 id="question-text" style="line-height: 1.5;"></h3>
+            <div id="options-box"></div>
+            <div id="feedback-area"></div>
+        </div>
+        <div class="controls">
+            <button class="btn" style="background:#64748b" id="prev-btn" onclick="move(-1)">Previous</button>
+            <button class="btn" id="next-btn" onclick="move(1)">Next Question</button>
+            <button class="btn" id="submit-btn" style="background:var(--success); display:none;" onclick="showResults()">Submit Exam</button>
+        </div>
+    </div>
+</main>
+
+<script>
+    // --- SAMPLE DATA WITH EXPLANATIONS ---
+    const MASTER_POOL = [
+                { id: 1, q: "UNIVAC is", options: ["Universal Automatic Computer", "Universal Array Computer", "Unique Automatic Computer", "Unvalued Automatic Computer"], ans: 0 },
+        { id: 2, q: "The basic operations performed by a computer are", options: ["Arithmetic operation", "Logical operation", "Storage and relative", "All the above"], ans: 3 },
+        { id: 3, q: "The two major types of computer chips are", options: ["External memory chip", "Primary memory chip", "Microprocessor chip", "Both b and c"], ans: 3 },
+        { id: 4, q: "Microprocessors as switching devices are for which generation computers", options: ["First Generation", "Second Generation", "Third Generation", "Fourth Generation"], ans: 3 },
+        { id: 5, q: "What is the main difference between a mainframe and a super computer?", options: ["Super computer is much larger than mainframe computers", "Super computers are much smaller than mainframe computers", "Supercomputers are focused to execute few programs as fast as possible", "Supercomputers are focused to execute as many programs as possible"], ans: 2 },
+        { id: 6, q: "ASCII and EBCDIC are the popular character coding systems. What does EBCDIC stand for?", options: ["Extended Binary Coded Decimal Interchange Code", "Extended Bit Code Decimal Interchange Code", "Extended Bit Case Decimal Interchange Code", "Extended Binary Case Decimal Interchange Code"], ans: 0 },
+        { id: 7, q: "The brain of any computer system is", options: ["ALU", "Memory", "CPU", "Control unit"], ans: 2 },
+        { id: 8, q: "Storage capacity of magnetic disk depends on", options: ["tracks per inch of surface", "bits per inch of tracks", "disk pack in disk surface", "All of above"], ans: 3 },
+        { id: 9, q: "The two kinds of main memory are:", options: ["Primary and secondary", "Random and sequential", "ROM and RAM", "All of above"], ans: 2 },
+        { id: 10, q: "A storage area used to store data to a compensate for the difference in speed at which the different units can handle data is", options: ["Memory", "Buffer", "Accumulator", "Address"], ans: 1 },
+        { id: 11, q: "Computer is free from tiresome and boardroom. We call it", options: ["Accuracy", "Reliability", "Diligence", "Versatility"], ans: 2 },
+        { id: 12, q: "Integrated Circuits (ICs) are related to which generation of computers?", options: ["First generation", "Second generation", "Third generation", "Fourth generation"], ans: 2 },
+        { id: 13, q: "CD-ROM is a", options: ["Semiconductor memory", "Memory register", "Magnetic memory", "None of above"], ans: 3 },
+        { id: 14, q: "A hybrid computer", options: ["Resembles digital computer", "Resembles analogue computer", "Resembles both a digital and analogue computer", "None of the above"], ans: 2 },
+        { id: 15, q: "Which type of computers uses the 8-bit code called EBCDIC?", options: ["Minicomputers", "Microcomputers", "Mainframe computers", "Super computer"], ans: 2 },
+        { id: 16, q: "The ALU of a computer responds to the commands coming from", options: ["Primary memory", "Control section", "External memory", "Cache memory"], ans: 1 },
+        { id: 17, q: "Chief component of first generation computer was", options: ["Transistors", "Vacuum Tubes and Valves", "Integrated Circuits", "None of above"], ans: 1 },
+        { id: 18, q: "To produce high quality graphics (hardcopy) in color, you would want to use", options: ["RGB monitor", "Plotter", "Ink-jet printer", "Laser printer"], ans: 1 },
+        { id: 19, q: "What are the stages in the compilation process?", options: ["Feasibility study, system design and testing", "Implementation and documentation", "Lexical Analysis, syntax analysis, and code generation", "None of the above"], ans: 2 },
+        { id: 20, q: "Which of the following IC was used in third generation of computers?", options: ["SSI", "MSI", "LSI", "Both a and b"], ans: 3 },
+        { id: 21, q: "The main electronic component used in first generation computers was", options: ["Transistors", "Vacuum Tubes and Valves", "Integrated Circuits", "None of above"], ans: 1 },
+        { id: 22, q: "A dumb terminal has", options: ["an embedded microprocessor", "extensive memory", "independent processing capability", "a keyboard and screen"], ans: 3 },
+        { id: 23, q: "One millisecond is", options: ["1 second", "10th of a seconds", "1000th of a seconds", "10000th of a seconds"], ans: 2 },
+        { id: 24, q: "The output quality of a printer is measured by", options: ["Dot per sq. inch", "Dot per inch", "Dots printed per unit time", "All of the above"], ans: 1 },
+        { id: 25, q: "Which of the following was a special purpose computer?", options: ["ABC", "ENIAC", "EDVAC", "All of the above"], ans: 0 },
+        { id: 26, q: "What was the computer invented by Attanasoff and Clifford?", options: ["Mark I", "ABC", "Z3", "None of above"], ans: 1 },
+        { id: 27, q: "Which of the following storage devices can store maximum amount of data?", options: ["Floppy Disk", "Hard Disk", "Compact Disk", "Magneto Optic Disk"], ans: 1 },
+        { id: 28, q: "Which computer was considered the first electronic computer until 1973 when court invalidated the patent?", options: ["ENIAC", "MARK I", "Z3", "ABC"], ans: 0 },
+        { id: 29, q: "A physical connection between the microprocessor memory and other parts of the microcomputer is known as", options: ["Path", "Address bus", "Route", "All of the above"], ans: 1 },
+        { id: 30, q: "High density double sided floppy disks could store of data", options: ["1.40 MB", "1.44 GB", "1.40 GB", "1.44 MB"], ans: 3 },
+        { id: 31, q: "A high quality CAD system uses the following for printing drawing and graphs", options: ["Dot matrix printer", "Digital plotter", "Line printer", "All of the above"], ans: 1 },
+        { id: 32, q: "Which of the following is not an input device?", options: ["OCR", "Optical scanners", "Voice recognition device", "COM (Computer Output to Microfilm)"], ans: 3 },
+        { id: 33, q: "The accuracy of the floating-point numbers representable in two 16-bit words of a computer is approximately", options: ["16 digits", "6 digits", "9 digits", "All of above"], ans: 0 },
+        { id: 34, q: "In most of the IBM PCs, the CPU, the device drivers, memory, expansion slots and active components are mounted on a single board. What is the name of the board?", options: ["Motherboard", "Daughterboard", "Bredboard", "Fatherboard"], ans: 0 },
+        { id: 35, q: "In most IBM PCs, the CPU, the device drives, memory expansion slots and active components are mounted on a single board. What is the name of this board?", options: ["Motherboard", "Breadboard", "Daughter board", "Grandmother board"], ans: 0 },
+        { id: 36, q: "Magnetic disks are the most popular medium for", options: ["Direct access", "Sequential access", "Both of above", "None of above"], ans: 3 },
+        { id: 37, q: "A technique used by codes to convert an analog signal into a digital bit stream is known as", options: ["Pulse code modulation", "Pulse stretcher", "Query processing", "Queue management"], ans: 0 },
+        { id: 38, q: "Regarding a VDU, Which statement is more correct?", options: ["It is an output device", "It is an input device", "It is a peripheral device", "It is hardware item"], ans: 2 },
+        { id: 39, q: "A modern electronic computer is a machine that is meant for", options: ["Doing quick mathematical calculations", "Input, storage, manipulation and outputting of data", "Electronic data processing", "Performing repetitive tasks accurately"], ans: 1 },
+        { id: 40, q: "When was vacuum tube invented?", options: ["1900", "1906", "1910", "1880"], ans: 1 },
+        { id: 41, q: "Which of the following produces the best quality graphics reproduction?", options: ["Laser printer", "Ink jet printer", "Plotter", "Dot matrix printer"], ans: 2 },
+        { id: 42, q: "Computers with 80286 microprocessor is", options: ["XT computer", "AT computers", "PS/2 computer", "None of above"], ans: 1 },
+        { id: 43, q: "An application suitable for sequential processing is", options: ["Processing of grades", "Payroll processing", "Both a and b", "All of above"], ans: 2 },
+        { id: 44, q: "Which of the following is not processing?", options: ["arranging", "manipulating", "calculating", "gathering"], ans: 3 },
+        { id: 45, q: "The digital computer was developed primarily in", options: ["USSR", "Japan", "USA", "UK"], ans: 2 },
+        { id: 46, q: "Software in computer", options: ["Enhances the capabilities of the hardware machine", "Increase the speed of central processing unit", "Both of above", "None of above"], ans: 0 },
+        { id: 47, q: "Today's computer giant IBM was earlier known by different name which was changes in 1924. What was that name?", options: ["Tabulator Machine Co.", "Computing Tabulating Recording Co.", "The Tabulator Ltd.", "International Computer Ltd."], ans: 1 },
+        { id: 48, q: "Before a disk drive can access any sector record, a computer program has to provide the record's disk address. What information does this address specify?", options: ["Track number", "Sector number", "Surface number", "All of above"], ans: 3 },
+        { id: 49, q: "The arranging of data in a logical sequence is called", options: ["Sorting", "Classifying", "Reproducing", "Summarizing"], ans: 0 },
+        { id: 50, q: "What is the responsibility of the logical unit in the CPU of a computer?", options: ["To produce result", "To compare numbers", "To control flow of information", "To do math's works"], ans: 1 },
+        { id: 51, q: "Abacus was the first", options: ["electronic computer", "mechanical computer", "electronic calculator", "mechanical calculator"], ans: 3 },
+        { id: 52, q: "If in a computer, 16 bits are used to specify address in a RAM, the number of addresses will be", options: ["216", "65,536", "64K", "Any of the above"], ans: 1 },
+        { id: 53, q: "Instructions and memory address are represented by", options: ["Character code", "Binary codes", "Binary word", "Parity bit"], ans: 1 },
+        { id: 54, q: "The terminal device that functions as a cash register, computer terminal, and OCR reader is the:", options: ["Data collection terminal", "OCR register terminal", "Video Display terminal", "POS terminal"], ans: 3 },
+        { id: 55, q: "A set of flip flops integrated together is called", options: ["Counter", "Adder", "Register", "None of the above"], ans: 2 },
+        { id: 56, q: "People often call ______ as the brain of computer system", options: ["Control Unit", "Arithmetic Logic Unit", "Central Processing Unit", "Storage Unit"], ans: 2 },
+        { id: 57, q: "Which is used for manufacturing chips?", options: ["Bus", "Control unit", "Semiconductors", "A and b only"], ans: 2 },
+        { id: 58, q: "The value of each bead in heaven is", options: ["1", "3", "5", "7"], ans: 2 },
+        { id: 59, q: "The first computer introduced in Nepal was", options: ["IBM 1400", "IBM 1401", "IBM 1402", "IBM1402"], ans: 1 },
+        { id: 60, q: "Mnemonic a memory trick is used in which of the following language?", options: ["Machine language", "Assembly language", "High level language", "None of above"], ans: 1 },
+        { id: 61, q: "Instruction in computer languages consists of", options: ["OPCODE", "OPERAND", "Both of above", "None of above"], ans: 2 },
+        { id: 62, q: "Which generation of computer is still under development", options: ["Fourth Generation", "Fifth Generation", "Sixth Generation", "Seventh Generation"], ans: 1 },
+        { id: 63, q: "A register organized to allow to move left or right operations is called a", options: ["Counter", "Loader", "Adder", "Shift register"], ans: 3 },
+        { id: 64, q: "Which was the most popular first generation computer?", options: ["IBM 650", "IBM 360", "IBM 1130", "IBM 2700"], ans: 0 },
+        { id: 65, q: "Which is considered a direct entry input device?", options: ["Optical scanner", "Mouse and digitizer", "Light pen", "All of the above"], ans: 3 },
+        { id: 66, q: "A set of information that defines the status of resources allocated to a process is", options: ["Process control", "ALU", "Register Unit", "Process description"], ans: 3 },
+        { id: 67, q: "Each set of Napier's bones consisted of ______ rods.", options: ["5", "9", "11", "13"], ans: 2 },
+        { id: 68, q: "BCD is", options: ["Binary Coded Decimal", "Bit Coded Decimal", "Binary Coded Digit", "Bit Coded Digit"], ans: 0 },
+        { id: 69, q: "When was the world's first laptop computer introduced in the market and by whom?", options: ["Hewlett-Packard, 1980", "Epson, 1981", "Laplink Traveling Software Inc, 1982", "Tandy Model-200, 1985"], ans: 1 },
+        { id: 70, q: "From which generation operating systems were developed?", options: ["First", "Second", "Third", "Fourth"], ans: 2 },
+        { id: 71, q: "The first firm to mass-market a microcomputer as a personal computer was", options: ["IBM", "Super UNIVAC", "Radio Shaks", "Data General Corporation"], ans: 2 },
+        { id: 72, q: "How many address lines are needed to address each machine location in a 2048 x 4 memory chip?", options: ["10", "11", "8", "12"], ans: 1 },
+        { id: 73, q: "Properly arranged data is called", options: ["Field", "Words", "Information", "File"], ans: 2 },
+        { id: 74, q: "A computer consists of", options: ["A central processing unit", "A memory", "Input and output unit", "All of the above"], ans: 3 },
+        { id: 75, q: "Why are vacuum tubes also called valves?", options: ["Because they can amplify the weak signals and make them strong", "Because they can stop or allow the flow of current", "Both of above", "None of above"], ans: 1 },
+        { id: 76, q: "John Napier invented Logarithm in", options: ["1614", "1617", "1620", "None of above"], ans: 0 },
+        { id: 77, q: "An integrated circuit is", options: ["A complicated circuit", "An integrating device", "Much costlier than a single transistor", "Fabricated on a tiny silicon chip"], ans: 3 },
+        { id: 78, q: "What type of control pins are needed in a microprocessor to regulate traffic on the bus?", options: ["Bus control", "Interrupts", "Bus arbitration", "Status"], ans: 2 },
+        { id: 79, q: "Where as a computer mouse moves over the table surface, the trackball is", options: ["Stationary", "Difficult to move", "Dragged", "Moved in small steps."], ans: 0 },
+        { id: 80, q: "Which of the following is used as a primary storage device?", options: ["Magnetic drum", "Hard Disks", "Floppy", "All of above"], ans: 0 },
+        { id: 81, q: "Multi user systems provided cost savings for small business because they use a single processing unit to link several", options: ["Personal computers", "Workstations", "Dumb terminals", "Mainframes"], ans: 2 },
+        { id: 82, q: "What are the three decisions making operations performed by the ALU of a computer?", options: ["Grater than", "Less than", "Equal to", "All of the above"], ans: 3 },
+        { id: 83, q: "The word processing task associated with changing the appearance of a document is", options: ["Editing", "Writing", "Formatting", "All of above"], ans: 2 },
+        { id: 84, q: "Nepal brought a computer for census of 2028 BS. This computer was of", options: ["first generation", "second generation", "third generation", "fourth generation"], ans: 1 },
+        { id: 85, q: "Algorithm and Flow chart help us to", options: ["Know the memory capacity", "Identify the base of a number system", "Direct the output to a printer", "Specify the problem completely and clearly"], ans: 3 },
+        { id: 86, q: "Which statement is valid about computer program?", options: ["It is understood by a computer", "It is understood by programmer", "It is understood user", "Both a & b"], ans: 3 },
+        { id: 87, q: "The difference between memory and storage is that memory is ____ and storage is ____", options: ["Temporary, permanent", "Permanent, temporary", "Slow, fast", "All of above"], ans: 0 },
+        { id: 88, q: "When was Pascaline invented?", options: ["1617", "1620", "1642", "1837"], ans: 2 },
+        { id: 89, q: "Which of the following statement is valid?", options: ["Lady Augusta is the first programmer", "Ada is the daughter of Lord Byron, a famous English poet", "ADA is a programming language developed by US Defense", "All of above"], ans: 3 },
+        { id: 90, q: "A compiler is a translating program which", options: ["Translates instruction of a high level language into machine language", "Translates entire source program into machine language program", "It is not involved in program's execution", "All of above"], ans: 3 },
+        { id: 91, q: "What is required when more than one person uses a central computer at the same time?", options: ["Light pen", "Mouse", "Digitizer", "Terminal"], ans: 3 },
+        { id: 92, q: "Which of the following is the first computer to use Stored Program Concept?", options: ["UNIVAC", "ENIAC", "EDSAC", "None of above"], ans: 2 },
+        { id: 93, q: "The term gigabyte refers to", options: ["1024 bytes", "1024 kilobytes", "1024 megabytes", "1024 gigabyte"], ans: 2 },
+        { id: 94, q: "in which year was UK's premier computing event started?", options: ["1980", "1985", "1986", "1987"], ans: 0 },
+        { id: 95, q: "Once you load the suitable program and provide required data, computer does not need human intervention. This feature is known as", options: ["Accuracy", "Reliability", "Versatility", "Automatic"], ans: 3 },
+        { id: 96, q: "What is a brand?", options: ["The name of companies that made computers", "The name of product a company gives to identify its product in market", "A name of class to indicate all similar products from different companies", "All of above"], ans: 1 },
+        { id: 97, q: "Machine language is", options: ["Machine dependent", "Difficult to program", "Error prone", "All of above"], ans: 3 },
+        { id: 98, q: "A byte consists of", options: ["One bit", "Four bits", "Eight bits", "Sixteen bits"], ans: 2 },
+        { id: 99, q: "Modern Computers are very reliable but they are not", options: ["Fast", "Powerful", "Infallible", "Cheap"], ans: 2 },
+        { id: 100, q: "What is the date when Babbage conceived Analytical engine", options: ["1642", "1837", "1880", "1850"], ans: 1 },
+        {"id": 101, "q": "What was the expected feature of fifth generation computers when Japan started FGCS?", "options": ["Operating Systems", "Parallel Processing", "ULSI", "None of above"], "ans": 1},
+{"id": 102, "q": "Which of the following memory medium is not used as main memory system?", "options": ["Magnetic core", "Semiconductor", "Magnetic tape", "Both semiconductor and magnetic tape"], "ans": 2},
+{"id": 103, "q": "The storage subsystem in a microcomputer consists mainly of __ or __ media with varying capacities", "options": ["Memory or video", "Magnetic or optical", "Optical or memory", "Video or magnetic"], "ans": 1},
+{"id": 104, "q": "Programs designed to perform specific tasks is known as", "options": ["system software", "application software", "utility programs", "operating system"], "ans": 1},
+{"id": 105, "q": "Computer operators", "options": ["writes computer programs for specific problems", "operate the device which input and output data from the computer", "normally require a college degree in computer science", "all of the above"], "ans": 1},
+{"id": 106, "q": "Which of the following is not anti-viruses software?", "options": ["NAV", "F-Prot", "Oracle", "McAfee"], "ans": 2},
+{"id": 107, "q": "What is a compiler?", "options": ["A compiler does a conversion line by line as the program is run", "A compiler converts the whole of a higher level program code into machine code in one step", "A compiler is a general purpose language providing very efficient execution", "None of the above"], "ans": 1},
+{"id": 108, "q": "_______ computers are also called personal computers", "options": ["Mainframe Computer", "Mini Computers", "Micro Computers", "Super Computers"], "ans": 2},
+{"id": 109, "q": "Which of the following is not input unit device?", "options": ["scanner", "camera", "plotter", "digitizer"], "ans": 2},
+{"id": 110, "q": "Identify the correct statement", "options": ["IBM PCs used RISC CPU designs", "Macintosh used CISC CPU design", "IBM used CISC CPU design", "None of above is true"], "ans": 2},
+{"id": 111, "q": "Which of the following statement is false?", "options": ["Mechanical analog computers have existed for thousands of years", "There are mechanical analog computers and electronic analog computers.", "All electronic computers are digital computers", "All of above are false"], "ans": 2},
+{"id": 112, "q": "Which of the following require large computers memory?", "options": ["Imaging", "Graphics", "Voice", "All of Above"], "ans": 3},
+{"id": 113, "q": "Which of the following is machine independence program?", "options": ["High level language", "Low level language", "Assembly language", "Machine language"], "ans": 0},
+{"id": 114, "q": "When was the first electro-mechanical computer developed?", "options": ["1880", "1990", "1944", "None of above"], "ans": 2},
+{"id": 115, "q": "The first machine to successfully perform a long series of arithmetic and logical operations was:", "options": ["ENIAC", "Mark-I", "Analytic Engine", "UNIVAC-1"], "ans": 1},
+{"id": 116, "q": "Which one is the largest space?", "options": ["kilobyte", "petabyte", "terabyte", "gigabyte"], "ans": 1},
+{"id": 117, "q": "FORTRAN programming language is more suitable for ____", "options": ["Business Applications", "Marketing Applications", "Scientific Applications", "None of the above"], "ans": 2},
+{"id": 119, "q": "Analog computer works on the supply of", "options": ["Continuous electrical pulses", "Electrical pulses but not continuous", "Magnetic strength", "None of the above"], "ans": 0},
+{"id": 120, "q": "An error in software or hardware is called a bug. What is the alternative computer jargon for it?", "options": ["Leech", "Squid", "Slug", "Glitch"], "ans": 3},
+{"id": 121, "q": "The advantage of COM are its __ and __", "options": ["Compact size; speed readability", "Compact size, speed", "Readability; speed", "Low cost; readability"], "ans": 1},
+{"id": 122, "q": "The BIOS is the abbreviation of ________.", "options": ["Basic Input Output System", "Best Input Output System", "Basic Input Output Symbol", "Base Input Output System"], "ans": 0},
+{"id": 123, "q": "Which printer is very commonly used for desktop publishing?", "options": ["Laser printer", "Inkjet printer", "Daisywheel printer", "Dot matrix printer"], "ans": 0},
+{"id": 124, "q": "IBM 1401 is", "options": ["First Generation Computer", "Second Generation Computer", "Third Generation Computer", "Fourth Generation Computer"], "ans": 1},
+{"id": 125, "q": "Most of the first generation computers were", "options": ["Special purpose computers", "General purpose computers", "Both of above", "None of above"], "ans": 0},
+{"id": 126, "q": "Floppy disks typically in diameter", "options": ["3", "5.25", "8", "All of above"], "ans": 3},
+{"id": 127, "q": "The output quality of a printer is measured by", "options": ["Dot per inch", "Dot per sq. inch", "Dots printed per unit time", "All of above"], "ans": 1},
+{"id": 128, "q": "On a PC, how much memory is available to application software?", "options": ["1024 KB", "760 KB", "640 KB", "560 KB"], "ans": 2},
+{"id": 129, "q": "In a computer _____ is capable to store single binary bit.", "options": ["Capacitor", "Flip flop", "Register", "Inductor"], "ans": 1},
+{"id": 130, "q": "What does DMA stand for?", "options": ["Distinct Memory Access", "Direct Memory Access", "Direct Module Access", "Direct Memory Allocation"], "ans": 1},
+{"id": 131, "q": "Who invented Integrated Circuits?", "options": ["Jack Kilby", "Robert Noyce", "Both of above", "None of above"], "ans": 2},
+{"id": 132, "q": "Operating system, editors, and debuggers comes under?", "options": ["System Software", "Application Software", "Utilities", "None of the above"], "ans": 0},
+{"id": 133, "q": "One computer that is not considered a portable is", "options": ["Minicomputer", "Laptop computer", "Notebook computer", "All of above"], "ans": 0},
+{"id": 134, "q": "Which of the following is not an electronic computer?", "options": ["ENIAC", "ABC", "UNIVAC", "EDSAC"], "ans": 1},
+{"id": 135, "q": "What is the name of the display feature that highlights are of the screen which requires operator attention?", "options": ["Pixel", "Reverse video", "Touch screen", "Cursor"], "ans": 1},
+{"id": 136, "q": "Which is the largest computer?", "options": ["Mainframe Computer", "Mini Computers", "Micro Computers", "Super Computers"], "ans": 3},
+{"id": 137, "q": "Which of the following are the best units of data on an external storage device?", "options": ["Bits", "Bytes", "Hertz", "Clock cycles"], "ans": 1},
+{"id": 138, "q": "The personal computer industry was started by", "options": ["IBM", "Apple", "Compaq", "HCL"], "ans": 0},
+{"id": 139, "q": "What is meant by a dedicated computer?", "options": ["Which is used by one person only", "Which is assigned one and only one task", "Which uses one kind of software", "Which is meant for application software"], "ans": 1},
+{"id": 140, "q": "Which programming languages are classified as low level languages?", "options": ["Basic, COBOL, FORTRAN", "Prolog 2, Expert Systems", "Knowledge based Systems", "Assembly Languages"], "ans": 3},
+{"id": 141, "q": "What was the main disadvantage of vacuum tubes?", "options": ["They were larger in size", "They consumed a lot of electricity", "They produced heat and often burned out", "The operation cost was high"], "ans": 2},
+{"id": 143, "q": "Which is not a computer of first generation?", "options": ["ENIAC", "UNIVAC", "IBM 360", "IBM 1401"], "ans": 2},
+{"id": 144, "q": "Registers which are partially visible to users and used to hold conditional codes, are known as", "options": ["PC", "Flags", "Memory Address Registers", "General Purpose Registers"], "ans": 1},
+{"id": 145, "q": "Who invented vacuum tubes?", "options": ["John Bardeen", "William Shockley", "Lee de Forest", "All of above"], "ans": 2},
+{"id": 146, "q": "An approach that permits the computer to work on several programs instead of one is", "options": ["On-line thesaurus", "Multiprogramming", "Over lapped processing", "Outline processor"], "ans": 1},
+{"id": 147, "q": "Who suggested Stored Program Concept", "options": ["John Mauchley", "J.P. Eckert", "John Neumann", "Joseph Jacquard"], "ans": 2},
+{"id": 148, "q": "The central processing unit (CPU) consists of", "options": ["Input, output and processing", "Control unit, primary storage, and secondary storage", "Control unit, arithmetic-logic unit and primary storage", "Control unit, processing, and primary storage"], "ans": 2},
+{"id": 149, "q": "The notable features like keyboards, monitors, GUI were developed in", "options": ["First generation", "Second generation", "Third generation", "Fourth generation"], "ans": 3},
+{"id": 150, "q": "UNIVAC is", "options": ["Universal Automatic Computer", "Universal Array Computer", "Unique Automatic Computer", "Unvalued Automatic Computer"], "ans": 0},
+{"id": 151, "q": "Which is the highest form?", "options": ["Data", "Information", "Knowledge", "All of above"], "ans": 2},
+{"id": 152, "q": "Who is credited with the idea of using punch cards to control patterns in a waving machine?", "options": ["Pascal", "Hollerith", "Babbage", "Jacquard"], "ans": 3},
+{"id": 153, "q": "What is an interpreter?", "options": ["An interpreter does the conversion line by line as the program is run", "An interpreter is the representation of the system being designed", "An interpreter is a general purpose language providing very efficient execution", "None of the above"], "ans": 0},
+{"id": 154, "q": "Which is a semi conductor memory?", "options": ["Dynamic", "Static", "Bubble", "Both a & b"], "ans": 3},
+{"id": 155, "q": "RJ45 UTP cable has ________ Cables.", "options": ["2 pair", "3 pair", "4 pair", "5 pair"], "ans": 2},
+{"id": 156, "q": "Which of the following is not a valid size of a Floppy Disk?", "options": ["8\"", "5 \u00bc\"", "3 \u00bd\"", "5 \u00bd\""], "ans": 3},
+{"id": 157, "q": "The earliest calculating devices are", "options": ["Abacus", "Clock", "Difference Engine", "None of these"], "ans": 0},
+{"id": 158, "q": "Word length of a Personal Computer is ___", "options": ["4 bits", "8 bits", "16 bits", "64 bits"], "ans": 3},
+{"id": 159, "q": "What was the first computer to perform all calculation using electronics rather than wheels, ratchets, or mechanical switches?", "options": ["Mark I", "ABC", "Z3", "None of above"], "ans": 1},
+{"id": 160, "q": "A directly accessible appointment calendar is feature of a __ resident package", "options": ["CPU", "Memory", "Buffer", "ALU"], "ans": 1},
+{"id": 161, "q": "Which unit converts computer data into human readable form?", "options": ["Input unit", "Output unit", "ALU", "Control Unit"], "ans": 1},
+{"id": 162, "q": "The full form of ALU is", "options": ["Arithmetic Logic Unit", "Array Logic Unit", "Application Logic Unit", "None of above"], "ans": 0},
+{"id": 163, "q": "What produces useful information out of data?", "options": ["Computer", "Processing", "Programming", "none of above"], "ans": 1},
+{"id": 164, "q": "Which of the following device was not invented by Babbage?", "options": ["Pascaline", "Difference Engine", "Analytical Engine", "None of above"], "ans": 0},
+{"id": 165, "q": "A digital computer did not score over an analog computer in terms of", "options": ["Speed", "Accuracy", "Reliability", "Cost"], "ans": 0},
+{"id": 167, "q": "A computer has very low failure rate because it uses electronic components. It produces very consistent results. This is highlighted by which of the feature of computer?", "options": ["Accuracy", "Reliability", "Versatility", "Automatic"], "ans": 1},
+{"id": 168, "q": "A paper printout of a document is known as", "options": ["Softcopy output", "Hardcopy output", "Permanent Output", "All of above"], "ans": 1},
+{"id": 169, "q": "Which electronic component was made out of semiconductor material?", "options": ["Vacuum tubes", "Transistors", "ICs", "All of above"], "ans": 2},
+{"id": 170, "q": "The act of retrieving existing data from memory is called", "options": ["Read-out", "Read from", "Read", "All of above"], "ans": 3},
+{"id": 171, "q": "Which part of the computer is used for calculating and comparing?", "options": ["Disk unit", "Control unit", "ALU", "Modem"], "ans": 2},
+{"id": 172, "q": "ABC is a", "options": ["Special purpose computer", "General purpose computer", "All Purpose Computer", "None of above"], "ans": 0},
+{"id": 173, "q": "The computer code for the interchange of information between terminals is", "options": ["ASCII", "BCD", "EBCDIC", "All of above"], "ans": 0},
+{"id": 174, "q": "When was the X window system born?", "options": ["1984", "1989", "1988", "1990"], "ans": 0},
+{"id": 175, "q": "What is the first stage in software development?", "options": ["Specification and design", "Testing", "System Analysis", "Maintenance"], "ans": 2},
+{"id": 176, "q": "Which of the following is valid statement?", "options": ["Data in itself is useless unless it is processed", "The data that is processed is called a program", "The data which is not yet processed is information", "Information is processed by computer to generate data."], "ans": 0},
+{"id": 177, "q": "The Second Generation Computer was based on ________.", "options": ["Vacuum Tube", "Silicon Chips", "Transistor", "Bio Chips"], "ans": 2},
+{"id": 178, "q": "EBCDIC stands for", "options": ["Extended Binary Coded Decimal Interchange Code", "Extended Bit Code Decimal Interchange Code", "Extended Bit Case Decimal Interchange Code", "Extended Binary Case Decimal Interchange Code"], "ans": 0},
+{"id": 179, "q": "Personnel who design, program, operates and maintains computer equipment refers to", "options": ["Console-operator", "Programmer", "Peopleware", "System Analyst"], "ans": 2},
+{"id": 180, "q": "IBM System/360 is", "options": ["Mainframe Computer", "Mini Computers", "Micro Computers", "None of above"], "ans": 0},
+{"id": 181, "q": "A system is", "options": ["an integration of different units so as to achieve an objective", "input unit", "input and output unit", "input, output and storage units"], "ans": 0},
+{"id": 182, "q": "Which of the following programming language started from second generation?", "options": ["Cobol", "BASIC", "C", "LISP"], "ans": 0},
+{"id": 183, "q": "The translator program used in assembly language is called", "options": ["Compiler", "Interpreter", "Assembler", "Translator"], "ans": 2},
+{"id": 184, "q": "EEPROM stands for", "options": ["Electrically Erasable Programmable Read Only Memory", "Easily Erasable Programmable Read Only Memory", "Electronic Erasable Programmable Read Only Memory", "None of the above"], "ans": 0},
+{"id": 185, "q": "Regarding data, computers are very good at", "options": ["store", "Processing", "retrieve", "All of above"], "ans": 3},
+{"id": 186, "q": "Bit map terminal", "options": ["support display containing multiple windows", "require considerable amount of video RAM", "requires tremendous amount of copying and hence low performance", "all of above"], "ans": 3},
+{"id": 187, "q": "First generation computers used _________ for memory", "options": ["vacuum tubes", "silicon chips", "magnetic drum", "RAM"], "ans": 2},
+{"id": 188, "q": "Which of the following memories allows simultaneous read and write operations?", "options": ["ROM", "RAM", "EPROM", "None of above"], "ans": 1},
+{"id": 189, "q": "EPROM can be used for", "options": ["Erasing the contents of ROM", "Reconstructing the contents of ROM", "Erasing and reconstructing the contents of ROM", "Duplicating ROM"], "ans": 2},
+{"id": 191, "q": "A term associated with the comparison of processing speeds of different computer system is:", "options": ["EFTS", "MPG", "MIPS", "CPS"], "ans": 2},
+{"id": 192, "q": "which of the following is problem oriented language?", "options": ["High level language", "Machine language", "Assembly language", "Low level language"], "ans": 0},
+{"id": 193, "q": "A 32 bit microprocessor has the word length equal to", "options": ["2 byte", "32 byte", "4 byte", "8 byte"], "ans": 2},
+{"id": 194, "q": "The term GIGO is related to", "options": ["Accuracy", "Reliability", "Versatility", "Automatic"], "ans": 0},
+{"id": 195, "q": "Web cam is an", "options": ["input unit device", "output unit device", "processing device", "Input and Output device"], "ans": 0},
+{"id": 196, "q": "Bit stands for", "options": ["Binary digits", "bit of system", "a part of byte", "All of above"], "ans": 0},
+{"id": 197, "q": "Access time is", "options": ["seek time + latency time", "seek time", "seek time - latency time", "latency time"], "ans": 0},
+{"id": 198, "q": "Which device can understand difference between data & programs?", "options": ["Input device", "Output device", "Memory", "Microprocessor"], "ans": 3},
+{"id": 199, "q": "Which of the following is a read only memory storage device?", "options": ["Floppy Disk", "CD-ROM", "Hard Disk", "None of these"], "ans": 1},
+{"id": 200, "q": "Symbolic logic was discovered by", "options": ["George Boole", "Herman Hollerith", "Van Neumann", "Basic Pascal"], "ans": 0},
+{"id": 201, "q": "Which of the following is not valid statement?", "options": ["Hard is referred to mean something temporary", "Hard is used to mean something tangible", "Soft is used to mean something permanent", "Soft is used to mean something tangible"], "ans": 0},
+{"id": 202, "q": "Digital devices are", "options": ["Digital Clock", "Automobile speed meter", "Clock with a dial and two hands", "All of them"], "ans": 0},
+{"id": 204, "q": "After copying the content how many times can you paste?", "options": ["1", "16", "32", "Many"], "ans": 3},
+{"id": 205, "q": "WAN stands for", "options": ["Wap Area Network", "Wide Area Network", "Wide Array Net", "Wireless Area Network"], "ans": 1},
+{"id": 206, "q": "An error in computer data is called", "options": ["Chip", "Bug", "CPU", "Storage device"], "ans": 1},
+{"id": 207, "q": "The instructions for starting the computer are house on", "options": ["Random access memory", "CD-Rom", "Read only memory chip", "All of above"], "ans": 2},
+{"id": 208, "q": "1 nibble equals to", "options": ["1 bits", "2 bits", "4 bits", "8 bits"], "ans": 2},
+{"id": 209, "q": "Perforated paper used as input of output media is known as", "options": ["paper tapes", "magnetic tape", "punched papers tape", "card punch"], "ans": 0},
+{"id": 210, "q": "The secondary storage devices can only store data but they cannot perform", "options": ["Arithmetic Operation", "Logic operation", "Fetch operations", "Either of the above"], "ans": 3},
+{"id": 211, "q": "Which American computer company is called Big Blue?", "options": ["Microsoft", "Compaq Corp", "IBM", "Tandy Svenson"], "ans": 2},
+{"id": 212, "q": "It was in 2028 BS the _________ was brought in to calculate census data.", "options": ["IBM 1400", "IBM 1401", "ICL 2950", "None of above"], "ans": 1},
+{"id": 213, "q": "Who is the inventor of ABC Computer?", "options": ["John v. Atanasoff", "Clifford Berry", "Both of above", "None of above"], "ans": 2},
+{"id": 214, "q": "Which of the following is the largest unit?", "options": ["data", "field", "record", "database file"], "ans": 3},
+{"id": 216, "q": "Which of the following is not true for a magnetic disk?", "options": ["It is expensive relative to magnetic tape", "It provides only sequential access to stored data", "Users can easily update records by writing over the old data", "All of above"], "ans": 1},
+{"id": 217, "q": "A disadvantage of the laser printer is", "options": ["It is quieter than an impact printer", "It is very slow", "The output is of a lower quality", "None of the above"], "ans": 3},
+{"id": 218, "q": "The most commonly used standard data code in EDP systems is", "options": ["ASCII", "EBCDIC", "BCD", "All of above"], "ans": 0},
+{"id": 219, "q": "Which access method is used to access cassette tape?", "options": ["Direct", "Sequential", "Both of the above", "None of the above"], "ans": 1},
+{"id": 220, "q": "A Compiler is ____", "options": ["a combination of computer hardware", "a program which translates from one high-level language to another", "a program which translates from one high-level to a machine level language", "None of these"], "ans": 2},
+{"id": 221, "q": "Which unit holds data temporarily?", "options": ["Input unit", "Secondary storage unit", "Output Unit", "Primary Memory Unit"], "ans": 3},
+{"id": 222, "q": "The computer size was very large in", "options": ["First Generation", "Second Generation", "Third Generation", "Fourth Generation"], "ans": 0},
+{"id": 223, "q": "A name or number used to identify storage location devices?", "options": ["A byte", "A record", "An address", "All of above"], "ans": 2},
+{"id": 224, "q": "Which of the following is not computer language?", "options": ["High level language", "Medium level language", "Low level language", "All of the above"], "ans": 1},
+{"id": 225, "q": "Reading data is performed in magnetic disk by", "options": ["Read/write leads", "Sectors", "Track", "Lower surface"], "ans": 0},
+{"id": 226, "q": "IBM 7000 digital computer", "options": ["Belongs to second generation", "Uses VLSI", "Employs semiconductor memory", "Has modular constructions"], "ans": 0},
+{"id": 227, "q": "Which of the following is not electro-mechanical computer?", "options": ["Z3", "ABC", "Mark I", "ENIAC"], "ans": 3},
+{"id": 228, "q": "The term ‘computer’ is derived from", "options": ["Greek language", "Sanskrit language", "Latin language", "German language"], "ans": 2},
+{"id": 229, "q": "Which statement is valid about magnetic tape?", "options": ["It is a plastic ribbon", "It is coated on both sides with iron oxide", "It can be erased and reused", "All of above"], "ans": 3},
+{"id": 230, "q": "Which of the following is first generation computer?", "options": ["EDSAC", "IBM 1401", "CDC 1604", "ICL 2950"], "ans": 0},
+{"id": 231, "q": "A hard copy would be prepared on a", "options": ["Line printer", "Dot matrix Printer", "Typewriter terminal", "All of the above"], "ans": 3},
+{"id": 232, "q": "The term GIGO is relate to which characteristics of computers?", "options": ["Speed", "Automatic", "Accuracy", "Reliability"], "ans": 2},
+{"id": 233, "q": "Which of the following programming language were used in first generation computers?", "options": ["Machine language", "Assembly language", "Both of above", "None of above"], "ans": 0},
+{"id": 234, "q": "To locate a data item for storage is", "options": ["Field", "Feed", "Database", "Fetch"], "ans": 3},
+{"id": 235, "q": "Who used punched cards practically for the first time in the history of computers?", "options": ["Charles Babbage", "Dr. Herman Hollerith", "Howard Aiken", "Joseph Jacquard"], "ans": 1},
+{"id": 236, "q": "Hard disk is coated in both sides with", "options": ["Magnetic metallic oxide", "Optical metallic oxide", "Carbon layer", "All of the above"], "ans": 0},
+{"id": 237, "q": "Which of the following term means to reckon?", "options": ["putare", "com", "computa", "computar"], "ans": 0},
+{"id": 238, "q": "An input/output device at which data enters or leaves a computer system is", "options": ["Keyboard", "Terminal", "Printer", "Plotter"], "ans": 1},
+{"id": 240, "q": "A name or number used to identify a storage location is called", "options": ["A byte", "A record", "An address", "All of above"], "ans": 2},
+{"id": 241, "q": "Computer professionals working in a computer centre are", "options": ["Software", "Firmware", "Hardware", "Humanware"], "ans": 3},
+{"id": 242, "q": "The first general purpose electronic computer in the world was", "options": ["UNIVAC", "EDVAC", "ENIAC", "All of above"], "ans": 2},
+{"id": 243, "q": "The contents of information are stored in", "options": ["Memory data register", "Memory address register", "Memory arithmetic registers", "Memory access register"], "ans": 0},
+{"id": 244, "q": "Which of the following is correct full form of BCD?", "options": ["Binary Coded Decimal", "Bit Coded Decimal", "Binary Coded Digit", "Bit Coded Digit"], "ans": 0},
+{"id": 245, "q": "Which was the world’s first microcomputer that used Intel 80386 microprocessor chip?", "options": ["IBM PS/2", "HP-9830", "DeskPro-386", "IBM-360"], "ans": 2},
+{"id": 246, "q": "The qualitative or quantitative attribute of a variable is termed as", "options": ["data", "information", "both of above", "none of above"], "ans": 0},
+{"id": 247, "q": "Main storage is also called", "options": ["Accumulator", "Control Unit", "Register Unit", "Memory"], "ans": 3},
+{"id": 248, "q": "Which of the following are (is) considered to be video component?", "options": ["Resolution", "Color depth", "Refresh rate", "All of the above"], "ans": 3},
+{"id": 249, "q": "For what Antikyathera was used?", "options": ["For counting", "For Calculating tax collection", "For calculating astronomical positions", "For calculating firing weapons"], "ans": 2},
+{"id": 250, "q": "Memory unit is one part of", "options": ["Input device", "Control unit", "Output device", "Central Processing Unit"], "ans": 3},
+{"id": 251, "q": "Microprocessors can be used to make", "options": ["Computers", "Digital Systems", "Calculators", "All of the above"], "ans": 3},
+{"id": 252, "q": "Which statement is valid about computer program?", "options": ["High level languages must be converted into machine language to execute", "High level language programs are more efficient and faster to execute", "It is more difficult to identify errors in high level language program", "All of above"], "ans": 0},
+{"id": 253, "q": "By programmable machine we mean", "options": ["computers", "modern television", "washing machines", "anything that can be set to perform different tasks"], "ans": 3},
+{"id": 254, "q": "Which of the following is a secondary memory device?", "options": ["Keyboard", "Disk", "ALU", "All of the above"], "ans": 1},
+{"id": 255, "q": "The memory which is programmed at the time it is manufactured", "options": ["ROM", "RAM", "PROM", "EPROM"], "ans": 0},
+{"id": 256, "q": "One of the popular mass storage device is CD ROM. What does CD ROM stand for?", "options": ["Compactable Read Only Memory", "Compact Data Read Only Memory", "Compactable Disk Read Only Memory", "Compact Disk Read Only Memory"], "ans": 3},
+{"id": 257, "q": "Identify the true statement", "options": ["Computers are 100% accurate but it can suffer from GIGO", "Computers are reliable because they use electronic component", "Computer is never tired and does not suffer from boredom", "All of above"], "ans": 3},
+{"id": 258, "q": "FORTRAN is", "options": ["File Translation", "Format Translation", "Formula Translation", "Floppy Translation"], "ans": 2},
+{"id": 259, "q": "The programs which are as permanent as hardware and stored in ROM is known as", "options": ["Hardware", "Software", "Firmware", "ROM ware"], "ans": 2},
+{"id": 260, "q": "Which of the following memories must be refreshed many times per second?", "options": ["Static RAM", "Dynamic RAM", "EPROM", "ROM"], "ans": 1},
+{"id": 261, "q": "A translator taking assembly language program as input & producing machine language code is an", "options": ["Compiler", "Interpreter", "Debugger", "Assembler"], "ans": 3},
+{"id": 263, "q": "In ________ mode, the communication channel is used in both directions at the same time?", "options": ["Full-duplex", "Simplex", "Half-duplex", "None of the above"], "ans": 0},
+{"id": 264, "q": "Who invented Slide Rules?", "options": ["John Napier", "William Oughtred", "Gottfried Leibnitz", "Blaise Pascal"], "ans": 1},
+{"id": 265, "q": "The proper definition of a modern digital computer is", "options": ["An electronic automated machine that can solve problems involving words and numbers", "A more sophistic and modified electronic pocket calculator", "Any machine that can perform mathematical operations", "A machine that works on binary code"], "ans": 0},
+{"id": 266, "q": "Memory is made up of", "options": ["Set of wires", "Set of circuits", "Large number of cells", "All of these"], "ans": 2},
+{"id": 267, "q": "Which of the following is the most powerful computers?", "options": ["Mainframe Computer", "Mini Computers", "Micro Computers", "Super Computers"], "ans": 3},
+{"id": 268, "q": "Which of the printers used in conjunction with computers uses dry ink powder?", "options": ["Daisy wheel printer", "Line printer", "Laser printer", "Thermal printer"], "ans": 2},
+{"id": 269, "q": "What is the path from which data flow in a computer system is known as", "options": ["Car", "Bus", "Truck", "Road"], "ans": 1},
+{"id": 270, "q": "Which term is used to describe RAM?", "options": ["Dynamic RAM (DRAM)", "Static RAM (SRAM)", "Video RAM (VRAM)", "All of the above"], "ans": 3},
+{"id": 271, "q": "In which year was chip used inside the computer for the first time?", "options": ["1964", "1975", "1999", "1944"], "ans": 0},
+{"id": 272, "q": "Assembly language started to be used from", "options": ["first generation computers", "second generation computers", "third generation computers", "fourth generation computers"], "ans": 1},
+{"id": 273, "q": "Which technology is more reliable?", "options": ["Mechanical", "Electro-Mechanical", "Electronic", "For reliability it does not matter"], "ans": 2},
+{"id": 274, "q": "Which of the following is not an XT microprocessor?", "options": ["8088", "8086", "80286", "None of above"], "ans": 2},
+{"id": 275, "q": "Hard disk is coated in both side with", "options": ["Magnetic metallic oxide", "Optical metallic oxide", "Carbon layer", "All of the above"], "ans": 0},
+{"id": 276, "q": "ASCII stands for", "options": ["American Stable Code for International Interchange", "American Standard Case for Institutional Interchange", "American Standard Code for Information Interchange", "American Standard Code for Interchange Information"], "ans": 2},
+{"id": 277, "q": "Raw facts and figures about any particular topic are", "options": ["Information", "facts", "data", "none of above"], "ans": 2},
+{"id": 278, "q": "A computer can solve more than one kind of problem. This is related to which characteristic?", "options": ["Accuracy", "Reliability", "Versatility", "Automatic"], "ans": 2},
+{"id": 279, "q": "From which generation computers the printers were used?", "options": ["first", "second", "third", "fourth"], "ans": 1},
+{"id": 280, "q": "How many symbols exist in Baudot code?", "options": ["32", "116", "58", "76"], "ans": 0},
+{"id": 281, "q": "Following IC chip integrates 100 thousands electronic components per chip", "options": ["SSI", "MSI", "LSI", "VLSI"], "ans": 3},
+{"id": 282, "q": "An application program that helps the user to change any number and immediately see the result is", "options": ["Desktop publishing program", "Database", "Spreadsheet", "All of above"], "ans": 2},
+{"id": 283, "q": "In which year was the Analytical Engine exhibition held in Paris?", "options": ["1820", "1860", "1855", "1870"], "ans": 2},
+{"id": 284, "q": "What is the name of the color laptop powered by a 386 processor at 33 MHz built by Epson?", "options": ["AX3/33", "NEC-20", "Magnum 2000", "HCL-3000"], "ans": 0},
+{"id": 285, "q": "In analog computer", "options": ["Input is first converted to digital form", "Input is never converted to digital form", "Output is displayed in digital form", "All of the above"], "ans": 1},
+{"id": 287, "q": "When was the company named IBM?", "options": ["1914", "1924", "1975", "None of above"], "ans": 1},
+{"id": 288, "q": "Which of the following storage device can store the largest amount of data?", "options": ["Hard Disks", "Flash Disks", "Blu-Ray Disks", "DVDs"], "ans": 0},
+{"id": 289, "q": "Who invented Mark I?", "options": ["Howard Aiken", "J. P. Eckert", "John Mauchley", "John v. Atanasoff"], "ans": 0},
+{"id": 290, "q": "ALU is", "options": ["Arithmetic Logic Unit", "Array Logic Unit", "Application Logic Unit", "None of above"], "ans": 0},
+{"id": 291, "q": "A program that converts an entire program into machine language at one time is a", "options": ["Interpreter", "CPU", "Compiler", "Simulator"], "ans": 2},
+{"id": 292, "q": "When did arch rivals IBM and Apple Computers Inc. decide to join hands?", "options": ["1978", "1984", "1990", "1991"], "ans": 3},
+{"id": 293, "q": "The purpose of vacuum tube was to NOT act like", "options": ["an amplifier", "a switch", "a router", "None of above"], "ans": 2},
+{"id": 294, "q": "As compared to diskettes, the hard disks are", "options": ["More expensive", "More portable", "Less rigid", "Slowly accessed"], "ans": 0},
+{"id": 295, "q": "Which of the following is the most quickly accessible storage?", "options": ["RAM", "Registers", "Disks", "Pen Drive"], "ans": 1},
+{"id": 296, "q": "The octal equivalence of 111010 is", "options": ["81", "72", "71", "None of above"], "ans": 1},
+{"id": 297, "q": "Excessive parallel processing is related to", "options": ["First generation", "Fourth generation", "Fifth Generation", "Third generation"], "ans": 2},
+{"id": 298, "q": "Second generation computers were developed during", "options": ["1949-55", "1956-65", "1965-70", "1970-90"], "ans": 1},
+{"id": 299, "q": "What do you call a single point on a computer screen?", "options": ["Cell", "Element", "Pixel", "Bit"], "ans": 2},
+{"id": 300, "q": "Mostly which of the following device is used to carry user files?", "options": ["Floppy Disk", "Hard Disk", "RAM", "CDROM"], "ans": 0},
+{"id": 301, "q": "Which computer implemented binary numbers and separate memory for the first time?", "options": ["Mark I", "ABC", "Z3", "None of above"], "ans": 1},
+{"id": 302, "q": "FORTRAN is a programming language. What does FORTRAN stand for?", "options": ["File Translation", "Format Translation", "Formula Translation", "Floppy Translation"], "ans": 2},
+{"id": 303, "q": "Which of the following memories needs refreshing?", "options": ["SRAM", "DRAM", "ROM", "All of above"], "ans": 1},
+{"id": 304, "q": "Can you tell what passes into and out from the computer via its ports?", "options": ["Data", "Bytes", "Graphics", "Pictures"], "ans": 0},
+{"id": 305, "q": "An output device that produces audio response from recorded messages is", "options": ["Magnetic tape", "Voice response unit", "Voice recognition unit", "Voice band"], "ans": 1},
+{"id": 306, "q": "Which of the items below are considered removable storage media?", "options": ["Hard disk cartridges", "(Magneto-optical) disk", "Flexible disks", "All of the above"], "ans": 3},
+{"id": 307, "q": "Which of the following is not purely output device?", "options": ["Screen", "Printer", "Speaker", "Plotter"], "ans": 0},
+{"id": 308, "q": "Who developed a mechanical device in the 17th century for basic arithmetic and square roots?", "options": ["Napier", "Babbage", "Pascal", "Leibniz"], "ans": 3},
+{"id": 310, "q": "Which of the following is not a form of data?", "options": ["numbers and characters", "images", "sound", "none of above"], "ans": 3},
+{"id": 311, "q": "Which is not a computer classification?", "options": ["mainframe", "maxframe", "mini", "notebook"], "ans": 1},
+{"id": 312, "q": "The control unit of a microprocessor", "options": ["Stores data in the memory", "Accepts input data from keyboard", "Performs arithmetic/logic function", "None of above"], "ans": 3},
+{"id": 313, "q": "Which of the following is internal memory?", "options": ["Disks", "Pen Drives", "RAM", "CDs"], "ans": 2},
+{"id": 314, "q": "Which operation is not performed by computer", "options": ["Inputting", "Processing", "Controlling", "Understanding"], "ans": 3},
+{"id": 315, "q": "Floppy disks which are made from flexible plastic material are also called?", "options": ["Hard disks", "High-density disks", "Diskettes", "Templates"], "ans": 2},
+{"id": 316, "q": "Magnetic storage chips with no moving parts providing non-volatile access are known as", "options": ["Magnetic core memory", "Magnetic tape memory", "Magnetic disk memory", "Magnetic bubble memory"], "ans": 3},
+{"id": 317, "q": "A collection of related instructions organized for a common purpose is referred to as", "options": ["File", "Database", "Program", "None of above"], "ans": 2},
+{"id": 318, "q": "Plotter accuracy is measured in terms of repeatability and", "options": ["Buffer size", "Resolution", "Vertical dimensions", "Intelligence"], "ans": 1},
+{"id": 319, "q": "Computer instructions written with the use of English words instead of binary is called", "options": ["Mnemonics", "Symbolic code", "Gray codes", "Opcode"], "ans": 1},
+{"id": 320, "q": "Which language is directly understood by the computer without translation program?", "options": ["Machine language", "Assembly language", "High level language", "None of above"], "ans": 0},
+{"id": 321, "q": "On which aspect the analog computers are better than digital?", "options": ["Speed", "Accuracy", "Reliability", "Automatic"], "ans": 0},
+{"id": 322, "q": "Which of the following processors use RISC technology?", "options": ["486dx", "Power PC", "486sx", "6340"], "ans": 1},
+{"id": 323, "q": "Which of the following machine was not invented by Charles Babbage?", "options": ["Tabulating Machine", "Analytical Engine", "Difference Engine", "None of above"], "ans": 0},
+{"id": 324, "q": "How many numbers could ENIAC store in its internal memory", "options": ["100", "20", "80", "40"], "ans": 1},
+{"id": 325, "q": "The subject of cybernetics deals with the science of", "options": ["Genetics", "Control and communication", "Molecular biology", "Biochemistry"], "ans": 1},
+{"id": 326, "q": "Why ABC is considered electro-mechanical computer?", "options": ["Invented before electronic computers", "Because there are wheels, drums and bars to rotate", "Because they use the flow of electrons", "None of above"], "ans": 1},
+{"id": 327, "q": "Binary circuit elements have", "options": ["One stable state", "Two stable state", "Three stable state", "None of above"], "ans": 1},
+{"id": 328, "q": "Which of the following is used for manufacturing chips?", "options": ["Control bus", "Control unit", "Parity unit", "Semiconductor"], "ans": 3},
+{"id": 329, "q": "Which of the following is not a micro computer?", "options": ["Laptop PCs", "Tablet PCs", "Desktop PCs", "None of above"], "ans": 3},
+{"id": 330, "q": "The value of each bead in earth is", "options": ["1", "3", "5", "7"], "ans": 0},
+{"id": 331, "q": "When did John Napier develop logarithm?", "options": ["1416", "1614", "1641", "1804"], "ans": 1},
+{"id": 332, "q": "Which of the following terms is the most closely related to main memory?", "options": ["Non volatile", "Permanent", "Control unit", "Temporary"], "ans": 3},
+{"id": 334, "q": "A group of magnetic tapes, videos or terminals usually under the control of one master is", "options": ["Cylinder", "Surface", "Track", "Cluster"], "ans": 3},
+{"id": 335, "q": "The word length of a computer is measured in", "options": ["Bytes", "Millimeters", "Meters", "Bits"], "ans": 3},
+{"id": 336, "q": "What type of memory is not directly addressable by CPU and requires EMS?", "options": ["Extended", "Expanded", "Base", "Conventional"], "ans": 1},
+{"id": 337, "q": "Which unit holds data permanently?", "options": ["Input unit", "Secondary storage unit", "Output Unit", "Primary Memory Unit"], "ans": 1},
+{"id": 338, "q": "Before a disk can be used to store data, it must be_______", "options": ["Formatted", "Reformatted", "Addressed", "None of the above"], "ans": 0},
+{"id": 339, "q": "Computer system comprises of major units", "options": ["input, output, control", "input, output, control, storage", "input, output, CPU, storage", "input, output, storage"], "ans": 2},
+{"id": 340, "q": "The first general purpose electronic digital computer in the world was", "options": ["UNIVAC", "EDSAC", "ENIAC", "All of above"], "ans": 0},
+{"id": 341, "q": "A computer that processes both analog and digital signals is known as", "options": ["Analog computer", "Digital Computer", "Hybrid Computer", "Mainframe Computer"], "ans": 2},
+{"id": 342, "q": "High level language is also called", "options": ["Problem oriented language", "Business oriented language", "Mathematically oriented language", "All of the above"], "ans": 0},
+{"id": 343, "q": "Human beings are Homosapinens; which device is called Silicon Sapiens?", "options": ["Monitor", "Hardware", "Robot", "Computer"], "ans": 3},
+{"id": 345, "q": "Which of the following is associated with error detector?", "options": ["Odd parity bit", "Even parity bit", "Both of the above", "None of above"], "ans": 2},
+{"id": 346, "q": "Magnetic tape can serve as", "options": ["Secondary storage media", "Output media", "Input media", "All of the above"], "ans": 3},
+{"id": 347, "q": "Which company is the biggest player in the microprocessor industry?", "options": ["Motorola", "IBM", "Intel", "AMD"], "ans": 2},
+{"id": 348, "q": "The first digital computer built with IC chips was known as", "options": ["IBM 7090", "Apple-1", "IBM System/360", "VAX-10"], "ans": 2},
+{"id": 349, "q": "EBCDIC can code up to how many different characters?", "options": ["256", "16", "32", "64"], "ans": 0},
+{"id": 350, "q": "MICR stands for", "options": ["Magnetic Ink Character Reader", "Magnetic Ink Code Reader", "Magnetic Ink Cases Reader", "None"], "ans": 0},
+{"id": 351, "q": "Number cruncher is the informal name for", "options": ["Mini computer", "Super computer", "Microcomputer", "Mainframe computer"], "ans": 1},
+{"id": 352, "q": "RATS stand for", "options": ["Regression Analysis Time Series", "Regression Analysis Time Sharing", "Real Analysis Series", "All of above"], "ans": 0},
+{"id": 353, "q": "Which technology is used in Compact disks?", "options": ["Mechanical", "Electrical", "Electro Magnetic", "Laser"], "ans": 3},
+{"id": 354, "q": "Motherboard components are linked by sets of parallel electrical conducting lines called", "options": ["Conductors", "Buses", "Connectors", "Consecutive"], "ans": 1},
+{"id": 355, "q": "Which is the first electronic digital computer?", "options": ["ENIAC", "MARK I", "Z3", "ABC"], "ans": 3},
+{"id": 357, "q": "Metal disks permanently housed in sealed, contamination-free containers are called", "options": ["Hard disks", "Floppy disk", "Winchester disk", "Flexible disk"], "ans": 2},
+{"id": 358, "q": "A computer program that converts an entire program into machine language is called a/an", "options": ["Interpreter", "Simulator", "Compiler", "Commander"], "ans": 2},
+{"id": 359, "q": "Intel corporation produces chips for which computers?", "options": ["IBM PCs", "Apple/Macintosh PCs", "Both of above", "None of above"], "ans": 2},
+{"id": 360, "q": "The first microprocessor built by the Intel corporation was called", "options": ["8008", "8080", "4004", "8800"], "ans": 2},
+{"id": 361, "q": "Which of the following is not a class of computers based on size?", "options": ["Mainframe Computers", "Mini Computers", "Micro Computers", "Digital Computers"], "ans": 3},
+{"id": 362, "q": "Who invented EDSAC?", "options": ["John v. Neumann", "J.P. Eckert and John Mauchley", "Maurice Wilkes", "Howard Aiken"], "ans": 2},
+{"id": 363, "q": "EEPROM stands for", "options": ["Electrically Erasable Programmable Read Only Memory", "Electronic Erasable Programmable Read Only Memory", "Easily Erasable Programmable Read Only Memory", "None of the above"], "ans": 0},
+{"id": 364, "q": "Which of the following is a class of computers based on model?", "options": ["Digital Computer", "Hybrid Computers", "Analog Computers", "AT Computers"], "ans": 3},
+{"id": 365, "q": "What are the computers called that performs calculations/comparisons in binary?", "options": ["Analog Computers", "Digital Computers", "Hybrid Computers", "None of above"], "ans": 1},
+{"id": 366, "q": "ASCII stands for", "options": ["American Standard Code for Information Interchange", "American Scientific Code for International Interchange", "American Standard Code for Intelligence Interchange", "American Scientific Code for Information Interchange"], "ans": 0},
+{"id": 367, "q": "The data recording format in most modern magnetic tape is", "options": ["7-bit ASCII", "7-bit EBCDIC", "8-bit ASCII", "8-bit EBCDIC"], "ans": 3},
+{"id": 368, "q": "Why was the ABC computer called so?", "options": ["Alphabetical order", "Atanasoff-Berry Computer", "Ancient Binary Code", "None of above"], "ans": 1},
+{"id": 369, "q": "Who designed the first electronics computer ENIAC?", "options": ["Von Neumann", "Joseph M Jacquard", "J. P. Eckert and J. W. Mauchly", "All of above"], "ans": 2},
+{"id": 370, "q": "Central Processing Unit is combination of", "options": ["Control and storage", "Control and output unit", "Arithmetic logic and input unit", "Arithmetic logic and control unit"], "ans": 3},
+{"id": 371, "q": "IBM 1401 computer was", "options": ["Mainframe Computer", "Mini Computers", "Micro Computers", "None of above"], "ans": 0},
+{"id": 372, "q": "Time during which a job is processed by the computer is", "options": ["Delay times", "Real time", "Execution time", "Down time"], "ans": 2},
+{"id": 373, "q": "CD-ROM stands for", "options": ["Compactable Read Only Memory", "Compact Data Read Only Memory", "Compactable Disk Read Only Memory", "Compact Disk Read Only Memory"], "ans": 3},
+{"id": 374, "q": "Which unit converts user data into machine readable form?", "options": ["Input unit", "Output unit", "ALU", "Control Unit"], "ans": 0},
+{"id": 375, "q": "Which unit is known as nerve center of computer?", "options": ["ALU", "CU", "Memory", "Registers"], "ans": 1},
+{"id": 376, "q": "What does the disk drive of a computer do?", "options": ["Rotate the disk", "Read the disk", "Load programs into memory", "Both b and c"], "ans": 3},
+{"id": 377, "q": "Access time is", "options": ["seek time + latency time", "seek time", "seek time - latency time", "latency time"], "ans": 0},
+{"id": 378, "q": "Who invented the microprocessor?", "options": ["Marcian E Huff", "Herman H Goldstein", "Joseph Jacquard", "Ted Hoff"], "ans": 3},
+{"id": 379, "q": "MICR stands for", "options": ["Magnetic Ink Character Reader", "Magnetic Ink Code Reader", "Magnetic Ink Case Reader", "None of the above"], "ans": 0},
+{"id": 381, "q": "MSI is the abbreviation of", "options": ["Medium Scale Integrated", "Medium System Integrated", "Medium Scale Intelligent", "Medium System Intelligent"], "ans": 0},
+{"id": 382, "q": "A country that contributed Intel chips, Microsoft OS, and Epson printers to early PCs?", "options": ["India", "USA", "Germany", "Taiwan"], "ans": 1},
+{"id": 383, "q": "Which statement is valid about interpreter?", "options": ["It translates one instruction at a time", "Object code is saved for future use", "Repeated interpretation is not necessary", "All of above"], "ans": 0},
+{"id": 384, "q": "Easily relocatable language is", "options": ["Machine language", "Assembly language", "High level language", "Medium level language"], "ans": 1},
+{"id": 385, "q": "Which of the following memories needs refresh?", "options": ["SRAM", "DRAM", "ROM", "All of above"], "ans": 1},
+{"id": 386, "q": "Through which device the main components of the computer communicate?", "options": ["Keyboard", "System Bus", "Monitor", "Memory"], "ans": 1},
+{"id": 387, "q": "What type of device is computer keyboard?", "options": ["Memory", "Output", "Storage", "Input"], "ans": 3},
+{"id": 388, "q": "Which is the limitation of high level language?", "options": ["Lower efficiency", "Machine dependence", "machine level coding", "None of above"], "ans": 0},
+{"id": 389, "q": "An example of a digital device can be", "options": ["Digital clock", "Automobile speed meter", "Clock with a dial and two hands", "All of the above"], "ans": 0},
+{"id": 390, "q": "Which of the following is not true about transistors?", "options": ["Transistors are much smaller", "Transistors produce low heat", "Transistors were less reliable", "Transistors were used in radios"], "ans": 2},
+{"id": 391, "q": "A characteristic of card systems is:", "options": ["Slowness in processing data", "Using cards as records of transactions", "Needing a larger DP staff", "All of the above"], "ans": 3},
+{"id": 392, "q": "The full form of EEPROM is", "options": ["Electrically Erasable Programmable Read Only Memory", "Easily Erasable Programmable Read Only Memory", "Electronic Erasable Programmable Read Only Memory", "None of the above"], "ans": 0},
+{"id": 393, "q": "The original ASCII code used__bits of each byte, reserving the last bit for error checking", "options": ["5", "6", "7", "8"], "ans": 2},
+{"id": 394, "q": "A computer programmer", "options": ["Does all the thinking for a computer", "Can enter input data quickly", "Can operate all types of computer equipments", "Can draw only flowchart"], "ans": 0},
+{"id": 395, "q": "Fifth generation computer is also known as", "options": ["Knowledge information processing system", "Very large scale integration (VLSI)", "Both of above", "None of above"], "ans": 0},
+{"id": 396, "q": "The standard data code representing characters in EDP systems is called", "options": ["ASCII", "EBCDIC", "BCD", "All of above"], "ans": 0},
+{"id": 397, "q": "Which of the following have low failure rate?", "options": ["mechanical devices", "electronic devices", "electro-mechanical devices", "None of above"], "ans": 1},
+{"id": 398, "q": "Which of the following memories need refresh?", "options": ["SRAM", "DRAM", "ROM", "All of the above"], "ans": 1},
+{"id": 399, "q": "An early personal computer used for business would have roughly how much RAM?", "options": ["4 KB", "16 K", "64 K", "256 K"], "ans": 3},
+{"id": 400, "q": "The ALU of a computer contains high speed storage elements called", "options": ["Semiconductor memory", "Registers", "Hard disks", "Magnetic disk"], "ans": 1},
+{"id": 401, "q": "Which was the computer conceived by Babbage?", "options": ["Analytical Engine", "Arithmetic Machine", "Donald Kunth", "All of above"], "ans": 0},
+{"id": 402, "q": "The processing speed of first generation computers was in", "options": ["milliseconds", "microseconds", "nanoseconds", "picoseconds"], "ans": 0},
+{"id": 403, "q": "Model 5100 was ______ in 1975.", "options": ["The first PC built by IBM", "The first PC built by Apple", "The first PC built by Motorola", "The first PC built by Intel"], "ans": 0},
+{"id": 405, "q": "MICR is the short form of", "options": ["Magnetic Ink Character Reader", "Magnetic Ink Code Reader", "Magnetic Ink Cases Reader", "None"], "ans": 0},
+{"id": 406, "q": "Which of the following is not a class based on size?", "options": ["Mainframe Computer", "Micro Computer", "Mini Computer", "Digital Computer"], "ans": 3},
+{"id": 407, "q": "Which 8-bit chip was used in many TRS-80 computers?", "options": ["Z-8000", "Motorola 6809", "Z-8808", "Z-80"], "ans": 3},
+{"id": 408, "q": "Which of the following disk is a fixed disk?", "options": ["Hard Disks", "Flash Disks", "Blu-Ray Disks", "DVDs"], "ans": 0},
+{"id": 409, "q": "Which profession has not been affected by personal computers?", "options": ["Medical", "Clerical and law", "Accounting", "None of the above"], "ans": 3},
+{"id": 410, "q": "The word Abacus is derived from Abax, a word from", "options": ["Latin language", "Greek Language", "Sanskrit language", "Ancient Egypt"], "ans": 1},
+{"id": 411, "q": "In latest generation computers, instructions are executed", "options": ["Parallel only", "Sequentially only", "Both sequentially and parallel", "All of above"], "ans": 2},
+{"id": 412, "q": "Which memory medium is not used as main memory system?", "options": ["Magnetic core", "Semiconductor", "Magnetic tape", "Both a and b"], "ans": 2},
+{"id": 413, "q": "An online backing storage system capable of storing larger quantities of data is", "options": ["CPU", "Memory", "Mass storage", "Secondary storage"], "ans": 2},
+{"id": 414, "q": "A dot-matrix printer that sprays magnetically-charged ink dots is called", "options": ["Laser printer", "Ink-jet printer", "Drum printer", "Chain printer"], "ans": 1},
+{"id": 415, "q": "Which does not affect the resolution of a video display image?", "options": ["Bandwidth", "Raster scan rate", "Vertical/Horizontal resolution", "Screen size"], "ans": 3},
+{"id": 416, "q": "Which printing devices output an image composed of a series of dots?", "options": ["Wire matrix printer", "Band printer", "Wang image printer", "Both a and c"], "ans": 3},
+{"id": 417, "q": "Which of the following is an example of fifth generation computer?", "options": ["PIM/m", "ICL 2950", "IBM 1401", "None of above"], "ans": 0},
+{"id": 418, "q": "Magnetic disks are the most popular medium for", "options": ["Direct access", "Sequential access", "Both of above", "None of above"], "ans": 2},
+{"id": 419, "q": "Which of the following is not a third generation computer?", "options": ["IBM 360", "IBM 1401", "PDP-8", "HP2115"], "ans": 1},
+{"id": 420, "q": "The number of records contained within a block of data on tape is the", "options": ["Block definition", "Record contain clause", "Blocking factor", "Record per block"], "ans": 2},
+{"id": 421, "q": "Mark I is also known as", "options": ["American Sequence Controlled Calculator", "Automatic Sequence Calculating Controller", "American Sequence Controlled Computer", "Automatic Sequence Controlled Calculator"], "ans": 3},
+{"id": 422, "q": "Which register is loaded with contents of memory pointed to by the PC?", "options": ["Memory address registers", "Memory data registers", "Instruction register", "Program counter"], "ans": 2},
+{"id": 423, "q": "Which of the following are the cheapest memory devices in terms of Cost/Bit?", "options": ["Semiconductor memories", "Magnetic Disks", "Compact Disks", "Magnetic Tapes"], "ans": 2},
+{"id": 424, "q": "MIS is designed to provide information for decision making by?", "options": ["Consumers", "Workers", "Foremen", "Managers"], "ans": 3},
+{"id": 425, "q": "Which is valid statement?", "options": ["1 KB = 1024 Bytes", "1 MB = 1024 Bytes", "1 KB = 1000 Bytes", "1 MB = 1000 Bytes"], "ans": 0},
+{"id": 426, "q": "Latency time is", "options": ["Time to spin the needed data under head", "Time to spin the needed data under track", "Time to spin data under sector", "All of above"], "ans": 0},
+{"id": 427, "q": "Who built the first Mechanical Calculator?", "options": ["Joseph Marie Jacquard", "John Mauchly", "Blaise Pascal", "Howard Aiken"], "ans": 2},
+{"id": 429, "q": "Which generation computers had expensive operation cost?", "options": ["First", "Second", "Third", "Fourth"], "ans": 0},
+{"id": 430, "q": "An IBM system/38 represents the computer class of:", "options": ["Small-scale computer", "Medium-scale computer", "Large-scale computer", "Super computer"], "ans": 1},
+{"id": 431, "q": "Another word for a daisy wheel printer", "options": ["Petal printer", "Golf ball printer", "Laser printer", "Line printer"], "ans": 0},
+{"id": 432, "q": "Cursor is a ____", "options": ["Pixel", "Thin blinking line", "Pointing device", "None of these"], "ans": 1},
+{"id": 433, "q": "Which device is used to backup the data?", "options": ["Floppy Disk", "Tape", "Network Drive", "All of the above"], "ans": 3},
+{"id": 434, "q": "Which printer will not work for printing on multi-carbon forms?", "options": ["Daisy wheel", "Dot matrix", "Laser", "Thimble"], "ans": 2},
+{"id": 435, "q": "Which of the following items are examples of storage devices?", "options": ["Floppy / hard disks", "CD-ROMs", "Tape devices", "All of the above"], "ans": 3},
+{"id": 436, "q": "What does ASCII stand for?", "options": ["American Stable Code for International Interchange", "American Standard Case for Institutional Interchange", "American Standard Code for Information Interchange", "American Standard Code for Interchange Information"], "ans": 2},
+{"id": 437, "q": "Which computers are used as servers for medium sized organizations?", "options": ["Mainframe Computer", "Mini Computers", "Micro Computers", "Super Computers"], "ans": 1},
+{"id": 438, "q": "Slide Rules was invented in", "options": ["1614", "1617", "1620", "None of above"], "ans": 2},
+{"id": 439, "q": "A normal CD-ROM usually can store up to __________ data?", "options": ["680 KB", "680 Bytes", "700 MB", "680 GB"], "ans": 2},
+{"id": 440, "q": "Which of the following required large computer memory?", "options": ["Imaging", "Graphics", "Voice", "All of above"], "ans": 3},
+{"id": 441, "q": "Which was the computer conceived by Babbage?", "options": ["Analytical engine", "Arithmetic machine", "Donald Knuth", "All of above"], "ans": 0},
+{"id": 442, "q": "The lower deck of an abacus is known as", "options": ["heaven", "sky", "earth", "floor"], "ans": 2},
+{"id": 443, "q": "All modern computers operate on", "options": ["Information", "Floppies", "Data", "Word"], "ans": 2},
+{"id": 444, "q": "The computer that can input analog signals and return result in digital form is", "options": ["Analog Computer", "Digital Computer", "Hybrid Computer", "Mainframe Computer"], "ans": 2},
+{"id": 445, "q": "Offline device is", "options": ["A device which is not connected to CPU", "A device which is connected to CPU", "A direct access storage device", "An I/O device"], "ans": 0},
+{"id": 446, "q": "What is the latest write-once optical storage media?", "options": ["Digital paper", "Magneto-optical disk", "WORM disk", "CD-ROM disk"], "ans": 2},
+{"id": 447, "q": "Which of the following programming language started from second generation?", "options": ["LISP", "C", "QBASIC", "FORTRAN"], "ans": 3},
+{"id": 448, "q": "Which one of the following input device is user-programmable?", "options": ["Dumb terminal", "Smart terminal", "VDT", "Intelligent terminal"], "ans": 3},
+{"id": 449, "q": "Floppy disks are typically found in which diameters?", "options": ["3.5\"", "5.25\"", "8\"", "All of above"], "ans": 3},
+{"id": 450, "q": "Current SIMMs have either __ or __ connectors (pins)", "options": ["9 or 32", "30 or 70", "28 or 72", "30 or 72"], "ans": 3},
+{"id": 451, "q": "Dot-matrix is a type of", "options": ["Tape", "Printer", "Disk", "Bus"], "ans": 1},
+{"id": 453, "q": "IBM 1401 is the first computer to enter in Nepal. It belonged to", "options": ["First Generation", "Second Generation", "Third Generation", "Fourth Generation"], "ans": 1},
+{"id": 454, "q": "The Third Generation Computer was made with ________.", "options": ["Vacuum Tube", "Discrete Components", "IC", "Bio Chips"], "ans": 2},
+{"id": 455, "q": "Which of the following are the two main components of the CPU?", "options": ["Control Unit and Registers", "Registers and Main Memory", "Control unit and ALU", "ALU and bus"], "ans": 2},
+{"id": 456, "q": "Fifth generation computer is also known as", "options": ["Knowledge information processing system", "Very large scale integration", "Both of above", "None of above"], "ans": 0},
+{"id": 457, "q": "Second Generation computers were developed during", "options": ["1949 to 1955", "1956 to 1965", "1965 to 1970", "1970 to 1990"], "ans": 1},
+{"id": 458, "q": "What is the name of the computer terminal which gives paper printout?", "options": ["Display screen", "Soft copy terminal", "Hard copy terminal", "Plotter"], "ans": 2},
+{"id": 459, "q": "Programs are executed on the basis of a priority number in a", "options": ["Batch processing system", "Multiprogramming", "Time sharing", "None of these"], "ans": 1},
+{"id": 460, "q": "When was Apple Macintosh II microcomputer introduced in the market?", "options": ["1964", "1970", "1983", "1987"], "ans": 3},
+{"id": 461, "q": "When was the world’s first laptop computer introduced in the market and by whom?", "options": ["Hewlett-Packard", "Epson, 1981", "Laplink software, 1982", "Tandy, 1985"], "ans": 1},
+{"id": 462, "q": "IBM was earlier known by a name which was changed in 1924. What was that name?", "options": ["Computer Tabulating Recording Co.", "The Tabulator Ltd.", "International Computer Ltd.", "None of above"], "ans": 0},
+{"id": 463, "q": "The personnel who deals with the computer and its management put together are called", "options": ["Software", "Humanware", "Firmware", "Hardware"], "ans": 1},
+{"id": 464, "q": "Which of the following is an input device?", "options": ["Scanner", "Speaker", "Monitor", "Printer"], "ans": 0},
+{"id": 465, "q": "Which of the following is true?", "options": ["Fields are composed of bytes", "Records are composed of fields", "Fields are composed of characters", "All of above"], "ans": 3},
+{"id": 466, "q": "Who built the world’s first electronic calculator using telephone relays and batteries?", "options": ["Claude Shannon", "Konrard Zuse", "George Stibitz", "Howard H. Aiken"], "ans": 2},
+{"id": 467, "q": "WAN stands for", "options": ["WAP Area Network", "Wide Area Network", "Wide Array of Network", "Wireless Access Network"], "ans": 1},
+{"id": 468, "q": "In which language is source program written?", "options": ["English", "Symbolic", "High level", "Temporary"], "ans": 2},
+{"id": 469, "q": "Which of the following is correct acronym of VGA?", "options": ["Video Graphics Array", "Visual Graphics Array", "Volatile Graphics Array", "Video Graphics Adapter"], "ans": 0},
+{"id": 470, "q": "A song being played on computer speakers is", "options": ["hard output", "soft output", "both hard and soft output", "neither hard nor soft output"], "ans": 1},
+{"id": 471, "q": "In the IBM PC-AT, what do the words AT stand for", "options": ["Additional Terminals", "Advanced Technology", "Applied Technology", "Advanced Terminology"], "ans": 1},
+{"id": 472, "q": "Size of the primary memory of an early PC ranges between", "options": ["2KB to 8KB", "64KB & 256KB", "256KB & 640KB", "None of these"], "ans": 2},
+{"id": 473, "q": "What is the number of read-write heads in the drive for a 9-track magnetic tape?", "options": ["9", "16", "18", "27"], "ans": 0},
+{"id": 474, "q": "Apple company used chips from ______ for its early computers", "options": ["Intel", "Motorola", "Both of above", "None of above"], "ans": 1},
+{"id": 475, "q": "Which of the following is a feature of fifth generation computers?", "options": ["Natural language", "Artificial intelligence", "Bio-chips", "All of above"], "ans": 3},
+{"id": 477, "q": "A computer with CPU speed around 100 MIPS and a word length of 64 bits is known as", "options": ["Super computer", "Mini computer", "Micro computer", "Macro computer"], "ans": 0},
+{"id": 478, "q": "When we look at the cost, which of the following computer is most expensive?", "options": ["Mainframe Computer", "Mini Computers", "Micro Computers", "Super Computers"], "ans": 3},
+{"id": 479, "q": "Which of the following happens when data is entered into a memory location?", "options": ["It adds to current content", "It changes the address", "It erases previous content", "It fails if data exists"], "ans": 2},
+{"id": 480, "q": "Which device is used as the standard pointing device in a GUI?", "options": ["Keyboard", "Mouse", "Joystick", "Track ball"], "ans": 1},
+{"id": 481, "q": "Mini computers and micro computers started from which generation of computers?", "options": ["First", "Second", "Third", "Fourth"], "ans": 3},
+{"id": 482, "q": "Which unit is used for logical operations or comparisons?", "options": ["Arithmetic and Logic Unit", "Control Unit", "Both of above", "None of above"], "ans": 0},
+{"id": 483, "q": "The operating speed of third generation computer was", "options": ["Milliseconds", "Microseconds", "Nanoseconds", "Picoseconds"], "ans": 2},
+{"id": 484, "q": "Which of the following is true about Mark I?", "options": ["It was 8 feet long", "It was 2 feet long", "It was 50 feet long", "None of above"], "ans": 2},
+{"id": 485, "q": "Charles Babbage is considered the father of modern computers because", "options": ["of his difference engine", "of his analytical engine", "his concept of input, mill and output", "All of above"], "ans": 3},
+{"id": 486, "q": "Which is used only for data entry and storage, and never for processing?", "options": ["Mouse", "Dumb terminal", "Micro computer", "Dedicated data entry system"], "ans": 1},
+{"id": 487, "q": "What was the first computer brought into Nepal?", "options": ["IBM 1401", "ICL 2950", "ENIAC", "None of above"], "ans": 0},
+{"id": 488, "q": "The primary advantage of key-to-tape data entry system is", "options": ["Large percentage of editing during entry", "Verification is easy", "The tape is reusable", "Errors detected as they occur"], "ans": 2},
+{"id": 489, "q": "BASIC is ________ language.", "options": ["a procedural", "an object oriented", "both A and B", "none of the above"], "ans": 0},
+{"id": 490, "q": "A program that translates one instruction at a time into machine language is a/an", "options": ["Interpreter", "CPU", "Compiler", "Simulator"], "ans": 0},
+{"id": 491, "q": "Which of the following have the fastest access time?", "options": ["Semiconductor Memories", "Magnetic Disks", "Magnetic Tapes", "Compact Disks"], "ans": 0},
+{"id": 492, "q": "How many numbers could ENIAC store in its internal memory?", "options": ["100", "20", "40", "80"], "ans": 1},
+{"id": 493, "q": "The computer that processes both analog and digital is called", "options": ["Analog computer", "Digital computer", "Hybrid computer", "Mainframe computer"], "ans": 2},
+{"id": 494, "q": "What was the name of the first commercially available microprocessor chip?", "options": ["Intel 308", "Intel 33", "Intel 4004", "Motorola 639"], "ans": 2},
+{"id": 495, "q": "Which class of computers can process physical quantities such as speed?", "options": ["Analog Computers", "Digital Computers", "Hybrid Computers", "None of above"], "ans": 0},
+{"id": 496, "q": "How many types of storage loops exist in magnetic bubble memory?", "options": ["8", "4", "16", "2"], "ans": 3},
+{"id": 497, "q": "When did IBM introduce the 80286 based PC/AT?", "options": ["1982", "1984", "1985", "1989"], "ans": 1},
+{"id": 499, "q": "Which computers used operating systems by Microsoft?", "options": ["IBM PCs", "Apple PCs", "IBM Compatibles", "Both A & C"], "ans": 3},
+{"id": 500, "q": "One main feature that distinguishes microprocessors from micro-computers is", "options": ["Words are large in microprocessors", "Words are shorter in microprocessors", "Microprocessor does not contain I/O device", "Machine cycle time"], "ans": 2},
+{"id": 501, "q": "Napier’s Bones were invented in", "options": ["1614", "1617", "1620", "None of above"], "ans": 1},
+{"id": 502, "q": "Which of the following is not considered a portable computer?", "options": ["Minicomputer", "Laptop", "Tablet PC", "All are portable"], "ans": 0},
+{"id": 503, "q": "Computers built before the First Generation were:", "options": ["Mechanical", "Electro-mechanical", "Electrical", "None of these"], "ans": 1},
+{"id": 504, "q": "Which of the following is a way to access secondary memory?", "options": ["Random access", "Action method", "Transfer method", "Density method"], "ans": 0},
+{"id": 505, "q": "What is System Analysis?", "options": ["Design of the screen", "Defining data formats", "Creating formal model of the problem", "None of the above"], "ans": 2},
+{"id": 506, "q": "Which device can only store information but cannot erase or modify it?", "options": ["Floppy Disk", "Hard Disk", "Tape Drive", "CDROM"], "ans": 3},
+{"id": 507, "q": "Which storage medium is in the form of a circular plate?", "options": ["Disk", "CPU", "Printer", "ALU"], "ans": 0},
+{"id": 508, "q": "Daisy wheel printer is a type of", "options": ["Matrix printer", "Impact printer", "Laser printer", "Manual printer"], "ans": 1},
+{"id": 509, "q": "A number system that has eight different symbols is known as", "options": ["Binary", "Octal", "Decimal", "Hexadecimal"], "ans": 1},
+{"id": 510, "q": "The two basic types of record access methods are:", "options": ["Sequential and random", "Sequential and indexed", "Direct and immediate", "Online and real time"], "ans": 0},
+{"id": 511, "q": "Artificial Intelligence is associated with which generation?", "options": ["First Generation", "Second Generation", "Fifth Generation", "Sixth Generation"], "ans": 2},
+{"id": 512, "q": "Storage devices that can access locations in any order are called", "options": ["DTE", "DASD", "DDE", "Sequential"], "ans": 1},
+{"id": 513, "q": "The actual execution of instructions happens in", "options": ["ALU", "CU", "Memory", "None of above"], "ans": 0},
+{"id": 514, "q": "Floppy disks are available in", "options": ["Single side single density", "Single side double density", "Both of above", "None of above"], "ans": 2},
+{"id": 515, "q": "Which of the following is not an electro-mechanical computer?", "options": ["Z3", "ABC", "Mark I", "ENIAC"], "ans": 3},
+{"id": 516, "q": "Which of the following is a programming language?", "options": ["Lotus", "Pascal", "MS-Excel", "Netscape"], "ans": 1},
+{"id": 517, "q": "Which converts the user data into machine readable form?", "options": ["input unit", "central processing unit", "output unit", "decoder unit"], "ans": 0},
+{"id": 518, "q": "In what respect human beings are superior to computers?", "options": ["Diligence", "Intelligence", "Slavery", "Reliability"], "ans": 1},
+{"id": 519, "q": "As compared to secondary memory, primary memory is", "options": ["Large", "Cheap", "Fast", "Slow"], "ans": 2},
+{"id": 520, "q": "The language that the computer can understand and execute is called", "options": ["Machine language", "Application software", "System program", "All of above"], "ans": 0},
+{"id": 521, "q": "How was the generation of computer classified?", "options": ["by device used in processor", "by speed", "by model", "by accuracy"], "ans": 0},
+{"id": 523, "q": "CAD stands for", "options": ["Computer aided design", "Computer algorithm for design", "Computer application in design", "All of the above"], "ans": 0},
+{"id": 524, "q": "Which of the following memories has the shortest access times?", "options": ["Cache memory", "Magnetic bubble memory", "Magnetic core memory", "RAM"], "ans": 0},
+{"id": 525, "q": "A smart device is so called because it contains a", "options": ["Computer", "Microcomputer", "Programmable", "Sensor"], "ans": 1},
+{"id": 526, "q": "Which of the following is not a primary storage device?", "options": ["Magnetic tape", "Magnetic disk", "Optical disk", "All of above"], "ans": 3},
+{"id": 527, "q": "Who invented Analytical engine?", "options": ["Blaise Pascal", "George Boole", "Charles Babbage", "Herman Hollerith"], "ans": 2},
+{"id": 528, "q": "CPU speed of a personal computer is measured in", "options": ["KIPS", "MIPS", "Baud", "None of these"], "ans": 1},
+{"id": 529, "q": "Circular division of disks to store and retrieve data are known as", "options": ["tracks", "sectors", "cycles", "rings"], "ans": 0},
+{"id": 530, "q": "Which statement is valid?", "options": ["1KB = 1024 bytes", "1 MB = 2048 bytes", "1 MB = 1000 kilobytes", "1 KB = 1000 bytes"], "ans": 0},
+{"id": 531, "q": "The least significant bit of the binary equivalent of any odd decimal number is:", "options": ["0", "1", "1 or 0", "3"], "ans": 1},
+{"id": 532, "q": "Keyboards that sense movement by change in capacitance are called", "options": ["Capacitance keyboard", "Mechanical keyboard", "Qwerty keyboard", "Dvorak keyboard"], "ans": 0},
+{"id": 533, "q": "The Stepped Reckoner was invented by", "options": ["John Napier", "William Oughtred", "Gottfried Leibnitz", "Blaise Pascal"], "ans": 2},
+{"id": 534, "q": "A term used to describe interconnected computer systems is", "options": ["Network", "Server", "Bus", "Link"], "ans": 0},
+{"id": 535, "q": "While inserting a diskette into a PC, the label side should face", "options": ["East", "North", "South", "Up"], "ans": 3},
+{"id": 536, "q": "Inexpensive computers without a disk drive are called", "options": ["Home computers", "Diskless computers", "Dedicated computers", "General purpose"], "ans": 0},
+{"id": 537, "q": "What is a light pen?", "options": ["Mechanical Input device", "Optical input device", "Electronic input device", "Optical output device"], "ans": 1},
+{"id": 538, "q": "Which class of computers cannot support multiple users simultaneously?", "options": ["Mainframe", "Mini", "Micro", "None of above"], "ans": 2},
+{"id": 539, "q": "Which of the following is considered the first general-purpose electronic computer?", "options": ["Z3", "ABC", "Mark I", "ENIAC"], "ans": 3},
+{"id": 540, "q": "Standard used for converting keystrokes into bits is", "options": ["ANSI", "ASCII", "EBCDIC", "ISO"], "ans": 1},
+{"id": 541, "q": "In order to play and hear sound on a computer, one needs:", "options": ["sound card and speakers", "microphone", "joystick", "printer"], "ans": 0},
+{"id": 542, "q": "Which of the following devices can be used to directly image printed text?", "options": ["OCR", "OMR", "MICR", "All of above"], "ans": 0},
+{"id": 543, "q": "For which of the following tasks can computers NOT be used?", "options": ["gathering data", "calculating data", "comparing data", "creative thinking"], "ans": 3},
+{"id": 544, "q": "Which of the following are called low level languages?", "options": ["Machine language", "Assembly language", "Both of the above", "None of above"], "ans": 2},
+{"id": 546, "q": "Who invented punched cards?", "options": ["Charles Babbage", "Herman Hollerith", "Howard Aiken", "Joseph Jacquard"], "ans": 1},
+{"id": 547, "q": "Each model of a computer has a unique", "options": ["Assembly language", "Machine language", "High level language", "None of above"], "ans": 1},
+{"id": 548, "q": "Which of the following is not a primary storage device?", "options": ["RAM", "ROM", "Magnetic disk", "None of above"], "ans": 2},
+{"id": 549, "q": "In a punched card system, data is processed by a", "options": ["Keypunch and sorter", "Accounting machine and billing machine", "Sorter and billing machine", "Accounting machine, keypunch and sorter"], "ans": 3},
+{"id": 550, "q": "Which device is required for the Internet connection?", "options": ["Joystick", "Modem", "CD Drive", "NIC Card"], "ans": 1},
+{"id": 551, "q": "Rods used for multiplication and division aids are known as", "options": ["Pascaline", "Napier’s Bones", "Stepped Reckoner", "Slide Rule"], "ans": 1},
+{"id": 552, "q": "Seek time is", "options": ["time to position head over track", "time to position head over sector", "time to position head over cylinder", "none of above"], "ans": 0},
+{"id": 553, "q": "Tape speed is measured in", "options": ["Feet per second", "Inch per second", "Meter per second", "Centimeter per second"], "ans": 1},
+{"id": 554, "q": "Punched cards were first introduced by", "options": ["Powers", "Pascal", "Jacquard", "Herman Hollerith"], "ans": 3},
+{"id": 555, "q": "Which computers support co-processors?", "options": ["XT computer", "AT computers", "None of these", "Both of these"], "ans": 3},
+{"id": 556, "q": "A floppy disk contains", "options": ["Circular tracks only", "Sectors only", "Both circular tracks and sectors", "None of the above"], "ans": 2},
+{"id": 557, "q": "The capacity of 3.5 inch floppy disk is", "options": ["1.40 MB", "1.44 GB", "1.40 GB", "1.44 MB"], "ans": 3},
+{"id": 558, "q": "The contribution of Konrad Zuse was long ignored because", "options": ["Secret development", "Complicated design", "He was German (political reasons)", "All of above"], "ans": 2},
+{"id": 559, "q": "Method for controlling access to memory is known as", "options": ["Memory map", "Memory protection", "Memory management", "Memory instruction"], "ans": 1},
+{"id": 560, "q": "In what respect computers are superior to human beings?", "options": ["Diligence", "Intelligence", "Both of above", "None of above"], "ans": 0},
+{"id": 561, "q": "Com in Latin is", "options": ["intensifying prefix", "intensifying suffix", "a term that means to reckon", "None of above"], "ans": 0},
+{"id": 562, "q": "The system unit of a personal computer typically contains all of the following except:", "options": ["Microprocessor", "Disk controller", "Serial interface", "Modem"], "ans": 3},
+{"id": 563, "q": "Which of the following is related to fifth generation computers?", "options": ["Knowledge information processing system", "Very large scale integration (VLSI)", "Both of above", "Only b"], "ans": 0},
+{"id": 564, "q": "Loading instructions from secondary storage into memory to start a computer is called", "options": ["Duping", "Booting", "Padding", "CPS"], "ans": 1},
+{"id": 565, "q": "MSI stands for", "options": ["Medium Scale Integrated Circuits", "Medium System Integrated Circuits", "Medium Scale Intelligent Circuit", "Medium System Intelligent Circuit"], "ans": 0},
+{"id": 566, "q": "A Pixel is _________", "options": ["A computer program", "A picture stored in memory", "The smallest resolvable part of a picture", "None of these"], "ans": 2},
+{"id": 567, "q": "A/n _____ Device is any device that provides information, which is sent to the CPU", "options": ["Input", "Output", "CPU", "Memory"], "ans": 0},
+{"id": 568, "q": "What was the nick name of the computer used by Americans in 1952 for the H-bomb project?", "options": ["ENIAC", "EDSAC", "MANIAC", "UNIVAC"], "ans": 2},
+{"id": 570, "q": "LSI, VLSI & ULSI chips were used in which generation?", "options": ["First", "Second", "Third", "Fourth"], "ans": 3},
+{"id": 571, "q": "Which of the following is a major manufacturer of Hard Disk Drives?", "options": ["IBM", "Seagate", "Microsoft", "3M"], "ans": 1},
+{"id": 572, "q": "Networking such as LAN and MAN started from", "options": ["First generation", "Second generation", "Third generation", "Fourth generation"], "ans": 3},
+{"id": 573, "q": "Which characteristic of a computer distinguishes it from electronic calculators?", "options": ["Accuracy", "Storage", "Versatility", "Automatic"], "ans": 1},
+{"id": 574, "q": "Which register keeps track of the address of the memory location for the next instruction?", "options": ["Memory address register", "Memory data register", "Instruction register", "Program counter"], "ans": 3},
+{"id": 575, "q": "Which of the following is not a classification of computers based on application?", "options": ["Electronic Computers", "Analog Computers", "Digital Computers", "Hybrid Computers"], "ans": 0},
+{"id": 576, "q": "Which of the following is not a standard category of Software?", "options": ["System Software", "Application Software", "Utility Software", "Entertainment Software"], "ans": 3},
+{"id": 577, "q": "Who invented the high level language C?", "options": ["Dennis M. Ritchie", "Niklaus Wirth", "Seymour Papert", "Donald Knuth"], "ans": 0},
+{"id": 578, "q": "What do you call programs used to find possible faults and their causes?", "options": ["Operating system extensions", "Cookies", "Diagnostic software", "Boot diskettes"], "ans": 2},
+{"id": 579, "q": "Which computer memory is used for storing programs and data currently being processed?", "options": ["Mass memory", "Internal memory", "Non-volatile memory", "Secondary memory"], "ans": 1},
+{"id": 580, "q": "Which code used in present day computing was developed by IBM Corporation?", "options": ["ASCII", "Hollerith Code", "Baudot Code", "EBCDIC Code"], "ans": 3},
+{"id": 581, "q": "When were transistors invented?", "options": ["1947", "1938", "1958", "1968"], "ans": 0},
+{"id": 582, "q": "In the third Generation of computers:", "options": ["Distributed data processing became popular", "Operating systems were first developed", "High level languages were first used", "Online real-time systems became popular"], "ans": 3},
+{"id": 583, "q": "The most important advantage of an IC is its", "options": ["Easy replacement", "Extremely high reliability", "Reduced cost", "Lower power consumption"], "ans": 1},
+{"id": 584, "q": "Which magazine covers only the IBM PC and its compatibles?", "options": ["Byte", "PC Magazine", "Personal Computing", "Interface Age"], "ans": 1},
+{"id": 585, "q": "UNIVAC stands for", "options": ["Universal Automatic Computer", "Universal Array Computer", "Unique Automatic Computer", "Unvalued Automatic Computer"], "ans": 0},
+{"id": 586, "q": "Which is required when more than one person uses a central computer at the same time?", "options": ["Terminal", "Light pen", "Digitizer", "Mouse"], "ans": 0},
+{"id": 587, "q": "Which of the following is not an output device?", "options": ["Scanner", "Printer", "Flat Screen", "Touch Screen"], "ans": 0},
+{"id": 588, "q": "The main circuit board of a personal computer is called the", "options": ["Daughterboard", "Motherboard", "Fatherboard", "Childboard"], "ans": 1}
+ 
+         
+    ];
+
+    let currentExamData = [];
+    let userAnswers = {};
+    let currentIndex = 0;
+    let timeRemaining = 0;
+    let timerId;
+
+    window.onload = () => {
+        initDashboard();
+        if(localStorage.getItem('saved_gns_exam')) document.getElementById('resume-btn').style.display = 'block';
+    };
+
+    function initDashboard() {
+        const board = document.getElementById('dashboard');
+        board.innerHTML = '';
+        const totalQuestions = MASTER_POOL.length;
+        const parts = Math.ceil(totalQuestions / 50);
+
+        const rand = document.createElement('div');
+        rand.className = 'box box-random';
+        rand.innerHTML = `<i class="fa-solid fa-shuffle"></i><h3>Random Mode</h3><p>Full Shuffle</p>`;
+        rand.onclick = () => openSetup('random', 0);
+        board.appendChild(rand);
+
+        for (let i = 1; i <= parts; i++) {
+            const card = document.createElement('div');
+            const start = (i - 1) * 50 + 1;
+            const end = Math.min(i * 50, totalQuestions);
+            card.className = 'box';
+            card.innerHTML = `<i class="fa-solid fa-book-open"></i><h3>Part ${i}</h3><p>Q${start} - Q${end}</p>`;
+            card.onclick = () => openSetup('part', i);
+            board.appendChild(card);
+        }
+    }
+
+    function openSetup(mode, partNum) {
+        window.examMode = mode;
+        window.partNum = partNum;
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('setup-screen').style.display = 'block';
+        document.getElementById('setup-title').innerText = mode === 'random' ? "Random Exam Setup" : `COS 101: Part ${partNum}`;
+        document.getElementById('random-settings').style.display = (mode === 'random') ? 'block' : 'none';
+    }
+
+    function startExam() {
+        const timeInput = document.getElementById('t-limit').value;
+        timeRemaining = timeInput * 60;
+
+        if (window.examMode === 'random') {
+            const qty = document.getElementById('q-count').value;
+            currentExamData = [...MASTER_POOL].sort(() => 0.5 - Math.random()).slice(0, qty);
+        } else {
+            const start = (window.partNum - 1) * 50;
+            currentExamData = MASTER_POOL.slice(start, start + 50);
+        }
+
+        document.getElementById('setup-screen').style.display = 'none';
+        document.getElementById('quiz-interface').style.display = 'block';
+        document.getElementById('total-idx').innerText = currentExamData.length;
+        
+        runTimer();
+        renderQuestion();
+    }
+
+    function runTimer() {
+        if(timerId) clearInterval(timerId);
+        timerId = setInterval(() => {
+            timeRemaining--;
+            let m = Math.floor(timeRemaining / 60);
+            let s = timeRemaining % 60;
+            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
+            if(timeRemaining <= 0) showResults();
+        }, 1000);
+    }
+
+    function renderQuestion() {
+        const q = currentExamData[currentIndex];
+        const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
+        
+        document.getElementById('cur-idx').innerText = currentIndex + 1;
+        document.getElementById('question-text').innerText = q.q;
+        
+        const optBox = document.getElementById('options-box');
+        const feedbackArea = document.getElementById('feedback-area');
+        optBox.innerHTML = '';
+        feedbackArea.innerHTML = '';
+        
+        q.options.forEach((option, index) => {
+            const btn = document.createElement('button');
+            btn.className = `option-btn`;
+            const letter = String.fromCharCode(65 + index); // A, B, C, D...
+            
+            if (hasAnswered) {
+                if (index === q.ans) {
+                    btn.classList.add('correct');
+                } else if (userAnswers[currentIndex] === index) {
+                    btn.classList.add('wrong');
+                }
+                btn.disabled = true;
+            }
+
+            btn.innerHTML = `<strong>${letter}.</strong> ${option}`;
+            btn.onclick = () => { 
+                if (!hasAnswered) {
+                    userAnswers[currentIndex] = index; 
+                    saveState(); 
+                    renderQuestion();
+                }
+            };
+            optBox.appendChild(btn);
+        });
+
+        if (hasAnswered) {
+            const isCorrect = userAnswers[currentIndex] === q.ans;
+
+            feedbackArea.innerHTML = `
+                <div class="feedback-container">
+                    <div class="feedback-status" style="border-color: ${isCorrect ? '#22c55e' : '#ef4444'}; background: ${isCorrect ? '#dcfce7' : '#fee2e2'}; color: ${isCorrect ? '#166534' : '#991b1b'}">
+                        ${isCorrect ? '✔ Correct Answer!' : '✘ Incorrect. The correct answer is (' + String.fromCharCode(65 + q.ans) + ') ' + q.options[q.ans]}
+                    </div>
+                </div>
+            `;
+        }
+
+        document.getElementById('prev-btn').disabled = currentIndex === 0;
+        document.getElementById('next-btn').style.display = (currentIndex === currentExamData.length - 1) ? 'none' : 'block';
+        document.getElementById('submit-btn').style.display = (currentIndex === currentExamData.length - 1) ? 'block' : 'none';
+    }
+
+    function move(dir) {
+        if(currentIndex + dir >= 0 && currentIndex + dir < currentExamData.length) {
+            currentIndex += dir;
+            renderQuestion();
+        }
+    }
+
+    function saveState() {
+        const state = { currentExamData, userAnswers, currentIndex, timeRemaining };
+        localStorage.setItem('saved_gns_exam', JSON.stringify(state));
+    }
+
+    function resumeExam() {
+        const state = JSON.parse(localStorage.getItem('saved_gns_exam'));
+        currentExamData = state.currentExamData;
+        userAnswers = state.userAnswers;
+        currentIndex = state.currentIndex;
+        timeRemaining = state.timeRemaining;
+        
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('resume-btn').style.display = 'none';
+        document.getElementById('quiz-interface').style.display = 'block';
+        document.getElementById('total-idx').innerText = currentExamData.length;
+        runTimer();
+        renderQuestion();
+    }
+
+    fetch(" https://florencia-prorefugee-unindustriously.ngrok-free.dev", {
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ matric: studentMatric })
+});
+    function showResults() {
+        clearInterval(timerId);
+        let score = 0;
+        currentExamData.forEach((q, i) => { 
+            if(userAnswers[i] === q.ans) score++; 
+        });
+        alert(`Practice Complete!\nYour Score: ${score} / ${currentExamData.length}`);
+        localStorage.removeItem('saved_gns_exam');
+        location.reload();
+    }
+</script>
+</body>
+</html>
