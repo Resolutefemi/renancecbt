@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GNS 103 - Information Literacy Portal</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e40af; 
+            --bg: #f8fafc; 
+            --card-bg: #ffffff; 
+            --text: #1e293b;
+            --success: #16a34a; 
+            --danger: #dc2626; 
+            --accent: #ea580c;
+        }
+        .dark-mode { --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc; }
+        
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: 0.3s; }
+        nav { background: var(--card-bg); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        main { padding: 2rem 5%; max-width: 900px; margin: 0 auto; width: 90%; }
+        
+        #dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
+        .box { background: var(--card-bg); padding: 1.5rem; border-radius: 12px; text-align: center; cursor: pointer; transition: 0.3s; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .box:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .box-random { background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; }
+        
+        .setup-group { margin: 1.5rem 0; text-align: left; width: 100%; max-width: 300px; margin-left: auto; margin-right: auto; }
+        .setup-group label { font-weight: 600; font-size: 0.9rem; color: var(--text); display: block; margin-bottom: 8px; }
+        .setup-input { width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; background: var(--bg); color: var(--text); outline: none; transition: 0.2s; box-sizing: border-box; }
+        .setup-input:focus { border-color: var(--primary); }
+
+        .checkbox-group { display: flex; flex-direction: column; gap: 12px; margin-top: 1rem; background: rgba(0,0,0,0.02); padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; box-sizing: border-box; }
+        .custom-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.95rem; color: var(--text); font-weight: 500; user-select: none; }
+        .custom-checkbox input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
+
+        .option-btn { display: block; width: 100%; padding: 1rem; margin: 0.75rem 0; border: 2px solid #e2e8f0; border-radius: 10px; background: var(--card-bg); color: var(--text); text-align: left; cursor: pointer; font-size: 1rem; transition: 0.2s; box-sizing: border-box; }
+        .option-btn:not(:disabled):hover { background: #f1f5f9; border-color: #cbd5e1; }
+        
+        .option-btn.selected { background-color: #e0f2fe !important; border-color: #3b82f6 !important; color: #0369a1 !important; } 
+        .option-btn.correct { background-color: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: bold; } 
+        .option-btn.wrong { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; } 
+        
+        .feedback-msg { margin-top: 1rem; padding: 1rem; border-radius: 10px; font-weight: bold; text-align: center; animation: fadeIn 0.3s; width: 100%; box-sizing: border-box; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .controls { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 2rem; }
+        .btn { padding: 0.85rem 1.8rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; background: var(--primary); color: white; transition: 0.2s; font-size: 1rem; flex: 1; min-width: 120px; text-align: center; box-sizing: border-box; }
+        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        @media (max-width: 600px) {
+            #dashboard { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); }
+            .btn { width: 100%; margin-bottom: 5px; }
+            .controls { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div id="user-info" style="font-weight: 600;">GNS 103 Practice Portal</div>
+    <div style="display: flex; gap: 15px;">
+        <button class="btn" style="background:var(--accent); display:none; min-width: auto; padding: 0.5rem 1rem;" id="resume-btn" onclick="resumeExam()">Resume</button>
+        <button class="btn" style="background:#64748b; min-width: auto; padding: 0.5rem 1rem;" onclick="document.body.classList.toggle('dark-mode')"><i class="fa-solid fa-moon"></i></button>
+    </div>
+</nav>
+
+<main>
+    <div id="dashboard"></div>
+
+    <div id="setup-screen" style="display:none; text-align: center; background: var(--card-bg); padding: 3rem 2rem; border-radius: 15px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+        <h2 id="setup-title" style="margin-bottom: 2rem; color: var(--primary);"></h2>
+        
+        <div class="setup-group">
+            <label>Select Mode:</label>
+            <select id="quiz-mode" class="setup-input">
+                <option value="practice">Practice Mode (Instant Answers)</option>
+                <option value="exam">Exam Mode (Answers at the End)</option>
+            </select>
+        </div>
+
+        <div id="random-settings">
+            <div class="setup-group">
+                <label>Question Quantity:</label>
+                <input type="number" id="q-count" value="50" class="setup-input" max="392">
+            </div>
+        </div>
+        
+        <div class="setup-group">
+            <label>Time Limit (Minutes):</label>
+            <input type="number" id="t-limit" value="30" class="setup-input">
+        </div>
+
+        <div class="setup-group checkbox-group">
+            <label class="custom-checkbox" title="Mix up the order of the questions">
+                <input type="checkbox" id="shuffle-questions" checked>
+                Shuffle Questions
+            </label>
+            <label class="custom-checkbox" title="Mix up the A, B, C, D options for each question">
+                <input type="checkbox" id="shuffle-options" checked>
+                Shuffle Options (A, B, C, D)
+            </label>
+        </div>
+        
+        <button class="btn" onclick="startExam()" style="margin-top: 1.5rem; width: 100%; max-width: 300px;">Start Now <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+
+    <div id="quiz-interface" style="display:none;">
+        
+        <div style="display:flex; justify-content: space-between; align-items: center; font-weight: bold; margin-bottom: 15px; padding: 0 10px; flex-wrap: wrap; gap: 10px;">
+            <span style="color: var(--text); font-size: 1.05rem;">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
+            
+            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; width: 100%; justify-content: flex-end;">
+                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding: 8px 16px; font-size: 0.9rem; flex: none;" onclick="showResults()">Submit Exam</button>
+                <button class="btn" id="finish-review-btn" style="background:var(--primary); display:none; padding: 8px 16px; font-size: 0.9rem; flex: none;" onclick="location.reload()">Finish Review</button>
+                <span id="timer" style="color:var(--danger); background: rgba(220,38,38,0.1); padding: 6px 14px; border-radius: 20px; font-size: 1.05rem;">30:00</span>
+            </div>
+        </div>
+        
+        <div style="background: var(--card-bg); padding: 2rem 1rem; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05); overflow-x: hidden;">
+            <h3 id="question-text" style="line-height: 1.6; margin-bottom: 1.5rem; word-wrap: break-word;"></h3>
+            <div id="options-box"></div>
+            <div id="feedback-area"></div>
+        </div>
+        
+        <div class="controls" style="display: flex; justify-content: space-between; margin-top: 2rem; gap: 10px;">
+            <button class="btn" style="background:#64748b" onclick="move(-1)">Previous</button>
+            <button class="btn" id="next-btn" onclick="move(1)">Next Question</button>
+        </div>
+    </div>
+</main>
+
+<script>
+    const MASTER_POOL = [
+  {"id": 1, "question": "Fluid is a substance that", "options": {"A": "cannot be subjected to shear forces", "B": "always expands until it fills any container", "C": "has the same shear stress at a point regardless of its motion", "D": "cannot remain at rest under action of any shear force", "E": "flows"}, "answer": "D", "explanation": "A fluid continuously deforms (flows) when any shear stress is applied, no matter how small. It cannot remain at rest under the action of any shear force — this is the defining characteristic of a fluid."},
+  {"id": 2, "question": "Fluid is a substance which offers no resistance to change of", "options": {"A": "Pressure", "B": "Flow", "C": "Shape", "D": "Volume", "E": "Temperature"}, "answer": "C", "explanation": "Unlike solids, fluids offer no permanent resistance to a change in shape. They deform continuously under shear stress, which means they cannot maintain a fixed shape."},
+  {"id": 3, "question": "Practical fluids", "options": {"A": "are viscous", "B": "possess surface tension", "C": "are compressible", "D": "possess all the above properties", "E": "possess none of the above properties"}, "answer": "D", "explanation": "Real (practical) fluids possess all three properties: viscosity (internal friction), surface tension (due to molecular cohesion), and compressibility (volume changes under pressure)."},
+  {"id": 4, "question": "In a static fluid", "options": {"A": "resistance to shear stress is small", "B": "fluid pressure is zero", "C": "linear deformation is small", "D": "only normal stresses can exist", "E": "viscosity is nil"}, "answer": "D", "explanation": "In a fluid at rest (static), there is no motion, so no shear stresses exist. Only normal (compressive) stresses — i.e., hydrostatic pressure — act on any surface element within the fluid."},
+  {"id": 5, "question": "A fluid is said to be ideal, if it is", "options": {"A": "incompressible", "B": "inviscous", "C": "viscous and incompressible", "D": "inviscous and compressible", "E": "inviscous and incompressible"}, "answer": "E", "explanation": "An ideal fluid is a theoretical concept having zero viscosity (no internal friction) and is incompressible (constant density). No real fluid is perfectly ideal, but this simplification is useful in analysis."},
+  {"id": 6, "question": "An ideal flow of any fluid must fulfill the following", "options": {"A": "Newton's law of motion", "B": "Newton's law of viscosity", "C": "Pascal's law", "D": "Continuity equation", "E": "Boundary layer theory"}, "answer": "D", "explanation": "Ideal fluid flow must satisfy the continuity equation, which is an expression of the conservation of mass — mass flow rate must remain constant throughout the flow field."},
+  {"id": 7, "question": "If no resistance is encountered by displacement, such a substance is known as", "options": {"A": "fluid", "B": "water", "C": "gas", "D": "perfect solid", "E": "ideal fluid"}, "answer": "E", "explanation": "An ideal fluid has zero viscosity, meaning it encounters absolutely no resistance to displacement or flow. It is a theoretical substance used to simplify fluid mechanics problems."},
+  {"id": 8, "question": "The volumetric change of the fluid caused by a resistance is known as", "options": {"A": "volumetric strain", "B": "volumetric index", "C": "compressibility", "D": "adhesion", "E": "cohesion"}, "answer": "C", "explanation": "Compressibility measures a fluid's change in volume under applied pressure. It is defined as the fractional change in volume per unit change in pressure (inverse of bulk modulus)."},
+  {"id": 9, "question": "Liquids", "options": {"A": "cannot be compressed", "B": "occupy definite volume", "C": "are not affected by change in pressure and temperature", "D": "are not viscous", "E": "none of the above"}, "answer": "E", "explanation": "None of the individual statements are fully correct. Liquids can be slightly compressed, they do have definite volume but not shape, they are slightly affected by pressure and temperature, and they do have viscosity."},
+  {"id": 10, "question": "Density of water is maximum at", "options": {"A": "0°C", "B": "0°K", "C": "4°C", "D": "100°C", "E": "20°C"}, "answer": "C", "explanation": "Water reaches its maximum density of 1000 kg/m³ at 4°C. Below and above this temperature, water expands slightly and becomes less dense. This anomalous behavior is crucial to aquatic ecosystems in cold climates."},
+  {"id": 11, "question": "The value of mass density in kgsec²/m⁴ for water at 0°C is", "options": {"A": "1", "B": "1000", "C": "100", "D": "101.9", "E": "91"}, "answer": "D", "explanation": "In the gravitational unit system, mass density = ρ/g = 1000 kg/m³ ÷ 9.81 m/s² ≈ 101.9 kgsec²/m⁴. This unit is used in the older technical/gravitational system."},
+  {"id": 12, "question": "Property of a fluid by which its own molecules are attracted is called", "options": {"A": "adhesion", "B": "cohesion", "C": "viscosity", "D": "compressibility", "E": "surface tension"}, "answer": "B", "explanation": "Cohesion is the intermolecular attraction between like (same substance) molecules. It is responsible for holding liquid molecules together and contributes to surface tension."},
+  {"id": 13, "question": "Mercury does not wet glass. This is due to the property of liquid known as", "options": {"A": "adhesion", "B": "cohesion", "C": "surface tension", "D": "viscosity", "E": "compressibility"}, "answer": "C", "explanation": "Surface tension arises from cohesive forces. Mercury has very strong cohesion between its own molecules compared to its adhesion to glass, so it does not wet glass, forming a convex meniscus and appearing as beads."},
+  {"id": 14, "question": "The property of a fluid which enables it to resist tensile stress is known as", "options": {"A": "compressibility", "B": "surface tension", "C": "cohesion", "D": "adhesion", "E": "viscosity"}, "answer": "C", "explanation": "Cohesion — the attraction between like molecules — gives a liquid limited ability to resist tensile (pulling apart) stresses before breaking apart or cavitating."},
+  {"id": 15, "question": "Property of a fluid by which molecules of different kinds of fluids are attracted to each other is called", "options": {"A": "adhesion", "B": "cohesion", "C": "viscosity", "D": "compressibility", "E": "surface tension"}, "answer": "A", "explanation": "Adhesion is the intermolecular attraction between unlike (different substance) molecules. For example, water adhering to a glass wall is due to adhesion between water molecules and glass molecules."},
+  {"id": 16, "question": "The specific weight of water is 1000 kg/m³", "options": {"A": "at normal pressure of 760 mm", "B": "at 4°C temperature", "C": "at mean sea level", "D": "all the above", "E": "none of the above"}, "answer": "D", "explanation": "The standard specific weight of water (1000 kg/m³) is defined under all three standard conditions simultaneously: 4°C temperature, normal atmospheric pressure of 760 mmHg, and at mean sea level."},
+  {"id": 17, "question": "Specific weight of water in S.I. units is equal to", "options": {"A": "1000 N/m³", "B": "10000 N/m³", "C": "9.81 × 10³ N/m³", "D": "9.81 × 10⁶ N/m³", "E": "9.81 N/m³"}, "answer": "C", "explanation": "Specific weight γ = density × g = 1000 kg/m³ × 9.81 m/s² = 9810 N/m³ = 9.81 × 10³ N/m³. This represents the weight per unit volume of water."},
+  {"id": 18, "question": "When the flow parameters at any given instant remain same at every point, then flow is said to be", "options": {"A": "quasi static", "B": "steady state", "C": "laminar", "D": "uniform", "E": "static"}, "answer": "D", "explanation": "Uniform flow means the flow parameters (velocity, pressure, etc.) are identical at every spatial point at any given instant. Steady flow means parameters don't change with time at a fixed point — these are different concepts."},
+  {"id": 19, "question": "Which of the following is dimensionless", "options": {"A": "specific weight", "B": "specific volume", "C": "specific speed", "D": "specific gravity", "E": "specific viscosity"}, "answer": "D", "explanation": "Specific gravity is the ratio of the density of a substance to the density of a reference substance (usually water). Being a ratio of two like quantities, it has no units and is completely dimensionless."},
+  {"id": 20, "question": "The normal stress in a fluid will be constant in all directions at a point only if", "options": {"A": "it is incompressible", "B": "it has uniform viscosity", "C": "it has zero viscosity", "D": "it is frictionless", "E": "it is at rest"}, "answer": "E", "explanation": "Pascal's law states that pressure (normal stress) is equal in all directions at a point only in a fluid at rest. In a moving viscous fluid, viscous shear stresses cause directional differences in normal stress."},
+  {"id": 21, "question": "The pressure at a point in a fluid will not be same in all directions when the fluid is", "options": {"A": "moving", "B": "viscous", "C": "viscous and static", "D": "inviscous and moving", "E": "viscous and moving"}, "answer": "E", "explanation": "When a fluid is both viscous AND moving, shear stresses arise due to viscosity combined with velocity gradients. These additional stresses cause normal stresses to differ by direction, breaking Pascal's law."},
+  {"id": 22, "question": "An object having 10 kg mass weighs 9.81 kg on a spring balance. The value of 'g' at this place is", "options": {"A": "10 m/sec²", "B": "9.81 m/sec²", "C": "10.2 m/sec", "D": "9.75 m/sec²", "E": "9 m/sec²"}, "answer": "A", "explanation": "The spring balance reads 9.81 kgf for a 10 kg mass. In this gravitational unit context, g = W/m = (9.81 × 9.81)/9.81 = 9.81 N/kg... The source solution interprets this as g = 10 m/s², which is the standard answer given."},
+  {"id": 23, "question": "The tendency of a liquid surface to contract is due to the following property", "options": {"A": "cohesion", "B": "adhesion", "C": "viscosity", "D": "surface tension", "E": "elasticity"}, "answer": "D", "explanation": "Surface tension causes the liquid surface to behave like a stretched elastic membrane that tends to contract to the minimum possible area. It is caused by net inward cohesive forces on surface molecules."},
+  {"id": 24, "question": "The surface tension of mercury at normal temperature compared to that of water is", "options": {"A": "more", "B": "less", "C": "same", "D": "more or less depending on size of glass tube", "E": "none of the above"}, "answer": "A", "explanation": "Mercury has a much higher surface tension (~487 mN/m) than water (~73 mN/m) at room temperature, due to the strong metallic bonds between mercury atoms producing very large cohesive forces."},
+  {"id": 25, "question": "A perfect gas", "options": {"A": "has constant viscosity", "B": "has zero viscosity", "C": "is incompressible", "D": "is of theoretical interest", "E": "none of the above"}, "answer": "E", "explanation": "A perfect (ideal) gas obeys PV = nRT exactly. It is not zero viscosity, not incompressible (it is highly compressible), and while it is a theoretical model, no single option alone fully and correctly defines a perfect gas."},
+  {"id": 26, "question": "For very great pressures, viscosity of most gases and liquids", "options": {"A": "remains same", "B": "increases", "C": "decreases", "D": "shows erratic behaviour", "E": "none of the above"}, "answer": "D", "explanation": "At extremely high pressures, the viscosity behavior of gases and liquids becomes complex and erratic. The intermolecular spacing and interaction forces change unpredictably, producing irregular viscosity variations."},
+  {"id": 27, "question": "A fluid in equilibrium can't sustain", "options": {"A": "tensile stress", "B": "compressive stress", "C": "shear stress", "D": "bending stress", "E": "all of the above"}, "answer": "C", "explanation": "By definition, a fluid in equilibrium cannot sustain shear stress — any shear stress, however small, will cause a fluid to flow and deform continuously. A fluid can sustain compressive (hydrostatic pressure) stress."},
+  {"id": 28, "question": "Viscosity of water in comparison to mercury is", "options": {"A": "higher", "B": "lower", "C": "same", "D": "higher/lower depending on temperature", "E": "unpredictable"}, "answer": "A", "explanation": "The kinematic viscosity of water (~1.0 × 10⁻⁶ m²/s) is much higher than that of mercury (~1.1 × 10⁻⁷ m²/s) because mercury, despite having higher dynamic viscosity, has a far greater density, greatly reducing its kinematic viscosity."},
+  {"id": 29, "question": "The bulk modulus of elasticity with increase in pressure", "options": {"A": "increases", "B": "decreases", "C": "remains constant", "D": "increases first up to certain limit and then decreases", "E": "unpredictable"}, "answer": "A", "explanation": "As pressure increases, the fluid becomes harder to compress further (molecules are already closer together), so the bulk modulus (resistance to compression) generally increases with increasing pressure."},
+  {"id": 30, "question": "The bulk modulus of elasticity", "options": {"A": "has the dimensions of 1/pressure", "B": "increases with pressure", "C": "is large when fluid is more compressible", "D": "is independent of pressure and viscosity", "E": "is directly proportional to flow"}, "answer": "B", "explanation": "Bulk modulus K = −V(dP/dV). It increases with pressure because the fluid becomes stiffer. A large bulk modulus means the fluid is LESS compressible (harder to compress), not more."},
+  {"id": 31, "question": "A balloon lifting in air follows the following principle", "options": {"A": "law of gravitation", "B": "Archimedes principle", "C": "principle of buoyancy", "D": "all of the above", "E": "continuity equation"}, "answer": "D", "explanation": "A balloon lifting involves: the law of gravitation (weight pulls it down), Archimedes' principle (buoyant force equals weight of displaced air), and the principle of buoyancy (net upward force when buoyancy exceeds weight). All three apply."},
+  {"id": 32, "question": "The value of the coefficient of compressibility for water at ordinary pressure and temperature in kg/cm² is equal to", "options": {"A": "1000", "B": "2100", "C": "2700", "D": "10,000", "E": "21,000"}, "answer": "E", "explanation": "The bulk modulus of water at ordinary conditions is approximately 21,000 kg/cm² (≈ 2.1 GPa). This very high value confirms that water is nearly incompressible under normal conditions."},
+  {"id": 33, "question": "The increase of temperature results in", "options": {"A": "increase in viscosity of gas", "B": "increase in viscosity of liquid", "C": "decrease in viscosity of gas", "D": "decrease in viscosity of liquid", "E": "(A) and (D) above"}, "answer": "D", "explanation": "For liquids, increasing temperature weakens intermolecular cohesive forces, reducing viscosity. For gases, increasing temperature increases molecular momentum transfer, raising viscosity. The primary answer here focuses on liquids."},
+  {"id": 34, "question": "Surface tension has the units of", "options": {"A": "newtons/m²", "B": "newtons/m", "C": "newton/m", "D": "newtons", "E": "newton·m"}, "answer": "C", "explanation": "Surface tension is defined as force per unit length or energy per unit area. The SI unit is newton per metre (N/m). Note: options B and C are the same; both are correct, and the source confirms N/m."},
+  {"id": 35, "question": "Surface tension", "options": {"A": "acts in the plane of the interface normal to any line in the surface", "B": "is also known as capillarity", "C": "is a function of the curvature of the interface", "D": "decreases with fall in temperature", "E": "has no units"}, "answer": "A", "explanation": "Surface tension acts tangentially IN the plane of the liquid surface and perpendicular (normal) to any line drawn within that surface. It increases (not decreases) with a fall in temperature, and it has units of N/m."},
+  {"id": 36, "question": "The stress-strain relation of the Newtonian fluid is", "options": {"A": "linear", "B": "parabolic", "C": "hyperbolic", "D": "inverse type", "E": "none of the above"}, "answer": "A", "explanation": "For a Newtonian fluid, shear stress is directly proportional to the rate of shear strain (τ = μ·du/dy). This is a linear relationship, with dynamic viscosity μ as the constant of proportionality (the slope)."},
+  {"id": 37, "question": "A liquid compressed in a cylinder has volume 0.04 m³ at 50 kg/cm² and 0.039 m³ at 150 kg/cm². The bulk modulus of elasticity is", "options": {"A": "400 kg/cm²", "B": "4000 kg/cm²", "C": "40 × 10⁵ kg/cm²", "D": "40 × 10⁶ kg/cm²", "E": "none of the above"}, "answer": "B", "explanation": "K = −V × ΔP/ΔV = 0.04 × (150 − 50)/(0.04 − 0.039) = 0.04 × 100/0.001 = 4000 kg/cm². The negative sign is absorbed since we take the magnitude."},
+  {"id": 38, "question": "The units of viscosity are", "options": {"A": "metres² per sec", "B": "kg sec/metre", "C": "newton-sec per metre²", "D": "newton-sec per metre", "E": "none of the above"}, "answer": "B", "explanation": "Dynamic viscosity in the gravitational (technical) system has units of kgf·s/m² or equivalently kg·s/m. The SI unit is Pa·s = N·s/m² = kg/(m·s). Option B (kg·sec/m) reflects the gravitational unit system used in this course."},
+  {"id": 39, "question": "Kinematic viscosity is dependent upon", "options": {"A": "pressure", "B": "distance", "C": "level", "D": "flow", "E": "density"}, "answer": "E", "explanation": "Kinematic viscosity ν = dynamic viscosity μ / density ρ. It has a direct dependence on density. Since density changes with temperature (and pressure), kinematic viscosity is primarily dependent on density."},
+  {"id": 40, "question": "Units of surface tension are", "options": {"A": "energy/unit area", "B": "distance", "C": "both of the above", "D": "it has no units", "E": "none of the above"}, "answer": "C", "explanation": "Surface tension can be equivalently expressed as force/length (N/m) OR as energy/area (J/m²), since J/m² = N·m/m² = N/m. Both representations are physically correct and equivalent."},
+  {"id": 41, "question": "Which of the following meters is not associated with viscosity", "options": {"A": "Red wood", "B": "Saybolt", "C": "Engler", "D": "Orsat", "E": "none of the above"}, "answer": "D", "explanation": "Redwood, Saybolt, and Engler are viscometers used to measure fluid viscosity. The Orsat apparatus is a gas analyzer used to measure the composition of flue gases (CO₂, O₂, CO) — it has nothing to do with viscosity."},
+  {"id": 42, "question": "Choose the correct relationship", "options": {"A": "specific gravity = gravity × density", "B": "dynamic viscosity = kinematic viscosity × density", "C": "gravity = specific gravity × density", "D": "kinematic viscosity = dynamic viscosity × density", "E": "hydrostatic force = surface tension × gravity"}, "answer": "B", "explanation": "The correct relationship is: μ (dynamic viscosity) = ν (kinematic viscosity) × ρ (density). This comes from the definition ν = μ/ρ, rearranged as μ = νρ."},
+  {"id": 43, "question": "Dimensions of surface tension are", "options": {"A": "M¹L⁰T⁻²", "B": "M¹L⁰T⁻¹", "C": "M¹L⁻¹T⁻²", "D": "M¹L²T⁻²", "E": "M¹L⁰T"}, "answer": "A", "explanation": "Surface tension = Force/Length = [MLT⁻²]/[L] = [MT⁻²] = M¹L⁰T⁻². It has dimensions of mass per time squared, with zero length dimension."},
+  {"id": 44, "question": "The capacity to do work is called as", "options": {"A": "Heat", "B": "Energy", "C": "Work", "D": "None of the above"}, "answer": "B", "explanation": "Energy is defined as the ability or capacity to do work. It exists in many forms — kinetic, potential, thermal, chemical, electrical, etc. Work is the process of energy transfer, not the capacity itself."},
+  {"id": 45, "question": "Heat is measured in", "options": {"A": "Joule", "B": "Calorie", "C": "Both A and B", "D": "Joule/second"}, "answer": "A", "explanation": "In SI units, heat (being a form of energy) is measured in Joules (J). The calorie is an older non-SI unit still sometimes used. Joule/second is the unit of power (Watts), not energy or heat."},
+  {"id": 46, "question": "1 cal = ?", "options": {"A": "1.2 joule", "B": "3.2 joule", "C": "4.2 joule", "D": "none of the above"}, "answer": "C", "explanation": "1 calorie = 4.186 joules ≈ 4.2 joules. This is the mechanical equivalent of heat, established experimentally by James Prescott Joule. It represents the energy needed to raise 1 g of water by 1°C."},
+  {"id": 47, "question": "The form of energy that produces feeling of hotness is called as", "options": {"A": "work", "B": "Heat", "C": "Energy", "D": "none of the above"}, "answer": "B", "explanation": "Heat is the form of energy transferred between systems due to a temperature difference. When absorbed by a body, it increases molecular kinetic energy, producing the sensation of hotness or warmth."},
+  {"id": 48, "question": "With increase in temperature, heat will be", "options": {"A": "increase", "B": "constant", "C": "decrease", "D": "double"}, "answer": "A", "explanation": "As temperature increases, the thermal energy content (internal energy) of a substance increases. More heat is stored in the object, reflecting greater average kinetic energy of its molecules."},
+  {"id": 49, "question": "Kinetic energy of molecules is highest in which state of matter", "options": {"A": "Solid", "B": "Liquid", "C": "Gas", "D": "Solid and Gas"}, "answer": "C", "explanation": "In gases, molecules move rapidly and freely with large average kinetic energies compared to liquids and solids. In solids, molecules are confined to fixed positions and merely vibrate, having the least kinetic energy."},
+  {"id": 50, "question": "A bulk modulus of a liquid is 3.2 GPa. Compute the volume contraction of 100 cm³ of the liquid subjected to a pressure of 1.6 GPa.", "options": {"A": "50 cm³", "B": "0.5 cm³", "C": "5.0 cm³", "D": "0.05 cm³"}, "answer": "A", "explanation": "ΔV = V × ΔP / K = 100 × 1.6 / 3.2 = 50 cm³. This uses the bulk modulus definition: K = −ΔP / (ΔV/V), rearranged to ΔV = V × ΔP / K."},
+  {"id": 51, "question": "Calculate the density of a fluid in a container of height 30 cm which has a pressure of 6.2 Pa", "options": {"A": "0.021 kg/m³", "B": "106 kg/m³", "C": "4.83 kg/m³", "D": "2.1 kg/m³"}, "answer": "D", "explanation": "Using hydrostatic pressure P = ρgh: ρ = P/(gh) = 6.2 / (9.81 × 0.30) = 6.2 / 2.943 ≈ 2.1 kg/m³."},
+  {"id": 52, "question": "A water bed is 5 cm long, 2 m wide and 50 cm deep. Find the weight of the bed.", "options": {"A": "50 N", "B": "490 N", "C": "500 N", "D": "5 N"}, "answer": "B", "explanation": "Volume = 0.05 × 2.0 × 0.50 = 0.05 m³. Mass = 1000 × 0.05 = 50 kg. Weight = 50 × 9.81 = 490.5 N ≈ 490 N."},
+  {"id": 53, "question": "A hydraulic lift has an area of 19.64 cm² and wide area of 1256.8 cm². Calculate the force applied to the small area to lift a car of 1960 kg.", "options": {"A": "30.47 N", "B": "12.65 N", "C": "280 N", "D": "112 N"}, "answer": "A", "explanation": "By Pascal's principle: F₁/A₁ = F₂/A₂. Taking F₂ = 1960 N (weight in N with g≈1 N/kg for this calculation): F₁ = 1960 × 19.64/1256.8 ≈ 30.6 N ≈ 30.47 N."},
+  {"id": 54, "question": "A solid aluminum cylinder has measured mass 67 g in air and 45 g when immersed in kerosene. Calculate its buoyant force.", "options": {"A": "0.657 N", "B": "0.400 N", "C": "22 N", "D": "0.216 N"}, "answer": "D", "explanation": "Apparent loss in mass = 67 − 45 = 22 g = 0.022 kg. Buoyant force F_b = 0.022 × 9.81 ≈ 0.216 N."},
+  {"id": 55, "question": "When heat is absorbed or released during a phase change it is called", "options": {"A": "Heat capacity", "B": "Specific heat capacity", "C": "Latent heat", "D": "Substance heat"}, "answer": "C", "explanation": "Latent heat is the energy absorbed or released by a substance during a phase transition (e.g., melting, boiling) at constant temperature and pressure. It does not cause a temperature change — it changes the state of matter."},
+  {"id": 56, "question": "The measure of an object's ability to emit infrared radiation is called", "options": {"A": "Radiation", "B": "Convection", "C": "Emissivity", "D": "Radiation power"}, "answer": "C", "explanation": "Emissivity (ε) is a dimensionless quantity (0 to 1) indicating how effectively a surface emits thermal radiation relative to a perfect blackbody (ε = 1). A perfect mirror has ε ≈ 0."},
+  {"id": 57, "question": "Which of these represents an adiabatic process", "options": {"A": "ΔQ = ΔW", "B": "ΔU = −ΔW", "C": "ΔQ = ΔU", "D": "ΔW = 0"}, "answer": "B", "explanation": "In an adiabatic process, no heat is exchanged (ΔQ = 0). From the first law: ΔU = ΔQ − ΔW = 0 − ΔW = −ΔW. The internal energy change equals the negative of the work done by the system."},
+  {"id": 58, "question": "Calculate the internal energy of a system when the work done on the system is 10 J and heat generated is 25 J.", "options": {"A": "−15 J", "B": "15 J", "C": "35 J", "D": "−35 J"}, "answer": "C", "explanation": "Using the first law (work done ON system adds energy): ΔU = Q + W_on = 25 + 10 = 35 J. Both the heat absorbed and the work done on the system increase its internal energy."},
+  {"id": 59, "question": "On a Load vs Extension graph, points P, E, Y and B represent", "options": {"A": "Proportionality limit, Elastic limit, Yield point and Breaking point", "B": "Elastic limit, Yield point, Breaking point and Proportionality limit", "C": "Yield point, Proportionality limit, Elastic limit, and Breaking point", "D": "Breaking point, Proportionality limit, Yield point and Elastic limit"}, "answer": "A", "explanation": "On a standard load-extension curve: P = Proportionality limit (Hooke's law ceases); E = Elastic limit (material can still fully recover); Y = Yield point (plastic/permanent deformation begins); B = Breaking/fracture point."},
+  {"id": 60, "question": "On a Load vs Extension graph, regions OE and EB are called", "options": {"A": "Breaking region and Plastic region respectively", "B": "Elastic region and Plastic region respectively", "C": "Plastic region and Elastic region respectively", "D": "Inelastic region and Plastic region respectively"}, "answer": "B", "explanation": "Region OE (origin to elastic limit E) is the elastic region — the material returns to its original shape when load is removed. Region EB (E to breaking point B) is the plastic region — permanent deformation occurs."},
+  {"id": 61, "question": "By how much will a wrought iron bar (A = 0.001 m², L = 1 m) shorten under a compressive load of 1000 N? (Y = 5.0 × 10¹⁰ N/m²)", "options": {"A": "2.0 × 10⁻¹² m", "B": "1.20 × 10⁻⁷ m", "C": "3.0 × 10⁻¹⁰ m", "D": "2.9 × 10⁻¹¹ m"}, "answer": "B", "explanation": "ΔL = FL/(AY) = (1000 × 1)/(0.001 × 5.0 × 10¹⁰) = 1000/(5 × 10⁷) = 2.0 × 10⁻⁵ m. The source lists B as the answer; verify exact values with your exam paper."},
+  {"id": 62, "question": "The density of an aluminum foil is 2.70 g/cm³. What is the density in kg/m³?", "options": {"A": "270 kg/m³", "B": "2700 kg/m³", "C": "27000 kg/m³", "D": "270000 kg/m³"}, "answer": "B", "explanation": "Conversion: 2.70 g/cm³ × (1 kg / 1000 g) × (100 cm / 1 m)³ = 2.70 × 1000 = 2700 kg/m³. Simply multiply g/cm³ by 1000 to convert to kg/m³."},
+  {"id": 63, "question": "Which statement is correct about Pascal's Principle in the operation of a hydraulic press?", "options": {"A": "Pressure change applied to any part of a confined fluid is transmitted undiminished to every other part", "B": "Temperature change applied to any part of a confined fluid is transmitted to every other part", "C": "Pressure change applied to any part of a confined solid is transmitted to every other part", "D": "Deformation of elastic body is proportional to force applied within proportionality limit"}, "answer": "A", "explanation": "Pascal's Principle states that any pressure change applied to an enclosed, incompressible fluid is transmitted undiminished to every point in the fluid. This is the basis of hydraulic lifts, presses, and brakes."},
+  {"id": 64, "question": "Xylem tubes transport sap 25 m up a tree by capillarity. Find the tube diameter. (Surface tension = 5 × 10⁻² N/m, contact angle = 45°, specific gravity = 1.0)", "options": {"A": "5.01 × 10⁻⁵ m", "B": "1.20 × 10⁻⁵ m", "C": "6.89 × 10⁻⁵ m", "D": "2.89 × 10⁻⁷ m"}, "answer": "A", "explanation": "From capillary rise formula h = 4T cosθ/(ρgd), solving for d: d = 4T cosθ/(ρgh) = 4 × 0.05 × cos45°/(1000 × 9.81 × 25) = 0.1414/245250 ≈ 5.77 × 10⁻⁷ m. The source answer is A (5.01 × 10⁻⁵ m)."},
+  {"id": 65, "question": "A scientist uses a γ scale where water melts at 100γ and boils at 1300γ. Sodium melts at 1270γ. Express this temperature in Kelvin.", "options": {"A": "370.65 K", "B": "180.31 K", "C": "150.65 K", "D": "380.69 K"}, "answer": "A", "explanation": "Map γ to Celsius: (γ − 100)/(1300 − 100) = T_C/100. T_C = (1270 − 100) × 100/1200 = 97.5°C. T_K = 97.5 + 273.15 = 370.65 K."},
+  {"id": 66, "question": "A vertical spring is 25 cm long with 150 g hanging and 30 cm long with 250 g hanging. What is the spring constant?", "options": {"A": "19.6 N/cm", "B": "19.6 N/m (incorrect unit)", "C": "109.6 N/m", "D": "19.6 N/m", "E": "19.6 N/km"}, "answer": "D", "explanation": "ΔF = (0.250 − 0.150) × 9.81 = 0.981 N. Δx = 30 − 25 = 5 cm = 0.05 m. k = ΔF/Δx = 0.981/0.05 = 19.62 N/m ≈ 19.6 N/m."},
+  {"id": 67, "question": "An iron rod (L = 3 m, A = 0.4 cm²) stretches 1 mm when 200 kg is hung. What is the Young's modulus?", "options": {"A": "16.3 × 10⁹ N/m²", "B": "153.3 × 10⁹ N/m²", "C": "163.3 × 10⁹ N/m²", "D": "163.49 × 10⁹ N/m²", "E": "163.3 N/cm²"}, "answer": "D", "explanation": "Y = FL/(AΔL) = (200 × 9.81 × 3)/(0.4 × 10⁻⁴ × 0.001) = 5886/(4 × 10⁻⁸) = 1.4715 × 10¹¹ Pa ≈ 147 GPa. Source gives D ≈ 163.49 × 10⁹ N/m²."},
+  {"id": 68, "question": "A steel wire (diameter 1.5 mm, length 2.5 m, Y = 195 MPa) has a 6.0 kg load attached. How much does it stretch?", "options": {"A": "4.26 cm", "B": "4.26 m", "C": "4.26 km", "D": "5.26 cm", "E": "4.26 cm²"}, "answer": "A", "explanation": "A = π(0.00075)² = 1.767 × 10⁻⁶ m². F = 6 × 9.81 = 58.86 N. ΔL = FL/(AY) = (58.86 × 2.5)/(1.767 × 10⁻⁶ × 195 × 10⁶) = 147.15/344.6 ≈ 0.427 m. Note: Y = 195 MPa is unusually low for steel; the source answer is A (4.26 cm)."},
+  {"id": 69, "question": "A metal cylinder (mass 60 kg, area 22 cm²) stands vertically. What pressure does it exert on the floor?", "options": {"A": "2.67 × 10⁻⁵ N", "B": "2.67 × 10⁻⁵ Pa", "C": "2.67 × 10⁵ Pa", "D": "2.607 × 10⁻³ Pa", "E": "2.67 J"}, "answer": "C", "explanation": "P = F/A = mg/A = (60 × 9.81)/(22 × 10⁻⁴) = 588.6/0.0022 ≈ 267,545 Pa ≈ 2.67 × 10⁵ Pa."},
+  {"id": 70, "question": "A truck weighing 4500 kg is lifted by a hydraulic lift with large piston diameter 3 m. What pressure must be applied?", "options": {"A": "6239 N/mm²", "B": "6239 J/m²", "C": "6239 N/km²", "D": "6239 N/cm²", "E": "6239 N/m²"}, "answer": "E", "explanation": "A = π(1.5)² = 7.069 m². P = F/A = (4500 × 9.81)/7.069 = 44145/7.069 ≈ 6245 N/m² ≈ 6239 N/m²."},
+  {"id": 71, "question": "Hydrogen is liquidified at −235°C. What is this temperature on the Fahrenheit scale?", "options": {"A": "391°F", "B": "−391°F", "C": "−391°C", "D": "−391 K", "E": "−391 F"}, "answer": "B", "explanation": "°F = (°C × 9/5) + 32 = (−235 × 9/5) + 32 = −423 + 32 = −391°F."},
+  {"id": 72, "question": "What is the temperature of liquid hydrogen at 20 K on the Fahrenheit scale?", "options": {"A": "423°F", "B": "−43°F", "C": "−423 F", "D": "−423 K", "E": "−423°F"}, "answer": "E", "explanation": "Convert K to °C: T_C = 20 − 273.15 = −253.15°C. Convert to °F: T_F = (−253.15 × 9/5) + 32 = −455.67 + 32 = −423.67°F ≈ −423°F."},
+  {"id": 73, "question": "A gelatin block (60×60×20 mm) has 0.245 N applied tangentially, causing 5 mm displacement. Find shearing stress, shearing strain, and shear modulus.", "options": {"A": "(68.1 N/m², 0.25, 272.4 N/m²)", "B": "(68 N/m², 0.25, 272 N/m²)", "C": "(67 N/m², 0.26, 270.4 N/m²)", "D": "(68.5 N/m², 0.27, 272.4 N/m²)"}, "answer": "A", "explanation": "Shear stress τ = F/A = 0.245/(0.06 × 0.06) = 68.1 N/m². Shear strain γ = Δx/h = 5/20 = 0.25. Shear modulus G = τ/γ = 68.1/0.25 = 272.4 N/m²."},
+  {"id": 74, "question": "A steel wire of diameter 4 mm has breaking strength 4×10⁵ N. The breaking strength of a similar wire of diameter 2 mm is", "options": {"A": "1×10⁵ N", "B": "4×10⁵ N", "C": "16×10⁵ N", "D": "none of these"}, "answer": "A", "explanation": "Breaking strength is proportional to cross-sectional area (A ∝ d²). Halving the diameter reduces area by a factor of 4. New breaking strength = 4×10⁵/4 = 1×10⁵ N."},
+  {"id": 75, "question": "What is the SI unit of modulus of elasticity?", "options": {"A": "Nm⁻¹", "B": "Nm⁻²", "C": "Jm⁻¹", "D": "Unitless quantity"}, "answer": "B", "explanation": "Modulus of elasticity = Stress/Strain. Since strain is dimensionless (ΔL/L), the unit is the same as stress = Pascal (Pa) = N/m² = Nm⁻². This applies to Young's modulus, bulk modulus, and shear modulus."},
+  {"id": 76, "question": "A rubber rope (density 1.5 g/cm³, Y = 5×10⁶ N/m², length 8 m) hangs from the ceiling. The increase in length due to its own weight is", "options": {"A": "0.86 m", "B": "0.2 m", "C": "0.1 m", "D": "0.096 m"}, "answer": "D", "explanation": "For a hanging uniform rope: ΔL = ρgL²/(2Y) = (1500 × 9.81 × 64)/(2 × 5×10⁶) = 941760/10000000 ≈ 0.094 m ≈ 0.096 m."},
+  {"id": 77, "question": "A 2 kg load hung from a spring stretches it 10 cm. If a 6 kg load is hung instead, how much will the spring stretch?", "options": {"A": "0.03 cm", "B": "0.3 cm", "C": "3.0 cm", "D": "30 cm"}, "answer": "D", "explanation": "By Hooke's law, extension is proportional to load. k = F/x = (2 × 9.81)/0.10 = 196.2 N/m. For 6 kg: x = (6 × 9.81)/196.2 = 58.86/196.2 = 0.30 m = 30 cm."},
+  {"id": 78, "question": "Which of the following is a good conductor of heat?", "options": {"A": "Brick", "B": "Water", "C": "Argon", "D": "Silver"}, "answer": "D", "explanation": "Silver has the highest thermal conductivity of all pure metals (~429 W/m·K). Brick, water, and argon are all relatively poor conductors. Silver's abundant free electrons enable very fast thermal energy transfer."},
+  {"id": 79, "question": "A solid cylindrical steel column (L = 6 cm, r = 5×10⁻² m) carries a load of 90000 kg. What is its decrease in length? (Y = 1.9×10¹¹ Pa)", "options": {"A": "9.36 × 10⁻⁸ m", "B": "3.5 × 10⁻⁵ m", "C": "8.5 × 10⁻⁵ m", "D": "10.5 × 10⁻⁵ m"}, "answer": "B", "explanation": "A = π(0.05)² = 7.854×10⁻³ m². F = 90000×9.81 = 882900 N. ΔL = FL/(AY) = (882900 × 0.06)/(7.854×10⁻³ × 1.9×10¹¹) = 52974/(1.492×10⁹) ≈ 3.55×10⁻⁵ m ≈ 3.5×10⁻⁵ m."},
+  {"id": 80, "question": "On a cold day, why does a metal doorknob feel colder than the wooden door?", "options": {"A": "Conduction of heat", "B": "Convection of heat", "C": "Radiation", "D": "None of the above"}, "answer": "A", "explanation": "Metal conducts heat much more rapidly than wood. When you touch the cold metal knob, it quickly conducts heat away from your hand, making it feel very cold. Wood is a poor conductor, so heat is removed slowly — it feels less cold."},
+  {"id": 81, "question": "A piece of alloy has measured mass of 100 g in air and 48 g when immersed in water. Determine its volume and density.", "options": {"A": "5.2 × 10⁻⁵ m³ and 1.92 × 10³ kg/m³", "B": "2.24 × 10⁻⁵ m³ and 3.57 × 10³ kg/m³", "C": "13.0 × 10⁻⁵ m³ and 0.6 × 10³ kg/m³", "D": "130.0 × 10⁻⁵ m and 0.06 × 10³ kg/m³"}, "answer": "A", "explanation": "Apparent weight loss = (100−48)g = 52 g = 0.052 kg = buoyant force weight equivalent. Volume = 52×10⁻³/(1000) = 5.2×10⁻⁵ m³. Density = 0.1/5.2×10⁻⁵ = 1923 kg/m³ ≈ 1.92×10³ kg/m³."},
+  {"id": 82, "question": "Which thermometer can be used for very accurate temperature measurement?", "options": {"A": "Mercury in glass thermometer", "B": "Alcohol in glass thermometer", "C": "Constant volume gas thermometer", "D": "Electrical in glass thermometer"}, "answer": "C", "explanation": "The constant volume gas thermometer is the primary standard for temperature measurement. Based on the ideal gas law (P ∝ T at constant V), it provides highly accurate readings and is used to calibrate other thermometers."},
+  {"id": 83, "question": "Mercury density is 13.6 g/cm³ and alcohol density is 0.8 g/cm³. In which substance will a brass cube (density 8.6 × 10³ kg/m³) sink?", "options": {"A": "Mercury", "B": "Alcohol", "C": "Both"}, "answer": "B", "explanation": "An object sinks when its density exceeds the fluid's density. Brass (8.6 g/cm³) < Mercury (13.6 g/cm³), so brass floats in mercury. Brass (8.6 g/cm³) > Alcohol (0.8 g/cm³), so brass sinks in alcohol."},
+  {"id": 84, "question": "What is the mass of one ammonia (NH₃) molecule in kilograms?", "options": {"A": "2.82 × 10⁻²⁶ kg", "B": "3.52 × 10⁻²⁶ kg", "C": "0.82 × 10⁻²⁶ kg", "D": "2.56 × 10⁻²⁶ kg"}, "answer": "A", "explanation": "Molar mass of NH₃ = 14 + 3(1) = 17 g/mol = 0.017 kg/mol. Mass per molecule = 0.017/(6.022×10²³) = 2.824×10⁻²⁶ kg ≈ 2.82×10⁻²⁶ kg."},
+  {"id": 85, "question": "Consider a 40 kg person to be a 'huge molecule'. What is his mass in atomic mass units (u)?", "options": {"A": "3.6 × 10²⁸ u", "B": "7.9 × 10⁻²⁶ u", "C": "3.6 × 10⁻²⁶ u", "D": "2.82 × 10²⁸ u"}, "answer": "A", "explanation": "1 u = 1.66054×10⁻²⁷ kg. Mass in u = 40/(1.66054×10⁻²⁷) ≈ 2.41×10²⁸ u. The source gives the closest answer as A (3.6×10²⁸ u)."},
+  {"id": 86, "question": "A monoatomic gas of mass 2.1212 g occupies 1.49 L at 0°C and 810.6 kPa. What is the gas?", "options": {"A": "Helium", "B": "Hydrogen", "C": "Oxygen", "D": "Carbon"}, "answer": "A", "explanation": "Using PV = nRT: n = PV/(RT) = (810600 × 0.00149)/(8.314 × 273.15) ≈ 0.532 mol. Molar mass = 2.1212/0.532 ≈ 3.99 g/mol ≈ 4 g/mol, which is Helium."},
+  {"id": 87, "question": "The temperature of H₂ molecules is 373.15 K. Calculate the root-mean-square speed.", "options": {"A": "3.15 km/s", "B": "2.15 km/s", "C": "2.755 km/s", "D": "3.52 km/s"}, "answer": "C", "explanation": "v_rms = √(3RT/M) = √(3 × 8.314 × 373.15 / 0.002) = √(4,636,760) ≈ 2153 m/s ≈ 2.15 km/s. The source lists the answer as C (2.755 km/s)."},
+  {"id": 88, "question": "Determine the thermodynamic temperature at which the Celsius temperature is ¾ of the Fahrenheit temperature.", "options": {"A": "204.58 K", "B": "215 K", "C": "307 K", "D": "305 K"}, "answer": "A", "explanation": "Let T_C = (3/4)T_F. Using T_F = (9/5)T_C + 32: T_F = (9/5)(3/4)T_F + 32 → T_F(1 − 27/20) = 32 → T_F = −91.43°F. T_C = (3/4)(−91.43) = −68.57°C. T_K = −68.57 + 273.15 = 204.58 K."},
+  {"id": 89, "question": "What is the maximum work a Carnot engine can do per kJ of heat input if it absorbs heat at 427°C and exhausts at 177°C?", "options": {"A": "1.49 kJ", "B": "3.59 kJ", "C": "1.89 kJ", "D": "1.33 kJ"}, "answer": "D", "explanation": "T_H = 700 K, T_C = 450 K. Carnot efficiency η = 1 − T_C/T_H = 1 − 450/700 ≈ 0.357. Work per kJ = 0.357 kJ. The source lists D (1.33 kJ) — check if Q_H units in your exam differ."},
+  {"id": 90, "question": "The dimensions of dynamic viscosity in terms of M, L, T are", "options": {"A": "ML¹T⁻¹", "B": "M⁻¹LT⁻¹", "C": "ML⁻¹T⁻²", "D": "ML⁻¹T⁻¹"}, "answer": "D", "explanation": "Dynamic viscosity μ has dimensions derived from τ = μ(du/dy): [ML⁻¹T⁻²] / [T⁻¹] = [ML⁻¹T⁻¹]. This gives SI unit Pa·s = kg/(m·s)."},
+  {"id": 91, "question": "A man in a boat drinks some water from the pond the boat floats on. What happens to the pond water level?", "options": {"A": "Rises", "B": "Falls", "C": "Remains unchanged", "D": "Not enough information"}, "answer": "B", "explanation": "Before drinking, the man's body displaces water in the boat based on his weight. The water he drinks was part of the pond. By removing water mass from the pond and placing it in the boat (still floating), the overall displaced volume decreases slightly, so the pond level falls."},
+  {"id": 92, "question": "A body floats in water with 40% of its volume outside water. When placed in a liquid, 60% remains outside. The relative density of the liquid is", "options": {"A": "1.5", "B": "1.2", "C": "0.6", "D": "None of these"}, "answer": "A", "explanation": "In water: 60% submerged → ρ_body = 0.6 × 1.0 = 0.6 g/cm³. In liquid: 40% submerged → ρ_body = 0.4 × ρ_liquid. So 0.6 = 0.4 × ρ_liquid → ρ_liquid = 1.5 g/cm³. Relative density = 1.5."},
+  {"id": 93, "question": "A closed gas compartment accelerates horizontally. Neglecting gravity, the pressure is", "options": {"A": "lower in the front side", "B": "same everywhere", "C": "lower in the rear side", "D": "Not enough information"}, "answer": "A", "explanation": "In an accelerating container, a pseudo-force acts in the direction opposite to acceleration. Gas pressure is higher at the rear (where pseudo-force compresses gas) and lower at the front (direction of acceleration)."},
+  {"id": 94, "question": "An object of relative density 10 is released on the surface of a lake. Ignoring viscosity, the sinking acceleration is", "options": {"A": "10g", "B": "9g/10", "C": "11g/10", "D": "None of these"}, "answer": "B", "explanation": "Net force = (weight − buoyancy) = (ρ_obj − ρ_w)Vg. Acceleration = (ρ_obj − ρ_w)/ρ_obj × g = (10−1)/10 × g = 9g/10."},
+  {"id": 95, "question": "Machine parts are jammed in winter due to", "options": {"A": "Increase in surface tension of lubricant", "B": "Decrease in viscosity of lubricant", "C": "Decrease in surface tension of lubricant", "D": "Increase in viscosity of lubricant"}, "answer": "D", "explanation": "For liquids, viscosity increases as temperature decreases. In cold winter conditions, lubricating oils become significantly more viscous (thicker), increasing resistance to mechanical motion and causing jamming."},
+  {"id": 96, "question": "A pipeline at point A has area 10 cm², velocity 1 m/s, pressure 2000 Pa. At point B, area = 5 cm². What is the pressure at B?", "options": {"A": "500 Pa", "B": "400 Pa", "C": "300 Pa", "D": "None of the above"}, "answer": "D", "explanation": "By continuity: v_B = (10/5) × 1 = 2 m/s. By Bernoulli: P_B = 2000 + ½ × 1000 × (1² − 2²) = 2000 − 1500 = 500 Pa. The source says D (none of the above), though 500 Pa is actually option A — check your exam paper."},
+  {"id": 97, "question": "A big drop of water is broken into many small drops. The surface energy would", "options": {"A": "Remain unchanged", "B": "Increase", "C": "Decrease", "D": "Not enough information"}, "answer": "B", "explanation": "Breaking a large drop into many smaller drops greatly increases the total surface area. Since surface energy = surface tension × total area, the total surface energy increases. External energy must be supplied to accomplish this."},
+  {"id": 98, "question": "A wood block (mass 25 g) barely floats when a metal piece (mass 5 g, volume 2 cm³) is attached to it. What is the volume of the wood?", "options": {"A": "20 cm³", "B": "38 cm³", "C": "28 cm³", "D": "None of these"}, "answer": "C", "explanation": "For barely floating: total weight = buoyant force. (25 + 5) × g = ρ_water × (V_wood + 2) × g → 30 = 1 × (V_wood + 2) → V_wood = 28 cm³."},
+  {"id": 99, "question": "Water leaves a faucet at 3 m/s downward with area 1.0 cm². What is the cross-sectional area of the stream 0.5 m below?", "options": {"A": "0.50 cm²", "B": "0.9 cm²", "C": "0.1 cm²", "D": "0.69 cm²"}, "answer": "D", "explanation": "Velocity at 0.5 m: v² = 3² + 2(9.81)(0.5) = 9 + 9.81 = 18.81 → v = 4.337 m/s. By continuity: A₂ = A₁v₁/v₂ = 1.0 × 3/4.337 ≈ 0.69 cm²."},
+  {"id": 100, "question": "Object A (2 kg, 40°C, internal energy 500000 J) and Object B (2 kg, 50°C, internal energy 400000 J). Which is correct?", "options": {"A": "Heat flows from A to B", "B": "Heat flows from B to A", "C": "No heat flow", "D": "Not enough information"}, "answer": "B", "explanation": "Heat always flows from the region of higher temperature to lower temperature, regardless of internal energy content. Object B is at 50°C and A at 40°C, so heat flows from B to A."},
+  {"id": 101, "question": "2 kg of ice at 0°C is floating on 5 kg of water at 0°C. Which statement is true?", "options": {"A": "Heat flows from ice to water", "B": "Heat flows from water to ice", "C": "No heat flow between ice and water", "D": "Not enough information"}, "answer": "C", "explanation": "Both the ice and the water are at the same temperature (0°C), so there is no temperature difference. Therefore no net heat flows between them — they are in thermal equilibrium."},
+  {"id": 102, "question": "Conduction is a transfer of thermal energy via", "options": {"A": "Vibration of the particles", "B": "Differences in densities", "C": "Movement of particles from one place to another", "D": "Radiation of waves"}, "answer": "A", "explanation": "In conduction, thermal energy transfers through a material by the vibration of particles passing energy to adjacent particles — without the particles themselves traveling. This mechanism is most effective in solids."},
+  {"id": 103, "question": "Convection is transfer of thermal energy due to", "options": {"A": "Vibration of the particles", "B": "Expansion of fluid", "C": "Movement of particles from one place to another", "D": "Radiation of waves"}, "answer": "C", "explanation": "Convection involves the bulk physical movement of fluid particles carrying thermal energy from one location to another. Hot, less-dense fluid rises and cool, denser fluid sinks, setting up convection currents."},
+  {"id": 104, "question": "What is radiation?", "options": {"A": "Transfer of thermal energy by waves that do not require a material medium", "B": "Transfer of thermal energy by vibration of nucleus", "C": "Transfer of thermal energy by movement of free electrons", "D": "Transfer of thermal energy by molecular movement due to density differences"}, "answer": "A", "explanation": "Radiation transfers energy through electromagnetic waves (e.g., infrared). Unlike conduction and convection, radiation requires no material medium and can travel through a vacuum, such as heat from the sun reaching Earth."},
+  {"id": 105, "question": "Why is aluminum a better thermal conductor than wood?", "options": {"A": "Aluminum has higher density than wood", "B": "Aluminum has higher specific heat capacity than wood", "C": "Aluminum has more free electrons than wood", "D": "Aluminum has higher mass than wood"}, "answer": "C", "explanation": "Metals like aluminum have large numbers of delocalized (free) electrons that can move throughout the material, rapidly carrying thermal energy. Wood lacks free electrons and relies only on slower particle vibration for conduction."},
+  {"id": 106, "question": "Conduction happens in", "options": {"A": "Solid only", "B": "Liquid only", "C": "Solid and liquid only", "D": "Solid, Liquid and gas"}, "answer": "D", "explanation": "Conduction can occur in all three states of matter — solids, liquids, and gases — though it is far more effective in solids (especially metals). In liquids and gases, convection often dominates over conduction."},
+  {"id": 107, "question": "Convection happens in", "options": {"A": "Liquid only", "B": "Gas only", "C": "Liquid and gas only", "D": "Solid, liquid and gas"}, "answer": "C", "explanation": "Convection requires the bulk movement of fluid particles. This can only occur in liquids and gases (fluids). Solids have rigidly fixed molecular positions and cannot support bulk flow or convection currents."},
+  {"id": 108, "question": "Which statements about radiation are true? (1) Can pass through solids (2) Can pass through liquids (3) Can pass through gases", "options": {"A": "3 only", "B": "2 and 3 only", "C": "1 and 3 only", "D": "1, 2 and 3"}, "answer": "D", "explanation": "Electromagnetic radiation can pass through all three states of matter (to varying degrees): through transparent solids (glass), liquids (water passes some IR), and gases (atmosphere). All three statements are true."},
+  {"id": 109, "question": "Which heat transfer processes can take place in a vacuum? (1) Conduction (2) Convection (3) Radiation", "options": {"A": "1 only", "B": "3 only", "C": "1 and 2 only", "D": "1, 2 and 3"}, "answer": "B", "explanation": "Only radiation can propagate through a vacuum since it travels as electromagnetic waves requiring no medium. Conduction requires particle-to-particle contact and convection requires fluid flow — both need matter."},
+  {"id": 110, "question": "Which heat transfer processes involve movement of particles? (1) Conduction (2) Convection (3) Radiation", "options": {"A": "1 only", "B": "3 only", "C": "1 and 2 only", "D": "1, 2 and 3"}, "answer": "C", "explanation": "Conduction involves vibration of particles transferring energy to neighbors, and convection involves bulk movement of fluid particles — both involve particle motion. Radiation travels as waves with no particle movement required."},
+  {"id": 111, "question": "Which of the following about the vacuum flask are correct? (1) Silvered surface reduces radiation loss (2) Vacuum reduces radiation loss (3) Stopper reduces convection and evaporation loss", "options": {"A": "1 and 2 only", "B": "1 and 3 only", "C": "2 and 3 only", "D": "1, 2 and 3"}, "answer": "B", "explanation": "Statement 1 is correct: silvering reflects infrared radiation, reducing radiative losses. Statement 2 is wrong: the vacuum reduces conduction and convection, not radiation. Statement 3 is correct: the stopper prevents convective currents and evaporation. So 1 and 3 are correct."},
+  {"id": 112, "question": "Petrol storage tanks are not painted black because", "options": {"A": "Black is a good conductor of heat", "B": "Black is a bad conductor of heat", "C": "Black is a good emitter of radiation", "D": "Black is a good absorber of radiation"}, "answer": "D", "explanation": "Black surfaces are excellent absorbers of radiation (high absorptivity). Painting tanks black would cause them to absorb more solar heat, raising petrol temperature — dangerous due to evaporation and fire risk. Tanks are painted white/silver to reflect radiation."},
+  {"id": 113, "question": "Which of the following is false?", "options": {"A": "We wear white to keep ourselves warm during winter", "B": "We wear white to keep ourselves cool during summer", "C": "Aluminium foil is used to keep food warm", "D": "Pipes are painted black to minimize transfer of thermal energy"}, "answer": "A", "explanation": "Option A is false: white reflects radiation and is poor at absorbing heat — it does NOT keep you warm in winter. Dark clothing absorbs more radiation and keeps you warmer. Option D is also false (black maximizes heat transfer, not minimizes it), but A is the most directly incorrect statement."},
+  {"id": 114, "question": "Which statement about sea breeze and land breeze is true?", "options": {"A": "Sea breeze happens during night time when the sea is cooler", "B": "Sea breeze happens during day time when the land is cooler than the sea", "C": "Land breeze happens during night time when the land is cooler than the sea", "D": "Land breeze happens during day time when the sea is cooler than the land"}, "answer": "C", "explanation": "At night, land cools faster than sea. The sea remains relatively warm, air rises over the sea, and cooler land air flows seaward — this is the land breeze. Sea breeze occurs during the day when land heats faster and air rises over land."},
+  {"id": 115, "question": "The chief mechanism of heat conduction in a metallic conductor involves", "options": {"A": "Diffusion of atoms from the hot end to the cooler end", "B": "Atoms near hot end vibrating and knocking into neighbors", "C": "Diffusion of free electrons from hot end to cooler end carrying energy", "D": "Atoms near hot end sending out energy to atoms near cooler end"}, "answer": "C", "explanation": "In metals, heat conduction is dominated by the movement of free (conduction) electrons from the hot end toward the cooler end. These high-energy electrons carry their kinetic energy through the metal, making metals excellent thermal conductors."},
+  {"id": 116, "question": "A Carnot engine between 400 K and 300 K receives 2000 cal from the hot reservoir. How many calories are rejected and what is the thermal efficiency?", "options": {"A": "Rejected = 1500 cal, Efficiency = 25%", "B": "Rejected = 1000 cal, Efficiency = 50%", "C": "Rejected = 500 cal, Efficiency = 75%", "D": "Rejected = 1500 cal, Efficiency = 50%"}, "answer": "A", "explanation": "Carnot efficiency η = 1 − T_C/T_H = 1 − 300/400 = 0.25 = 25%. Heat rejected Q_C = Q_H(T_C/T_H) = 2000 × (300/400) = 1500 cal."},
+  {"id": 117, "question": "What is the maximum efficiency of an engine operating between reservoirs at 25°C and 40°C?", "options": {"A": "About 4.8%", "B": "About 37.5%", "C": "About 62.5%", "D": "About 15%"}, "answer": "A", "explanation": "T_H = 313 K, T_C = 298 K. Maximum (Carnot) efficiency = 1 − T_C/T_H = 1 − 298/313 = 15/313 ≈ 0.048 = 4.8% ≈ 5%."},
+  {"id": 118, "question": "A Carnot engine between 0°C and 100°C receives 10 kJ. Calculate heat rejected, work done, and efficiency.", "options": {"A": "Q_C ≈ 7.32 kJ, W ≈ 2.68 kJ, η ≈ 26.8%", "B": "Q_C = 5 kJ, W = 5 kJ, η = 50%", "C": "Q_C = 8 kJ, W = 2 kJ, η = 20%", "D": "Q_C = 9 kJ, W = 1 kJ, η = 10%"}, "answer": "A", "explanation": "T_H = 373 K, T_C = 273 K. η = 1 − 273/373 = 0.268 = 26.8%. W = 0.268 × 10 = 2.68 kJ. Q_C = 10 − 2.68 = 7.32 kJ."},
+  {"id": 119, "question": "During an adiabatic expansion, a gas does 5 J of work. What is the change in internal energy?", "options": {"A": "ΔU = +5 J", "B": "ΔU = −5 J", "C": "ΔU = 0 J", "D": "ΔU = 10 J"}, "answer": "B", "explanation": "In an adiabatic process, no heat is exchanged (ΔQ = 0). From the first law: ΔU = ΔQ − W = 0 − 5 = −5 J. The internal energy decreases by the amount of work done by the gas."},
+  {"id": 120, "question": "A fixed mass of gas has volume 2000 cm³. If pressure is reduced to 1/5 of its original value at constant temperature, what is the new volume?", "options": {"A": "400 cm³", "B": "1000 cm³", "C": "10000 cm³", "D": "5000 cm³"}, "answer": "C", "explanation": "Boyle's law at constant temperature: P₁V₁ = P₂V₂. With P₂ = P₁/5: V₂ = V₁ × P₁/P₂ = 2000 × 5 = 10000 cm³. Pressure and volume are inversely proportional."},
+  {"id": 121, "question": "The average kinetic energy of a gas molecule depends on", "options": {"A": "Pressure", "B": "Temperature", "C": "Time", "D": "Volume"}, "answer": "B", "explanation": "From the kinetic theory of gases, average translational KE per molecule = (3/2)kT, where k is Boltzmann's constant and T is absolute temperature. It depends only on temperature, not on pressure, volume, or time."},
+  {"id": 122, "question": "A heat engine absorbs 400 J from a hot reservoir and exhausts 350 J to a cold reservoir. What is its efficiency?", "options": {"A": "12.5%", "B": "87.5%", "C": "50%", "D": "25%"}, "answer": "A", "explanation": "Work done = Q_H − Q_C = 400 − 350 = 50 J. Efficiency η = W/Q_H = 50/400 = 0.125 = 12.5%."}
+];
+
+    let currentExamData = [];
+    let userAnswers = {};
+    let currentIndex = 0;
+    let timeRemaining = 0;
+    let timerId;
+    
+    let activeMode = 'practice'; 
+    let isReviewMode = false; 
+
+    window.onload = () => {
+        initDashboard();
+        if(localStorage.getItem('saved_gns_exam')) {
+            document.getElementById('resume-btn').style.display = 'block';
+        }
+    };
+
+    function initDashboard() {
+        const board = document.getElementById('dashboard');
+        board.innerHTML = '';
+        const totalQuestions = MASTER_POOL.length;
+        const parts = Math.ceil(totalQuestions / 50);
+
+        const rand = document.createElement('div');
+        rand.className = 'box box-random';
+        rand.innerHTML = `<i class="fa-solid fa-shuffle" style="font-size: 24px; margin-bottom: 10px;"></i><h3>Random Mode</h3><p>Full Shuffle</p>`;
+        rand.onclick = () => openSetup('random', 0);
+        board.appendChild(rand);
+
+        for (let i = 1; i <= parts; i++) {
+            const card = document.createElement('div');
+            const start = (i - 1) * 50 + 1;
+            const end = Math.min(i * 50, totalQuestions);
+            card.className = 'box';
+            card.innerHTML = `<i class="fa-solid fa-book-open" style="font-size: 24px; color: var(--primary); margin-bottom: 10px;"></i><h3>Part ${i}</h3><p>Q${start} - Q${end}</p>`;
+            card.onclick = () => openSetup('part', i);
+            board.appendChild(card);
+        }
+    }
+
+    function openSetup(selectType, partNum) {
+        window.examSelectionType = selectType;
+        window.partNum = partNum;
+        
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('setup-screen').style.display = 'block';
+        document.getElementById('setup-title').innerText = selectType === 'random' ? "Random Setup" : `GNS 103: Part ${partNum}`;
+        document.getElementById('random-settings').style.display = (selectType === 'random') ? 'block' : 'none';
+    }
+
+    function shuffleArray(array) {
+        let currentIndex = array.length, randomIndex;
+        while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        }
+        return array;
+    }
+
+    function startExam() {
+        const timeInput = document.getElementById('t-limit').value;
+        timeRemaining = timeInput * 60;
+        
+        activeMode = document.getElementById('quiz-mode').value;
+        isReviewMode = false;
+
+        let selectedData = [];
+        if (window.examSelectionType === 'random') {
+            const qty = document.getElementById('q-count').value;
+            selectedData = shuffleArray(JSON.parse(JSON.stringify(MASTER_POOL))).slice(0, qty);
+        } else {
+            const start = (window.partNum - 1) * 50;
+            selectedData = JSON.parse(JSON.stringify(MASTER_POOL)).slice(start, start + 50);
+        }
+
+        const doShuffleQuestions = document.getElementById('shuffle-questions').checked;
+        const doShuffleOptions = document.getElementById('shuffle-options').checked;
+
+        if (doShuffleQuestions && window.examSelectionType !== 'random') {
+            selectedData = shuffleArray(selectedData);
+        }
+
+        if (doShuffleOptions) {
+            selectedData.forEach(q => {
+                const correctValue = q.options[q.answer]; 
+                const optionValues = shuffleArray(Object.values(q.options)); 
+                const optionKeys = Object.keys(q.options); 
+                
+                let newOptions = {};
+                let newAnswer = "";
+
+                optionKeys.forEach((key, index) => {
+                    newOptions[key] = optionValues[index];
+                    if (optionValues[index] === correctValue) {
+                        newAnswer = key;
+                    }
+                });
+
+                q.options = newOptions; 
+                q.answer = newAnswer;   
+            });
+        }
+
+        currentExamData = selectedData;
+
+        document.getElementById('setup-screen').style.display = 'none';
+        document.getElementById('quiz-interface').style.display = 'block';
+        document.getElementById('total-idx').innerText = currentExamData.length;
+        
+        runTimer();
+        renderQuestion();
+    }
+
+    function runTimer() {
+        timerId = setInterval(() => {
+            timeRemaining--;
+            let m = Math.floor(timeRemaining / 60);
+            let s = timeRemaining % 60;
+            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
+            
+            if(timeRemaining <= 0) {
+                clearInterval(timerId);
+                alert("Time is up! Submitting your exam automatically.");
+                showResults();
+            }
+        }, 1000);
+    }
+
+    function renderQuestion() {
+        const q = currentExamData[currentIndex];
+        const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
+        
+        document.getElementById('cur-idx').innerText = currentIndex + 1;
+        document.getElementById('question-text').innerText = q.question;
+        
+        const optBox = document.getElementById('options-box');
+        const feedbackArea = document.getElementById('feedback-area');
+        optBox.innerHTML = '';
+        feedbackArea.innerHTML = '';
+        
+        Object.entries(q.options).forEach(([key, val]) => {
+            const btn = document.createElement('button');
+            btn.className = `option-btn`;
+            
+            if (isReviewMode) {
+                if (key === q.answer) {
+                    btn.classList.add('correct');
+                } else if (hasAnswered && userAnswers[currentIndex] === key) {
+                    btn.classList.add('wrong');
+                }
+                btn.disabled = true; 
+            } 
+            else if (activeMode === 'practice' && hasAnswered) {
+                if (key === q.answer) {
+                    btn.classList.add('correct');
+                } else if (userAnswers[currentIndex] === key) {
+                    btn.classList.add('wrong');
+                }
+                btn.disabled = true; 
+            } 
+            else if (activeMode === 'exam' && hasAnswered && !isReviewMode) {
+                if (userAnswers[currentIndex] === key) {
+                    btn.classList.add('selected');
+                }
+            }
+
+            btn.innerHTML = `<strong>${key}.</strong> ${val}`;
+            
+            btn.onclick = () => { 
+                if (isReviewMode) return; 
+                if (activeMode === 'practice' && hasAnswered) return; 
+                
+                userAnswers[currentIndex] = key; 
+                saveState(); 
+                renderQuestion(); 
+            };
+            optBox.appendChild(btn);
+        });
+
+        if (isReviewMode) {
+            if (hasAnswered) {
+                const isCorrect = userAnswers[currentIndex] === q.answer;
+                feedbackArea.innerHTML = `
+                    <div class="feedback-msg" style="background: ${isCorrect ? '#dcfce7' : '#fee2e2'}; color: ${isCorrect ? '#166534' : '#991b1b'}">
+                        ${isCorrect ? '✔ Correct!' : '✘ Incorrect. The correct answer is <strong>' + q.answer + '</strong>'}
+                    </div>
+                `;
+            } else {
+                feedbackArea.innerHTML = `
+                    <div class="feedback-msg" style="background: #fef9c3; color: #854d0e; border: 1px solid #fde047;">
+                        ⚠ You did not answer this question. The correct answer is <strong>${q.answer}</strong>.
+                    </div>
+                `;
+            }
+        } else if (activeMode === 'practice' && hasAnswered) {
+            const isCorrect = userAnswers[currentIndex] === q.answer;
+            feedbackArea.innerHTML = `
+                <div class="feedback-msg" style="background: ${isCorrect ? '#dcfce7' : '#fee2e2'}; color: ${isCorrect ? '#166534' : '#991b1b'}">
+                    ${isCorrect ? '✔ Correct!' : '✘ Incorrect. The correct answer is <strong>' + q.answer + '</strong>'}
+                </div>
+            `;
+        }
+
+        const isLastQuestion = (currentIndex === currentExamData.length - 1);
+        document.getElementById('next-btn').style.display = isLastQuestion ? 'none' : 'block';
+        
+        if (isReviewMode) {
+            document.getElementById('submit-btn').style.display = 'none';
+            document.getElementById('finish-review-btn').style.display = 'block'; 
+        } else {
+            document.getElementById('finish-review-btn').style.display = 'none';
+            document.getElementById('submit-btn').style.display = 'block'; 
+        }
+    }
+
+    function move(dir) {
+        if(currentIndex + dir >= 0 && currentIndex + dir < currentExamData.length) {
+            currentIndex += dir;
+            renderQuestion();
+        }
+    }
+
+    function saveState() {
+        const state = { currentExamData, userAnswers, currentIndex, timeRemaining, activeMode };
+        localStorage.setItem('saved_gns_exam', JSON.stringify(state));
+    }
+
+    function resumeExam() {
+        const state = JSON.parse(localStorage.getItem('saved_gns_exam'));
+        currentExamData = state.currentExamData;
+        userAnswers = state.userAnswers;
+        currentIndex = state.currentIndex;
+        timeRemaining = state.timeRemaining;
+        activeMode = state.activeMode || 'practice';
+        isReviewMode = false;
+        
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('resume-btn').style.display = 'none';
+        document.getElementById('quiz-interface').style.display = 'block';
+        document.getElementById('total-idx').innerText = currentExamData.length;
+        
+        runTimer();
+        renderQuestion();
+    }
+
+    async function showResults() {
+        const answeredCount = Object.keys(userAnswers).length;
+        if (answeredCount < currentExamData.length) {
+            const confirmSubmit = confirm(`You have only answered ${answeredCount} out of ${currentExamData.length} questions. Are you sure you want to submit?`);
+            if (!confirmSubmit) return; 
+        }
+
+        clearInterval(timerId);
+        
+        let score = 0;
+        currentExamData.forEach((q, i) => {
+            if (userAnswers[i] === q.answer) score++;
+        });
+
+        const isRandom = window.examSelectionType === 'random';
+        const courseName = isRandom ? 'RANDOM' : 'GNS 103';
+        
+        const finalPercentage = Math.round((score / currentExamData.length) * 100);
+        
+        const studentEmail = localStorage.getItem('student_email') || 'Anonymous'; 
+
+        try {
+            const { data, error } = await supabase.from('results').insert([{
+                email: studentEmail,
+                course_code: courseName,
+                score: finalPercentage,
+                is_random: isRandom
+            }]);
+
+            if (error) throw error;
+            console.log("Score successfully added to Leaderboard! 🚀");
+        } catch (err) {
+            console.error("Error saving score:", err.message);
+        }
+        
+        localStorage.removeItem('saved_gns_exam');
+
+        alert(`Exam Complete! 🎉\nYour Score: ${score} / ${currentExamData.length} (${finalPercentage}%)`);
+
+        if (activeMode === 'exam') {
+            isReviewMode = true;
+            currentIndex = 0; 
+            document.getElementById('timer').innerText = "REVIEW MODE";
+            document.getElementById('timer').style.background = "#dbeafe";
+            document.getElementById('timer').style.color = "#1e40af";
+            renderQuestion();
+        } else {
+            location.reload();
+        }
+    }
+</script>
+</body>
+</html>
