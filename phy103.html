@@ -61,7 +61,7 @@
 <body>
 
 <nav>
-    <div id="user-info" style="font-weight: 600;">GNS 103 Practice Portal</div>
+    <div id="user-info" style="font-weight: 600;">PHY 103 Practice Portal</div>
     <div style="display: flex; gap: 15px;">
         <button class="btn" style="background:var(--accent); display:none; min-width: auto; padding: 0.5rem 1rem;" id="resume-btn" onclick="resumeExam()">Resume</button>
         <button class="btn" style="background:#64748b; min-width: auto; padding: 0.5rem 1rem;" onclick="document.body.classList.toggle('dark-mode')"><i class="fa-solid fa-moon"></i></button>
@@ -304,7 +304,7 @@
         
         document.getElementById('dashboard').style.display = 'none';
         document.getElementById('setup-screen').style.display = 'block';
-        document.getElementById('setup-title').innerText = selectType === 'random' ? "Random Setup" : `GNS 103: Part ${partNum}`;
+        document.getElementById('setup-title').innerText = selectType === 'random' ? "Random Setup" : `PHY 103: Part ${partNum}`;
         document.getElementById('random-settings').style.display = (selectType === 'random') ? 'block' : 'none';
     }
 
@@ -519,7 +519,7 @@
         });
 
         const isRandom = window.examSelectionType === 'random';
-        const courseName = isRandom ? 'RANDOM' : 'GNS 103';
+        const courseName = isRandom ? 'RANDOM' : 'PHY 103';
         
         const finalPercentage = Math.round((score / currentExamData.length) * 100);
         
