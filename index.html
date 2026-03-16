@@ -12,17 +12,12 @@
     <div class="container">
         <form id="signupForm">
             <h1>Signup</h1>
-            
+
             <div class="input-box">
                 <input type="text" name="fullname" id="fullname" placeholder="Full Name" required>
                 <i class="fa-solid fa-user-tag"></i>
             </div>
 
-            <div class="input-box">
-                <input type="text" name="matric" id="matric" placeholder="Matric No. (ABC/25/1234)" required pattern="[A-Z]{3}/[0-9]{2}/[0-9]{4}">
-                <i class="fa-solid fa-user"></i>
-            </div>
-            
             <div class="input-box">
                 <input type="password" name="password" id="password" placeholder="Password" required/>
                 <i class="fa-solid fa-eye" id="togglePassword" style="cursor: pointer;"></i>
@@ -39,7 +34,7 @@
                        style="background: transparent; border: none; outline: none; color: #fff; width: 100%; height: 50px; font-size: 16px;">
                 <i class="fa-solid fa-mobile-screen-button"></i>
             </div>
-    
+
             <div class="input-box">
                 <input type="email" name="email" id="email" placeholder="Email" required>
                 <i class="fa-solid fa-paper-plane"></i>
@@ -90,7 +85,6 @@
         submitBtn.disabled = true;
 
         const fullname    = document.getElementById('fullname').value.trim();
-        const matric      = document.getElementById('matric').value.trim();
         const password    = document.getElementById('password').value;
         const email       = document.getElementById('email').value.trim();
         const department  = document.getElementById('dep').value.trim();
@@ -98,21 +92,7 @@
         const phone       = countryCode + document.getElementById('phone').value.trim();
 
         try {
-            // STEP 1: CHECK IF MATRIC NUMBER ALREADY EXISTS
-            const { data: existingStudent, error: checkError } = await db
-                .from('students')
-                .select('matric')
-                .eq('matric', matric)
-                .maybeSingle();
-
-            if (existingStudent) {
-                alert('This Matric Number is already registered! ❌');
-                submitBtn.innerText = "Register";
-                submitBtn.disabled = false;
-                return; // Stop the signup process
-            }
-
-            // STEP 2: CREATE AUTH USER
+            // STEP 1: CREATE AUTH USER
             const { data: authData, error: authError } = await db.auth.signUp({
                 email: email,
                 password: password,
@@ -120,7 +100,7 @@
 
             if (authError) throw authError;
 
-            // STEP 3: INSERT STUDENT DETAILS
+            // STEP 2: INSERT STUDENT DETAILS
             const userId = authData.user ? authData.user.id : null;
 
             if (userId) {
@@ -129,7 +109,6 @@
                     .insert([{
                         id: userId,
                         fullname: fullname,
-                        matric: matric,
                         email: email,
                         department: department,
                         phone: phone
@@ -148,6 +127,6 @@
             submitBtn.disabled = false;
         }
     });
-</script>
+    </script>
 </body>
 </html>
