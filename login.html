@@ -92,10 +92,10 @@
     <div class="container">
         <form id="loginForm">
             <h1>LOGIN</h1>
-            
+
             <div class="input-box">
-                <input type="text" name="matric" id="matric" placeholder="Matric No. (ABC/25/1234)" required pattern="[A-Z]{3}/[0-9]{2}/[0-9]{4}">
-                <i class="fa-solid fa-user"></i>
+                <input type="email" name="email" id="email" placeholder="Email Address" required>
+                <i class="fa-solid fa-envelope"></i>
             </div>
 
             <div class="input-box">
@@ -107,11 +107,11 @@
                 <label><input type="checkbox"/> Remember me</label>
                 <a href="#" id="forgotPassLink">Forgot password?</a>
             </div>
-            
+
             <button type="submit" class="btn" id="loginBtn">Login</button>
-            
+
             <div id="message"></div>
-            
+
             <div class="register-link"> 
                 <p>Don't have an account? <a href="index.html">Signup</a></p>
             </div>
@@ -122,10 +122,10 @@
         <div class="modal-content">
             <span class="close-btn" id="closeModal">&times;</span>
             <h2>Reset Password</h2>
-            <p>Enter your Matric Number to request a reset link from the administrator.</p>
+            <p>Enter your Email Address to request a reset link from the administrator.</p>
             <div class="input-box" style="margin-bottom: 20px;">
-                <input type="text" id="resetMatric" placeholder="Matric No. (ABC/25/1234)" required>
-                <i class="fa-solid fa-user-graduate" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); color:rgba(255,255,255,0.7);"></i>
+                <input type="email" id="resetEmail" placeholder="Email Address" required>
+                <i class="fa-solid fa-envelope" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); color:rgba(255,255,255,0.7);"></i>
             </div>
             <button class="btn" id="sendResetBtn" style="width: 100%; background: #fff; color: #333; font-weight: bold; padding: 10px; border-radius: 40px; border: none; cursor: pointer;">Request Reset</button>
             <div id="resetFeedback" style="margin-top: 15px; font-size: 14px; font-weight: bold; display: none;"></div>
@@ -135,7 +135,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script>
-        // 1. INITIALIZE SUPABASE (safe - only created once)
+        // 1. INITIALIZE SUPABASE 
         const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
         if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -160,7 +160,7 @@
             e.preventDefault();
             document.getElementById('forgotModal').style.display = 'flex';
             document.getElementById('resetFeedback').style.display = 'none';
-            document.getElementById('resetMatric').value = '';
+            document.getElementById('resetEmail').value = '';
         });
 
         document.getElementById('closeModal').addEventListener('click', function() {
@@ -174,12 +174,12 @@
         });
 
         document.getElementById('sendResetBtn').addEventListener('click', function() {
-            const resetMatric = document.getElementById('resetMatric').value;
+            const resetEmail = document.getElementById('resetEmail').value.trim();
             const resetFeedback = document.getElementById('resetFeedback');
-            if (!resetMatric) {
+            if (!resetEmail) {
                 resetFeedback.style.display = 'block';
                 resetFeedback.style.color = '#ff4d4d';
-                resetFeedback.innerText = "Please enter your Matric Number! ❌";
+                resetFeedback.innerText = "Please enter your Email Address! ❌";
                 return;
             }
             this.innerText = "Sending... ⏳";
@@ -193,11 +193,11 @@
             }, 1500);
         });
 
-        // 4. LOGIN LOGIC
+        
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const matricInput = document.getElementById('matric').value.trim();
+            const emailInput  = document.getElementById('email').value.trim();
             const passInput   = document.getElementById('password').value;
             const messageBox  = document.getElementById('message');
             const loginBtn    = document.getElementById('loginBtn');
@@ -208,28 +208,17 @@
             messageBox.className = '';
 
             try {
-                // Step 1: Find email by matric number
-                const { data: studentData, error: fetchError } = await db
-                    .from('students')
-                    .select('email')
-                    .ilike('matric', matricInput)
-                    .single();
-
-                if (fetchError || !studentData) {
-                    throw new Error("Matric number not found. Check format (e.g. ABC/25/1234)");
-                }
-
-                // Step 2: Sign in with email + password
+                // Directly sign in with email + password via Supabase Auth
                 const { data: authData, error: authError } = await db.auth.signInWithPassword({
-                    email: studentData.email,
+                    email: emailInput,
                     password: passInput
                 });
 
-                if (authError) throw new Error(authError.message || "Wrong password.");
+                if (authError) throw new Error(authError.message || "Invalid login credentials.");
 
-                // Step 3: Save session info and redirect
+                // Save session info and redirect
                 localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('student_matric', matricInput);
+                localStorage.setItem('student_email', emailInput);
 
                 loginBtn.innerText = "Access Granted! ✅";
                 setTimeout(() => { window.location.href = 'dashboard.html'; }, 800);
