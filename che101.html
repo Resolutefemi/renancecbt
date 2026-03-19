@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GNS 103 - Information Literacy Portal</title>
+    <title>CHE 101 CBT PORTAL</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -26,85 +27,432 @@
         .box:hover { transform: translateY(-5px); border-color: var(--primary); }
         .box-random { background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; }
         
-        .option-btn { display: block; width: 100%; padding: 1rem; margin: 0.75rem 0; border: 2px solid #e2e8f0; border-radius: 10px; background: var(--card-bg); color: var(--text); text-align: left; cursor: pointer; font-size: 1rem; transition: 0.2s; }
-        .option-btn:not(:disabled):hover { background: #f1f5f9; }
-        
-        /* Instant Feedback Styles */
-        .option-btn.correct { background-color: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: bold; }
-        .option-btn.wrong { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
-        
-        .feedback-container { margin-top: 1.5rem; animation: fadeIn 0.3s; }
-        .feedback-status { padding: 1rem; border-radius: 10px; font-weight: bold; text-align: center; border: 1px solid; margin-bottom: 0.5rem; }
-        
-        /* New Explanation Box Style */
-        .explanation-box { background: rgba(30, 64, 175, 0.1); border-left: 5px solid var(--primary); padding: 1rem; border-radius: 4px; color: var(--text); line-height: 1.6; }
-        .dark-mode .explanation-box { background: rgba(30, 64, 175, 0.2); }
+        /* ── Setup Screen Form Elements ── */
+        .setup-group { margin: 1.5rem 0; text-align: left; max-width: 300px; margin-left: auto; margin-right: auto; }
+        .setup-group label { font-weight: 600; font-size: 0.9rem; color: var(--text); display: block; margin-bottom: 8px; }
+        .setup-input { width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; background: var(--bg); color: var(--text); outline: none; transition: 0.2s; }
+        .setup-input:focus { border-color: var(--primary); }
 
+        /* ── Checkbox Styles ── */
+        .checkbox-group { display: flex; flex-direction: column; gap: 12px; margin-top: 1rem; background: rgba(0,0,0,0.02); padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; }
+        .custom-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.95rem; color: var(--text); font-weight: 500; user-select: none; }
+        .custom-checkbox input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
+
+        /* ── Quiz Buttons ── */
+        .option-btn { display: block; width: 100%; padding: 1rem; margin: 0.75rem 0; border: 2px solid #e2e8f0; border-radius: 10px; background: var(--card-bg); color: var(--text); text-align: left; cursor: pointer; font-size: 1rem; transition: 0.2s; }
+        .option-btn:not(:disabled):hover { background: #f1f5f9; border-color: #cbd5e1; }
+        
+        /* State Styles */
+        .option-btn.selected { background-color: #e0f2fe !important; border-color: #3b82f6 !important; color: #0369a1 !important; } 
+        .option-btn.correct { background-color: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: bold; } 
+        .option-btn.wrong { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; } 
+        
+        .feedback-msg { margin-top: 1rem; padding: 1rem; border-radius: 10px; font-weight: bold; text-align: center; animation: fadeIn 0.3s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .controls { display: flex; justify-content: space-between; margin-top: 2rem; }
-        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; background: var(--primary); color: white; transition: 0.2s; }
-        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .controls { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 2rem; }
+        .btn { padding: 0.85rem 1.8rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; background: var(--primary); color: white; transition: 0.2s; font-size: 1rem; }
+        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
     </style>
 </head>
 <body>
 
 <nav>
-    <div id="user-info" style="font-weight: 600;">MTS 101 Practice Portal</div>
+    <div id="user-info" style="font-weight: 600;">CHE 101 Practice Portal</div>
     <div style="display: flex; gap: 15px;">
-        <button class="btn" style="background:var(--accent); display:none;" id="resume-btn" onclick="resumeExam()">Resume</button>
-        <button class="btn" style="background:#64748b" onclick="document.body.classList.toggle('dark-mode')"><i class="fa-solid fa-circle-half-stroke"></i></button>
+        <button class="btn" style="background:var(--accent); display:none;" id="resume-btn" onclick="resumeExam()">Resume Saved Exam</button>
+        <button class="btn" style="background:#64748b" onclick="document.body.classList.toggle('dark-mode')"><i class="fa-solid fa-moon"></i></button>
     </div>
 </nav>
 
 <main>
     <div id="dashboard"></div>
 
-    <div id="setup-screen" style="display:none; text-align: center; background: var(--card-bg); padding: 2rem; border-radius: 15px;">
-        <h2 id="setup-title"></h2>
-        <div id="random-settings" style="margin: 1.5rem 0;">
-            <label>Question Quantity:</label><br>
-            <input type="number" id="q-count" value="50" style="padding: 10px; border-radius: 5px; width: 80px;">
+    <div id="setup-screen" style="display:none; text-align: center; background: var(--card-bg); padding: 3rem 2rem; border-radius: 15px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+        <h2 id="setup-title" style="margin-bottom: 2rem; color: var(--primary);"></h2>
+        
+        <div class="setup-group">
+            <label>Select Mode:</label>
+            <select id="quiz-mode" class="setup-input">
+                <option value="practice">Practice Mode (Instant Answers)</option>
+                <option value="exam">Exam Mode (Answers at the End)</option>
+            </select>
         </div>
-        <div style="margin: 1.5rem 0;">
-            <label>Time (Minutes):</label><br>
-            <input type="number" id="t-limit" value="30" style="padding: 10px; border-radius: 5px; width: 80px;">
+
+        <div id="random-settings">
+            <div class="setup-group">
+                <label>Question Quantity:</label>
+                <input type="number" id="q-count" value="50" class="setup-input" max="392">
+            </div>
         </div>
-        <button class="btn" onclick="startExam()">Start Practice</button>
+        
+        <div class="setup-group">
+            <label>Time Limit (Minutes):</label>
+            <input type="number" id="t-limit" value="30" class="setup-input">
+        </div>
+
+        <div class="setup-group checkbox-group">
+            <label class="custom-checkbox" title="Mix up the order of the questions">
+                <input type="checkbox" id="shuffle-questions" checked>
+                Shuffle Questions
+            </label>
+            <label class="custom-checkbox" title="Mix up the A, B, C, D options for each question">
+                <input type="checkbox" id="shuffle-options" checked>
+                Shuffle Options (A, B, C, D)
+            </label>
+        </div>
+        
+        <button class="btn" onclick="startExam()" style="margin-top: 1.5rem; width: 100%; max-width: 300px;">Start Now <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
     <div id="quiz-interface" style="display:none;">
-        <div style="display:flex; justify-content: space-between; font-weight: bold; margin-bottom: 10px;">
-            <span>Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
-            <span id="timer" style="color:var(--danger)">30:00</span>
+        
+        <div style="display:flex; justify-content: space-between; align-items: center; font-weight: bold; margin-bottom: 15px; padding: 0 10px; flex-wrap: wrap; gap: 10px;">
+            <span style="color: var(--text); font-size: 1.05rem;">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
+            
+            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding: 8px 16px; font-size: 0.9rem;" onclick="showResults()">Submit Exam</button>
+                <button class="btn" id="finish-review-btn" style="background:var(--primary); display:none; padding: 8px 16px; font-size: 0.9rem;" onclick="location.reload()">Finish Review</button>
+                <span id="timer" style="color:var(--danger); background: rgba(220,38,38,0.1); padding: 6px 14px; border-radius: 20px; font-size: 1.05rem;">30:00</span>
+            </div>
         </div>
-        <div style="background: var(--card-bg); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h3 id="question-text" style="line-height: 1.5;"></h3>
+        
+        <div style="background: var(--card-bg); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);">
+            <h3 id="question-text" style="line-height: 1.6; margin-bottom: 1.5rem;"></h3>
             <div id="options-box"></div>
             <div id="feedback-area"></div>
         </div>
-        <div class="controls">
-            <button class="btn" style="background:#64748b" id="prev-btn" onclick="move(-1)">Previous</button>
+        
+        <div class="controls" style="display: flex; justify-content: space-between; margin-top: 2rem;">
+            <button class="btn" style="background:#64748b" onclick="move(-1)">Previous</button>
             <button class="btn" id="next-btn" onclick="move(1)">Next Question</button>
-            <button class="btn" id="submit-btn" style="background:var(--success); display:none;" onclick="showResults()">Submit Exam</button>
         </div>
     </div>
 </main>
 
 <script>
-        const MASTER_POOL = [
- 
+    
+    const MASTER_POOL = [
+          { "id": 1, "question": "What determines the degree of completeness of a reaction?", "options": ["catalyst", "intimacy of contact", "rate of reaction", "equilibrium constant"], "answer": "equilibrium constant", "explanation": "The equilibrium constant dictates how far a reaction will proceed towards the products before reaching a state of balance." },
+  { "id": 2, "question": "What is the substance called that causes an alteration of the speed of a chemical reaction?", "options": ["variable", "gas", "catalyst", "equilibrium constant"], "answer": "catalyst", "explanation": "A catalyst speeds up or alters the rate of a chemical reaction without being consumed itself." },
+  { "id": 3, "question": "What substance does not have catalytic capability, but does increase the effectiveness of a catalyst?", "options": ["enzyme", "promoter", "anti-catalyst", "true constant"], "answer": "promoter", "explanation": "Promoters are added to catalysts to improve their efficiency and performance during a reaction." },
+  { "id": 4, "question": "Who first proposed the atomic theory?", "options": ["John Daltan", "Julius Robert", "Lord Kelvin", "William Thomson"], "answer": "John Daltan", "explanation": "John Dalton is credited with proposing the first modern scientific atomic theory in the early 1800s." },
+  { "id": 5, "question": "What is the temperature at which the vapor pressure of a liquid slightly exceeds the pressure of the atmosphere above the liquid?", "options": ["absolute zero", "boiling point", "Kelvin", "melting point"], "answer": "boiling point", "explanation": "The boiling point is reached when a liquid's vapor pressure equals the external atmospheric pressure." },
+  { "id": 6, "question": "When the pressure on a liquid is increased, the boiling point:", "options": ["goes up", "goes down", "stays the same", "fluctuates"], "answer": "goes up", "explanation": "Higher pressure means more energy (heat) is required for the vapor pressure to overcome the atmospheric pressure." },
+  { "id": 7, "question": "What is the property of a fluid that prevents it from flowing when subjected to an applied force?", "options": ["compressibility", "volume", "viscosity", "density"], "answer": "viscosity", "explanation": "Viscosity is the measure of a fluid's resistance to flow or deformation." },
+  { "id": 8, "question": "High-viscosity fluids tend to:", "options": ["resist flow", "flow easily", "evaporate quickly", "freeze instantly"], "answer": "resist flow", "explanation": "Fluids with high viscosity, like honey or syrup, have a high resistance to flow." },
+  { "id": 9, "question": "What theory states that equal volumes of different gases contain the same number of molecules when compared under the same conditions.", "options": ["Quantum Theory", "Kinetic Theory", "Molecular Law", "Avogadro's Law"], "answer": "Avogadro's Law", "explanation": "Avogadro's Law states that equal volumes of all gases, at the same temperature and pressure, have the same number of molecules." },
+  { "id": 10, "question": "What are atoms of the same element that differ in weight?", "options": ["isotopes", "enzymes", "neutrons", "ions"], "answer": "isotopes", "explanation": "Isotopes are atoms with the same number of protons but different numbers of neutrons, giving them different atomic weights." },
+  { "id": 11, "question": "Who first came up with the periodic table?", "options": ["Amedeo Avogadro", "Dmitry Mendeleyev", "Charles Darwin", "Isaac Newton"], "answer": "Dmitry Mendeleyev", "explanation": "Dmitri Mendeleev published the first widely recognized periodic table in 1869." },
+  { "id": 12, "question": "What is the number of the element on the Periodic Table called?", "options": ["periodic number", "element number", "quantum number", "atomic number"], "answer": "atomic number", "explanation": "The atomic number represents the number of protons in an atom's nucleus and determines its position on the periodic table." },
+  { "id": 13, "question": "Who invented the X-ray?", "options": ["Wilhelm Conrad Roentgen", "Marie Curie", "Pierre Curie", "Ernest Rutherford"], "answer": "Wilhelm Conrad Roentgen", "explanation": "Wilhelm Roentgen discovered X-rays in 1895, earning him the first Nobel Prize in Physics." },
+  { "id": 14, "question": "What is the center of the atom?", "options": ["atom core", "nucleus", "electron", "proton"], "answer": "nucleus", "explanation": "The nucleus is the dense, positively charged center of an atom containing protons and neutrons." },
+  { "id": 15, "question": "Who's theory proposed that electrons are arranged in shells, or quantum levels, at a distance from the nucleus?", "options": ["Rutherford", "Newton", "Bohr", "Davis"], "answer": "Bohr", "explanation": "Niels Bohr proposed the Bohr model in 1913, depicting electrons orbiting the nucleus in distinct energy levels or shells." },
+  { "id": 16, "question": "If helium has an atomic number of 2, how many electrons does it have?", "options": ["1", "2", "3", "4"], "answer": "2", "explanation": "In a neutral atom, the number of electrons equals the atomic number (number of protons)." },
+  { "id": 17, "question": "According to Bohr's Theory, what is the maximum number of electron orbital layers?", "options": ["2", "3", "5", "7"], "answer": "7", "explanation": "There are 7 primary electron shells corresponding to the 7 periods on the periodic table." },
+  { "id": 18, "question": "Which gas is not an inert gas?", "options": ["oxygen", "neon", "argon", "helium"], "answer": "oxygen", "explanation": "Oxygen is highly reactive, whereas neon, argon, and helium are noble (inert) gases." },
+  { "id": 19, "question": "Inert gases have:", "options": ["one electron in the outer shell", "completely filled outer shells", "two electrons in the outer shell", "no electrons"], "answer": "completely filled outer shells", "explanation": "Inert (noble) gases are stable because their valence electron shells are full." },
+  { "id": 20, "question": "Do inert gases enter into chemical combinations in nature?", "options": ["no", "yes", "sometimes", "always"], "answer": "no", "explanation": "Because they have full valence shells, inert gases rarely react with other elements under natural conditions." },
+  { "id": 21, "question": "The inner-most electron shell can contain how many electrons?", "options": ["7", "4", "2", "1"], "answer": "2", "explanation": "The first electron shell (K shell) can hold a maximum of 2 electrons." },
+  { "id": 22, "question": "Which is a proton donor?", "options": ["acid", "base", "salt", "water"], "answer": "acid", "explanation": "According to the Brønsted-Lowry theory, an acid is a substance that donates a proton (H+)." },
+  { "id": 23, "question": "Which is a proton acceptor?", "options": ["acid", "base", "salt", "water"], "answer": "base", "explanation": "According to the Brønsted-Lowry theory, a base is a substance that accepts a proton." },
+  { "id": 24, "question": "Alkali metals have:", "options": ["low melting points", "high melting points", "no melting points", "variable melting points"], "answer": "low melting points", "explanation": "Alkali metals (Group 1) are relatively soft and have comparatively low melting points." },
+  { "id": 25, "question": "How many Alkali metals are there?", "options": ["2", "4", "5", "6"], "answer": "6", "explanation": "There are six alkali metals: Lithium, Sodium, Potassium, Rubidium, Cesium, and Francium." },
+  { "id": 26, "question": "Which is not an Alkali metal?", "options": ["lithium", "sodium", "gold", "potassium"], "answer": "gold", "explanation": "Gold is a transition metal, while lithium, sodium, and potassium are alkali metals." },
+  { "id": 27, "question": "What was Melvin Calvin was known for his study of?", "options": ["x-rays", "photosythesis", "magnetics", "boiling point"], "answer": "photosythesis", "explanation": "Melvin Calvin won a Nobel Prize for discovering the Calvin Cycle, a key part of photosynthesis." },
+  { "id": 28, "question": "What element is crucial to the existence of living organisms?", "options": ["iron", "lithium", "carbon", "neon"], "answer": "carbon", "explanation": "Carbon is the foundation of organic chemistry and is essential to all known life on Earth." },
+  { "id": 29, "question": "What is the process of rapid oxidation of a substance with simultaneous evolution of heat?", "options": ["viscosity", "melting", "explosion", "combustion"], "answer": "combustion", "explanation": "Combustion is a high-temperature exothermic redox chemical reaction between a fuel and an oxidant." },
+  { "id": 30, "question": "What is the gradual change of a liquid into a gas without boiling?", "options": ["evaporation", "melting", "combustion", "boiling"], "answer": "evaporation", "explanation": "Evaporation is a type of vaporization that occurs on the surface of a liquid below its boiling point." },
+  { "id": 31, "question": "What is the breaking down of a substance or compound into its simpler components?", "options": ["combustion", "decomposition", "melting", "combination"], "answer": "decomposition", "explanation": "Decomposition reactions involve a single compound breaking down into two or more simpler substances." },
+  { "id": 32, "question": "What are chemical changes in organic substances caused by the action of enzymes called?", "options": ["reaction", "oxidation", "enzymiphication", "fermentation"], "answer": "fermentation", "explanation": "Fermentation is a metabolic process that produces chemical changes in organic substrates through the action of enzymes." },
+  { "id": 33, "question": "What compounds are formed by the reaction of acids and alcohols?", "options": ["ethers", "enzymes", "esters", "bases"], "answer": "esters", "explanation": "Esterification is the reaction between an acid and an alcohol, producing an ester and water." },
+  { "id": 34, "question": "Which of the following elements must be present for fire to exist?", "options": ["oxygen or chlorine", "oxygen or carbon", "carbon or lithium", "neon or iron"], "answer": "oxygen or chlorine", "explanation": "Fire typically requires oxygen as an oxidizing agent, though halogens like chlorine can also support combustion in some cases." },
+  { "id": 35, "question": "What is the number of electrons that an atom can give to or accept from another atom in a chemical reaction?", "options": ["no more than 2", "valence", "atomic number", "electron shell"], "answer": "valence", "explanation": "Valence refers to the combining capacity of an element, determined by the number of electrons it can lose, add, or share." },
+  { "id": 36, "question": "Who was key to developing the valence theory?", "options": ["Melvin Calvin", "Henry Dow", "Sir Edward Franklin", "Humphry David"], "answer": "Sir Edward Franklin", "explanation": "Edward Frankland is credited as one of the originators of the concept of valency in chemistry." },
+  { "id": 37, "question": "What is the temperature at which a liquid congeals into the solid state at a given pressure?", "options": ["boiling point", "melting point", "solid point", "freezing point"], "answer": "freezing point", "explanation": "The freezing point is the temperature at which a liquid turns into a solid." },
+  { "id": 38, "question": "What is the change of a substance from the solid to the liquid state called?", "options": ["decomposition", "fusion", "combustion", "explosion"], "answer": "fusion", "explanation": "Fusion, or melting, is the physical process that results in the phase transition of a substance from a solid to a liquid." },
+  { "id": 39, "question": "Who invented vulcanization for the rubber industry?", "options": ["Charles Goodyear", "James Firestone", "Robert Michelin", "Albert Brookstone"], "answer": "Charles Goodyear", "explanation": "Charles Goodyear discovered the vulcanization process in 1839, which makes rubber more durable." },
+  { "id": 40, "question": "What process combines rubber and sulfer at a high temperature?", "options": ["fulmination", "vulcanization", "fermentation", "distillation"], "answer": "vulcanization", "explanation": "Vulcanization involves heating natural rubber with sulfur to form cross-links between polymer chains." },
+  { "id": 41, "question": "Who won the 1944 Nobel Prize in chemistry for his work in nuclear fission?", "options": ["Fritz Straussmann", "Joseph Lussac", "Otto Hahn", "Johann Glauber"], "answer": "Otto Hahn", "explanation": "Otto Hahn was awarded the Nobel Prize in Chemistry in 1944 for his discovery of the fission of heavy nuclei." },
+  { "id": 42, "question": "How many Halogens are there?", "options": ["8", "7", "6", "5"], "answer": "5", "explanation": "There are five primary halogens: Fluorine, Chlorine, Bromine, Iodine, and Astatine (excluding the synthetic element Tennessine)." },
+  { "id": 43, "question": "What elements are Hydrocarbons composed of?", "options": ["Hydrogen and Chlorine", "Argon and Uranium", "Hydrogen and Carbon", "Oxygen and Carbon"], "answer": "Hydrogen and Carbon", "explanation": "As the name suggests, hydrocarbons are organic compounds consisting entirely of hydrogen and carbon." },
+  { "id": 44, "question": "What is something called when it changes color in response to the nature of its chemical environment?", "options": ["enzyme", "indicator", "promoter", "changer"], "answer": "indicator", "explanation": "A pH indicator is a halochromic chemical compound added in small amounts to a solution so the pH can be determined visually." },
+  { "id": 45, "question": "What color does Litmus change to in acid solutions?", "options": ["red", "orange", "blue", "green"], "answer": "red", "explanation": "Blue litmus paper turns red under acidic conditions." },
+  { "id": 46, "question": "What color does Litmus change to in basic solutions?", "options": ["red", "blue", "orange", "green"], "answer": "blue", "explanation": "Red litmus paper turns blue under basic or alkaline conditions." },
+  { "id": 47, "question": "What does an atom that loses an electron form?", "options": ["cation", "anion", "isotope", "isomer"], "answer": "cation", "explanation": "Losing a negatively charged electron leaves the atom with a net positive charge, forming a cation." },
+  { "id": 48, "question": "What does an atom that gains an electron form?", "options": ["cation", "anion", "isotope", "isomer"], "answer": "anion", "explanation": "Gaining a negatively charged electron gives the atom a net negative charge, forming an anion." },
+  { "id": 49, "question": "What is one of two or more species of atom having an identical atomic number but differing in mass number called?", "options": ["metal", "enzyme", "resin", "isotope"], "answer": "isotope", "explanation": "Isotopes are variants of a particular chemical element which differ in neutron number, and consequently in nucleon number." },
+  { "id": 50, "question": "What is one of two or more more molecules, having the same chemical compositions, but a differing arrangement of atoms?", "options": ["isomer", "isotope", "ion", "cation"], "answer": "isomer", "explanation": "Isomers are molecules with the same molecular formula but different chemical structures." },
+  { "id": 51, "question": "Who invented the Carbon-14 dating method?", "options": ["Irving Langmuir", "Williard Libby", "August Hofmann", "Otto Hahn"], "answer": "Williard Libby", "explanation": "Willard Libby pioneered radiocarbon dating in 1949, for which he won a Nobel Prize." },
+  { "id": 52, "question": "Amalgams are types of what?", "options": ["alloys", "elements", "metals", "isotopes"], "answer": "alloys", "explanation": "An amalgam is an alloy of mercury with another metal." },
+  { "id": 53, "question": "Alloys are:", "options": ["pure elements", "combinations of carbon and other elements", "combinations of metals", "always acids"], "answer": "combinations of metals", "explanation": "An alloy is a mixture or solid solution composed of a metal and another element, usually a second metal." },
+  { "id": 54, "question": "What is the ability of a solid substance to resist abrasion and surface deformation called?", "options": ["hardness", "softness", "conductivity", "tensile strength"], "answer": "hardness", "explanation": "Hardness is a measure of the resistance to localized plastic deformation induced by either mechanical indentation or abrasion." },
+  { "id": 55, "question": "What is the resistance to breakage called?", "options": ["hardness", "elasticity", "malleability", "tensile strength"], "answer": "tensile strength", "explanation": "Tensile strength is the maximum stress that a material can withstand while being stretched or pulled before breaking." },
+  { "id": 56, "question": "What is the ability to return to the original shape after being deformed called?", "options": ["hardness", "elasticity", "malleability", "tensile strength"], "answer": "elasticity", "explanation": "Elasticity is the ability of a body to resist a distorting influence and to return to its original size and shape when that influence is removed." },
+  { "id": 57, "question": "What is the ability to be shaped called?", "options": ["hardness", "elasticity", "malleability", "tensile strength"], "answer": "malleability", "explanation": "Malleability is a physical property of metals that defines their ability to be hammered, pressed, or rolled into thin sheets without breaking." },
+  { "id": 58, "question": "What is the sum of all the atomic weights of all the atoms in a molecule?", "options": ["Electron Weight", "Neutron Weight", "Molecular Weight", "Heavyness"], "answer": "Molecular Weight", "explanation": "Molecular weight is the mass of a given molecule, calculated as the sum of the atomic weights of each constituent element." },
+  { "id": 59, "question": "What is the smallest particle of a substance having the specific chemical properties of that substance?", "options": ["atom", "molecule", "electron", "nucleus"], "answer": "molecule", "explanation": "A molecule is the smallest particle in a chemical element or compound that has the chemical properties of that element or compound." },
+  { "id": 60, "question": "What term indicates the hydrogen ion concentration of a solution?", "options": ["dH", "PD", "Lh", "pH"], "answer": "pH", "explanation": "pH is a scale used to specify the acidity or basicity of an aqueous solution, representing the concentration of hydrogen ions." },
+  { "id": 61, "question": "What is the chemical formula for salt?", "options": ["NaCl", "H20", "CaSO4", "MgBr2"], "answer": "NaCl", "explanation": "Table salt is composed of sodium and chlorine, making its chemical formula NaCl (Sodium Chloride)." },
+  { "id": 62, "question": "What is the chemical formula for water?", "options": ["NaCl", "H2O", "WaTr", "MgBr2"], "answer": "H2O", "explanation": "Water is composed of two hydrogen atoms and one oxygen atom, hence H2O." },
+  { "id": 63, "question": "What is a solvent for salt?", "options": ["oil", "carbon", "iron", "water"], "answer": "water", "explanation": "Water is an excellent solvent for polar substances and ionic compounds like salt (NaCl)." },
+  { "id": 64, "question": "Polymers are made up of smaller repeating units called?", "options": ["strings", "cells", "monomers", "elements"], "answer": "monomers", "explanation": "A monomer is a molecule that can react together with other monomer molecules to form a larger polymer chain." },
+  { "id": 65, "question": "The formula weight of the compound, Al2(SO4)3 18H2O is:", "options": ["394.4 g", "666.4 g", "110,900 g", "466.8 g", "561.2 g"], "answer": "666.4 g", "explanation": "The formula weight is calculated by summing the atomic weights of all atoms in Al2(SO4)3 and the 18 water molecules of crystallization." },
+  { "id": 66, "question": "The weight of a millimole of (NH4)2HPO4 is:", "options": ["132 g", "114 g", "1.14x10-3 g", "0.132 g", "6.02 x 1020 g"], "answer": "0.132 g", "explanation": "The molar mass of (NH4)2HPO4 is approximately 132 g/mol. A millimole is one-thousandth of a mole, so its weight is 132 / 1000 = 0.132 g." },
+  { "id": 67, "question": "How many moles of alanine, C3H7NO2, are there in 159 g of alanine?", "options": ["1.42 x 104", "1.78", "0.992", "0.560", "3.31"], "answer": "1.78", "explanation": "The molar mass of alanine (C3H7NO2) is roughly 89 g/mol. 159 g divided by 89 g/mol equals approximately 1.78 moles." },
+  { "id": 68, "question": "Which of the following has a positive charge?", "options": ["Proton", "neutron", "anion", "electron", "atom"], "answer": "Proton", "explanation": "Protons are subatomic particles found in the nucleus of an atom that carry a positive electrical charge." },
+  { "id": 69, "question": "Rutherford carried out experiments in which a beam of alpha particles was directed at a thin piece of metal foil. From these experiments he concluded that:", "options": ["electrons are massive particles.", "The positively charged parts of atoms are moving about with a velocity approaching the speed of light.", "The positively charged parts of atoms are extremely small and extremely heavy particles.", "The diameter of an electron is approximately equal to that of the nucleus.", "Electrons travel in circular orbits around the nucleus."], "answer": "The positively charged parts of atoms are extremely small and extremely heavy particles.", "explanation": "Rutherford's gold foil experiment demonstrated that atoms have a small, dense, positively charged nucleus." },
+  { "id": 70, "question": "Consider the species 72Zn, 75As and 74Ge. These species have:", "options": ["the same number of electrons.", "the same number of protons.", "the same number of neutrons.", "the same number of protons and neutrons.", "the same mass number."], "answer": "the same number of neutrons.", "explanation": "Zn (atomic number 30, mass 72) has 42 neutrons. As (atomic number 33, mass 75) has 42 neutrons. Ge (atomic number 32, mass 74) has 42 neutrons." },
+  { "id": 71, "question": "The neutral atoms of all of the isotopes of the same element have", "options": ["different numbers of protons.", "equal numbers of neutrons.", "the same number of electrons.", "the same mass numbers.", "the same masses."], "answer": "the same number of electrons.", "explanation": "Isotopes of the same element have the same number of protons. In neutral atoms, the number of electrons equals the number of protons." },
+  { "id": 72, "question": "What is the atomic weight of a hypothetical element consisting of two isotopes, one with mass = 64.23 amu (26.0%), and one with mass = 65.32 amu?", "options": ["65.3 amu", "64.4 amu", "64.9 amu", "65.0 amu", "64.8 amu"], "answer": "65.0 amu", "explanation": "The atomic weight is the weighted average: (64.23 * 0.26) + (65.32 * 0.74) = 16.70 + 48.34 = 65.04 amu." },
+  { "id": 73, "question": "Naturally occurring rubidium consists of just two isotopes. One of the isotopes consists of atoms having a mass of 84.912 amu; the other of 86.901 amu. What is the percent natural abundance of the heavier isotope?", "options": ["15%", "28%", "37%", "72%", "85%"], "answer": "28%", "explanation": "Using the average atomic mass of Rubidium (~85.47 amu), the calculation yields approximately 28% for the heavier isotope (86.901 amu)." },
+  { "id": 74, "question": "What is the frequency of light having a wavelength of 4.50 x 10^-6 cm?", "options": ["2.84 x 10^-12 s^-1", "2.10 x 10^4 s^-1", "4.29 x 10^14 s^-1", "1.06 x 10^22 s^-1", "6.67 x 10^15 s^-1"], "answer": "6.67 x 10^15 s^-1", "explanation": "Using the equation c = \u03bb\u03bd, \u03bd = c / \u03bb. (3.00 x 10^8 m/s) / (4.50 x 10^-8 m) = 6.67 x 10^15 s^-1." },
+  { "id": 75, "question": "The emission spectrum of gold shows a line of wavelength 2.676 x 10^-7 m. How much energy is emitted as the excited electron falls to the lower energy level?", "options": ["7.43 x 10^-19 J", "5.30 x 10^-20 J", "6.05 x 10^-19 J", "3.60 x 10^-20 J", "5.16 x 10^-20 J"], "answer": "7.43 x 10^-19 J", "explanation": "Using E = hc/\u03bb, E = (6.626 x 10^-34 J\u00b7s * 3.00 x 10^8 m/s) / (2.676 x 10^-7 m) = 7.43 x 10^-19 J." },
+  { "id": 76, "question": "Which of the responses contains all the statements that are consistent with the Bohr theory of the atom (and no others)? (1) An electron can remain in a particular orbit as long as it continually absorbs radiation of a definite frequency. (2) The lowest energy orbits are those closest to the nucleus. (3) An electron can jump from the K shell (n=1) to the M shell (n=3) by emitting radiation of a definite frequency.", "options": ["1, 2, 3", "2 only", "3 only", "1, 2", "2, 3"], "answer": "2 only", "explanation": "Statement 2 is true. Statement 1 is false (orbits are stable without absorbing radiation). Statement 3 is false (jumping to a higher shell requires absorbing, not emitting, radiation)." },
+  { "id": 77, "question": "The Heisenberg Principle states that", "options": ["No two electrons in the same atom can have the same set of four quantum numbers.", "Two atoms of the same element must have the same number of protons.", "It is impossible to determine accurately both the position and momentum of an electron simultaneously.", "Electrons of atoms in their ground states enter energetically equivalent sets of orbitals singly before they pair up in any orbital of the set.", "Charged atoms (ions) must generate a magnetic field when they are in motion."], "answer": "It is impossible to determine accurately both the position and momentum of an electron simultaneously.", "explanation": "Heisenberg's Uncertainty Principle states that the exact position and exact momentum of a particle cannot be simultaneously known." },
+  { "id": 78, "question": "Which statement about the four quantum numbers which describe electrons in atoms is incorrect?", "options": ["n = principal quantum number, n = 1, 2, 3, ...", "l = subsidiary (or azimuthal) quantum number, l = 1, 2, 3, ..., (n+1)", "ml = magnetic quantum number, ml = (-l), ...., 0, ...., (+l)", "ms = spin quantum number, ms = +1/2 or -1/2", "The magnetic quantum number is related to the orientation of atomic orbitals in space."], "answer": "l = subsidiary (or azimuthal) quantum number, l = 1, 2, 3, ..., (n+1)", "explanation": "The azimuthal quantum number (l) can only have values from 0 up to (n-1), not (n+1)." },
+  { "id": 79, "question": "Which atomic orbital is spherical in shape?", "options": ["2s", "3p", "3d", "4f", "They are all spherical"], "answer": "2s", "explanation": "All 's' orbitals (like 1s, 2s, 3s) have a spherical shape, whereas p, d, and f orbitals have more complex, multi-lobed shapes." },
+  { "id": 80, "question": "The maximum number of electrons that can be accommodated in a sublevel for which l=3 is:", "options": ["2", "10", "6", "14", "8"], "answer": "14", "explanation": "When l=3, the sublevel is an 'f' sublevel. It has 2l + 1 = 7 orbitals, each holding 2 electrons, for a total of 14 electrons." },
+  { "id": 81, "question": "The ground state electron configuration for arsenic is:", "options": ["[Ar] 4s2 4p13", "[Kr] 4s2 4p1", "1s2 2s2 2p6 3s2 3p6 3d12 4s2 4p1", "1s2 2s2 2p6 3s2 3p6 4s2 3d8 4p5", "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p3"], "answer": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p3", "explanation": "Arsenic (As) has an atomic number of 33. Following the Aufbau principle, the correct filling order gives this exact configuration." },
+  { "id": 82, "question": "Which of the following electron configurations is correct for nickel?", "options": ["[Ar] 4s1 3d8", "[Kr] 4s1 4d8", "[Kr] 4s1 3d8", "[Kr] 4s2 3d8", "[Ar] 4s2 3d8"], "answer": "[Ar] 4s2 3d8", "explanation": "Nickel (Ni) has an atomic number of 28. Its electron configuration is [Ar] followed by 4s2 3d8." },
+  { "id": 83, "question": "The outer electronic configuration ns2np4 corresponds to which one of the following elements in its ground state?", "options": ["As", "Ca", "Cr", "Br", "S"], "answer": "S", "explanation": "Sulfur (S) is in Group 16, which means it has 6 valence electrons, corresponding to the ns2np4 outer configuration." },
+  { "id": 84, "question": "In the ground state of a cobalt atom there are ___ unpaired electrons and the atom is ___", "options": ["3, paramagnetic", "5, paramagnetic", "2, diamagnetic", "0, diamagnetic", "2, paramagnetic"], "answer": "3, paramagnetic", "explanation": "Cobalt has the configuration [Ar] 4s2 3d7. The 3d sublevel has 7 electrons: two pairs and three unpaired electrons, making it paramagnetic." },
+  { "id": 85, "question": "Which one of the following sets of quantum numbers could be those of the distinguishing (last) electron of Mo?", "options": ["n=4, l=0, ml=0, ms=+1/2", "n=5, l=1, ml=9, ms=-1/2", "n=4, l=2, ml=-1, ms=+1/2", "n=5, l=2, ml=+2, ms=-1/2", "n=3, l=2, ml=0, ms=+1/2"], "answer": "n=4, l=2, ml=-1, ms=+1/2", "explanation": "Molybdenum (Mo) is in the 4d block (Period 5). Its distinguishing electron enters a 4d orbital, meaning n=4 and l=2." },
+  { "id": 86, "question": "How many p electrons are there in an atom of rubidium?", "options": ["12", "18", "24", "9", "6"], "answer": "18", "explanation": "Rubidium (Rb) has fully occupied 2p, 3p, and 4p sublevels. Each full p sublevel holds 6 electrons. 3 * 6 = 18 p electrons." },
+  { "id": 87, "question": "A neutral atom of an element has 2 electrons in the first energy level, 8 in the second energy level and 8 in the third energy level. This information does not necessarily tell us:", "options": ["The atomic number of the element.", "Anything about the element's chemical properties.", "The total number of electrons in s orbitals.", "The total number of electrons in p orbitals.", "The number of neutrons in the nucleus of an atom of the element."], "answer": "The number of neutrons in the nucleus of an atom of the element.", "explanation": "Electron configuration provides atomic number and chemical properties, but neutrons can vary (isotopes) and aren't indicated by electrons." },
+  { "id": 88, "question": "The mass (in grams) of FeSO4 7H2O required for preparation of 125 mL of 0.90 M solution is:", "options": ["16 g", "25 g", "13 g", "31 g", "43 g"], "answer": "31 g", "explanation": "Molar mass of FeSO4\u00b77H2O is ~278 g/mol. Mass = Molarity * Volume * Molar Mass = 0.90 mol/L * 0.125 L * 278 g/mol \u2248 31.27 g." },
+  { "id": 89, "question": "What is the molarity of phosphoric acid in a solution labeled 20.0% phosphoric acid (H3PO4) by weight with a density = 1.12 g/mL?", "options": ["0.98 M", "2.3 M", "2.7 M", "3.0 M", "3.6 M"], "answer": "2.3 M", "explanation": "Assume 1 L solution (1120 g). 20% by weight is 224 g H3PO4. Moles = 224 g / 98 g/mol \u2248 2.28 moles. Molarity is ~2.3 M." },
+  { "id": 90, "question": "How many mL of 17 M NH3 must be diluted to 500.0 mL to make a 0.75 M solution?", "options": ["13 mL", "22 mL", "39 mL", "73 mL", "None of these"], "answer": "22 mL", "explanation": "Using M1V1 = M2V2: (17 M)(V1) = (0.75 M)(500.0 mL). V1 = 375 / 17 \u2248 22.06 mL." },
+  { "id": 91, "question": "How many grams of Ag2CO3 are required to react with 28.5 mL of 1.00 M NaOH solution? Ag2CO3 + 2NaOH -> Ag2O + Na2CO3 + H2O", "options": ["7.87 g", "3.93 g", "15.7 g", "10.8 g", "8.16 g"], "answer": "3.93 g", "explanation": "Moles NaOH = 0.0285 L * 1.00 M = 0.0285 mol. Moles Ag2CO3 = 0.0285 / 2 = 0.01425 mol. Mass = 0.01425 mol * 275.7 g/mol \u2248 3.93 g." },
+  { "id": 92, "question": "How many milliliters of 0.200 M NH4OH are needed to react with 12.0 mL of 0.550 M FeCl3? FeCl3 + 3NH4OH -> Fe(OH)3 + 3NH4Cl", "options": ["99.0 mL", "33.0 mL", "8.25 mL", "68.8 mL", "132 mL"], "answer": "99.0 mL", "explanation": "Moles FeCl3 = 0.012 L * 0.550 M = 0.0066 mol. Moles NH4OH needed = 0.0066 * 3 = 0.0198 mol. Volume = 0.0198 mol / 0.200 M = 0.099 L = 99.0 mL." },
+  { "id": 93, "question": "When 250. mL of a 0.15 M solution of ammonium sulfide (NH4)2S is poured into 120. mL of a 0.053 M solution of cadmium sulfate CdSO4, how many grams of a yellow precipitate of cadmium sulfide CdS are formed?", "options": ["5.4 g", "0.92 g", "2.6 g", "1.9 g", "530 g"], "answer": "0.92 g", "explanation": "CdSO4 is the limiting reagent (0.120 L * 0.053 M = 0.00636 mol). Mass of CdS = 0.00636 mol * 144.47 g/mol \u2248 0.919 g." },
+  { "id": 94, "question": "Which of the following statements is correct for an electron that has the quantum numbers n=4 and ml=-2?", "options": ["the electron may be in a p orbital", "the electron may be in a d orbital", "the electron is in the second principal shell", "the electron must have a spin quantum number ms = +1/2"], "answer": "the electron may be in a d orbital", "explanation": "When the magnetic quantum number ml is -2, the azimuthal quantum number l must be at least 2. An l=2 denotes a d orbital." },
+  { "id": 95, "question": "The set of quantum numbers, n=4, l=3, ml=2", "options": ["describes an electron in a 3p orbital", "is not allowed", "describes an electron in a 4d orbital", "describes one of seven orbitals of a similar type"], "answer": "describes one of seven orbitals of a similar type", "explanation": "An l=3 describes an f orbital, which has seven possible orientations (ml = -3, -2, -1, 0, 1, 2, 3)." },
+  { "id": 96, "question": "Which of the following statements is correct for an electron that has the quantum numbers n=5 and ml=-4?", "options": ["the electron may be in a f orbital", "the electron must have a spin quantum number ms = -1/2", "the electron may be in a p orbital", "none of the above"], "answer": "none of the above", "explanation": "An ml of -4 means l must be at least 4. This would correspond to a g orbital, making the other options incorrect." },
+  { "id": 97, "question": "Identify the subshell in which electrons with the quantum numbers n=3, l=2 may be found.", "options": ["3d", "4f", "4d", "3p"], "answer": "3d", "explanation": "The principal quantum number n=3 designates the 3rd shell, and l=2 corresponds to the d subshell, making it a 3d orbital." },
+  { "id": 98, "question": "Quantum numbers are", "options": ["arithmetical values", "numerical values", "geometric values", "logical values"], "answer": "numerical values", "explanation": "Quantum numbers are specific numerical values that provide a complete mathematical description of the state of an electron." },
+  { "id": 99, "question": "Use of quantum numbers is to specify electron's", "options": ["energy", "position", "particles", "velocity"], "answer": "position", "explanation": "Quantum numbers specify the probability distribution (position and energy state) of an electron within an atom." },
+  { "id": 100, "question": "Azimuthal quantum number actually represents", "options": ["shells", "sub shells", "energy", "none"], "answer": "sub shells", "explanation": "The azimuthal quantum number (l) defines the shape of the orbital, effectively distinguishing different sub shells (s, p, d, f)." },
+  { "id": 101, "question": "Quantum numbers are used to describe", "options": ["proton", "nucleus", "electron", "positron"], "answer": "electron", "explanation": "In quantum chemistry, the four quantum numbers are used exclusively to define the specific location and energy of an electron." },
+  { "id": 102, "question": "Letter s for azimuthal quantum number stands for", "options": ["sharp", "strong", "sufficient", "simple"], "answer": "sharp", "explanation": "The orbital letters s, p, d, and f are derived from the characteristics of their spectral lines: sharp, principal, diffuse, and fundamental." },
+  { "id": 103, "question": "In Bohr's model magnetic field which splits spectral lines is", "options": ["weak", "moderate", "strong", "none"], "answer": "strong", "explanation": "The splitting of spectral lines under the influence of a strong magnetic field is known as the Zeeman effect." },
+  { "id": 104, "question": "Value of 'm' depends upon values of", "options": ["s", "l", "d", "f"], "answer": "l", "explanation": "The magnetic quantum number (m or ml) depends entirely on the azimuthal quantum number (l), ranging from -l to +l." },
+  { "id": 105, "question": "Sub shell which is not sub-divided into any other orbital", "options": ["p-sub shell", "s-sub shell", "d-sub shell", "f-sub shell"], "answer": "s-sub shell", "explanation": "The s-sub shell has an l value of 0, meaning it has only one magnetic quantum number (ml=0) and thus consists of only one non-subdivided orbital." },
+  { "id": 106, "question": "Number of degenerate orbitals in f-sub shell are", "options": ["six", "five", "seven", "three"], "answer": "seven", "explanation": "The f-sub shell has an l value of 3. The possible ml values are -3, -2, -1, 0, 1, 2, 3, making a total of seven degenerate orbitals." },
+  { "id": 107, "question": "When the system A + B <-> C + D is at equilibrium,", "options": ["The sum of the concentrations of A and B must equal the sum of the concentrations of C and D.", "The forward reaction has stopped.", "Both the forward and the reverse reactions have stopped.", "The reverse reaction has stopped.", "Neither the forward nor the reverse reaction has stopped."], "answer": "Neither the forward nor the reverse reaction has stopped.", "explanation": "Chemical equilibrium is a dynamic state where both the forward and reverse reactions continue to occur, but at equal rates." },
+  { "id": 108, "question": "2SO3(g) <-> 2SO2(g) + O2(g) The conventional equilibrium constant expression (Kc) for the system as described by the above equation is:", "options": ["[SO2]2/[SO3]", "[SO2]2[O2]/[SO3]2", "[SO3]2/[SO3]2[O2]", "[SO2][O2]", "none of these"], "answer": "[SO2]2[O2]/[SO3]2", "explanation": "The equilibrium constant (Kc) is the product of the concentrations of the products raised to their coefficients, divided by the reactants raised to their coefficients." },
+  { "id": 109, "question": "Consider the following reversible reaction. In a 3.00 liter container, the following amounts are found in equilibrium at 400 oC: 0.0420 mole N2, 0.516 mole H2 and 0.0357 mole NH3. Evaluate Kc. N2(g) + 3H2(g) <-> 2NH3(g)", "options": ["0.202", "1.99", "16.0", "4.94", "0.503"], "answer": "1.99", "explanation": "First find concentrations (divide moles by 3 L). [N2]=0.014 M, [H2]=0.172 M, [NH3]=0.0119 M. Kc = [NH3]2 / ([N2][H2]3) = (0.0119)2 / ((0.014)*(0.172)3) \u2248 1.99." },
+  { "id": 110, "question": "If the equilibrium constant for the reaction A + 2B <-> C + 5/2 D has a value of 4.0, what is the value of the equilibrium constant for the reaction 2C + 5D <-> 2A + 4B at the same temperature?", "options": ["0.25", "0.063", "2.0", "8.0", "16"], "answer": "0.063", "explanation": "The second reaction is the reverse of the first, multiplied by 2. The new Kc = (1 / Kc_original)^2 = (1 / 4.0)^2 = (0.25)^2 = 0.0625 \u2248 0.063." },
+  { "id": 111, "question": "At 445oC, Kc for the following reaction is 0.020. 2HI(g) <-> H2(g) + I2(g) A mixture of H2, I2, and HI in a vessel at 445oC has the following concentrations: [HI]=2.0 M, [H2]=0.50 M and [I2]=0.10 M. Which one of the following statements concerning the reaction quotient, Qc, is TRUE for the above system?", "options": ["Qc = Kc; the system is at equilibrium.", "Qc is less than Kc; more H2 and I2 will be produced.", "Qc is less than Kc; more HI will be produced.", "Qc is greater than kc; more H2 and I2 will be produced.", "Qc is greater than Kc; more HI will be produced."], "answer": "Qc is less than Kc; more H2 and I2 will be produced.", "explanation": "Qc = ([H2][I2]) / [HI]2 = (0.50 * 0.10) / 2.0^2 = 0.05 / 4.0 = 0.0125. Since Qc (0.0125) < Kc (0.020), the reaction shifts right to produce more products (H2 and I2)." },
+  { "id": 112, "question": "Nitrosyl chloride, NOCl, dissociates on heating as shown below. When a 1.50 gram sample of pure NOCl is heated at 350oC in a volume of 1.00 liter, the percent dissociation to be 57.2%. Calculate Kc for the reaction as written. NOCl(g) <-> NO(g) + 1/2Cl2(g)", "options": ["0.876", "9.26", "0.107", "1.75 x 10-4", "0.0421"], "answer": "0.107", "explanation": "Molar mass NOCl \u2248 65.46 g/mol. Initial moles = 1.50/65.46 = 0.0229 M. Dissociated = 57.2%, leaving 0.0098 M NOCl. [NO]=0.0131 M, [Cl2]=0.00655 M. Kc \u2248 0.107." },
+  { "id": 113, "question": "A quantity of HI was sealed in a tube, heated to 425oC and held at this temperature until equilibrium was reached. The concentration of HI in the tube at equilibrium was found to be 0.0706 mol/L. Calculate the equilibirum concentration of H2 (and I2). For the gas-phase reaction, H2 + I2 <-> 2HI Kc = 54.6 at 425oC", "options": ["9.55 x 10-3 M", "1.17 x 10-3 M", "1.85 x 10-4 M", "4.78 x 10-3 M", "2.34 x 10-3 M"], "answer": "9.55 x 10-3 M", "explanation": "Kc = [HI]2 / ([H2][I2]). Since [H2] = [I2] = x, 54.6 = (0.0706)2 / x2. Solving for x yields approximately 0.00955 M, or 9.55 x 10-3 M." },
+  { "id": 114, "question": "Consider the reaction: N2(g) + O2(g) <-> 2NO(g) Kc = 0.10 at 2000oC Starting with initial concentrations of 0.040 mol/L of N2 and 0.040 mol/L of O2, calculate the equilibrium concentration of NO in mol/L", "options": ["0.0055 mol/L", "0.0096 mol/L", "0.011 mol/L", "0.080 mol/L", "0.10 mol/L"], "answer": "0.011 mol/L", "explanation": "Kc = (2x)2 / (0.040 - x)2 = 0.10. Taking the square root of both sides gives 2x / (0.040 - x) \u2248 0.316. Solving for x gives x \u2248 0.0054 M. [NO] = 2x = 0.011 M." },
+  { "id": 115, "question": "Kc = 0.040 for the system below at 450oC. If a reaction is initiated with 0.40 mole of Cl2 and 0.40 mole of PCl3 in a 2.0 liter container, what is the equilibrium concentration of Cl2 in the same system? PCl5(g) <-> PCl3(g) + Cl2(g)", "options": ["0.07 M", "0.16 M", "0.11 M", "0.04 M", "0.26 M"], "answer": "0.07 M", "explanation": "Initial concentrations: [PCl3] = 0.20 M, [Cl2] = 0.20 M, [PCl5] = 0. Reaction shifts left to form PCl5. Solving the equilibrium quadratic equation gives [Cl2] \u2248 0.07 M." },
+  { "id": 116, "question": "The reversible reaction: 2SO2(g) + O2(g) <-> 2SO3(g) has come to equilibrium in a vessel of specific volume at a given temperature. Before the reaction began, the concentrations of the reactants were 0.060 mol/L of SO2 and 0.050 mol/L of O2. After equilibrium is reached, the concentration of SO3 is 0.040 mol/L What is the equilibrium concentration of O2?", "options": ["0.010 M", "0.020 M", "0.030 M", "0.040 M", "None of these"], "answer": "0.030 M", "explanation": "To form 0.040 M of SO3, the reaction consumes 0.020 M of O2 (based on 1:2 stoichiometry). Initial O2 (0.050 M) - Consumed O2 (0.020 M) = 0.030 M remaining at equilibrium." },
+  { "id": 117, "question": "Which of the following represents either a chemical property or a change in a chemical property?", "options": ["Br2(l) -> Br2(g)", "Gold is both very malleable and very ductile.", "High purity water has a resistance >= 18.2 MΩ cm", "A metal more easily conducts electricty at a low temperature.", "2 H2O(l) -> 2 H2(g) + O2(g)"], "answer": "2 H2O(l) -> 2 H2(g) + O2(g)", "explanation": "The electrolysis of water into hydrogen and oxygen gases involves breaking and forming chemical bonds, which is a chemical change." },
+  { "id": 118, "question": "Which of the following compounds can be dissolved in water to give a solution that conducts electricity?", "options": ["C8H18", "C6H12O6", "CHCl3", "KClO4", "(CH3)2CHOH"], "answer": "KClO4", "explanation": "Potassium perchlorate (KClO4) is an ionic salt that completely dissociates into mobile ions in water, making it a strong electrolyte." },
+  { "id": 119, "question": "Which of the following is not a metal?", "options": ["cobalt", "indium", "selenium", "lithium", "beryllium"], "answer": "selenium", "explanation": "Selenium (Se, atomic number 34) is classified as a nonmetal on the periodic table." },
+  { "id": 120, "question": "When neutral atoms gain one or more electrons, ___ are formed.", "options": ["hadrions", "cations", "fermions", "deuterions", "anions"], "answer": "anions", "explanation": "Gaining negatively charged electrons gives an atom a net negative charge, forming an anion." },
+  { "id": 121, "question": "Which two of the following represent a pair of isotopes? I. 32/15 P, II. 35/18 Ar, III. 31/15 P, IV. 32/16 S", "options": ["I and IV", "III and IV", "I and III", "I and II", "II and V"], "answer": "I and III", "explanation": "Isotopes are atoms of the same element (same atomic number, bottom) but different mass numbers (top). Both I and III have an atomic number of 15 (Phosphorus)." },
+  { "id": 122, "question": "Which of the following consists of a pair of allotropes?", "options": ["air and oxygen", "phosgene and phosphine", "red phosphorus and white phosphorus", "carbon tetrachloride and carbon tetrabromide", "yellow sulfur and yellow phosphorus"], "answer": "red phosphorus and white phosphorus", "explanation": "Allotropes are different structural modifications of the same element; red and white phosphorus are two distinct forms of elemental phosphorus." },
+  { "id": 123, "question": "An element that has 24 protons, 24 electrons, and 28 neutrons has a molar mass of", "options": ["76 amu", "56 amu", "52 amu", "48 amu", "84 amu"], "answer": "52 amu", "explanation": "The mass number is the sum of protons and neutrons. 24 protons + 28 neutrons = 52 amu (which corresponds to Chromium)." },
+  { "id": 124, "question": "Three elements that are likely to have similar chemical and physical properties are:", "options": ["Ca, Co, Cr", "H, He, Ne", "Pb, Bi, Po", "B, C, Si", "Na, K, Li"], "answer": "Na, K, Li", "explanation": "Elements in the same group on the periodic table share similar properties. Sodium (Na), Potassium (K), and Lithium (Li) are all Group 1 Alkali metals." },
+  { "id": 125, "question": "Which formula and name combination is incorrect?", "options": ["SF6 and sulfur hexafluoride", "N2O3 and dinitrogen tetraoxide", "P4O10 and tetraphosphorus decaoxide", "AsBr5 and arsenic pentabromide", "SeF4 and selenium tetrafluoride"], "answer": "N2O3 and dinitrogen tetraoxide", "explanation": "N2O3 is dinitrogen trioxide, not tetraoxide. Tetraoxide would correspond to four oxygen atoms." },
+  { "id": 126, "question": "What is the correct general formula for a straight-chain alkene?", "options": ["CnH2n+2", "CnHn+2", "CnHn", "CnH2n-2", "CnH2n"], "answer": "CnH2n", "explanation": "Alkenes contain one double bond, meaning they have two fewer hydrogen atoms than their corresponding alkane, making the formula CnH2n." },
+  { "id": 127, "question": "Determince the correct combination of protons and electrons for the phosphide ion, P3-", "options": ["18 protons and 10 electrons", "16 protons and 12 electrons", "15 protons and 18 electrons", "15 protons and 12 electrons", "12 protons and 24 electrons"], "answer": "15 protons and 18 electrons", "explanation": "Phosphorus (atomic number 15) has 15 protons. A 3- charge means it has gained 3 electrons, bringing the total to 18 electrons." },
+  { "id": 128, "question": "Determine the number of moles of water in a liter of water (density = 1000. g/L), and the Molarity of water, respectively", "options": ["56 and 74", "18 and 56", "18 and 18", "18 and 74", "56 and 56"], "answer": "56 and 56", "explanation": "1 L of water weighs 1000 g. Moles = 1000 g / 18.015 g/mol = ~55.5 moles. The molarity is 55.5 moles / 1 L = 55.5 M. Both round to 56." },
+  { "id": 129, "question": "Which statement regarding the complete combustion of a hydrocarbon is incorrect?", "options": ["The hydrocarbon is consumed in the reaction and must be shown in the balanced chemical equation.", "Heat is produced in the reaction but does not need to be shown in the balanced chemical equation.", "Balancing the chemical equation requires knowledge of the physical state of each reactant and each product.", "Oxygen is the oxidizing agent and must be shown in the balanced chemical equation.", "Carbon dioxide and water are produced in the reaction and must be shown in the balanced chemical equation."], "answer": "Balancing the chemical equation requires knowledge of the physical state of each reactant and each product.", "explanation": "Physical states (solid, liquid, gas) provide helpful context but are not mathematically required to balance the stoichiometry of an equation." },
+  { "id": 130, "question": "Assuming an excess of aluminum, how many moles of aluminum tribromide can be produced from 111 moles of bromine? 2 Al + 3 Br2 -> 2 AlBr3", "options": ["167", "56", "111", "148", "74"], "answer": "74", "explanation": "According to the balanced equation, 3 moles of Br2 produce 2 moles of AlBr3. (111 moles Br2) * (2 moles AlBr3 / 3 moles Br2) = 74 moles." },
+  { "id": 131, "question": "Classify the following reaction: Ni(ClO4)2(aq) + K2S(aq) -> 2 KClO4(aq) + NiS(s)", "options": ["decomposition", "exchange", "combustion", "displacement", "combination"], "answer": "exchange", "explanation": "This is a double displacement (or exchange/metathesis) reaction where the cations and anions of two different compounds switch places to form new compounds." },
+  { "id": 132, "question": "The Roman numerals in the reaction given represent the coefficients in the balanced chemical equation. What are the values of the coefficients? I Al (s) + II CuSO4 (aq) -> III Al2(SO4)3 (aq) + IV Cu (s)", "options": ["3, 1, 1, 3", "2, 1, 3, 2", "2, 1, 1, 2", "1, 3, 3, 1", "2, 3, 1, 3"], "answer": "2, 3, 1, 3", "explanation": "To balance the Al atoms, we need 2 Al. To balance the sulfate groups, we need 3 CuSO4. This gives 3 Cu, requiring 3 Cu on the product side. The balanced equation is 2, 3, 1, 3." },
+  { "id": 133, "question": "What is the net ionic equation for the the following reaction? 3 Ca(NO3)2 (aq) + 2 H3PO4 (aq) -> Ca3(PO4)2 (s) + 6 HNO3 (aq)", "options": ["N+ + NO3- -> NNO3", "P2+ + 2NO3- -> P(NO3)2", "3 Ca2+(aq) + 2 PO4 3-(aq) -> Ca3(PO4)2(s)", "2 H+ + NO6- -> 2 HNO3", "2 H3PO4 (aq) -> 6 HNO3 (aq)"], "answer": "3 Ca2+(aq) + 2 PO4 3-(aq) -> Ca3(PO4)2(s)", "explanation": "The net ionic equation strips away the spectator ions (nitrate and hydrogen/hydronium in this case), leaving only the ions that form the solid precipitate." },
+  { "id": 134, "question": "Which of the following would be expected to be present in a 1. M aqueous solution of perchloric acid, HClO4?", "options": ["Cl-", "PO4 3-", "HCl", "H", "H3O+"], "answer": "H3O+", "explanation": "Perchloric acid is a strong acid, meaning it completely dissociates in water into perchlorate ions (ClO4-) and hydronium ions (H3O+)." },
+  { "id": 135, "question": "What is the reducing agent in the reaction below? MnO4-(aq) + 8 H+(aq) + 5 e- -> Mn2+(aq) + 4 H2O", "options": ["H+", "e-", "Mn2+", "H2O", "MnO4-"], "answer": "e-", "explanation": "In this reduction half-reaction, the electrons (e-) are the agents that reduce the Manganese from a +7 oxidation state down to a +2 oxidation state." },
+  { "id": 136, "question": "Using high purity water, to what final volume would 100.0 mL of a 1.00 x 10^7 ppb solution of arsenic need to be diluted to be useable as a Federal drinking water testing standard at an arsenic concentration of 10.00 ppb?", "options": ["1.00 x 10^8 mL", "50.00 mL", "18,000 mL", "22,400 mL", "1.00 x 10^5 mL"], "answer": "1.00 x 10^8 mL", "explanation": "Using the dilution formula C1V1 = C2V2: (10,000,000 ppb)(100.0 mL) = (10.00 ppb)(V2). V2 = 100,000,000 mL or 1.00 x 10^8 mL." },
+  { "id": 137, "question": "Determine the specific heat of uranium (atomic number 92, molar heat capacity = 28.56 J mol-1 C-1)", "options": ["6797 J g-1 C-1", "799 J g-1 C-1", "2628 J g-1 C-1", "0.31 J g-1 C-1", "0.12 J g-1 C-1"], "answer": "0.12 J g-1 C-1", "explanation": "Specific heat is molar heat capacity divided by molar mass. The molar mass of Uranium is approximately 238 g/mol. 28.56 / 238 \u2248 0.12 J/(g\u00b7\u00b0C)." },
+  { "id": 138, "question": "What is the enthalpy change if 28 moles of carbon dioxide are formed by the following reaction? C4H10(g) + 13/2 O2(g) -> 4 CO2(g) + 5 H2O(g) with deltaH = -1895 kJ", "options": ["-7580 kJ", "-28,000 kJ", "-13,265 kJ", "-68000 kJ", "-190 kJ"], "answer": "-13,265 kJ", "explanation": "The reaction produces 4 moles of CO2 for every -1895 kJ. For 28 moles, it is 7 times the reaction. 7 * -1895 kJ = -13,265 kJ." },
+  { "id": 139, "question": "A chemical reaction is exothermic when", "options": ["the strength of bonds broken is greater than the strength of bonds formed", "weak bonds are broken and stronger bonds are formed", "no bonds are formed", "strong bonds are broken and weaker bonds are formed", "the strengths of all bonds broken and formed are the same"], "answer": "weak bonds are broken and stronger bonds are formed", "explanation": "An exothermic reaction releases net energy. This happens when the energy required to break the weak reactant bonds is less than the energy released when forming the strong product bonds." },
+  { "id": 140, "question": "Calculate the standard enthalpy change, deltaH for the following reaction PbCl4(l) -> PbCl2(s) + Cl2(g) using: Pb(s) + Cl2(g) -> PbCl2(s) (dH=-359.4 kJ) and Pb(s) + 2 Cl2(g) -> PbCl4(l) (dH=-329.3 kJ)", "options": ["+398.4 kJ", "-30.1 kJ", "+30.1 kJ", "-131.1 kJ", "+131.1kJ"], "answer": "-30.1 kJ", "explanation": "Using Hess's Law, reverse the second equation (+329.3 kJ) and add it to the first equation (-359.4 kJ). The sum is 329.3 - 359.4 = -30.1 kJ." },
+  { "id": 141, "question": "Determine the deltaH for the reverse of the reaction shown below. C3H8(g) + 5O2(g) -> 3CO2(g) + 4H2O(l) (Heats of formation: C3H8=-103.8, CO2=-393.5, H2O(l)=-285.8)", "options": ["-2220 kJ", "+2220 kJ", "-782. kJ", "+575 kJ", "-575 kJ"], "answer": "+2220 kJ", "explanation": "The forward deltaH is [3(-393.5) + 4(-285.8)] - [-103.8] = -2220 kJ. The reverse reaction flips the sign, making it +2220 kJ." },
+  { "id": 142, "question": "A 10.0 mole sample of CH4 reacts react completely with excess oxygen in a calorimeter. Determine the total amount of energy produced by the combustion. CH4(g) + 2 O2(g) -> 2 H2O(g) + CO2(g) with deltaH = -802.3 kJ", "options": ["4.35 kJ", "127 kJ", "8023 kJ", "392 kJ", "8.02 kJ"], "answer": "8023 kJ", "explanation": "The standard enthalpy change of -802.3 kJ is per 1 mole of CH4. For 10 moles, the energy produced is 10 * 802.3 = 8023 kJ." },
+  { "id": 143, "question": "Light has a wavelength of 280 nm. What is its frequency?", "options": ["1.07 x 10^15 Hz", "1.48 x 10^-6 Hz", "6.76 x 10^-4 Hz", "1.48 x 10^2 Hz", "5.64 x 10^14 Hz"], "answer": "1.07 x 10^15 Hz", "explanation": "Using the speed of light equation c = \u03bb\u03bd, we find frequency \u03bd = c / \u03bb = (3.00 x 10^8 m/s) / (280 x 10^-9 m) \u2248 1.07 x 10^15 Hz." },
+  { "id": 144, "question": "Determine the energy of a photon that has a wavelength of 280 nm.", "options": ["1.16 x 10^-27 J", "1.04 x 10^-10 J", "7.09 x 10^-19 J", "1.27 x 10^-48 J", "7.87 x 10^47 J"], "answer": "7.09 x 10^-19 J", "explanation": "Using E = hc/\u03bb, E = (6.626 x 10^-34 J\u00b7s * 3.00 x 10^8 m/s) / (280 x 10^-9 m) \u2248 7.09 x 10^-19 J." },
+  { "id": 145, "question": "Which values for the fourth (spin) quantum number are allowed for n=1?", "options": ["ms = +1/2, -1/2", "ms = 0, 1, 2", "ms = -1, 0, +1", "ms = 0, 1, 2, 3, 4", "ms = 0, 1, 2, 3"], "answer": "ms = +1/2, -1/2", "explanation": "The electron spin quantum number (ms) only ever has two possible allowed values: +1/2 or -1/2, regardless of the principal quantum number (n)." },
+  { "id": 146, "question": "How many orbitals and electrons, respectively, can be contained in each p subshell?", "options": ["3, 6", "20, 10", "10, 20", "14, 7", "5, 10"], "answer": "3, 6", "explanation": "A 'p' subshell contains 3 distinct orbitals (px, py, pz), and each orbital can hold a maximum of 2 electrons, making a total of 6 electrons." },
+  { "id": 147, "question": "Which of the following corresponds to the electron configuration of a noble gas?", "options": ["1s2 2s2 2p6 3s2 3p5", "1s2 2s2", "1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p3", "1s2 2s2 2p6 3s2 3p6", "1s2 2s2 2p4"], "answer": "1s2 2s2 2p6 3s2 3p6", "explanation": "Noble gases have completely filled outer valence shells (s2 p6). This configuration represents Argon, which has a full 3p subshell." },
+  { "id": 148, "question": "Atoms and ions that have identical electron configurations are referred to as being", "options": ["isoelectronic", "isopiestronic", "ferromagnetic", "diamagnetic", "paratronic"], "answer": "isoelectronic", "explanation": "The prefix 'iso-' means same. Isoelectronic species have the exact same number of electrons arranged in the exact same configuration." },
+  { "id": 149, "question": "How many electrons will be in the correctly drawn Lewis Structure for the acetate anion, CH3COO-?", "options": ["22", "23", "17", "24", "20"], "answer": "24", "explanation": "Sum the valence electrons: 2 Carbon atoms (2*4) + 3 Hydrogen atoms (3*1) + 2 Oxygen atoms (2*6) + 1 for the negative charge = 8 + 3 + 12 + 1 = 24 total valence electrons." },
+  { "id": 150, "question": "Assume that all of the following are straight-chain hydrocarbons. Which compound will contain a triple bond?", "options": ["C2H6", "C8H16", "C13H28", "C9H16", "C6H14"], "answer": "C9H16", "explanation": "A straight-chain alkyne (triple bond) follows the general formula CnH2n-2. For n=9, the formula is C9H(2*9-2) = C9H16." },
+  { "id": 151, "question": "In straight-chain organic molecules, cis-trans isomerism is a possibility only if the molecule contains at least one", "options": ["carbon-carbon single bond", "carbon-oxygen single bond", "carbon-carbon double bond", "carbon-oxygen double bond", "carbon-carbon triple bond"], "answer": "carbon-carbon double bond", "explanation": "Cis-trans isomerism requires restricted rotation around a bond, which is provided by a rigid carbon-carbon double bond (alkene)." },
+  { "id": 152, "question": "Of the elements shown, which is the most electronegative?", "options": ["calcium", "nitrogen", "gallium", "selenium", "strontium"], "answer": "nitrogen", "explanation": "Electronegativity generally increases as you move up and to the right on the periodic table. Nitrogen sits highest and furthest to the right among these options." },
+  { "id": 153, "question": "Which properly shows the formal charges on the atoms in phosgene, O=C-(Cl)2?", "options": ["+1 on oxygen, -3 on carbon, +1 on chlorine", "1 on oxygen, +4 on carbon, -4 on chlorine", "0 on oxygen, 0 on carbon, 0 on chlorine", "-1 on oxygen, +1 on carbon, -2 on chlorine", "-2 on oxygen, +4 on carbon, -1 on chlorine"], "answer": "0 on oxygen, 0 on carbon, 0 on chlorine", "explanation": "In a valid Lewis structure for phosgene, carbon has 4 bonds, oxygen has a double bond and 2 lone pairs, and both chlorines have a single bond and 3 lone pairs. All formal charges equal zero." },
+  { "id": 154, "question": "VSEPR Theory attempts to", "options": ["minimize electron-pair repulsions", "eliminate attractions", "minimize collisions", "maximize attractions", "maximize repulsions"], "answer": "minimize electron-pair repulsions", "explanation": "Valence Shell Electron Pair Repulsion (VSEPR) theory posits that electron pairs around a central atom arrange themselves to be as far apart as possible to minimize electrostatic repulsion." },
+  { "id": 155, "question": "Assuming that there are no lone pairs of electrons on the central atom, using VSEPR Theory predict the molecular geometry consistent with one, three, and five bonded electron pairs, respectively.", "options": ["linear, trigonal planar, trigonal bipyramidal", "tetrahedral, trigonal bipyramidal, octahedral", "linear, tetrahedral, hexagonal", "angular, trigonal pyramidal, octahedral", "linear, trigonal pyramidal, pentahedral"], "answer": "linear, trigonal planar, trigonal bipyramidal", "explanation": "Without lone pairs, 1 or 2 areas of electron density is linear, 3 areas form a flat trigonal planar shape, and 5 areas form a trigonal bipyramidal structure." },
+  { "id": 156, "question": "Draw the Lewis dot structure for trimethylamine, N(CH3)3, and then use VSEPR Theory to predict the electron-pair geometry, the molecular geometry, and to estimate the C-N-C bond angle, respectively.", "options": ["tetrahedral, trigonal pyramidal, 109.5", "tetrahedral, tetrahedral, 109.5", "tetrahedral, trigonal square planar, 109.5", "square planar, square planar, 90", "trigonal bipyramidal, tetrahedral, 90"], "answer": "tetrahedral, trigonal pyramidal, 109.5", "explanation": "The central nitrogen has 3 bonded atoms and 1 lone pair (4 total domains = tetrahedral electron geometry). The presence of the lone pair pushes the bonds into a trigonal pyramidal shape with angles slightly less than 109.5 (represented here generally as 109.5)." },
+  { "id": 157, "question": "Which of the following molecules is/are non-polar? I. SiHF, II. SiHF3, III. SiH2F2, IV. SiF4", "options": ["I and II", "I, II, and III", "II, III, and IV", "IV only", "II only"], "answer": "IV only", "explanation": "A molecule is non-polar only if its bond dipoles cancel out perfectly due to symmetry. Only the perfectly symmetrical, tetrahedral SiF4 molecule allows all dipoles to cancel." },
+  { "id": 158, "question": "What is the major type of force that must be overcome to allow each of the processes below? I. evaporation of liquid CH3CH2OH, II. vaporization of liquid CHCl3, III. sublimation of solid I2, IV. boiling of liquid C5H12", "options": ["hydrogen bonding, dipole-dipole, London (dispersion) forces, London (dispersion) forces", "hydrogen bonding, London (dispersion) forces, dipole-dipole, dipole-dipole", "London (dispersion) forces, covalent bonding, dipole-dipole, dipole-dipole", "London (dispersion) forces, London (dispersion) forces, London (dispersion) forces, London (dispersion) forces", "dipole-dipole, dipole-dipole, London (dispersion) forces forces London (dispersion) forces"], "answer": "hydrogen bonding, dipole-dipole, London (dispersion) forces, London (dispersion) forces", "explanation": "Ethanol (I) has H-bonding. Chloroform (II) is polar, so it has dipole-dipole forces. Iodine (III) and pentane (IV) are non-polar, relying solely on London dispersion forces." },
+  { "id": 159, "question": "Determine the height (in mm) of a column of toluene in a barometer at at a pressure of 790 mm Hg. The densities of mercury and toluene are 13.546 and 0.865 g/cm3, respectively", "options": ["1.75 x 10^2", "4.34", "1.24 x 10^4", "0.00571", "50.45"], "answer": "1.24 x 10^4", "explanation": "Using the hydrostatic pressure equivalence h1d1 = h2d2, we have (790 mm)(13.546) = (h_toluene)(0.865). Solving for h_toluene yields roughly 12371 mm, or 1.24 x 10^4." },
+  { "id": 160, "question": "Assuming ideal gas behavior, calculate the number of moles of phosphine gas, PH3, that occupy 8.2 L at STP.", "options": ["3.30 x 10^2", "3.10", "0.37", "2.40 x 10^4", "0.125"], "answer": "0.37", "explanation": "At Standard Temperature and Pressure (STP), one mole of an ideal gas occupies 22.4 L. Therefore, 8.2 L / 22.4 L/mol \u2248 0.366 moles, rounding to 0.37." },
+  { "id": 161, "question": "Assuming ideal gas behavior, what is the density (in g/L) of arsine gas, AsH3, at 60 C and 0.25 atm of pressure?", "options": ["9.9", "0.71", "1.87 x 10", "4.9 x 10^-2", "1.2"], "answer": "0.71", "explanation": "Using d = PM/RT, where M is molar mass (77.94 g/mol). d = (0.25 atm * 77.94 g/mol) / (0.08206 L\u00b7atm/mol\u00b7K * 333.15 K) \u2248 0.713 g/L." },
+  { "id": 162, "question": "A mixture of He and O2 exerts a total pressure of 2.24 atm. The partial pressure of oxygen is 1.40 atm. What is the mole fraction of helium?", "options": ["0.38", "0.20", "0.63", "0.44", "0.09"], "answer": "0.38", "explanation": "The partial pressure of Helium is 2.24 - 1.40 = 0.84 atm. The mole fraction is proportional to the pressure fraction: 0.84 / 2.24 = 0.375 (rounds to 0.38)." },
+  { "id": 163, "question": "Under what conditions do real gases most closely approximate the behavior of ideal gases?", "options": ["low pressure and high temperature", "high pressure and low temperature", "all real gases behave like ideal gases at all temperatures and pressures", "high pressure and high temperature", "low pressure and low temperature"], "answer": "low pressure and high temperature", "explanation": "At high temperatures, intermolecular forces are negligible because particles move fast. At low pressures, the volume occupied by the gas molecules themselves is negligible compared to the container volume." },
+  { "id": 164, "question": "Which of the following is the correct sequence for the three principle types of reactions which make up a free-radical process?", "options": ["substitution, elimination, termination", "initiation, propagation, termination", "initiation, elimination, termination", "elimination, termination, substitution", "initiation, substitution, termination"], "answer": "initiation, propagation, termination", "explanation": "A chain reaction involving free radicals always starts with initiation (forming radicals), proceeds with propagation (transferring radicals to form products), and ends with termination (radicals reacting together)." },
+  { "id": 165, "question": "Which of the following greenhouse gases is considered to be the principal global warming gas generated by the combustion of fossil fuels in electric power plants and internal combustion engines?", "options": ["water vapor", "carbon dioxide", "ozone", "methane", "all of the above"], "answer": "carbon dioxide", "explanation": "While water vapor is a potent greenhouse gas, carbon dioxide (CO2) is the primary long-lived anthropogenic global warming gas released through fossil fuel combustion." },
+  { "id": 166, "question": "Consider the gas-phase equilibrium system represented by the equation: 2H2O(g) <-> 2H2(g) + O2(g). Given that the forward reaction is endothermic, which of the following changes will decrease the equilibrium amount of H2O?", "options": ["Adding more oxygen", "Adding a solid phase calalyst", "Decreasing the volume of the container", "Increasing the temperature at constant pressure", "Adding He gas"], "answer": "Increasing the temperature at constant pressure", "explanation": "According to Le Chatelier's Principle, increasing the temperature of an endothermic reaction shifts the equilibrium to the right (products), which will decrease the amount of the reactant, H2O." },
+  { "id": 167, "question": "The conventional equilibrium constant expression (Kc) for the system below is: 2ICl(s) <-> I2(s) + Cl2(g)", "options": ["[I2][Cl2]/[ICl]2", "[I2][Cl2]/2[ICl]", "[Cl2]", "([I2]+[Cl2])/2[ICl]", "[Cl2]/[ICl]2"], "answer": "[Cl2]", "explanation": "Pure solids and liquids are omitted from the equilibrium constant expression. Since ICl and I2 are both solids, only the gaseous Cl2 is included." },
+  { "id": 168, "question": "Consider the equilibrium system: 2ICl(s) <-> I2(s) + Cl2(g). Which of the following changes will increase the total amount of of Cl2 that can be produced?", "options": ["Removing some of the I2(s)", "Adding more ICl(s)", "Removing the Cl2 as it is formed", "Decreasing the volume of the container", "All of the above"], "answer": "Removing the Cl2 as it is formed", "explanation": "Continuously removing a product (Cl2) as it forms will shift the equilibrium to the right to replace it, allowing more total Cl2 to be produced over time." },
+  { "id": 169, "question": "At equilibrium, a 1.0 liter container was found to contain 0.20 moles of A, 0.20 moles of B, 0.40 moles of C and 0.40 mole of D. If 0.10 moles of A and 0.10 moles of B are added to this system, what will be the new equilibrium concentration of A? A(g) + B(g) <-> C(g) + D(g)", "options": ["0.37 mol/L", "0.47 mol/L", "0.87 mol/L", "0.23 mol/L", "0.15 mol/L"], "answer": "0.23 mol/L", "explanation": "Initial Kc = (0.40)(0.40) / (0.20)(0.20) = 4.0. After adding 0.10 M to A and B, initial concentrations become A=0.30, B=0.30, C=0.40, D=0.40. Setting up the ICE table and solving Kc = (0.40+x)^2 / (0.30-x)^2 = 4.0 yields x=0.067. New [A] = 0.30 - 0.067 = 0.23 M." },
+  { "id": 170, "question": "Consider the following system in a 1.00 L container: A(g) + B(g) <-> 2C(g). The equilibrium concentrations at 200C were determined to be: [A]=0.200 M, [B]=3.00 M, [C]=0.500 M. How many moles of A must be added to increase the concentration of C to 0.700 M at 200C?", "options": ["0.225 mol", "0.305 mol", "0.417 mol", "0.610 mol", "0.700 mol"], "answer": "0.305 mol", "explanation": "Kc = (0.500)^2 / (0.200 * 3.00) = 0.4167. To get [C] = 0.700, C must increase by 0.200, meaning 0.100 M of A and B react. New [B] = 2.90 M. Using Kc = (0.700)^2 / ( [A]_new * 2.90 ) = 0.4167 gives [A]_new = 0.405 M. Since 0.100 M reacted, initial [A] needed was 0.505 M. Moles added = 0.505 - 0.200 = 0.305 mol." },
+  { "id": 171, "question": "Consider the reversible reaction at equilibrium at 392C: 2A(g) + B(g) <-> C(g). The partial pressures are found to be: A: 6.70 atm, B: 10.1 atm, C: 3.60 atm. Evaluate Kp for this reaction.", "options": ["7.94 x 10-3", "0.146", "0.0532", "54.5", "121"], "answer": "7.94 x 10-3", "explanation": "Kp is calculated using partial pressures: Kp = (P_C) / ( (P_A)^2 * P_B ) = 3.60 / ( (6.70)^2 * 10.1 ) = 3.60 / 453.389 = 0.00794." },
+  { "id": 172, "question": "Kc = 0.040 for the system below at 450C: PCl5(g) <-> PCl3(g) + Cl2(g). Evaluate Kp for the reaction at 450C.", "options": ["0.40", "0.64", "2.4", "0.052", "6.7 x 10-4"], "answer": "2.4", "explanation": "Use the equation Kp = Kc(RT)^dn. Here dn = 2 - 1 = 1. T = 450 + 273.15 = 723.15 K. Kp = 0.040 * (0.08206 * 723.15)^1 = 0.040 * 59.34 = 2.37, which rounds to 2.4." },
+  { "id": 173, "question": "What is the equilibrium constant for a reaction that has a value of dG = -41.8 kJ at 100C?", "options": ["1.01", "7.1 x 10^5", "-5.87", "1.4 x 10^-6", "13.5"], "answer": "7.1 x 10^5", "explanation": "Using dG = -RT ln(K), where T = 373.15 K and R = 8.314 J/(mol K). -41800 J = -(8.314)(373.15) ln(K). ln(K) = 13.47. K = e^13.47 = 7.1 x 10^5." },
+  { "id": 174, "question": "The equilibrium constant at 427C for the reaction: N2(g) + 3H2(g) <-> 2NH3(g) is Kp = 9.4 x 10^-5. Calculate the value of dG for the reaction at 427C.", "options": ["-33 kJ", "-54 kJ", "54 kJ", "33 kJ", "1.3 J"], "answer": "54 kJ", "explanation": "T = 427 + 273.15 = 700 K. dG = -RT ln(K) = -(8.314 J/mol K)(700 K) * ln(9.4 x 10^-5). dG = -5819.8 * (-9.27) = +53966 J = +54 kJ." },
+  { "id": 175, "question": "For a specific reaction, which of the following statements can be made about K, the equilibrium constant?", "options": ["It always remains the same at different reaction conditions.", "It increases if the concentration of one of the products is increased.", "It changes with changes in the temperature.", "It increases if the concentration of one of the reactants is increased.", "It may be changed by the addition of a catalyst."], "answer": "It changes with changes in the temperature.", "explanation": "The equilibrium constant K is a temperature-dependent value. It is unaffected by concentration changes (which only change Qc) or catalysts." },
+  { "id": 176, "question": "The combustion of ethane (C2H6) is represented by the equation: 2C2H6(g) + 7O2(g) -> 4CO2(g) + 6H2O(l). In this reaction:", "options": ["The rate of consumption of ethane is seven times faster than the rate of consumption of oxygen.", "The rate of formation of CO2 equals the rate of formation of water.", "Water is formed at a rate equal to twothirds the rate of formation of CO2.", "The rate of consumption of oxygen equals the rate of consumption of water.", "CO2 is formed twice as fast as ethane is consumed."], "answer": "CO2 is formed twice as fast as ethane is consumed.", "explanation": "Based on the stoichiometry, 4 moles of CO2 are produced for every 2 moles of C2H6 consumed, meaning the rate of CO2 formation is twice the rate of ethane consumption." },
+  { "id": 177, "question": "The speed of a chemical reaction", "options": ["is constant no matter what the temperature is.", "is independent of the amount of contact surface of a solid involved.", "Between gases should in all cases be extremely rapid because the average kinetic energy of the molecules is great.", "Between ions in aqueous solution is extremely rapid because there are no bonds that need to be broken.", "Varies inversely with the absolute temperature."], "answer": "Between ions in aqueous solution is extremely rapid because there are no bonds that need to be broken.", "explanation": "Reactions between free-moving ions in aqueous solutions are generally very fast because electrostatic attraction pulls them together instantly without the need to break existing covalent bonds." },
+  { "id": 178, "question": "For a reaction 2A + B -> 2C with the rate equation: Rate = k[A]^2[B]", "options": ["The order with respect to A is 1 and the order overall is 1.", "The order with respect to A is 2 and the order overall is 2.", "The order with respect to A is 2 and the order overall is 3.", "The order with respect to B is 2 and the order overall is 2.", "The order with respect to B is 2 and the order overall is 3."], "answer": "The order with respect to A is 2 and the order overall is 3.", "explanation": "The exponent of [A] is 2, so it is second order with respect to A. The exponent of [B] is 1. The overall order is the sum of the exponents: 2 + 1 = 3." },
+  { "id": 179, "question": "Given the following data for this reaction: NH4+(aq) + NO2-(aq) -> N2(g) + 2H2O(l). EXPT 1: [NH4+]=0.010, [NO2-]=0.020, Rate=0.020. EXPT 2: [NH4+]=0.015, [NO2-]=0.020, Rate=0.030. EXPT 3: [NH4+]=0.010, [NO2-]=0.010, Rate=0.005. The rate law for the reaction is:", "options": ["Rate = k [NH4+] [NO2-]", "Rate = k [NH4+]^2 [NO2-]^2", "Rate = k [NH4+]^2 [NO2-]", "Rate = k [NH4+] [NO2-]^2", "None of the above"], "answer": "Rate = k [NH4+] [NO2-]^2", "explanation": "Comparing Exp 1 and 2: [NH4+] increases by 1.5x, rate increases by 1.5x (1st order in NH4+). Comparing Exp 1 and 3: [NO2-] is halved, rate becomes 1/4th (2nd order in NO2-)." },
+  { "id": 180, "question": "What are the units of k for the rate law: Rate = k[A][B]^2, when the concentration unit is mol/L?", "options": ["s-1", "s", "L mol-1 s-1", "L^2 mol^-2 s^-1", "L^2 s^2 mol^-2"], "answer": "L^2 mol^-2 s^-1", "explanation": "The overall reaction order is 3. Rate is in M/s. M/s = k * M^3 -> k = 1 / (M^2 * s) = L^2 / (mol^2 * s) = L^2 mol^-2 s^-1." },
+  { "id": 181, "question": "Given: A + 3B -> 2C + D. This reaction is first order with respect to reactant A and second order with respect to reactant B. If the concentration of A is doubled and the concentration of B is halved, the rate of the reaction would ___ by a factor of ___", "options": ["Increase, 2", "Decrease, 2", "Increase, 4", "Decrease, 4", "Not change"], "answer": "Decrease, 2", "explanation": "Rate_new = k(2[A])(0.5[B])^2 = k * 2[A] * 0.25[B]^2 = 0.5 * k[A][B]^2. The rate becomes half of the original, meaning it decreases by a factor of 2." },
+  { "id": 182, "question": "The decomposition of carbon disulfide, CS2, to carbon monosulfide, CS, and sulfur is first order with k = 2.8 x 10^-7 s^-1 at 1000C. What is the half-life of this reaction at 1000C?", "options": ["5.0 x 10^7 s", "4.7 x 10^-6 s", "3.8 x 10^5 s", "6.1 x 10^4 s", "2.5 x 10^6 s"], "answer": "2.5 x 10^6 s", "explanation": "For a first order reaction, t_1/2 = 0.693 / k. t_1/2 = 0.693 / (2.8 x 10^-7) = 2,475,000 seconds, which is 2.5 x 10^6 s." },
+  { "id": 183, "question": "The decomposition of dimethylether at 504 C is first order with a half-life of 1570 seconds. What fraction of an initial amount of dimethylether remains after 4710 seconds?", "options": ["1/3", "1/6", "1/8", "1/16", "1/32"], "answer": "1/8", "explanation": "4710 seconds is exactly 3 half-lives (4710 / 1570 = 3). After 3 half lives, the amount remaining is (1/2)^3 = 1/8." },
+  { "id": 184, "question": "The half-life for a first-order reaction is 32 s. What was the original concentration if, after 2.0 minutes, the reactant concentration is 0.062 M?", "options": ["0.84 M", "0.069 M", "0.091 M", "0.075 M", "0.13 M"], "answer": "0.84 M", "explanation": "2.0 minutes = 120 seconds. 120 / 32 = 3.75 half-lives. Using [A] = [A]0 * (1/2)^n, 0.062 = [A]0 * (0.5)^3.75 -> 0.062 = [A]0 * 0.0743 -> [A]0 = 0.834 M." },
+  { "id": 185, "question": "Given that a reaction absorbs energy and has an activation energy of 50 kJ/mol, which of the following statements are correct? (1) The reverse reaction has an activation energy equal to 50 kJ/mol. (2) The reverse reaction has an activation energy less than 50 kJ/mol (3) The reverse reaction has an activation energy greater than 50 kJ/mol. (4) The change in internal energy is less than zero. (5) The change in internal energy is greater than zero.", "options": ["(1) and (4)", "(2) and (4)", "(3) and (4)", "(2) and (5)", "(3) and (5)"], "answer": "(2) and (5)", "explanation": "Absorbing energy means it is endothermic (dE > 0). In an endothermic reaction, the activation energy of the forward reaction (50 kJ) is greater than the activation energy of the reverse reaction." },
+  { "id": 186, "question": "If reaction A has an activation energy of 250 kJ and reaction B has an activation energy of 100 kJ, which of the following statements must be correct?", "options": ["If reaction A is exothermic and reaction B is endothermic then reaction A is favored kinetically.", "At the same temperature the rate of reaction B is greater than the rate of reaction A.", "The energy of reaction A must be greater than the energy of reaction B.", "The energy of reaction B must be greater than the energy of reaction A.", "The rate of reaction A at 25 C equals the rate of reaction B at 100 C."], "answer": "At the same temperature the rate of reaction B is greater than the rate of reaction A.", "explanation": "A lower activation energy means a larger rate constant (k), leading to a faster reaction rate at the same temperature." },
+  { "id": 187, "question": "If the activation energy in the forward direction of an elementary step is 52 kJ and the activation energy in the reverse direction is 74 kJ, what is the energy of reaction dE for this step?", "options": ["22 kJ", "-22 kJ", "52 kJ", "-52 kJ", "126 kJ"], "answer": "-22 kJ", "explanation": "The change in energy (dE or dH) is equal to Ea(forward) - Ea(reverse) = 52 kJ - 74 kJ = -22 kJ." },
+  { "id": 188, "question": "Suppose the reaction: A + 2B -> AB2 occurs by the following mechanism: Step 1: A + B -> AB (slow). Step 2: AB + B -> AB2 (fast). The rate law expression must be Rate =", "options": ["k[A]", "k[B]", "k[A][B]", "k[B]^2", "k[A][B]^2"], "answer": "k[A][B]", "explanation": "The rate law of a reaction is determined strictly by the rate-determining (slowest) step. The slow step has reactants A and B, so Rate = k[A][B]." },
+  { "id": 189, "question": "A possible mechanism for the reaction, 2A + B -> C + D, is: (1) A + A <-> A2 (fast, eq), (2) A2 + A -> A3 (slow), (3) A3 + B -> A + C + D (fast). According to the mechanism, the rate law will be:", "options": ["Rate = k [A]^2", "Rate = k [A] [B]", "Rate = k [A]^2 [B]", "Rate = k [A]", "Rate = k [A]^3"], "answer": "Rate = k [A]^3", "explanation": "The slow step dictates rate: Rate = k'[A2][A]. We substitute intermediate A2 using the fast equilibrium step K = [A2]/[A]^2, giving [A2] = K[A]^2. Substituting this back: Rate = k'*K*[A]^2*[A] = k[A]^3." },
+  { "id": 190, "question": "At 300 K, the following reaction is found to obey the rate law: Rate = k[NOCl]^2: 2NOCl -> 2NO + Cl2. Consider the three postulated mechanisms. Mechanism 1: NOCl -> NO+Cl (slow), Cl+NOCl -> NO+Cl2 (fast). Mechanism 2: 2NOCl -> NOCl2+NO (slow), NOCl2 -> NO+Cl2 (fast). Mechanism 3: NOCl <-> NO+Cl (fast eq), NOCl+Cl -> NO+Cl2 (slow). Which is possibly correct?", "options": ["2, 3", "3", "1", "2", "1, 2"], "answer": "2", "explanation": "The rate law must match the stoichiometry of the slow step. Only Mechanism 2 has a slow step involving two molecules of NOCl, matching the rate law Rate = k[NOCl]^2." },
+  { "id": 191, "question": "A correct reaction mechanism for a given reaction usually is:", "options": ["The same as its balanced chemical equation.", "Obvious if its heat of reaction is known.", "Obvious if its reaction order is known.", "Sometimes difficult to prove.", "Obvious if its activation energy is known."], "answer": "Sometimes difficult to prove.", "explanation": "Reaction mechanisms are theoretical step-by-step models that fit the experimental kinetic data; they cannot be proven definitively, only supported or disproven." },
+  { "id": 192, "question": "Suppose the activation energy of a certain reaction is 250 kJ/mol. If the rate constant at 300 K is k1 and the rate constant at 320 K is k2, then the reaction is ___ times faster at 320 K than at 300 K.", "options": ["3 x 10^-29", "0.067", "15.0", "525", "3 x 10^-28"], "answer": "525", "explanation": "Using the Arrhenius equation: ln(k2/k1) = (Ea/R) * (1/T1 - 1/T2). ln(k2/k1) = (250000 / 8.314) * (1/300 - 1/320) = 30070 * (0.0002083) = 6.26. e^6.26 \u2248 525." },
+  { "id": 193, "question": "What is the activation energy (in kJ) of a reaction whose rate constant increases by a factor of 100 upon increasing the temperature from 300 K to 360 K?", "options": ["27", "35", "42", "53", "69"], "answer": "69", "explanation": "ln(100) = (Ea/8.314) * (1/300 - 1/360). 4.605 = (Ea/8.314) * (0.000555). Ea = (4.605 * 8.314) / 0.000555 = 68980 J = 69 kJ." },
+  { "id": 194, "question": "Most reactions are more rapid at high temperatures than at low temperatures. This is consistent with: (I) an increase in the activation energy with increasing temperature. (II) an increase in the rate constant with increasing temperatures. (III) An increase in the percentage of 'high energy' collisions with increasing temperature.", "options": ["Only I", "Only II", "Only III", "Only I and II", "Only II and III"], "answer": "Only II and III", "explanation": "Activation energy does not change with temperature. However, higher temperatures increase the rate constant (k) because a higher percentage of collisions have enough kinetic energy to overcome the activation energy barrier." },
+  { "id": 195, "question": "Which items correctly complete the following statment? A catalyst can act in a chemical reaction to: (I) increase the equilibrium constant. (II) Lower the activation energy. (III) Decrease dE for the reaction. (IV) Provide a new path for the reaction.", "options": ["Only I & II", "Only II & III", "Only III & IV", "Only I & III", "Only II & IV"], "answer": "Only II & IV", "explanation": "Catalysts work by providing an alternative reaction pathway with a lower activation energy. They do not change the thermodynamics (equilibrium constant or dE)." },
+  { "id": 196, "question": "A catalyst:", "options": ["Actually participates in the reaction.", "Changes the equilibrium concentration of the products.", "Does not affect a reaction energy path.", "Always decreases the rate for a reaction.", "Always increases the activation energy for a reaction."], "answer": "Actually participates in the reaction.", "explanation": "A catalyst actively participates in the reaction mechanism by forming intermediates, but it is regenerated at the end so it is not consumed in the net reaction." },
+  { "id": 197, "question": "Which statement is false?", "options": ["If a reaction is thermodynamically spontaneous it may occur rapidly.", "If a reaction is thermodynamically spontaneous it may occur slowly.", "Activation energy is a kinetic quantity rather than a thermodynamic quantity.", "If a reaction is thermodynamically nonspontaneous, it will not occur spontaneously.", "If a reaction is thermodynamically spontaneous, it must have a low activation energy."], "answer": "If a reaction is thermodynamically spontaneous, it must have a low activation energy.", "explanation": "Thermodynamic spontaneity (dG < 0) says nothing about the speed of a reaction. Many spontaneous reactions (like the rusting of iron) have high activation energies and occur very slowly." },
+  { "id": 198, "question": "Which of the following statements are true? (1) Reactions with more negative values of dG are spontaneous and proceed at a higher rate than those with less negative values. (2) The activation energy is usually about the same as dE for a reaction. (3) The activation energy for a reaction does not change significantly as temperature changes. (4) Reactions usually occur at faster rates at higher temperatures.", "options": ["1, 2, 4", "3, 4", "1, 2, 3", "2, 3, 4", "1, 2, 3, 4"], "answer": "3, 4", "explanation": "Statement 1 is false (thermodynamics does not dictate kinetics). Statement 2 is false. Statements 3 and 4 accurately describe the kinetic behavior of activation energy and temperature." },
+  { "id": 199, "question": "When the concentration of reactant molecules is increased, the rate of reaction increases. The best explanation is: As the reactant concentration increases,", "options": ["the average kinetic energy of molecules increases.", "The frequency of molecular collisions increases.", "The rate constant increases.", "The activation energy increases.", "The order of reaction increases."], "answer": "The frequency of molecular collisions increases.", "explanation": "Higher concentration means more particles in a given volume, leading to a higher probability and frequency of collisions between reactant molecules." },
+  { "id": 200, "question": "For the reaction, 2H2S(g) + O2(g) -> 2S(s) + 2H2O(l), which one of the following statements is absolutely true?", "options": ["The reaction is first order with respect to H2S and second order with respect to O2.", "The reaction is fourth order overall.", "The rate law is: rate = k[H2S]^2[O2].", "The rate law is: rate = k[H2S][O2].", "The rate law cannot be determined from the information given."], "answer": "The rate law cannot be determined from the information given.", "explanation": "Rate laws must be determined experimentally. They cannot be reliably predicted just from the overall balanced stoichiometric equation." },
+  { "id": 201, "question": "Which of the following subatomic particles has a negative charge?", "options": ["proton", "neutron", "electron", "positron"], "answer": "electron", "explanation": "Electrons are negatively charged subatomic particles that orbit the nucleus of an atom." },
+  { "id": 202, "question": "What is the approximate molar mass of water (H2O)?", "options": ["16.00 g/mol", "18.02 g/mol", "20.00 g/mol", "32.00 g/mol"], "answer": "18.02 g/mol", "explanation": "Water consists of two hydrogens (approx 1.01 g/mol each) and one oxygen (approx 16.00 g/mol), totaling 18.02 g/mol." },
+  { "id": 203, "question": "Which element has the electron configuration 1s2 2s2 2p6?", "options": ["Carbon", "Oxygen", "Neon", "Sodium"], "answer": "Neon", "explanation": "The configuration 1s2 2s2 2p6 accounts for 10 electrons, which corresponds to the noble gas Neon." },
+  { "id": 204, "question": "What type of bond is formed when two atoms share electrons equally?", "options": ["ionic bond", "polar covalent bond", "nonpolar covalent bond", "metallic bond"], "answer": "nonpolar covalent bond", "explanation": "A nonpolar covalent bond occurs when electrons are shared equally between two atoms with similar electronegativities." },
+  { "id": 205, "question": "According to the periodic trends, which of the following elements has the highest electronegativity?", "options": ["Fluorine", "Chlorine", "Oxygen", "Nitrogen"], "answer": "Fluorine", "explanation": "Fluorine is the most electronegative element on the periodic table." },
+  { "id": 206, "question": "What is the formula for sulfuric acid?", "options": ["H2SO3", "H2SO4", "H2S", "HSO4-"], "answer": "H2SO4", "explanation": "Sulfuric acid is a strong acid composed of two hydrogen atoms, one sulfur atom, and four oxygen atoms (H2SO4)." },
+  { "id": 207, "question": "In a balanced chemical equation, the number of atoms of each element on the reactant side must equal the number on the product side. This illustrates the law of:", "options": ["multiple proportions", "definite proportions", "conservation of mass", "conservation of energy"], "answer": "conservation of mass", "explanation": "The law of conservation of mass states that matter cannot be created or destroyed in an isolated system." },
+  { "id": 208, "question": "What is the SI unit for the amount of substance?", "options": ["gram", "liter", "mole", "molecule"], "answer": "mole", "explanation": "The mole is the standard scientific unit for measuring large quantities of very small entities such as atoms or molecules." },
+  { "id": 209, "question": "Which of the following represents an empirical formula?", "options": ["C6H12O6", "C2H4", "CH2O", "N2O4"], "answer": "CH2O", "explanation": "An empirical formula represents the simplest whole-number ratio of elements in a compound. CH2O is the empirical formula for glucose (C6H12O6)." },
+  { "id": 210, "question": "A gas occupies 2.0 L at 1.0 atm. What will its volume be at 2.0 atm if temperature is constant?", "options": ["1.0 L", "2.0 L", "4.0 L", "0.5 L"], "answer": "1.0 L", "explanation": "According to Boyle's Law (P1V1 = P2V2), if pressure doubles, volume is halved." },
+  { "id": 211, "question": "Which intermolecular force is present in all molecules, regardless of polarity?", "options": ["hydrogen bonding", "dipole-dipole forces", "London dispersion forces", "ion-dipole forces"], "answer": "London dispersion forces", "explanation": "London dispersion forces are the weakest intermolecular forces and exist between all atoms and molecules due to temporary dipoles." },
+  { "id": 212, "question": "What is the pH of a neutral aqueous solution at 25 degrees Celsius?", "options": ["0", "7", "14", "1"], "answer": "7", "explanation": "At standard room temperature (25 C), a neutral solution has equal concentrations of H+ and OH- ions, resulting in a pH of exactly 7." },
+  { "id": 213, "question": "Which of the following is considered a strong base?", "options": ["NH3", "CH3COOH", "NaOH", "HCl"], "answer": "NaOH", "explanation": "Sodium hydroxide (NaOH) completely dissociates in water, making it a strong base." },
+  { "id": 214, "question": "What is the oxidation state of oxygen in most of its compounds?", "options": ["-1", "-2", "+1", "+2"], "answer": "-2", "explanation": "Oxygen typically has an oxidation state of -2, except in peroxides or when bonded to fluorine." },
+  { "id": 215, "question": "The process by which a solid transitions directly to a gas is called:", "options": ["melting", "freezing", "condensation", "sublimation"], "answer": "sublimation", "explanation": "Sublimation is the phase change from a solid directly to a gas without passing through the liquid phase." },
+  { "id": 216, "question": "In the reaction Zn + Cu2+ -> Zn2+ + Cu, which species is oxidized?", "options": ["Zn", "Cu2+", "Zn2+", "Cu"], "answer": "Zn", "explanation": "Zinc (Zn) loses two electrons to become Zn2+, meaning it undergoes oxidation." },
+  { "id": 217, "question": "What shape is a molecule with a central atom bonded to four other atoms and zero lone pairs?", "options": ["linear", "trigonal planar", "tetrahedral", "octahedral"], "answer": "tetrahedral", "explanation": "According to VSEPR theory, four bonding pairs and zero lone pairs result in a tetrahedral geometry." },
+  { "id": 218, "question": "Which noble gas has the lowest boiling point?", "options": ["Helium", "Neon", "Argon", "Krypton"], "answer": "Helium", "explanation": "Helium has the weakest London dispersion forces due to its small size and few electrons, giving it the lowest boiling point of any element." },
+  { "id": 219, "question": "Calculate the molarity of 0.5 moles of NaCl dissolved in 2.0 L of solution.", "options": ["1.0 M", "0.5 M", "0.25 M", "0.125 M"], "answer": "0.25 M", "explanation": "Molarity (M) = moles of solute / liters of solution. 0.5 moles / 2.0 L = 0.25 M." },
+  { "id": 220, "question": "Which principle states that electrons fill lower-energy atomic orbitals before filling higher-energy ones?", "options": ["Hund's Rule", "Pauli Exclusion Principle", "Aufbau Principle", "Heisenberg Uncertainty Principle"], "answer": "Aufbau Principle", "explanation": "The Aufbau principle dictates that electrons fill orbitals starting at the lowest available energy levels before moving to higher levels." },
+  { "id": 221, "question": "An exothermic reaction is characterized by a:", "options": ["positive enthalpy change", "negative enthalpy change", "zero enthalpy change", "positive entropy change"], "answer": "negative enthalpy change", "explanation": "In an exothermic reaction, the system releases heat to the surroundings, resulting in a negative change in enthalpy (delta H)." },
+  { "id": 222, "question": "Which of the following elements is an alkaline earth metal?", "options": ["Sodium", "Potassium", "Calcium", "Iron"], "answer": "Calcium", "explanation": "Calcium is in Group 2 of the periodic table, which is the alkaline earth metals family." },
+  { "id": 223, "question": "What is the maximum number of electrons an 's' orbital can hold?", "options": ["2", "6", "10", "14"], "answer": "2", "explanation": "Any single orbital can hold a maximum of 2 electrons with opposite spins." },
+  { "id": 224, "question": "At absolute zero (0 K), what happens to the volume of an ideal gas according to Charles's Law?", "options": ["it becomes infinite", "it reaches 1 L", "it approaches zero", "it remains constant"], "answer": "it approaches zero", "explanation": "Charles's Law predicts that gas volume is directly proportional to absolute temperature; at 0 K, the theoretical volume is zero." },
+  { "id": 225, "question": "Which of the following is an example of an extensive property?", "options": ["density", "temperature", "mass", "color"], "answer": "mass", "explanation": "Extensive properties depend on the amount of matter present, such as mass and volume." },
+  { "id": 226, "question": "Identify the spectator ions in the reaction: NaCl(aq) + AgNO3(aq) -> AgCl(s) + NaNO3(aq)", "options": ["Ag+ and Cl-", "Na+ and NO3-", "Na+ and Cl-", "Ag+ and NO3-"], "answer": "Na+ and NO3-", "explanation": "Spectator ions do not participate in forming the precipitate. Na+ and NO3- remain dissolved in solution." },
+  { "id": 227, "question": "What type of radioactive decay involves the emission of a helium nucleus?", "options": ["alpha decay", "beta decay", "gamma decay", "positron emission"], "answer": "alpha decay", "explanation": "Alpha decay involves the release of an alpha particle, which consists of two protons and two neutrons, identical to a helium-4 nucleus." },
+  { "id": 228, "question": "Which theory defines an acid as an electron-pair acceptor?", "options": ["Arrhenius theory", "Bronsted-Lowry theory", "Lewis theory", "Bohr theory"], "answer": "Lewis theory", "explanation": "The Lewis theory generalizes acids as electron-pair acceptors and bases as electron-pair donors." },
+  { "id": 229, "question": "A catalyst increases the rate of a reaction by:", "options": ["increasing the temperature", "lowering the activation energy", "increasing the concentration of reactants", "changing the equilibrium constant"], "answer": "lowering the activation energy", "explanation": "Catalysts provide an alternative reaction pathway with a lower activation energy barrier." },
+  { "id": 230, "question": "What is the primary component of natural gas?", "options": ["Ethane", "Propane", "Butane", "Methane"], "answer": "Methane", "explanation": "Methane (CH4) is the simplest hydrocarbon and makes up the vast majority of natural gas." },
+  { "id": 231, "question": "Which value is equal to standard atmospheric pressure at sea level?", "options": ["1 atm", "760 torr", "101.3 kPa", "all of the above"], "answer": "all of the above", "explanation": "Standard pressure can be expressed as 1 atm, 760 torr (or mmHg), or 101.325 kPa." },
+  { "id": 232, "question": "What happens to the rate of a reaction if it is first-order with respect to reactant A and the concentration of A is tripled?", "options": ["it remains unchanged", "it triples", "it increases by a factor of 9", "it is reduced to one-third"], "answer": "it triples", "explanation": "For a first-order reaction (Rate = k[A]), the rate is directly proportional to the concentration." },
+  { "id": 233, "question": "Which of the following solutions is considered acidic?", "options": ["pH = 8", "pH = 7", "pH = 3", "pH = 10"], "answer": "pH = 3", "explanation": "Solutions with a pH less than 7 are acidic." },
+  { "id": 234, "question": "What is the chemical name for Fe2O3?", "options": ["Iron(II) oxide", "Iron(III) oxide", "Iron oxide", "Diiron trioxide"], "answer": "Iron(III) oxide", "explanation": "Because oxygen has a -2 charge, the iron must have a +3 charge to balance the neutral molecule, making it Iron(III) oxide." },
+  { "id": 235, "question": "In a galvanic cell, oxidation occurs at the:", "options": ["cathode", "anode", "salt bridge", "voltmeter"], "answer": "anode", "explanation": "By definition, oxidation always occurs at the anode in any electrochemical cell." },
+  { "id": 236, "question": "The specific heat capacity of liquid water is approximately:", "options": ["1.00 J/gC", "2.05 J/gC", "4.18 J/gC", "8.31 J/gC"], "answer": "4.18 J/gC", "explanation": "It takes 4.184 Joules of energy to raise the temperature of one gram of liquid water by one degree Celsius." },
+  { "id": 237, "question": "Which law states that the total pressure of a gas mixture is the sum of the partial pressures of its components?", "options": ["Boyle's Law", "Charles's Law", "Dalton's Law", "Graham's Law"], "answer": "Dalton's Law", "explanation": "Dalton's Law of Partial Pressures states that Pt = P1 + P2 + P3..." },
+  { "id": 238, "question": "Which isotope is commonly used as the standard for the atomic mass unit (amu)?", "options": ["Hydrogen-1", "Carbon-12", "Oxygen-16", "Uranium-238"], "answer": "Carbon-12", "explanation": "One atomic mass unit (amu) is officially defined as exactly 1/12th the mass of an unbound neutral atom of carbon-12." },
+  { "id": 239, "question": "What is the conjugate base of the hydronium ion (H3O+)?", "options": ["OH-", "H2O", "H+", "O2-"], "answer": "H2O", "explanation": "Removing one proton (H+) from hydronium leaves water (H2O), which is its conjugate base." },
+  { "id": 240, "question": "What is the formal charge on the oxygen atom in a water molecule?", "options": ["-2", "-1", "0", "+1"], "answer": "0", "explanation": "Oxygen has 6 valence electrons, 2 bonds, and 4 non-bonding electrons. Formal charge = 6 - (4 + 2) = 0." },
+  { "id": 241, "question": "Which bond is the strongest and shortest?", "options": ["single bond", "double bond", "triple bond", "ionic bond"], "answer": "triple bond", "explanation": "Triple bonds involve the sharing of six electrons between two atoms, pulling them tightly together and making the bond both short and very strong." },
+  { "id": 242, "question": "The number of significant figures in the measurement 0.004050 is:", "options": ["2", "3", "4", "6"], "answer": "4", "explanation": "Leading zeros are not significant. The 4, 0, 5, and the final 0 are all significant." },
+  { "id": 243, "question": "How many protons, neutrons, and electrons are in an atom of Carbon-14?", "options": ["6p, 6n, 6e", "6p, 8n, 6e", "8p, 6n, 8e", "14p, 14n, 14e"], "answer": "6p, 8n, 6e", "explanation": "Carbon always has 6 protons and 6 electrons (when neutral). Mass number 14 means 14 - 6 = 8 neutrons." },
+  { "id": 244, "question": "Which phase of matter has a definite volume but no definite shape?", "options": ["solid", "liquid", "gas", "plasma"], "answer": "liquid", "explanation": "Liquids conform to the shape of their container but maintain a relatively constant volume." },
+  { "id": 245, "question": "Identify the diatomic element from the list below.", "options": ["Carbon", "Helium", "Nitrogen", "Sulfur"], "answer": "Nitrogen", "explanation": "Nitrogen naturally exists as a diatomic gas (N2)." },
+  { "id": 246, "question": "Which element has the largest atomic radius?", "options": ["Lithium", "Fluorine", "Francium", "Helium"], "answer": "Francium", "explanation": "Atomic radius increases down a group and from right to left across a period, putting Francium at the extreme bottom-left." },
+  { "id": 247, "question": "A substance that changes color depending on the pH of a solution is called a(n):", "options": ["catalyst", "indicator", "buffer", "electrolyte"], "answer": "indicator", "explanation": "pH indicators are halochromic chemical compounds that visually show changes in hydrogen ion concentration." },
+  { "id": 248, "question": "In a reaction, if the value of the equilibrium constant (K) is much greater than 1, it implies that:", "options": ["reactants are favored", "products are favored", "the reaction is very slow", "the reaction is endothermic"], "answer": "products are favored", "explanation": "A large K value means the numerator (products) is much larger than the denominator (reactants) at equilibrium." },
+  { "id": 249, "question": "What is the molecular geometry of carbon dioxide (CO2)?", "options": ["bent", "trigonal planar", "linear", "tetrahedral"], "answer": "linear", "explanation": "CO2 has two double bonds and no lone pairs on the central carbon atom, resulting in a linear geometry (180 degrees)." },
+  { "id": 250, "question": "According to the kinetic molecular theory, the average kinetic energy of gas particles is directly proportional to:", "options": ["pressure", "volume", "absolute temperature", "molar mass"], "answer": "absolute temperature", "explanation": "Temperature in Kelvin is a direct measure of the average kinetic energy of the particles in a substance." },
+  { "id": 251, "question": "Which group of elements is known as the halogens?", "options": ["Group 1", "Group 2", "Group 17", "Group 18"], "answer": "Group 17", "explanation": "Group 17 (or VIIA) contains the highly reactive nonmetals known as halogens, including fluorine and chlorine." },
+  { "id": 252, "question": "Calculate the mass of 2.0 moles of CO2.", "options": ["22.0 g", "44.0 g", "88.0 g", "12.0 g"], "answer": "88.0 g", "explanation": "Molar mass of CO2 is 12 + 2(16) = 44 g/mol. 2.0 moles * 44 g/mol = 88.0 g." },
+  { "id": 253, "question": "Which particle is responsible for isotopes?", "options": ["proton", "electron", "neutron", "photon"], "answer": "neutron", "explanation": "Isotopes are atoms of the same element (same protons) that differ only in their number of neutrons." },
+  { "id": 254, "question": "A solution that contains the maximum amount of dissolved solute at a given temperature is said to be:", "options": ["unsaturated", "saturated", "supersaturated", "dilute"], "answer": "saturated", "explanation": "A saturated solution is at chemical equilibrium with respect to the dissolved and undissolved solid." },
+  { "id": 255, "question": "What happens to the pressure of a gas if its volume is doubled while temperature remains constant?", "options": ["it doubles", "it is halved", "it quadruples", "it stays the same"], "answer": "it is halved", "explanation": "According to Boyle's Law, pressure and volume are inversely proportional at constant temperature." },
+  { "id": 256, "question": "Which of the following describes a physical change?", "options": ["rusting of iron", "burning of wood", "melting of ice", "digestion of food"], "answer": "melting of ice", "explanation": "Melting is a phase change, which is a physical change because the chemical identity (H2O) remains the same." },
+  { "id": 257, "question": "The oxidation number of an uncombined element (like pure O2 or Na) is always:", "options": ["-1", "0", "+1", "variable"], "answer": "0", "explanation": "By definition, the oxidation state of atoms in their pure elemental form is zero." },
+  { "id": 258, "question": "Which quantum number determines the shape of an atomic orbital?", "options": ["principal (n)", "azimuthal/angular momentum (l)", "magnetic (ml)", "spin (ms)"], "answer": "azimuthal/angular momentum (l)", "explanation": "The azimuthal quantum number (l) designates the subshell (s, p, d, f) and determines the orbital's shape." },
+  { "id": 259, "question": "How many valence electrons does a neutral nitrogen atom have?", "options": ["3", "5", "7", "15"], "answer": "5", "explanation": "Nitrogen is in Group 15 of the periodic table, so it has 5 valence electrons in its outer shell." },
+  { "id": 260, "question": "The energy required to remove an electron from a gaseous atom is called:", "options": ["electronegativity", "electron affinity", "ionization energy", "lattice energy"], "answer": "ionization energy", "explanation": "Ionization energy is the energy needed to overcome the attractive force of the nucleus and remove an electron." },
+  { "id": 261, "question": "What is the net ionic equation for the reaction of a strong acid with a strong base?", "options": ["H+ + OH- -> H2O", "Na+ + Cl- -> NaCl", "H3O+ + Cl- -> HCl + H2O", "H2O -> H+ + OH-"], "answer": "H+ + OH- -> H2O", "explanation": "Strong acids and bases completely dissociate, leaving the formation of liquid water from hydronium (or H+) and hydroxide as the only net reaction." },
+  { "id": 262, "question": "A substance that resists large changes in pH upon the addition of small amounts of strong acid or base is a:", "options": ["catalyst", "buffer", "indicator", "solvent"], "answer": "buffer", "explanation": "Buffers consist of a weak acid and its conjugate base, allowing them to absorb excess H+ or OH- ions." },
+  { "id": 263, "question": "What is the primary intermolecular force present in liquid water?", "options": ["ionic bonding", "hydrogen bonding", "London dispersion forces", "metallic bonding"], "answer": "hydrogen bonding", "explanation": "Water's highly polar O-H bonds create strong dipole-dipole interactions specifically known as hydrogen bonds." },
+  { "id": 264, "question": "If a reaction has a negative delta G (Gibbs free energy), the reaction is:", "options": ["endothermic", "exothermic", "spontaneous", "nonspontaneous"], "answer": "spontaneous", "explanation": "A negative change in Gibbs free energy indicates that a reaction is thermodynamically favorable, or spontaneous, under those conditions." },
+  { "id": 265, "question": "According to Le Chatelier's Principle, adding reactant to a system at equilibrium will:", "options": ["shift the equilibrium to the left", "shift the equilibrium to the right", "have no effect", "increase the equilibrium constant"], "answer": "shift the equilibrium to the right", "explanation": "The system will counteract the change by consuming the added reactant, thus forming more products (shifting right)." },
+  { "id": 266, "question": "Which instrument is typically used to measure atmospheric pressure?", "options": ["thermometer", "calorimeter", "spectrophotometer", "barometer"], "answer": "barometer", "explanation": "A barometer specifically measures the pressure exerted by the earth's atmosphere." },
+  { "id": 267, "question": "What is the correct name for P2O5?", "options": ["Phosphorus pentoxide", "Diphosphorus pentoxide", "Phosphorus(V) oxide", "Phosphorus oxide"], "answer": "Diphosphorus pentoxide", "explanation": "Covalent compounds use Greek prefixes to indicate the number of atoms. Two phosphorus = di-, five oxygen = penta- (dropping the 'a')." },
+  { "id": 268, "question": "In chemistry, 'STP' stands for Standard Temperature and Pressure, which corresponds to:", "options": ["25 C and 1 atm", "0 C and 1 atm", "0 K and 1 atm", "100 C and 1 atm"], "answer": "0 C and 1 atm", "explanation": "Standard Temperature and Pressure is defined as exactly 273.15 K (0 degrees Celsius) and 1 atmosphere of pressure." },
+  { "id": 269, "question": "Which property of a wave is inversely proportional to its frequency?", "options": ["amplitude", "speed", "energy", "wavelength"], "answer": "wavelength", "explanation": "Since the speed of light is constant, as frequency increases, the wavelength must decrease (c = lambda * nu)." },
+  { "id": 270, "question": "An alpha particle is identical to a nucleus of:", "options": ["Hydrogen", "Helium", "Lithium", "Beryllium"], "answer": "Helium", "explanation": "An alpha particle consists of 2 protons and 2 neutrons, matching the nucleus of a Helium-4 atom." },
+  { "id": 271, "question": "What is the strongest type of bonding found in a crystal of diamond?", "options": ["ionic", "metallic", "covalent network", "hydrogen bonding"], "answer": "covalent network", "explanation": "Diamond is a massive lattice of covalently bonded carbon atoms, making it a covalent network solid." },
+  { "id": 272, "question": "What is the term for the process of determining the concentration of a solution by reacting it with a solution of known concentration?", "options": ["filtration", "distillation", "titration", "chromatography"], "answer": "titration", "explanation": "Titration is a quantitative analytical method where a titrant is added to an analyte to determine its concentration." },
+  { "id": 273, "question": "Which functional group characterizes alcohols?", "options": ["-COOH", "-NH2", "-OH", "-C=O"], "answer": "-OH", "explanation": "The hydroxyl group (-OH) is the defining functional group for all alcohols in organic chemistry." },
+  { "id": 274, "question": "Which of the following acts as a Lewis base?", "options": ["BF3", "AlCl3", "NH3", "H+"], "answer": "NH3", "explanation": "Ammonia (NH3) has a lone pair of electrons on the nitrogen atom that it can donate, acting as a Lewis base." },
+  { "id": 275, "question": "How many atoms are in one mole of any substance?", "options": ["3.00 x 10^8", "6.626 x 10^-34", "6.022 x 10^23", "1.602 x 10^-19"], "answer": "6.022 x 10^23", "explanation": "Avogadro's number states there are 6.022 x 10^23 particles in exactly one mole." },
+  { "id": 276, "question": "What happens to the boiling point of water when a nonvolatile solute like salt is added?", "options": ["it decreases", "it increases", "it remains exactly 100 C", "it fluctuates"], "answer": "it increases", "explanation": "This is boiling point elevation, a colligative property where solute particles lower the vapor pressure, requiring a higher temperature to boil." },
+  { "id": 277, "question": "Which form of electromagnetic radiation has the highest energy?", "options": ["microwaves", "visible light", "ultraviolet", "gamma rays"], "answer": "gamma rays", "explanation": "Gamma rays have the shortest wavelength and highest frequency, therefore carrying the most energy per photon." },
+  { "id": 278, "question": "If a solution has a [H+] of 1.0 x 10^-4 M, what is its pH?", "options": ["-4", "4", "10", "14"], "answer": "4", "explanation": "pH is calculated as -log[H+]. The negative logarithm of 10^-4 is exactly 4." },
+  { "id": 279, "question": "The rate constant 'k' of a chemical reaction is dependent upon:", "options": ["concentration of reactants", "concentration of products", "temperature", "volume of the container"], "answer": "temperature", "explanation": "The rate constant is mathematically defined by the Arrhenius equation and changes based on temperature and activation energy." },
+  { "id": 280, "question": "In the ideal gas law (PV = nRT), what does the 'R' represent?", "options": ["reaction rate", "universal gas constant", "Rydberg constant", "radiation frequency"], "answer": "universal gas constant", "explanation": "R is the ideal gas constant, bridging the units of pressure, volume, temperature, and moles (e.g., 0.08206 L atm / mol K)." },
+  { "id": 281, "question": "Which molecular geometry is associated with sp hybridization?", "options": ["linear", "trigonal planar", "tetrahedral", "octahedral"], "answer": "linear", "explanation": "sp hybridization mixes one s and one p orbital to form two collinear hybrid orbitals at a 180-degree angle." },
+  { "id": 282, "question": "Which of these is NOT a strong acid?", "options": ["HCl", "HNO3", "H2SO4", "HF"], "answer": "HF", "explanation": "Hydrofluoric acid (HF) is a weak acid because the fluorine atom holds onto the hydrogen atom very tightly, preventing full dissociation." },
+  { "id": 283, "question": "When balancing a redox reaction in acidic solution, what do you add to balance oxygen atoms?", "options": ["O2", "OH-", "H+", "H2O"], "answer": "H2O", "explanation": "Water (H2O) is added to the side deficient in oxygen, followed by adding H+ to the opposite side to balance the newly introduced hydrogen." },
+  { "id": 284, "question": "Which intermolecular force is responsible for capillary action in water?", "options": ["London dispersion forces", "metallic bonding", "hydrogen bonding", "ionic bonding"], "answer": "hydrogen bonding", "explanation": "Hydrogen bonding causes high cohesion between water molecules and high adhesion to surfaces, driving capillary action." },
+  { "id": 285, "question": "What is the primary product of the neutralization reaction between an acid and a base?", "options": ["a salt and water", "a gas and water", "a precipitate", "an alcohol"], "answer": "a salt and water", "explanation": "A classic Arrhenius acid-base neutralization reaction produces an ionic salt and water." },
+  { "id": 286, "question": "Which variable is held constant in Charles's Law?", "options": ["pressure", "temperature", "volume", "moles of gas"], "answer": "pressure", "explanation": "Charles's Law observes the relationship between volume and temperature while holding pressure and amount of gas constant." },
+  { "id": 287, "question": "What determines whether a bond is polar or nonpolar?", "options": ["the size of the atoms", "the difference in electronegativity", "the number of electrons", "the state of matter"], "answer": "the difference in electronegativity", "explanation": "A significant difference in electronegativity causes unequal sharing of electrons, resulting in a polar bond." },
+  { "id": 288, "question": "Which isotope of hydrogen contains one proton and two neutrons?", "options": ["Protium", "Deuterium", "Tritium", "Hydronium"], "answer": "Tritium", "explanation": "Tritium is the radioactive isotope of hydrogen with a mass number of 3 (1 proton + 2 neutrons)." },
+  { "id": 289, "question": "Which of the following is an amphoteric substance?", "options": ["HCl", "H2O", "NaOH", "CH4"], "answer": "H2O", "explanation": "Water can act as both an acid (donating a proton) and a base (accepting a proton), making it amphoteric." },
+  { "id": 290, "question": "What describes a system where the rate of the forward reaction equals the rate of the reverse reaction?", "options": ["completion", "precipitation", "dynamic equilibrium", "kinetic control"], "answer": "dynamic equilibrium", "explanation": "At dynamic equilibrium, reactions continue to occur, but their equal rates mean no net change in macroscopic concentrations." },
+  { "id": 291, "question": "Which of the following increases the solubility of a gas in a liquid?", "options": ["increasing temperature", "decreasing pressure", "increasing pressure", "stirring"], "answer": "increasing pressure", "explanation": "According to Henry's Law, the solubility of a gas in a liquid is directly proportional to the partial pressure of that gas above the liquid." },
+  { "id": 292, "question": "What is the bond angle in a molecule with trigonal planar geometry?", "options": ["90 degrees", "109.5 degrees", "120 degrees", "180 degrees"], "answer": "120 degrees", "explanation": "Three electron domains arrange themselves as far apart as possible, creating 120-degree bond angles." },
+  { "id": 293, "question": "How many joules are in one calorie?", "options": ["1.00", "3.14", "4.184", "9.81"], "answer": "4.184", "explanation": "One scientific calorie (the energy required to heat 1g of water by 1 C) is exactly equivalent to 4.184 Joules." },
+  { "id": 294, "question": "Which principle states that you cannot simultaneously know both the exact position and momentum of an electron?", "options": ["Aufbau principle", "Heisenberg uncertainty principle", "Pauli exclusion principle", "Le Chatelier's principle"], "answer": "Heisenberg uncertainty principle", "explanation": "Werner Heisenberg posited that observing a particle alters its state, creating a fundamental limit to our precision." },
+  { "id": 295, "question": "What type of system allows the exchange of energy but not matter with its surroundings?", "options": ["open system", "closed system", "isolated system", "adiabatic system"], "answer": "closed system", "explanation": "A closed system is sealed so matter cannot escape, but heat and work can still be exchanged with the environment." },
+  { "id": 296, "question": "Which of the following describes the 'octet rule'?", "options": ["atoms prefer to have 8 protons", "atoms react to achieve 8 valence electrons", "compounds must have 8 atoms", "noble gases have 8 shells"], "answer": "atoms react to achieve 8 valence electrons", "explanation": "The octet rule reflects the observation that main-group elements tend to bond so they have eight electrons in their valence shell." },
+  { "id": 297, "question": "What is the formula of the sulfate ion?", "options": ["SO3 2-", "SO4 2-", "S 2-", "HSO4 -"], "answer": "SO4 2-", "explanation": "The sulfate polyatomic ion consists of one sulfur atom and four oxygen atoms, carrying a -2 charge." },
+  { "id": 298, "question": "If the enthalpy of products is lower than the enthalpy of reactants, the reaction is:", "options": ["endothermic", "exothermic", "isothermal", "catalytic"], "answer": "exothermic", "explanation": "A lower final enthalpy means energy was lost (given off) to the surroundings during the reaction." },
+  { "id": 299, "question": "What is the standard enthalpy of formation (delta Hf) for an element in its standard state?", "options": ["100 kJ/mol", "1 kJ/mol", "0 kJ/mol", "It varies depending on temperature"], "answer": "0 kJ/mol", "explanation": "By thermodynamic convention, the standard enthalpy of formation of any element in its most stable form at standard conditions is exactly zero." },
+  { "id": 300, "question": "What term is used to describe a mixture that has a uniform composition throughout?", "options": ["heterogeneous mixture", "compound", "element", "homogeneous mixture"], "answer": "homogeneous mixture", "explanation": "A homogeneous mixture, such as a solution, has the same proportions of its components throughout any given sample." }
+
     ];
+    
 
     let currentExamData = [];
     let userAnswers = {};
     let currentIndex = 0;
     let timeRemaining = 0;
     let timerId;
+    
+    // Core Logic States
+    let activeMode = 'practice'; 
+    let isReviewMode = false; 
 
     window.onload = () => {
         initDashboard();
-        if(localStorage.getItem('saved_gns_exam')) document.getElementById('resume-btn').style.display = 'block';
+        if(localStorage.getItem('saved_gns_exam')) {
+            document.getElementById('resume-btn').style.display = 'block';
+        }
     };
 
     function initDashboard() {
@@ -115,7 +463,7 @@
 
         const rand = document.createElement('div');
         rand.className = 'box box-random';
-        rand.innerHTML = `<i class="fa-solid fa-shuffle"></i><h3>Random Mode</h3><p>Full Shuffle</p>`;
+        rand.innerHTML = `<i class="fa-solid fa-shuffle" style="font-size: 24px; margin-bottom: 10px;"></i><h3>Random Mode</h3><p>Full Shuffle</p>`;
         rand.onclick = () => openSetup('random', 0);
         board.appendChild(rand);
 
@@ -124,32 +472,69 @@
             const start = (i - 1) * 50 + 1;
             const end = Math.min(i * 50, totalQuestions);
             card.className = 'box';
-            card.innerHTML = `<i class="fa-solid fa-book-open"></i><h3>Part ${i}</h3><p>Q${start} - Q${end}</p>`;
+            card.innerHTML = `<i class="fa-solid fa-book-open" style="font-size: 24px; color: var(--primary); margin-bottom: 10px;"></i><h3>Part ${i}</h3><p>Q${start} - Q${end}</p>`;
             card.onclick = () => openSetup('part', i);
             board.appendChild(card);
         }
     }
 
-    function openSetup(mode, partNum) {
-        window.examMode = mode;
+    function openSetup(selectType, partNum) {
+        window.examSelectionType = selectType;
         window.partNum = partNum;
+        
         document.getElementById('dashboard').style.display = 'none';
         document.getElementById('setup-screen').style.display = 'block';
-        document.getElementById('setup-title').innerText = mode === 'random' ? "Random Exam Setup" : `:MTS 101 Part ${partNum}`;
-        document.getElementById('random-settings').style.display = (mode === 'random') ? 'block' : 'none';
+        document.getElementById('setup-title').innerText = selectType === 'random' ? "Random Setup" : `CHE 101: Part ${partNum}`;
+        document.getElementById('random-settings').style.display = (selectType === 'random') ? 'block' : 'none';
+    }
+
+    // Helper function to properly shuffle an array
+    function shuffleArray(array) {
+        let currentIndex = array.length, randomIndex;
+        while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        }
+        return array;
     }
 
     function startExam() {
         const timeInput = document.getElementById('t-limit').value;
         timeRemaining = timeInput * 60;
+        
+        activeMode = document.getElementById('quiz-mode').value;
+        isReviewMode = false;
 
-        if (window.examMode === 'random') {
+        // 1. Get initial data clone to prevent modifying the MASTER_POOL
+        let selectedData = [];
+        if (window.examSelectionType === 'random') {
             const qty = document.getElementById('q-count').value;
-            currentExamData = [...MASTER_POOL].sort(() => 0.5 - Math.random()).slice(0, qty);
+            selectedData = shuffleArray(JSON.parse(JSON.stringify(MASTER_POOL))).slice(0, qty);
         } else {
             const start = (window.partNum - 1) * 50;
-            currentExamData = MASTER_POOL.slice(start, start + 50);
+            selectedData = JSON.parse(JSON.stringify(MASTER_POOL)).slice(start, start + 50);
         }
+
+        // 2. Check Toggles
+        const doShuffleQuestions = document.getElementById('shuffle-questions').checked;
+        const doShuffleOptions = document.getElementById('shuffle-options').checked;
+
+        if (doShuffleQuestions && window.examSelectionType !== 'random') {
+            selectedData = shuffleArray(selectedData);
+        }
+
+        if (doShuffleOptions) {
+            selectedData.forEach(q => {
+                // Since our JSON has options as an array, we can just shuffle the array.
+                // q.answer remains the exact text string, so no need to map keys!
+                if (Array.isArray(q.options)) {
+                    q.options = shuffleArray([...q.options]);
+                }
+            });
+        }
+
+        currentExamData = selectedData;
 
         document.getElementById('setup-screen').style.display = 'none';
         document.getElementById('quiz-interface').style.display = 'block';
@@ -160,19 +545,24 @@
     }
 
     function runTimer() {
-        if(timerId) clearInterval(timerId);
         timerId = setInterval(() => {
             timeRemaining--;
             let m = Math.floor(timeRemaining / 60);
             let s = timeRemaining % 60;
             document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
-            if(timeRemaining <= 0) showResults();
+            
+            if(timeRemaining <= 0) {
+                clearInterval(timerId);
+                alert("Time is up! Submitting your exam automatically.");
+                showResults();
+            }
         }, 1000);
     }
 
     function renderQuestion() {
         const q = currentExamData[currentIndex];
         const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
+        const userAnswerVal = userAnswers[currentIndex];
         
         document.getElementById('cur-idx').innerText = currentIndex + 1;
         document.getElementById('question-text').innerText = q.question;
@@ -182,49 +572,84 @@
         optBox.innerHTML = '';
         feedbackArea.innerHTML = '';
         
-        Object.entries(q.options).forEach(([key, val], index) => {
+        // Define A, B, C, D labels to map to the array indexes
+        const labels = ['A', 'B', 'C', 'D', 'E', 'F'];
+        
+        q.options.forEach((val, index) => {
+            const letterLabel = labels[index] || (index + 1);
             const btn = document.createElement('button');
             btn.className = `option-btn`;
-            const letter = String.fromCharCode(65 + index); // A, B, C, D...
             
-            if (hasAnswered) {
-                if (key === q.answer) {
+            if (isReviewMode) {
+                if (val === q.answer) {
                     btn.classList.add('correct');
-                } else if (userAnswers[currentIndex] === key) {
+                } else if (hasAnswered && userAnswerVal === val) {
                     btn.classList.add('wrong');
                 }
-                btn.disabled = true;
+                btn.disabled = true; 
+            } 
+            else if (activeMode === 'practice' && hasAnswered) {
+                if (val === q.answer) {
+                    btn.classList.add('correct');
+                } else if (userAnswerVal === val) {
+                    btn.classList.add('wrong');
+                }
+                btn.disabled = true; 
+            } 
+            else if (activeMode === 'exam' && hasAnswered && !isReviewMode) {
+                if (userAnswerVal === val) {
+                    btn.classList.add('selected');
+                }
             }
 
-            btn.innerHTML = `<strong>${letter}.</strong> ${val}`;
+            btn.innerHTML = `<strong>${letterLabel}.</strong> ${val}`;
+            
             btn.onclick = () => { 
-                if (!hasAnswered) {
-                    userAnswers[currentIndex] = key; 
-                    saveState(); 
-                    renderQuestion();
-                }
+                if (isReviewMode) return; 
+                if (activeMode === 'practice' && hasAnswered) return; 
+                
+                userAnswers[currentIndex] = val; 
+                saveState(); 
+                renderQuestion(); 
             };
             optBox.appendChild(btn);
         });
 
-        if (hasAnswered) {
-            const isCorrect = userAnswers[currentIndex] === q.answer;
-            // Check if explanation exists in the JSON data, otherwise show generic message
-            const explanationText = q.explanation ? `<strong>Explanation:</strong> ${q.explanation}` : '';
-
-            feedbackArea.innerHTML = `
-                <div class="feedback-container">
-                    <div class="feedback-status" style="border-color: ${isCorrect ? '#22c55e' : '#ef4444'}; background: ${isCorrect ? '#dcfce7' : '#fee2e2'}; color: ${isCorrect ? '#166534' : '#991b1b'}">
-                        ${isCorrect ? '✔ Correct Answer!' : '✘ Incorrect. The correct answer is (' + q.answer + ') ' + q.options[q.answer]}
+        if (isReviewMode) {
+            if (hasAnswered) {
+                const isCorrect = userAnswers[currentIndex] === q.answer;
+                feedbackArea.innerHTML = `
+                    <div class="feedback-msg" style="background: ${isCorrect ? '#dcfce7' : '#fee2e2'}; color: ${isCorrect ? '#166534' : '#991b1b'}">
+                        ${isCorrect ? '✔ Correct!' : '✘ Incorrect. The correct answer is <strong>' + q.answer + '</strong>'}
                     </div>
-                    ${explanationText ? `<div class="explanation-box">${explanationText}</div>` : ''}
+                `;
+            } else {
+                feedbackArea.innerHTML = `
+                    <div class="feedback-msg" style="background: #fef9c3; color: #854d0e; border: 1px solid #fde047;">
+                        ⚠ You did not answer this question. The correct answer is <strong>${q.answer}</strong>.
+                    </div>
+                `;
+            }
+        } else if (activeMode === 'practice' && hasAnswered) {
+            const isCorrect = userAnswers[currentIndex] === q.answer;
+            feedbackArea.innerHTML = `
+                <div class="feedback-msg" style="background: ${isCorrect ? '#dcfce7' : '#fee2e2'}; color: ${isCorrect ? '#166534' : '#991b1b'}">
+                    ${isCorrect ? '✔ Correct!' : '✘ Incorrect. The correct answer is <strong>' + q.answer + '</strong>'}
                 </div>
             `;
         }
 
-        document.getElementById('prev-btn').disabled = currentIndex === 0;
-        document.getElementById('next-btn').style.display = (currentIndex === currentExamData.length - 1) ? 'none' : 'block';
-        document.getElementById('submit-btn').style.display = (currentIndex === currentExamData.length - 1) ? 'block' : 'none';
+        const isLastQuestion = (currentIndex === currentExamData.length - 1);
+        document.getElementById('next-btn').style.display = isLastQuestion ? 'none' : 'block';
+        
+        // Ensure top buttons are appropriately shown
+        if (isReviewMode) {
+            document.getElementById('submit-btn').style.display = 'none';
+            document.getElementById('finish-review-btn').style.display = 'block'; 
+        } else {
+            document.getElementById('finish-review-btn').style.display = 'none';
+            document.getElementById('submit-btn').style.display = 'block'; 
+        }
     }
 
     function move(dir) {
@@ -235,7 +660,7 @@
     }
 
     function saveState() {
-        const state = { currentExamData, userAnswers, currentIndex, timeRemaining };
+        const state = { currentExamData, userAnswers, currentIndex, timeRemaining, activeMode };
         localStorage.setItem('saved_gns_exam', JSON.stringify(state));
     }
 
@@ -245,24 +670,65 @@
         userAnswers = state.userAnswers;
         currentIndex = state.currentIndex;
         timeRemaining = state.timeRemaining;
+        activeMode = state.activeMode || 'practice';
+        isReviewMode = false;
         
         document.getElementById('dashboard').style.display = 'none';
         document.getElementById('resume-btn').style.display = 'none';
         document.getElementById('quiz-interface').style.display = 'block';
         document.getElementById('total-idx').innerText = currentExamData.length;
+        
         runTimer();
         renderQuestion();
     }
 
-    function showResults() {
+    async function showResults() {
+        const answeredCount = Object.keys(userAnswers).length;
+        if (answeredCount < currentExamData.length) {
+            const confirmSubmit = confirm(`You have only answered ${answeredCount} out of ${currentExamData.length} questions. Are you sure you want to submit?`);
+            if (!confirmSubmit) return; 
+        }
+
         clearInterval(timerId);
+        
         let score = 0;
-        currentExamData.forEach((q, i) => { 
-            if(userAnswers[i] === q.answer) score++; 
+        currentExamData.forEach((q, i) => {
+            if (userAnswers[i] === q.answer) score++;
         });
-        alert(`Practice Complete!\nYour Score: ${score} / ${currentExamData.length}`);
+
+        const isRandom = window.examSelectionType === 'random';
+        const courseName = isRandom ? 'RANDOM' : 'CHE 101';
+        const finalPercentage = Math.round((score / currentExamData.length) * 100);
+        const studentMatric = localStorage.getItem('student_matric') || 'Anonymous'; 
+
+        try {
+            const { data, error } = await supabase.from('results').insert([{
+                student_matric: studentMatric,
+                course_code: courseName,
+                score: finalPercentage,
+                is_random: isRandom
+            }]);
+
+            if (error) throw error;
+            console.log("Score successfully added to Leaderboard! 🚀");
+        } catch (err) {
+            console.error("Error saving score:", err.message);
+        }
+
         localStorage.removeItem('saved_gns_exam');
-        location.reload();
+
+        alert(`Exam Complete! 🎉\nYour Score: ${score} / ${currentExamData.length} (${finalPercentage}%)`);
+
+        if (activeMode === 'exam') {
+            isReviewMode = true;
+            currentIndex = 0; 
+            document.getElementById('timer').innerText = "REVIEW MODE";
+            document.getElementById('timer').style.background = "#dbeafe";
+            document.getElementById('timer').style.color = "#1e40af";
+            renderQuestion();
+        } else {
+            location.reload();
+        }
     }
 </script>
 </body>
