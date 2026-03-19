@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>GNS 103 - Information Literacy Portal</title>
+    <title>GST 111 CBT PORTAL</title>
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -28,25 +27,33 @@
         .box:hover { transform: translateY(-5px); border-color: var(--primary); }
         .box-random { background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; }
         
-        .option-btn { display: block; width: 100%; padding: 1rem; margin: 0.75rem 0; border: 2px solid #e2e8f0; border-radius: 10px; background: var(--card-bg); color: var(--text); text-align: left; cursor: pointer; font-size: 1rem; transition: 0.2s; }
-        .option-btn:not(:disabled):hover { background: #f1f5f9; }
-        
-        /* Instant Feedback Styles */
-        .option-btn.correct { background-color: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: bold; }
-        .option-btn.wrong { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
-        
-        .feedback-container { margin-top: 1.5rem; animation: fadeIn 0.3s; }
-        .feedback-status { padding: 1rem; border-radius: 10px; font-weight: bold; text-align: center; border: 1px solid; margin-bottom: 0.5rem; }
-        
-        /* New Explanation Box Style */
-        .explanation-box { background: rgba(30, 64, 175, 0.1); border-left: 5px solid var(--primary); padding: 1rem; border-radius: 4px; color: var(--text); line-height: 1.6; }
-        .dark-mode .explanation-box { background: rgba(30, 64, 175, 0.2); }
+        /* ── Setup Screen Form Elements ── */
+        .setup-group { margin: 1.5rem 0; text-align: left; max-width: 300px; margin-left: auto; margin-right: auto; }
+        .setup-group label { font-weight: 600; font-size: 0.9rem; color: var(--text); display: block; margin-bottom: 8px; }
+        .setup-input { width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; background: var(--bg); color: var(--text); outline: none; transition: 0.2s; }
+        .setup-input:focus { border-color: var(--primary); }
 
+        /* ── Checkbox Styles ── */
+        .checkbox-group { display: flex; flex-direction: column; gap: 12px; margin-top: 1rem; background: rgba(0,0,0,0.02); padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; }
+        .custom-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.95rem; color: var(--text); font-weight: 500; user-select: none; }
+        .custom-checkbox input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
+
+        /* ── Quiz Buttons ── */
+        .option-btn { display: block; width: 100%; padding: 1rem; margin: 0.75rem 0; border: 2px solid #e2e8f0; border-radius: 10px; background: var(--card-bg); color: var(--text); text-align: left; cursor: pointer; font-size: 1rem; transition: 0.2s; }
+        .option-btn:not(:disabled):hover { background: #f1f5f9; border-color: #cbd5e1; }
+        
+        /* State Styles */
+        .option-btn.selected { background-color: #e0f2fe !important; border-color: #3b82f6 !important; color: #0369a1 !important; } 
+        .option-btn.correct { background-color: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: bold; } 
+        .option-btn.wrong { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; } 
+        
+        .feedback-msg { margin-top: 1rem; padding: 1rem; border-radius: 10px; font-weight: bold; text-align: center; animation: fadeIn 0.3s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .controls { display: flex; justify-content: space-between; margin-top: 2rem; }
-        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; background: var(--primary); color: white; transition: 0.2s; }
-        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .controls { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 2rem; }
+        .btn { padding: 0.85rem 1.8rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; background: var(--primary); color: white; transition: 0.2s; font-size: 1rem; }
+        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
     </style>
 </head>
 <body>
@@ -54,1343 +61,218 @@
 <nav>
     <div id="user-info" style="font-weight: 600;">GST 111 Practice Portal</div>
     <div style="display: flex; gap: 15px;">
-        <button class="btn" style="background:var(--accent); display:none;" id="resume-btn" onclick="resumeExam()">Resume</button>
-        <button class="btn" style="background:#64748b" onclick="document.body.classList.toggle('dark-mode')"><i class="fa-solid fa-circle-half-stroke"></i></button>
+        <button class="btn" style="background:var(--accent); display:none;" id="resume-btn" onclick="resumeExam()">Resume Saved Exam</button>
+        <button class="btn" style="background:#64748b" onclick="document.body.classList.toggle('dark-mode')"><i class="fa-solid fa-moon"></i></button>
     </div>
 </nav>
 
 <main>
     <div id="dashboard"></div>
 
-    <div id="setup-screen" style="display:none; text-align: center; background: var(--card-bg); padding: 2rem; border-radius: 15px;">
-        <h2 id="setup-title"></h2>
-        <div id="random-settings" style="margin: 1.5rem 0;">
-            <label>Question Quantity:</label><br>
-            <input type="number" id="q-count" value="50" style="padding: 10px; border-radius: 5px; width: 80px;">
+    <div id="setup-screen" style="display:none; text-align: center; background: var(--card-bg); padding: 3rem 2rem; border-radius: 15px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+        <h2 id="setup-title" style="margin-bottom: 2rem; color: var(--primary);"></h2>
+        
+        <div class="setup-group">
+            <label>Select Mode:</label>
+            <select id="quiz-mode" class="setup-input">
+                <option value="practice">Practice Mode (Instant Answers)</option>
+                <option value="exam">Exam Mode (Answers at the End)</option>
+            </select>
         </div>
-        <div style="margin: 1.5rem 0;">
-            <label>Time (Minutes):</label><br>
-            <input type="number" id="t-limit" value="30" style="padding: 10px; border-radius: 5px; width: 80px;">
+
+        <div id="random-settings">
+            <div class="setup-group">
+                <label>Question Quantity:</label>
+                <input type="number" id="q-count" value="50" class="setup-input" max="392">
+            </div>
         </div>
-        <button class="btn" onclick="startExam()">Start Practice</button>
+        
+        <div class="setup-group">
+            <label>Time Limit (Minutes):</label>
+            <input type="number" id="t-limit" value="30" class="setup-input">
+        </div>
+
+        <div class="setup-group checkbox-group">
+            <label class="custom-checkbox" title="Mix up the order of the questions">
+                <input type="checkbox" id="shuffle-questions" checked>
+                Shuffle Questions
+            </label>
+            <label class="custom-checkbox" title="Mix up the A, B, C, D options for each question">
+                <input type="checkbox" id="shuffle-options" checked>
+                Shuffle Options (A, B, C, D)
+            </label>
+        </div>
+        
+        <button class="btn" onclick="startExam()" style="margin-top: 1.5rem; width: 100%; max-width: 300px;">Start Now <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
     <div id="quiz-interface" style="display:none;">
-        <div style="display:flex; justify-content: space-between; font-weight: bold; margin-bottom: 10px;">
-            <span>Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
-            <span id="timer" style="color:var(--danger)">30:00</span>
+        
+        <div style="display:flex; justify-content: space-between; align-items: center; font-weight: bold; margin-bottom: 15px; padding: 0 10px; flex-wrap: wrap; gap: 10px;">
+            <span style="color: var(--text); font-size: 1.05rem;">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
+            
+            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding: 8px 16px; font-size: 0.9rem;" onclick="showResults()">Submit Exam</button>
+                <button class="btn" id="finish-review-btn" style="background:var(--primary); display:none; padding: 8px 16px; font-size: 0.9rem;" onclick="location.reload()">Finish Review</button>
+                <span id="timer" style="color:var(--danger); background: rgba(220,38,38,0.1); padding: 6px 14px; border-radius: 20px; font-size: 1.05rem;">30:00</span>
+            </div>
         </div>
-        <div style="background: var(--card-bg); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h3 id="question-text" style="line-height: 1.5;"></h3>
+        
+        <div style="background: var(--card-bg); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);">
+            <h3 id="question-text" style="line-height: 1.6; margin-bottom: 1.5rem;"></h3>
             <div id="options-box"></div>
             <div id="feedback-area"></div>
         </div>
-        <div class="controls">
-            <button class="btn" style="background:#64748b" id="prev-btn" onclick="move(-1)">Previous</button>
+        
+        <div class="controls" style="display: flex; justify-content: space-between; margin-top: 2rem;">
+            <button class="btn" style="background:#64748b" onclick="move(-1)">Previous</button>
             <button class="btn" id="next-btn" onclick="move(1)">Next Question</button>
-            <button class="btn" id="submit-btn" style="background:var(--success); display:none;" onclick="showResults()">Submit Exam</button>
         </div>
     </div>
 </main>
 
 <script>
-        const MASTER_POOL = [
-  {
-    "id": 1,
-    "question": "__________ is the conscious experience of duration, the period in which an action or event occurred",
-    "options": [
-      "A Time",
-      "B Space",
-      "C Motion",
-      "D Energy"
-    ],
-    "answer": "A",
-    "explanation": "Time is defined as the conscious experience of the passage of events."
-  },
-  {
-    "id": 2,
-    "question": "__________ is also a dimension representing a succession of such actions or event.",
-    "options": [
-      "A Velocity",
-      "B Time",
-      "C Gravity",
-      "D Mass"
-    ],
-    "answer": "B",
-    "explanation": "In physics and philosophy, time serves as a dimension to sequence events."
-  },
-  {
-    "id": 3,
-    "question": "__________ is the skilful handling or use of resources such as people (human capital), money, materials, and time.",
-    "options": [
-      "A Leadership",
-      "B Accounting",
-      "C Management",
-      "D Economics"
-    ],
-    "answer": "C",
-    "explanation": "Management involves the coordination of various resources to achieve objectives."
-  },
-  {
-    "id": 4,
-    "question": "__________ is the proper use of available time for the accomplishment of set goals.",
-    "options": [
-      "A Goal setting",
-      "B Time management",
-      "C Productivity",
-      "D Punctuality"
-    ],
-    "answer": "B",
-    "explanation": "Time management specifically focuses on the efficiency of time usage for productivity."
-  },
-  {
-    "id": 5,
-    "question": "Which of the following is not a time management tool?",
-    "options": [
-      "A Timetable",
-      "B Organizer",
-      "C Timepiece",
-      "D To-do list"
-    ],
-    "answer": "C",
-    "explanation": "While a timepiece (clock) tells time, it is not a planning 'tool' like a timetable or to-do list."
-  },
-  {
-    "id": 6,
-    "question": "Which of the following is not a sub-skill of time management",
-    "options": [
-      "A Making a things-to-do list",
-      "B Prioritization, time budgeting",
-      "C Elimination of waste, micro time management",
-      "D Tasks sharing multitasking re-scheduling",
-      "E None of the above"
-    ],
-    "answer": "D",
-    "explanation": "The answer key identifies 'D' as the item that does not fit the specific sub-skill categories listed in the text."
-  },
-  {
-    "id": 7,
-    "question": "__________ is a tabulated list of the times at which an event or activities are required to occur.",
-    "options": [
-      "A Calendar",
-      "B Timetable",
-      "C Journal",
-      "D Agenda"
-    ],
-    "answer": "B",
-    "explanation": "A timetable organizes activities into a specific schedule."
-  },
-  {
-    "id": 8,
-    "question": "__________ is any instrument for recording or showing the time, especially one that does not strike or chime.",
-    "options": [
-      "A Metronome",
-      "B Calendar",
-      "C Time piece",
-      "D Stopwatch"
-    ],
-    "answer": "C",
-    "explanation": "A timepiece is the general term for clocks or watches used to track time."
-  },
-  {
-    "id": 9,
-    "question": "__________ is a small portable calendar and databock used for planning or a handheld computerized device with a simple database for managing appointments and other information.",
-    "options": [
-      "A Laptop",
-      "B Organizer",
-      "C Textbook",
-      "D Ledger"
-    ],
-    "answer": "B",
-    "explanation": "An organizer is used to manage personal schedules and contact info."
-  },
-  {
-    "id": 10,
-    "question": "A realistic timetable should be all of the following except,",
-    "options": [
-      "A Account for all your courses & necessary activities",
-      "B Reflect your essential personality in content and design",
-      "C Made to impress",
-      "D Account for individual attention span"
-    ],
-    "answer": "C",
-    "explanation": "A timetable should be functional and personal, not designed for outward show or impression."
-  },
-  {
-    "id": 11,
-    "question": "Which of the following is not a note taking format,",
-    "options": [
-      "A Linear format",
-      "B Outline format",
-      "C Graphic or diagrammatic",
-      "D A and B"
-    ],
-    "answer": "D",
-    "explanation": "Both Linear and Outline are valid formats; therefore, D is the answer indicating they are not the 'incorrect' choice."
-  },
-  {
-    "id": 12,
-    "question": "\"There is a tendency to concentrate on writing rather than on listening and comprehension\" in which of the following note taking format,",
-    "options": [
-      "A Linear format",
-      "B Graphic",
-      "C Diagrammatic",
-      "D Outline format"
-    ],
-    "answer": "A",
-    "explanation": "Linear note-taking often leads to passive transcribing rather than active understanding."
-  },
-  {
-    "id": 13,
-    "question": "Which of the following note taking format does the listener makes a list of key points;",
-    "options": [
-      "A Linear format",
-      "B Outline format",
-      "C Graphic",
-      "D Diagrammatic"
-    ],
-    "answer": "B",
-    "explanation": "Outline formats use hierarchy to list major and minor points."
-  },
-  {
-    "id": 14,
-    "question": "The use of columns or tables if the note involve comparing and contrasting is appropriate to which type of note taking format,",
-    "options": [
-      "A Linear format",
-      "B Table format",
-      "C Graphic or diagrammatic",
-      "D Outline"
-    ],
-    "answer": "C",
-    "explanation": "Graphic/diagrammatic formats often utilize spatial organization like tables."
-  },
-  {
-    "id": 15,
-    "question": "__________ words show the direction of the speaker's thought.",
-    "options": [
-      "A Verb",
-      "B Signal/signpost word",
-      "C Adjective",
-      "D Noun"
-    ],
-    "answer": "B",
-    "explanation": "Signal words alert the listener to transitions or emphasis in a speech."
-  },
-  {
-    "id": 16,
-    "question": "The two kinds of (15) are signals of sequence and signals of speaker's point of view True or false",
-    "options": [
-      "A True",
-      "B False"
-    ],
-    "answer": "A",
-    "explanation": "Signpost words are categorized into sequence markers and perspective markers."
-  },
-  {
-    "id": 17,
-    "question": "To __________ is to experience or to be aware of sounds, usually as a result of the stimulation of the auditory system by sound waves.",
-    "options": [
-      "A To listen",
-      "B To hear",
-      "C To speak",
-      "D To feel"
-    ],
-    "answer": "B",
-    "explanation": "Hearing is the physiological process of sound perception."
-  },
-  {
-    "id": 18,
-    "question": "__________ is the act of apprehending or the ability to apprehend sounds aurally.",
-    "options": [
-      "A Hearing",
-      "B Listening",
-      "C Speaking",
-      "D Writing"
-    ],
-    "answer": "A",
-    "explanation": "Hearing is defined as the aural apprehension of sound."
-  },
-  {
-    "id": 19,
-    "question": "Which of the following is more or less an experience rather than an activity,",
-    "options": [
-      "A Hearing",
-      "B Listening",
-      "C Speaking",
-      "D Writing"
-    ],
-    "answer": "A",
-    "explanation": "Hearing happens involuntarily (experience), while listening is a conscious effort (activity)."
-  },
-  {
-    "id": 20,
-    "question": "__________ is the conscious use of one's ear in order to hear some particular sounds.",
-    "options": [
-      "A Silence",
-      "B Hearing",
-      "C Listening",
-      "D Audition"
-    ],
-    "answer": "C",
-    "explanation": "Listening requires mental focus and attention."
-  },
-  {
-    "id": 21,
-    "question": "__________ is the aural counterpart of looking",
-    "options": [
-      "A Singing",
-      "B Watching",
-      "C Listening",
-      "D Hearing"
-    ],
-    "answer": "C",
-    "explanation": "Just as looking is 'active seeing', listening is 'active hearing'."
-  },
-  {
-    "id": 22,
-    "question": "Listening is a purposeful activity.",
-    "options": [
-      "A Neutral",
-      "B True",
-      "C False",
-      "D True and false"
-    ],
-    "answer": "B",
-    "explanation": "Listening is inherently goal-oriented and conscious."
-  },
-  {
-    "id": 23,
-    "question": "The following are called what (writing speaking listening reading)",
-    "options": [
-      "A Hobbies",
-      "B Careers",
-      "C Learning",
-      "D Talents"
-    ],
-    "answer": "C",
-    "explanation": "The four core language skills are essential components of the learning process."
-  },
-  {
-    "id": 24,
-    "question": "Which of the following are receptive skills,",
-    "options": [
-      "A Listening and writing",
-      "B Reading and writing",
-      "C Writing and speaking",
-      "D Reading and listening"
-    ],
-    "answer": "D",
-    "explanation": "Receptive skills involve receiving information (reading and listening)."
-  },
-  {
-    "id": 25,
-    "question": "Which of the following are passive skills,",
-    "options": [
-      "A Listening and writing",
-      "B Reading and writing",
-      "C Writing and speaking",
-      "D Reading and listening"
-    ],
-    "answer": "D",
-    "explanation": "Receptive skills are often categorized as passive compared to production skills."
-  },
-  {
-    "id": 26,
-    "question": "Which of the following are productive skills;",
-    "options": [
-      "A Listening and writing",
-      "B Reading and writing",
-      "C Writing and speaking",
-      "D Reading and listening"
-    ],
-    "answer": "C",
-    "explanation": "Productive skills involve generating language (writing and speaking)."
-  },
-  {
-    "id": 27,
-    "question": "Which of the following are active skills,",
-    "options": [
-      "A Listening and writing",
-      "B Reading and writing",
-      "C Writing and speaking",
-      "D Reading and listening"
-    ],
-    "answer": "C",
-    "explanation": "Productive skills are considered 'active' because the user must create content."
-  },
-  {
-    "id": 28,
-    "question": "__________ is the ability to make and communicate meaning from and by the use of a variety of socially contextual symbols.",
-    "options": [
-      "A Literacy",
-      "B Numeracy",
-      "C Culture",
-      "D Etiquette"
-    ],
-    "answer": "A",
-    "explanation": "Literacy extends beyond reading to include understanding social symbols."
-  },
-  {
-    "id": 29,
-    "question": "__________ is \"not in isolated bits of knowledge but in students' growing ability to use language and literacy in more and broader activities\"",
-    "options": [
-      "A Education",
-      "B Literacy",
-      "C Intelligence",
-      "D Fluency"
-    ],
-    "answer": "B",
-    "explanation": "This definition emphasizes the functional application of language skills."
-  },
-  {
-    "id": 30,
-    "question": "__________ involves understanding some mathematical ideas, notation and techniques.",
-    "options": [
-      "A Geometry",
-      "B Algebra",
-      "C Numeracy",
-      "D Physics"
-    ],
-    "answer": "C",
-    "explanation": "Numeracy is the mathematical equivalent of literacy."
-  },
-  {
-    "id": 31,
-    "question": "__________ involves drawing on knowledge of particular context and circumstances in deciding when to use mathematics, choosing the mathematics to use and critically evaluating it use.",
-    "options": [
-      "A Statistics",
-      "B Numeracy",
-      "C Calculation",
-      "D Logic"
-    ],
-    "answer": "B",
-    "explanation": "Advanced numeracy includes critical evaluation of mathematical application."
-  },
-  {
-    "id": 32,
-    "question": "__________ includes the ability to read and interpret media, to reproduce data and images through digital manipulation, and to evaluate and apply new knowledge gained from digital environments.",
-    "options": [
-      "A Literacy",
-      "B Digital literacy",
-      "C E-literacy",
-      "D B and C"
-    ],
-    "answer": "D",
-    "explanation": "Digital and E-literacy are often used interchangeably for these skills."
-  },
-  {
-    "id": 33,
-    "question": "__________ is the ability to read a text in an active, reflective and questioning manner in order to better under stand power, inequality and injustice in human relations.",
-    "options": [
-      "A General reading",
-      "B Critical literacy",
-      "C Skimming",
-      "D Scanning"
-    ],
-    "answer": "B",
-    "explanation": "Critical literacy focuses on uncovering social power dynamics in texts."
-  },
-  {
-    "id": 34,
-    "question": "__________ is the practice of challenging text through an analysis of the roles that power, culture, class and gender play in the message of the texts.",
-    "options": [
-      "A Peer review",
-      "B Critical literacy",
-      "C Editing",
-      "D Proofreading"
-    ],
-    "answer": "B",
-    "explanation": "This practice requires an analytical approach to the socio-cultural context of media."
-  },
-  {
-    "id": 35,
-    "question": "Which of the following is not a role that a reader assumes while reading a text critically,",
-    "options": [
-      "A Code breaker",
-      "B Text user",
-      "C Text critic",
-      "D Meaning maker",
-      "E None of the above"
-    ],
-    "answer": "E",
-    "explanation": "All listed roles (A-D) are standard roles for critical readers."
-  },
-  {
-    "id": 36,
-    "question": "__________ is the social code of the internet.",
-    "options": [
-      "A Protocol",
-      "B Firewall",
-      "C Internet etiquette",
-      "D Encryption"
-    ],
-    "answer": "C",
-    "explanation": "Also known as 'Netiquette', it governs polite online behavior."
-  },
-  {
-    "id": 37,
-    "question": "__________ refers to the set of practices created over the years to make the internet experience pleasant for everyone.",
-    "options": [
-      "A Web design",
-      "B Programming",
-      "C Internet etiquette",
-      "D Cybersecurity"
-    ],
-    "answer": "C",
-    "explanation": "Etiquette ensures a standardized respectful environment online."
-  },
-  {
-    "id": 38,
-    "question": "Which of the following sections provides more information,",
-    "options": [
-      "A Netiquette of Basics",
-      "B Netiquette of Confidentiality",
-      "C Netiquette of Sending",
-      "D Netiquette of Replying",
-      "E All of the above"
-    ],
-    "answer": "E",
-    "explanation": "All these sub-sections comprise the full scope of internet etiquette."
-  },
-  {
-    "id": 39,
-    "question": "__________ are the building blocks of words.",
-    "options": [
-      "A Letters",
-      "B Morpheme",
-      "C Syllables",
-      "D Phrases"
-    ],
-    "answer": "B",
-    "explanation": "Morphemes are the smallest units in word formation."
-  },
-  {
-    "id": 40,
-    "question": "__________ are units of meaning",
-    "options": [
-      "A Sounds",
-      "B Morphemes",
-      "C Sentences",
-      "D Vowels"
-    ],
-    "answer": "B",
-    "explanation": "A morpheme is defined as the smallest meaningful unit of a language."
-  },
-  {
-    "id": 41,
-    "question": "Determine the number of morphemes: Boy, Boys, Flexible, Liquefied, Liquefaction, Understand",
-    "options": [
-      "A Boy=1, Boys=2, Flexible=2, Liquefied=2, Liquefaction=2, Understand=2",
-      "B Boy=1, Boys=1, Flexible=1, Liquefied=1, Liquefaction=1, Understand=1",
-      "C Boy=2, Boys=3, Flexible=3, Liquefied=3, Liquefaction=3, Understand=3",
-      "D Boy=1, Boys=2, Flexible=1, Liquefied=2, Liquefaction=1, Understand=2"
-    ],
-    "answer": "A",
-    "explanation": "Calculated based on root words and suffixes (e.g., Boy + s)."
-  },
-  {
-    "id": 42,
-    "question": "How many syllables does the following have: demagnetisation, liquefied, liquefaction, understand",
-    "options": [
-      "A 5, 2, 3, 2",
-      "B 6, 3, 4, 3",
-      "C 4, 1, 2, 1",
-      "D 7, 4, 5, 4"
-    ],
-    "answer": "B",
-    "explanation": "Based on standard pronunciation: de-mag-ne-ti-sa-tion (6), li-que-fied (3), li-que-fac-tion (4), un-der-stand (3)."
-  },
-  {
-    "id": 43,
-    "question": "The following are alphabetism except,",
-    "options": [
-      "A EFCC OBC AT",
-      "B amu r.p.m Ah",
-      "C SOS IT, http",
-      "D WHO SIM",
-      "E None of the above"
-    ],
-    "answer": "E",
-    "explanation": "Alphabetisms are abbreviations pronounced as individual letters."
-  },
-  {
-    "id": 44,
-    "question": "Which of the following can be jointly refer to as initialism",
-    "options": [
-      "A dipping and blending",
-      "B Acronymy and eponymy",
-      "C Affixation and suffixation",
-      "D Acronymy and alphabetism"
-    ],
-    "answer": "D",
-    "explanation": "Initialisms include both acronyms (pronounced as words) and alphabetisms."
-  },
-  {
-    "id": 45,
-    "question": "It is of course possible for clipping to take place without blending True or false",
-    "options": [
-      "A True",
-      "B False"
-    ],
-    "answer": "A",
-    "explanation": "Clipping (shortening a word) does not require merging it with another word (blending)."
-  },
-  {
-    "id": 46,
-    "question": "One of the factors that inhibit efficient reading is",
-    "options": [
-      "A. a well-equipped library",
-      "B. good health",
-      "C. noise",
-      "D. proper feeding"
-    ],
-    "answer": "C",
-    "explanation": "Noise is an environmental factor that distracts the reader and reduces concentration."
-  },
-  {
-    "id": 47,
-    "question": "The act of reading through a text to acquire superficial information is referred to as",
-    "options": [
-      "A. scanning",
-      "B. skimming",
-      "C. anticipation",
-      "D. writing"
-    ],
-    "answer": "B",
-    "explanation": "Skimming is used to get the general idea or 'gist' of the text quickly."
-  },
-  {
-    "id": 48,
-    "question": "The sentence that bears the main information in a paragraph is known as the",
-    "options": [
-      "A. introduction sentence",
-      "B. main point sentence",
-      "C. topic sentence",
-      "D. all of the above"
-    ],
-    "answer": "C",
-    "explanation": "The topic sentence summarizes the paragraph's main argument or idea."
-  },
-  {
-    "id": 49,
-    "question": "An introductory paragraph is usually written in the",
-    "options": [
-      "A. past tense",
-      "B. present tense",
-      "C. present continuous tense",
-      "D. past participle tense"
-    ],
-    "answer": "B",
-    "explanation": "Present tense is standard for introducing topics and stating general facts in academic writing."
-  },
-  {
-    "id": 50,
-    "question": "Which of the following is a signal word?",
-    "options": [
-      "A. in addition",
-      "B. similarly",
-      "C. furthermore",
-      "D. all of the above"
-    ],
-    "answer": "D",
-    "explanation": "Signal words (or transitions) connect ideas and show the direction of thought."
-  },
-  {
-    "id": 51,
-    "question": "Reading is important for all these except",
-    "options": [
-      "A. achievement and advancement in life",
-      "B. enjoyment or leisure",
-      "C. professional development",
-      "D. none of the above"
-    ],
-    "answer": "D",
-    "explanation": "All the listed options are valid reasons why reading is important."
-  },
-  {
-    "id": 52,
-    "question": "All these are strategies of reading except",
-    "options": [
-      "A. anticipation",
-      "B. skimming",
-      "C. scamming",
-      "D. identifying main ideas"
-    ],
-    "answer": "C",
-    "explanation": "The document identifies 'scamming' as a distractor; the correct strategy is 'scanning'."
-  },
-  {
-    "id": 53,
-    "question": "One of these is NOT a factor that cause slow reading",
-    "options": [
-      "A. word-by-word reading",
-      "B. difficulty with the return sweep",
-      "C. flexibility",
-      "D. regression"
-    ],
-    "answer": "C",
-    "explanation": "Flexibility is a positive reading skill where you adjust speed based on text difficulty."
-  },
-  {
-    "id": 54,
-    "question": "A variety of reading skills involves",
-    "options": [
-      "A. making inferences",
-      "B. using word analysis strategies",
-      "C. applying textbook reading strategies",
-      "D. all of the above"
-    ],
-    "answer": "D",
-    "explanation": "Efficient reading requires a combination of inference, analysis, and strategic approaches."
-  },
-  {
-    "id": 55,
-    "question": "Efficient reading is enhanced by these factors except",
-    "options": [
-      "A. environmental factors",
-      "B. psychological factors",
-      "C. vocalization",
-      "D. physiological factors"
-    ],
-    "answer": "C",
-    "explanation": "Vocalization (whispering words) is a bad habit that slows down reading speed."
-  },
-  {
-    "id": 56,
-    "question": "The act of looking for specific information in a text is",
-    "options": [
-      "A. scanning",
-      "B. skimming",
-      "C. reading",
-      "D. all of the above"
-    ],
-    "answer": "A",
-    "explanation": "Scanning is a selective reading technique for locating specific data like names or dates."
-  },
-  {
-    "id": 57,
-    "question": "A paragraph is a group of sentences that develop",
-    "options": [
-      "A. many ideas",
-      "B. a single idea",
-      "C. two ideas",
-      "D. no idea"
-    ],
-    "answer": "B",
-    "explanation": "The core principle of a paragraph is unity—focusing on one central thought."
-  },
-  {
-    "id": 58,
-    "question": "In a paragraph, the sentence that summarizes the main idea is the",
-    "options": [
-      "A. concluding sentence",
-      "B. supporting sentence",
-      "C. topic sentence",
-      "D. transition sentence"
-    ],
-    "answer": "C",
-    "explanation": "This acts as the 'heart' of the paragraph."
-  },
-  {
-    "id": 59,
-    "question": "All the following signal words/phrases have the function of ADDITION except",
-    "options": [
-      "A. Also",
-      "B. moreover",
-      "C. however",
-      "D. in addition"
-    ],
-    "answer": "C",
-    "explanation": "'However' signals contrast, not addition."
-  },
-  {
-    "id": 60,
-    "question": "All the following signal words/phrases have the function of LISTING except",
-    "options": [
-      "A. first",
-      "B. next",
-      "C. in other words",
-      "D. finally"
-    ],
-    "answer": "C",
-    "explanation": "'In other words' is used for restatement or clarification."
-  },
-  {
-    "id": 61,
-    "question": "All the following signal words/phrases have the function of SUMMARY except",
-    "options": [
-      "A. to conclude",
-      "B. to sum up",
-      "C. in conclusion",
-      "D. none of the above"
-    ],
-    "answer": "D",
-    "explanation": "Options A, B, and C are all valid summary signals."
-  },
-  {
-    "id": 62,
-    "question": "All the following signal words/phrases have the function of CONSEQUENCE except",
-    "options": [
-      "A. therefore",
-      "B. as a result",
-      "C. however",
-      "D. hence"
-    ],
-    "answer": "C",
-    "explanation": "Consequence signals show cause and effect; 'however' shows opposition."
-  },
-  {
-    "id": 63,
-    "question": "All the following signal words/phrases have the function of CONTRAST except",
-    "options": [
-      "A. but",
-      "B. and",
-      "C. on the contrary",
-      "D. on the other hand"
-    ],
-    "answer": "B",
-    "explanation": "'And' is a simple additive conjunction."
-  },
-  {
-    "id": 64,
-    "question": "All the following signal words/phrases have the function of CONCESSION except",
-    "options": [
-      "A. however",
-      "B. nevertheless",
-      "C. similarly",
-      "D. although"
-    ],
-    "answer": "C",
-    "explanation": "Concession signals acknowledge an opposing point; 'similarly' shows comparison."
-  },
-  {
-    "id": 65,
-    "question": "Which of the following is NOT a characteristic of a good paragraph?",
-    "options": [
-      "A. Unity",
-      "B. Coherence",
-      "C. Ambiguity",
-      "D. Completeness"
-    ],
-    "answer": "C",
-    "explanation": "A good paragraph should be clear and concise; ambiguity (vagueness) is a flaw in writing."
-  },
-  {
-    "id": 66,
-    "question": "The transition from one idea to another within a paragraph is ensured by:",
-    "options": [
-      "A. Punctuation only",
-      "B. Signal words and phrases",
-      "C. Using many adjectives",
-      "D. Starting a new page"
-    ],
-    "answer": "B",
-    "explanation": "Signal words act as bridges that connect sentences and ideas to create flow."
-  },
-  {
-    "id": 67,
-    "question": "Which reading technique is best used when looking for a specific name in a telephone directory?",
-    "options": [
-      "A. Intensive reading",
-      "B. Skimming",
-      "C. Scanning",
-      "D. Critical reading"
-    ],
-    "answer": "C",
-    "explanation": "Scanning is the selective process of looking for a specific piece of data without reading everything."
-  },
-  {
-    "id": 68,
-    "question": "The part of a paragraph that develops the topic sentence by providing evidence or examples is called:",
-    "options": [
-      "A. The lead-in",
-      "B. Supporting sentences",
-      "C. The conclusion",
-      "D. The header"
-    ],
-    "answer": "B",
-    "explanation": "Supporting sentences expand on the main idea presented in the topic sentence."
-  },
-  {
-    "id": 69,
-    "question": "Regression in reading refers to:",
-    "options": [
-      "A. Moving eyes forward quickly",
-      "B. Re-reading words or sentences already passed",
-      "C. Reading at a high speed",
-      "D. Predicting the end of a story"
-    ],
-    "answer": "B",
-    "explanation": "Regression is a habit that slows down reading speed by constantly looking back at what was already read."
-  },
-  {
-    "id": 70,
-    "question": "All the following signal words/phrases have the function of ILLUSTRATION except:",
-    "options": [
-      "A. For example",
-      "B. For instance",
-      "C. Such as",
-      "D. Furthermore"
-    ],
-    "answer": "D",
-    "explanation": "'Furthermore' is used for addition, while the others are used to provide examples."
-  },
-  {
-    "id": 71,
-    "question": "The mental process of 'guessing' what a text will be about based on titles and headers is:",
-    "options": [
-      "A. Vocalization",
-      "B. Anticipation",
-      "C. Sub-vocalization",
-      "D. Scanning"
-    ],
-    "answer": "B",
-    "explanation": "Anticipation allows a reader to engage with the text by predicting its content."
-  },
-  {
-    "id": 72,
-    "question": "Which of these is a physiological factor that affects reading?",
-    "options": [
-      "A. Lighting",
-      "B. Visual defects",
-      "C. Background noise",
-      "D. Fear of failure"
-    ],
-    "answer": "B",
-    "explanation": "Physiological factors relate to the physical state of the body, such as eyesight."
-  },
-  {
-    "id": 73,
-    "question": "Signal words like 'namely' or 'that is to say' perform the function of:",
-    "options": [
-      "A. Summary",
-      "B. Consequence",
-      "C. Explanation/Restatement",
-      "D. Contrast"
-    ],
-    "answer": "C",
-    "explanation": "These phrases are used to clarify or further define a previous point."
-  },
-  {
-    "id": 74,
-    "question": "Reading for 'intensive' purposes usually involves:",
-    "options": [
-      "A. Reading for pleasure only",
-      "B. Detailed study for examinations",
-      "C. Looking for a single date",
-      "D. Reading a newspaper headline"
-    ],
-    "answer": "B",
-    "explanation": "Intensive reading is slow, careful reading aimed at total comprehension of the material."
-  },
-  {
-    "id": 75,
-    "question": "All the following signal words/phrases have the function of REFERRING TO PREVIOUS SENTENCES except:",
-    "options": [
-      "A. that is to say, namely,",
-      "B. nevertheless",
-      "C. in other words",
-      "D. as follows"
-    ],
-    "answer": "B",
-    "explanation": "'Nevertheless' is a concession/contrast signal."
-  },
-  {
-    "id": 76,
-    "question": "All the following signal words/phrases have the function of CONCESSION except:",
-    "options": [
-      "A. however",
-      "B. nevertheless",
-      "C. similarly",
-      "D. although"
-    ],
-    "answer": "C",
-    "explanation": "'Similarly' is used for comparison, not concession."
-  },
-  {
-    "id": 77,
-    "question": "The use of 'firstly, secondly, thirdly' is an example of which signal function?",
-    "options": [
-      "A. Addition",
-      "B. Listing/Enumeration",
-      "C. Summary",
-      "D. Contrast"
-    ],
-    "answer": "B",
-    "explanation": "These are sequence markers used to list points in order."
-  },
-  {
-    "id": 78,
-    "question": "In the SQ3R reading method, the 'S' stands for:",
-    "options": [
-      "A. Study",
-      "B. Survey",
-      "C. Scanning",
-      "D. Skimming"
-    ],
-    "answer": "B",
-    "explanation": "Surveying involves looking over the text to get an overview before deep reading."
-  },
-  {
-    "id": 79,
-    "question": "Which habit involves moving the lips while reading silently?",
-    "options": [
-      "A. Regression",
-      "B. Vocalization",
-      "C. Finger pointing",
-      "D. Head movement"
-    ],
-    "answer": "B",
-    "explanation": "Vocalization is the physical act of forming words while reading, which significantly slows speed."
-  },
-  {
-    "id": 80,
-    "question": "The conclusion of a paragraph should:",
-    "options": [
-      "A. Introduce a new topic",
-      "B. Summarize the main points or restate the topic sentence",
-      "C. Be the longest sentence",
-      "D. Always contain a quote"
-    ],
-    "answer": "B",
-    "explanation": "A conclusion reinforces the main idea and brings the paragraph to a logical end."
-  },
-  {
-    "id": 81,
-    "question": "Which of the following describes the 'Return Sweep' in reading?",
-    "options": [
-      "A. Moving from the end of one line to the beginning of the next",
-      "B. Re-reading a difficult paragraph",
-      "C. Scanning the index of a book",
-      "D. Closing the book after finishing a chapter"
-    ],
-    "answer": "A",
-    "explanation": "The return sweep is the rapid eye movement from the right margin back to the left margin to start the next line."
-  },
-  {
-    "id": 82,
-    "question": "A reader who adjusts their reading speed based on the difficulty of the material is demonstrating:",
-    "options": [
-      "A. Vocalization",
-      "B. Flexibility",
-      "C. Regression",
-      "D. Fixation"
-    ],
-    "answer": "B",
-    "explanation": "Flexibility is the hallmark of an efficient reader who knows when to slow down for depth or speed up for gist."
-  },
-  {
-    "id": 83,
-    "question": "The 'Unity' of a paragraph is violated when:",
-    "options": [
-      "A. The topic sentence is at the end",
-      "B. More than one main idea is discussed",
-      "C. Signal words are used",
-      "D. The paragraph is too short"
-    ],
-    "answer": "B",
-    "explanation": "Unity means every sentence in the paragraph should support a single central idea."
-  },
-  {
-    "id": 84,
-    "question": "Which of these is a psychological factor that can inhibit reading?",
-    "options": [
-      "A. Dim light",
-      "B. Lack of interest or motivation",
-      "C. Small print size",
-      "D. Poor eyesight"
-    ],
-    "answer": "B",
-    "explanation": "Psychological factors involve the reader's mental state, such as attitude, interest, and anxiety."
-  },
-  {
-    "id": 85,
-    "question": "Identifying the 'Supporting Details' in a text helps the reader to:",
-    "options": [
-      "A. Find the publisher of the book",
-      "B. Understand how the main idea is developed",
-      "C. Improve their handwriting",
-      "D. Speed read through the conclusion"
-    ],
-    "answer": "B",
-    "explanation": "Supporting details provide the evidence, examples, and explanations that give weight to the main idea."
-  },
-  {
-    "id": 86,
-    "question": "All the following signal words/phrases have the function of COMPARISON except:",
-    "options": [
-      "A. Similarly",
-      "B. In the same way",
-      "C. Likewise",
-      "D. Consequently"
-    ],
-    "answer": "D",
-    "explanation": "'Consequently' signals a result or consequence, not a similarity."
-  },
-  {
-    "id": 87,
-    "question": "All the following signal words/phrases have the function of ADDITION except:",
-    "options": [
-      "A. Also",
-      "B. moreover",
-      "C. however",
-      "D. in addition"
-    ],
-    "answer": "C",
-    "explanation": "As seen in previous sections, 'however' is used for contrast, not to add information."
-  },
-  {
-    "id": 88,
-    "question": "All the following signal words/phrases have the function of LISTING except:",
-    "options": [
-      "A. first",
-      "B. next",
-      "C. in other words",
-      "D. finally"
-    ],
-    "answer": "C",
-    "explanation": "'In other words' is a restatement signal, while the others are sequence or listing signals."
-  },
-  {
-    "id": 89,
-    "question": "All the following signal words/phrases have the function of SUMMARY except:",
-    "options": [
-      "A. to conclude",
-      "B. to sum up",
-      "C. in conclusion",
-      "D. none of the above"
-    ],
-    "answer": "D",
-    "explanation": "All options A, B, and C are valid summary markers."
-  },
-  {
-    "id": 90,
-    "question": "All the following signal words/phrases have the function of CONSEQUENCE except:",
-    "options": [
-      "A. therefore",
-      "B. as a result",
-      "C. however",
-      "D. hence"
-    ],
-    "answer": "C",
-    "explanation": "Therefore, hence, and as a result show the outcome of a cause; however shows a contradiction."
-  },
-  {
-    "id": 91,
-    "question": "All the following signal words/phrases have the function of REFERRING TO PREVIOUS SENTENCES except:",
-    "options": [
-      "A. that is to say, namely",
-      "B. nevertheless",
-      "C. in other words",
-      "D. as follows"
-    ],
-    "answer": "B",
-    "explanation": "The markers in A, C, and D refer back to clarify previous statements; 'nevertheless' is a contrast marker."
-  },
-  {
-    "id": 92,
-    "question": "All the following signal words/phrases have the function of CONTRAST except:",
-    "options": [
-      "A. but",
-      "B. and",
-      "C. on the contrary",
-      "D. on the other hand"
-    ],
-    "answer": "B",
-    "explanation": "'And' is an addition marker, not used for showing differences or opposition."
-  },
-  {
-    "id": 93,
-    "question": "All the following signal words/phrases have the function of CONCESSION except:",
-    "options": [
-      "A. however",
-      "B. nevertheless",
-      "C. similarly",
-      "D. although"
-    ],
-    "answer": "C",
-    "explanation": "'Similarly' shows likeness, whereas concession words acknowledge a conflicting fact."
-  },
-  {
-    "id": 94,
-    "question": "All the following signal words/phrases have the function of RESTATEMENT except:",
-    "options": [
-      "A. in other words",
-      "B. that is to say",
-      "C. namely",
-      "D. furthermore"
-    ],
-    "answer": "D",
-    "explanation": "Furthermore adds new information, while the others repeat or clarify the same information in a different way."
-  },
-  {
-    "id": 95,
-    "question": "Which of the following signal words/phrases is used to show a logical result?",
-    "options": [
-      "A. For instance",
-      "B. Consequently",
-      "C. Similarly",
-      "D. Furthermore"
-    ],
-    "answer": "B",
-    "explanation": "Consequently indicates that the following statement is a direct result of the preceding one."
-  },
-  {
-    "id": 96,
-    "question": "The primary goal of 'Critical Reading' is to:",
-    "options": [
-      "A. Read as fast as possible",
-      "B. Memorize every word",
-      "C. Evaluate the author's argument and bias",
-      "D. Find specific dates and names"
-    ],
-    "answer": "C",
-    "explanation": "Critical reading involves analyzing and evaluating the validity of the information presented."
-  },
-  {
-    "id": 97,
-    "question": "In the SQ3R study method, 'Recite' refers to:",
-    "options": [
-      "A. Reading the text aloud",
-      "B. Writing down the author's name",
-      "C. Answering questions from memory after reading",
-      "D. Re-reading the same page three times"
-    ],
-    "answer": "C",
-    "explanation": "Reciting helps reinforce memory by forcing the reader to retrieve information without looking at the text."
-  },
-  {
-    "id": 98,
-    "question": "A group of related sentences that discuss one main point is a:",
-    "options": [
-      "A. Clause",
-      "B. Paragraph",
-      "C. Phrase",
-      "D. Sentence"
-    ],
-    "answer": "B",
-    "explanation": "The paragraph is the basic unit of organization in writing, centered around one main idea."
-  },
-  {
-    "id": 99,
-    "question": "Which signal word indicates that a writer is about to give an alternative view?",
-    "options": [
-      "A. Moreover",
-      "B. Conversely",
-      "C. Therefore",
-      "D. In addition"
-    ],
-    "answer": "B",
-    "explanation": "Conversely is used to introduce an idea that is the opposite of the one previously mentioned."
-  },
-  {
-    "id": 100,
-    "question": "The 'Topic Sentence' is most commonly found at the _______ of a paragraph.",
-    "options": [
-      "A. Middle",
-      "B. End",
-      "C. Beginning",
-      "D. Appendix"
-    ],
-    "answer": "C",
-    "explanation": "While it can move, placing the topic sentence at the beginning is the standard way to establish the paragraph's focus immediately."
-  },
-{
-    "id": 101,
-    "question": "Which of the following is an example of Sub-vocalization?",
-    "options": [
-      "A. Reading with eyes only",
-      "B. The inner voice heard while reading",
-      "C. Pointing with a finger",
-      "D. Skipping sentences"
-    ],
-    "answer": "B",
-    "explanation": "Sub-vocalization is internal speech while reading."
-  },
-  {
-    "id": 102,
-    "question": "The purpose of Survey in SQ3R is to:",
-    "options": [
-      "A. Memorize",
-      "B. Gain overview",
-      "C. Check spelling",
-      "D. Read conclusion first"
-    ],
-    "answer": "B",
-    "explanation": "Surveying creates a mental map of the content."
-  },
-  {
-    "id": 103,
-    "question": "Word Analysis strategies look at:",
-    "options": [
-      "A. Price",
-      "B. Prefixes, suffixes, and roots",
-      "C. Cover color",
-      "D. Font size"
-    ],
-    "answer": "B",
-    "explanation": "Word analysis breaks down morphemes to determine meaning."
-  },
-  {
-    "id": 104,
-    "question": "Which signal introduces a Conclusion?",
-    "options": [
-      "A. On the other hand",
-      "B. In summary",
-      "C. For instance",
-      "D. Similarly"
-    ],
-    "answer": "B",
-    "explanation": "'In summary' signals the wrapping up of points."
-  },
-  {
-    "id": 105,
-    "question": "Reading for pleasure is known as:",
-    "options": [
-      "A. Intensive",
-      "B. Extensive",
-      "C. Scanning",
-      "D. Skimming"
-    ],
-    "answer": "B",
-    "explanation": "Extensive reading is for general understanding and enjoyment."
-  },
-  {
-    "id": 106,
-    "question": "Explaining 'why' something happened uses which pattern?",
-    "options": [
-      "A. Chronological",
-      "B. Cause and Effect",
-      "C. Spatial",
-      "D. Comparison"
-    ],
-    "answer": "B",
-    "explanation": "Cause and effect patterns explain reasons and results."
-  },
-  {
-    "id": 107,
-    "question": "The Question stage of SQ3R helps to:",
-    "options": [
-      "A. Fall asleep",
-      "B. Become an active participant",
-      "C. Finish faster",
-      "D. Ignore topic sentence"
-    ],
-    "answer": "B",
-    "explanation": "Turning headings into questions improves focus and concentration."
-  }
+    
+    const MASTER_POOL = [
+        
+  { "id": 1, "question": "__________ is the conscious experience of duration, the period in which an action or event occurred", "options": ["A Time", "B Space", "C Motion", "D Energy"], "answer": "A", "explanation": "Time is defined as the conscious experience of the passage of events." },
+  { "id": 2, "question": "__________ is also a dimension representing a succession of such actions or event.", "options": ["A Velocity", "B Time", "C Gravity", "D Mass"], "answer": "B", "explanation": "In physics and philosophy, time serves as a dimension to sequence events." },
+  { "id": 3, "question": "__________ is the skilful handling or use of resources such as people (human capital), money, materials, and time.", "options": ["A Leadership", "B Accounting", "C Management", "D Economics"], "answer": "C", "explanation": "Management involves the coordination of various resources to achieve objectives." },
+  { "id": 4, "question": "__________ is the proper use of available time for the accomplishment of set goals.", "options": ["A Goal setting", "B Time management", "C Productivity", "D Punctuality"], "answer": "B", "explanation": "Time management specifically focuses on the efficiency of time usage for productivity." },
+  { "id": 5, "question": "Which of the following is not a time management tool?", "options": ["A Timetable", "B Organizer", "C Timepiece", "D To-do list"], "answer": "C", "explanation": "While a timepiece (clock) tells time, it is not a planning 'tool' like a timetable or to-do list." },
+  { "id": 6, "question": "Which of the following is not a sub-skill of time management", "options": ["A Making a things-to-do list", "B Prioritization, time budgeting", "C Elimination of waste, micro time management", "D Tasks sharing multitasking re-scheduling", "E None of the above"], "answer": "D", "explanation": "The answer key identifies 'D' as the item that does not fit the specific sub-skill categories listed in the text." },
+  { "id": 7, "question": "__________ is a tabulated list of the times at which an event or activities are required to occur.", "options": ["A Calendar", "B Timetable", "C Journal", "D Agenda"], "answer": "B", "explanation": "A timetable organizes activities into a specific schedule." },
+  { "id": 8, "question": "__________ is any instrument for recording or showing the time, especially one that does not strike or chime.", "options": ["A Metronome", "B Calendar", "C Time piece", "D Stopwatch"], "answer": "C", "explanation": "A timepiece is the general term for clocks or watches used to track time." },
+  { "id": 9, "question": "__________ is a small portable calendar and databock used for planning or a handheld computerized device with a simple database for managing appointments and other information.", "options": ["A Laptop", "B Organizer", "C Textbook", "D Ledger"], "answer": "B", "explanation": "An organizer is used to manage personal schedules and contact info." },
+  { "id": 10, "question": "A realistic timetable should be all of the following except,", "options": ["A Account for all your courses & necessary activities", "B Reflect your essential personality in content and design", "C Made to impress", "D Account for individual attention span"], "answer": "C", "explanation": "A timetable should be functional and personal, not designed for outward show or impression." },
+  { "id": 11, "question": "Which of the following is not a note taking format,", "options": ["A Linear format", "B Outline format", "C Graphic or diagrammatic", "D A and B"], "answer": "D", "explanation": "Both Linear and Outline are valid formats; therefore, D is the answer indicating they are not the 'incorrect' choice." },
+  { "id": 12, "question": "\"There is a tendency to concentrate on writing rather than on listening and comprehension\" in which of the following note taking format,", "options": ["A Linear format", "B Graphic", "C Diagrammatic", "D Outline format"], "answer": "A", "explanation": "Linear note-taking often leads to passive transcribing rather than active understanding." },
+  { "id": 13, "question": "Which of the following note taking format does the listener makes a list of key points;", "options": ["A Linear format", "B Outline format", "C Graphic", "D Diagrammatic"], "answer": "B", "explanation": "Outline formats use hierarchy to list major and minor points." },
+  { "id": 14, "question": "The use of columns or tables if the note involve comparing and contrasting is appropriate to which type of note taking format,", "options": ["A Linear format", "B Table format", "C Graphic or diagrammatic", "D Outline"], "answer": "C", "explanation": "Graphic/diagrammatic formats often utilize spatial organization like tables." },
+  { "id": 15, "question": "__________ words show the direction of the speaker's thought.", "options": ["A Verb", "B Signal/signpost word", "C Adjective", "D Noun"], "answer": "B", "explanation": "Signal words alert the listener to transitions or emphasis in a speech." },
+  { "id": 16, "question": "The two kinds of (15) are signals of sequence and signals of speaker's point of view True or false", "options": ["A True", "B False"], "answer": "A", "explanation": "Signpost words are categorized into sequence markers and perspective markers." },
+  { "id": 17, "question": "To __________ is to experience or to be aware of sounds, usually as a result of the stimulation of the auditory system by sound waves.", "options": ["A To listen", "B To hear", "C To speak", "D To feel"], "answer": "B", "explanation": "Hearing is the physiological process of sound perception." },
+  { "id": 18, "question": "__________ is the act of apprehending or the ability to apprehend sounds aurally.", "options": ["A Hearing", "B Listening", "C Speaking", "D Writing"], "answer": "A", "explanation": "Hearing is defined as the aural apprehension of sound." },
+  { "id": 19, "question": "Which of the following is more or less an experience rather than an activity,", "options": ["A Hearing", "B Listening", "C Speaking", "D Writing"], "answer": "A", "explanation": "Hearing happens involuntarily (experience), while listening is a conscious effort (activity)." },
+  { "id": 20, "question": "__________ is the conscious use of one's ear in order to hear some particular sounds.", "options": ["A Silence", "B Hearing", "C Listening", "D Audition"], "answer": "C", "explanation": "Listening requires mental focus and attention." },
+  { "id": 21, "question": "__________ is the aural counterpart of looking", "options": ["A Singing", "B Watching", "C Listening", "D Hearing"], "answer": "C", "explanation": "Just as looking is 'active seeing', listening is 'active hearing'." },
+  { "id": 22, "question": "Listening is a purposeful activity.", "options": ["A Neutral", "B True", "C False", "D True and false"], "answer": "B", "explanation": "Listening is inherently goal-oriented and conscious." },
+  { "id": 23, "question": "The following are called what (writing speaking listening reading)", "options": ["A Hobbies", "B Careers", "C Learning", "D Talents"], "answer": "C", "explanation": "The four core language skills are essential components of the learning process." },
+  { "id": 24, "question": "Which of the following are receptive skills,", "options": ["A Listening and writing", "B Reading and writing", "C Writing and speaking", "D Reading and listening"], "answer": "D", "explanation": "Receptive skills involve receiving information (reading and listening)." },
+  { "id": 25, "question": "Which of the following are passive skills,", "options": ["A Listening and writing", "B Reading and writing", "C Writing and speaking", "D Reading and listening"], "answer": "D", "explanation": "Receptive skills are often categorized as passive compared to production skills." },
+  { "id": 26, "question": "Which of the following are productive skills;", "options": ["A Listening and writing", "B Reading and writing", "C Writing and speaking", "D Reading and listening"], "answer": "C", "explanation": "Productive skills involve generating language (writing and speaking)." },
+  { "id": 27, "question": "Which of the following are active skills,", "options": ["A Listening and writing", "B Reading and writing", "C Writing and speaking", "D Reading and listening"], "answer": "C", "explanation": "Productive skills are considered 'active' because the user must create content." },
+  { "id": 28, "question": "__________ is the ability to make and communicate meaning from and by the use of a variety of socially contextual symbols.", "options": ["A Literacy", "B Numeracy", "C Culture", "D Etiquette"], "answer": "A", "explanation": "Literacy extends beyond reading to include understanding social symbols." },
+  { "id": 29, "question": "__________ is \"not in isolated bits of knowledge but in students' growing ability to use language and literacy in more and broader activities\"", "options": ["A Education", "B Literacy", "C Intelligence", "D Fluency"], "answer": "B", "explanation": "This definition emphasizes the functional application of language skills." },
+  { "id": 30, "question": "__________ involves understanding some mathematical ideas, notation and techniques.", "options": ["A Geometry", "B Algebra", "C Numeracy", "D Physics"], "answer": "C", "explanation": "Numeracy is the mathematical equivalent of literacy." },
+  { "id": 31, "question": "__________ involves drawing on knowledge of particular context and circumstances in deciding when to use mathematics, choosing the mathematics to use and critically evaluating it use.", "options": ["A Statistics", "B Numeracy", "C Calculation", "D Logic"], "answer": "B", "explanation": "Advanced numeracy includes critical evaluation of mathematical application." },
+  { "id": 32, "question": "__________ includes the ability to read and interpret media, to reproduce data and images through digital manipulation, and to evaluate and apply new knowledge gained from digital environments.", "options": ["A Literacy", "B Digital literacy", "C E-literacy", "D B and C"], "answer": "D", "explanation": "Digital and E-literacy are often used interchangeably for these skills." },
+  { "id": 33, "question": "__________ is the ability to read a text in an active, reflective and questioning manner in order to better under stand power, inequality and injustice in human relations.", "options": ["A General reading", "B Critical literacy", "C Skimming", "D Scanning"], "answer": "B", "explanation": "Critical literacy focuses on uncovering social power dynamics in texts." },
+  { "id": 34, "question": "__________ is the practice of challenging text through an analysis of the roles that power, culture, class and gender play in the message of the texts.", "options": ["A Peer review", "B Critical literacy", "C Editing", "D Proofreading"], "answer": "B", "explanation": "This practice requires an analytical approach to the socio-cultural context of media." },
+  { "id": 35, "question": "Which of the following is not a role that a reader assumes while reading a text critically,", "options": ["A Code breaker", "B Text user", "C Text critic", "D Meaning maker", "E None of the above"], "answer": "E", "explanation": "All listed roles (A-D) are standard roles for critical readers." },
+  { "id": 36, "question": "__________ is the social code of the internet.", "options": ["A Protocol", "B Firewall", "C Internet etiquette", "D Encryption"], "answer": "C", "explanation": "Also known as 'Netiquette', it governs polite online behavior." },
+  { "id": 37, "question": "__________ refers to the set of practices created over the years to make the internet experience pleasant for everyone.", "options": ["A Web design", "B Programming", "C Internet etiquette", "D Cybersecurity"], "answer": "C", "explanation": "Etiquette ensures a standardized respectful environment online." },
+  { "id": 38, "question": "Which of the following sections provides more information,", "options": ["A Netiquette of Basics", "B Netiquette of Confidentiality", "C Netiquette of Sending", "D Netiquette of Replying", "E All of the above"], "answer": "E", "explanation": "All these sub-sections comprise the full scope of internet etiquette." },
+  { "id": 39, "question": "__________ are the building blocks of words.", "options": ["A Letters", "B Morpheme", "C Syllables", "D Phrases"], "answer": "B", "explanation": "Morphemes are the smallest units in word formation." },
+  { "id": 40, "question": "__________ are units of meaning", "options": ["A Sounds", "B Morphemes", "C Sentences", "D Vowels"], "answer": "B", "explanation": "A morpheme is defined as the smallest meaningful unit of a language." },
+  { "id": 41, "question": "Determine the number of morphemes: Boy, Boys, Flexible, Liquefied, Liquefaction, Understand", "options": ["A Boy=1, Boys=2, Flexible=2, Liquefied=2, Liquefaction=2, Understand=2", "B Boy=1, Boys=1, Flexible=1, Liquefied=1, Liquefaction=1, Understand=1", "C Boy=2, Boys=3, Flexible=3, Liquefied=3, Liquefaction=3, Understand=3", "D Boy=1, Boys=2, Flexible=1, Liquefied=2, Liquefaction=1, Understand=2"], "answer": "A", "explanation": "Calculated based on root words and suffixes (e.g., Boy + s)." },
+  { "id": 42, "question": "How many syllables does the following have: demagnetisation, liquefied, liquefaction, understand", "options": ["A 5, 2, 3, 2", "B 6, 3, 4, 3", "C 4, 1, 2, 1", "D 7, 4, 5, 4"], "answer": "B", "explanation": "Based on standard pronunciation: de-mag-ne-ti-sa-tion (6), li-que-fied (3), li-que-fac-tion (4), un-der-stand (3)." },
+  { "id": 43, "question": "The following are alphabetism except,", "options": ["A EFCC OBC AT", "B amu r.p.m Ah", "C SOS IT, http", "D WHO SIM", "E None of the above"], "answer": "E", "explanation": "Alphabetisms are abbreviations pronounced as individual letters." },
+  { "id": 44, "question": "Which of the following can be jointly refer to as initialism", "options": ["A dipping and blending", "B Acronymy and eponymy", "C Affixation and suffixation", "D Acronymy and alphabetism"], "answer": "D", "explanation": "Initialisms include both acronyms (pronounced as words) and alphabetisms." },
+  { "id": 45, "question": "It is of course possible for clipping to take place without blending True or false", "options": ["A True", "B False"], "answer": "A", "explanation": "Clipping (shortening a word) does not require merging it with another word (blending)." },
+  { "id": 46, "question": "One of the factors that inhibit efficient reading is", "options": ["A. a well-equipped library", "B. good health", "C. noise", "D. proper feeding"], "answer": "C", "explanation": "Noise is an environmental factor that distracts the reader and reduces concentration." },
+  { "id": 47, "question": "The act of reading through a text to acquire superficial information is referred to as", "options": ["A. scanning", "B. skimming", "C. anticipation", "D. writing"], "answer": "B", "explanation": "Skimming is used to get the general idea or 'gist' of the text quickly." },
+  { "id": 48, "question": "The sentence that bears the main information in a paragraph is known as the", "options": ["A. introduction sentence", "B. main point sentence", "C. topic sentence", "D. all of the above"], "answer": "C", "explanation": "The topic sentence summarizes the paragraph's main argument or idea." },
+  { "id": 49, "question": "An introductory paragraph is usually written in the", "options": ["A. past tense", "B. present tense", "C. present continuous tense", "D. past participle tense"], "answer": "B", "explanation": "Present tense is standard for introducing topics and stating general facts in academic writing." },
+  { "id": 50, "question": "Which of the following is a signal word?", "options": ["A. in addition", "B. similarly", "C. furthermore", "D. all of the above"], "answer": "D", "explanation": "Signal words (or transitions) connect ideas and show the direction of thought." },
+  { "id": 51, "question": "Reading is important for all these except", "options": ["A. achievement and advancement in life", "B. enjoyment or leisure", "C. professional development", "D. none of the above"], "answer": "D", "explanation": "All the listed options are valid reasons why reading is important." },
+  { "id": 52, "question": "All these are strategies of reading except", "options": ["A. anticipation", "B. skimming", "C. scamming", "D. identifying main ideas"], "answer": "C", "explanation": "The document identifies 'scamming' as a distractor; the correct strategy is 'scanning'." },
+  { "id": 53, "question": "One of these is NOT a factor that cause slow reading", "options": ["A. word-by-word reading", "B. difficulty with the return sweep", "C. flexibility", "D. regression"], "answer": "C", "explanation": "Flexibility is a positive reading skill where you adjust speed based on text difficulty." },
+  { "id": 54, "question": "A variety of reading skills involves", "options": ["A. making inferences", "B. using word analysis strategies", "C. applying textbook reading strategies", "D. all of the above"], "answer": "D", "explanation": "Efficient reading requires a combination of inference, analysis, and strategic approaches." },
+  { "id": 55, "question": "Efficient reading is enhanced by these factors except", "options": ["A. environmental factors", "B. psychological factors", "C. vocalization", "D. physiological factors"], "answer": "C", "explanation": "Vocalization (whispering words) is a bad habit that slows down reading speed." },
+  { "id": 56, "question": "The act of looking for specific information in a text is", "options": ["A. scanning", "B. skimming", "C. reading", "D. all of the above"], "answer": "A", "explanation": "Scanning is a selective reading technique for locating specific data like names or dates." },
+  { "id": 57, "question": "A paragraph is a group of sentences that develop", "options": ["A. many ideas", "B. a single idea", "C. two ideas", "D. no idea"], "answer": "B", "explanation": "The core principle of a paragraph is unity—focusing on one central thought." },
+  { "id": 58, "question": "In a paragraph, the sentence that summarizes the main idea is the", "options": ["A. concluding sentence", "B. supporting sentence", "C. topic sentence", "D. transition sentence"], "answer": "C", "explanation": "This acts as the 'heart' of the paragraph." },
+  { "id": 59, "question": "All the following signal words/phrases have the function of ADDITION except", "options": ["A. Also", "B. moreover", "C. however", "D. in addition"], "answer": "C", "explanation": "'However' signals contrast, not addition." },
+  { "id": 60, "question": "All the following signal words/phrases have the function of LISTING except", "options": ["A. first", "B. next", "C. in other words", "D. finally"], "answer": "C", "explanation": "'In other words' is used for restatement or clarification." },
+  { "id": 61, "question": "All the following signal words/phrases have the function of SUMMARY except", "options": ["A. to conclude", "B. to sum up", "C. in conclusion", "D. none of the above"], "answer": "D", "explanation": "Options A, B, and C are all valid summary signals." },
+  { "id": 62, "question": "All the following signal words/phrases have the function of CONSEQUENCE except", "options": ["A. therefore", "B. as a result", "C. however", "D. hence"], "answer": "C", "explanation": "Consequence signals show cause and effect; 'however' shows opposition." },
+  { "id": 63, "question": "All the following signal words/phrases have the function of CONTRAST except", "options": ["A. but", "B. and", "C. on the contrary", "D. on the other hand"], "answer": "B", "explanation": "'And' is a simple additive conjunction." },
+  { "id": 64, "question": "All the following signal words/phrases have the function of CONCESSION except", "options": ["A. however", "B. nevertheless", "C. similarly", "D. although"], "answer": "C", "explanation": "Concession signals acknowledge an opposing point; 'similarly' shows comparison." },
+  { "id": 65, "question": "Which of the following is NOT a characteristic of a good paragraph?", "options": ["A. Unity", "B. Coherence", "C. Ambiguity", "D. Completeness"], "answer": "C", "explanation": "A good paragraph should be clear and concise; ambiguity (vagueness) is a flaw in writing." },
+  { "id": 66, "question": "The transition from one idea to another within a paragraph is ensured by:", "options": ["A. Punctuation only", "B. Signal words and phrases", "C. Using many adjectives", "D. Starting a new page"], "answer": "B", "explanation": "Signal words act as bridges that connect sentences and ideas to create flow." },
+  { "id": 67, "question": "Which reading technique is best used when looking for a specific name in a telephone directory?", "options": ["A. Intensive reading", "B. Skimming", "C. Scanning", "D. Critical reading"], "answer": "C", "explanation": "Scanning is the selective process of looking for a specific piece of data without reading everything." },
+  { "id": 68, "question": "The part of a paragraph that develops the topic sentence by providing evidence or examples is called:", "options": ["A. The lead-in", "B. Supporting sentences", "C. The conclusion", "D. The header"], "answer": "B", "explanation": "Supporting sentences expand on the main idea presented in the topic sentence." },
+  { "id": 69, "question": "Regression in reading refers to:", "options": ["A. Moving eyes forward quickly", "B. Re-reading words or sentences already passed", "C. Reading at a high speed", "D. Predicting the end of a story"], "answer": "B", "explanation": "Regression is a habit that slows down reading speed by constantly looking back at what was already read." },
+  { "id": 70, "question": "All the following signal words/phrases have the function of ILLUSTRATION except:", "options": ["A. For example", "B. For instance", "C. Such as", "D. Furthermore"], "answer": "D", "explanation": "'Furthermore' is used for addition, while the others are used to provide examples." },
+  { "id": 71, "question": "The mental process of 'guessing' what a text will be about based on titles and headers is:", "options": ["A. Vocalization", "B. Anticipation", "C. Sub-vocalization", "D. Scanning"], "answer": "B", "explanation": "Anticipation allows a reader to engage with the text by predicting its content." },
+  { "id": 72, "question": "Which of these is a physiological factor that affects reading?", "options": ["A. Lighting", "B. Visual defects", "C. Background noise", "D. Fear of failure"], "answer": "B", "explanation": "Physiological factors relate to the physical state of the body, such as eyesight." },
+  { "id": 73, "question": "Signal words like 'namely' or 'that is to say' perform the function of:", "options": ["A. Summary", "B. Consequence", "C. Explanation/Restatement", "D. Contrast"], "answer": "C", "explanation": "These phrases are used to clarify or further define a previous point." },
+  { "id": 74, "question": "Reading for 'intensive' purposes usually involves:", "options": ["A. Reading for pleasure only", "B. Detailed study for examinations", "C. Looking for a single date", "D. Reading a newspaper headline"], "answer": "B", "explanation": "Intensive reading is slow, careful reading aimed at total comprehension of the material." },
+  { "id": 75, "question": "All the following signal words/phrases have the function of REFERRING TO PREVIOUS SENTENCES except:", "options": ["A. that is to say, namely,", "B. nevertheless", "C. in other words", "D. as follows"], "answer": "B", "explanation": "'Nevertheless' is a concession/contrast signal." },
+  { "id": 76, "question": "All the following signal words/phrases have the function of CONCESSION except:", "options": ["A. however", "B. nevertheless", "C. similarly", "D. although"], "answer": "C", "explanation": "'Similarly' is used for comparison, not concession." },
+  { "id": 77, "question": "The use of 'firstly, secondly, thirdly' is an example of which signal function?", "options": ["A. Addition", "B. Listing/Enumeration", "C. Summary", "D. Contrast"], "answer": "B", "explanation": "These are sequence markers used to list points in order." },
+  { "id": 78, "question": "In the SQ3R reading method, the 'S' stands for:", "options": ["A. Study", "B. Survey", "C. Scanning", "D. Skimming"], "answer": "B", "explanation": "Surveying involves looking over the text to get an overview before deep reading." },
+  { "id": 79, "question": "Which habit involves moving the lips while reading silently?", "options": ["A. Regression", "B. Vocalization", "C. Finger pointing", "D. Head movement"], "answer": "B", "explanation": "Vocalization is the physical act of forming words while reading, which significantly slows speed." },
+  { "id": 80, "question": "The conclusion of a paragraph should:", "options": ["A. Introduce a new topic", "B. Summarize the main points or restate the topic sentence", "C. Be the longest sentence", "D. Always contain a quote"], "answer": "B", "explanation": "A conclusion reinforces the main idea and brings the paragraph to a logical end." },
+  { "id": 81, "question": "Which of the following describes the 'Return Sweep' in reading?", "options": ["A. Moving from the end of one line to the beginning of the next", "B. Re-reading a difficult paragraph", "C. Scanning the index of a book", "D. Closing the book after finishing a chapter"], "answer": "A", "explanation": "The return sweep is the rapid eye movement from the right margin back to the left margin to start the next line." },
+  { "id": 82, "question": "A reader who adjusts their reading speed based on the difficulty of the material is demonstrating:", "options": ["A. Vocalization", "B. Flexibility", "C. Regression", "D. Fixation"], "answer": "B", "explanation": "Flexibility is the hallmark of an efficient reader who knows when to slow down for depth or speed up for gist." },
+  { "id": 83, "question": "The 'Unity' of a paragraph is violated when:", "options": ["A. The topic sentence is at the end", "B. More than one main idea is discussed", "C. Signal words are used", "D. The paragraph is too short"], "answer": "B", "explanation": "Unity means every sentence in the paragraph should support a single central idea." },
+  { "id": 84, "question": "Which of these is a psychological factor that can inhibit reading?", "options": ["A. Dim light", "B. Lack of interest or motivation", "C. Small print size", "D. Poor eyesight"], "answer": "B", "explanation": "Psychological factors involve the reader's mental state, such as attitude, interest, and anxiety." },
+  { "id": 85, "question": "Identifying the 'Supporting Details' in a text helps the reader to:", "options": ["A. Find the publisher of the book", "B. Understand how the main idea is developed", "C. Improve their handwriting", "D. Speed read through the conclusion"], "answer": "B", "explanation": "Supporting details provide the evidence, examples, and explanations that give weight to the main idea." },
+  { "id": 86, "question": "All the following signal words/phrases have the function of COMPARISON except:", "options": ["A. Similarly", "B. In the same way", "C. Likewise", "D. Consequently"], "answer": "D", "explanation": "'Consequently' signals a result or consequence, not a similarity." },
+  { "id": 87, "question": "All the following signal words/phrases have the function of ADDITION except:", "options": ["A. Also", "B. moreover", "C. however", "D. in addition"], "answer": "C", "explanation": "As seen in previous sections, 'however' is used for contrast, not to add information." },
+  { "id": 88, "question": "All the following signal words/phrases have the function of LISTING except:", "options": ["A. first", "B. next", "C. in other words", "D. finally"], "answer": "C", "explanation": "'In other words' is a restatement signal, while the others are sequence or listing signals." },
+  { "id": 89, "question": "All the following signal words/phrases have the function of SUMMARY except:", "options": ["A. to conclude", "B. to sum up", "C. in conclusion", "D. none of the above"], "answer": "D", "explanation": "All options A, B, and C are valid summary markers." },
+  { "id": 90, "question": "All the following signal words/phrases have the function of CONSEQUENCE except:", "options": ["A. therefore", "B. as a result", "C. however", "D. hence"], "answer": "C", "explanation": "Therefore, hence, and as a result show the outcome of a cause; however shows a contradiction." },
+  { "id": 91, "question": "All the following signal words/phrases have the function of REFERRING TO PREVIOUS SENTENCES except:", "options": ["A. that is to say, namely", "B. nevertheless", "C. in other words", "D. as follows"], "answer": "B", "explanation": "The markers in A, C, and D refer back to clarify previous statements; 'nevertheless' is a contrast marker." },
+  { "id": 92, "question": "All the following signal words/phrases have the function of CONTRAST except:", "options": ["A. but", "B. and", "C. on the contrary", "D. on the other hand"], "answer": "B", "explanation": "'And' is an addition marker, not used for showing differences or opposition." },
+  { "id": 93, "question": "All the following signal words/phrases have the function of CONCESSION except:", "options": ["A. however", "B. nevertheless", "C. similarly", "D. although"], "answer": "C", "explanation": "'Similarly' shows likeness, whereas concession words acknowledge a conflicting fact." },
+  { "id": 94, "question": "All the following signal words/phrases have the function of RESTATEMENT except:", "options": ["A. in other words", "B. that is to say", "C. namely", "D. furthermore"], "answer": "D", "explanation": "Furthermore adds new information, while the others repeat or clarify the same information in a different way." },
+  { "id": 95, "question": "Which of the following signal words/phrases is used to show a logical result?", "options": ["A. For instance", "B. Consequently", "C. Similarly", "D. Furthermore"], "answer": "B", "explanation": "Consequently indicates that the following statement is a direct result of the preceding one." },
+  { "id": 96, "question": "The primary goal of 'Critical Reading' is to:", "options": ["A. Read as fast as possible", "B. Memorize every word", "C. Evaluate the author's argument and bias", "D. Find specific dates and names"], "answer": "C", "explanation": "Critical reading involves analyzing and evaluating the validity of the information presented." },
+  { "id": 97, "question": "In the SQ3R study method, 'Recite' refers to:", "options": ["A. Reading the text aloud", "B. Writing down the author's name", "C. Answering questions from memory after reading", "D. Re-reading the same page three times"], "answer": "C", "explanation": "Reciting helps reinforce memory by forcing the reader to retrieve information without looking at the text." },
+  { "id": 98, "question": "A group of related sentences that discuss one main point is a:", "options": ["A. Clause", "B. Paragraph", "C. Phrase", "D. Sentence"], "answer": "B", "explanation": "The paragraph is the basic unit of organization in writing, centered around one main idea." },
+  { "id": 99, "question": "Which signal word indicates that a writer is about to give an alternative view?", "options": ["A. Moreover", "B. Conversely", "C. Therefore", "D. In addition"], "answer": "B", "explanation": "Conversely is used to introduce an idea that is the opposite of the one previously mentioned." },
+  { "id": 100, "question": "The 'Topic Sentence' is most commonly found at the _______ of a paragraph.", "options": ["A. Middle", "B. End", "C. Beginning", "D. Appendix"], "answer": "C", "explanation": "While it can move, placing the topic sentence at the beginning is the standard way to establish the paragraph's focus immediately." },
+  { "id": 101, "question": "Which of the following is an example of Sub-vocalization?", "options": ["A. Reading with eyes only", "B. The inner voice heard while reading", "C. Pointing with a finger", "D. Skipping sentences"], "answer": "B", "explanation": "Sub-vocalization is internal speech while reading." },
+  { "id": 102, "question": "The purpose of Survey in SQ3R is to:", "options": ["A. Memorize", "B. Gain overview", "C. Check spelling", "D. Read conclusion first"], "answer": "B", "explanation": "Surveying creates a mental map of the content." },
+  { "id": 103, "question": "Word Analysis strategies look at:", "options": ["A. Price", "B. Prefixes, suffixes, and roots", "C. Cover color", "D. Font size"], "answer": "B", "explanation": "Word analysis breaks down morphemes to determine meaning." },
+  { "id": 104, "question": "Which signal introduces a Conclusion?", "options": ["A. On the other hand", "B. In summary", "C. For instance", "D. Similarly"], "answer": "B", "explanation": "'In summary' signals the wrapping up of points." },
+  { "id": 105, "question": "Reading for pleasure is known as:", "options": ["A. Intensive", "B. Extensive", "C. Scanning", "D. Skimming"], "answer": "B", "explanation": "Extensive reading is for general understanding and enjoyment." },
+  { "id": 106, "question": "Explaining 'why' something happened uses which pattern?", "options": ["A. Chronological", "B. Cause and Effect", "C. Spatial", "D. Comparison"], "answer": "B", "explanation": "Cause and effect patterns explain reasons and results." },
+  { "id": 107, "question": "The Question stage of SQ3R helps to:", "options": ["A. Fall asleep", "B. Become an active participant", "C. Finish faster", "D. Ignore topic sentence"], "answer": "B", "explanation": "Turning headings into questions improves focus and concentration." }
 
-];
+    ];
+    
 
     let currentExamData = [];
     let userAnswers = {};
     let currentIndex = 0;
     let timeRemaining = 0;
     let timerId;
+    
+    // Core Logic States
+    let activeMode = 'practice'; 
+    let isReviewMode = false; 
 
     window.onload = () => {
+        // NORMALIZER: Automatically clean up "A ", "B ", etc. from options so they can be shuffled safely
+        MASTER_POOL.forEach(q => {
+            if (Array.isArray(q.options) && q.answer && q.answer.length === 1) {
+                const correctOpt = q.options.find(opt => opt.trim().startsWith(q.answer));
+                if (correctOpt) {
+                    const prefixRegex = /^[A-E][\.\)]?\s+/i;
+                    q.answer = correctOpt.replace(prefixRegex, '');
+                    q.options = q.options.map(opt => opt.replace(prefixRegex, ''));
+                }
+            }
+        });
+
         initDashboard();
-        if(localStorage.getItem('saved_gns_exam')) document.getElementById('resume-btn').style.display = 'block';
+        if(localStorage.getItem('saved_gst111_exam')) {
+            document.getElementById('resume-btn').style.display = 'block';
+        }
     };
 
     function initDashboard() {
@@ -1401,7 +283,7 @@
 
         const rand = document.createElement('div');
         rand.className = 'box box-random';
-        rand.innerHTML = `<i class="fa-solid fa-shuffle"></i><h3>Random Mode</h3><p>Full Shuffle</p>`;
+        rand.innerHTML = `<i class="fa-solid fa-shuffle" style="font-size: 24px; margin-bottom: 10px;"></i><h3>Random Mode</h3><p>Full Shuffle</p>`;
         rand.onclick = () => openSetup('random', 0);
         board.appendChild(rand);
 
@@ -1410,32 +292,65 @@
             const start = (i - 1) * 50 + 1;
             const end = Math.min(i * 50, totalQuestions);
             card.className = 'box';
-            card.innerHTML = `<i class="fa-solid fa-book-open"></i><h3>Part ${i}</h3><p>Q${start} - Q${end}</p>`;
+            card.innerHTML = `<i class="fa-solid fa-book-open" style="font-size: 24px; color: var(--primary); margin-bottom: 10px;"></i><h3>Part ${i}</h3><p>Q${start} - Q${end}</p>`;
             card.onclick = () => openSetup('part', i);
             board.appendChild(card);
         }
     }
 
-    function openSetup(mode, partNum) {
-        window.examMode = mode;
+    function openSetup(selectType, partNum) {
+        window.examSelectionType = selectType;
         window.partNum = partNum;
+        
         document.getElementById('dashboard').style.display = 'none';
         document.getElementById('setup-screen').style.display = 'block';
-        document.getElementById('setup-title').innerText = mode === 'random' ? "Random Exam Setup" : `:GST111 Part ${partNum}`;
-        document.getElementById('random-settings').style.display = (mode === 'random') ? 'block' : 'none';
+        document.getElementById('setup-title').innerText = selectType === 'random' ? "Random Setup" : `GST 111: Part ${partNum}`;
+        document.getElementById('random-settings').style.display = (selectType === 'random') ? 'block' : 'none';
+    }
+
+    // Helper function to properly shuffle an array
+    function shuffleArray(array) {
+        let currentIndex = array.length, randomIndex;
+        while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        }
+        return array;
     }
 
     function startExam() {
         const timeInput = document.getElementById('t-limit').value;
         timeRemaining = timeInput * 60;
+        
+        activeMode = document.getElementById('quiz-mode').value;
+        isReviewMode = false;
 
-        if (window.examMode === 'random') {
+        let selectedData = [];
+        if (window.examSelectionType === 'random') {
             const qty = document.getElementById('q-count').value;
-            currentExamData = [...MASTER_POOL].sort(() => 0.5 - Math.random()).slice(0, qty);
+            selectedData = shuffleArray(JSON.parse(JSON.stringify(MASTER_POOL))).slice(0, qty);
         } else {
             const start = (window.partNum - 1) * 50;
-            currentExamData = MASTER_POOL.slice(start, start + 50);
+            selectedData = JSON.parse(JSON.stringify(MASTER_POOL)).slice(start, start + 50);
         }
+
+        const doShuffleQuestions = document.getElementById('shuffle-questions').checked;
+        const doShuffleOptions = document.getElementById('shuffle-options').checked;
+
+        if (doShuffleQuestions && window.examSelectionType !== 'random') {
+            selectedData = shuffleArray(selectedData);
+        }
+
+        if (doShuffleOptions) {
+            selectedData.forEach(q => {
+                if (Array.isArray(q.options)) {
+                    q.options = shuffleArray([...q.options]);
+                }
+            });
+        }
+
+        currentExamData = selectedData;
 
         document.getElementById('setup-screen').style.display = 'none';
         document.getElementById('quiz-interface').style.display = 'block';
@@ -1446,19 +361,24 @@
     }
 
     function runTimer() {
-        if(timerId) clearInterval(timerId);
         timerId = setInterval(() => {
             timeRemaining--;
             let m = Math.floor(timeRemaining / 60);
             let s = timeRemaining % 60;
             document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
-            if(timeRemaining <= 0) showResults();
+            
+            if(timeRemaining <= 0) {
+                clearInterval(timerId);
+                alert("Time is up! Submitting your exam automatically.");
+                showResults();
+            }
         }, 1000);
     }
 
     function renderQuestion() {
         const q = currentExamData[currentIndex];
         const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
+        const userAnswerVal = userAnswers[currentIndex];
         
         document.getElementById('cur-idx').innerText = currentIndex + 1;
         document.getElementById('question-text').innerText = q.question;
@@ -1468,49 +388,83 @@
         optBox.innerHTML = '';
         feedbackArea.innerHTML = '';
         
+        const labels = ['A', 'B', 'C', 'D', 'E', 'F'];
+        
         q.options.forEach((val, index) => {
+            const letterLabel = labels[index] || (index + 1);
             const btn = document.createElement('button');
             btn.className = `option-btn`;
-            const optionLetter = val.charAt(0); // Extract letter (A, B, C, D) from option text
             
-            if (hasAnswered) {
-                if (optionLetter === q.answer) {
+            if (isReviewMode) {
+                if (val === q.answer) {
                     btn.classList.add('correct');
-                } else if (userAnswers[currentIndex] === optionLetter) {
+                } else if (hasAnswered && userAnswerVal === val) {
                     btn.classList.add('wrong');
                 }
-                btn.disabled = true;
+                btn.disabled = true; 
+            } 
+            else if (activeMode === 'practice' && hasAnswered) {
+                if (val === q.answer) {
+                    btn.classList.add('correct');
+                } else if (userAnswerVal === val) {
+                    btn.classList.add('wrong');
+                }
+                btn.disabled = true; 
+            } 
+            else if (activeMode === 'exam' && hasAnswered && !isReviewMode) {
+                if (userAnswerVal === val) {
+                    btn.classList.add('selected');
+                }
             }
 
-            btn.innerHTML = `<strong>${optionLetter}.</strong> ${val.substring(2)}`; // Remove letter and space from display
+            btn.innerHTML = `<strong>${letterLabel}.</strong> ${val}`;
+            
             btn.onclick = () => { 
-                if (!hasAnswered) {
-                    userAnswers[currentIndex] = optionLetter; 
-                    saveState(); 
-                    renderQuestion();
-                }
+                if (isReviewMode) return; 
+                if (activeMode === 'practice' && hasAnswered) return; 
+                
+                userAnswers[currentIndex] = val; 
+                saveState(); 
+                renderQuestion(); 
             };
             optBox.appendChild(btn);
         });
 
-        if (hasAnswered) {
-            const isCorrect = userAnswers[currentIndex] === q.answer;
-            const explanationText = q.explanation ? `<strong>Explanation:</strong> ${q.explanation}` : '';
-            const correctOptionText = q.options.find(opt => opt.charAt(0) === q.answer);
-
-            feedbackArea.innerHTML = `
-                <div class="feedback-container">
-                    <div class="feedback-status" style="border-color: ${isCorrect ? '#22c55e' : '#ef4444'}; background: ${isCorrect ? '#dcfce7' : '#fee2e2'}; color: ${isCorrect ? '#166534' : '#991b1b'}">
-                        ${isCorrect ? '✔ Correct Answer!' : '✘ Incorrect. The correct answer is (' + q.answer + ') ' + correctOptionText.substring(2)}
+        if (isReviewMode) {
+            if (hasAnswered) {
+                const isCorrect = userAnswers[currentIndex] === q.answer;
+                feedbackArea.innerHTML = `
+                    <div class="feedback-msg" style="background: ${isCorrect ? '#dcfce7' : '#fee2e2'}; color: ${isCorrect ? '#166534' : '#991b1b'}">
+                        ${isCorrect ? '✔ Correct!' : '✘ Incorrect. The correct answer is <strong>' + q.answer + '</strong>'}
                     </div>
-                    ${explanationText ? `<div class="explanation-box">${explanationText}</div>` : ''}
+                `;
+            } else {
+                feedbackArea.innerHTML = `
+                    <div class="feedback-msg" style="background: #fef9c3; color: #854d0e; border: 1px solid #fde047;">
+                        ⚠ You did not answer this question. The correct answer is <strong>${q.answer}</strong>.
+                    </div>
+                `;
+            }
+        } else if (activeMode === 'practice' && hasAnswered) {
+            const isCorrect = userAnswers[currentIndex] === q.answer;
+            feedbackArea.innerHTML = `
+                <div class="feedback-msg" style="background: ${isCorrect ? '#dcfce7' : '#fee2e2'}; color: ${isCorrect ? '#166534' : '#991b1b'}">
+                    ${isCorrect ? '✔ Correct!' : '✘ Incorrect. The correct answer is <strong>' + q.answer + '</strong>'}
                 </div>
             `;
         }
 
-        document.getElementById('prev-btn').disabled = currentIndex === 0;
-        document.getElementById('next-btn').style.display = (currentIndex === currentExamData.length - 1) ? 'none' : 'block';
-        document.getElementById('submit-btn').style.display = (currentIndex === currentExamData.length - 1) ? 'block' : 'none';
+        const isLastQuestion = (currentIndex === currentExamData.length - 1);
+        document.getElementById('next-btn').style.display = isLastQuestion ? 'none' : 'block';
+        
+        // Ensure top buttons are appropriately shown
+        if (isReviewMode) {
+            document.getElementById('submit-btn').style.display = 'none';
+            document.getElementById('finish-review-btn').style.display = 'block'; 
+        } else {
+            document.getElementById('finish-review-btn').style.display = 'none';
+            document.getElementById('submit-btn').style.display = 'block'; 
+        }
     }
 
     function move(dir) {
@@ -1521,38 +475,75 @@
     }
 
     function saveState() {
-        const state = { currentExamData, userAnswers, currentIndex, timeRemaining };
-        localStorage.setItem('saved_gns_exam', JSON.stringify(state));
+        const state = { currentExamData, userAnswers, currentIndex, timeRemaining, activeMode };
+        localStorage.setItem('saved_gst111_exam', JSON.stringify(state));
     }
 
     function resumeExam() {
-        const state = JSON.parse(localStorage.getItem('saved_gns_exam'));
+        const state = JSON.parse(localStorage.getItem('saved_gst111_exam'));
         currentExamData = state.currentExamData;
         userAnswers = state.userAnswers;
         currentIndex = state.currentIndex;
         timeRemaining = state.timeRemaining;
+        activeMode = state.activeMode || 'practice';
+        isReviewMode = false;
         
         document.getElementById('dashboard').style.display = 'none';
         document.getElementById('resume-btn').style.display = 'none';
         document.getElementById('quiz-interface').style.display = 'block';
         document.getElementById('total-idx').innerText = currentExamData.length;
+        
         runTimer();
         renderQuestion();
     }
- fetch(" https://florencia-prorefugee-unindustriously.ngrok-free.dev", {
-    method: "POST",
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ matric: studentMatric })
-});
-    function showResults() {
+
+    async function showResults() {
+        const answeredCount = Object.keys(userAnswers).length;
+        if (answeredCount < currentExamData.length) {
+            const confirmSubmit = confirm(`You have only answered ${answeredCount} out of ${currentExamData.length} questions. Are you sure you want to submit?`);
+            if (!confirmSubmit) return; 
+        }
+
         clearInterval(timerId);
+        
         let score = 0;
-        currentExamData.forEach((q, i) => { 
-            if(userAnswers[i] === q.answer) score++; 
+        currentExamData.forEach((q, i) => {
+            if (userAnswers[i] === q.answer) score++;
         });
-        alert(`Practice Complete!\nYour Score: ${score} / ${currentExamData.length}`);
-        localStorage.removeItem('saved_gns_exam');
-        location.reload();
+
+        const isRandom = window.examSelectionType === 'random';
+        const courseName = isRandom ? 'RANDOM' : 'GST 111';
+        const finalPercentage = Math.round((score / currentExamData.length) * 100);
+        const studentMatric = localStorage.getItem('student_matric') || 'Anonymous'; 
+
+        try {
+            const { data, error } = await supabase.from('results').insert([{
+                student_matric: studentMatric,
+                course_code: courseName,
+                score: finalPercentage,
+                is_random: isRandom
+            }]);
+
+            if (error) throw error;
+            console.log("Score successfully added to Leaderboard! 🚀");
+        } catch (err) {
+            console.error("Error saving score:", err.message);
+        }
+
+        localStorage.removeItem('saved_gst111_exam');
+
+        alert(`Exam Complete! 🎉\nYour Score: ${score} / ${currentExamData.length} (${finalPercentage}%)`);
+
+        if (activeMode === 'exam') {
+            isReviewMode = true;
+            currentIndex = 0; 
+            document.getElementById('timer').innerText = "REVIEW MODE";
+            document.getElementById('timer').style.background = "#dbeafe";
+            document.getElementById('timer').style.color = "#1e40af";
+            renderQuestion();
+        } else {
+            location.reload();
+        }
     }
 </script>
 </body>
