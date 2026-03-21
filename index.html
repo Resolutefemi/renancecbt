@@ -7,6 +7,22 @@
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <title>Signup</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .custom-select {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            appearance: none;
+        }
+        .custom-select option {
+            color: black; 
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -41,7 +57,27 @@
             </div>
 
             <div class="input-box">
-                <input type="text" name="department" id="dep" placeholder="Department" required>
+                <select name="faculty" id="faculty" class="custom-select" required>
+                    <option value="" disabled selected>Select Faculty/School</option>
+                    <option value="SOC">School of Computing (SOC)</option>
+                    <option value="SLIT">School of Logistics and Innovation Technology (SLIT)</option>
+                    <option value="SPS">School of Physical Sciences (SPS)</option>
+                    <option value="SESE">School of Electrical Systems Engineering (SESE)</option>
+                    <option value="SIMME">School of Infrastructure, Minerals & Mfg Eng (SIMME)</option>
+                    <option value="SET">School of Environmental Technology (SET)</option>
+                    <option value="SAAT">School of Agriculture and Agricultural Technology (SAAT)</option>
+                    <option value="SEMS">School of Earth and Mineral Sciences (SEMS)</option>
+                    <option value="SLS">School of Life Sciences (SLS)</option>
+                    <option value="CHS">College of Health Sciences (CHS)</option>
+                    <option value="GNS">General Studies (GNS)</option>
+                </select>
+                <i class="fa-solid fa-building-columns"></i>
+            </div>
+
+            <div class="input-box">
+                <select name="department" id="department" class="custom-select" required>
+                    <option value="" disabled selected>Select Department First</option>
+                </select>
                 <i class="fa-solid fa-building"></i>
             </div>
 
@@ -76,7 +112,80 @@
         }
     });
 
-    // 3. SIGNUP FORM LOGIC
+    // 3. FACULTY TO DEPARTMENT MAPPING LOGIC 
+    const futaDepartments = {
+        "SOC": [
+            "Software Engineering (SEN)", "Computer Science (CSC)", "Cybersecurity (CYS)", 
+            "Data Science (DSC)", "Information Systems (IFS)", "Information Technology (IFT)"
+        ],
+        "SLIT": [
+            "Financial Technology (FinTech)", "Business Information Technology (BIT)", 
+            "Entrepreneurship Management Technology (EMT)", "Logistics and Transport Technology (LTT)", 
+            "Maritime Technology and Logistics (MTL)", "Project Management Technology (PMT)", 
+            "Securities and Investment Management Technology (SIMT)", "Supply Chain Management (SCM)"
+        ],
+        "SPS": [
+            "Educational Technology (EDT)", "Library and Information Science (LIS)", 
+            "Physics (PHY)", "Mathematics (MTH)", "Chemistry (CHE)", "Statistics (STA)"
+        ],
+        "SESE": [
+            "Computer Engineering (CPE)", "Electrical and Electronics Engineering (EEE)", 
+            "Information and Communication Engineering (ICE)", "Mechatronics Engineering (MCE)", 
+            "Biomedical Engineering (BME)"
+        ],
+        "SIMME": [
+            "Mechanical Engineering (MEE)", "Civil and Environmental Engineering (CVE)", 
+            "Agricultural Engineering (AGE)", "Chemical Engineering (CHE)", 
+            "Industrial and Production Engineering (IPE)", "Metallurgical and Materials Engineering (MME)", 
+            "Mining Engineering (MNE)"
+        ],
+        "SET": [
+            "Architecture (ARC)", "Building (BDG)", "Environmental Management (EVM)", 
+            "Estate Management (ESM)", "Industrial Design (IDD)", "Quantity Surveying (QSV)", 
+            "Surveying and Geoinformatics (SVG)", "Urban and Regional Planning (URP)"
+        ],
+        "SAAT": [
+            "Agricultural and Resource Economics (ARE)", "Agricultural Extension and Communication Technology (AEC)", 
+            "Animal Production and Health (APH)", "Crop, Soil and Pest Management (CSP)", 
+            "Ecotourism and Wildlife Management (EWM)", "Fisheries and Aquaculture Technology (FAT)", 
+            "Food Science and Technology (FST)", "Forestry and Wood Technology (FWT)", "Nutrition and Dietetics (NUD)"
+        ],
+        "SEMS": [
+            "Applied Geology (AGY)", "Applied Geophysics (AGP)", "Marine Science and Technology (MST)", 
+            "Meteorology and Climate Science (MET)", "Remote Sensing and Geoscience Information Systems (RSG)"
+        ],
+        "SLS": [
+            "Biochemistry (BCH)", "Biology (BIO)", "Biotechnology (BTH)", "Microbiology (MCB)"
+        ],
+        "CHS": [
+            "Medicine and Surgery (MBBS)", "Nursing Science (NSC)", "Human Anatomy (ANA)", 
+            "Physiology (PHS)", "Medical Laboratory Science (MLS)", "Public Health (PHS)"
+        ],
+        "GNS": [
+            "General Studies (GNS)"
+        ]
+    };
+
+    const facultySelect = document.getElementById('faculty');
+    const departmentSelect = document.getElementById('department');
+
+    facultySelect.addEventListener('change', function() {
+        // Clear existing options
+        departmentSelect.innerHTML = '<option value="" disabled selected>Select Department</option>';
+        
+        const selectedFaculty = this.value;
+        const departments = futaDepartments[selectedFaculty] || [];
+        
+        // Populate new options
+        departments.forEach(dept => {
+            const option = document.createElement('option');
+            option.value = dept;
+            option.textContent = dept;
+            departmentSelect.appendChild(option);
+        });
+    });
+
+    // 4. SIGNUP FORM LOGIC
     document.getElementById('signupForm').addEventListener('submit', async function (e) {
         e.preventDefault();
 
@@ -87,7 +196,8 @@
         const fullname    = document.getElementById('fullname').value.trim();
         const password    = document.getElementById('password').value;
         const email       = document.getElementById('email').value.trim();
-        const department  = document.getElementById('dep').value.trim();
+        const faculty     = document.getElementById('faculty').value;
+        const department  = document.getElementById('department').value;
         const countryCode = document.getElementById('countryCode').value;
         const phone       = countryCode + document.getElementById('phone').value.trim();
 
@@ -110,6 +220,7 @@
                         id: userId,
                         fullname: fullname,
                         email: email,
+                        faculty: faculty, 
                         department: department,
                         phone: phone
                     }]);
