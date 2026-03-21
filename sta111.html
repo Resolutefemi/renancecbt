@@ -3,98 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GNS 103 - Information Literacy Portal</title>
+    <title>STA 111 CBT Portal</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <style>
         :root {
-            --primary: #1e40af; 
-            --bg: #f8fafc; 
-            --card-bg: #ffffff; 
+            --primary: #1e40af;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
             --text: #1e293b;
-            --success: #16a34a; 
-            --danger: #dc2626; 
+            --text-muted: #64748b;
+            --success: #16a34a;
+            --danger: #dc2626;
             --accent: #ea580c;
+            --border: rgba(0,0,0,0.07);
+            --share-gradient: linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #7c3aed 100%);
         }
-        .dark-mode { --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc; }
-        
-        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: 0.3s; }
-        nav { background: var(--card-bg); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-        main { padding: 2rem 5%; max-width: 900px; margin: 0 auto; }
-        
-        #dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
-        .box { background: var(--card-bg); padding: 1.5rem; border-radius: 12px; text-align: center; cursor: pointer; transition: 0.3s; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .box:hover { transform: translateY(-5px); border-color: var(--primary); }
-        .box-random { background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; }
-        
-        .option-btn { display: block; width: 100%; padding: 1rem; margin: 0.75rem 0; border: 2px solid #e2e8f0; border-radius: 10px; background: var(--card-bg); color: var(--text); text-align: left; cursor: pointer; font-size: 1rem; transition: 0.2s; }
-        .option-btn:not(:disabled):hover { background: #f1f5f9; }
-        
-        /* Instant Feedback Styles */
-        .option-btn.correct { background-color: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: bold; }
-        .option-btn.wrong { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
-        
-        .feedback-container { margin-top: 1.5rem; animation: fadeIn 0.3s; }
-        .feedback-status { padding: 1rem; border-radius: 10px; font-weight: bold; text-align: center; border: 1px solid; margin-bottom: 0.5rem; }
-        
-        /* New Explanation Box Style */
-        .explanation-box { background: rgba(30, 64, 175, 0.1); border-left: 5px solid var(--primary); padding: 1rem; border-radius: 4px; color: var(--text); line-height: 1.6; }
-        .dark-mode .explanation-box { background: rgba(30, 64, 175, 0.2); }
+        .dark-mode {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: rgba(255,255,255,0.07);
+        }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        * { box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: background 0.3s, color 0.3s; min-height: 100vh; }
 
-        .controls { display: flex; justify-content: space-between; margin-top: 2rem; }
-        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; background: var(--primary); color: white; transition: 0.2s; }
-        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        nav {
+            background: var(--card-bg); padding: 0.9rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08);
+            position: sticky; top: 0; z-index: 100; gap: 10px; flex-wrap: wrap;
+        }
+        .nav-brand { font-weight: 700; font-size: 1.05rem; color: var(--primary); }
+
+        main { padding: 2rem 5%; max-width: 960px; margin: 0 auto; }
+
+        /* ── RESUME BANNER ── */
+        #resume-banner {
+            display: none; background: var(--card-bg);
+            border: 1.5px solid var(--success); border-radius: 14px;
+            padding: 1rem 1.2rem; margin-bottom: 1.2rem;
+            box-shadow: 0 2px 10px rgba(22,163,74,0.1);
+        }
+
+        /* ── STATS BAR ── */
+        .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.8rem; margin-bottom: 1.5rem; }
+        .stat-card { background: var(--card-bg); border-radius: 12px; padding: 1rem; text-align: center; border: 1.5px solid var(--border); box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+        .stat-card .stat-val { font-size: 1.6rem; font-weight: 800; color: var(--primary); }
+        .stat-card .stat-lbl { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
+
+        /* ── DASHBOARD ── */
+        #dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.1rem; }
+        .box {
+            background: var(--card-bg); padding: 1.5rem 1rem; border-radius: 14px;
+            text-align: center; cursor: pointer;
+            transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+            border: 1.5px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .box:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(30,64,175,0.12); }
+        .box h3 { margin: 10px 0 4px; font-size: 1rem; line-height: 1.4; }
+        .box p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
+        .box-random { background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; border: none !important; }
+        .box-random p { color: rgba(255,255,255,0.8) !important; }
+
+        /* ── SETUP SCREEN ── */
+        #setup-screen { text-align: center; background: var(--card-bg); padding: 3rem 2rem; border-radius: 16px; border: 1.5px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        .setup-group { margin: 1.5rem auto; text-align: left; max-width: 360px; }
+        .setup-group label { font-weight: 600; font-size: 0.88rem; color: var(--text); display: block; margin-bottom: 7px; }
+        .setup-input { width: 100%; padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 9px; font-size: 0.95rem; background: var(--bg); color: var(--text); outline: none; transition: border-color 0.2s; }
+        .setup-input:focus { border-color: var(--primary); }
+        .checkbox-group { display: flex; flex-direction: column; gap: 12px; margin-top: 1rem; background: rgba(0,0,0,0.02); padding: 14px; border-radius: 10px; border: 1px solid #e2e8f0; }
+        .custom-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; color: var(--text); font-weight: 500; user-select: none; }
+        .custom-checkbox input { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; }
+
+        /* ── QUIZ INTERFACE ── */
+        .quiz-header { display: flex; justify-content: space-between; align-items: center; font-weight: 700; margin-bottom: 15px; padding: 0 4px; flex-wrap: wrap; gap: 10px; }
+        .q-counter { font-size: 1rem; color: var(--text); }
+        .btn-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        #timer { color: var(--danger); background: rgba(220,38,38,0.08); padding: 6px 14px; border-radius: 20px; font-size: 0.95rem; font-weight: 700; }
+
+        .question-card { background: var(--card-bg); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1.5px solid var(--border); }
+        #question-text { line-height: 1.7; margin-bottom: 1.5rem; font-size: 1.05rem; word-wrap: break-word; }
+
+        .option-btn {
+            display: block; width: 100%; padding: 0.95rem 1.1rem; margin: 0.65rem 0;
+            border: 2px solid #e2e8f0; border-radius: 10px; background: var(--card-bg);
+            color: var(--text); text-align: left; cursor: pointer;
+            font-size: 0.97rem; transition: background 0.15s, border-color 0.15s; line-height: 1.5;
+        }
+        .option-btn:not(:disabled):hover { background: #f1f5f9; border-color: #cbd5e1; }
+        .option-btn.selected { background: #e0f2fe !important; border-color: #3b82f6 !important; color: #0369a1 !important; }
+        .option-btn.correct  { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: 700; }
+        .option-btn.wrong    { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
+
+        .feedback-msg { margin-top: 1.2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600; animation: fadeIn 0.3s; line-height: 1.6; }
+        .explanation-box { background: rgba(30,64,175,0.07); border-left: 4px solid var(--primary); padding: 1rem; border-radius: 6px; margin-top: 10px; font-weight: 400; font-size: 0.88rem; line-height: 1.6; color: var(--text); }
+        .dark-mode .explanation-box { background: rgba(30,64,175,0.15); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        .controls { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 1.8rem; }
+        .btn { padding: 0.8rem 1.6rem; border: none; border-radius: 9px; cursor: pointer; font-weight: 700; background: var(--primary); color: white; transition: opacity 0.2s, transform 0.2s; font-size: 0.95rem; }
+        .btn:hover { opacity: 0.88; transform: translateY(-2px); }
+        .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+        /* ── RESULT MODAL ── */
+        .result-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.78); backdrop-filter: blur(8px); z-index: 9999; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .result-modal-content { background: var(--card-bg); padding: 40px 28px; border-radius: 24px; width: 100%; max-width: 420px; text-align: center; color: var(--text); box-shadow: 0 25px 60px rgba(0,0,0,0.45); animation: bounceIn 0.55s cubic-bezier(0.175,0.885,0.32,1.275); }
+        @keyframes bounceIn { 0% { opacity:0; transform:scale(0.78) translateY(30px); } 100% { opacity:1; transform:scale(1) translateY(0); } }
+        .result-icon { font-size: 3.6rem; margin-bottom: 8px; display: block; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+        .score-display { background: rgba(37,99,235,0.06); border: 2px dashed rgba(37,99,235,0.2); border-radius: 18px; padding: 18px; margin: 18px 0; }
+        .score-big { font-size: 3.5rem; font-weight: 900; color: var(--primary); line-height: 1; }
+        .stats-mini { display: flex; justify-content: center; gap: 24px; margin: 10px 0 4px; }
+        .stats-mini .sm { text-align: center; }
+        .stats-mini .sm .sv { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
+        .stats-mini .sm .sl { font-size: 0.72rem; color: var(--text-muted); }
+        #save-status { font-size: 0.78rem; color: var(--text-muted); margin: 8px 0 14px; }
+        .result-actions { display: flex; flex-direction: column; gap: 11px; }
+        .btn-action { width: 100%; padding: 13px; border: none; border-radius: 12px; font-size: 0.97rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s; display: flex; align-items: center; justify-content: center; gap: 9px; }
+        .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-share  { background: var(--share-gradient); color: white; box-shadow: 0 4px 16px rgba(37,99,235,0.3); }
+        .btn-review { background: rgba(30,64,175,0.08); color: var(--primary); border: 1.5px solid rgba(30,64,175,0.2); }
+        .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 600px) {
+            #dashboard { grid-template-columns: repeat(2, 1fr); }
+            .question-card { padding: 1.3rem; }
+            .result-modal-content { padding: 28px 18px; }
+            .score-big { font-size: 2.8rem; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body>
 
 <nav>
-    <div id="user-info" style="font-weight: 600;">STA 111 Practice Portal</div>
-    <div style="display: flex; gap: 15px;">
-        <button class="btn" style="background:var(--accent); display:none;" id="resume-btn" onclick="resumeExam()">Resume</button>
-        <button class="btn" style="background:#64748b" onclick="document.body.classList.toggle('dark-mode')"><i class="fa-solid fa-circle-half-stroke"></i></button>
+    <div class="nav-brand">
+    <div><i class="fa-solid fa-chart-bar"></i> STA 111 Practice Portal</div>
+    <div style="font-size:0.9rem; font-weight:600; color:var(--text-muted); letter-spacing:0.3px;">by Resolute Femi</div>
+</div>
+</div>
+    <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <button class="btn" style="background:var(--accent); display:none; padding:7px 14px; font-size:0.85rem;" id="resume-btn" onclick="resumeExam()">
+            <i class="fa-solid fa-rotate-right"></i> Resume
+        </button>
+        <button class="btn" style="background:#64748b; padding:7px 14px;" onclick="document.body.classList.toggle('dark-mode')">
+            <i class="fa-solid fa-moon"></i>
+        </button>
     </div>
 </nav>
 
 <main>
-    <div id="dashboard"></div>
-
-    <div id="setup-screen" style="display:none; text-align: center; background: var(--card-bg); padding: 2rem; border-radius: 15px;">
-        <h2 id="setup-title"></h2>
-        <div id="random-settings" style="margin: 1.5rem 0;">
-            <label>Question Quantity:</label><br>
-            <input type="number" id="q-count" value="50" style="padding: 10px; border-radius: 5px; width: 80px;">
-        </div>
-        <div style="margin: 1.5rem 0;">
-            <label>Time (Minutes):</label><br>
-            <input type="number" id="t-limit" value="30" style="padding: 10px; border-radius: 5px; width: 80px;">
-        </div>
-        <button class="btn" onclick="startExam()">Start Practice</button>
+    <!-- DASHBOARD -->
+    <div id="dashboard-wrap">
+        <div id="resume-banner"></div>
+        <div id="stats-bar" class="stats-bar" style="display:none;"></div>
+        <div id="dashboard"></div>
     </div>
 
-    <div id="quiz-interface" style="display:none;">
-        <div style="display:flex; justify-content: space-between; font-weight: bold; margin-bottom: 10px;">
-            <span>Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
-            <span id="timer" style="color:var(--danger)">30:00</span>
+    <!-- SETUP SCREEN -->
+    <div id="setup-screen" style="display:none;">
+        <h2 id="setup-title" style="margin-bottom:1.8rem; color:var(--primary); font-size:1.3rem;"></h2>
+
+        <div class="setup-group">
+            <label>Select Mode:</label>
+            <select id="quiz-mode" class="setup-input">
+                <option value="practice">Practice Mode (Instant Answers)</option>
+                <option value="exam">Exam Mode (Answers at End)</option>
+            </select>
         </div>
-        <div style="background: var(--card-bg); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h3 id="question-text" style="line-height: 1.5;"></h3>
+
+        <div id="random-settings">
+            <div class="setup-group">
+                <label>Question Quantity:</label>
+                <input type="number" id="q-count" value="50" class="setup-input" min="1" max="999">
+            </div>
+        </div>
+
+        <div class="setup-group">
+            <label>Time Limit (Minutes):</label>
+            <input type="number" id="t-limit" value="30" class="setup-input" min="1">
+        </div>
+
+        <div class="setup-group checkbox-group">
+            <label class="custom-checkbox">
+                <input type="checkbox" id="shuffle-questions" checked> Shuffle Questions
+            </label>
+            <label class="custom-checkbox">
+                <input type="checkbox" id="shuffle-options" checked> Shuffle Options (A, B, C, D)
+            </label>
+        </div>
+
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
+            <button class="btn" style="background:#64748b;" onclick="goHome()">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </button>
+            <button class="btn" onclick="startExam()" style="min-width:160px;">
+                Start Now <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- QUIZ INTERFACE -->
+    <div id="quiz-interface" style="display:none;">
+        <div class="quiz-header">
+            <span class="q-counter">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
+            <div class="btn-group">
+                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding:8px 15px; font-size:0.87rem;" onclick="showResults()">
+                    <i class="fa-solid fa-paper-plane"></i> Submit
+                </button>
+                <button class="btn" id="finish-review-btn" style="display:none; padding:8px 15px; font-size:0.87rem;" onclick="goHome()">
+                    <i class="fa-solid fa-house"></i> Exit Review
+                </button>
+                <span id="timer">30:00</span>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <h3 id="question-text"></h3>
             <div id="options-box"></div>
             <div id="feedback-area"></div>
         </div>
+
         <div class="controls">
-            <button class="btn" style="background:#64748b" id="prev-btn" onclick="move(-1)">Previous</button>
-            <button class="btn" id="next-btn" onclick="move(1)">Next Question</button>
-            <button class="btn" id="submit-btn" style="background:var(--success); display:none;" onclick="showResults()">Submit Exam</button>
+            <button class="btn" style="background:#64748b;" onclick="move(-1)">
+                <i class="fa-solid fa-arrow-left"></i> Previous
+            </button>
+            <button class="btn" id="next-btn" onclick="move(1)">
+                Next <i class="fa-solid fa-arrow-right"></i>
+            </button>
         </div>
     </div>
 </main>
 
+<!-- RESULT MODAL -->
+<div id="quizResultModal" class="result-modal-overlay" style="display:none;">
+    <div class="result-modal-content">
+        <span class="result-icon" id="resultIcon">🏆</span>
+        <h2 id="resultGreeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
+
+        <div class="score-display">
+            <div class="score-big"><span id="finalScoreText">0</span>%</div>
+            <div class="stats-mini">
+                <div class="sm"><div class="sv" id="modalCorrect">0</div><div class="sl">Correct</div></div>
+                <div class="sm"><div class="sv" id="modalTotal">0</div><div class="sl">Total</div></div>
+                <div class="sm"><div class="sv" id="modalAvg">—</div><div class="sl">Your Avg</div></div>
+            </div>
+        </div>
+
+        <p id="resultFeedback" style="font-size:0.9rem; color:var(--text-muted); margin:0;"></p>
+        <p id="save-status"></p>
+
+        <div class="result-actions">
+            <button class="btn-action btn-share" onclick="shareQuizResult()">
+                <i class="fa-solid fa-share-nodes"></i> Share Score
+            </button>
+            <button class="btn-action btn-review" id="modalReviewBtn" onclick="enterReviewMode()">
+                <i class="fa-solid fa-magnifying-glass"></i> Review Answers
+            </button>
+            <button class="btn-action btn-home" onclick="goHome()">
+                <i class="fa-solid fa-house"></i> Dashboard
+            </button>
+        </div>
+    </div>
+</div>
+
 <script>
-    // --- SAMPLE DATA WITH EXPLANATIONS ---
+    /* ═══════════════════════════════════════════
+       SUPABASE CONFIG
+    ═══════════════════════════════════════════ */
+    const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+    const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const COURSE_CODE = 'STA 111';
+    const STORAGE_KEY = 'saved_sta111_exam';
+
+    /* ── HEARTBEAT ── */
+    async function sendHeartbeat() {
+        try {
+            const { data: { user } } = await db.auth.getUser();
+            if (!user) return;
+            await db.from('students').update({ last_seen: new Date().toISOString() }).eq('id', user.id);
+        } catch (e) { /* silently ignore */ }
+    }
+    sendHeartbeat();
+    setInterval(sendHeartbeat, 2 * 60 * 1000);
+
+    
     const MASTER_POOL = [
-         { "id": 1, "question": "Which branch of statistics focuses on the collection, organization, and summarization of data through tables and graphs?", "options": ["Inferential Statistics", "Descriptive Statistics", "Mathematical Statistics", "Applied Statistics"], "answer": "Descriptive Statistics", "explanation": "Descriptive statistics is concerned with describing the features of a dataset without making inferences." },
+          { "id": 1, "question": "Which branch of statistics focuses on the collection, organization, and summarization of data through tables and graphs?", "options": ["Inferential Statistics", "Descriptive Statistics", "Mathematical Statistics", "Applied Statistics"], "answer": "Descriptive Statistics", "explanation": "Descriptive statistics is concerned with describing the features of a dataset without making inferences." },
   { "id": 2, "question": "A student's blood group (A, B, AB, or O) is an example of which type of variable?", "options": ["Quantitative", "Continuous", "Qualitative", "Ratio"], "answer": "Qualitative", "explanation": "Blood groups are categories/attributes that cannot be measured numerically, making them qualitative." },
   { "id": 3, "question": "In a statistical table, what is the term used for the row headings usually located on the left side?", "options": ["Caption", "Stub", "Footnote", "Body"], "answer": "Stub", "explanation": "The Stub consists of the row headings, while Captions are column headings." },
   { "id": 4, "question": "Which level of measurement is appropriate for ranking students as '1st', '2nd', and '3rd' place?", "options": ["Nominal", "Ordinal", "Interval", "Ratio"], "answer": "Ordinal", "explanation": "The Ordinal scale represents data that has a specific order or rank." },
@@ -231,175 +435,400 @@
 
     ];
 
-    let currentExamData = [];
-    let userAnswers = {};
-    let currentIndex = 0;
-    let timeRemaining = 0;
-    let timerId;
+   
+    let currentExamData = [], userAnswers = {}, currentIndex = 0;
+    let timeRemaining = 0, timerId = null;
+    let activeMode = 'practice', isReviewMode = false;
+    let examSelectionType = 'random', partNum = 1;
 
+    /* ══════════════
+       INIT
+    ══════════════ */
     window.onload = () => {
         initDashboard();
-        if(localStorage.getItem('saved_gns_exam')) document.getElementById('resume-btn').style.display = 'block';
+        loadStatsBar();
+        showResumeBanner();
+        if (localStorage.getItem(STORAGE_KEY)) {
+            document.getElementById('resume-btn').style.display = 'block';
+        }
     };
 
+    /* ── Stats Bar ── */
+    async function loadStatsBar() {
+        const bar = document.getElementById('stats-bar');
+        try {
+            const { data: { user } } = await db.auth.getUser();
+            if (!user) return;
+            const { data } = await db.from('test_results')
+                .select('score').eq('student_id', user.id).eq('course_id', COURSE_CODE);
+            if (!data || data.length === 0) return;
+            const taken = data.length;
+            const avg  = Math.round(data.reduce((s, r) => s + r.score, 0) / taken);
+            const best = Math.max(...data.map(r => r.score));
+            bar.innerHTML = `
+                <div class="stat-card"><div class="stat-val">${taken}</div><div class="stat-lbl">Tests Taken</div></div>
+                <div class="stat-card"><div class="stat-val">${avg}%</div><div class="stat-lbl">Average Score</div></div>
+                <div class="stat-card"><div class="stat-val">${best}%</div><div class="stat-lbl">Best Score</div></div>`;
+            bar.style.display = 'grid';
+        } catch (e) { /* offline */ }
+    }
+
+    /* ── Resume Banner ── */
+    function showResumeBanner() {
+        const saved  = localStorage.getItem(STORAGE_KEY);
+        const banner = document.getElementById('resume-banner');
+        if (!saved || !banner) return;
+
+        const s        = JSON.parse(saved);
+        const answered = Object.keys(s.userAnswers).length;
+        const total    = s.currentExamData.length;
+        const label    = s.examSelectionType === 'random' ? 'Random Mix' : `Part ${s.partNum}`;
+        const mLeft    = Math.floor(s.timeRemaining / 60);
+        const sLeft    = s.timeRemaining % 60;
+        const timeStr  = `${mLeft}:${sLeft < 10 ? '0'+sLeft : sLeft}`;
+        const pct      = Math.round((answered / total) * 100);
+
+        banner.innerHTML = `
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                <div>
+                    <div style="font-weight:700;font-size:0.95rem;">📌 Resume Saved Exam</div>
+                    <div style="font-size:0.82rem;color:var(--text-muted);margin-top:3px;">
+                        <strong>${label}</strong> &nbsp;·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;·&nbsp; ⏱ ${timeStr} left
+                    </div>
+                </div>
+                <div style="display:flex;gap:8px;flex-shrink:0;">
+                    <button class="btn" style="background:var(--success);padding:8px 16px;font-size:0.87rem;" onclick="resumeExam()">
+                        <i class="fa-solid fa-rotate-right"></i> Continue
+                    </button>
+                    <button class="btn" style="background:#64748b;padding:8px 16px;font-size:0.87rem;" onclick="discardSaved()">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            </div>`;
+        banner.style.display = 'block';
+    }
+
+    function discardSaved() {
+        if (!confirm('Discard your saved exam progress?')) return;
+        localStorage.removeItem(STORAGE_KEY);
+        document.getElementById('resume-banner').style.display = 'none';
+        document.getElementById('resume-btn').style.display    = 'none';
+    }
+
+    /* ── Dashboard ── */
     function initDashboard() {
         const board = document.getElementById('dashboard');
         board.innerHTML = '';
-        const totalQuestions = MASTER_POOL.length;
-        const parts = Math.ceil(totalQuestions / 50);
+        const total = MASTER_POOL.length;
+        const parts = Math.ceil(total / 50);
+
+        if (total === 0) {
+            board.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);">No questions loaded. Paste your JSON into MASTER_POOL.</p>`;
+            return;
+        }
 
         const rand = document.createElement('div');
         rand.className = 'box box-random';
-        rand.innerHTML = `<i class="fa-solid fa-shuffle"></i><h3>Random Mode</h3><p>Full Shuffle</p>`;
+        rand.innerHTML = `<div style="font-size:1.8rem;">🔀</div><h3>Random Mode</h3><p>${total} Questions</p>`;
         rand.onclick = () => openSetup('random', 0);
         board.appendChild(rand);
 
         for (let i = 1; i <= parts; i++) {
-            const card = document.createElement('div');
             const start = (i - 1) * 50 + 1;
-            const end = Math.min(i * 50, totalQuestions);
+            const end   = Math.min(i * 50, total);
+            const card  = document.createElement('div');
             card.className = 'box';
-            card.innerHTML = `<i class="fa-solid fa-book-open"></i><h3>Part ${i}</h3><p>Q${start} - Q${end}</p>`;
+            card.innerHTML = `
+                <div style="font-size:1.8rem;color:var(--primary);">📊</div>
+                <h3>Part ${i}</h3>
+                <p>Q${start} – Q${end}</p>`;
             card.onclick = () => openSetup('part', i);
             board.appendChild(card);
         }
     }
 
-    function openSetup(mode, partNum) {
-        window.examMode = mode;
-        window.partNum = partNum;
-        document.getElementById('dashboard').style.display = 'none';
-        document.getElementById('setup-screen').style.display = 'block';
-        document.getElementById('setup-title').innerText = mode === 'random' ? "Random Exam Setup" : `STA 111: Part ${partNum}`;
-        document.getElementById('random-settings').style.display = (mode === 'random') ? 'block' : 'none';
+    function openSetup(type, part) {
+        examSelectionType = type;
+        partNum = part;
+        document.getElementById('dashboard-wrap').style.display = 'none';
+        document.getElementById('setup-screen').style.display   = 'block';
+        document.getElementById('setup-title').innerText = type === 'random' ? 'Randomised Practice' : `STA 111 — Part ${part}`;
+        document.getElementById('random-settings').style.display = type === 'random' ? 'block' : 'none';
     }
 
-    function startExam() {
-        const timeInput = document.getElementById('t-limit').value;
-        timeRemaining = timeInput * 60;
+    function goHome() {
+        clearInterval(timerId);
+        isReviewMode = false;
+        currentExamData = []; userAnswers = {}; currentIndex = 0;
+        document.getElementById('quiz-interface').style.display  = 'none';
+        document.getElementById('setup-screen').style.display    = 'none';
+        document.getElementById('quizResultModal').style.display = 'none';
+        document.getElementById('dashboard-wrap').style.display  = 'block';
+        showResumeBanner();
+        loadStatsBar();
+    }
 
-        if (window.examMode === 'random') {
-            const qty = document.getElementById('q-count').value;
-            currentExamData = [...MASTER_POOL].sort(() => 0.5 - Math.random()).slice(0, qty);
+    /* ── Helpers ── */
+    function shuffleArray(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    }
+
+    /* ══════════════════
+       START EXAM
+    ══════════════════ */
+    function startExam() {
+        timeRemaining = parseInt(document.getElementById('t-limit').value) * 60;
+        activeMode    = document.getElementById('quiz-mode').value;
+        isReviewMode  = false;
+        userAnswers   = {};
+        currentIndex  = 0;
+
+        let pool = JSON.parse(JSON.stringify(MASTER_POOL));
+
+        if (examSelectionType === 'random') {
+            const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
+            pool = shuffleArray(pool).slice(0, qty);
         } else {
-            const start = (window.partNum - 1) * 50;
-            currentExamData = MASTER_POOL.slice(start, start + 50);
+            const start = (partNum - 1) * 50;
+            pool = pool.slice(start, start + 50);
         }
 
-        document.getElementById('setup-screen').style.display = 'none';
+        if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);
+
+        if (document.getElementById('shuffle-options').checked) {
+            pool.forEach(q => {
+                // answer is full text — safe to shuffle array directly
+                q.options = shuffleArray([...q.options]);
+            });
+        }
+
+        currentExamData = pool;
+
+        document.getElementById('setup-screen').style.display  = 'none';
         document.getElementById('quiz-interface').style.display = 'block';
         document.getElementById('total-idx').innerText = currentExamData.length;
-        
         runTimer();
         renderQuestion();
     }
 
+    /* ══════════════════
+       TIMER
+    ══════════════════ */
     function runTimer() {
-        if(timerId) clearInterval(timerId);
+        clearInterval(timerId);
         timerId = setInterval(() => {
             timeRemaining--;
-            let m = Math.floor(timeRemaining / 60);
-            let s = timeRemaining % 60;
+            const m = Math.floor(timeRemaining / 60);
+            const s = timeRemaining % 60;
             document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
-            if(timeRemaining <= 0) showResults();
+            if (timeRemaining <= 0) { clearInterval(timerId); showResults(true); }
         }, 1000);
     }
 
+    /* ══════════════════
+       RENDER QUESTION
+    ══════════════════ */
     function renderQuestion() {
-        const q = currentExamData[currentIndex];
+        const q          = currentExamData[currentIndex];
         const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
-        
-        document.getElementById('cur-idx').innerText = currentIndex + 1;
+        const userAns    = userAnswers[currentIndex];
+        const labels     = ['A','B','C','D','E','F'];
+
+        document.getElementById('cur-idx').innerText       = currentIndex + 1;
         document.getElementById('question-text').innerText = q.question;
-        
-        const optBox = document.getElementById('options-box');
-        const feedbackArea = document.getElementById('feedback-area');
-        optBox.innerHTML = '';
-        feedbackArea.innerHTML = '';
-        
-        Object.entries(q.options).forEach(([key, val], index) => {
-            const btn = document.createElement('button');
-            btn.className = `option-btn`;
-            const letter = String.fromCharCode(65 + index); // A, B, C, D...
-            
-            if (hasAnswered) {
-                if (val === q.answer) {
-                    btn.classList.add('correct');
-                } else if (userAnswers[currentIndex] === val) {
-                    btn.classList.add('wrong');
-                }
+
+        const optBox   = document.getElementById('options-box');
+        const feedArea = document.getElementById('feedback-area');
+        optBox.innerHTML  = '';
+        feedArea.innerHTML = '';
+
+        q.options.forEach((val, idx) => {
+            const label = labels[idx] || (idx + 1);
+            const btn   = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerHTML = `<strong>${label}.</strong> ${val}`;
+
+            if (isReviewMode || (activeMode === 'practice' && hasAnswered)) {
+                if (val === q.answer)    btn.classList.add('correct');
+                else if (userAns === val) btn.classList.add('wrong');
                 btn.disabled = true;
+            } else if (activeMode === 'exam' && hasAnswered && userAns === val) {
+                btn.classList.add('selected');
             }
 
-            btn.innerHTML = `<strong>${letter}.</strong> ${val}`;
-            btn.onclick = () => { 
-                if (!hasAnswered) {
-                    userAnswers[currentIndex] = val; 
-                    saveState(); 
-                    renderQuestion();
-                }
+            btn.onclick = () => {
+                if (isReviewMode) return;
+                if (activeMode === 'practice' && hasAnswered) return;
+                userAnswers[currentIndex] = val;
+                saveState();
+                renderQuestion();
             };
             optBox.appendChild(btn);
         });
 
-        if (hasAnswered) {
-            const isCorrect = userAnswers[currentIndex] === q.answer;
-            // Check if explanation exists in the JSON data, otherwise show generic message
-            const explanationText = q.explanation ? `<strong>Explanation:</strong> ${q.explanation}` : '';
+        const expHtml = q.explanation
+            ? `<div class="explanation-box"><strong>Explanation:</strong> ${q.explanation}</div>`
+            : '';
 
-            feedbackArea.innerHTML = `
-                <div class="feedback-container">
-                    <div class="feedback-status" style="border-color: ${isCorrect ? '#22c55e' : '#ef4444'}; background: ${isCorrect ? '#dcfce7' : '#fee2e2'}; color: ${isCorrect ? '#166534' : '#991b1b'}">
-                        ${isCorrect ? '✔ Correct Answer!' : '✘ Incorrect. The correct answer is (' + q.answer + ') ' + q.options[q.answer]}
-                    </div>
-                    ${explanationText ? `<div class="explanation-box">${explanationText}</div>` : ''}
-                </div>
-            `;
+        if (isReviewMode) {
+            if (hasAnswered) {
+                const ok = userAns === q.answer;
+                feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">
+                    ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
+                </div>${expHtml}`;
+            } else {
+                feedArea.innerHTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
+                    ⚠ Not answered. Correct: <strong>${q.answer}</strong>
+                </div>${expHtml}`;
+            }
+        } else if (activeMode === 'practice' && hasAnswered) {
+            const ok = userAns === q.answer;
+            feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">
+                ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
+            </div>${expHtml}`;
         }
 
-        document.getElementById('prev-btn').disabled = currentIndex === 0;
-        document.getElementById('next-btn').style.display = (currentIndex === currentExamData.length - 1) ? 'none' : 'block';
-        document.getElementById('submit-btn').style.display = (currentIndex === currentExamData.length - 1) ? 'block' : 'none';
+        const isLast = currentIndex === currentExamData.length - 1;
+        document.getElementById('next-btn').style.display          = isLast ? 'none' : 'block';
+        document.getElementById('submit-btn').style.display        = isReviewMode ? 'none' : 'block';
+        document.getElementById('finish-review-btn').style.display = isReviewMode ? 'block' : 'none';
     }
 
-    function move(dir) {
-        if(currentIndex + dir >= 0 && currentIndex + dir < currentExamData.length) {
-            currentIndex += dir;
-            renderQuestion();
-        }
+    function move(d) {
+        const n = currentIndex + d;
+        if (n >= 0 && n < currentExamData.length) { currentIndex = n; renderQuestion(); }
     }
 
+    /* ══════════════════
+       SAVE / RESUME
+    ══════════════════ */
     function saveState() {
-        const state = { currentExamData, userAnswers, currentIndex, timeRemaining };
-        localStorage.setItem('saved_gns_exam', JSON.stringify(state));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            currentExamData, userAnswers, currentIndex,
+            timeRemaining, activeMode, examSelectionType, partNum,
+            savedAt: Date.now()
+        }));
     }
 
     function resumeExam() {
-        const state = JSON.parse(localStorage.getItem('saved_gns_exam'));
-        currentExamData = state.currentExamData;
-        userAnswers = state.userAnswers;
-        currentIndex = state.currentIndex;
-        timeRemaining = state.timeRemaining;
-        
-        document.getElementById('dashboard').style.display = 'none';
-        document.getElementById('resume-btn').style.display = 'none';
-        document.getElementById('quiz-interface').style.display = 'block';
-        document.getElementById('total-idx').innerText = currentExamData.length;
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (!saved) return;
+        const s = JSON.parse(saved);
+
+        currentExamData   = s.currentExamData;
+        userAnswers       = s.userAnswers;
+        currentIndex      = s.currentIndex;
+        timeRemaining     = s.timeRemaining;
+        activeMode        = s.activeMode || 'practice';
+        examSelectionType = s.examSelectionType || 'random';
+        partNum           = s.partNum || 1;
+        isReviewMode      = false;
+
+        document.getElementById('dashboard-wrap').style.display  = 'none';
+        document.getElementById('resume-banner').style.display   = 'none';
+        document.getElementById('setup-screen').style.display    = 'none';
+        document.getElementById('quizResultModal').style.display = 'none';
+        document.getElementById('resume-btn').style.display      = 'none';
+        document.getElementById('quiz-interface').style.display  = 'block';
+        document.getElementById('total-idx').innerText           = currentExamData.length;
+
+        const timerEl = document.getElementById('timer');
+        timerEl.style.background = 'rgba(220,38,38,0.08)';
+        timerEl.style.color      = 'var(--danger)';
+
         runTimer();
         renderQuestion();
     }
 
-     
+    /* ══════════════════
+       SHOW RESULTS
+    ══════════════════ */
+    async function showResults(forced = false) {
+        const answered = Object.keys(userAnswers).length;
+        if (!forced && answered < currentExamData.length) {
+            if (!confirm(`You answered ${answered} of ${currentExamData.length}. Submit anyway?`)) return;
+        }
 
-    function showResults() {
         clearInterval(timerId);
+        localStorage.removeItem(STORAGE_KEY);
+
         let score = 0;
-        currentExamData.forEach((q, i) => { 
-            if(userAnswers[i] === q.answer) score++; 
-        });
-        alert(`Practice Complete!\nYour Score: ${score} / ${currentExamData.length}`);
-        localStorage.removeItem('saved_gns_exam');
-        location.reload();
+        currentExamData.forEach((q, i) => { if (userAnswers[i] === q.answer) score++; });
+        const total = currentExamData.length;
+        const pct   = Math.round((score / total) * 100);
+
+        document.getElementById('finalScoreText').innerText = pct;
+        document.getElementById('modalCorrect').innerText   = score;
+        document.getElementById('modalTotal').innerText     = total;
+        document.getElementById('modalReviewBtn').style.display = activeMode === 'practice' ? 'none' : 'flex';
+
+        if (pct >= 70) {
+            document.getElementById('resultIcon').innerText     = '🏆';
+            document.getElementById('resultGreeting').innerText = 'Outstanding! 🌟';
+            document.getElementById('resultFeedback').innerText = 'Excellent work! Keep it up!';
+            confetti({ particleCount: 160, spread: 70, origin: { y: 0.6 } });
+        } else if (pct >= 50) {
+            document.getElementById('resultIcon').innerText     = '👍';
+            document.getElementById('resultGreeting').innerText = 'Good Job!';
+            document.getElementById('resultFeedback').innerText = 'Almost there — aim for 70%+!';
+        } else {
+            document.getElementById('resultIcon').innerText     = '💪';
+            document.getElementById('resultGreeting').innerText = 'Keep Trying!';
+            document.getElementById('resultFeedback').innerText = 'Review your notes and try again!';
+        }
+
+        document.getElementById('quizResultModal').style.display = 'flex';
+        await saveTestScore(pct);
+    }
+
+    async function saveTestScore(pct) {
+        const el = document.getElementById('save-status');
+        el.innerText = '⏳ Saving...';
+        try {
+            const { data: { user } } = await db.auth.getUser();
+            if (!user) { el.innerText = ''; return; }
+
+            const { data: prev } = await db.from('test_results')
+                .select('score').eq('student_id', user.id).eq('course_id', COURSE_CODE);
+
+            if (prev && prev.length > 0) {
+                const all = [...prev.map(r => r.score), pct];
+                const avg = Math.round(all.reduce((a, b) => a + b, 0) / all.length);
+                document.getElementById('modalAvg').innerText = avg + '%';
+            }
+
+            const { error } = await db.from('test_results').insert([
+                { student_id: user.id, course_id: COURSE_CODE, score: pct }
+            ]);
+            el.innerText = error ? '⚠️ Could not save (offline)' : '✅ Score saved!';
+        } catch (e) {
+            el.innerText = '⚠️ Offline — score not saved';
+        }
+    }
+
+    function enterReviewMode() {
+        document.getElementById('quizResultModal').style.display = 'none';
+        isReviewMode = true;
+        currentIndex = 0;
+        document.getElementById('timer').innerText         = 'REVIEW';
+        document.getElementById('timer').style.background = '#dbeafe';
+        document.getElementById('timer').style.color      = '#1e40af';
+        renderQuestion();
+    }
+
+    async function shareQuizResult() {
+        const score   = document.getElementById('finalScoreText').innerText;
+        const section = examSelectionType === 'random' ? 'a random mix' : `Part ${partNum}`;
+        const text    = `I just scored ${score}% on ${COURSE_CODE} (${section})! 🚀\n\nChallenge yourself on the Renance CBT portal! 📚🔥\nhttps://renancecbt1.vercel.app`;
+        try {
+            if (navigator.share) await navigator.share({ title: `My ${COURSE_CODE} Score`, text, url: 'https://renancecbt1.vercel.app' });
+            else { await navigator.clipboard.writeText(text); alert('Score copied to clipboard! 📋'); }
+        } catch (_) {}
     }
 </script>
 </body>

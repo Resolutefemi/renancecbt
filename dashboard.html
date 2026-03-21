@@ -133,6 +133,16 @@
         }
         .theme-btn:hover { border-color: var(--primary-accent); }
 
+        /* ── STATS ANIMATION ────────────────────────────────────────────────── */
+        @keyframes popIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .stat-animated {
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0; 
+        }
+
         /* ── STATS ──────────────────────────────────────────────────────────── */
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.2rem; margin-bottom: 2.5rem; }
         .stat-card { background: var(--card-bg); padding: 1.3rem 1.4rem; border-radius: 15px; border: 1px solid var(--border-color); display: flex; align-items: center; gap: 1rem; }
@@ -198,11 +208,18 @@
         .modal-content .modal-sub { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
         .input-group { margin-bottom: 13px; text-align: left; }
         .input-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.85rem; }
-        .input-group input {
+        
+        /* UPDATED: Added select styles to match inputs */
+        .input-group input, .input-group select {
             width: 100%; padding: 11px 13px; border: 1px solid var(--border-color);
-            border-radius: 9px; font-size: 0.93rem; background: transparent; color: var(--text-main); outline: none; transition: 0.2s;
+            border-radius: 9px; font-size: 0.93rem; background: var(--card-bg); color: var(--text-main); outline: none; transition: 0.2s;
         }
-        .input-group input:focus { border-color: var(--primary-accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+        .input-group select {
+            cursor: pointer;
+            appearance: none; 
+        }
+        .input-group input:focus, .input-group select:focus { border-color: var(--primary-accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+
         #saveProfileBtn {
             width: 100%; padding: 13px; background: var(--primary-accent); color: white;
             border: none; border-radius: 9px; font-size: 0.95rem; font-weight: 700;
@@ -224,7 +241,7 @@
         .page-footer { margin-top: auto; padding-top: 2.5rem; text-align: center; color: var(--text-muted); font-size: 0.82rem; }
 
         /* ════════════════════════════════════════════════════════════════════ */
-        /*  MOBILE RESPONSIVENESS                                               */
+        /* MOBILE RESPONSIVENESS                                               */
         /* ════════════════════════════════════════════════════════════════════ */
 
         /* Tablet & small laptop */
@@ -267,31 +284,24 @@
 </head>
 <body>
 
-    <!-- ── WhatsApp Float (unchanged) ──────────────────────────────────────── -->
     <a href="https://wa.me/2347046203544" class="whatsapp-float" target="_blank" title="Contact Support">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- ── Toast ────────────────────────────────────────────────────────────── -->
     <div id="shareToast"></div>
 
-    <!-- ── Nav overlay (mobile backdrop) ───────────────────────────────────── -->
     <div class="nav-overlay" id="navOverlay" onclick="toggleNav()"></div>
 
-    <!-- ── Mobile Top Bar ───────────────────────────────────────────────────── -->
     <div class="mobile-top-bar">
-        <!-- Left: hamburger -->
         <button class="mobile-icon-btn" onclick="toggleNav()" aria-label="Menu">
             <i data-lucide="menu" size="20"></i>
         </button>
 
-        <!-- Center: brand -->
         <div class="mobile-brand">
             <span>RENANCE CBT</span>
             <span>BY RESOLUTE FEMI</span>
         </div>
 
-        <!-- Right: share + theme -->
         <div class="mobile-right-actions">
             <button class="mobile-icon-btn" id="mobileShareBtn" onclick="triggerShare()" aria-label="Share">
                 <i data-lucide="share-2" size="19"></i>
@@ -302,7 +312,6 @@
         </div>
     </div>
 
-    <!-- ── Sidebar ──────────────────────────────────────────────────────────── -->
     <nav id="sidebar">
         <div class="nav-header">
             <div class="logo-area">
@@ -339,10 +348,8 @@
         </div>
     </nav>
 
-    <!-- ── Main ─────────────────────────────────────────────────────────────── -->
     <main>
 
-        <!-- Desktop header -->
         <div class="header-top">
             <div>
                 <h1 style="font-size:1.75rem;font-weight:800;letter-spacing:-0.5px;">Student Dashboard</h1>
@@ -350,7 +357,6 @@
             </div>
 
             <div class="header-actions">
-                <!-- Share button lives here on desktop -->
                 <button class="share-btn-header" onclick="triggerShare()">
                     <i data-lucide="share-2" size="15"></i>
                     Share Portal
@@ -368,25 +374,23 @@
             </div>
         </div>
 
-        <!-- Stats -->
         <div class="stats-grid">
-            <div class="stat-card">
+            <div class="stat-card stat-animated" style="animation-delay: 0.1s;">
                 <div class="icon-box"><i data-lucide="activity" size="20"></i></div>
                 <div>
                     <p style="font-size:0.68rem;color:var(--text-muted);font-weight:700;letter-spacing:0.5px;">TESTS TAKEN</p>
-                    <p style="font-weight:800;font-size:1.2rem;">12</p>
+                    <p id="testsTakenEl" style="font-weight:800;font-size:1.2rem;">0</p>
                 </div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card stat-animated" style="animation-delay: 0.2s;">
                 <div class="icon-box" style="background:rgba(34,197,94,0.1);color:#22c55e;"><i data-lucide="award" size="20"></i></div>
                 <div>
                     <p style="font-size:0.68rem;color:var(--text-muted);font-weight:700;letter-spacing:0.5px;">AVG SCORE</p>
-                    <p style="font-weight:800;font-size:1.2rem;">84%</p>
+                    <p id="avgScoreEl" style="font-weight:800;font-size:1.2rem;">0%</p>
                 </div>
             </div>
         </div>
 
-        <!-- Section header + search -->
         <div class="section-header">
             <h2 style="font-size:1.05rem;font-weight:700;display:flex;align-items:center;gap:8px;">
                 <i data-lucide="book-open" size="18"></i> Available Courses
@@ -399,7 +403,6 @@
             </div>
         </div>
 
-        <!-- Course grid (share card injected here by JS) -->
         <div class="course-grid" id="courseGrid"></div>
 
         <div class="page-footer">
@@ -409,7 +412,6 @@
         </div>
     </main>
 
-    <!-- ── Profile Modal ─────────────────────────────────────────────────────── -->
     <div id="renanceProfileModal" class="modal-overlay" style="display:none;">
         <div class="modal-content">
             <div style="font-size:2.2rem;margin-bottom:6px;">🎓</div>
@@ -421,10 +423,32 @@
                     <label for="studentName">Full Name</label>
                     <input type="text" id="studentName" placeholder="e.g. Bamidele Joseph" required>
                 </div>
+                
+                <div class="input-group">
+                    <label for="studentFaculty">Faculty / School</label>
+                    <select id="studentFaculty" required>
+                        <option value="" disabled selected>Select Faculty</option>
+                        <option value="SOC">School of Computing (SOC)</option>
+                        <option value="SLIT">School of Logistics and Innovation Technology (SLIT)</option>
+                        <option value="SPS">School of Physical Sciences (SPS)</option>
+                        <option value="SESE">School of Electrical Systems Engineering (SESE)</option>
+                        <option value="SIMME">School of Infrastructure, Minerals & Mfg Eng (SIMME)</option>
+                        <option value="SET">School of Environmental Technology (SET)</option>
+                        <option value="SAAT">School of Agriculture and Agricultural Technology (SAAT)</option>
+                        <option value="SEMS">School of Earth and Mineral Sciences (SEMS)</option>
+                        <option value="SLS">School of Life Sciences (SLS)</option>
+                        <option value="CHS">College of Health Sciences (CHS)</option>
+                        <option value="GNS">General Studies (GNS)</option>
+                    </select>
+                </div>
+
                 <div class="input-group">
                     <label for="studentDept">Department</label>
-                    <input type="text" id="studentDept" placeholder="e.g. Computer Science" required>
+                    <select id="studentDept" required>
+                        <option value="" disabled selected>Select Department First</option>
+                    </select>
                 </div>
+
                 <div class="input-group">
                     <label for="studentPhone">Phone Number</label>
                     <input type="tel" id="studentPhone" placeholder="e.g. 08012345678" required>
@@ -436,31 +460,17 @@
         </div>
     </div>
 
-    <!-- ════════════════════════════════════════════════════════════════════ -->
     <script>
         // ── Supabase Init ────────────────────────────────────────────────────
         const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
         if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         const db = window._sb;
-
+        
         console.log('%c🚀 Built by Resolute Femi | RENANCE FUTA CBT', 'color:#2563eb;font-size:14px;font-weight:bold;background:#e0e7ff;padding:5px 10px;border-radius:5px;');
 
         // ── Share Content ────────────────────────────────────────────────────
-        const SHARE_TEXT = `🚀 Ace Your FUTA Exams with Renance! 🎓
-Level up your study game this semester! 📈
-Smash your grades with the ultimate preparation tool. 🛠️
-
-Here is what you get:
-⏱️ Timed CBT Practice: Beat exam anxiety with real simulations.
-📚 Course PDFs: Download essential materials to your device.
-🔥 500+ Past Questions: Tackle real FUTA plus plus & exam questions.
-🧮 GPA Calculators: Track your academic progress easily.
-🧠 Study Tips: Master techniques like Pomodoro & Feynman.
-
-Study smarter, not harder! ✨ Visit the portal today. 🌐
-👉 renancecbt1.vercel.app
-📢 Share with friends so everyone excels!`;
+        const SHARE_TEXT = `🚀 Ace Your FUTA Exams with Renance! 🎓\nLevel up your study game this semester! 📈\nSmash your grades with the ultimate preparation tool. 🛠️\n\nHere is what you get:\n⏱️ Timed CBT Practice: Beat exam anxiety with real simulations.\n📚 Course PDFs: Download essential materials to your device.\n🔥 500+ Past Questions: Tackle real FUTA plus plus & exam questions.\n🧮 GPA Calculators: Track your academic progress easily.\n🧠 Study Tips: Master techniques like Pomodoro & Feynman.\n\nStudy smarter, not harder! ✨ Visit the portal today. 🌐\n👉 renancecbt1.vercel.app\n📢 Share with friends so everyone excels!`;
         const SHARE_URL   = 'https://renancecbt1.vercel.app';
         const SHARE_TITLE = '🚀 Renance FUTA CBT Portal';
 
@@ -473,7 +483,6 @@ Study smarter, not harder! ✨ Visit the portal today. 🌐
                     if (e.name === 'AbortError') return;
                 }
             }
-            // Clipboard fallback
             try {
                 await navigator.clipboard.writeText(SHARE_TEXT + '\n\n' + SHARE_URL);
                 showToast('✅ Copied! Paste & share with your friends.');
@@ -590,7 +599,6 @@ Study smarter, not harder! ✨ Visit the portal today. 🌐
                 });
             }
 
-            // Always append share card at the end of the grid
             appendShareCard(grid);
             lucide.createIcons();
         }
@@ -628,16 +636,81 @@ Study smarter, not harder! ✨ Visit the portal today. 🌐
             grid.appendChild(card);
         }
 
-        // ── Profile Modal ────────────────────────────────────────────────────
+        // ── Profile Modal Logic ──────────────────────────────────────────────
         function showModal() { document.getElementById('renanceProfileModal').style.display = 'flex'; }
         function hideModal() { document.getElementById('renanceProfileModal').style.display = 'none'; }
 
+        const futaDepartments = {
+            "SOC": [
+                "Software Engineering (SEN)", "Computer Science (CSC)", "Cybersecurity (CYS)", 
+                "Data Science (DSC)", "Information Systems (IFS)", "Information Technology (IFT)"
+            ],
+            "SLIT": [
+                "Financial Technology (FinTech)", "Business Information Technology (BIT)", 
+                "Entrepreneurship Management Technology (EMT)", "Logistics and Transport Technology (LTT)", 
+                "Maritime Technology and Logistics (MTL)", "Project Management Technology (PMT)", 
+                "Securities and Investment Management Technology (SIMT)", "Supply Chain Management (SCM)"
+            ],
+            "SPS": [
+                "Educational Technology (EDT)", "Library and Information Science (LIS)", 
+                "Physics (PHY)", "Mathematics (MTH)", "Chemistry (CHE)", "Statistics (STA)"
+            ],
+            "SESE": [
+                "Computer Engineering (CPE)", "Electrical and Electronics Engineering (EEE)", 
+                "Information and Communication Engineering (ICE)", "Mechatronics Engineering (MCE)", 
+                "Biomedical Engineering (BME)"
+            ],
+            "SIMME": [
+                "Mechanical Engineering (MEE)", "Civil and Environmental Engineering (CVE)", 
+                "Agricultural Engineering (AGE)", "Chemical Engineering (CHE)", 
+                "Industrial and Production Engineering (IPE)", "Metallurgical and Materials Engineering (MME)", 
+                "Mining Engineering (MNE)"
+            ],
+            "SET": [
+                "Architecture (ARC)", "Building (BDG)", "Environmental Management (EVM)", 
+                "Estate Management (ESM)", "Industrial Design (IDD)", "Quantity Surveying (QSV)", 
+                "Surveying and Geoinformatics (SVG)", "Urban and Regional Planning (URP)"
+            ],
+            "SAAT": [
+                "Agricultural and Resource Economics (ARE)", "Agricultural Extension and Communication Technology (AEC)", 
+                "Animal Production and Health (APH)", "Crop, Soil and Pest Management (CSP)", 
+                "Ecotourism and Wildlife Management (EWM)", "Fisheries and Aquaculture Technology (FAT)", 
+                "Food Science and Technology (FST)", "Forestry and Wood Technology (FWT)", "Nutrition and Dietetics (NUD)"
+            ],
+            "SEMS": [
+                "Applied Geology (AGY)", "Applied Geophysics (AGP)", "Marine Science and Technology (MST)", 
+                "Meteorology and Climate Science (MET)", "Remote Sensing and Geoscience Information Systems (RSG)"
+            ],
+            "SLS": [
+                "Biochemistry (BCH)", "Biology (BIO)", "Biotechnology (BTH)", "Microbiology (MCB)"
+            ],
+            "CHS": [
+                "Medicine and Surgery (MBBS)", "Nursing Science (NSC)", "Human Anatomy (ANA)", 
+                "Physiology (PHS)", "Medical Laboratory Science (MLS)", "Public Health (PHS)"
+            ],
+            "GNS": ["General Studies (GNS)"]
+        };
+
+        document.getElementById('studentFaculty').addEventListener('change', function() {
+            const deptSelect = document.getElementById('studentDept');
+            deptSelect.innerHTML = '<option value="" disabled selected>Select Department</option>';
+            
+            const departments = futaDepartments[this.value] || [];
+            departments.forEach(dept => {
+                const option = document.createElement('option');
+                option.value = dept;
+                option.textContent = dept;
+                deptSelect.appendChild(option);
+            });
+        });
+
         async function saveProfile(e) {
             e.preventDefault();
-            const btn      = document.getElementById('saveProfileBtn');
-            const errorEl  = document.getElementById('modalError');
+            const btn         = document.getElementById('saveProfileBtn');
+            const errorEl     = document.getElementById('modalError');
             const fullname    = document.getElementById('studentName').value.trim();
-            const department  = document.getElementById('studentDept').value.trim();
+            const faculty     = document.getElementById('studentFaculty').value;
+            const department  = document.getElementById('studentDept').value;
             const phone       = document.getElementById('studentPhone').value.trim();
 
             errorEl.style.display = 'none';
@@ -649,7 +722,7 @@ Study smarter, not harder! ✨ Visit the portal today. 🌐
 
                 const { error: upErr } = await db
                     .from('students')
-                    .update({ fullname, department, phone })
+                    .update({ fullname, faculty, department, phone }) 
                     .eq('id', user.id);
                 if (upErr) throw upErr;
 
@@ -670,22 +743,70 @@ Study smarter, not harder! ✨ Visit the portal today. 🌐
 
                 const { data: student, error: fetchErr } = await db
                     .from('students')
-                    .select('fullname, department, phone')
+                    .select('fullname, faculty, department, phone')
                     .eq('id', user.id)
                     .single();
 
                 if (fetchErr) { showModal(); return; }
                 setUserUI(student.fullname, student.department);
-                if (!student.fullname || !student.department || !student.phone) showModal();
+                
+                if (!student.fullname || !student.department || !student.faculty || !student.phone) showModal();
 
             } catch (err) { console.error('Profile check:', err); }
         }
 
+        // ── Number Counter Animation ──────────────────────────────────────────
+        function animateValue(id, start, end, duration, suffix = '') {
+            const obj = document.getElementById(id);
+            if (!obj) return;
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                obj.innerHTML = Math.floor(easeProgress * (end - start) + start) + suffix;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // ── Load & Animate Real Stats from Supabase ─────────────────────────
+        async function loadUserStats() {
+            try {
+                const { data: { user }, error: authErr } = await db.auth.getUser();
+                if (authErr || !user) return; 
+
+                const { data: results, error: fetchErr } = await db
+                    .from('test_results')
+                    .select('score')
+                    .eq('student_id', user.id);
+
+                if (fetchErr) throw fetchErr;
+
+                let testsTaken = 0;
+                let avgScore = 0;
+
+                if (results && results.length > 0) {
+                    testsTaken = results.length;
+                    const totalScore = results.reduce((sum, record) => sum + Number(record.score), 0);
+                    avgScore = Math.round(totalScore / testsTaken);
+                }
+
+                animateValue("testsTakenEl", 0, testsTaken, 1500); 
+                animateValue("avgScoreEl", 0, avgScore, 1500, '%');
+
+            } catch (err) {
+                console.error("Error loading stats:", err);
+                document.getElementById('testsTakenEl').textContent = '0';
+                document.getElementById('avgScoreEl').textContent = '0%';
+            }
+        }
+
         function logout() { db.auth.signOut().then(() => { window.location.href = 'index.html'; }); }
 
-        
         document.addEventListener('DOMContentLoaded', () => {
-          
             renderCourses();
 
             // 2. Theme
@@ -695,6 +816,9 @@ Study smarter, not harder! ✨ Visit the portal today. 🌐
 
             // 3. Auth check (async — never blocks UI)
             checkUserProfile();
+
+            // 4. Load lively stats! 🎉
+            loadUserStats();
         });
     </script>
 </body>
