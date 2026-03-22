@@ -1,236 +1,567 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="rust.css">
-    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>Renance Learning Portal</title>  
-    <style>
-        #message {
-            text-align: center;
-            margin-top: 15px;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            display: none; 
-            transition: all 0.3s ease;
-        }
-        .error-msg {
-            display: block !important;
-            background: rgba(239, 68, 68, 0.15); 
-            color: #ff4d4d;
-            border: 1px solid #ef4444;
-            animation: shake 0.4s ease-in-out;
-        }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-8px); }
-            50% { transform: translateX(8px); }
-            75% { transform: translateX(-8px); }
-        }
-        .input-box { position: relative; margin-bottom: 20px; }
-        #togglePassword {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: rgba(255,255,255,0.7);
-        }
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1000; 
-            left: 0; 
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            background-color: rgba(0,0,0,0.6);
-            backdrop-filter: blur(5px);
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-content {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(20px);
-            padding: 30px; 
-            border-radius: 15px;
-            width: 90%;
-            max-width: 400px;
-            color: #fff; 
-            position: relative;
-            text-align: center;
-        }
-        .close-btn {
-            position: absolute; 
-            right: 20px; 
-            top: 15px;
-            color: white; 
-            font-size: 28px; 
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .close-btn:hover { color: #ff4d4d; }
-        .modal h2 { margin-bottom: 10px; font-size: 24px; }
-        .modal p { font-size: 14px; margin-bottom: 20px; color: rgba(255,255,255,0.8); }
-        .modal .input-box input {
-            width: 100%;
-            background: transparent;
-            border: 2px solid rgba(255, 255, 255, .2);
-            border-radius: 40px;
-            padding: 15px 20px;
-            color: #fff;
-            outline: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RENANCE — Sign In</title>
+<link rel="shortcut icon" href="logo.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#03050a;--blue:#2563eb;--glow:#3b82f6;--cyan:#06b6d4;
+  --violet:#818cf8;--ink:#f1f5f9;--muted:rgba(148,163,184,.6);
+  --card:rgba(6,9,18,.85);--border:rgba(59,130,246,.2);
+}
+html,body{height:100%;margin:0;overflow:hidden;touch-action:none}
+body{background:var(--bg);font-family:'Outfit',sans-serif;color:var(--ink);cursor:none;overflow:hidden}
+
+/* ── CURSOR ── */
+#cur-dot{position:fixed;width:8px;height:8px;background:#fff;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);box-shadow:0 0 15px #fff, 0 0 30px var(--cyan);transition:width .2s,height .2s}
+#cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(6,182,212,.6);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .4s cubic-bezier(.16,1,.3,1),height .4s cubic-bezier(.16,1,.3,1),border-color .3s}
+
+/* ── BG ── */
+#bg-canvas{position:fixed;inset:0;z-index:0}
+.scan{position:fixed;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.06) 3px,rgba(0,0,0,.06) 4px)}
+.grain{position:fixed;inset:-100%;z-index:3;width:300%;height:300%;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain-sh .5s steps(1) infinite}
+@keyframes grain-sh{0%{transform:translate(0,0)}25%{transform:translate(-3%,-6%)}50%{transform:translate(4%,3%)}75%{transform:translate(-6%,7%)}100%{transform:translate(0,0)}}
+
+/* ── CENTERED LAYOUT ── */
+.layout{position:relative;z-index:10;display:flex;justify-content:center;align-items:center;height:100vh;padding:20px;overflow-y:auto;scrollbar-width:none}
+.layout::-webkit-scrollbar{display:none}
+
+/* ── CARD ── */
+.card{position:relative;width:100%;max-width:420px;background:var(--card);border:1px solid var(--border);border-radius:24px;padding:42px 36px 36px;backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);transform-style:preserve-3d;animation:card-in 1s cubic-bezier(.16,1,.3,1) both;box-shadow:0 0 0 1px rgba(255,255,255,.04),0 40px 100px rgba(0,0,0,.9),0 0 80px rgba(37,99,235,.12)}
+@keyframes card-in{from{opacity:0;transform:translateY(50px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+/* Animated Border Sweep */
+.card::before{content:'';position:absolute;inset:-1px;border-radius:25px;background:conic-gradient(from var(--a,0deg),transparent 60%,rgba(6,182,212,.8) 80%,rgba(59,130,246,.8) 100%);z-index:-1;animation:spin 4s linear infinite}
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes spin{to{--a:360deg}}
+.card::after{content:'';position:absolute;inset:1px;border-radius:23px;background:linear-gradient(180deg, rgba(6,9,18,.8), rgba(6,9,18,.95));z-index:-1}
+
+/* Interactive Glare */
+.glare{position:absolute;inset:0;border-radius:24px;background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.08),transparent 40%);pointer-events:none;z-index:5;mix-blend-mode:overlay}
+
+/* ── BRAND & HEADER ── */
+.brand{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:28px}
+.gem{width:46px;height:46px;background:linear-gradient(135deg,#06b6d4,#3b82f6);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff;box-shadow:0 0 20px rgba(6,182,212,.4), inset 0 2px 0 rgba(255,255,255,.2);position:relative}
+.gem::after{content:'';position:absolute;inset:0;border-radius:14px;box-shadow:0 0 40px rgba(59,130,246,.6);animation:pulse 2s infinite alternate}
+@keyframes pulse{from{opacity:.5}to{opacity:1}}
+.brand-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.12em;line-height:1;background:linear-gradient(to right,#fff,#94a3b8);-webkit-background-clip:text;color:transparent}
+.brand-tag{font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--cyan);display:block;margin-top:2px}
+
+.ftitle{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.08em;line-height:1;margin-bottom:8px;color:#fff;text-shadow:0 0 20px rgba(255,255,255,.2)}
+.fsub{text-align:center;font-size:.85rem;font-weight:300;color:var(--muted);margin-bottom:32px}
+
+/* ── FIELDS ── */
+.fg{display:flex;flex-direction:column;gap:16px;margin-bottom:12px;position:relative;z-index:10}
+.f{position:relative}
+.fl{font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(148,163,184,.5);display:block;margin-bottom:8px;padding-left:4px;transition:color .3s}
+.f:focus-within .fl{color:var(--cyan)}
+.iw{position:relative;display:flex;align-items:center}
+.ic{position:absolute;left:16px;font-size:.85rem;color:rgba(148,163,184,.3);transition:color .3s,transform .3s;pointer-events:none;z-index:2}
+.f:focus-within .ic{color:var(--cyan);transform:scale(1.1) translateY(-1px)}
+.icr{position:absolute;right:16px;left:auto;cursor:pointer;pointer-events:all;padding:10px}
+.icr:hover{color:#fff}
+
+input{width:100%;height:48px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:0 42px;font-size:.9rem;font-family:'Outfit',sans-serif;font-weight:400;color:var(--ink);outline:none;transition:all .3s ease;-webkit-appearance:none}
+input::placeholder{color:rgba(148,163,184,.25);font-weight:300}
+input:focus{border-color:rgba(6,182,212,.5);background:rgba(6,182,212,.05);box-shadow:0 0 0 4px rgba(6,182,212,.1), inset 0 0 15px rgba(6,182,212,.05)}
+
+/* ── UPGRADED REMEMBER / FORGOT ROW ── */
+.rf {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Custom Checkbox Container */
+.remember-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 300;
+  transition: color 0.3s;
+}
+.remember-wrap:hover {
+  color: var(--ink);
+}
+
+/* Hide the ugly default browser checkbox completely */
+.remember-wrap input[type=checkbox] {
+  display: none; 
+}
+
+/* The New Glowing Box */
+.custom-check {
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  color: transparent; /* Hides checkmark initially */
+  font-size: 0.75rem;
+}
+
+/* The Checked State Animation */
+.remember-wrap input:checked + .custom-check {
+  background: var(--cyan);
+  border-color: var(--cyan);
+  color: #fff; /* Reveals checkmark */
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  transform: scale(1.1); /* Satisfying pop effect */
+}
+
+/* Forgot Password Link */
+.rf a {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.rf a:hover {
+  color: var(--cyan);
+  text-decoration: underline;
+}
+
+/* Error message */
+#msg{display:none;padding:12px 16px;border-radius:10px;font-size:.8rem;font-weight:600;margin-bottom:16px;animation:shake .4s ease-in-out;border:1px solid rgba(239,68,68,.4);background:rgba(239,68,68,.08);color:#f87171;position:relative;z-index:10}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+
+/* Button */
+.btn-wrap{position:relative;z-index:10}
+.btn{position:relative;width:100%;height:52px;border:none;border-radius:12px;background:linear-gradient(135deg,#0284c7,#06b6d4,#3b82f6);font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.15em;color:#fff;cursor:pointer;overflow:hidden;transition:transform .1s,box-shadow .3s;box-shadow:0 8px 30px rgba(6,182,212,.3),0 0 0 1px rgba(255,255,255,.2);will-change:transform}
+.btn::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.2),transparent)}
+.btxt{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:10px;text-shadow:0 2px 4px rgba(0,0,0,.3)}
+.btn:hover{box-shadow:0 15px 40px rgba(6,182,212,.5),0 0 0 1px rgba(255,255,255,.4)}
+.btn:active{transform:scale(0.96)}
+
+.lr{text-align:center;margin-top:24px;font-size:.85rem;color:var(--muted);font-weight:300;position:relative;z-index:10}
+.lr a{color:var(--cyan);font-weight:700;text-decoration:none;position:relative;padding:4px}
+.lr a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--cyan);transform:scaleX(0);transform-origin:right;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.lr a:hover::after{transform:scaleX(1);transform-origin:left}
+
+/* ── FORGOT PASSWORD MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(12px);z-index:9000;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{position:relative;background:rgba(8,12,28,.96);border:1px solid rgba(59,130,246,.2);border-radius:24px;padding:40px 32px;width:100%;max-width:400px;animation:modal-in .4s cubic-bezier(.16,1,.3,1);box-shadow:0 40px 80px rgba(0,0,0,.9),0 0 80px rgba(6,182,212,.15)}
+@keyframes modal-in{from{opacity:0;transform:translateY(30px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-close{position:absolute;top:16px;right:18px;width:32px;height:32px;border:1px solid rgba(255,255,255,.1);border-radius:8px;background:transparent;color:rgba(148,163,184,.6);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.modal-close:hover{border-color:rgba(239,68,68,.5);color:#f87171}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.06em;margin-bottom:8px;color:#fff}
+.modal-sub{font-size:.85rem;font-weight:300;color:var(--muted);margin-bottom:24px;line-height:1.6}
+#reset-feedback{font-size:.8rem;font-weight:600;padding:12px;border-radius:10px;margin-top:16px;display:none}
+#reset-feedback.ok{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);color:#34d399}
+#reset-feedback.bad{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);color:#f87171}
+
+/* Toast */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(8,12,24,.96);border:1px solid rgba(255,255,255,.07);backdrop-filter:blur(24px);border-radius:100px;padding:12px 26px;font-size:.8rem;font-weight:600;color:var(--ink);opacity:0;transition:opacity .3s,transform .3s;z-index:9999;white-space:nowrap;box-shadow:0 10px 40px rgba(0,0,0,.6)}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast.ok{border-color:rgba(16,185,129,.35);color:#34d399}
+#toast.bad{border-color:rgba(239,68,68,.35);color:#f87171}
+
+/* ── MOBILE RESPONSIVE ── */
+@media(max-width:768px){
+  #cur, #cur-ring { display: none !important; }
+  body { cursor: auto; }
+  .card{padding:32px 24px; border-radius:20px;}
+  .ftitle{font-size:1.9rem;}
+  input{font-size:16px !important; height:46px;} /* Stop iOS zoom */
+  .f, .rf, .btn-wrap, .lr { opacity:0; animation: mobilePop .6s cubic-bezier(.175,.885,.32,1.275) forwards; }
+  .f:nth-child(1){animation-delay:.3s}
+  .f:nth-child(2){animation-delay:.4s}
+  .rf{animation-delay:.5s}
+  .btn-wrap{animation-delay:.6s}
+  .lr{animation-delay:.7s}
+}
+@keyframes mobilePop {
+  0% { opacity: 0; transform: translateY(15px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <form id="loginForm">
-            <h1>LOGIN</h1>
 
-            <div class="input-box">
-                <input type="email" name="email" id="email" placeholder="Email Address" required>
-                <i class="fa-solid fa-envelope"></i>
-            </div>
+<canvas id="bg-canvas"></canvas>
+<div class="scan"></div>
+<div class="grain"></div>
 
-            <div class="input-box">
-                <input type="password" name="password" id="password" placeholder="Password" required/>
-                <i class="fa-solid fa-eye" id="togglePassword"></i>
-            </div>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
 
-            <div class="remember-forgot">
-                <label><input type="checkbox"/> Remember me</label>
-                <a href="#" id="forgotPassLink">Forgot password?</a>
-            </div>
+<div id="toast"></div>
 
-            <button type="submit" class="btn" id="loginBtn">Login</button>
+<div class="layout">
+  <div class="card" id="card">
+    <div class="glare" id="glare"></div>
 
-            <div id="message"></div>
-
-            <div class="register-link"> 
-                <p>Don't have an account? <a href="index.html">Signup</a></p>
-            </div>
-        </form>
+    <div class="brand">
+      <div class="gem"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div><div class="brand-name">RENANCE CBT</div><span class="brand-tag">Learning Never ends </span></div>
     </div>
 
-    <div id="forgotModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" id="closeModal">&times;</span>
-            <h2>Reset Password</h2>
-            <p>Enter your Email Address to request a reset link from the administrator.</p>
-            <div class="input-box" style="margin-bottom: 20px;">
-                <input type="email" id="resetEmail" placeholder="Email Address" required>
-                <i class="fa-solid fa-envelope" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); color:rgba(255,255,255,0.7);"></i>
-            </div>
-            <button class="btn" id="sendResetBtn" style="width: 100%; background: #fff; color: #333; font-weight: bold; padding: 10px; border-radius: 40px; border: none; cursor: pointer;">Request Reset</button>
-            <div id="resetFeedback" style="margin-top: 15px; font-size: 14px; font-weight: bold; display: none;"></div>
+    <div class="ftitle" id="glitch-text" data-value="WELCOME BACK">WELCOME BACK</div>
+    <div class="fsub">Sign in to continue your CBT practice session</div>
+
+    <div id="msg"></div>
+
+    <form id="loginForm" novalidate>
+      <div class="fg">
+        <div class="f">
+          <label class="fl">Email Address</label>
+          <div class="iw">
+            <i class="fa-solid fa-envelope ic"></i>
+            <input type="email" id="email" placeholder="student@futa.edu.ng" required autocomplete="email">
+          </div>
         </div>
+
+        <div class="f">
+          <label class="fl">Password</label>
+          <div class="iw">
+            <i class="fa-solid fa-lock ic"></i>
+            <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+            <i class="fa-solid fa-eye ic icr" id="togPw"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="rf">
+        <label class="remember-wrap">
+          <input type="checkbox" id="rememberMe">
+          <div class="custom-check"><i class="fa-solid fa-check"></i></div>
+          <span>Remember me</span>
+        </label>
+        <a href="#" id="forgotLink">Forgot password?</a>
+      </div>
+
+      <div class="btn-wrap" id="btnWrap">
+        <button type="submit" class="btn" id="loginBtn">
+          <span class="btxt" id="btxt"><i class="fa-solid fa-bolt"></i>&nbsp;LOGIN</span>
+        </button>
+      </div>
+    </form>
+
+    <div class="lr">New to the portal? <a href="index.html">Create an account</a></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="forgotModal">
+  <div class="modal-box">
+    <button class="modal-close" id="closeModal"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-title">RESET PASSWORD</div>
+    <div class="modal-sub">Enter your email and we'll send a secure reset link straight to your inbox.</div>
+    <div class="f" style="margin-bottom:16px">
+      <label class="fl">Email Address</label>
+      <div class="iw"><i class="fa-solid fa-envelope ic"></i><input type="email" id="resetEmail" placeholder="student@futa.edu.ng"></div>
     </div>
+    <div class="btn-wrap" style="margin-top:0">
+      <button class="btn" id="sendResetBtn">
+        <span class="btxt" id="resetBtxt"><i class="fa-solid fa-paper-plane"></i>&nbsp; SEND RESET LINK</span>
+      </button>
+    </div>
+    <div id="reset-feedback"></div>
+  </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* ════════════════════════════════════════
+   SUPABASE
+════════════════════════════════════════ */
+const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const db = window._sb;
 
-    <script>
-        // 1. INITIALIZE SUPABASE 
-        const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
-        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
-        if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-        const db = window._sb;
+/* ════════════════════════════════════════
+   CANVAS — THE QUANTUM NETWORK REVEAL
+════════════════════════════════════════ */
+const bgC = document.getElementById('bg-canvas');
+const ct = bgC.getContext('2d');
+let W, H;
+function rs() { W = bgC.width = window.innerWidth; H = bgC.height = window.innerHeight; }
+rs(); window.addEventListener('resize', rs);
 
-        // 2. PASSWORD TOGGLE
-        document.getElementById('togglePassword').addEventListener('click', function () {
-            const pass = document.getElementById('password');
-            if (pass.type === 'password') {
-                pass.type = 'text';
-                this.classList.remove('fa-eye');
-                this.classList.add('fa-eye-slash');
-            } else {
-                pass.type = 'password';
-                this.classList.remove('fa-eye-slash');
-                this.classList.add('fa-eye');
-            }
-        });
+// Optimized particle count for 16GB RAM 
+const nodes = [];
+for (let i = 0; i < 180; i++) {
+  nodes.push({
+    x: Math.random() * W,
+    y: Math.random() * H,
+    vx: (Math.random() - 0.5) * 0.4,
+    vy: (Math.random() - 0.5) * 0.4 - 0.3, // Constant upward drift
+    size: Math.random() * 2 + 0.5
+  });
+}
 
-        // 3. FORGOT PASSWORD MODAL
-        document.getElementById('forgotPassLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('forgotModal').style.display = 'flex';
-            document.getElementById('resetFeedback').style.display = 'none';
-            document.getElementById('resetEmail').value = '';
-        });
+let mx = W / 2, my = H / 2;
+window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+window.addEventListener('touchmove', e => { mx = e.touches[0].clientX; my = e.touches[0].clientY; }, {passive: true});
 
-        document.getElementById('closeModal').addEventListener('click', function() {
-            document.getElementById('forgotModal').style.display = 'none';
-        });
+function drawNetwork() {
+  ct.clearRect(0, 0, W, H);
 
-        window.addEventListener('click', function(e) {
-            if (e.target === document.getElementById('forgotModal')) {
-                document.getElementById('forgotModal').style.display = 'none';
-            }
-        });
+  // Draw the mouse "Flashlight" aura
+  const aura = ct.createRadialGradient(mx, my, 0, mx, my, 400);
+  aura.addColorStop(0, 'rgba(6, 182, 212, 0.08)');
+  aura.addColorStop(1, 'transparent');
+  ct.fillStyle = aura;
+  ct.fillRect(0, 0, W, H);
 
-        document.getElementById('sendResetBtn').addEventListener('click', function() {
-            const resetEmail = document.getElementById('resetEmail').value.trim();
-            const resetFeedback = document.getElementById('resetFeedback');
-            if (!resetEmail) {
-                resetFeedback.style.display = 'block';
-                resetFeedback.style.color = '#ff4d4d';
-                resetFeedback.innerText = "Please enter your Email Address! ❌";
-                return;
-            }
-            this.innerText = "Sending... ⏳";
-            this.disabled = true;
-            setTimeout(() => {
-                resetFeedback.style.display = 'block';
-                resetFeedback.style.color = '#4ade80';
-                resetFeedback.innerText = "Request sent to Admin! ✅";
-                this.innerText = "Request Reset";
-                this.disabled = false;
-            }, 1500);
-        });
+  nodes.forEach(n => {
+    n.x += n.vx;
+    n.y += n.vy;
+    
+    // Wrap around screen
+    if (n.x < 0) n.x = W; if (n.x > W) n.x = 0;
+    if (n.y < 0) n.y = H; if (n.y > H) n.y = 0;
 
+    // Calculate distance to mouse
+    let dx = n.x - mx, dy = n.y - my;
+    let dist = Math.sqrt(dx * dx + dy * dy);
+    
+    // Only reveal network if close to the mouse (Flashlight effect)
+    if (dist < 350) {
+      // Draw Node
+      ct.beginPath();
+      ct.arc(n.x, n.y, n.size, 0, Math.PI * 2);
+      ct.fillStyle = `rgba(6, 182, 212, ${1 - dist/350})`;
+      ct.fill();
+
+      // Connect to other nearby nodes
+      for (let j = 0; j < nodes.length; j++) {
+        let n2 = nodes[j];
+        let dx2 = n.x - n2.x, dy2 = n.y - n2.y;
+        let dist2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
         
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
+        if (dist2 < 100) {
+          ct.beginPath();
+          ct.moveTo(n.x, n.y);
+          ct.lineTo(n2.x, n2.y);
+          ct.strokeStyle = `rgba(59, 130, 246, ${(1 - dist2/100) * (1 - dist/350)})`;
+          ct.lineWidth = 0.8;
+          ct.stroke();
+        }
+      }
+    }
+  });
 
-            const emailInput  = document.getElementById('email').value.trim();
-            const passInput   = document.getElementById('password').value;
-            const messageBox  = document.getElementById('message');
-            const loginBtn    = document.getElementById('loginBtn');
+  requestAnimationFrame(drawNetwork);
+}
+drawNetwork();
 
-            loginBtn.innerText = "Authenticating... 🛡️";
-            loginBtn.disabled = true;
-            messageBox.style.display = 'none';
-            messageBox.className = '';
+/* ════════════════════════════════════════
+   CURSOR & MAGNETIC EFFECTS
+════════════════════════════════════════ */
+const dot=document.getElementById('cur-dot'), ring=document.getElementById('cur-ring');
+let rx=0,ry=0;
+window.addEventListener('mousemove',e=>{
+  dot.style.left=e.clientX+'px'; dot.style.top=e.clientY+'px';
+});
+(function ac(){
+  rx+=(mx-rx)*0.15; ry+=(my-ry)*0.15;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(ac);
+})();
+document.querySelectorAll('input,button,a,.icr,.modal-close').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{
+    ring.style.width='50px'; ring.style.height='50px'; ring.style.background='rgba(6,182,212,0.1)';
+  });
+  el.addEventListener('mouseleave',()=>{
+    ring.style.width='36px'; ring.style.height='36px'; ring.style.background='transparent';
+  });
+});
 
-            try {
-                // Directly sign in with email + password via Supabase Auth
-                const { data: authData, error: authError } = await db.auth.signInWithPassword({
-                    email: emailInput,
-                    password: passInput
-                });
+/* 3D CARD TILT & GLARE */
+const card=document.getElementById('card'), glare=document.getElementById('glare');
+card.addEventListener('mousemove',e=>{
+  const rect = card.getBoundingClientRect();
+  const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+  const cx = rect.width/2; const cy = rect.height/2;
+  const rotateX = ((y - cy) / cy) * -8;
+  const rotateY = ((x - cx) / cx) * 8;
+  
+  card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  glare.style.setProperty('--mx', (x/rect.width*100)+'%');
+  glare.style.setProperty('--my', (y/rect.height*100)+'%');
+});
+card.addEventListener('mouseleave',()=>{
+  card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+  card.style.transition = 'transform 0.5s ease';
+  setTimeout(()=>card.style.transition='', 500);
+});
 
-                if (authError) throw new Error(authError.message || "Invalid login credentials.");
+if (window.DeviceOrientationEvent && matchMedia('(pointer:coarse)').matches) {
+  window.addEventListener('deviceorientation', function(e) {
+    let tiltX = Math.min(Math.max(e.beta - 45, -10), 10); 
+    let tiltY = Math.min(Math.max(e.gamma, -10), 10);
+    card.style.transform = `perspective(1000px) rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
+    glare.style.setProperty('--mx', (50 + tiltY*2) + '%');
+    glare.style.setProperty('--my', (50 + tiltX*2) + '%');
+  });
+}
 
-                // Save session info and redirect
-                localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('student_email', emailInput);
+/* ════════════════════════════════════════
+   HACKER GLITCH TEXT
+════════════════════════════════════════ */
+const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
+const glitchEl = document.getElementById('glitch-text');
+const originalText = glitchEl.dataset.value;
 
-                loginBtn.innerText = "Access Granted! ✅";
-                setTimeout(() => { window.location.href = 'dashboard.html'; }, 800);
+window.addEventListener('load', () => {
+  let iterations = 0;
+  const interval = setInterval(() => {
+    glitchEl.innerText = originalText.split("").map((letter, index) => {
+      if(index < iterations) return originalText[index];
+      return CHARS[Math.floor(Math.random() * CHARS.length)];
+    }).join("");
+    if(iterations >= originalText.length) clearInterval(interval);
+    iterations += 1/3;
+  }, 35);
+});
 
-            } catch (error) {
-                console.error("Login Error:", error);
-                messageBox.textContent = error.message + " ❌";
-                messageBox.className = "error-msg";
-                loginBtn.innerText = "Login";
-                loginBtn.disabled = false;
-            }
-        });
-    </script>
+/* ════════════════════════════════════════
+   UI INTERACTIONS
+════════════════════════════════════════ */
+// Password Toggle
+document.getElementById('togPw').addEventListener('click', function(e) {
+  e.preventDefault();
+  const pw = document.getElementById('password'), t = pw.type === 'text';
+  pw.type = t ? 'password' : 'text';
+  this.classList.toggle('fa-eye', t); this.classList.toggle('fa-eye-slash', !t);
+});
+
+// Toast System
+function toast(msg, type='') {
+  const t=document.getElementById('toast'); t.textContent=msg;
+  t.className='show '+type; clearTimeout(t._);
+  t._=setTimeout(()=>t.className='',4000);
+}
+
+// Inline Message
+function showMsg(text, type='') {
+  const m = document.getElementById('msg');
+  m.textContent = text; m.className = type;
+  m.style.display = 'block';
+  void m.offsetWidth; // re-trigger animation
+}
+function hideMsg() { document.getElementById('msg').style.display = 'none'; }
+
+// Forgot Password Modal
+document.getElementById('forgotLink').addEventListener('click', e => {
+  e.preventDefault();
+  document.getElementById('forgotModal').classList.add('open');
+  document.getElementById('resetEmail').value = '';
+  document.getElementById('reset-feedback').style.display = 'none';
+});
+document.getElementById('closeModal').addEventListener('click', () => {
+  document.getElementById('forgotModal').classList.remove('open');
+});
+
+document.getElementById('sendResetBtn').addEventListener('click', async function() {
+  const email = document.getElementById('resetEmail').value.trim();
+  const fb = document.getElementById('reset-feedback');
+  const btnTxt = document.getElementById('resetBtxt');
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    fb.textContent = '❌ Please enter a valid email address.';
+    fb.className = 'bad'; fb.style.display = 'block'; return;
+  }
+
+  this.disabled = true;
+  btnTxt.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>&nbsp; SENDING…';
+
+  try {
+    const { error } = await db.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + '/reset-password.html'
+    });
+    if (error) throw error;
+    fb.textContent = '✅ Reset link sent! Check your inbox.';
+    fb.className = 'ok'; fb.style.display = 'block';
+  } catch (err) {
+    fb.textContent = '❌ ' + (err.message || 'Failed to send reset link.');
+    fb.className = 'bad'; fb.style.display = 'block';
+  } finally {
+    this.disabled = false;
+    btnTxt.innerHTML = '<i class="fa-solid fa-paper-plane"></i>&nbsp; SEND RESET LINK';
+  }
+});
+
+/* ════════════════════════════════════════
+   LOGIN LOGIC (Supabase)
+════════════════════════════════════════ */
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  hideMsg();
+
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  const remember = document.getElementById('rememberMe').checked;
+
+  if (!email || !password) {
+    showMsg('Please fill in all fields.'); return;
+  }
+
+  const btn = document.getElementById('loginBtn');
+  const btxt = document.getElementById('btxt');
+  btn.disabled = true;
+  btxt.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>&nbsp; AUTHENTICATING…';
+
+  try {
+    const { data: authData, error: authError } = await db.auth.signInWithPassword({
+      email, password
+    });
+
+    if (authError) throw authError;
+
+    // Save session state
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('student_email', email);
+    if (remember) localStorage.setItem('renance_remember', email);
+    else localStorage.removeItem('renance_remember');
+
+    btxt.innerHTML = '<i class="fa-solid fa-check"></i>&nbsp; SUCCESS';
+    btn.style.background = '#10b981';
+    btn.style.boxShadow = '0 0 30px rgba(16,185,129,0.5)';
+    
+    // Quick success delay
+    setTimeout(() => { window.location.href = 'dashboard.html'; }, 1500);
+
+  } catch (err) {
+    console.error('Login error:', err);
+    let msg = 'Something went wrong. Please try again.';
+    if (err.message?.toLowerCase().includes('invalid') || err.message?.toLowerCase().includes('credentials')) {
+      msg = '❌ Incorrect email or password.';
+    } else if (err.message) {
+      msg = '❌ ' + err.message;
+    }
+    showMsg(msg);
+    btn.disabled = false;
+    btxt.innerHTML = '<i class="fa-solid fa-bolt"></i>&nbsp; INITIATE LOGIN';
+    btn.style.background = '';
+    btn.style.boxShadow = '';
+  }
+});
+
+// Pre-fill remembered email
+const remembered = localStorage.getItem('renance_remember');
+if (remembered) {
+  document.getElementById('email').value = remembered;
+  document.getElementById('rememberMe').checked = true;
+}
+</script>
 </body>
 </html>
