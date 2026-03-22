@@ -18,7 +18,7 @@
 html{height:100%;overflow:hidden}
 body{height:100%;background:var(--b);font-family:'Cabinet Grotesk',sans-serif;color:var(--ink);overflow:hidden;cursor:none}
 
-/* CURSOR (Hidden on mobile) */
+/* CURSOR (Restored for all screens) */
 #cur{position:fixed;width:8px;height:8px;background:#fff;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 15px #fff, 0 0 30px var(--cyan)}
 #cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(6,182,212,.6);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s}
 
@@ -27,33 +27,39 @@ body{height:100%;background:var(--b);font-family:'Cabinet Grotesk',sans-serif;co
 .grain{position:fixed;inset:-200%;z-index:1;width:400%;height:400%;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:g .5s steps(1) infinite;pointer-events:none}
 @keyframes g{0%{transform:translate(0,0)}20%{transform:translate(-5%,-10%)}40%{transform:translate(-15%,5%)}60%{transform:translate(7%,-25%)}80%{transform:translate(-5%,25%)}100%{transform:translate(0,0)}}
 
-/* SCROLLABLE LAYOUT FOR TALL FORM */
-.layout{position:relative;z-index:10;display:flex;justify-content:center;align-items:flex-start;height:100vh;padding:40px 20px;overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
-.layout::-webkit-scrollbar{display:none}
+/* LAYOUT */
+.layout{position:relative;z-index:10;display:flex;justify-content:center;align-items:center;height:100vh;padding:20px;overflow:hidden}
 
 /* CARD WITH PREMIUM GLASS & GLARE */
-.card{position:relative;width:100%;max-width:440px;margin:auto;background:var(--card);border:1px solid var(--border);border-radius:24px;padding:42px 36px 36px;backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);transform-style:preserve-3d;box-shadow:0 0 0 1px rgba(255,255,255,.05),0 30px 80px rgba(0,0,0,.9),0 0 60px rgba(6,182,212,.1);animation:slideUp 1s cubic-bezier(.16,1,.3,1) both}
-@keyframes slideUp{from{opacity:0;transform:translateY(60px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+.card{position:relative;width:100%;max-width:420px;margin:auto;background:var(--card);border:1px solid var(--border);border-radius:24px;padding:36px 32px 30px;backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);transform-style:preserve-3d;box-shadow:0 0 0 1px rgba(255,255,255,.05),0 30px 80px rgba(0,0,0,.9),0 0 60px rgba(6,182,212,.1);animation:slideUp 1s cubic-bezier(.16,1,.3,1) both;overflow:hidden;}
+@keyframes slideUp{from{opacity:0;transform:translateY(40px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
 
-/* Animated Border Sweep */
-.card::before{content:'';position:absolute;inset:-1px;border-radius:25px;background:conic-gradient(from var(--a,0deg),transparent 60%,rgba(6,182,212,.8) 80%,rgba(59,130,246,.8) 100%);z-index:-1;animation:spin 3s linear infinite}
-@property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
-@keyframes spin{to{--a:360deg}}
+/* Hardware Accelerated Border Sweep */
+.card-border-wrap {position:absolute;inset:-1px;border-radius:25px;overflow:hidden;z-index:-2;}
+.card-border {position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(transparent 60%,rgba(6,182,212,.8) 80%,rgba(59,130,246,.8) 100%);animation:spin-border 3s linear infinite;}
+@keyframes spin-border {100%{transform:rotate(360deg)}}
 .card::after{content:'';position:absolute;inset:1px;border-radius:23px;background:linear-gradient(180deg, rgba(8,12,22,.8), rgba(8,12,22,.95));z-index:-1}
 
 /* Interactive Glare */
 .glare{position:absolute;inset:0;border-radius:24px;background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.08),transparent 40%);pointer-events:none;z-index:5;mix-blend-mode:overlay}
 
-/* HEADER & GLITCH TEXT */
-.flogo{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:28px}
-.gem{width:46px;height:46px;background:linear-gradient(135deg,#06b6d4,#3b82f6);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff;box-shadow:0 0 20px rgba(6,182,212,.4), inset 0 2px 0 rgba(255,255,255,.2);position:relative}
-.gem::after{content:'';position:absolute;inset:0;border-radius:14px;box-shadow:0 0 40px rgba(59,130,246,.6);animation:pulse 2s infinite alternate}
-@keyframes pulse{from{opacity:.5}to{opacity:1}}
-.lname{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.12em;line-height:1;background:linear-gradient(to right,#fff,#94a3b8);-webkit-background-clip:text;color:transparent}
-.ltag{font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--cyan);display:block;margin-top:2px}
+/* HEADER */
+.flogo{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:20px}
+.gem{width:42px;height:42px;background:linear-gradient(135deg,#06b6d4,#3b82f6);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff;box-shadow:0 0 20px rgba(6,182,212,.4), inset 0 2px 0 rgba(255,255,255,.2);position:relative}
+.lname{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.12em;line-height:1;background:linear-gradient(to right,#fff,#94a3b8);-webkit-background-clip:text;color:transparent}
+.ltag{font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--cyan);display:block;margin-top:2px}
 
-.ftitle{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.08em;line-height:1;margin-bottom:8px;color:#fff;text-shadow:0 0 20px rgba(255,255,255,.2)}
-.fsub{text-align:center;font-size:.85rem;font-weight:300;color:var(--muted);margin-bottom:24px}
+.ftitle{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.08em;line-height:1;margin-bottom:6px;color:#fff;text-shadow:0 0 20px rgba(255,255,255,.2)}
+.fsub{text-align:center;font-size:.8rem;font-weight:300;color:var(--muted);margin-bottom:12px}
+
+/* ── MULTI-STEP WIZARD STYLES ── */
+.step-indicator { display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; }
+.step-dot { width: 30px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; transition: background 0.4s; }
+.step-dot.active { background: var(--cyan); box-shadow: 0 0 8px rgba(6,182,212,0.5); }
+
+.form-window { overflow: hidden; width: 100%; position: relative; }
+.form-track { display: flex; width: 200%; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.step-pane { width: 50%; padding: 0 4px; flex-shrink: 0; }
 
 /* FIELDS */
 .f{margin-bottom:14px;position:relative;z-index:10}
@@ -64,7 +70,6 @@ body{height:100%;background:var(--b);font-family:'Cabinet Grotesk',sans-serif;co
 .ic{position:absolute;left:16px;font-size:.85rem;color:rgba(148,163,184,.3);transition:color .3s,transform .3s;pointer-events:none}
 .f:focus-within .ic{color:var(--cyan);transform:scale(1.1) translateY(-1px)}
 .icr{position:absolute;right:16px;left:auto;cursor:pointer;pointer-events:all;padding:10px}
-.icr:hover{color:#fff}
 
 input,select{width:100%;height:46px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:0 42px;font-size:.9rem;font-family:'Cabinet Grotesk',sans-serif;color:var(--ink);outline:none;transition:all .3s ease;-webkit-appearance:none}
 select{cursor:pointer}
@@ -80,64 +85,53 @@ input:focus,select:focus{border-color:rgba(6,182,212,.5);background:rgba(6,182,2
 .sw{position:relative}
 .sw select{padding-right:38px}
 
-/* Strength Meter */
 .str{display:flex;gap:4px;margin-top:6px}
 .sg{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.05);transition:background .4s,box-shadow .4s}
 .err{font-size:.65rem;color:#f87171;padding-left:4px;margin-top:4px;display:none;animation:fi .2s ease}
 
-/* MAGNETIC BUTTON */
-.btn-wrap{position:relative;margin-top:20px;z-index:10}
-.btn{position:relative;width:100%;height:52px;border:none;border-radius:12px;background:linear-gradient(135deg,#0284c7,#06b6d4,#3b82f6);font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.15em;color:#fff;cursor:pointer;overflow:hidden;transition:transform .1s,box-shadow .3s;box-shadow:0 8px 30px rgba(6,182,212,.3),0 0 0 1px rgba(255,255,255,.2);will-change:transform}
-.btn::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.2),transparent)}
+/* BUTTONS */
+.btn-row { display: flex; gap: 10px; margin-top: 20px; z-index: 10; position: relative; }
+.btn{position:relative;flex:1;height:50px;border:none;border-radius:12px;background:linear-gradient(135deg,#0284c7,#06b6d4,#3b82f6);font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.15em;color:#fff;cursor:pointer;overflow:hidden;transition:transform .1s,box-shadow .3s;box-shadow:0 8px 30px rgba(6,182,212,.3),0 0 0 1px rgba(255,255,255,.2)}
+.btn.secondary { background: rgba(255,255,255,0.05); box-shadow: 0 0 0 1px rgba(255,255,255,0.1); color: var(--muted); flex: 0.4; }
+.btn.secondary:hover { background: rgba(255,255,255,0.1); color: #fff; }
 .btxt{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:10px;text-shadow:0 2px 4px rgba(0,0,0,.3)}
-.btn:hover{box-shadow:0 15px 40px rgba(6,182,212,.5),0 0 0 1px rgba(255,255,255,.4)}
+.btn.secondary .btxt { text-shadow: none; }
+.btn:hover:not(.secondary){box-shadow:0 15px 40px rgba(6,182,212,.5),0 0 0 1px rgba(255,255,255,.4)}
 .btn:active{transform:scale(0.96)}
+.btn:disabled{opacity:.6;cursor:not-allowed;transform:scale(1);}
 
 .lr{text-align:center;margin-top:20px;font-size:.85rem;color:var(--muted);font-weight:300;position:relative;z-index:10}
 .lr a{color:var(--cyan);font-weight:700;text-decoration:none;position:relative;padding:8px 4px}
 .lr a::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:2px;background:var(--cyan);transform:scaleX(0);transform-origin:right;transition:transform .4s cubic-bezier(.16,1,.3,1)}
 .lr a:hover::after{transform:scaleX(1);transform-origin:left}
 
-/* =========================================
-   MOBILE RESPONSIVENESS & ANIMATIONS 📱
-   ========================================= */
-@media (max-width: 768px) {
-  #cur, #cur-ring { display: none !important; }
-  body { cursor: auto; }
-  .layout{padding:20px 15px}
-  .card { padding: 32px 20px 24px; border-radius: 20px; margin-bottom: 20px; }
-  .ftitle { font-size: 1.9rem; margin-bottom: 4px; }
-  .fsub { font-size: 0.8rem; margin-bottom: 20px; }
-  
-  /* Prevent iOS Zoom */
-  input, select { font-size: 16px !important; }
-  
-  /* Staggered Mobile Entry Animation */
-  .f, .btn-wrap, .lr { opacity: 0; animation: mobilePop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-  .f:nth-child(1) { animation-delay: 0.4s; }
-  .f:nth-child(2) { animation-delay: 0.5s; }
-  .f:nth-child(3) { animation-delay: 0.6s; }
-  .f:nth-child(4) { animation-delay: 0.7s; }
-  .f:nth-child(5) { animation-delay: 0.8s; }
-  .f:nth-child(6) { animation-delay: 0.9s; }
-  .btn-wrap { animation-delay: 1.0s; }
-  .lr { animation-delay: 1.1s; }
-}
+/* TOAST */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(18px);background:rgba(8,12,24,.96);border:1px solid rgba(255,255,255,.07);backdrop-filter:blur(24px);border-radius:100px;padding:12px 26px;font-size:.8rem;font-weight:600;color:var(--ink);opacity:0;transition:opacity .3s,transform .3s;z-index:9999;white-space:nowrap;box-shadow:0 10px 40px rgba(0,0,0,.6)}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast.ok{border-color:rgba(16,185,129,.35);color:#34d399}
+#toast.bad{border-color:rgba(239,68,68,.35);color:#f87171}
 
-@keyframes mobilePop {
-  0% { opacity: 0; transform: translateY(15px) scale(0.98); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
+/* MOBILE FIXES */
+@media (max-width: 768px) {
+  .card { padding: 28px 20px 24px; border-radius: 20px; }
+  .ftitle { font-size: 1.8rem; margin-bottom: 2px; }
+  .fsub { font-size: 0.75rem; margin-bottom: 16px; }
+  input, select { font-size: 16px !important; height: 44px; } /* Prevents iOS Zoom */
+  .f { margin-bottom: 12px; }
 }
 </style>
 </head>
 <body>
 <canvas id="c"></canvas>
 <div class="grain"></div>
+
 <div id="cur"></div>
 <div id="cur-ring"></div>
+<div id="toast"></div>
 
 <div class="layout">
   <div class="card" id="card">
+    <div class="card-border-wrap"><div class="card-border"></div></div>
     <div class="glare" id="glare"></div>
 
     <div class="flogo">
@@ -148,70 +142,94 @@ input:focus,select:focus{border-color:rgba(6,182,212,.5);background:rgba(6,182,2
     <div class="ftitle" id="glitch-text" data-value="CREATE ACCOUNT">CREATE ACCOUNT</div>
     <div class="fsub">Join the FUTA CBT simulation platform.</div>
 
+    <div class="step-indicator">
+      <div class="step-dot active" id="dot1"></div>
+      <div class="step-dot" id="dot2"></div>
+    </div>
+
     <form id="sf" novalidate>
-      <div class="f">
-        <label class="fl">Full Name</label>
-        <div class="iw"><i class="fa-solid fa-user ic"></i><input type="text" id="fullname" placeholder="Bamidele Joseph" required></div>
-        <div class="err" id="e-name">Enter your full name</div>
-      </div>
+      <div class="form-window">
+        <div class="form-track" id="formTrack">
+          
+          <div class="step-pane">
+            <div class="f">
+              <label class="fl">Full Name</label>
+              <div class="iw"><i class="fa-solid fa-user ic"></i><input type="text" id="fullname" placeholder="Bamidele Joseph" required></div>
+              <div class="err" id="e-name">Enter your full name</div>
+            </div>
 
-      <div class="f">
-        <label class="fl">Email Address</label>
-        <div class="iw"><i class="fa-solid fa-envelope ic"></i><input type="email" id="email" placeholder="student@futa.edu.ng" required></div>
-        <div class="err" id="e-email">Enter a valid email</div>
-      </div>
+            <div class="f">
+              <label class="fl">Email Address</label>
+              <div class="iw"><i class="fa-solid fa-envelope ic"></i><input type="email" id="email" placeholder="student@futa.edu.ng" required></div>
+              <div class="err" id="e-email">Enter a valid email</div>
+            </div>
 
-      <div class="f">
-        <label class="fl">Password</label>
-        <div class="iw">
-          <i class="fa-solid fa-lock ic"></i>
-          <input type="password" id="password" placeholder="Min 8 characters" required>
-          <i class="fa-solid fa-eye ic icr" id="togPw"></i>
+            <div class="f">
+              <label class="fl">Password</label>
+              <div class="iw">
+                <i class="fa-solid fa-lock ic"></i>
+                <input type="password" id="password" placeholder="Min 8 characters" required>
+                <i class="fa-solid fa-eye ic icr" id="togPw"></i>
+              </div>
+              <div class="str"><div class="sg" id="s1"></div><div class="sg" id="s2"></div><div class="sg" id="s3"></div><div class="sg" id="s4"></div></div>
+              <div class="err" id="e-pw">Minimum 8 characters</div>
+            </div>
+
+            <div class="btn-row">
+              <button type="button" class="btn" id="nextBtn">
+                <span class="btxt">NEXT STEP <i class="fa-solid fa-arrow-right"></i></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="step-pane">
+            <div class="f">
+              <label class="fl">Phone Number</label>
+              <div class="pr">
+                <div class="cw"><select id="code" tabindex="-1"><option value="+234">+234 🇳🇬</option></select></div>
+                <div class="iw" style="flex:1"><i class="fa-solid fa-mobile-screen-button ic" style="left:10px"></i><input type="tel" id="phone" placeholder="08012345678" style="padding-left:32px"></div>
+              </div>
+              <div class="err" id="e-phone">Enter a valid number</div>
+            </div>
+
+            <div class="f">
+              <label class="fl">Faculty / School</label>
+              <div class="sw">
+                <select id="faculty" required>
+                  <option value="" disabled selected>Select your faculty</option>
+                  <option value="SOC">School of Computing (SOC)</option>
+                  <option value="SLIT">School of Logistics & Innovation Tech</option>
+                  <option value="SPS">School of Physical Sciences</option>
+                  <option value="SESE">School of Electrical Systems Eng</option>
+                  <option value="SIMME">School of Infrastructure & Mfg</option>
+                  <option value="SET">School of Environmental Tech</option>
+                  <option value="SAAT">School of Agric & Agric Tech</option>
+                  <option value="SEMS">School of Earth & Mineral Sci</option>
+                  <option value="SLS">School of Life Sciences</option>
+                  <option value="CHS">College of Health Sciences</option>
+                  <option value="GNS">General Studies</option>
+                </select>
+              </div>
+              <div class="err" id="e-fac">Select your faculty</div>
+            </div>
+
+            <div class="f">
+              <label class="fl">Department</label>
+              <div class="sw"><select id="dept" required><option value="" disabled selected>Select faculty first</option></select></div>
+              <div class="err" id="e-dept">Select your department</div>
+            </div>
+
+            <div class="btn-row">
+              <button type="button" class="btn secondary" id="backBtn">
+                <span class="btxt"><i class="fa-solid fa-arrow-left"></i></span>
+              </button>
+              <button type="submit" class="btn" id="subBtn">
+                <span class="btxt"><i class="fa-solid fa-user-plus"></i> REGISTER</span>
+              </button>
+            </div>
+          </div>
+
         </div>
-        <div class="str"><div class="sg" id="s1"></div><div class="sg" id="s2"></div><div class="sg" id="s3"></div><div class="sg" id="s4"></div></div>
-        <div class="err" id="e-pw">Minimum 8 characters</div>
-      </div>
-
-      <div class="f">
-        <label class="fl">Phone Number</label>
-        <div class="pr">
-          <div class="cw"><select id="code" tabindex="-1"><option value="+234">+234 🇳🇬</option></select></div>
-          <div class="iw" style="flex:1"><i class="fa-solid fa-mobile-screen-button ic" style="left:10px"></i><input type="tel" id="phone" placeholder="08012345678" style="padding-left:32px"></div>
-        </div>
-        <div class="err" id="e-phone">Enter a valid number</div>
-      </div>
-
-      <div class="f">
-        <label class="fl">Faculty / School</label>
-        <div class="sw">
-          <select id="faculty" required>
-            <option value="" disabled selected>Select your faculty</option>
-            <option value="SOC">School of Computing (SOC)</option>
-            <option value="SLIT">School of Logistics & Innovation Tech (SLIT)</option>
-            <option value="SPS">School of Physical Sciences (SPS)</option>
-            <option value="SESE">School of Electrical Systems Eng (SESE)</option>
-            <option value="SIMME">School of Infrastructure & Mfg Eng (SIMME)</option>
-            <option value="SET">School of Environmental Technology (SET)</option>
-            <option value="SAAT">School of Agriculture & Agric Tech (SAAT)</option>
-            <option value="SEMS">School of Earth & Mineral Sciences (SEMS)</option>
-            <option value="SLS">School of Life Sciences (SLS)</option>
-            <option value="CHS">College of Health Sciences (CHS)</option>
-            <option value="GNS">General Studies (GNS)</option>
-          </select>
-        </div>
-        <div class="err" id="e-fac">Select your faculty</div>
-      </div>
-
-      <div class="f">
-        <label class="fl">Department</label>
-        <div class="sw"><select id="dept" required><option value="" disabled selected>Select faculty first</option></select></div>
-        <div class="err" id="e-dept">Select your department</div>
-      </div>
-
-      <div class="btn-wrap" id="btnWrap">
-        <button type="submit" class="btn" id="subBtn">
-          <span class="btxt"><i class="fa-solid fa-user-plus"></i> REGISTER</span>
-        </button>
       </div>
     </form>
 
@@ -220,17 +238,233 @@ input:focus,select:focus{border-color:rgba(6,182,212,.5);background:rgba(6,182,2
 </div>
 
 <script>
-/* ── CANVAS: THE GRAVITY WELL (BLACK HOLE) ── */
+/* ── SUPABASE INITIALIZATION ── */
+const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const db = window._sb;
+
+/* ── TOAST NOTIFICATION ── */
+function toast(m, t=''){
+  const el = document.getElementById('toast');
+  el.textContent = m;
+  el.className = 'show ' + t;
+  clearTimeout(el._);
+  el._ = setTimeout(() => el.className = '', 4000);
+}
+
+/* ── MULTI-STEP WIZARD LOGIC ── */
+const track = document.getElementById('formTrack');
+const dot1 = document.getElementById('dot1');
+const dot2 = document.getElementById('dot2');
+
+function se(id,show){
+  const el=document.getElementById('e-'+id);
+  if(el)el.style.display=show?'block':'none';
+}
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+  let ok = true;
+  const fn = document.getElementById('fullname').value.trim();
+  const em = document.getElementById('email').value.trim();
+  const pw = document.getElementById('password').value;
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+  if(!fn){se('name',1);ok=false} else {se('name',0)}
+  if(!re.test(em)){se('email',1);ok=false} else {se('email',0)}
+  if(pw.length<8){se('pw',1);ok=false} else {se('pw',0)}
+
+  if(ok) {
+    track.style.transform = 'translateX(-50%)';
+    dot1.classList.remove('active');
+    dot2.classList.add('active');
+  }
+});
+
+document.getElementById('backBtn').addEventListener('click', () => {
+  track.style.transform = 'translateX(0)';
+  dot2.classList.remove('active');
+  dot1.classList.add('active');
+});
+
+/* ── FACULTY & DEPARTMENTS LOGIC (EXPANDED JSON) ── */
+const depts = {
+  SOC: [
+    'Software Engineering (SEN)',
+    'Computer Science (CSC)',
+    'Cybersecurity (CYS)',
+    'Data Science (DSC)',
+    'Information Systems (IFS)',
+    'Information Technology (IFT)'
+  ],
+  SLIT: [
+    'Financial Technology (FinTech)',
+    'Business Information Technology (BIT)',
+    'Entrepreneurship Management Technology (EMT)',
+    'Logistics and Transport Technology (LTT)',
+    'Maritime Technology and Logistics (MTL)',
+    'Project Management Technology (PMT)',
+    'Securities and Investment Management Technology (SIMT)',
+    'Supply Chain Management (SCM)'
+  ],
+  SPS: [
+    'Educational Technology (EDT)',
+    'Library and Information Science (LIS)',
+    'Physics (PHY)',
+    'Mathematics (MTH)',
+    'Chemistry (CHE)',
+    'Statistics (STA)'
+  ],
+  SESE: [
+    'Computer Engineering (CPE)',
+    'Electrical and Electronics Engineering (EEE)',
+    'Information and Communication Engineering (ICE)',
+    'Mechatronics Engineering (MCE)',
+    'Biomedical Engineering (BME)'
+  ],
+  SIMME: [
+    'Mechanical Engineering (MEE)',
+    'Civil and Environmental Engineering (CVE)',
+    'Agricultural Engineering (AGE)',
+    'Chemical Engineering (CHE)',
+    'Industrial and Production Engineering (IPE)',
+    'Metallurgical and Materials Engineering (MME)',
+    'Mining Engineering (MNE)'
+  ],
+  SET: [
+    'Architecture (ARC)',
+    'Building (BDG)',
+    'Environmental Management (EVM)',
+    'Estate Management (ESM)',
+    'Industrial Design (IDD)',
+    'Quantity Surveying (QSV)',
+    'Surveying and Geoinformatics (SVG)',
+    'Urban and Regional Planning (URP)'
+  ],
+  SAAT: [
+    'Agricultural and Resource Economics (ARE)',
+    'Agricultural Extension and Communication Technology (AEC)',
+    'Animal Production and Health (APH)',
+    'Crop, Soil and Pest Management (CSP)',
+    'Ecotourism and Wildlife Management (EWM)',
+    'Fisheries and Aquaculture Technology (FAT)',
+    'Food Science and Technology (FST)',
+    'Forestry and Wood Technology (FWT)',
+    'Nutrition and Dietetics (NUD)'
+  ],
+  SEMS: [
+    'Applied Geology (AGY)',
+    'Applied Geophysics (AGP)',
+    'Marine Science and Technology (MST)',
+    'Meteorology and Climate Science (MET)',
+    'Remote Sensing and Geoscience Information Systems (RSG)'
+  ],
+  SLS: [
+    'Biochemistry (BCH)',
+    'Biology (BIO)',
+    'Biotechnology (BTH)',
+    'Microbiology (MCB)'
+  ],
+  CHS: [
+    'Medicine and Surgery (MBBS)',
+    'Nursing Science (NSC)',
+    'Human Anatomy (ANA)',
+    'Physiology (PHS)',
+    'Medical Laboratory Science (MLS)',
+    'Public Health (PUH)'
+  ],
+  GNS: [
+    'General Studies (GNS)'
+  ]
+};
+
+document.getElementById('faculty').addEventListener('change',function(){
+  const s = document.getElementById('dept');
+  s.innerHTML = '<option value="" disabled selected>Select department</option>';
+  const selectedFaculty = this.value;
+  
+  if (depts[selectedFaculty]) {
+    depts[selectedFaculty].forEach(d => {
+      const o = document.createElement('option');
+      o.value = d;
+      o.textContent = d;
+      s.appendChild(o);
+    });
+  }
+  se('fac', false);
+});
+
+/* ── SUPABASE FORM SUBMISSION ── */
+document.getElementById('sf').addEventListener('submit', async function(e){
+  e.preventDefault();
+  let ok = true;
+  
+  const fn = document.getElementById('fullname').value.trim();
+  const em = document.getElementById('email').value.trim();
+  const pw = document.getElementById('password').value;
+  const cd = document.getElementById('code').value;
+  const phNum = document.getElementById('phone').value.trim();
+  const ph = cd + phNum;
+  const fa = document.getElementById('faculty').value;
+  const de = document.getElementById('dept').value;
+  
+  if(phNum.length < 7){se('phone',1);ok=false} else {se('phone',0)}
+  if(!fa){se('fac',1);ok=false} else {se('fac',0)}
+  if(!de){se('dept',1);ok=false} else {se('dept',0)}
+
+  if(ok) {
+    const btn = document.getElementById('subBtn');
+    const btxt = btn.querySelector('.btxt');
+    
+    btn.disabled = true;
+    btxt.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> CREATING...';
+    
+    try {
+      const { data: authData, error: authError } = await db.auth.signUp({
+        email: em,
+        password: pw
+      });
+      if (authError) throw authError;
+      
+      const uid = authData.user?.id;
+      if (uid) {
+        const { error: dbError } = await db.from('students').insert([{
+          id: uid, fullname: fn, email: em, faculty: fa, department: de, phone: ph
+        }]);
+        if (dbError) throw dbError;
+      }
+      
+      btxt.innerHTML = '<i class="fa-solid fa-check"></i> SUCCESS';
+      btn.style.background = '#10b981';
+      btn.style.boxShadow = '0 0 30px rgba(16,185,129,0.5)';
+      
+      toast('🎉 Account created! Redirecting to login...', 'ok');
+      setTimeout(() => window.location.href = 'login.html', 2000);
+      
+    } catch (err) {
+      console.error(err);
+      toast('❌ ' + (err.message || 'Something went wrong. Please try again.'), 'bad');
+      btn.disabled = false;
+      btxt.innerHTML = '<i class="fa-solid fa-user-plus"></i> REGISTER';
+    }
+  }
+});
+
+/* ── CANVAS: THE GRAVITY WELL (MOBILE OPTIMIZED) ── */
 const cv=document.getElementById('c'), ct=cv.getContext('2d');
 let W,H;
 function rs(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight}
 rs();window.addEventListener('resize',rs);
 
+const isMobile = window.innerWidth <= 768;
+const particleCount = isMobile ? 60 : 200; // CPU saver
+
 let particles=[];
+let ripples=[]; 
 let mx=W/2, my=H/2; 
 let cx=W/2, cy=H/2; 
 
-for(let i=0;i<200;i++){
+for(let i=0;i<particleCount;i++){
   particles.push({
     angle: Math.random()*Math.PI*2,
     radius: Math.random()*Math.max(W,H),
@@ -243,10 +477,22 @@ for(let i=0;i<200;i++){
 
 function updateTarget(x, y) { mx = x; my = y; }
 window.addEventListener('mousemove', e => updateTarget(e.clientX, e.clientY));
-window.addEventListener('touchmove', e => updateTarget(e.touches[0].clientX, e.touches[0].clientY), {passive: true});
+// Makes sure cursor tracking works on touch too!
+window.addEventListener('touchmove', e => {
+  updateTarget(e.touches[0].clientX, e.touches[0].clientY);
+  cur.style.left = e.touches[0].clientX + 'px';
+  cur.style.top = e.touches[0].clientY + 'px';
+}, {passive: true});
 
-function triggerShockwave() {
-  particles.forEach(p=>{ p.radius += 100 + Math.random()*120; p.speed *= 3; });
+function triggerShockwave(e) {
+  let tx = e.touches ? e.touches[0].clientX : e.clientX;
+  let ty = e.touches ? e.touches[0].clientY : e.clientY;
+  ripples.push({ x: tx, y: ty, radius: 10, alpha: 1 });
+
+  particles.forEach(p=>{ 
+    if (p.radius < Math.max(W, H) * 0.8) p.radius += 60 + Math.random() * 60;
+    if (p.speed < 0.15) p.speed *= 2.5; 
+  });
 }
 window.addEventListener('mousedown', triggerShockwave);
 window.addEventListener('touchstart', triggerShockwave, {passive: true});
@@ -254,14 +500,21 @@ window.addEventListener('touchstart', triggerShockwave, {passive: true});
 function drawGalaxy(){
   ct.fillStyle='rgba(3,7,18,0.2)'; 
   ct.fillRect(0,0,W,H);
-
   cx += (mx - cx) * 0.05;
   cy += (my - cy) * 0.05;
+
+  for (let i = ripples.length - 1; i >= 0; i--) {
+    let r = ripples[i];
+    ct.beginPath(); ct.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+    ct.strokeStyle = `rgba(6, 182, 212, ${r.alpha})`; ct.lineWidth = 3; ct.stroke();
+    r.radius += 18; r.alpha -= 0.04;
+    if (r.alpha <= 0) ripples.splice(i, 1);
+  }
 
   particles.forEach(p=>{
     p.angle += p.speed;
     if(p.radius > 50) p.radius -= 0.5;
-    if(p.speed > 0.02) p.speed *= 0.98;
+    if(p.speed > 0.02) p.speed *= 0.96;
 
     let x = cx + Math.cos(p.angle) * p.radius;
     let y = cy + Math.sin(p.angle) * p.radius;
@@ -282,24 +535,26 @@ function drawGalaxy(){
 }
 drawGalaxy();
 
-/* ── HACKER TEXT DECRYPTION EFFECT ── */
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
-const glitchEl = document.getElementById('glitch-text');
-const originalText = glitchEl.dataset.value;
-
-window.addEventListener('load', () => {
-  let iterations = 0;
-  const interval = setInterval(() => {
-    glitchEl.innerText = originalText.split("").map((letter, index) => {
-      if(index < iterations) return originalText[index];
-      return letters[Math.floor(Math.random() * letters.length)];
-    }).join("");
-    if(iterations >= originalText.length) clearInterval(interval);
-    iterations += 1/3;
-  }, 30);
+/* ── UTILITIES ── */
+document.getElementById('togPw').addEventListener('click',function(e){
+  e.preventDefault(); 
+  const p=document.getElementById('password'),t=p.type==='text';
+  p.type=t?'password':'text';
+  this.classList.toggle('fa-eye',t); this.classList.toggle('fa-eye-slash',!t);
 });
 
-/* ── CUSTOM CURSOR (Desktop only) ── */
+document.getElementById('password').addEventListener('input',function(){
+  const v=this.value;let s=0;
+  if(v.length>=8)s++;if(/[A-Z]/.test(v))s++;if(/[0-9]/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;
+  const c=['#ef4444','#f59e0b','#10b981','#3b82f6'],g=['rgba(239,68,68,.4)','rgba(245,158,11,.4)','rgba(16,185,129,.4)','rgba(59,130,246,.4)'];
+  [1,2,3,4].forEach(i=>{
+    const sg=document.getElementById('s'+i);
+    if(i<=s){sg.style.background=c[s-1];sg.style.boxShadow=`0 0 6px ${g[s-1]}`}
+    else{sg.style.background='rgba(255,255,255,.05)';sg.style.boxShadow='none'}
+  });
+});
+
+/* CUSTOM CURSOR UPDATE */
 const cur=document.getElementById('cur'), ring=document.getElementById('cur-ring');
 let rx=0,ry=0;
 window.addEventListener('mousemove',e=>{
@@ -313,22 +568,21 @@ window.addEventListener('mousemove',e=>{
 document.querySelectorAll('input,select,button,a,.icr').forEach(el=>{
   el.addEventListener('mouseenter',()=>{
     ring.style.width='50px'; ring.style.height='50px'; 
-    ring.style.background='rgba(6,182,212,0.1)';
+    ring.style.borderColor='rgba(59,130,246,0.8)';
   });
   el.addEventListener('mouseleave',()=>{
     ring.style.width='36px'; ring.style.height='36px'; 
-    ring.style.background='transparent';
+    ring.style.borderColor='rgba(6,182,212,0.6)';
   });
 });
 
-/* ── 3D TILT & GLARE EFFECT ── */
+/* 3D TILT & GLARE EFFECT */
 const card=document.getElementById('card'), glare=document.getElementById('glare');
-
 card.addEventListener('mousemove',e=>{
   const rect = card.getBoundingClientRect();
   const x = e.clientX - rect.left; const y = e.clientY - rect.top;
   const cx = rect.width/2; const cy = rect.height/2;
-  const rotateX = ((y - cy) / cy) * -5; // Reduced max tilt for taller form
+  const rotateX = ((y - cy) / cy) * -5; 
   const rotateY = ((x - cx) / cx) * 5;
   
   card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
@@ -350,63 +604,6 @@ if (window.DeviceOrientationEvent && matchMedia('(pointer:coarse)').matches) {
     glare.style.setProperty('--my', (50 + tiltX*2) + '%');
   });
 }
-
-/* ── MAGNETIC BUTTON (Desktop Only) ── */
-const btnWrap = document.getElementById('btnWrap'), btn = document.getElementById('subBtn');
-if(matchMedia('(pointer:fine)').matches) {
-  btnWrap.addEventListener('mousemove', (e) => {
-    const rect = btnWrap.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width/2;
-    const y = e.clientY - rect.top - rect.height/2;
-    btn.style.transform = `translate(${x * 0.3}px, ${y * 0.4}px)`;
-  });
-  btnWrap.addEventListener('mouseleave', () => {
-    btn.style.transform = 'translate(0px, 0px)';
-  });
-}
-
-/* ── PASSWORD TOGGLE & METER ── */
-document.getElementById('togPw').addEventListener('click',function(e){
-  e.preventDefault(); 
-  const p=document.getElementById('password'),t=p.type==='text';
-  p.type=t?'password':'text';
-  this.classList.toggle('fa-eye',t); this.classList.toggle('fa-eye-slash',!t);
-});
-
-document.getElementById('password').addEventListener('input',function(){
-  const v=this.value;let s=0;
-  if(v.length>=8)s++;if(/[A-Z]/.test(v))s++;if(/[0-9]/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;
-  const c=['#ef4444','#f59e0b','#10b981','#3b82f6'],g=['rgba(239,68,68,.4)','rgba(245,158,11,.4)','rgba(16,185,129,.4)','rgba(59,130,246,.4)'];
-  [1,2,3,4].forEach(i=>{
-    const sg=document.getElementById('s'+i);
-    if(i<=s){sg.style.background=c[s-1];sg.style.boxShadow=`0 0 6px ${g[s-1]}`}
-    else{sg.style.background='rgba(255,255,255,.05)';sg.style.boxShadow='none'}
-  });
-});
-
-/* ── FACULTY & DEPARTMENTS LOGIC ── */
-const depts={SOC:['Software Engineering (SEN)','Computer Science (CSC)','Cybersecurity (CYS)','Data Science (DSC)','Information Systems (IFS)','Information Technology (IFT)'],SLIT:['Financial Technology (FinTech)','Business Information Technology (BIT)','Entrepreneurship Management Technology (EMT)','Logistics and Transport Technology (LTT)','Maritime Technology and Logistics (MTL)','Project Management Technology (PMT)','Securities and Investment Management Technology (SIMT)','Supply Chain Management (SCM)'],SPS:['Educational Technology (EDT)','Library and Information Science (LIS)','Physics (PHY)','Mathematics (MTH)','Chemistry (CHE)','Statistics (STA)'],SESE:['Computer Engineering (CPE)','Electrical and Electronics Engineering (EEE)','Information and Communication Engineering (ICE)','Mechatronics Engineering (MCE)','Biomedical Engineering (BME)'],SIMME:['Mechanical Engineering (MEE)','Civil and Environmental Engineering (CVE)','Agricultural Engineering (AGE)','Chemical Engineering (CHE)','Industrial and Production Engineering (IPE)','Metallurgical and Materials Engineering (MME)','Mining Engineering (MNE)'],SET:['Architecture (ARC)','Building (BDG)','Environmental Management (EVM)','Estate Management (ESM)','Industrial Design (IDD)','Quantity Surveying (QSV)','Surveying and Geoinformatics (SVG)','Urban and Regional Planning (URP)'],SAAT:['Agricultural and Resource Economics (ARE)','Agricultural Extension and Communication Technology (AEC)','Animal Production and Health (APH)','Crop, Soil and Pest Management (CSP)','Ecotourism and Wildlife Management (EWM)','Fisheries and Aquaculture Technology (FAT)','Food Science and Technology (FST)','Forestry and Wood Technology (FWT)','Nutrition and Dietetics (NUD)'],SEMS:['Applied Geology (AGY)','Applied Geophysics (AGP)','Marine Science and Technology (MST)','Meteorology and Climate Science (MET)','Remote Sensing and Geoscience Information Systems (RSG)'],SLS:['Biochemistry (BCH)','Biology (BIO)','Biotechnology (BTH)','Microbiology (MCB)'],CHS:['Medicine and Surgery (MBBS)','Nursing Science (NSC)','Human Anatomy (ANA)','Physiology (PHS)','Medical Laboratory Science (MLS)','Public Health (PUH)'],GNS:['General Studies (GNS)']};
-document.getElementById('faculty').addEventListener('change',function(){
-  const s=document.getElementById('dept');
-  s.innerHTML='<option value="" disabled selected>Select department</option>';
-  (depts[this.value]||[]).forEach(d=>{const o=document.createElement('option');o.value=o.textContent=d;s.appendChild(o)});
-  document.getElementById('e-fac').style.display = 'none';
-});
-
-/* ── FORM SUBMISSION LOGIC ── */
-document.getElementById('sf').addEventListener('submit', function(e){
-  e.preventDefault();
-  // Basic validation bypass for demo
-  const btxt = btn.querySelector('.btxt');
-  btn.style.pointerEvents = 'none';
-  btxt.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> CREATING...';
-  
-  setTimeout(()=>{
-    btxt.innerHTML = '<i class="fa-solid fa-check"></i> SUCCESS';
-    btn.style.background = '#10b981';
-    btn.style.boxShadow = '0 0 30px rgba(16,185,129,0.5)';
-  }, 1500);
-});
 </script>
 </body>
 </html>
