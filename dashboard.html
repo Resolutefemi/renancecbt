@@ -421,7 +421,7 @@
             <form id="profileUpdateForm" onsubmit="saveProfile(event)">
                 <div class="input-group">
                     <label for="studentName">Full Name</label>
-                    <input type="text" id="studentName" placeholder="e.g. Bamidele Joseph" required>
+                    <input type="text" id="studentName" placeholder="e.g. Osarekpame Williams" required>
                 </div>
                 
                 <div class="input-group">
@@ -438,7 +438,6 @@
                         <option value="SEMS">School of Earth and Mineral Sciences (SEMS)</option>
                         <option value="SLS">School of Life Sciences (SLS)</option>
                         <option value="CHS">College of Health Sciences (CHS)</option>
-                        <option value="GNS">General Studies (GNS)</option>
                     </select>
                 </div>
 
@@ -502,6 +501,7 @@
         // ── Course Data ──────────────────────────────────────────────────────
         const courses = [
             { id: 'COS 101', title: 'INTRODUCTION TO COMPUTER',  icon: 'cpu',        isReady: true  },
+            { id: 'MEE 101', title: 'ENGINEERING DRAWING I',  icon: 'compass',        isReady: true  },
             { id: 'GNS 103', title: 'INFORMATION LITERACY',      icon: 'library',    isReady: true  },
             { id: 'STA 111', title: 'DESCRIPTIVE STATISTICS',    icon: 'bar-chart',  isReady: true  },
             { id: 'MTH 101', title: 'ELEMENTARY MATHEMATICS I',  icon: 'calculator', isReady: true  },
@@ -510,8 +510,15 @@
             { id: 'GST 111', title: 'COMMUNICATION IN ENGLISH',  icon: 'languages',  isReady: true  },
             { id: 'CHE 101', title: 'GENERAL CHEMISTRY I',       icon: 'beaker',     isReady: true },
             { id: 'CHE 103', title: 'EXPERIMENTAL CHEMISTRY I',     icon: 'flask',     isReady: true },
-            { id: 'BIO 101', title: 'GENERAL BIOLOGY I',         icon: 'dna',        isReady: false },
+            { id: 'BIO 101', title: 'GENERAL BIOLOGY I',         icon: 'dna',        isReady: false }
         ];
+
+        const MEE101_FOOTER_TEXT = 'START LEARNING';
+
+        function getCourseFooterText(course) {
+            if (course.id === 'MEE 101') return MEE101_FOOTER_TEXT;
+            return course.isReady ? 'START PRACTICE' : 'COMING SOON';
+        }
 
         // ── Nav ──────────────────────────────────────────────────────────────
         function toggleNav() {
@@ -584,10 +591,11 @@
                             <p style="font-size:0.72rem;color:var(--text-muted);font-weight:500;margin-top:3px;">${course.title}</p>
                         </div>
                         <div class="card-footer">
-                            <span>${course.isReady ? 'START PRACTICE' : 'COMING SOON'}</span>
+                            <span>${getCourseFooterText(course)}</span>
                             <i data-lucide="${course.isReady ? 'chevron-right' : 'clock'}" size="15"></i>
                         </div>
                     `;
+                    
 
                     card.onclick = () => {
                         if (course.isReady) {

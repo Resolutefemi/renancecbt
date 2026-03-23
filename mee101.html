@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>MEE 101 – Renance Learning Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root {
+  --navy: #0d1b2a;
+  --navy-mid: #1a2e45;
+  --navy-light: #243b55;
+  --blue: #1d6fa4;
+  --blue-bright: #2a9fd6;
+  --amber: #f0a500;
+  --amber-light: #fbbf24;
+  --cream: #faf8f4;
+  --white: #ffffff;
+  --slate: #64748b;
+  --slate-light: #94a3b8;
+  --border: #e8e4dc;
+  --border-dark: #d4cec3;
+  --text: #1a1a2e;
+  --text-light: #4a5568;
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 2px 8px rgba(13,27,42,0.06);
+  --shadow: 0 6px 24px rgba(13,27,42,0.10);
+  --shadow-lg: 0 16px 48px rgba(13,27,42,0.16);
+  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'Fraunces', serif;
+  --nav-h: 64px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+.nav {
+  background: var(--navy);
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(16px, 5vw, 48px);
+  position: sticky;
+  top: 0;
+  z-index: 300;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo {
+  width: 36px; height: 36px;
+  background: var(--amber);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.nav-logo i { color: var(--navy); font-size: 1rem; }
+.nav-text { display: flex; flex-direction: column; gap: 1px; }
+.nav-title {
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.nav-sub { font-size: 0.68rem; color: var(--blue-bright); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.nav-author { color: var(--slate-light); font-size: 0.78rem; font-weight: 400; }
+.nav-author strong { color: var(--amber); font-weight: 600; }
+.nav-badge {
+  background: var(--amber);
+  color: var(--navy);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, #1a3a5c 100%);
+  padding: clamp(48px, 10vw, 96px) clamp(16px, 5vw, 48px) clamp(72px, 14vw, 120px);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 50%, rgba(42,159,214,0.12) 0%, transparent 55%),
+    radial-gradient(circle at 75% 20%, rgba(240,165,0,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(240,165,0,0.15);
+  border: 1px solid rgba(240,165,0,0.3);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--amber-light);
+  margin-bottom: 24px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5.5vw, 3.6rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--amber);
+}
+.hero p {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: rgba(255,255,255,0.6);
+  max-width: 560px;
+  margin: 0 auto 36px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 9px 16px;
+  font-size: 0.83rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  transition: background 0.2s;
+}
+.stat-pill:hover { background: rgba(255,255,255,0.11); }
+.stat-pill i { color: var(--amber); font-size: 0.8rem; }
+
+/* ── SEARCH ── */
+.search-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 5vw, 48px);
+  position: relative;
+  z-index: 10;
+  margin-top: -30px;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  border: 1.5px solid var(--border-dark);
+  border-radius: var(--radius);
+  padding: 0 20px;
+  box-shadow: var(--shadow-lg);
+  gap: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-box:focus-within {
+  border-color: var(--blue-bright);
+  box-shadow: 0 0 0 4px rgba(42,159,214,0.1), var(--shadow-lg);
+}
+.search-box .s-icon { color: var(--blue); font-size: 1rem; flex-shrink: 0; }
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 17px 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text);
+  background: transparent;
+  min-width: 0;
+}
+.search-box input::placeholder { color: var(--slate-light); }
+.search-box .clear-btn {
+  cursor: pointer;
+  color: var(--slate-light);
+  font-size: 0.9rem;
+  display: none;
+  padding: 4px;
+  transition: color 0.2s;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+}
+.search-box .clear-btn:hover { color: var(--text); }
+
+/* ── MAIN ── */
+.main-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 52px clamp(16px, 5vw, 48px) 80px;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.45rem);
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+.section-title i { color: var(--amber); font-size: 1.1rem; }
+.count-badge {
+  background: var(--navy);
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.02em;
+}
+
+/* ── CARD GRID ── */
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: 24px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s cubic-bezier(.25,.8,.25,1), box-shadow 0.25s, border-color 0.25s;
+  animation: fadeUp 0.45s ease both;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--blue-bright);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card header */
+.card-header {
+  background: var(--navy);
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+}
+.card-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.12);
+  line-height: 1;
+  min-width: 44px;
+  flex-shrink: 0;
+  letter-spacing: -0.03em;
+}
+.card-title {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.4;
+  flex: 1;
+  padding-right: 28px;
+}
+.card-yt-icon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  color: rgba(255,255,255,0.3);
+  font-size: 0.9rem;
+}
+.card-tag-strip {
+  padding: 8px 18px;
+  background: var(--navy-mid);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.card-tag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.card-tag i { font-size: 0.6rem; }
+
+/* Diagram */
+.diagram-panel {
+  background: #f0f4f8;
+  border-bottom: 1.5px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.diagram-panel svg { display: block; width: 100%; height: 170px; }
+.diagram-label {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  background: rgba(13,27,42,0.75);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 4px 9px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+}
+.expand-hint {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  font-size: 0.6rem;
+  padding: 4px 9px;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  backdrop-filter: blur(4px);
+}
+.diagram-panel:hover .expand-hint { opacity: 1; }
+
+/* Thumbnail strip */
+.thumb-strip {
+  display: flex;
+  height: 80px;
+  border-bottom: 1.5px solid var(--border);
+  overflow: hidden;
+  position: relative;
+  background: #0f172a;
+}
+.thumb-strip img {
+  flex: 1;
+  min-width: 0;
+  object-fit: cover;
+  opacity: 0.7;
+  transition: opacity 0.2s, flex 0.3s ease;
+  cursor: pointer;
+}
+.thumb-strip img:hover { opacity: 1; flex: 2.5; }
+.thumb-strip-label {
+  position: absolute;
+  bottom: 6px;
+  left: 10px;
+  background: rgba(240,165,0,0.9);
+  color: var(--navy);
+  font-size: 0.58rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Video */
+.video-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  background: #0a0f18;
+}
+.video-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+.video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  gap: 10px;
+  background: linear-gradient(160deg, #0d1b2a 0%, #1a2e45 100%);
+  transition: background 0.2s;
+}
+.video-placeholder:hover { background: linear-gradient(160deg, #1a2e45 0%, #1d6fa4 100%); }
+.video-placeholder > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+}
+.play-ring {
+  position: relative;
+  z-index: 2;
+  width: 52px;
+  height: 52px;
+  background: var(--amber);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(240,165,0,0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.video-placeholder:hover .play-ring {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(240,165,0,0.6);
+}
+.play-ring i { color: var(--navy); font-size: 1.2rem; margin-left: 3px; }
+.play-label { position: relative; z-index: 2; color: rgba(255,255,255,0.6); font-size: 0.78rem; font-weight: 500; }
+
+/* Card body */
+.card-body { padding: 18px 18px 20px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+.card-desc {
+  font-size: 0.855rem;
+  color: var(--text-light);
+  line-height: 1.65;
+  flex: 1;
+}
+.card-desc strong { color: var(--text); font-weight: 600; }
+.concepts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.chip {
+  background: #eef3f9;
+  color: var(--blue);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.01em;
+}
+.watch-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--navy);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.01em;
+}
+.watch-btn:hover { background: var(--blue); transform: translateY(-1px); }
+.watch-btn i { color: var(--amber); font-size: 0.9rem; }
+
+/* ── EMPTY STATE ── */
+.no-results {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--slate);
+}
+.no-results i { font-size: 2.5rem; opacity: 0.3; display: block; margin-bottom: 14px; }
+.no-results h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--navy); margin-bottom: 8px; }
+.no-results p { font-size: 0.9rem; }
+
+/* ── LIGHTBOX ── */
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,15,24,0.92);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 32px);
+  backdrop-filter: blur(6px);
+}
+#lightbox.open { display: flex; }
+#lb-inner {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  max-width: 780px;
+  width: 100%;
+  padding: 24px;
+  position: relative;
+  max-height: 92vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  animation: scaleIn 0.25s ease;
+}
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+#lb-inner svg { width: 100%; height: auto; display: block; }
+#lb-close {
+  position: absolute;
+  top: 14px; right: 14px;
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  width: 34px; height: 34px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+  z-index: 2;
+}
+#lb-close:hover { background: var(--amber); color: var(--navy); }
+#lb-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 16px;
+  padding-right: 44px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 36px clamp(16px, 5vw, 48px);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+footer strong { color: var(--white); font-weight: 600; }
+footer .amber { color: var(--amber); font-weight: 600; }
+footer .divider { opacity: 0.3; margin: 0 8px; }
+
+/* ── BACK TO TOP ── */
+#btt {
+  position: fixed;
+  bottom: 24px; right: 20px;
+  background: var(--navy);
+  color: var(--white);
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  width: 44px; height: 44px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: transform 0.2s, background 0.2s;
+}
+#btt:hover { transform: translateY(-3px); background: var(--blue); }
+
+/* ── STAGGER ── */
+.card:nth-child(1){animation-delay:.04s}.card:nth-child(2){animation-delay:.08s}.card:nth-child(3){animation-delay:.12s}
+.card:nth-child(4){animation-delay:.16s}.card:nth-child(5){animation-delay:.20s}.card:nth-child(6){animation-delay:.24s}
+.card:nth-child(7){animation-delay:.28s}.card:nth-child(8){animation-delay:.32s}.card:nth-child(9){animation-delay:.36s}
+.card:nth-child(10){animation-delay:.40s}.card:nth-child(11){animation-delay:.44s}.card:nth-child(12){animation-delay:.48s}
+.card:nth-child(13){animation-delay:.52s}.card:nth-child(14){animation-delay:.56s}.card:nth-child(15){animation-delay:.60s}
+.card:nth-child(16){animation-delay:.64s}.card:nth-child(17){animation-delay:.68s}.card:nth-child(18){animation-delay:.72s}
+
+/* ── MOBILE ── */
+@media (max-width: 600px) {
+  :root { --nav-h: 58px; }
+  .nav-author { display: none; }
+  .hero p { font-size: 0.92rem; }
+  .stat-pill { font-size: 0.78rem; padding: 8px 13px; }
+  .topic-grid { gap: 16px; }
+  .card-title { font-size: 0.84rem; }
+  .card-body { padding: 16px 16px 18px; }
+  .card-desc { font-size: 0.83rem; }
+  .watch-btn { font-size: 0.84rem; padding: 11px 14px; }
+  .diagram-panel svg { height: 150px; }
+  #btt { bottom: 16px; right: 14px; }
+}
+@media (max-width: 380px) {
+  .nav-badge { display: none; }
+  .hero h1 { font-size: 1.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-brand" href="#">
+    <div class="nav-logo"><i class="fa-solid fa-compass-drafting"></i></div>
+    <div class="nav-text">
+      <span class="nav-title">Renance Learning Portal</span>
+      <span class="nav-sub">MEE 101 &middot; Engineering Drawing</span>
+    </div>
+  </a>
+  <div class="nav-right">
+    <span class="nav-author">by <strong>Resolute Femi</strong></span>
+    <span class="nav-badge">MEE 101</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><i class="fa-solid fa-graduation-cap"></i> Complete Tutorial Series</div>
+    <h1>MEE 101 &mdash;<br><em>Engineering Drawing</em> Tutorials</h1>
+    <p>A complete, step-by-step visual guide covering geometric construction, conic sections, projections and technical drawing for first-year engineering students.</p>
+    <div class="hero-stats">
+      <div class="stat-pill"><i class="fa-solid fa-video"></i> 18 Video Lessons</div>
+      <div class="stat-pill"><i class="fa-solid fa-compass-drafting"></i> Geometry &amp; Projections</div>
+      <div class="stat-pill"><i class="fa-solid fa-draw-polygon"></i> Engineering Diagrams</div>
+      <div class="stat-pill"><i class="fa-brands fa-youtube"></i> Free on YouTube</div>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<div class="search-section">
+  <div class="search-box">
+    <i class="fa-solid fa-magnifying-glass s-icon"></i>
+    <input type="text" id="searchInput" placeholder="Search topics… e.g. ellipse, hexagon, isometric" oninput="filterCards()" autocomplete="off"/>
+    <button class="clear-btn" id="clearBtn" onclick="clearSearch()" aria-label="Clear search"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main-wrap">
+  <div class="section-header">
+    <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> All Tutorials</h2>
+    <span class="count-badge" id="countBadge">18 topics</span>
+  </div>
+  <div class="topic-grid" id="topicGrid"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Renance Learning Portal</strong><span class="divider">&middot;</span>MEE 101 Engineering Drawing<span class="divider">&middot;</span>Curated by <span class="amber">Resolute Femi</span></p>
+  <p style="margin-top:6px;font-size:0.78rem;opacity:0.6;">All videos hosted on YouTube &mdash; Portal for educational use only.</p>
+</footer>
+
+<button id="btt" title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-chevron-up"></i></button>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLB(event)">
+  <div id="lb-inner">
+    <button id="lb-close" onclick="closeLB()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <div id="lb-title"></div>
+    <div id="lb-svg"></div>
+  </div>
+</div>
+
+<script>
+/* ── SVG DIAGRAMS ── */
+const D = {};
+
+D[1] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">① BISECT A LINE</text>
+<line x1="30" y1="55" x2="200" y2="55" stroke="#0f172a" stroke-width="2"/>
+<circle cx="30" cy="55" r="3" fill="#1e40af"/><text x="24" y="70" fill="#1e40af" font-size="9">A</text>
+<circle cx="200" cy="55" r="3" fill="#1e40af"/><text x="198" y="70" fill="#1e40af" font-size="9">B</text>
+<path d="M115,55 m-85,0 a85,85 0 0,1 60,73" fill="none" stroke="#ea580c" stroke-width="1" stroke-dasharray="4,3"/>
+<path d="M115,55 m-85,0 a85,85 0 0,0 60,-73" fill="none" stroke="#ea580c" stroke-width="1" stroke-dasharray="4,3"/>
+<path d="M115,55 m85,0 a85,85 0 0,0 -60,73" fill="none" stroke="#ea580c" stroke-width="1" stroke-dasharray="4,3"/>
+<path d="M115,55 m85,0 a85,85 0 0,1 -60,-73" fill="none" stroke="#ea580c" stroke-width="1" stroke-dasharray="4,3"/>
+<line x1="115" y1="10" x2="115" y2="110" stroke="#1e40af" stroke-width="1.5" stroke-dasharray="5,3"/>
+<circle cx="115" cy="55" r="4" fill="#ea580c"/>
+<text x="120" y="53" fill="#ea580c" font-size="9">M (midpoint)</text>
+<text x="220" y="20" font-size="10" fill="#1e40af" font-weight="bold">② PARALLEL LINES</text>
+<line x1="220" y1="55" x2="420" y2="55" stroke="#0f172a" stroke-width="2"/>
+<line x1="220" y1="100" x2="420" y2="100" stroke="#1e40af" stroke-width="2" stroke-dasharray="6,3"/>
+<line x1="320" y1="50" x2="320" y2="105" stroke="#ea580c" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="325" y="80" fill="#ea580c" font-size="9">d</text>
+<text x="222" y="50" fill="#64748b" font-size="8">AB</text>
+<text x="222" y="95" fill="#1e40af" font-size="8">CD (parallel)</text>
+<text x="440" y="20" font-size="10" fill="#1e40af" font-weight="bold">③ DIVIDE INTO 5</text>
+<line x1="440" y1="55" x2="620" y2="55" stroke="#0f172a" stroke-width="2"/>
+<line x1="440" y1="55" x2="490" y2="110" stroke="#64748b" stroke-width="1.2" stroke-dasharray="3,2"/>
+<circle cx="450" cy="65" r="2.5" fill="#ea580c"/><circle cx="460" cy="75" r="2.5" fill="#ea580c"/>
+<circle cx="470" cy="85" r="2.5" fill="#ea580c"/><circle cx="480" cy="95" r="2.5" fill="#ea580c"/><circle cx="490" cy="108" r="2.5" fill="#ea580c"/>
+<line x1="450" y1="65" x2="476" y2="55" stroke="#1e40af" stroke-width="1" stroke-dasharray="3,2"/>
+<line x1="460" y1="75" x2="512" y2="55" stroke="#1e40af" stroke-width="1" stroke-dasharray="3,2"/>
+<line x1="470" y1="85" x2="548" y2="55" stroke="#1e40af" stroke-width="1" stroke-dasharray="3,2"/>
+<line x1="480" y1="95" x2="584" y2="55" stroke="#1e40af" stroke-width="1" stroke-dasharray="3,2"/>
+<circle cx="476" cy="55" r="3" fill="#1e40af"/><circle cx="512" cy="55" r="3" fill="#1e40af"/>
+<circle cx="548" cy="55" r="3" fill="#1e40af"/><circle cx="584" cy="55" r="3" fill="#1e40af"/>
+<text x="16" y="140" font-size="10" fill="#1e40af" font-weight="bold">④ BISECT AN ANGLE</text>
+<line x1="50" y1="300" x2="300" y2="300" stroke="#0f172a" stroke-width="2"/>
+<line x1="50" y1="300" x2="160" y2="155" stroke="#0f172a" stroke-width="2"/>
+<path d="M50,300 m80,0 a80,80 0 0,0 -55,-55" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<circle cx="77" cy="256" r="3" fill="#ea580c"/><circle cx="116" cy="300" r="3" fill="#ea580c"/>
+<line x1="50" y1="300" x2="230" y2="195" stroke="#1e40af" stroke-width="2.5" stroke-dasharray="7,4"/>
+<text x="235" y="193" fill="#1e40af" font-size="9">Bisector</text>
+<text x="95" y="295" fill="#64748b" font-size="8">θ/2</text><text x="75" y="278" fill="#64748b" font-size="8">θ/2</text>
+<rect x="320" y="130" width="300" height="190" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="330" y="150" font-size="9" fill="#1e40af" font-weight="bold">KEY RULES</text>
+<text x="330" y="168" font-size="8" fill="#0f172a">● Compass radius > half the line length</text>
+<text x="330" y="183" font-size="8" fill="#0f172a">● Two arcs from each end cross at M</text>
+<text x="330" y="198" font-size="8" fill="#0f172a">● Parallel: use set-square + compass</text>
+<text x="330" y="213" font-size="8" fill="#0f172a">● Division: draw auxiliary line at angle</text>
+<text x="330" y="228" font-size="8" fill="#0f172a">● Mark N equal steps on auxiliary line</text>
+<text x="330" y="243" font-size="8" fill="#0f172a">● Connect last point to end, draw parallels</text>
+<text x="330" y="258" font-size="8" fill="#0f172a">● Angle bisector: equal arcs from both rays</text>
+<text x="330" y="273" font-size="8" fill="#0f172a">● Connect vertex to intersection of arcs</text>
+<rect x="16" y="310" width="620" height="22" fill="#dbeafe" rx="5"/>
+<text x="26" y="324" font-size="8" fill="#1e40af">These 4 constructions are the building blocks of ALL engineering geometry. Master them first.</text>
+</svg>`;
+
+D[2] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="20" y="20" font-size="10" fill="#1e40af" font-weight="bold">CIRCUMSCRIBED CIRCLE (passes through all 3 vertices)</text>
+<polygon points="160,35 60,255 260,255" fill="rgba(30,64,175,.05)" stroke="#0f172a" stroke-width="2"/>
+<circle cx="160" cy="183" r="80" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="6,3"/>
+<circle cx="160" cy="183" r="4" fill="#ea580c"/>
+<text x="165" y="181" fill="#ea580c" font-size="8">O (circumcenter)</text>
+<line x1="110" y1="145" x2="210" y2="145" stroke="#1e40af" stroke-width="1" stroke-dasharray="3,2"/>
+<line x1="160" y1="80" x2="160" y2="265" stroke="#1e40af" stroke-width="1" stroke-dasharray="3,2"/>
+<line x1="75" y1="195" x2="240" y2="225" stroke="#1e40af" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="22" y="282" font-size="8" fill="#64748b">◆ Center = intersection of perpendicular bisectors of all 3 sides</text>
+<circle cx="60" cy="255" r="4" fill="#1e40af"/><circle cx="260" cy="255" r="4" fill="#1e40af"/><circle cx="160" cy="35" r="4" fill="#1e40af"/>
+<text x="350" y="20" font-size="10" fill="#1e40af" font-weight="bold">INSCRIBED CIRCLE (tangent to all 3 sides)</text>
+<polygon points="490,35 385,255 595,255" fill="rgba(30,64,175,.05)" stroke="#0f172a" stroke-width="2"/>
+<circle cx="490" cy="200" r="55" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="6,3"/>
+<circle cx="490" cy="200" r="4" fill="#ea580c"/>
+<text x="495" y="198" fill="#ea580c" font-size="8">I (incenter)</text>
+<line x1="490" y1="35" x2="490" y2="260" stroke="#1e40af" stroke-width="1" stroke-dasharray="3,2"/>
+<line x1="385" y1="255" x2="545" y2="130" stroke="#1e40af" stroke-width="1" stroke-dasharray="3,2"/>
+<line x1="595" y1="255" x2="430" y2="130" stroke="#1e40af" stroke-width="1" stroke-dasharray="3,2"/>
+<line x1="490" y1="200" x2="490" y2="255" stroke="#64748b" stroke-width="1"/>
+<text x="494" y="233" fill="#64748b" font-size="8">r</text>
+<text x="352" y="282" font-size="8" fill="#64748b">◆ Center = intersection of angle bisectors of all 3 angles</text>
+<rect x="16" y="300" width="608" height="32" fill="#dbeafe" rx="6"/>
+<text x="26" y="313" font-size="8" fill="#1e40af" font-weight="bold">Circumcircle:</text><text x="100" y="313" font-size="8" fill="#0f172a"> bisect 2 sides → perp. bisectors cross at O → radius = OA = OB = OC</text>
+<text x="26" y="327" font-size="8" fill="#1e40af" font-weight="bold">Incircle:</text><text x="82" y="327" font-size="8" fill="#0f172a"> bisect 2 angles → bisectors cross at I → drop perpendicular from I to any side = radius r</text>
+</svg>`;
+
+D[3] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">CONSTRUCTING 22.5° AND 112.5°</text>
+<line x1="60" y1="290" x2="580" y2="290" stroke="#0f172a" stroke-width="2"/>
+<line x1="60" y1="290" x2="60" y2="60" stroke="#0f172a" stroke-width="2"/>
+<text x="10" y="64" fill="#0f172a" font-size="9">90°</text>
+<path d="M60,290 m0,-45 a45,45 0 0,0 45,0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<text x="110" y="260" fill="#64748b" font-size="9">90°</text>
+<line x1="60" y1="290" x2="400" y2="70" stroke="#1e40af" stroke-width="2" stroke-dasharray="7,4"/>
+<text x="405" y="68" fill="#1e40af" font-size="10" font-weight="bold">45°</text>
+<path d="M60,290 m70,0 a70,70 0 0,0 -50,-50" fill="none" stroke="#1e40af" stroke-width="1.2" stroke-dasharray="4,3"/>
+<line x1="60" y1="290" x2="500" y2="175" stroke="#ea580c" stroke-width="3"/>
+<text x="506" y="173" fill="#ea580c" font-size="11" font-weight="bold">22.5°</text>
+<path d="M60,290 m100,0 a100,100 0 0,0 -30,-95" fill="none" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="145" y="260" fill="#ea580c" font-size="9">22.5°</text>
+<line x1="240" y1="290" x2="240" y2="60" stroke="#64748b" stroke-width="1" stroke-dasharray="4,3"/>
+<line x1="60" y1="290" x2="350" y2="115" stroke="#ea580c" stroke-width="2" stroke-dasharray="5,3" opacity=".7"/>
+<text x="355" y="113" fill="#ea580c" font-size="9">112.5°</text>
+<rect x="16" y="295" width="608" height="36" fill="#dbeafe" rx="6"/>
+<text x="26" y="308" font-size="8" fill="#1e40af" font-weight="bold">Method:</text>
+<text x="80" y="308" font-size="8" fill="#0f172a">1) Construct 90°  2) Bisect to get 45°  3) Bisect again → 22.5°  4) 90°+22.5° = 112.5°</text>
+<text x="26" y="323" font-size="8" fill="#64748b">No protractor needed! All angles built purely with compass and straight edge.</text>
+</svg>`;
+
+D[4] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="20" y="20" font-size="10" fill="#1e40af" font-weight="bold">① ACROSS CORNERS</text>
+<circle cx="155" cy="175" r="108" fill="none" stroke="#64748b" stroke-width="1.2" stroke-dasharray="5,3"/>
+<polygon points="155,67 248,121 248,229 155,283 62,229 62,121" fill="rgba(30,64,175,.06)" stroke="#1e40af" stroke-width="2.5"/>
+<line x1="155" y1="67" x2="155" y2="283" stroke="#ea580c" stroke-width="1" stroke-dasharray="4,3"/>
+<line x1="62" y1="121" x2="248" y2="229" stroke="#ea580c" stroke-width="1" stroke-dasharray="4,3"/>
+<line x1="248" y1="121" x2="62" y2="229" stroke="#ea580c" stroke-width="1" stroke-dasharray="4,3"/>
+<circle cx="155" cy="175" r="4" fill="#ea580c"/>
+<text x="159" y="173" fill="#ea580c" font-size="8">O</text>
+<line x1="155" y1="67" x2="248" y2="121" stroke="#0f172a" stroke-width="1.5"/>
+<text x="205" y="85" fill="#0f172a" font-size="8">Side = R</text>
+<text x="50" y="175" fill="#1e40af" font-size="8">A-corner</text>
+<text x="50" y="185" fill="#1e40af" font-size="8">= 2R</text>
+<text x="340" y="20" font-size="10" fill="#1e40af" font-weight="bold">② ACROSS FLATS</text>
+<circle cx="490" cy="175" r="108" fill="none" stroke="#64748b" stroke-width="1" stroke-dasharray="5,3"/>
+<polygon points="490,75 584,125 584,225 490,275 396,225 396,125" fill="rgba(30,64,175,.06)" stroke="#1e40af" stroke-width="2.5"/>
+<circle cx="490" cy="175" r="93.5" fill="none" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="5,3"/>
+<circle cx="490" cy="175" r="3" fill="#ea580c"/>
+<text x="494" y="173" fill="#ea580c" font-size="8">O</text>
+<line x1="396" y1="175" x2="584" y2="175" stroke="#ea580c" stroke-width="1.5"/>
+<text x="414" y="168" fill="#ea580c" font-size="8">Across Flats = inscribed ⌀</text>
+<line x1="490" y1="75" x2="584" y2="125" stroke="#0f172a" stroke-width="1.5"/>
+<text x="536" y="90" fill="#0f172a" font-size="8">Side</text>
+<rect x="16" y="300" width="608" height="32" fill="#dbeafe" rx="6"/>
+<text x="26" y="314" font-size="8" fill="#1e40af" font-weight="bold">Across Corners:</text><text x="118" y="314" font-size="8" fill="#0f172a"> Draw circle of given diameter. Step off radius 6 times around circumference → hexagon vertices.</text>
+<text x="26" y="328" font-size="8" fill="#1e40af" font-weight="bold">Across Flats:</text><text x="106" y="328" font-size="8" fill="#0f172a"> Draw outer circle. Inscribed circle ⌀ = AF. Erect tangents → 6 flat sides. Interior angles all = 120°.</text>
+</svg>`;
+
+D[5] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">REGULAR PENTAGON – General Polygon Method</text>
+<polygon points="320,48 444,138 398,265 242,265 196,138" fill="rgba(30,64,175,.07)" stroke="#1e40af" stroke-width="2.5"/>
+<circle cx="320" cy="48" r="4" fill="#1e40af"/><text x="324" y="46" fill="#1e40af" font-size="9">1</text>
+<circle cx="444" cy="138" r="4" fill="#1e40af"/><text x="449" y="137" fill="#1e40af" font-size="9">2</text>
+<circle cx="398" cy="265" r="4" fill="#1e40af"/><text x="402" y="275" fill="#1e40af" font-size="9">3</text>
+<circle cx="242" cy="265" r="4" fill="#1e40af"/><text x="232" y="275" fill="#1e40af" font-size="9">4</text>
+<circle cx="196" cy="138" r="4" fill="#1e40af"/><text x="180" y="137" fill="#1e40af" font-size="9">5</text>
+<circle cx="320" cy="175" r="3" fill="#ea580c"/>
+<text x="325" y="173" fill="#ea580c" font-size="8">O</text>
+<circle cx="320" cy="175" r="130" fill="none" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="5,3"/>
+<line x1="320" y1="48" x2="444" y2="138" stroke="#0f172a" stroke-width="1.5"/>
+<text x="388" y="82" fill="#0f172a" font-size="8">S (given side)</text>
+<rect x="16" y="295" width="608" height="36" fill="#dbeafe" rx="6"/>
+<text x="26" y="308" font-size="8" fill="#1e40af" font-weight="bold">General Method (works for ANY polygon):</text>
+<text x="26" y="322" font-size="8" fill="#0f172a">1) Draw side AB. 2) Erect semicircle on AB, divide into N parts. 3) P2 = 2nd point → use as guide. 4) Strike arcs from A &amp; B for remaining vertices.</text>
+</svg>`;
+
+D[6] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">CIRCUMFERENCE OF A CIRCLE – Graphical Rectification</text>
+<circle cx="120" cy="165" r="95" fill="none" stroke="#1e40af" stroke-width="2.5"/>
+<circle cx="120" cy="165" r="3" fill="#1e40af"/>
+<line x1="25" y1="165" x2="215" y2="165" stroke="#0f172a" stroke-width="1.5"/>
+<text x="22" y="160" fill="#0f172a" font-size="8">A</text>
+<text x="213" y="160" fill="#0f172a" font-size="8">B</text>
+<text x="115" y="153" fill="#64748b" font-size="8">d</text>
+<line x1="250" y1="268" x2="620" y2="268" stroke="#0f172a" stroke-width="2"/>
+<text x="247" y="284" fill="#0f172a" font-size="8">P</text>
+<line x1="250" y1="262" x2="250" y2="274" stroke="#1e40af" stroke-width="1.5"/>
+<line x1="373" y1="262" x2="373" y2="274" stroke="#1e40af" stroke-width="1.5"/>
+<line x1="496" y1="262" x2="496" y2="274" stroke="#1e40af" stroke-width="1.5"/>
+<line x1="619" y1="262" x2="619" y2="274" stroke="#ea580c" stroke-width="2.5"/>
+<text x="300" y="258" fill="#1e40af" font-size="8">d</text>
+<text x="423" y="258" fill="#1e40af" font-size="8">2d</text>
+<text x="607" y="284" fill="#ea580c" font-size="8">Q</text>
+<rect x="250" y="185" width="370" height="62" fill="#dbeafe" rx="8"/>
+<text x="265" y="204" fill="#1e40af" font-size="10" font-weight="bold">Graphical Rule:</text>
+<text x="265" y="220" fill="#1e40af" font-size="9">PQ ≈ 3d + 3d/4 = 3.142 × d ≈ πd</text>
+<text x="265" y="237" fill="#64748b" font-size="8">Error &lt; 0.02% — sufficient for tech drawing</text>
+<rect x="16" y="298" width="608" height="30" fill="#f0f9ff" rx="6" stroke="#bfdbfe" stroke-width="1"/>
+<text x="26" y="311" font-size="8" fill="#0f172a">Steps: 1) Draw diameter line. 2) Lay off 3 diameters from P. 3) Add correction arc (3d/4) → gives Q = circumference length.</text>
+<text x="26" y="325" font-size="8" fill="#64748b">Application: cam layout, rope length, arc-to-line conversion in technical drawing.</text>
+</svg>`;
+
+D[7] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">ARC TOUCHING TWO CIRCLES EXTERNALLY (R = given arc radius)</text>
+<circle cx="155" cy="200" r="68" fill="none" stroke="#1e40af" stroke-width="2.5"/>
+<circle cx="155" cy="200" r="3" fill="#1e40af"/>
+<text x="158" y="198" fill="#1e40af" font-size="8">O₁</text>
+<circle cx="435" cy="195" r="48" fill="none" stroke="#1e40af" stroke-width="2.5"/>
+<circle cx="435" cy="195" r="3" fill="#1e40af"/>
+<text x="438" y="193" fill="#1e40af" font-size="8">O₂</text>
+<circle cx="155" cy="200" r="168" fill="none" stroke="#64748b" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+<circle cx="435" cy="195" r="148" fill="none" stroke="#64748b" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+<circle cx="295" cy="68" r="4" fill="#ea580c"/>
+<text x="299" y="66" fill="#ea580c" font-size="8">O (arc center)</text>
+<path d="M80,195 Q170,30 430,80" fill="none" stroke="#ea580c" stroke-width="2.5" stroke-dasharray="8,4"/>
+<line x1="295" y1="68" x2="155" y2="200" stroke="#ea580c" stroke-width="1" stroke-dasharray="4,3"/>
+<line x1="295" y1="68" x2="435" y2="195" stroke="#ea580c" stroke-width="1" stroke-dasharray="4,3"/>
+<rect x="16" y="300" width="608" height="30" fill="#dbeafe" rx="6"/>
+<text x="26" y="313" font-size="8" fill="#1e40af" font-weight="bold">Procedure:</text>
+<text x="26" y="327" font-size="8" fill="#0f172a">From O₁ strike arc = (R+r₁). From O₂ strike arc = (R+r₂). Intersection = center O. Draw arc of radius R from O. Tangent points lie on lines joining O to O₁, O₂.</text>
+</svg>`;
+
+D[8] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">APPLICATION OF TANGENTS</text>
+<text x="16" y="40" font-size="9" fill="#1e40af" font-weight="bold">① Tangent from External Point P</text>
+<circle cx="185" cy="158" r="65" fill="none" stroke="#1e40af" stroke-width="2"/>
+<circle cx="185" cy="158" r="3" fill="#1e40af"/>
+<text x="189" y="156" fill="#1e40af" font-size="8">O</text>
+<circle cx="40" cy="275" r="4" fill="#0f172a"/>
+<text x="24" y="290" fill="#0f172a" font-size="8">P</text>
+<line x1="40" y1="275" x2="147" y2="96" stroke="#ea580c" stroke-width="2"/>
+<line x1="40" y1="275" x2="248" y2="106" stroke="#ea580c" stroke-width="2"/>
+<circle cx="147" cy="96" r="3.5" fill="#ea580c"/>
+<circle cx="248" cy="106" r="3.5" fill="#ea580c"/>
+<text x="130" y="90" fill="#ea580c" font-size="7">T₁</text>
+<text x="251" y="103" fill="#ea580c" font-size="7">T₂</text>
+<text x="16" y="240" font-size="8" fill="#0f172a">PT₁ = PT₂ (tangent lengths equal)</text>
+<text x="340" y="40" font-size="9" fill="#1e40af" font-weight="bold">② External &amp; Internal Tangents (2 circles)</text>
+<circle cx="430" cy="165" r="52" fill="none" stroke="#1e40af" stroke-width="2"/>
+<circle cx="580" cy="190" r="32" fill="none" stroke="#1e40af" stroke-width="2"/>
+<line x1="390" y1="115" x2="556" y2="159" stroke="#ea580c" stroke-width="2"/>
+<line x1="393" y1="215" x2="556" y2="221" stroke="#ea580c" stroke-width="2"/>
+<line x1="408" y1="120" x2="605" y2="210" stroke="#1e40af" stroke-width="1.5" stroke-dasharray="5,3"/>
+<text x="340" y="280" fill="#ea580c" font-size="8">— External tangents (2 lines, don't cross)</text>
+<text x="340" y="295" fill="#1e40af" font-size="8">- - Internal tangent (crosses between circles)</text>
+<rect x="16" y="305" width="608" height="25" fill="#dbeafe" rx="5"/>
+<text x="26" y="320" font-size="8" fill="#1e40af">Key: PT = √(PO² − r²) | Tangent is perpendicular to radius at the point of tangency | Used in: pulleys, cams, links</text>
+</svg>`;
+
+D[9] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">SPANNER (WRENCH) – Full Engineering Construction</text>
+<line x1="50" y1="168" x2="600" y2="168" stroke="#64748b" stroke-width="1" stroke-dasharray="8,4"/>
+<text x="18" y="166" fill="#64748b" font-size="7">CL</text>
+<rect x="215" y="147" width="325" height="42" rx="21" fill="none" stroke="#1e40af" stroke-width="2.5"/>
+<polygon points="118,143 162,118 162,168 118,193 74,168 74,118" fill="none" stroke="#1e40af" stroke-width="2.5"/>
+<text x="78" y="163" fill="#1e40af" font-size="7">HEX JAW</text>
+<path d="M162,118 Q195,118 215,147" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="5,3"/>
+<path d="M162,168 Q196,173 215,189" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="5,3"/>
+<circle cx="540" cy="168" r="40" fill="none" stroke="#1e40af" stroke-width="2.5"/>
+<circle cx="540" cy="168" r="24" fill="none" stroke="#1e40af" stroke-width="1.5"/>
+<circle cx="540" cy="168" r="3" fill="#ea580c"/>
+<text x="498" y="135" fill="#64748b" font-size="7">Ring head</text>
+<rect x="16" y="295" width="608" height="36" fill="#dbeafe" rx="6"/>
+<text x="26" y="308" font-size="8" fill="#1e40af" font-weight="bold">Skills combined:</text>
+<text x="118" y="308" font-size="8" fill="#0f172a">Hexagon (jaw) + Tangent arcs (smooth blends) + Circles (ring head) + Parallel lines (handle walls)</text>
+<text x="26" y="323" font-size="8" fill="#64748b">Centreline = dash-dot | Hidden lines = dashed | Dimension lines parallel to object lines</text>
+</svg>`;
+
+D[10] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">ELLIPSE – Auxiliary Circle (Concentric Circles) Method</text>
+<line x1="50" y1="175" x2="590" y2="175" stroke="#0f172a" stroke-width="1.5"/>
+<line x1="320" y1="35" x2="320" y2="315" stroke="#0f172a" stroke-width="1.5"/>
+<circle cx="320" cy="175" r="4" fill="#ea580c"/>
+<text x="326" y="173" fill="#ea580c" font-size="8">O</text>
+<circle cx="320" cy="175" r="130" fill="none" stroke="#1e40af" stroke-width="1.2" stroke-dasharray="4,3"/>
+<ellipse cx="320" cy="175" rx="270" ry="130" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+<line x1="320" y1="175" x2="526" y2="28" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+<circle cx="526" cy="28" r="4" fill="#1e40af"/>
+<circle cx="526" cy="72" r="5" fill="#ea580c"/>
+<text x="530" y="71" fill="#ea580c" font-size="8">E (ellipse pt)</text>
+<rect x="16" y="298" width="608" height="34" fill="#dbeafe" rx="6"/>
+<text x="26" y="311" font-size="8" fill="#1e40af" font-weight="bold">For each radial line at angle θ:</text>
+<text x="180" y="311" font-size="8" fill="#0f172a">x = a·cosθ (from OUTER circle)   |   y = b·sinθ (from INNER circle)   →   Plot ellipse point E(x,y)</text>
+<text x="26" y="325" font-size="8" fill="#64748b">Draw 8–12 radial lines at equal angles. Connect plotted points with a smooth French-curve to complete the ellipse.</text>
+</svg>`;
+
+D[11] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">ELLIPSE – Four Arc (Oblong / Approximate) Method</text>
+<rect x="90" y="78" width="460" height="188" fill="none" stroke="#64748b" stroke-width="1.2" stroke-dasharray="5,3"/>
+<line x1="55" y1="172" x2="585" y2="172" stroke="#0f172a" stroke-width="1"/>
+<line x1="320" y1="50" x2="320" y2="294" stroke="#0f172a" stroke-width="1"/>
+<circle cx="320" cy="172" r="3" fill="#ea580c"/>
+<ellipse cx="320" cy="172" rx="230" ry="94" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+<circle cx="320" cy="97" r="5" fill="#1e40af"/><text x="325" y="95" fill="#1e40af" font-size="8">C₁</text>
+<circle cx="320" cy="247" r="5" fill="#1e40af"/><text x="325" y="258" fill="#1e40af" font-size="8">C₂</text>
+<circle cx="145" cy="172" r="5" fill="#1e40af"/><text x="116" y="170" fill="#1e40af" font-size="8">C₃</text>
+<circle cx="495" cy="172" r="5" fill="#1e40af"/><text x="500" y="170" fill="#1e40af" font-size="8">C₄</text>
+<rect x="16" y="298" width="608" height="34" fill="#dbeafe" rx="6"/>
+<text x="26" y="311" font-size="8" fill="#1e40af" font-weight="bold">Steps:</text>
+<text x="66" y="311" font-size="8" fill="#0f172a">1) Draw major/minor axes in bounding rectangle. 2) Geometrically locate 4 centers C₁–C₄.</text>
+<text x="26" y="325" font-size="8" fill="#0f172a">3) Draw 2 large arcs (R₁) from C₁ &amp; C₂, and 2 small arcs (R₂) from C₃ &amp; C₄. Arcs meet at 4 join points.</text>
+</svg>`;
+
+D[12] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">PARABOLA – Focus – Directrix (Locus) Method</text>
+<line x1="95" y1="28" x2="95" y2="308" stroke="#0f172a" stroke-width="2"/>
+<text x="60" y="24" fill="#0f172a" font-size="9" font-weight="bold">Directrix</text>
+<line x1="95" y1="168" x2="615" y2="168" stroke="#64748b" stroke-width="1" stroke-dasharray="6,4"/>
+<circle cx="255" cy="168" r="5" fill="#1e40af"/>
+<text x="245" y="188" fill="#1e40af" font-size="9">F</text>
+<circle cx="175" cy="168" r="4" fill="#ea580c"/>
+<text x="160" y="158" fill="#ea580c" font-size="8">V</text>
+<path d="M175,168 Q255,80 490,32" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+<path d="M175,168 Q255,256 490,305" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+<rect x="16" y="298" width="608" height="34" fill="#dbeafe" rx="6"/>
+<text x="26" y="311" font-size="8" fill="#1e40af" font-weight="bold">Locus definition:</text>
+<text x="122" y="311" font-size="8" fill="#0f172a">FP = D₁P for every point P on the parabola (e = 1)</text>
+<text x="26" y="325" font-size="8" fill="#64748b">Vertex V = midpoint of F and directrix. Draw horizontal lines, arc from F → intersect → parabola point.</text>
+</svg>`;
+
+D[13] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">HYPERBOLA – Two-Foci Locus Method</text>
+<line x1="25" y1="168" x2="615" y2="168" stroke="#64748b" stroke-width="1" stroke-dasharray="6,4"/>
+<line x1="320" y1="20" x2="320" y2="318" stroke="#64748b" stroke-width="1" stroke-dasharray="6,4"/>
+<circle cx="160" cy="168" r="5" fill="#1e40af"/><text x="148" y="188" fill="#1e40af" font-size="9">F₁</text>
+<circle cx="480" cy="168" r="5" fill="#1e40af"/><text x="483" y="188" fill="#1e40af" font-size="9">F₂</text>
+<circle cx="250" cy="168" r="4" fill="#ea580c"/><circle cx="390" cy="168" r="4" fill="#ea580c"/>
+<path d="M250,168 Q200,100 138,38" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+<path d="M250,168 Q200,236 138,298" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+<path d="M390,168 Q440,100 502,38" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+<path d="M390,168 Q440,236 502,298" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+<rect x="16" y="298" width="608" height="34" fill="#dbeafe" rx="6"/>
+<text x="26" y="311" font-size="8" fill="#1e40af" font-weight="bold">Locus rule:</text>
+<text x="90" y="311" font-size="8" fill="#0f172a">Difference of distances from two fixed foci = constant = 2a (e &gt; 1)</text>
+<text x="26" y="325" font-size="8" fill="#64748b">Construction: set radius on compass = F₂P, then find F₁P so difference = 2a. Use arcs from both foci.</text>
+</svg>`;
+
+D[14] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">CYCLOID – Rolling Circle Construction</text>
+<line x1="25" y1="268" x2="615" y2="268" stroke="#0f172a" stroke-width="2"/>
+<circle cx="80" cy="218" r="50" fill="none" stroke="#64748b" stroke-width="1.2" stroke-dasharray="3,2"/>
+<circle cx="80" cy="168" r="5" fill="#1e40af"/>
+<circle cx="396" cy="218" r="50" fill="none" stroke="#64748b" stroke-width="1.2" stroke-dasharray="3,2"/>
+<circle cx="396" cy="168" r="5" fill="#1e40af"/>
+<path d="M80,168 C110,152 140,140 162,130 S205,128 240,170 S272,228 318,268 S355,286 396,268 S430,196 450,178" fill="none" stroke="#ea580c" stroke-width="3"/>
+<line x1="80" y1="273" x2="396" y2="273" stroke="#1e40af" stroke-width="1"/>
+<text x="200" y="285" fill="#1e40af" font-size="8">1 revolution = 2πR (circumference)</text>
+<rect x="16" y="298" width="608" height="34" fill="#dbeafe" rx="6"/>
+<text x="26" y="311" font-size="8" fill="#1e40af" font-weight="bold">Construction:</text>
+<text x="103" y="311" font-size="8" fill="#0f172a">Divide circle circumference and base line into same N equal parts. For position i: centre moves to x=i×2πR/N, y=R.</text>
+<text x="26" y="325" font-size="8" fill="#64748b">Tracing point P is on circle rim. Max height = 2R. Full length of one arch = 8R. Used in cycloidal gear profiles.</text>
+</svg>`;
+
+D[15] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">SLIDER–CRANK MECHANISM</text>
+<rect x="370" y="148" width="225" height="44" rx="6" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+<text x="450" y="133" fill="#64748b" font-size="8">Slider (Piston)</text>
+<circle cx="200" cy="170" r="78" fill="none" stroke="#64748b" stroke-width="1.2" stroke-dasharray="5,3"/>
+<circle cx="200" cy="170" r="4" fill="#0f172a"/>
+<line x1="200" y1="170" x2="262" y2="100" stroke="#1e40af" stroke-width="5" stroke-linecap="round"/>
+<circle cx="262" cy="100" r="8" fill="#1e40af"/>
+<line x1="262" y1="100" x2="490" y2="170" stroke="#ea580c" stroke-width="4" stroke-linecap="round"/>
+<circle cx="490" cy="170" r="8" fill="#ea580c"/>
+<rect x="16" y="295" width="608" height="36" fill="#dbeafe" rx="6"/>
+<text x="26" y="308" font-size="8" fill="#1e40af" font-weight="bold">Function:</text>
+<text x="82" y="308" font-size="8" fill="#0f172a">Crank OA rotates → drives connecting rod AB → slider B reciprocates (linear). Used in: engines, pumps, presses.</text>
+<text x="26" y="323" font-size="8" fill="#64748b">Draw at 8–12 crank positions. Ghost position (dashed) shows minimum slider extension when θ = 180°.</text>
+</svg>`;
+
+D[16] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">ALL THREE CONIC SECTIONS – Locus / Eccentricity Method</text>
+<line x1="78" y1="28" x2="78" y2="306" stroke="#0f172a" stroke-width="2"/>
+<circle cx="235" cy="168" r="5" fill="#1e40af"/>
+<text x="222" y="186" fill="#1e40af" font-size="9">F (focus)</text>
+<ellipse cx="320" cy="168" rx="155" ry="115" fill="none" stroke="#1e40af" stroke-width="2"/>
+<text x="470" y="142" fill="#1e40af" font-size="9" font-weight="bold">Ellipse (e&lt;1)</text>
+<path d="M158,168 Q235,82 435,35" fill="none" stroke="#ea580c" stroke-width="2.2"/>
+<path d="M158,168 Q235,254 435,300" fill="none" stroke="#ea580c" stroke-width="2.2"/>
+<text x="438" y="40" fill="#ea580c" font-size="9" font-weight="bold">Parabola (e=1)</text>
+<path d="M200,168 Q160,102 108,42" fill="none" stroke="#16a34a" stroke-width="2"/>
+<path d="M200,168 Q160,234 108,294" fill="none" stroke="#16a34a" stroke-width="2"/>
+<path d="M418,168 Q468,102 526,42" fill="none" stroke="#16a34a" stroke-width="2"/>
+<path d="M418,168 Q468,234 526,294" fill="none" stroke="#16a34a" stroke-width="2"/>
+<text x="530" y="55" fill="#16a34a" font-size="9" font-weight="bold">Hyperbola (e&gt;1)</text>
+<rect x="16" y="290" width="608" height="42" fill="#dbeafe" rx="6"/>
+<text x="26" y="305" font-size="9" fill="#1e40af" font-weight="bold">Eccentricity e = FP / DP (distance to focus / distance to directrix)</text>
+<text x="26" y="318" font-size="8" fill="#1e40af">■ e &lt; 1 → Ellipse  </text>
+<text x="130" y="318" font-size="8" fill="#ea580c">■ e = 1 → Parabola  </text>
+<text x="248" y="318" font-size="8" fill="#16a34a">■ e &gt; 1 → Hyperbola  </text>
+<text x="370" y="318" font-size="8" fill="#64748b">■ e = 0 → Circle (special ellipse)</text>
+</svg>`;
+
+D[17] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">ISOMETRIC &amp; ORTHOGRAPHIC PROJECTIONS – Part 1</text>
+<text x="16" y="42" font-size="9" fill="#1e40af" font-weight="bold">Orthographic (2D views)</text>
+<rect x="16" y="52" width="80" height="80" fill="none" stroke="#0f172a" stroke-width="2"/>
+<text x="45" y="100" fill="#64748b" font-size="8">FRONT</text>
+<rect x="110" y="52" width="55" height="80" fill="none" stroke="#0f172a" stroke-width="2"/>
+<text x="122" y="100" fill="#64748b" font-size="8">SIDE</text>
+<rect x="16" y="146" width="80" height="55" fill="none" stroke="#0f172a" stroke-width="2"/>
+<text x="43" y="182" fill="#64748b" font-size="8">TOP</text>
+<polygon points="460,255 560,202 620,255 520,308" fill="#dbeafe" stroke="#1e40af" stroke-width="2"/>
+<polygon points="400,205 400,255 460,255 520,202 520,152 460,205" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/>
+<polygon points="400,205 460,152 560,202 520,152" fill="#eff6ff" stroke="#1e40af" stroke-width="2"/>
+<rect x="16" y="298" width="608" height="34" fill="#dbeafe" rx="6"/>
+<text x="26" y="311" font-size="8" fill="#1e40af" font-weight="bold">Isometric axes:</text><text x="110" y="311" font-size="8" fill="#0f172a"> all 3 axes at 120° | Scale factor ≈ 0.816 | Used to show 3D shape in 2D drawing</text>
+<text x="26" y="325" font-size="8" fill="#64748b">1st Angle (EU): object between viewer &amp; plane | 3rd Angle (US/UK): plane between viewer &amp; object</text>
+</svg>`;
+
+D[18] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="640" height="340" fill="#f8faff"/>
+<text x="16" y="20" font-size="10" fill="#1e40af" font-weight="bold">ISOMETRIC &amp; ORTHOGRAPHIC PROJECTIONS – Part 2 (Conversion)</text>
+<polygon points="16,55 16,150 62,150 62,103 112,103 112,55" fill="none" stroke="#0f172a" stroke-width="2"/>
+<text x="45" y="170" fill="#64748b" font-size="8">Front</text>
+<rect x="125" y="55" width="52" height="95" fill="none" stroke="#0f172a" stroke-width="2"/>
+<text x="135" y="170" fill="#64748b" font-size="8">Side</text>
+<rect x="16" y="183" width="96" height="56" fill="none" stroke="#0f172a" stroke-width="2"/>
+<text x="42" y="255" fill="#64748b" font-size="8">Top</text>
+<polygon points="360,275 460,218 560,275 460,332" fill="#dbeafe" stroke="#1e40af" stroke-width="2"/>
+<polygon points="360,200 360,275 460,332 460,257 420,232 420,200" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/>
+<polygon points="360,200 420,165 520,200 460,235 420,200" fill="#eff6ff" stroke="#1e40af" stroke-width="2"/>
+<polygon points="360,130 420,97 480,130 480,200 420,167 360,200" fill="#93c5fd" stroke="#1e40af" stroke-width="2"/>
+<polygon points="360,130 420,97 480,130 420,163" fill="#dbeafe" stroke="#1e40af" stroke-width="1.5"/>
+<rect x="16" y="298" width="608" height="34" fill="#dbeafe" rx="6"/>
+<text x="26" y="311" font-size="8" fill="#1e40af" font-weight="bold">Conversion steps:</text>
+<text x="122" y="311" font-size="8" fill="#0f172a">1) Draw isometric axes at 120°. 2) Transfer depth, width, height from orthographic views. 3) Build face by face.</text>
+<text x="26" y="325" font-size="8" fill="#64748b">Hidden lines shown dashed | Holes &amp; curves need isometric circles (ellipses) | Dimension lines ∥ isometric axes.</text>
+</svg>`;
+
+/* ── TOPICS DATA ── */
+const topics = [
+  {num:1,  title:"Bisect Lines, Parallel Lines, Divide Lines & Bisect Angles", url:"https://youtu.be/AzZ8zjJN6w4", vid:"AzZ8zjJN6w4", tag:"Geometric Construction", desc:"The foundation of engineering drawing. Learn to <strong>bisect a line</strong>, draw <strong>parallel lines</strong> at any distance, <strong>divide a line</strong> into equal parts, and <strong>bisect any angle</strong> with compass and straight edge only.", concepts:["Perpendicular Bisector","Parallel Lines","Equal Division","Angle Bisector"]},
+  {num:2,  title:"Circumscribe a Circle on a Triangle & Inscribe a Circle in a Triangle", url:"https://youtu.be/_KXB6a14VM0", vid:"_KXB6a14VM0", tag:"Circles & Triangles", desc:"Two classical constructions. The <strong>circumscribed circle</strong> passes through all vertices (perpendicular bisectors). The <strong>inscribed circle</strong> is tangent to all sides (angle bisectors).", concepts:["Circumcircle","Incircle","Perpendicular Bisectors","Angle Bisectors","Circumcenter","Incenter"]},
+  {num:3,  title:"Construct 22.5° and 112.5° Angles", url:"https://youtu.be/BnYelTEuHAE", vid:"BnYelTEuHAE", tag:"Angle Construction", desc:"No protractor needed. <strong>22.5°</strong> is obtained by bisecting 45°; <strong>112.5° = 90° + 22.5°</strong>. A purely geometric approach using compass and straight edge.", concepts:["22.5°","112.5°","Angle Bisection","45° construction","90° base"]},
+  {num:4,  title:"Regular Hexagon – Across Corner & Across Flat Methods", url:"https://youtu.be/KwJIAMI_f8A", vid:"KwJIAMI_f8A", tag:"Polygons", desc:"Essential for bolts, nuts and honeycomb. <strong>Across-corner</strong> uses the circumscribed circle (side = radius). <strong>Across-flat</strong> uses the inscribed circle diameter.", concepts:["Hexagon","Across Corners","Across Flats","Circumscribed","Inscribed Circle"]},
+  {num:5,  title:"Construct Any Regular Polygon – Pentagon Example", url:"https://youtu.be/z8CKgKvfxaM", vid:"z8CKgKvfxaM", tag:"Polygons", desc:"A powerful <strong>general method</strong> for constructing any regular polygon given a side length. Works for any number of sides (5, 7, 9, 11…) using semicircle division.", concepts:["Pentagon","Regular Polygon","General Method","Semicircle Division","Any N-gon"]},
+  {num:6,  title:"Determine the Circumference of a Circle – Graphical Method", url:"https://youtu.be/Vm_lrebPL4Q", vid:"Vm_lrebPL4Q", tag:"Circles", desc:"Graphical rectification to find <strong>circumference without using π directly</strong>. Lay off 3 diameters then add correction — gives length ≈ πd with error &lt;0.02%.", concepts:["Circumference","Rectification","π approximation","Arc Unwrapping","Diameter"]},
+  {num:7,  title:"Draw an Arc Touching Two Given Circles Externally", url:"https://youtu.be/tiVjWRXWTLs", vid:"tiVjWRXWTLs", tag:"Tangency", desc:"Construct an arc of given radius <strong>externally tangent to two circles</strong> simultaneously. Center found by striking loci (R+r₁) and (R+r₂). Critical for cam profiles.", concepts:["External Tangency","Arc Construction","Locus of Centers","Blending Curves","Two-circle tangent"]},
+  {num:8,  title:"Application of Tangents", url:"https://youtu.be/5K-9AIb0VG8", vid:"5K-9AIb0VG8", tag:"Tangency", desc:"Smooth transitions via <strong>internal and external tangency</strong>. Covers tangent lines from external points to circles and combining these in real design scenarios.", concepts:["Tangent Lines","Internal Tangent","External Tangent","Circle-to-Line","Transition Curves"]},
+  {num:9,  title:"How to Construct a Spanner", url:"https://youtu.be/RPjwg3gXw7E", vid:"RPjwg3gXw7E", tag:"Applied Drawing", desc:"Practical exercise combining <strong>hexagons, arcs, tangent lines and circles</strong> to draw a spanner — consolidating all previous geometric skills in one real component.", concepts:["Hexagon jaw","Blending arcs","Engineering component","Tangent arcs","Technical drawing"]},
+  {num:10, title:"Ellipse – Auxiliary Circle Method", url:"https://youtu.be/4NkRtLcGll0", vid:"4NkRtLcGll0", tag:"Conic Sections", desc:"The <strong>concentric circles method</strong>: combine x from the outer circle with y from the inner circle. Systematic and accurate — ideal for exam and exam prep.", concepts:["Major Axis","Minor Axis","Concentric Circles","Auxiliary Circle","Ellipse Points"]},
+  {num:11, title:"Ellipse – Four Arc (Oblong) Method", url:"https://youtu.be/Gqo9uPr9-Lk", vid:"Gqo9uPr9-Lk", tag:"Conic Sections", desc:"The <strong>four-arc approximate method</strong> uses four circular arcs of two radii. Quicker than the auxiliary circle method — very useful for engineering contexts.", concepts:["Four Arcs","Approximate Ellipse","Two Radii","Arc Centers","Quick Method"]},
+  {num:12, title:"Parabola – Locus Method", url:"https://youtu.be/_EAbV6qEaW4", vid:"_EAbV6qEaW4", tag:"Conic Sections", desc:"A parabola is equidistant from a fixed <strong>focus</strong> and fixed <strong>directrix</strong>. Applications: satellite dishes, bridge arches, headlight reflectors (e = 1).", concepts:["Focus","Directrix","Locus of Points","Equidistant","Parabola Vertex"]},
+  {num:13, title:"Hyperbola – Locus Method", url:"https://youtu.be/Q-iVvFkgatA", vid:"Q-iVvFkgatA", tag:"Conic Sections", desc:"The <strong>difference</strong> of distances from two fixed foci is constant. Applications: cooling towers, sonic boom wavefronts, GPS navigation (e &gt; 1).", concepts:["Two Foci","Constant Difference","Hyperbola Branches","Asymptotes","Transverse Axis"]},
+  {num:14, title:"Construct a Cycloid", url:"https://youtu.be/r7pDNvYYco4", vid:"r7pDNvYYco4", tag:"Roulette Curves", desc:"A <strong>cycloid</strong> is traced by a point on the rim of a circle rolling along a straight line. Divide circle and base into equal parts and track the point. Used in gear tooth profiles.", concepts:["Rolling Circle","Tracing Point","Equal Divisions","Gear Profiles","Brachistochrone"]},
+  {num:15, title:"Slider–Crank Mechanism", url:"https://youtu.be/Gpu4u34dNtA", vid:"Gpu4u34dNtA", tag:"Mechanisms", desc:"The <strong>slider-crank</strong> converts rotational motion to linear reciprocating motion (piston engines). Draw at various crank positions and determine stroke length.", concepts:["Crank","Connecting Rod","Slider","Stroke","Piston Engine","Mechanism Drawing"]},
+  {num:16, title:"Ellipse + Parabola + Hyperbola – Locus Method (Combined)", url:"https://youtu.be/0IKAvgyoN-A", vid:"0IKAvgyoN-A", tag:"Conic Sections", desc:"All three conic sections using the <strong>unified focus-directrix locus definition</strong>. The type is determined by <strong>eccentricity e</strong>: e&lt;1 = ellipse, e=1 = parabola, e&gt;1 = hyperbola.", concepts:["Eccentricity","Focus-Directrix","Ellipse e<1","Parabola e=1","Hyperbola e>1","Unified Locus"]},
+  {num:17, title:"Isometric, Pictorial & Orthographic Projections – Part 1", url:"https://youtu.be/I00nCPcl1ew", vid:"I00nCPcl1ew", tag:"Projections", desc:"<strong>Orthographic</strong> shows objects in multiple 2D views. <strong>Isometric</strong> is a 3D pictorial where all axes make 120°. Introduces notation, grid and first/third angle projection.", concepts:["Orthographic","Isometric Grid","Three Views","Foreshortening","1st Angle","3rd Angle"]},
+  {num:18, title:"Isometric, Pictorial & Orthographic Projections – Part 2", url:"https://youtu.be/oY-45fk30fQ", vid:"oY-45fk30fQ", tag:"Projections", desc:"<strong>Converting orthographic views into isometric pictorials</strong> and vice versa. Includes hidden lines, centerlines, dimensioning and complex objects with holes and curves.", concepts:["Isometric Circles","Hidden Lines","Dimensioning","View Conversion","Complex Solids"]}
+];
+
+/* ── BUILD CARD ── */
+function buildCard(t) {
+  const chips = t.concepts.map(c=>`<span class="chip">${c}</span>`).join('');
+  const svg = D[t.num] || '';
+  const titleAttr = t.title.replace(/"/g,'&quot;');
+  const thumbs = ['maxresdefault','mqdefault','default']
+    .map(q=>`<img src="https://img.youtube.com/vi/${t.vid}/${q}.jpg" alt="${titleAttr}" loading="lazy" onerror="this.src='https://img.youtube.com/vi/${t.vid}/hqdefault.jpg';this.onerror=null;" onclick="loadVidFromStrip(this,'${t.vid}')"/>`)
+    .join('');
+
+  return `<div class="card" data-search="${t.title.toLowerCase()} ${t.tag.toLowerCase()} ${t.concepts.join(' ').toLowerCase()} ${t.desc.toLowerCase()}">
+    <div class="card-header">
+      <div class="card-num">${String(t.num).padStart(2,'0')}</div>
+      <div class="card-title">${t.title}</div>
+      <i class="fa-brands fa-youtube card-yt-icon"></i>
+    </div>
+    <div class="card-tag-strip">
+      <span class="card-tag"><i class="fa-solid fa-tag"></i> ${t.tag}</span>
+    </div>
+    <div class="diagram-panel" onclick="openLB(${t.num},'${titleAttr}')" title="Click to enlarge">
+      ${svg}
+      <div class="diagram-label"><i class="fa-solid fa-drafting-compass"></i> Diagram</div>
+      <div class="expand-hint"><i class="fa-solid fa-expand"></i> Expand</div>
+    </div>
+    <div class="thumb-strip">
+      ${thumbs}
+      <div class="thumb-strip-label"><i class="fa-solid fa-images"></i> Previews</div>
+    </div>
+    <div class="video-wrap">
+      <div class="video-placeholder" onclick="loadVid(this,'${t.vid}')">
+        <img src="https://img.youtube.com/vi/${t.vid}/hqdefault.jpg" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+        <div class="play-ring"><i class="fa-solid fa-play"></i></div>
+        <span class="play-label">Watch tutorial</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">${t.desc}</p>
+      <div class="concepts">${chips}</div>
+      <a class="watch-btn" href="${t.url}" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i> Open on YouTube</a>
+    </div>
+  </div>`;
+}
+
+/* ── LIGHTBOX ── */
+function openLB(num, title) {
+  document.getElementById('lb-title').innerHTML = `#${num} &mdash; ${title}`;
+  document.getElementById('lb-svg').innerHTML = D[num] || '';
+  const s = document.querySelector('#lb-svg svg');
+  if(s){ s.removeAttribute('height'); s.style.height='auto'; }
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLB(e) {
+  if(!e || e.target===document.getElementById('lightbox') || e.currentTarget.id==='lb-close'){
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+/* ── VIDEO ── */
+function loadVid(el, vid) {
+  el.parentElement.innerHTML = `<iframe src="https://www.youtube.com/embed/${vid}?autoplay=1&rel=0" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
+}
+function loadVidFromStrip(imgEl, vid) {
+  const wrap = imgEl.closest('.card').querySelector('.video-wrap');
+  const ph = wrap.querySelector('.video-placeholder');
+  if(ph){ wrap.innerHTML = `<iframe src="https://www.youtube.com/embed/${vid}?autoplay=1&rel=0" allowfullscreen allow="autoplay; encrypted-media"></iframe>`; wrap.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+}
+
+/* ── RENDER / SEARCH ── */
+function renderAll(list) {
+  const g = document.getElementById('topicGrid');
+  g.innerHTML = list.length
+    ? list.map(buildCard).join('')
+    : `<div class="no-results"><i class="fa-solid fa-magnifying-glass"></i><h3>No results found</h3><p>Try searching for a topic like "ellipse", "hexagon" or "projection".</p></div>`;
+  document.getElementById('countBadge').textContent = list.length + ' topic' + (list.length!==1?'s':'');
+}
+function filterCards() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  document.getElementById('clearBtn').style.display = q ? 'flex' : 'none';
+  renderAll(q ? topics.filter(t =>
+    t.title.toLowerCase().includes(q) ||
+    t.tag.toLowerCase().includes(q) ||
+    t.concepts.some(c=>c.toLowerCase().includes(q)) ||
+    t.desc.toLowerCase().includes(q)
+  ) : topics);
+}
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('clearBtn').style.display = 'none';
+  renderAll(topics);
+}
+
+/* ── BACK TO TOP ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('btt').style.display = window.scrollY > 400 ? 'flex' : 'none';
+});
+
+/* ── INIT ── */
+renderAll(topics);
+</script>
+</body>
+</html>
