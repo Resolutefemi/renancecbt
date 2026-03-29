@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIO 101 CBT Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        :root {
+            --primary: #16a34a;
+            --primary-dark: #15803d;
+            --primary-light: #dcfce7;
+            --bg: #f0fdf4;
+            --card-bg: #ffffff;
+            --text: #14532d;
+            --text-muted: #4b7a5f;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --accent: #f59e0b;
+            --border: rgba(22,163,74,0.15);
+            --share-gradient: linear-gradient(135deg, #14532d 0%, #16a34a 55%, #84cc16 100%);
+            --nav-h: 64px;
+        }
+        .dark-mode {
+            --bg: #0a1f0f;
+            --card-bg: #0f2d18;
+            --text: #dcfce7;
+            --text-muted: #86efac;
+            --border: rgba(134,239,172,0.12);
+            --primary-light: rgba(22,163,74,0.15);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'DM Sans', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Subtle grid bg */
+        body::before {
+            content: '';
+            position: fixed; inset: 0; z-index: -1;
+            background-image:
+                linear-gradient(rgba(22,163,74,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(22,163,74,0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        /* ── NAV ── */
+        nav {
+            background: var(--card-bg);
+            height: var(--nav-h);
+            padding: 0 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 2px solid var(--border);
+            position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 4px 24px rgba(22,163,74,0.08);
+        }
+        .nav-brand {
+            display: flex; flex-direction: column; gap: 1px;
+        }
+        .nav-brand-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .nav-brand-title .leaf { font-size: 1.1rem; }
+        .nav-brand-sub {
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .nav-actions { display: flex; gap: 10px; align-items: center; }
+
+        main { padding: 2rem 5%; max-width: 980px; margin: 0 auto; }
+
+        /* ── STATS BAR ── */
+        .stats-bar {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 0.8rem; margin-bottom: 1.8rem;
+        }
+        .stat-card {
+            background: var(--card-bg); border-radius: 14px; padding: 1rem 1.2rem;
+            text-align: center;
+            border: 1.5px solid var(--border);
+            box-shadow: 0 2px 8px rgba(22,163,74,0.06);
+            position: relative; overflow: hidden;
+        }
+        .stat-card::after {
+            content: '';
+            position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+            background: var(--share-gradient);
+        }
+        .stat-card .stat-val { font-family: 'Syne', sans-serif; font-size: 1.7rem; font-weight: 800; color: var(--primary); }
+        .stat-card .stat-lbl { font-size: 0.73rem; color: var(--text-muted); margin-top: 3px; font-weight: 500; letter-spacing: 0.3px; }
+
+        /* ── DASHBOARD HEADER ── */
+        .dash-header {
+            margin-bottom: 1.5rem;
+            display: flex; align-items: flex-end; justify-content: space-between;
+            flex-wrap: wrap; gap: 10px;
+        }
+        .dash-title { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--text); }
+        .dash-count { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid rgba(22,163,74,0.2);
+        }
+
+        /* ── DASHBOARD GRID ── */
+        #dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 1rem; }
+        .box {
+            background: var(--card-bg); padding: 1.6rem 1.2rem; border-radius: 16px;
+            text-align: center; cursor: pointer;
+            transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s, border-color 0.25s;
+            border: 1.5px solid var(--border);
+            box-shadow: 0 2px 10px rgba(22,163,74,0.05);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+        }
+        .box:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: var(--primary);
+            box-shadow: 0 12px 28px rgba(22,163,74,0.18);
+        }
+        .box-icon { font-size: 2rem; line-height: 1; }
+        .box h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text); }
+        .box p { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; }
+        .box-random {
+            background: var(--share-gradient) !important;
+            color: white !important; border: none !important;
+        }
+        .box-random h3, .box-random p { color: rgba(255,255,255,0.95) !important; }
+        .box-random p { color: rgba(255,255,255,0.75) !important; }
+
+        /* ── SETUP SCREEN ── */
+        #setup-screen {
+            background: var(--card-bg); padding: 3rem 2.5rem; border-radius: 20px;
+            border: 1.5px solid var(--border);
+            box-shadow: 0 8px 32px rgba(22,163,74,0.08);
+            max-width: 500px; margin: 0 auto;
+        }
+        #setup-screen h2 {
+            font-family: 'Syne', sans-serif; font-size: 1.4rem;
+            color: var(--primary); margin-bottom: 2rem; text-align: center;
+        }
+        .setup-group { margin-bottom: 1.5rem; }
+        .setup-group label { font-weight: 600; font-size: 0.85rem; color: var(--text); display: block; margin-bottom: 7px; letter-spacing: 0.3px; }
+        .setup-input {
+            width: 100%; padding: 11px 14px; border: 2px solid var(--border);
+            border-radius: 10px; font-size: 0.95rem;
+            background: var(--bg); color: var(--text); outline: none;
+            transition: border-color 0.2s; font-family: 'DM Sans', sans-serif;
+        }
+        .setup-input:focus { border-color: var(--primary); }
+        .checkbox-group {
+            display: flex; flex-direction: column; gap: 12px;
+            background: var(--bg); padding: 14px; border-radius: 10px;
+            border: 1.5px solid var(--border);
+        }
+        .custom-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; color: var(--text); font-weight: 500; user-select: none; }
+        .custom-checkbox input { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; }
+
+        /* ── QUIZ INTERFACE ── */
+        .quiz-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 16px; flex-wrap: wrap; gap: 10px;
+        }
+        .q-counter {
+            font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text);
+        }
+        .btn-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        #timer {
+            color: var(--danger); background: rgba(220,38,38,0.09);
+            padding: 6px 16px; border-radius: 20px; font-size: 0.9rem;
+            font-weight: 700; font-family: 'Syne', sans-serif;
+            border: 1px solid rgba(220,38,38,0.15);
+        }
+
+        /* Progress bar */
+        .progress-wrap { height: 5px; background: var(--border); border-radius: 99px; margin-bottom: 20px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--share-gradient); border-radius: 99px; transition: width 0.4s ease; }
+
+        .question-card {
+            background: var(--card-bg); padding: 2.2rem; border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(22,163,74,0.07);
+            border: 1.5px solid var(--border);
+        }
+        #question-text {
+            line-height: 1.75; margin-bottom: 1.6rem; font-size: 1.05rem;
+            color: var(--text); font-weight: 400;
+        }
+
+        .option-btn {
+            display: block; width: 100%; padding: 1rem 1.2rem;
+            margin: 0.6rem 0;
+            border: 2px solid var(--border); border-radius: 12px;
+            background: var(--bg); color: var(--text); text-align: left;
+            cursor: pointer; font-size: 0.95rem;
+            transition: background 0.15s, border-color 0.15s, transform 0.15s;
+            line-height: 1.5; font-family: 'DM Sans', sans-serif;
+        }
+        .option-btn:not(:disabled):hover { background: var(--primary-light); border-color: var(--primary); transform: translateX(4px); }
+        .option-btn.selected { background: #e0f2fe !important; border-color: #3b82f6 !important; color: #0369a1 !important; }
+        .option-btn.correct  { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: 700; }
+        .option-btn.wrong    { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
+
+        .feedback-msg { margin-top: 1.2rem; padding: 1.2rem 1.4rem; border-radius: 12px; font-weight: 600; animation: fadeIn 0.3s; line-height: 1.6; font-size: 0.95rem; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        .controls { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 2rem; }
+        .btn {
+            padding: 0.8rem 1.6rem; border: none; border-radius: 10px; cursor: pointer;
+            font-weight: 700; background: var(--primary); color: white;
+            transition: opacity 0.2s, transform 0.2s;
+            font-size: 0.92rem; font-family: 'Syne', sans-serif;
+            letter-spacing: 0.2px;
+        }
+        .btn:hover { opacity: 0.88; transform: translateY(-2px); }
+        .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+        /* ── RESULT MODAL ── */
+        .result-modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(12px); z-index: 9999;
+            display: flex; justify-content: center; align-items: center; padding: 20px;
+        }
+        .result-modal-content {
+            background: var(--card-bg); padding: 44px 32px; border-radius: 28px;
+            width: 100%; max-width: 430px; text-align: center; color: var(--text);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            border: 2px solid var(--border);
+            animation: bounceIn 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes bounceIn {
+            0%   { opacity: 0; transform: scale(0.75) translateY(40px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .result-icon { font-size: 3.8rem; margin-bottom: 8px; display: block; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .score-display {
+            background: var(--primary-light);
+            border: 2px dashed rgba(22,163,74,0.3); border-radius: 20px;
+            padding: 20px; margin: 18px 0;
+        }
+        .score-big { font-family: 'Syne', sans-serif; font-size: 3.8rem; font-weight: 900; color: var(--primary); line-height: 1; }
+        .stats-mini { display: flex; justify-content: center; gap: 28px; margin: 12px 0 4px; }
+        .stats-mini .sm { text-align: center; }
+        .stats-mini .sm .sv { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--primary); }
+        .stats-mini .sm .sl { font-size: 0.7rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.4px; }
+        #save-status { font-size: 0.78rem; color: var(--text-muted); margin: 8px 0 14px; }
+        .result-actions { display: flex; flex-direction: column; gap: 11px; }
+        .btn-action { width: 100%; padding: 14px; border: none; border-radius: 13px; font-size: 0.97rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s; display: flex; align-items: center; justify-content: center; gap: 9px; font-family: 'Syne', sans-serif; }
+        .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-share  { background: var(--share-gradient); color: white; box-shadow: 0 4px 20px rgba(22,163,74,0.35); }
+        .btn-review { background: var(--primary-light); color: var(--primary); border: 1.5px solid rgba(22,163,74,0.25); }
+        .btn-home   { background: var(--bg); color: var(--text); border: 1.5px solid var(--border); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 600px) {
+            #dashboard { grid-template-columns: repeat(2, 1fr); }
+            .question-card { padding: 1.4rem; }
+            .result-modal-content { padding: 30px 18px; }
+            .score-big { font-size: 3rem; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            #setup-screen { padding: 2rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-brand">
+        <div class="nav-brand-title">
+            <span class="leaf">🌿</span> BIO 101 Practice Portal
+        </div>
+        <div class="nav-brand-sub">by Resolute Femi</div>
+    </div>
+    <div class="nav-actions">
+        <button class="btn" style="background:var(--accent); display:none; padding:7px 14px; font-size:0.82rem;" id="resume-btn" onclick="resumeExam()">
+            <i class="fa-solid fa-rotate-right"></i> Resume
+        </button>
+        <button class="btn" style="background:#4b7a5f; padding:7px 14px; font-size:0.82rem;" onclick="document.body.classList.toggle('dark-mode')">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+    </div>
+</nav>
+
+<main>
+    <!-- DASHBOARD -->
+    <div id="dashboard-wrap">
+        <div id="stats-bar" class="stats-bar" style="display:none;"></div>
+        <div class="dash-header">
+            <div>
+                <div class="dash-title">BIO 101 Question Bank</div>
+                <div class="dash-count" id="dash-count"></div>
+            </div>
+            <span class="badge" id="total-badge"></span>
+        </div>
+        <div id="dashboard"></div>
+    </div>
+
+    <!-- SETUP SCREEN -->
+    <div id="setup-screen" style="display:none;">
+        <h2 id="setup-title"></h2>
+
+        <div class="setup-group">
+            <label>Select Mode:</label>
+            <select id="quiz-mode" class="setup-input">
+                <option value="practice">Practice Mode (Instant Answers)</option>
+                <option value="exam">Exam Mode (Answers at End)</option>
+            </select>
+        </div>
+
+        <div id="random-settings">
+            <div class="setup-group">
+                <label>Question Quantity:</label>
+                <input type="number" id="q-count" value="50" class="setup-input" min="1" max="999">
+            </div>
+        </div>
+
+        <div class="setup-group">
+            <label>Time Limit (Minutes):</label>
+            <input type="number" id="t-limit" value="30" class="setup-input" min="1">
+        </div>
+
+        <div class="setup-group">
+            <div class="checkbox-group">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="shuffle-questions" checked> Shuffle Questions
+                </label>
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="shuffle-options" checked> Shuffle Options (A, B, C, D)
+                </label>
+            </div>
+        </div>
+
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:2rem;">
+            <button class="btn" style="background:#4b7a5f;" onclick="goHome()">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </button>
+            <button class="btn" onclick="startExam()" style="min-width:160px;">
+                Start Now <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- QUIZ INTERFACE -->
+    <div id="quiz-interface" style="display:none;">
+        <div class="quiz-header">
+            <span class="q-counter">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
+            <div class="btn-group">
+                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding:8px 15px; font-size:0.85rem;" onclick="showResults()">
+                    <i class="fa-solid fa-paper-plane"></i> Submit
+                </button>
+                <button class="btn" id="finish-review-btn" style="display:none; padding:8px 15px; font-size:0.85rem;" onclick="goHome()">
+                    <i class="fa-solid fa-house"></i> Exit Review
+                </button>
+                <span id="timer">30:00</span>
+            </div>
+        </div>
+
+        <div class="progress-wrap">
+            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+        </div>
+
+        <div class="question-card">
+            <h3 id="question-text"></h3>
+            <div id="options-box"></div>
+            <div id="feedback-area"></div>
+        </div>
+
+        <div class="controls">
+            <button class="btn" style="background:#4b7a5f;" onclick="move(-1)">
+                <i class="fa-solid fa-arrow-left"></i> Previous
+            </button>
+            <button class="btn" id="next-btn" onclick="move(1)">
+                Next <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</main>
+
+<!-- RESULT MODAL -->
+<div id="quizResultModal" class="result-modal-overlay" style="display:none;">
+    <div class="result-modal-content">
+        <span class="result-icon" id="resultIcon">🏆</span>
+        <h2 id="resultGreeting" style="margin:0 0 14px; font-family:'Syne',sans-serif; font-size:1.5rem;">Outstanding!</h2>
+
+        <div class="score-display">
+            <div class="score-big"><span id="finalScoreText">0</span>%</div>
+            <div class="stats-mini">
+                <div class="sm"><div class="sv" id="modalCorrect">0</div><div class="sl">Correct</div></div>
+                <div class="sm"><div class="sv" id="modalTotal">0</div><div class="sl">Total</div></div>
+                <div class="sm"><div class="sv" id="modalAvg">—</div><div class="sl">Your Avg</div></div>
+            </div>
+        </div>
+
+        <p id="resultFeedback" style="font-size:0.9rem; color:var(--text-muted); margin:0;"></p>
+        <p id="save-status"></p>
+
+        <div class="result-actions" style="margin-top:18px;">
+            <button class="btn-action btn-share" onclick="shareQuizResult()">
+                <i class="fa-solid fa-share-nodes"></i> Share Score
+            </button>
+            <button class="btn-action btn-review" id="modalReviewBtn" onclick="enterReviewMode()">
+                <i class="fa-solid fa-magnifying-glass"></i> Review Answers
+            </button>
+            <button class="btn-action btn-home" onclick="goHome()">
+                <i class="fa-solid fa-house"></i> Dashboard
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const COURSE_CODE = 'BIO 101';
+
+    const MASTER_POOL = [
+  {
+    "question": "Animals must eat other organisms for food, so they are classified as ___.",
+    "options": ["Heterotrophs", "Autotrophs", "Eukaryotic", "Prokaryotic"],
+    "answer": "Heterotrophs",
+    "explanation": "Animals cannot make their own food and must consume other organisms, making them heterotrophs."
+  },
+  {
+    "question": "Tigers, Jellyfish, Gorillas and Sponges are all _______.",
+    "options": ["Animals", "Plants", "Fungi", "Bacteria"],
+    "answer": "Animals",
+    "explanation": "All four organisms belong to Kingdom Animalia as they are all multicellular, heterotrophic, and lack cell walls."
+  },
+  {
+    "question": "What kingdom is always multicellular, heterotrophic and has NO cell wall?",
+    "options": ["Protista", "Fungi", "Plantae", "Animalia"],
+    "answer": "Animalia",
+    "explanation": "Kingdom Animalia consists of multicellular organisms that are heterotrophic and have no cell wall, only a plasma membrane."
+  },
+  {
+    "question": "All of the following have a nucleus EXCEPT...",
+    "options": ["Bacteria", "Animalia", "Plantae", "Protista"],
+    "answer": "Bacteria",
+    "explanation": "Bacteria are prokaryotes and lack a membrane-bound nucleus. All others (Animalia, Plantae, Protista) are eukaryotes."
+  },
+  {
+    "question": "You would find mushrooms in which group?",
+    "options": ["Plants", "Protists", "Fungi", "Animals"],
+    "answer": "Fungi",
+    "explanation": "Mushrooms are the fruiting bodies of organisms belonging to Kingdom Fungi."
+  },
+  {
+    "question": "This kingdom contains heterotrophic organisms that can be unicellular or multicellular. Organisms from this kingdom can be used to make bread, or sometimes cause athlete's foot or ringworm.",
+    "options": ["Fungi", "Animals", "Protists", "Archaebacteria"],
+    "answer": "Fungi",
+    "explanation": "Fungi are heterotrophs used in baking (yeast) and can also be pathogenic, causing conditions like athlete's foot (Tinea pedis)."
+  },
+  {
+    "question": "Which kingdom do humans belong to?",
+    "options": ["Plants", "Fungi", "Animals", "Protists"],
+    "answer": "Animals",
+    "explanation": "Humans (Homo sapiens) belong to Kingdom Animalia under phylum Chordata, class Mammalia."
+  },
+  {
+    "question": "This group contains all organisms that have a true nucleus in each of their cells.",
+    "options": ["Animals", "Plants", "Bacteria", "Eukarya"],
+    "answer": "Eukarya",
+    "explanation": "Domain Eukarya includes all organisms whose cells have a membrane-bound nucleus."
+  },
+  {
+    "question": "Organisms that are classified as unicellular are ___.",
+    "options": ["Seen with the naked eye", "Many-celled organisms", "Single-celled organisms", "Able to make their own food"],
+    "answer": "Single-celled organisms",
+    "explanation": "Unicellular means the entire organism consists of a single cell."
+  },
+  {
+    "question": "Which group contains organisms that are unicellular, prokaryotic, and can cause strep throat or E. coli infections?",
+    "options": ["Eukarya", "Plants", "Fungi", "Bacteria"],
+    "answer": "Bacteria",
+    "explanation": "Streptococcus (strep throat) and Escherichia coli are both unicellular prokaryotes in domain Bacteria."
+  },
+  {
+    "question": "Sexual reproduction requires ______ parents.",
+    "options": ["0", "1", "2", "3"],
+    "answer": "2",
+    "explanation": "Sexual reproduction involves the fusion of gametes from two parents (one providing sperm, one providing egg)."
+  },
+  {
+    "question": "What type of organism makes its own food internally?",
+    "options": ["Heterotroph", "Autotroph", "Carnivore", "Omnivore"],
+    "answer": "Autotroph",
+    "explanation": "Autotrophs (producers) synthesize their own organic molecules from inorganic sources using light or chemical energy."
+  },
+  {
+    "question": "Cells that do NOT have a true nucleus are called...",
+    "options": ["Eukaryote", "Prokaryote", "Unicellular", "Multicellular"],
+    "answer": "Prokaryote",
+    "explanation": "Prokaryotes (bacteria and archaea) lack a membrane-bound nucleus; their genetic material is in a region called the nucleoid."
+  },
+  {
+    "question": "Cells that have a true nucleus are called...",
+    "options": ["Eukaryotes", "Prokaryotes", "Unicellular", "Multicellular"],
+    "answer": "Eukaryotes",
+    "explanation": "Eukaryotes are defined by having a membrane-bound nucleus containing their DNA."
+  },
+  {
+    "question": "Which of the following structures can be found in a plant cell but NOT an animal cell?",
+    "options": ["Vacuole", "Nucleus", "Chloroplast", "Mitochondria"],
+    "answer": "Chloroplast",
+    "explanation": "Chloroplasts are plastids unique to plant cells and some protists that carry out photosynthesis."
+  },
+  {
+    "question": "What cell part is NOT found in all cells?",
+    "options": ["Cell Wall", "Cell Membrane", "Cytoplasm", "Genetic Material"],
+    "answer": "Cell Wall",
+    "explanation": "Animal cells lack a cell wall; only plants, fungi, and bacteria have cell walls (of different compositions)."
+  },
+  {
+    "question": "In what organelle does the food-making process in plants take place?",
+    "options": ["Endoplasmic Reticulum", "Vacuole", "Chloroplasts", "Mitochondria"],
+    "answer": "Chloroplasts",
+    "explanation": "Chloroplasts are the site of photosynthesis, where light energy is converted into chemical energy (glucose)."
+  },
+  {
+    "question": "What is the difference between prokaryotes vs. eukaryotes?",
+    "options": ["Prokaryotes have a nucleus", "Eukaryotes do not have a nucleus", "Prokaryotes have a cell wall", "Eukaryotes do have a nucleus"],
+    "answer": "Eukaryotes do have a nucleus",
+    "explanation": "The key distinction is that eukaryotes have a membrane-bound nucleus while prokaryotes do not."
+  },
+  {
+    "question": "In what organelle is the genetic material found inside?",
+    "options": ["Endoplasmic Reticulum", "Golgi Complex", "Nucleolus", "Nucleus"],
+    "answer": "Nucleus",
+    "explanation": "The nucleus houses the cell's chromosomal DNA and is bound by a double membrane called the nuclear envelope."
+  },
+  {
+    "question": "Living things need energy to survive.",
+    "options": ["True", "False"],
+    "answer": "True",
+    "explanation": "Energy is required for all life processes including growth, reproduction, and maintaining homeostasis."
+  },
+  {
+    "question": "The main source of energy for all living things is ___.",
+    "options": ["The Earth", "The Sun", "The Moon", "Food"],
+    "answer": "The Sun",
+    "explanation": "The sun is the ultimate energy source; autotrophs capture solar energy, which then flows through food chains to all organisms."
+  },
+  {
+    "question": "About how many species have been given scientific names so far?",
+    "options": ["100,000", "500,000", "1 million", "1¾ million"],
+    "answer": "1¾ million",
+    "explanation": "Approximately 1.75 million species have been formally described and named to date."
+  },
+  {
+    "question": "Most species live in ___ regions.",
+    "options": ["Arctic", "Tropical", "Temperate", "Desert"],
+    "answer": "Tropical",
+    "explanation": "Tropical regions have the highest biodiversity due to warm temperatures, abundant rainfall, and year-round growing seasons."
+  },
+  {
+    "question": "'Naming, describing, and classifying organisms into different categories based on their characteristics' is a definition of:",
+    "options": ["Adaptive radiation", "Natural selection", "Taxonomy"],
+    "answer": "Taxonomy",
+    "explanation": "Taxonomy is the science of classifying organisms using systematic naming and categorization."
+  },
+  {
+    "question": "The system of biological classification used today was created by:",
+    "options": ["Charles Darwin", "Carolus Linnaeus", "Stephen Jay Gould"],
+    "answer": "Carolus Linnaeus",
+    "explanation": "Carl Linnaeus (Carolus Linnaeus) developed the binomial nomenclature system and hierarchical classification in the 18th century."
+  },
+  {
+    "question": "Charles Darwin believed that:",
+    "options": ["Evolution occurs", "Natural selection is the cause of evolution", "Both of the above"],
+    "answer": "Both of the above",
+    "explanation": "Darwin proposed evolution via natural selection, arguing that heritable variations and environmental pressures drive change in populations over time."
+  },
+  {
+    "question": "Which structure is the location where proteins are made in the cell?",
+    "options": ["Ribosome", "Nucleus", "Mitochondria", "Golgi Body"],
+    "answer": "Ribosome",
+    "explanation": "Ribosomes are the molecular machines that synthesize proteins by translating messenger RNA."
+  },
+  {
+    "question": "Which structure processes and modifies proteins for excretion from cells?",
+    "options": ["Ribosome", "Golgi Body", "Mitochondria", "Vacuole"],
+    "answer": "Golgi Body",
+    "explanation": "The Golgi apparatus modifies, sorts, packages, and dispatches proteins and lipids for transport to their destinations."
+  },
+  {
+    "question": "Which structure regulates what enters and leaves the cell?",
+    "options": ["Cell Wall", "Nucleus", "Plasma Membrane", "Vacuole"],
+    "answer": "Plasma Membrane",
+    "explanation": "The plasma membrane is a selectively permeable barrier that controls the passage of substances into and out of the cell."
+  },
+  {
+    "question": "What is the small membrane sac which can form from the endoplasmic reticulum or from the Golgi body?",
+    "options": ["Lysosome", "Vacuole", "Vesicle", "Peroxisome"],
+    "answer": "Vesicle",
+    "explanation": "Vesicles are small membrane-bound sacs that transport materials within the cell or to the plasma membrane for secretion."
+  },
+  {
+    "question": "What is the large, fluid-filled, central structure found in the middle of plant cells that stores a variety of materials?",
+    "options": ["Vesicle", "Vacuole", "Lysosome", "Chloroplast"],
+    "answer": "Vacuole",
+    "explanation": "The central vacuole in plant cells stores water, nutrients, waste products, and helps maintain turgor pressure."
+  },
+  {
+    "question": "The plastid that captures light energy and manufactures food is the __________.",
+    "options": ["Mitochondrion", "Lysosome", "Chloroplast", "Ribosome"],
+    "answer": "Chloroplast",
+    "explanation": "Chloroplasts contain chlorophyll and are the sites of photosynthesis."
+  },
+  {
+    "question": "The organelle associated with energy release in the cell is the __________.",
+    "options": ["Nucleus", "Chloroplast", "Ribosome", "Mitochondrion"],
+    "answer": "Mitochondrion",
+    "explanation": "Mitochondria are the powerhouses of the cell, generating ATP through cellular respiration."
+  },
+  {
+    "question": "What organelle is associated with digestion of materials inside the cell?",
+    "options": ["Ribosome", "Lysosome", "Peroxisome", "Vacuole"],
+    "answer": "Lysosome",
+    "explanation": "Lysosomes contain hydrolytic enzymes that digest worn-out organelles, food particles, and foreign invaders."
+  },
+  {
+    "question": "What structure is involved in the initial routing and modification of newly formed proteins and in the formation of lipids?",
+    "options": ["Golgi Body", "Endoplasmic Reticulum", "Ribosome", "Nucleus"],
+    "answer": "Endoplasmic Reticulum",
+    "explanation": "The rough ER modifies newly synthesized proteins; the smooth ER synthesizes lipids and detoxifies substances."
+  },
+  {
+    "question": "What is the structure that directs and coordinates all cellular activity?",
+    "options": ["Mitochondria", "Ribosome", "Golgi Body", "Nucleus"],
+    "answer": "Nucleus",
+    "explanation": "The nucleus contains the cell's genetic instructions (DNA) that direct all cellular activities."
+  },
+  {
+    "question": "Ribosomes are assembled in which nuclear structure?",
+    "options": ["Nuclear Membrane", "Chromatin", "Nucleolus", "Nuclear Pore"],
+    "answer": "Nucleolus",
+    "explanation": "The nucleolus is the site of ribosomal RNA (rRNA) synthesis and initial assembly of ribosomal subunits."
+  },
+  {
+    "question": "When first proposed, Darwin's theory of natural selection did not fully explain how evolution could occur. This was due to:",
+    "options": ["Darwin's failure to recognize the tendency for organisms to over-reproduce", "Darwin's initial overemphasis of the significance of genetic drift", "The fact that accurate mechanisms explaining genetic inheritance were not widely known", "The absence of accurate descriptions of embryological development"],
+    "answer": "The fact that accurate mechanisms explaining genetic inheritance were not widely known",
+    "explanation": "Darwin proposed natural selection but lacked knowledge of genetics. Mendel's work was not yet widely recognized, leaving a gap in explaining how traits were inherited."
+  },
+  {
+    "question": "Which of the following is NOT a part of Darwin's theory of natural selection?",
+    "options": ["Individuals of a population vary", "Organisms tend to over-reproduce themselves", "There are limited resources for which individuals compete", "Modifications an organism acquires during its lifetime can be passed to its offspring"],
+    "answer": "Modifications an organism acquires during its lifetime can be passed to its offspring",
+    "explanation": "This describes Lamarck's theory of inheritance of acquired characteristics, not Darwin's theory."
+  },
+  {
+    "question": "The evolutionary theory proposed by Charles Darwin was:",
+    "options": ["Change in populations through time as a result of mutations", "The spontaneous generation of new organisms", "The passing on of genes from one generation to the next", "Change in populations through time as a response to environmental change"],
+    "answer": "Change in populations through time as a response to environmental change",
+    "explanation": "Darwin's core idea was descent with modification via natural selection, where populations change over generations in response to environmental pressures."
+  },
+  {
+    "question": "What is the only factor that can change allele frequencies in populations to produce adaptive evolutionary change?",
+    "options": ["Mutation", "Gene flow", "Non-random mating", "Genetic drift", "Selection"],
+    "answer": "Selection",
+    "explanation": "Natural selection is the primary mechanism that consistently leads to adaptive evolutionary change by increasing the frequency of beneficial alleles."
+  },
+  {
+    "question": "A species is defined as:",
+    "options": ["A population of organisms similar in size, shape, and color", "A group of organisms that live in the same habitat", "A population of organisms that are able to interbreed", "A population of organisms that have the same number of chromosomes"],
+    "answer": "A population of organisms that are able to interbreed",
+    "explanation": "This reflects the biological species concept, which emphasizes reproductive isolation as the key criterion."
+  },
+  {
+    "question": "The correct sequence from the most to the least comprehensive, of the taxonomic levels listed here is:",
+    "options": ["Family, phylum, class, kingdom, order, species, and genus", "Kingdom, phylum, class, order, family, genus, and species", "Kingdom, phylum, order, class, family, genus, and species", "Phylum, kingdom, order, class, species, family, and genus"],
+    "answer": "Kingdom, phylum, class, order, family, genus, and species",
+    "explanation": "The standard hierarchical order from broadest to most specific is: Domain > Kingdom > Phylum > Class > Order > Family > Genus > Species."
+  },
+  {
+    "question": "Organisms having many organelles are called:",
+    "options": ["Prokaryotes", "Eukaryotes", "Protist", "Unicellular"],
+    "answer": "Eukaryotes",
+    "explanation": "Eukaryotic cells are defined by having membrane-bound organelles such as the nucleus, mitochondria, and ER."
+  },
+  {
+    "question": "Branch of biology 'paleontology' deals with the study of:",
+    "options": ["Insects", "Fossils", "Parasites", "Welfare of mankind"],
+    "answer": "Fossils",
+    "explanation": "Paleontology is the study of fossils to understand the history of life on Earth."
+  },
+  {
+    "question": "Study of life in a scientific manner is called:",
+    "options": ["Biology", "Geology", "Anatomy", "Entomology"],
+    "answer": "Biology",
+    "explanation": "Biology is the scientific study of life and living organisms."
+  },
+  {
+    "question": "An example of an organism which shows colonial organization is:",
+    "options": ["Amoeba", "Euglena", "Paramecium", "Volvox"],
+    "answer": "Volvox",
+    "explanation": "Volvox is a classic example of a colonial green alga, where individual cells live together in a coordinated spherical colony."
+  },
+  {
+    "question": "Branch of biology 'embryology' deals with the study of:",
+    "options": ["Study of tissues", "Study of organelles", "Study of genetics", "Study of embryo development"],
+    "answer": "Study of embryo development",
+    "explanation": "Embryology is the branch of biology that studies the formation, early growth, and development of organisms from fertilization to birth."
+  },
+  {
+    "question": "The group of similar plants which breed freely among themselves constitute a:",
+    "options": ["Species", "Family", "Order", "Genus"],
+    "answer": "Species",
+    "explanation": "A species is a fundamental definition — a group of organisms that can interbreed and produce fertile offspring."
+  },
+  {
+    "question": "The five-kingdom arrangement of organisms was proposed by:",
+    "options": ["Whittaker", "John Ray", "De Vries", "Julian Huxley"],
+    "answer": "Whittaker",
+    "explanation": "Robert Whittaker proposed the influential Five-Kingdom system (Monera, Protista, Fungi, Plantae, Animalia) in 1969."
+  },
+  {
+    "question": "Which of the following definitions covers a greater number of organisms?",
+    "options": ["Class", "Genus", "Order", "Family"],
+    "answer": "Class",
+    "explanation": "In taxonomic hierarchy, higher categories contain more organisms. Class is the highest rank among these options."
+  },
+  {
+    "question": "The basic taxonomy unit is:",
+    "options": ["Kingdom", "Genus", "Species", "Order"],
+    "answer": "Species",
+    "explanation": "The species is the most basic and fundamental unit of biological classification."
+  },
+  {
+    "question": "The replacement of two-kingdom classification by five-kingdom classification was proposed in the year:",
+    "options": ["1853", "1859", "1969", "1863"],
+    "answer": "1969",
+    "explanation": "Robert Whittaker published his five-kingdom classification system in 1969."
+  },
+  {
+    "question": "Which statement best describes the contribution of Rudolf Virchow to cell theory?",
+    "options": ["He discovered that cells contain a nucleus", "He proposed that all cells arise from pre-existing cells", "He stated that cells are the building blocks of life", "He identified different types of cells in plants and animals"],
+    "answer": "He proposed that all cells arise from pre-existing cells",
+    "explanation": "Virchow's famous principle 'Omnis cellula e cellula' (all cells come from cells) completed the modern cell theory."
+  },
+  {
+    "question": "What is one of the key tenets of cell theory?",
+    "options": ["All living organisms are unicellular", "Cells are the basic units of structure and function in living things", "All cells have a nucleus", "Cells can spontaneously generate"],
+    "answer": "Cells are the basic units of structure and function in living things",
+    "explanation": "This is one of the three core principles of the cell theory."
+  },
+  {
+    "question": "Which type of reproduction involves the fusion of male and female gametes?",
+    "options": ["Asexual reproduction", "Budding", "Sexual reproduction", "Fragmentation"],
+    "answer": "Sexual reproduction",
+    "explanation": "Sexual reproduction is defined by the fusion of haploid gametes (sperm and egg) to form a diploid zygote."
+  },
+  {
+    "question": "What is the primary advantage of sexual reproduction?",
+    "options": ["Produces identical offspring", "Greater genetic variation", "Faster reproduction rate", "Requires less energy"],
+    "answer": "Greater genetic variation",
+    "explanation": "Sexual reproduction creates genetic diversity through meiosis and fertilization, helping populations adapt to changing environments."
+  },
+  {
+    "question": "Which of the following is a type of asexual reproduction?",
+    "options": ["Binary fission", "Cross-fertilization", "Budding", "Both binary fission and budding"],
+    "answer": "Both binary fission and budding",
+    "explanation": "Both binary fission (in bacteria) and budding (in yeast) are forms of asexual reproduction producing genetically identical offspring."
+  },
+  {
+    "question": "Which scientist is known for discovering bacteria?",
+    "options": ["Edward Jenner", "Louis Pasteur", "Robert Koch", "Anton van Leeuwenhoek"],
+    "answer": "Anton van Leeuwenhoek",
+    "explanation": "Using handmade microscopes, Leeuwenhoek was the first to observe and describe bacteria (called 'animalcules') in the 1670s."
+  },
+  {
+    "question": "Who is credited with the discovery of protozoa?",
+    "options": ["Anton van Leeuwenhoek", "Robert Hooke", "Louis Pasteur", "Gregor Mendel"],
+    "answer": "Anton van Leeuwenhoek",
+    "explanation": "Leeuwenhoek was also the first to observe and document single-celled organisms, now known as protozoa."
+  },
+  {
+    "question": "An example of the artificial system of classification is:",
+    "options": ["Bentham and Hooker", "Linnaeus system", "Engler and Prantl", "Hutchison"],
+    "answer": "Linnaeus system",
+    "explanation": "Linnaeus's system, based primarily on floral parts, is a classic example of an artificial system using a few easily observable traits."
+  },
+  {
+    "question": "What is the definition of a population in ecology?",
+    "options": ["A group of different species living in the same area", "All the individual organisms of a single species in a specific area", "The total number of organisms in a particular ecosystem", "A collection of plants and animals living together"],
+    "answer": "All the individual organisms of a single species in a specific area",
+    "explanation": "This is the precise ecological definition of a population."
+  },
+  {
+    "question": "Who is often referred to as the 'Father of Ecology'?",
+    "options": ["Charles Darwin", "Ernst Haeckel", "John Muir", "Aldo Leopold"],
+    "answer": "Ernst Haeckel",
+    "explanation": "German biologist Ernst Haeckel coined the term 'ecology' (oekologie) in 1866 and is widely credited as its founding figure."
+  },
+  {
+    "question": "The term 'oekologie' coined by Haeckel comes from which Greek words?",
+    "options": ["Oikos (house) and logos (study)", "Oikeia (family) and bios (life)", "Oikos (habitat) and bios (life)", "Oken (form) and logos (reason)"],
+    "answer": "Oikos (house) and logos (study)",
+    "explanation": "Haeckel derived it from Greek oikos (house/dwelling) and logos (study), meaning 'the study of the household of nature.'"
+  },
+  {
+    "question": "What does ATP stand for?",
+    "options": ["Adenosine Triphosphate", "Adenine Triphosphate", "Adenosine Tetrasubphosphate", "Adenosine Trisubphosphate"],
+    "answer": "Adenosine Triphosphate",
+    "explanation": "ATP is composed of adenine, ribose, and three phosphate groups."
+  },
+  {
+    "question": "Which of the following best describes the primary function of ATP in biological systems?",
+    "options": ["It serves as a structural component of DNA", "It acts as a long-term energy storage molecule", "It provides energy for cellular processes", "It is involved in the synthesis of proteins"],
+    "answer": "It provides energy for cellular processes",
+    "explanation": "ATP is the cell's primary short-term energy currency, coupling energy-releasing reactions with energy-requiring ones."
+  },
+  {
+    "question": "What is the primary characteristic of autotrophs?",
+    "options": ["They can produce their own food", "They rely entirely on other organisms for energy", "They are always multicellular", "They can only survive in aquatic environments"],
+    "answer": "They can produce their own food",
+    "explanation": "Autotrophs synthesize their own organic molecules from inorganic sources using light or chemical energy."
+  },
+  {
+    "question": "Which process do most autotrophs use to convert sunlight into energy?",
+    "options": ["Respiration", "Photosynthesis", "Fermentation", "Digestion"],
+    "answer": "Photosynthesis",
+    "explanation": "Photosynthesis is the process used by plants, algae, and cyanobacteria to convert light energy into chemical energy."
+  },
+  {
+    "question": "Which of the following is an example of an autotroph?",
+    "options": ["Lion", "Mushroom", "Grass", "Earthworm"],
+    "answer": "Grass",
+    "explanation": "Grass is a green plant that performs photosynthesis, making it an autotroph (producer)."
+  },
+  {
+    "question": "Which of the following is NOT an example of a heterotroph?",
+    "options": ["Human", "Bear", "Oak tree", "Fungi"],
+    "answer": "Oak tree",
+    "explanation": "An oak tree is an autotroph that produces its own food via photosynthesis. All others must consume organic matter."
+  },
+  {
+    "question": "What does the term 'poikilothermic' refer to?",
+    "options": ["Organisms that maintain a constant internal body temperature", "Organisms whose body temperature varies with the environment", "Organisms that can produce heat through metabolic processes", "Organisms that hibernate during winter months"],
+    "answer": "Organisms whose body temperature varies with the environment",
+    "explanation": "Poikilotherms (ectotherms) have body temperatures that fluctuate with the ambient temperature."
+  },
+  {
+    "question": "Which of the following is an example of a poikilothermic organism?",
+    "options": ["Dolphin", "Human", "Lizard", "Eagle"],
+    "answer": "Lizard",
+    "explanation": "Lizards are reptiles and are ectothermic/poikilothermic. Dolphins, humans, and eagles are endothermic."
+  },
+  {
+    "question": "What is an ectopic pregnancy?",
+    "options": ["A pregnancy that occurs in the uterus", "A pregnancy that occurs outside the uterus", "A type of miscarriage", "A multiple pregnancy"],
+    "answer": "A pregnancy that occurs outside the uterus",
+    "explanation": "An ectopic pregnancy is a dangerous condition where the embryo implants and grows outside the uterine cavity, most commonly in a fallopian tube."
+  },
+  {
+    "question": "At what stage does a fertilized egg become a zygote?",
+    "options": ["When it undergoes meiosis", "After the fusion of sperm and egg", "After implantation in the uterus", "After it divides into multiple cells"],
+    "answer": "After the fusion of sperm and egg",
+    "explanation": "A zygote is formed immediately upon the fusion of haploid gamete nuclei (fertilization)."
+  },
+  {
+    "question": "First step in taxonomy:",
+    "options": ["Naming", "Description", "Identification", "Classification"],
+    "answer": "Identification",
+    "explanation": "Before you can name, describe, or classify an organism, you must first identify what it is."
+  },
+  {
+    "question": "Binomial nomenclature means writing the name of a plant in two words which designate:",
+    "options": ["Order and family", "Family and genus", "Species and variety", "Genus and species"],
+    "answer": "Genus and species",
+    "explanation": "The binomial name consists of the genus name (capitalized) followed by the specific epithet (lowercase), e.g., Homo sapiens."
+  },
+  {
+    "question": "What is the correct descending sequence of taxonomic categories?",
+    "options": ["Division-class-order-family-tribe-genus", "Class-order-division-family-species-tribe", "Tribe-genus-class-division-family-order", "Family-order-genus-order-division-class"],
+    "answer": "Division-class-order-family-tribe-genus",
+    "explanation": "This is a subset of the standard hierarchy, correctly ordered from higher to lower rank (Division = Phylum in plants)."
+  },
+  {
+    "question": "The term 'systematic' was proposed by:",
+    "options": ["John Ray", "Adanson", "De Vries", "Julian Huxley"],
+    "answer": "Adanson",
+    "explanation": "French botanist Michel Adanson is credited with founding the concept of a natural system and advancing systematics."
+  },
+  {
+    "question": "Modern classification is based on:",
+    "options": ["Physiology", "Fossils", "Phylogeny", "Morphology"],
+    "answer": "Phylogeny",
+    "explanation": "Modern taxonomy aims to reflect evolutionary history and relationships (phylogeny), using evidence from morphology, genetics, and fossils."
+  },
+  {
+    "question": "A small group of individuals or organisms which resemble closely in structure as well as function is called:",
+    "options": ["Phylum", "Family", "Species", "Genus"],
+    "answer": "Species",
+    "explanation": "This is a descriptive definition of a species based on morphological and functional similarity."
+  },
+  {
+    "question": "Taxon is:",
+    "options": ["A genus", "A species", "A taxonomic unit", "A taxonomic category of any rank"],
+    "answer": "A taxonomic category of any rank",
+    "explanation": "A taxon (plural: taxa) is any named group of organisms at any level, e.g., Mammalia (Class) or Panthera leo (Species)."
+  },
+  {
+    "question": "'Systema Naturae' was written by:",
+    "options": ["Linnaeus", "Charles Darwin", "Aristotle", "Wallace"],
+    "answer": "Linnaeus",
+    "explanation": "Systema Naturae is the landmark work by Carl Linnaeus that laid the foundation for modern biological nomenclature and classification."
+  },
+  {
+    "question": "A system of classification based on all important morphological characters is termed as:",
+    "options": ["Artificial system", "Natural system", "Genetic system", "Both artificial and natural system"],
+    "answer": "Natural system",
+    "explanation": "A natural system uses many morphological (and now genetic) characters to group organisms based on overall similarity and evolutionary relationships."
+  },
+  {
+    "question": "Extra nuclear DNA is found in:",
+    "options": ["Chloroplast", "Endoplasmic reticulum", "Ribosomes", "Nucleus"],
+    "answer": "Chloroplast",
+    "explanation": "Chloroplasts (and mitochondria) contain their own small, circular DNA — a relic of their endosymbiotic origin."
+  },
+  {
+    "question": "Cell theory states that:",
+    "options": ["All cells have nuclei", "All cells are living", "Cells reproduce by mitosis and meiosis", "Cells are fundamental structural units of plants and animals"],
+    "answer": "Cells are fundamental structural units of plants and animals",
+    "explanation": "This is one of the core principles of cell theory. Not all cells have nuclei (prokaryotes lack them)."
+  },
+  {
+    "question": "Mitochondria were first seen by:",
+    "options": ["Robert Hooke", "Robert Brown", "Lipmann", "Altmann"],
+    "answer": "Altmann",
+    "explanation": "Richard Altmann observed them in 1890 and called them 'bioblasts.' The term 'mitochondrion' was coined later by Carl Benda."
+  },
+  {
+    "question": "Prokaryotic cell does NOT possess:",
+    "options": ["Cell wall", "Nuclear membrane", "Cytoplasm", "Plasma membrane"],
+    "answer": "Nuclear membrane",
+    "explanation": "The defining feature of prokaryotes is the absence of a membrane-bound nucleus. They do have cell walls, cytoplasm, and plasma membrane."
+  },
+  {
+    "question": "Plasma membrane is composed of:",
+    "options": ["Protein", "Lipids", "Cellulose", "Protein and Lipids"],
+    "answer": "Protein and Lipids",
+    "explanation": "The fluid mosaic model describes the plasma membrane as a phospholipid bilayer with embedded proteins."
+  },
+  {
+    "question": "Cellular organelles containing hydrolytic enzymes are called:",
+    "options": ["Peroxisomes", "Lysosomes", "Ribosomes", "Mesosomes"],
+    "answer": "Lysosomes",
+    "explanation": "Lysosomes are membrane-bound vesicles containing digestive (hydrolytic) enzymes for breaking down waste materials and pathogens."
+  },
+  {
+    "question": "The sedimentation constant of a ribosome is generally 70S. It breaks up into two subunits whose sedimentation constants are:",
+    "options": ["50S and 20S", "40S and 30S", "60S and 10S", "50S and 30S"],
+    "answer": "50S and 30S",
+    "explanation": "Prokaryotic 70S ribosomes consist of a large 50S subunit and a small 30S subunit. (S = Svedberg unit)"
+  },
+  {
+    "question": "Ribosomes help in:",
+    "options": ["Photosynthesis", "Protein synthesis", "Lipid synthesis", "Respiration"],
+    "answer": "Protein synthesis",
+    "explanation": "Ribosomes are the sites of translation, where mRNA is decoded to build polypeptide (protein) chains."
+  },
+  {
+    "question": "Food is converted to energy in:",
+    "options": ["Nucleus", "Nucleolus", "Chloroplast", "Mitochondria"],
+    "answer": "Mitochondria",
+    "explanation": "Mitochondria are the sites of cellular respiration (Krebs cycle and oxidative phosphorylation), where food molecules are oxidized to produce ATP."
+  },
+  {
+    "question": "What is the main characteristic of animals?",
+    "options": ["They are autotrophs", "They are heterotrophs", "They are cold-blooded", "They are warm-blooded"],
+    "answer": "They are heterotrophs",
+    "explanation": "All animals are heterotrophic, meaning they must ingest other organisms for nutrition."
+  },
+  {
+    "question": "What is the main characteristic of plants?",
+    "options": ["They are heterotrophs", "They are autotrophs", "They are cold-blooded", "They are warm-blooded"],
+    "answer": "They are autotrophs",
+    "explanation": "Plants are primarily photoautotrophic, producing their own food via photosynthesis."
+  },
+  {
+    "question": "What is the main difference between plants and animals in terms of growth?",
+    "options": ["Plants grow throughout their life while animals have definite growth", "Animals grow throughout their life while plants have definite growth", "Both plants and animals grow throughout their life", "Neither plants nor animals grow throughout their life"],
+    "answer": "Plants grow throughout their life while animals have definite growth",
+    "explanation": "Plants exhibit indeterminate growth from meristematic tissues, while animals generally have determinate growth, ceasing at adulthood."
+  },
+  {
+    "question": "What is the main difference between plants and animals in terms of cellular structure?",
+    "options": ["Plants have cell walls while animals do not", "Animals have cell walls while plants do not", "Both plants and animals have cell walls", "Neither plants nor animals have cell walls"],
+    "answer": "Plants have cell walls while animals do not",
+    "explanation": "Plant cells are surrounded by a rigid cellulose cell wall. Animal cells lack a cell wall, having only a flexible plasma membrane."
+  },
+  {
+    "question": "What is the main characteristic of animals in the phylum Arthropoda?",
+    "options": ["They have a true body cavity", "They have a sac-like cavity with a single opening", "They are bilaterally symmetrical and triploblastic", "They have jointed legs and a hard exoskeleton"],
+    "answer": "They have jointed legs and a hard exoskeleton",
+    "explanation": "'Arthropoda' means 'jointed feet.' The presence of a chitinous exoskeleton and jointed appendages are their defining features."
+  },
+  {
+    "question": "What is the main characteristic of animals in the class Mammalia?",
+    "options": ["They have a four-chambered heart", "They have a three-chambered heart", "They have a two-chambered heart", "They have hair and produce milk for their young"],
+    "answer": "They have hair and produce milk for their young",
+    "explanation": "The defining characteristics of Mammalia are mammary glands (for milk production) and the presence of hair/fur."
+  },
+  {
+    "question": "What is the main characteristic of animals in the class Aves?",
+    "options": ["They have a four-chambered heart", "They have a three-chambered heart", "They have a two-chambered heart", "They have feathers and wings"],
+    "answer": "They have feathers and wings",
+    "explanation": "Feathers are a unique, defining characteristic of birds (Aves)."
+  },
+  {
+    "question": "What is the main characteristic of animals in the class Pisces?",
+    "options": ["They have a four-chambered heart", "They have a three-chambered heart", "They have a two-chambered heart", "They have gills for respiration"],
+    "answer": "They have gills for respiration",
+    "explanation": "The universal characteristic of fish is the presence of gills for breathing underwater."
+  },
+  {
+    "question": "What is the main characteristic of animals in the phylum Porifera?",
+    "options": ["They have a true body cavity", "They have a canal system that circulates water, food, and oxygen", "They have a hard exoskeleton", "They have a notochord at some life stage"],
+    "answer": "They have a canal system that circulates water, food, and oxygen",
+    "explanation": "Sponges (Porifera) are filter feeders whose unique body plan is built around a system of pores and canals."
+  },
+  {
+    "question": "What is the main characteristic of plants in the phylum Pteridophyta?",
+    "options": ["They produce seeds in cones", "They have flowers and produce seeds protected inside fruits", "They have roots, stems, and leaves and reproduce by spores", "They are small plants with tiny leaves one cell thick"],
+    "answer": "They have roots, stems, and leaves and reproduce by spores",
+    "explanation": "Pteridophytes (ferns and allies) are vascular plants but reproduce via spores, not seeds."
+  },
+  {
+    "question": "What is the hierarchical system of classification used in biology?",
+    "options": ["Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species", "Kingdom, Phylum, Class, Order, Family, Genus, Species", "Domain, Kingdom, Phylum, Class, Order, Family", "Phylum, Class, Order, Family, Genus, Species"],
+    "answer": "Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species",
+    "explanation": "The modern hierarchy includes Domain as the most inclusive rank, followed by the traditional Linnaean ranks."
+  },
+  {
+    "question": "What are the three domains of life?",
+    "options": ["Archaea, Bacteria, and Eukarya", "Animalia, Plantae, and Fungi", "Protista, Chromista, and Monera", "Eukarya, Prokaryota, and Archaea"],
+    "answer": "Archaea, Bacteria, and Eukarya",
+    "explanation": "The three-domain system, based on molecular phylogeny, was proposed by Carl Woese and is now the standard."
+  },
+  {
+    "question": "Who modified the taxonomy hierarchy in 1990 to include the Domain?",
+    "options": ["Carl Linnaeus", "Carl Woese", "Cavalier-Smith", "Haeckel"],
+    "answer": "Carl Woese",
+    "explanation": "Carl Woese, based on rRNA sequencing, proposed the three-domain system, elevating the domain above the kingdom."
+  },
+  {
+    "question": "What is the advantage of using Latin language in biological nomenclature?",
+    "options": ["It is a universal language", "It is a simple language", "It is a language easy to learn", "It provides stability and universality to the names"],
+    "answer": "It provides stability and universality to the names",
+    "explanation": "Latin is a 'dead' language that does not evolve colloquially, ensuring scientific names remain consistent and universally understood."
+  },
+  {
+    "question": "Who is credited with developing the binomial system of nomenclature?",
+    "options": ["Carl Linnaeus", "Carl Woese", "Cavalier-Smith", "Haeckel"],
+    "answer": "Carl Linnaeus",
+    "explanation": "Carl Linnaeus formalized and popularized the binomial nomenclature system in the 18th century."
+  },
+  {
+    "question": "What is biodiversity?",
+    "options": ["The variety of life on Earth in all its forms and interactions", "The number of species in a habitat", "The genetic variation within a species", "The number of ecosystems in a region"],
+    "answer": "The variety of life on Earth in all its forms and interactions",
+    "explanation": "This is the comprehensive definition of biodiversity, encompassing genetic, species, and ecosystem diversity."
+  },
+  {
+    "question": "What are the three basic levels of diversity of life?",
+    "options": ["Genetic, species, and ecosystem", "Species, ecosystem, and community", "Genetic, ecosystem, and community", "Species, genetic, and community"],
+    "answer": "Genetic, species, and ecosystem",
+    "explanation": "These are the three universally recognized hierarchical levels of biodiversity."
+  },
+  {
+    "question": "What is the main characteristic of plants in the phylum Bryophyta?",
+    "options": ["They produce seeds in cones", "They have flowers and produce seeds in fruits", "They have roots, stems, and leaves and reproduce by spores", "They are small plants with tiny leaves one cell thick and single-celled rootlets"],
+    "answer": "They are small plants with tiny leaves one cell thick and single-celled rootlets",
+    "explanation": "Bryophytes (mosses, liverworts) are non-vascular plants lacking true roots, stems, and leaves, with rhizoids that are usually single-celled."
+  },
+  {
+    "question": "What is the main characteristic of animals in the phylum Coelenterata/Cnidaria?",
+    "options": ["They have a true body cavity", "They have a sac-like cavity with a single opening for ingestion and egestion", "They have a hard exoskeleton of calcium carbonate", "They have a notochord at some life stage"],
+    "answer": "They have a sac-like cavity with a single opening for ingestion and egestion",
+    "explanation": "Cnidarians (jellyfish, corals) have a gastrovascular cavity with a single opening that serves as both mouth and anus."
+  },
+  {
+    "question": "What is the main characteristic of animals in the phylum Mollusca?",
+    "options": ["They have a true body cavity", "They have a sac-like cavity with one opening", "They are bilaterally symmetrical and triploblastic", "They have a soft, unsegmented body, often protected by a shell"],
+    "answer": "They have a soft, unsegmented body, often protected by a shell",
+    "explanation": "'Mollusca' means 'soft-bodied.' Their hallmark is the soft body along with the frequent presence of a calcium carbonate shell."
+  },
+  {
+    "question": "What is the standard unit of biological activity?",
+    "options": ["Cell", "Tissue", "Organ", "System"],
+    "answer": "Cell",
+    "explanation": "The cell is the basic structural and functional unit of all living organisms."
+  },
+  {
+    "question": "Who coined the term 'cell'?",
+    "options": ["Robert Hooke", "Matthias Schleiden", "Theodor Schwann", "Rudolf Virchow"],
+    "answer": "Robert Hooke",
+    "explanation": "In 1665, Robert Hooke observed cork cells and named them 'cells' because they reminded him of monks' rooms (cellulae)."
+  },
+  {
+    "question": "What is the term for the 'powerhouse' of the cell?",
+    "options": ["Mitochondria", "Chloroplast", "Nucleus", "Endoplasmic reticulum"],
+    "answer": "Mitochondria",
+    "explanation": "Mitochondria generate most of the cell's supply of ATP, the energy currency."
+  },
+  {
+    "question": "What is the process by which cells produce energy?",
+    "options": ["Photosynthesis", "Respiration", "Fermentation", "Mitosis"],
+    "answer": "Respiration",
+    "explanation": "Cellular respiration (aerobic or anaerobic) is the process that breaks down organic molecules to release energy stored as ATP."
+  },
+  {
+    "question": "What is the function of the Golgi complex?",
+    "options": ["To synthesize proteins", "To store and modify proteins", "To produce energy", "To regulate cell growth"],
+    "answer": "To store and modify proteins",
+    "explanation": "The Golgi apparatus modifies, sorts, packages, and tags proteins and lipids for storage or transport."
+  },
+  {
+    "question": "What is the term for the process by which cells become specialized?",
+    "options": ["Mitosis", "Meiosis", "Differentiation", "Photosynthesis"],
+    "answer": "Differentiation",
+    "explanation": "Cellular differentiation is the process where a less specialized cell becomes a more specialized cell type."
+  },
+  {
+    "question": "What is the basic structure of cilia and flagella?",
+    "options": ["Nine-plus-one arrangement of tubules", "Nine-plus-two arrangement of tubules", "Ten-plus-one arrangement of tubules", "Ten-plus-two arrangement of tubules"],
+    "answer": "Nine-plus-two arrangement of tubules",
+    "explanation": "The core axoneme of eukaryotic cilia and flagella has a characteristic '9+2' microtubule structure: nine outer doublets surrounding a central pair."
+  },
+  {
+    "question": "What is the function of the nucleolus?",
+    "options": ["To synthesize DNA", "To synthesize ribosomal RNA", "To synthesize proteins", "To store genetic information"],
+    "answer": "To synthesize ribosomal RNA",
+    "explanation": "The nucleolus is the site of rRNA transcription and initial assembly of ribosomal subunits."
+  },
+  {
+    "question": "What is the term for the simplest cell known?",
+    "options": ["Eukaryotic cell", "Prokaryotic cell", "Nucleated cell", "Non-nucleated cell"],
+    "answer": "Prokaryotic cell",
+    "explanation": "Prokaryotic cells (bacteria and archaea) are structurally simpler and smaller than eukaryotic cells, lacking membrane-bound organelles."
+  },
+  {
+    "question": "What is the main difference in the structure of genetic material between prokaryotes and eukaryotes?",
+    "options": ["Prokaryotes have a single chromosome, while eukaryotes have multiple", "Prokaryotes have a membrane-bound nucleus, while eukaryotes do not", "Prokaryotes have DNA complexed with histones, while eukaryotes do not", "Prokaryotes have a simple, circular chromosome, while eukaryotes have complex, linear chromosomes"],
+    "answer": "Prokaryotes have a simple, circular chromosome, while eukaryotes have complex, linear chromosomes",
+    "explanation": "Prokaryotes typically have a single, circular DNA molecule not enclosed in a nucleus. Eukaryotes have multiple, linear chromosomes within the nucleus."
+  },
+  {
+    "question": "How do prokaryotes divide?",
+    "options": ["By mitotic division", "By meiotic division", "By binary fission", "By endoreduplication"],
+    "answer": "By binary fission",
+    "explanation": "Prokaryotes reproduce asexually through binary fission, a simpler process than mitosis."
+  },
+  {
+    "question": "What is the term for the region in prokaryotic cells where the genetic material is located?",
+    "options": ["Nucleus", "Nucleoid", "Chromosome", "Plasmid"],
+    "answer": "Nucleoid",
+    "explanation": "The nucleoid is the irregularly-shaped region in a prokaryote that contains its chromosomal DNA. It is not membrane-bound."
+  },
+  {
+    "question": "What is the main component of the cell wall in plant cells?",
+    "options": ["Amino acids and muramic acid", "Cellulose", "Chitin", "Pectin"],
+    "answer": "Cellulose",
+    "explanation": "The primary structural component of the plant cell wall is cellulose, a polysaccharide. Chitin is for fungal walls; muramic acid is for bacterial walls."
+  },
+  {
+    "question": "What characteristic distinguishes viruses from other living organisms?",
+    "options": ["Presence of cell wall", "Presence of nucleus", "Presence of mitochondria", "Absence of cellular structure"],
+    "answer": "Absence of cellular structure",
+    "explanation": "Viruses are acellular. They consist of genetic material (DNA or RNA) surrounded by a protein coat (capsid), lacking cytoplasm and organelles."
+  },
+  {
+    "question": "What is the term for the protein coat that surrounds the genetic material of a virus?",
+    "options": ["Capsid", "Envelope", "Nucleocapsid", "Virion"],
+    "answer": "Capsid",
+    "explanation": "The capsid is the protein shell that encases the viral genome."
+  },
+  {
+    "question": "What is the term for the study of the relationships between organisms and their environment?",
+    "options": ["Ecology", "Botany", "Horticulture", "Taxonomy"],
+    "answer": "Ecology",
+    "explanation": "Ecology is the scientific study of interactions between organisms and their physical and biological environment."
+  },
+  {
+    "question": "What is the term for the process by which plants release water vapor into the air?",
+    "options": ["Respiration", "Photosynthesis", "Transpiration", "Evaporation"],
+    "answer": "Transpiration",
+    "explanation": "Transpiration is the loss of water vapor from the aerial parts of plants, primarily through stomata."
+  },
+  {
+    "question": "What is the term for the study of the structure, behavior, and evolution of fungi?",
+    "options": ["Mycology", "Botany", "Horticulture", "Ecology"],
+    "answer": "Mycology",
+    "explanation": "Mycology is the branch of biology devoted to the study of fungi."
+  },
+  {
+    "question": "What is the mode of reproduction in bacteria?",
+    "options": ["Mitosis", "Meiosis", "Binary fission", "Sexual reproduction"],
+    "answer": "Binary fission",
+    "explanation": "Bacteria primarily reproduce asexually through binary fission."
+  },
+  {
+    "question": "What is the function of akinetes in blue-green algae?",
+    "options": ["Resting spore", "Vegetative propagation", "Food storage", "Photosynthesis"],
+    "answer": "Resting spore",
+    "explanation": "Akinetes are thick-walled, dormant cells formed by cyanobacteria (blue-green algae) to survive unfavorable conditions."
+  },
+  {
+    "question": "What is the characteristic of fungi?",
+    "options": ["Presence of chlorophyll", "Absence of chlorophyll", "Presence of vascular tissue", "Absence of vascular tissue"],
+    "answer": "Absence of chlorophyll",
+    "explanation": "Fungi are heterotrophic (they cannot photosynthesize) because they lack chlorophyll."
+  },
+  {
+    "question": "What is the mode of nutrition in fungi?",
+    "options": ["Autotrophic", "Heterotrophic", "Mixotrophic", "Saprotrophic"],
+    "answer": "Heterotrophic",
+    "explanation": "All fungi are heterotrophs. Most are saprotrophic (absorbing nutrients from dead organic matter), but the broad category is heterotrophic."
+  },
+  {
+    "question": "What is the characteristic of mycelium?",
+    "options": ["A single hypha", "A mass of interwoven hyphae", "A type of spore", "A type of fungus"],
+    "answer": "A mass of interwoven hyphae",
+    "explanation": "The mycelium is the vegetative part of a fungus, consisting of a network of fine filaments (hyphae)."
+  },
+  {
+    "question": "What is the study of forms and features of different plant organs called?",
+    "options": ["Plant morphology", "Plant anatomy", "Plant physiology", "Plant taxonomy"],
+    "answer": "Plant morphology",
+    "explanation": "Morphology is the study of the form and external structure of plants and their organs."
+  },
+  {
+    "question": "Infectious RNA particles without a protein coat are called:",
+    "options": ["Viroid", "Virion", "Virusoid", "Prion"],
+    "answer": "Viroid",
+    "explanation": "Viroids are the smallest known infectious pathogens, consisting solely of a short strand of circular, single-stranded RNA without a protein coat."
+  },
+  {
+    "question": "The unique feature of bryophytes compared to other green plant groups is that:",
+    "options": ["They produce spores", "They lack vascular tissue", "They lack roots", "Their sporophyte is attached to the gametophyte"],
+    "answer": "Their sporophyte is attached to the gametophyte",
+    "explanation": "The most unique feature of bryophytes is that the sporophyte generation is permanently physically and nutritionally dependent on the dominant gametophyte."
+  },
+  {
+    "question": "Which group of plants constitute the lower bryophytes?",
+    "options": ["Liverworts", "Mosses", "Anthocerotales", "Jungermaniales"],
+    "answer": "Liverworts",
+    "explanation": "Liverworts (Hepaticae) are considered the most primitive or 'lower' bryophytes."
+  },
+  {
+    "question": "Liverworts are closely related to:",
+    "options": ["Algae", "Fungi", "Lichen", "Mosses"],
+    "answer": "Algae",
+    "explanation": "Bryophytes, particularly liverworts, are believed to have evolved from green algae, sharing chlorophyll types and storage compounds."
+  },
+  {
+    "question": "The first land-inhabitant plants are:",
+    "options": ["Pteridophytes", "Bryophytes", "Gymnosperms", "Angiosperms"],
+    "answer": "Bryophytes",
+    "explanation": "Bryophytes are considered the earliest plants to colonize land, though they required moist environments."
+  },
+  {
+    "question": "The only positive evidence of the aquatic ancestry of bryophytes is:",
+    "options": ["Thread-like protonema", "Green colour", "Some forms are still aquatic", "Ciliated sperms"],
+    "answer": "Ciliated sperms",
+    "explanation": "Bryophyte sperm are flagellated and must swim through water to reach the egg — a strong indicator of aquatic ancestry."
+  },
+  {
+    "question": "To which group would you assign a plant which produces spores and embryos, but lacks seeds and vasculature?",
+    "options": ["Algae", "Fungi", "Pteridophyte", "Bryophyte"],
+    "answer": "Bryophyte",
+    "explanation": "This perfectly describes bryophytes: they are embryophytes, reproduce via spores, are non-vascular, and do not produce seeds."
+  },
+  {
+    "question": "Viruses are:",
+    "options": ["Obligate parasites", "Free living", "Both free living and parasitic", "None of these"],
+    "answer": "Obligate parasites",
+    "explanation": "Viruses cannot replicate outside a host cell; they are obligate intracellular parasites."
+  },
+  {
+    "question": "A fully formed infectious viral particle is called a:",
+    "options": ["Viroid", "Virusoid", "Virion", "Capsid"],
+    "answer": "Virion",
+    "explanation": "A virion is the complete, mature, extracellular form of a virus capable of infecting a host cell."
+  },
+  {
+    "question": "The protein coat of a virus is called a:",
+    "options": ["Nucleid", "Capsid", "Capsomere", "Outer envelope"],
+    "answer": "Capsid",
+    "explanation": "The capsid is the protein shell encasing the viral genome."
+  },
+  {
+    "question": "Tobacco mosaic virus is:",
+    "options": ["Spherical shaped", "Rod shaped", "Cuboidal", "Oval shaped"],
+    "answer": "Rod shaped",
+    "explanation": "Tobacco mosaic virus (TMV) is a classic example of a helical (rod-shaped) virus."
+  },
+  {
+    "question": "The virus with the smallest genome is:",
+    "options": ["Circovirus", "Mimivirus", "Herpes virus", "Rabies virus"],
+    "answer": "Circovirus",
+    "explanation": "Circoviruses are among the smallest viruses known, with single-stranded circular DNA genomes of about 1.7–2 kb."
+  },
+  {
+    "question": "Viruses that attack bacteria are called:",
+    "options": ["Lysophage", "Bacteriophage", "Virophage", "None of these"],
+    "answer": "Bacteriophage",
+    "explanation": "Bacteriophages (or phages) are viruses that specifically infect bacteria."
+  },
+  {
+    "question": "T2 phage is a:",
+    "options": ["ds DNA phage", "ss DNA phage", "ss RNA phage", "ds RNA phage"],
+    "answer": "ds DNA phage",
+    "explanation": "T2 phage (T-even phage) is a double-stranded DNA bacteriophage that infects E. coli."
+  },
+  {
+    "question": "Viral genome attached to the bacterial genome is termed as:",
+    "options": ["Prophage", "Lysogeny", "Lytic cycle", "Virulent phage"],
+    "answer": "Prophage",
+    "explanation": "A prophage is the viral genome that has been integrated into the bacterial chromosome during the lysogenic cycle."
+  },
+  {
+    "question": "TMV is a:",
+    "options": ["DNA virus", "RNA virus", "ss DNA or ds DNA", "Bacteriophage"],
+    "answer": "RNA virus",
+    "explanation": "Tobacco Mosaic Virus (TMV) has a single-stranded positive-sense RNA genome."
+  },
+  {
+    "question": "Bacteriophages that induce bacterial cell lysis are called:",
+    "options": ["Temperate phages", "Virulent phages", "Lysogenic phages", "Viroids"],
+    "answer": "Virulent phages",
+    "explanation": "Virulent phages (lytic phages) replicate within the host bacterium and lyse it to release new phages."
+  },
+  {
+    "question": "Kingdom Protista includes organisms like:",
+    "options": ["Euglena, Spirogyra and Penicillium", "Amoeba, Spirogyra and Penicillium", "Amoeba, Euglena and Penicillium", "Amoeba, Euglena and Diatoms"],
+    "answer": "Amoeba, Euglena and Diatoms",
+    "explanation": "Amoeba, Euglena, and Diatoms are all unicellular eukaryotes belonging to Kingdom Protista. Penicillium is a fungus."
+  },
+  {
+    "question": "Protista differs from Monera in having:",
+    "options": ["Cell wall", "Nuclear membrane", "Flagella", "Autotrophic nutrition"],
+    "answer": "Nuclear membrane",
+    "explanation": "The key difference is that Protista are eukaryotes (with a membrane-bound nucleus), while Monera (bacteria) are prokaryotes."
+  },
+  {
+    "question": "Which of the following is NOT a characteristic of Protista?",
+    "options": ["Protista are prokaryotic", "Body organization is cellular", "Some protists have cell walls", "Membrane-bound organelles are present"],
+    "answer": "Protista are prokaryotic",
+    "explanation": "Protista are eukaryotic, not prokaryotic. They have membrane-bound organelles including a nucleus."
+  },
+  {
+    "question": "Plants which are not differentiated into roots, stem and leaves are grouped under:",
+    "options": ["Gymnosperms", "Pteridophytes", "Thallophytes", "Spermatophytes"],
+    "answer": "Thallophytes",
+    "explanation": "Thallophytes (algae, fungi, lichens) are the most primitive plants lacking true roots, stems, and leaves; they have an undifferentiated thallus body."
+  },
+  {
+    "question": "Which are the most primitive group of algae?",
+    "options": ["Blue-green algae", "Red algae", "Brown algae", "Green algae"],
+    "answer": "Blue-green algae",
+    "explanation": "Blue-green algae (Cyanobacteria/Cyanophyta) are prokaryotic and considered the most primitive group of photosynthetic organisms."
+  },
+  {
+    "question": "Iodine is obtained from:",
+    "options": ["Ulothrix", "Ectocarpus", "Laminaria", "Oedogonium"],
+    "answer": "Laminaria",
+    "explanation": "Laminaria (kelp) is a brown alga that is a commercial source of iodine and alginates."
+  },
+  {
+    "question": "Ability to fix atmospheric nitrogen is found in:",
+    "options": ["Leaves of some crop plants", "Chlorella", "Some marine red algae", "Some blue-green algae"],
+    "answer": "Some blue-green algae",
+    "explanation": "Certain cyanobacteria (blue-green algae) like Anabaena and Nostoc are capable of fixing atmospheric nitrogen via specialized cells called heterocysts."
+  },
+  {
+    "question": "Zygotic meiosis is a characteristic feature of:",
+    "options": ["Algae", "Bryophytes", "Pteridophytes", "Gymnosperms"],
+    "answer": "Algae",
+    "explanation": "In zygotic meiosis (seen in most algae), the zygote is the only diploid stage; meiosis occurs immediately after zygote formation."
+  },
+  {
+    "question": "In which of the following group would you place a plant which produces seeds but lacks flowers?",
+    "options": ["Fungi", "Pteridophytes", "Bryophytes", "Gymnosperms"],
+    "answer": "Gymnosperms",
+    "explanation": "Gymnosperms (e.g., pines, cycads) produce naked seeds in cones but do not have flowers or enclosed fruits."
+  },
+  {
+    "question": "In gymnosperms, pollination is exclusively by:",
+    "options": ["Animals", "Wind", "Insects", "Water"],
+    "answer": "Wind",
+    "explanation": "Gymnosperms are wind-pollinated (anemophilous), relying on wind to carry pollen to the female cones."
+  },
+  {
+    "question": "Coralloid roots are found in:",
+    "options": ["Cycas", "Pinus", "Dryopteris", "Lycopodium"],
+    "answer": "Cycas",
+    "explanation": "Cycas has specialized coralloid (coral-like) roots that harbor nitrogen-fixing cyanobacteria in a symbiotic relationship."
+  },
+  {
+    "question": "Angiosperms differ from gymnosperms in having:",
+    "options": ["Fruits", "Cotyledon", "Tracheid", "Broad leaves"],
+    "answer": "Fruits",
+    "explanation": "Angiosperms have enclosed ovules that develop into fruits after fertilization, unlike gymnosperms which have naked seeds."
+  },
+  {
+    "question": "The branch of botany that deals with the form of the plant is known as:",
+    "options": ["Physiology", "Anatomy", "Morphology", "Cytology"],
+    "answer": "Morphology",
+    "explanation": "Plant morphology is the study of the form and external structure of plants."
+  },
+  {
+    "question": "The roots which develop from any portion of the plant except the radicle are known as:",
+    "options": ["Tap roots", "Stilt roots", "Fibrous roots", "Adventitious roots"],
+    "answer": "Adventitious roots",
+    "explanation": "Adventitious roots arise from stem nodes, leaves, or other non-root tissue, unlike normal roots which arise from the radicle."
+  },
+  {
+    "question": "The arrangement of leaves on branches:",
+    "options": ["Phyllotaxy", "Vernation", "Venation", "Phytotaxy"],
+    "answer": "Phyllotaxy",
+    "explanation": "Phyllotaxy refers to the pattern or arrangement of leaves on a stem or branches."
+  },
+  {
+    "question": "Bulb is a modification of:",
+    "options": ["Root", "Stem", "Radicle", "Plumule"],
+    "answer": "Stem",
+    "explanation": "A bulb (e.g., onion) is a modified underground stem with fleshy leaf bases that store food."
+  },
+  {
+    "question": "The crossing of F1 to homozygous recessive parent is called:",
+    "options": ["Back cross", "Test cross", "F1 cross", "All of these"],
+    "answer": "Test cross",
+    "explanation": "A test cross involves crossing an organism with an unknown genotype to a homozygous recessive to determine whether the unknown is heterozygous or homozygous dominant."
+  },
+  {
+    "question": "The test cross is used to determine the:",
+    "options": ["Genotype of the plant", "Phenotype of the plant", "Both genotype and phenotype", "None of these"],
+    "answer": "Genotype of the plant",
+    "explanation": "The test cross reveals the genotype by showing which alleles are present in the organism."
+  },
+  {
+    "question": "Monohybrid test cross ratio is:",
+    "options": ["3:1", "2:1", "1:1", "9:3:3:1"],
+    "answer": "1:1",
+    "explanation": "When a heterozygous (Aa) is test-crossed with homozygous recessive (aa), the result is a 1:1 ratio of Aa:aa."
+  },
+  {
+    "question": "The cross in which parents differ in two pairs of contrasting characters is called:",
+    "options": ["Monohybrid cross", "Dihybrid cross", "Trihybrid cross", "Tetrahybrid cross"],
+    "answer": "Dihybrid cross",
+    "explanation": "A dihybrid cross involves two pairs of contrasting traits and produces the classic 9:3:3:1 F2 ratio."
+  },
+  {
+    "question": "The phenotypic dihybrid ratio is:",
+    "options": ["9:3:2:1", "9:3:2:2", "1:1", "9:3:3:1"],
+    "answer": "9:3:3:1",
+    "explanation": "Mendel's dihybrid cross produces a 9:3:3:1 phenotypic ratio in the F2 generation."
+  },
+  {
+    "question": "The Dihybrid test cross ratio is:",
+    "options": ["9:3:2:1", "9:3:2:2", "1:1:1:1", "9:3:3:1"],
+    "answer": "1:1:1:1",
+    "explanation": "When a dihybrid (AaBb) is test-crossed with homozygous recessive (aabb), the result is a 1:1:1:1 ratio."
+  },
+  {
+    "question": "All of the following obey Mendel's laws EXCEPT:",
+    "options": ["Linkage", "Independent assortment", "Dominance", "Purity of gametes"],
+    "answer": "Linkage",
+    "explanation": "Linked genes (on the same chromosome) do not assort independently and violate Mendel's law of independent assortment."
+  },
+  {
+    "question": "The title of Mendel's paper while presenting at Brunn Natural History Society in 1865 was:",
+    "options": ["Laws of inheritance", "Laws of heredity", "Experiments on pea plants", "Experiments in plant hybridization"],
+    "answer": "Experiments in plant hybridization",
+    "explanation": "Mendel's famous 1865 paper presented to the Brunn Natural History Society was titled 'Versuche über Pflanzenhybriden' (Experiments on Plant Hybridization)."
+  },
+  {
+    "question": "Down syndrome is usually the result of an extra chromosome ___, so that each body cell has a total of 47 chromosomes.",
+    "options": ["18", "19", "20", "21"],
+    "answer": "21",
+    "explanation": "Down syndrome (Trisomy 21) results from an extra copy of chromosome 21, giving 47 chromosomes total."
+  },
+  {
+    "question": "A gene showing co-dominance:",
+    "options": ["Has one allele dominant to the other", "Has both alleles independently expressed in the heterozygote", "Has alleles tightly linked on the same chromosome", "Has alleles expressed at the same time in development"],
+    "answer": "Has both alleles independently expressed in the heterozygote",
+    "explanation": "In co-dominance, both alleles are fully expressed simultaneously in the heterozygote, as seen in ABO blood types."
+  },
+  {
+    "question": "In DNA, adenine normally pairs with:",
+    "options": ["Cytosine", "Guanine", "Thymine", "Uracil"],
+    "answer": "Thymine",
+    "explanation": "According to Chargaff's rules, adenine (A) pairs with thymine (T) via two hydrogen bonds in DNA."
+  },
+  {
+    "question": "Normal humans have __________ pairs of autosomes and __________ pair(s) of sex chromosomes.",
+    "options": ["23 and 23", "23 and 2", "46 and 1", "22 and 1"],
+    "answer": "22 and 1",
+    "explanation": "Humans have 22 pairs of autosomes and 1 pair of sex chromosomes (XX in females, XY in males), totaling 46 chromosomes."
+  },
+  {
+    "question": "To enter or leave a cell, substances must pass through:",
+    "options": ["Microtubule", "The Golgi apparatus", "A ribosome", "The nucleus", "The plasma membrane"],
+    "answer": "The plasma membrane",
+    "explanation": "The plasma membrane is the selectively permeable boundary that all substances must cross to enter or exit the cell."
+  },
+  {
+    "question": "Bacterial cells are prokaryotic; in comparison to a typical eukaryotic cell they would:",
+    "options": ["Be smaller", "Have a smaller nucleus", "Lack a plasma membrane", "Have fewer internal membranous compartments", "Have a greater variety of organelles"],
+    "answer": "Have fewer internal membranous compartments",
+    "explanation": "Prokaryotes lack the extensive endomembrane system (ER, Golgi, etc.) found in eukaryotes, resulting in fewer internal membranous compartments."
+  },
+  {
+    "question": "You would expect a cell with an extensive Golgi apparatus to:",
+    "options": ["Make a lot of ATP", "Secrete a lot of material", "Move actively", "Perform photosynthesis", "Store large quantities of food"],
+    "answer": "Secrete a lot of material",
+    "explanation": "The Golgi apparatus packages and ships proteins for secretion; a well-developed Golgi indicates high secretory activity."
+  },
+  {
+    "question": "Which of the following correctly matches an organelle with its function?",
+    "options": ["Mitochondrion — photosynthesis", "Nucleus — cellular respiration", "Ribosome — manufacture of lipids", "Lysosome — movement", "Central vacuole — storage"],
+    "answer": "Central vacuole — storage",
+    "explanation": "The central vacuole in plant cells stores water, ions, nutrients, and waste products."
+  },
+  {
+    "question": "Which clue would tell you whether a cell is prokaryotic or eukaryotic?",
+    "options": ["The presence or absence of a rigid cell wall", "Whether or not the cell is partitioned by internal membranes", "The presence or absence of ribosomes", "Whether or not the cell carries out cellular metabolism", "Whether or not the cell contains DNA"],
+    "answer": "Whether or not the cell is partitioned by internal membranes",
+    "explanation": "The defining feature of eukaryotes is compartmentalization via internal membrane systems. Prokaryotes lack this internal membrane partitioning."
+  },
+  {
+    "question": "Which among the following is NOT a model organism in genetic analysis?",
+    "options": ["The Zebrafish", "The plant Arabidopsis thaliana", "The mouse deer", "The nematode Caenorhabditis elegans"],
+    "answer": "The mouse deer",
+    "explanation": "The mouse deer (Tragulus) is not a standard genetic model organism. Common models include zebrafish, Arabidopsis, and C. elegans."
+  },
+  {
+    "question": "Which of the following is NOT a property of the genetic code?",
+    "options": ["Non-overlapping", "Almost universal", "Four stop codons", "Redundant"],
+    "answer": "Four stop codons",
+    "explanation": "There are only THREE stop codons (UAA, UAG, UGA), not four. The genetic code is non-overlapping, nearly universal, and redundant (degenerate)."
+  },
+  {
+    "question": "Which of the following conditions is caused by trinucleotide (triplet) repeat expansion?",
+    "options": ["Cystic fibrosis", "Duchenne muscular dystrophy", "Huntington disease", "Osteogenesis imperfecta"],
+    "answer": "Huntington disease",
+    "explanation": "Huntington disease is caused by an expansion of CAG trinucleotide repeats in the HTT gene on chromosome 4."
+  },
+  {
+    "question": "The Nobel Prize in Physiology or Medicine 1962 was awarded jointly to Crick, Watson, and _____ for discoveries concerning the molecular structure of nucleic acids.",
+    "options": ["Rosalind Franklin", "Maurice Hugh Frederick Wilkins", "Erwin Chargaff", "Frederick Sanger"],
+    "answer": "Maurice Hugh Frederick Wilkins",
+    "explanation": "The 1962 Nobel Prize was shared by Watson, Crick, and Wilkins. Rosalind Franklin had died in 1958 and Nobel Prizes are not awarded posthumously."
+  },
+  {
+    "question": "Which group of plants constitute the lower bryophytes?",
+    "options": ["Liverworts", "Mosses", "Anthocerotales", "Jungermaniales"],
+    "answer": "Liverworts",
+    "explanation": "Liverworts (Marchantia and related) are considered the most ancestral or 'lower' bryophytes."
+  },
+  {
+    "question": "Which is WRONG in respect to bryophytes?",
+    "options": ["Water is essential for fertilization", "Presence of archegonia", "Presence of ciliated sperms", "Presence of autotrophic independent sporophyte"],
+    "answer": "Presence of autotrophic independent sporophyte",
+    "explanation": "In bryophytes, the sporophyte is NOT independent — it is nutritionally dependent on the gametophyte."
+  },
+  {
+    "question": "Which of the following is diploid in moss plants?",
+    "options": ["Spore", "Leaves", "Spore mother cell", "Gametes"],
+    "answer": "Spore mother cell",
+    "explanation": "The spore mother cell (sporocyte) is diploid (2n) and undergoes meiosis to produce haploid spores."
+  },
+  {
+    "question": "Bryophytes differ from pteridophytes in being:",
+    "options": ["Non-vascular", "Seeded", "Vascular", "Sporophytic"],
+    "answer": "Non-vascular",
+    "explanation": "Bryophytes lack true vascular tissue (xylem and phloem), while pteridophytes are vascular plants."
+  },
+  {
+    "question": "Alternation of generation is exhibited by:",
+    "options": ["Bryophytes", "Pteridophytes", "Gymnosperms", "All plants"],
+    "answer": "All plants",
+    "explanation": "All plants exhibit alternation of generations, alternating between a haploid gametophyte and a diploid sporophyte phase."
+  },
+  {
+    "question": "Endosperm in gymnosperms is formed:",
+    "options": ["At the time of fertilization", "Before fertilization", "After fertilization", "Along with the development of embryo"],
+    "answer": "Before fertilization",
+    "explanation": "In gymnosperms, the endosperm (female gametophyte tissue) is formed before fertilization, unlike angiosperms where it forms after."
+  },
+  {
+    "question": "Phloem of gymnosperms differs from angiosperms in:",
+    "options": ["Having parenchyma", "Having no companion cells", "Having no sieve tubes", "Having no sclerenchyma"],
+    "answer": "Having no companion cells",
+    "explanation": "Gymnosperm phloem lacks companion cells (which are characteristic of angiosperm phloem); they have albuminous cells instead."
+  }
+];
+
+    /* ══════════════
+       STATE VARS
+    ══════════════ */
+    let currentExamData = [], userAnswers = {}, currentIndex = 0;
+    let timeRemaining = 0, timerId = null;
+    let activeMode = 'practice', isReviewMode = false;
+    let examSelectionType = 'random', partNum = 1;
+
+    /* ══════════════
+       INIT
+    ══════════════ */
+    window.onload = () => {
+        initDashboard();
+        if (localStorage.getItem('saved_bio101_exam')) {
+            document.getElementById('resume-btn').style.display = 'block';
+        }
+    };
+
+    /* ── Dashboard ── */
+    function initDashboard() {
+        const board = document.getElementById('dashboard');
+        board.innerHTML = '';
+        const total = MASTER_POOL.length;
+        const parts = Math.ceil(total / 50);
+
+        document.getElementById('dash-count').textContent = `${total} questions across ${parts} parts`;
+        document.getElementById('total-badge').textContent = `${total} Questions`;
+
+        if (total === 0) {
+            board.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);">No questions loaded.</p>`;
+            return;
+        }
+
+        const rand = document.createElement('div');
+        rand.className = 'box box-random';
+        rand.innerHTML = `<div class="box-icon">🔀</div><h3>Random Mode</h3><p>${total} Questions</p>`;
+        rand.onclick = () => openSetup('random', 0);
+        board.appendChild(rand);
+
+        for (let i = 1; i <= parts; i++) {
+            const start = (i - 1) * 50 + 1;
+            const end   = Math.min(i * 50, total);
+            const card  = document.createElement('div');
+            card.className = 'box';
+            card.innerHTML = `
+                <div class="box-icon" style="color:var(--primary);">🌿</div>
+                <h3>Part ${i}</h3>
+                <p>Q${start} – Q${end}</p>`;
+            card.onclick = () => openSetup('part', i);
+            board.appendChild(card);
+        }
+    }
+
+    function openSetup(type, part) {
+        examSelectionType = type;
+        partNum = part;
+        document.getElementById('dashboard-wrap').style.display = 'none';
+        document.getElementById('setup-screen').style.display = 'block';
+        document.getElementById('setup-title').innerText = type === 'random' ? '🔀 Randomised Practice' : `🌿 BIO 101 — Part ${part}`;
+        document.getElementById('random-settings').style.display = type === 'random' ? 'block' : 'none';
+    }
+
+    function goHome() {
+        clearInterval(timerId);
+        isReviewMode = false;
+        currentExamData = []; userAnswers = {}; currentIndex = 0;
+        document.getElementById('quiz-interface').style.display = 'none';
+        document.getElementById('setup-screen').style.display = 'none';
+        document.getElementById('quizResultModal').style.display = 'none';
+        document.getElementById('dashboard-wrap').style.display = 'block';
+    }
+
+    function shuffleArray(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    }
+
+    /* ══════════════════
+       START EXAM
+    ══════════════════ */
+    function startExam() {
+        timeRemaining = parseInt(document.getElementById('t-limit').value) * 60;
+        activeMode    = document.getElementById('quiz-mode').value;
+        isReviewMode  = false;
+        userAnswers   = {};
+        currentIndex  = 0;
+
+        let pool = JSON.parse(JSON.stringify(MASTER_POOL));
+
+        if (examSelectionType === 'random') {
+            const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
+            pool = shuffleArray(pool).slice(0, qty);
+        } else {
+            const start = (partNum - 1) * 50;
+            pool = pool.slice(start, start + 50);
+        }
+
+        if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);
+        if (document.getElementById('shuffle-options').checked) {
+            pool.forEach(q => { q.options = shuffleArray([...q.options]); });
+        }
+
+        currentExamData = pool;
+        document.getElementById('setup-screen').style.display = 'none';
+        document.getElementById('quiz-interface').style.display = 'block';
+        document.getElementById('total-idx').innerText = currentExamData.length;
+        runTimer();
+        renderQuestion();
+    }
+
+    /* ══════════════════
+       TIMER
+    ══════════════════ */
+    function runTimer() {
+        clearInterval(timerId);
+        timerId = setInterval(() => {
+            timeRemaining--;
+            const m = Math.floor(timeRemaining / 60);
+            const s = timeRemaining % 60;
+            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
+            if (timeRemaining <= 0) { clearInterval(timerId); showResults(true); }
+        }, 1000);
+    }
+
+    /* ══════════════════
+       RENDER QUESTION
+    ══════════════════ */
+    function renderQuestion() {
+        const q          = currentExamData[currentIndex];
+        const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
+        const userAns    = userAnswers[currentIndex];
+        const labels     = ['A','B','C','D','E','F'];
+
+        document.getElementById('cur-idx').innerText       = currentIndex + 1;
+        document.getElementById('question-text').innerText = q.question;
+
+        // Progress bar
+        const pct = ((currentIndex + 1) / currentExamData.length) * 100;
+        document.getElementById('progress-fill').style.width = pct + '%';
+
+        const optBox   = document.getElementById('options-box');
+        const feedArea = document.getElementById('feedback-area');
+        optBox.innerHTML  = '';
+        feedArea.innerHTML = '';
+
+        q.options.forEach((val, idx) => {
+            const label = labels[idx] || (idx + 1);
+            const btn   = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerHTML = `<strong>${label}.</strong> ${val}`;
+
+            if (isReviewMode || (activeMode === 'practice' && hasAnswered)) {
+                if (val === q.answer)    btn.classList.add('correct');
+                else if (userAns === val) btn.classList.add('wrong');
+                btn.disabled = true;
+            } else if (activeMode === 'exam' && hasAnswered && userAns === val) {
+                btn.classList.add('selected');
+            }
+
+            btn.onclick = () => {
+                if (isReviewMode) return;
+                if (activeMode === 'practice' && hasAnswered) return;
+                userAnswers[currentIndex] = val;
+                saveState();
+                renderQuestion();
+            };
+            optBox.appendChild(btn);
+        });
+
+        const expHtml = q.explanation
+            ? `<br><span style="font-weight:400;font-size:0.88rem;"><strong>Explanation:</strong> ${q.explanation}</span>`
+            : '';
+
+        if (isReviewMode) {
+            if (hasAnswered) {
+                const ok = userAns === q.answer;
+                feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">
+                    ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}${expHtml}</div>`;
+            } else {
+                feedArea.innerHTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
+                    ⚠ Not answered. Correct: <strong>${q.answer}</strong>${expHtml}</div>`;
+            }
+        } else if (activeMode === 'practice' && hasAnswered) {
+            const ok = userAns === q.answer;
+            feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">
+                ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}${expHtml}</div>`;
+        }
+
+        const isLast = currentIndex === currentExamData.length - 1;
+        document.getElementById('next-btn').style.display          = isLast ? 'none' : 'block';
+        document.getElementById('submit-btn').style.display        = isReviewMode ? 'none' : 'block';
+        document.getElementById('finish-review-btn').style.display = isReviewMode ? 'block' : 'none';
+    }
+
+    function move(d) {
+        const n = currentIndex + d;
+        if (n >= 0 && n < currentExamData.length) { currentIndex = n; renderQuestion(); }
+    }
+
+    function saveState() {
+        localStorage.setItem('saved_bio101_exam', JSON.stringify(
+            { currentExamData, userAnswers, currentIndex, timeRemaining, activeMode, examSelectionType, partNum }
+        ));
+    }
+
+    function resumeExam() {
+        const s = JSON.parse(localStorage.getItem('saved_bio101_exam'));
+        currentExamData   = s.currentExamData;
+        userAnswers       = s.userAnswers;
+        currentIndex      = s.currentIndex;
+        timeRemaining     = s.timeRemaining;
+        activeMode        = s.activeMode || 'practice';
+        examSelectionType = s.examSelectionType || 'random';
+        partNum           = s.partNum || 1;
+        isReviewMode      = false;
+
+        document.getElementById('dashboard-wrap').style.display = 'none';
+        document.getElementById('resume-btn').style.display     = 'none';
+        document.getElementById('quiz-interface').style.display = 'block';
+        document.getElementById('total-idx').innerText          = currentExamData.length;
+        runTimer();
+        renderQuestion();
+    }
+
+    /* ══════════════════
+       SHOW RESULTS
+    ══════════════════ */
+    async function showResults(forced = false) {
+        const answered = Object.keys(userAnswers).length;
+        if (!forced && answered < currentExamData.length) {
+            if (!confirm(`You answered ${answered} of ${currentExamData.length}. Submit anyway?`)) return;
+        }
+
+        clearInterval(timerId);
+        localStorage.removeItem('saved_bio101_exam');
+
+        let score = 0;
+        currentExamData.forEach((q, i) => { if (userAnswers[i] === q.answer) score++; });
+        const total = currentExamData.length;
+        const pct   = Math.round((score / total) * 100);
+
+        document.getElementById('finalScoreText').innerText = pct;
+        document.getElementById('modalCorrect').innerText   = score;
+        document.getElementById('modalTotal').innerText     = total;
+        document.getElementById('modalAvg').innerText       = '—';
+        document.getElementById('modalReviewBtn').style.display = activeMode === 'practice' ? 'none' : 'flex';
+
+        if (pct >= 70) {
+            document.getElementById('resultIcon').innerText     = '🏆';
+            document.getElementById('resultGreeting').innerText = 'Outstanding! 🌟';
+            document.getElementById('resultFeedback').innerText = 'Excellent work! Keep it up!';
+            confetti({ particleCount: 160, spread: 70, origin: { y: 0.6 }, colors: ['#16a34a','#84cc16','#f59e0b'] });
+        } else if (pct >= 50) {
+            document.getElementById('resultIcon').innerText     = '👍';
+            document.getElementById('resultGreeting').innerText = 'Good Job!';
+            document.getElementById('resultFeedback').innerText = 'Almost there — aim for 70%+!';
+        } else {
+            document.getElementById('resultIcon').innerText     = '💪';
+            document.getElementById('resultGreeting').innerText = 'Keep Trying!';
+            document.getElementById('resultFeedback').innerText = 'Review your notes and try again!';
+        }
+
+        document.getElementById('save-status').innerText = '';
+        document.getElementById('quizResultModal').style.display = 'flex';
+    }
+
+    function enterReviewMode() {
+        document.getElementById('quizResultModal').style.display = 'none';
+        isReviewMode = true;
+        currentIndex = 0;
+        document.getElementById('timer').innerText         = 'REVIEW';
+        document.getElementById('timer').style.background = 'var(--primary-light)';
+        document.getElementById('timer').style.color      = 'var(--primary)';
+        renderQuestion();
+    }
+
+    async function shareQuizResult() {
+        const score   = document.getElementById('finalScoreText').innerText;
+        const section = examSelectionType === 'random' ? 'a random mix' : `Part ${partNum}`;
+        const text    = `I just scored ${score}% on ${COURSE_CODE} (${section})! 🌿\n\nChallenge yourself on the BIO 101 Practice Portal! 📚🔥`;
+        try {
+            if (navigator.share) await navigator.share({ title: `My ${COURSE_CODE} Score`, text });
+            else { await navigator.clipboard.writeText(text); alert('Score copied to clipboard! 📋'); }
+        } catch (_) {}
+    }
+</script>
+</body>
+</html>
