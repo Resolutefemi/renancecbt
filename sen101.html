@@ -317,14 +317,18 @@
 </div>
 
 <script>
-    
+    /* ═══════════════════════════════════════════
+       SUPABASE CONFIG
+    ═══════════════════════════════════════════ */
     const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const COURSE_CODE  = 'SEN 101';
     const STORAGE_KEY  = 'saved_sen101_exam';
 
-  
+    /* ═══════════════════════════════════════════
+       LOAD QUESTIONS FROM EXTERNAL JSON
+    ═══════════════════════════════════════════ */
     let MASTER_POOL = [];
 
     async function loadQuestions() {
@@ -464,7 +468,7 @@
             const card  = document.createElement('div');
             card.className = 'box';
             card.innerHTML = `
-                <div style="font-size:1.8rem;color:var(--primary);">👨‍💻</div>
+                <div style="font-size:1.8rem;color:var(--primary);">🌐</div>
                 <h3>Part ${i}</h3>
                 <p>Q${start} – Q${end}</p>`;
             card.onclick = () => openSetup('part', i);
@@ -585,7 +589,12 @@
         Object.entries(q.options).forEach(([key, val]) => {
             const btn = document.createElement('button');
             btn.className = 'option-btn';
-            btn.innerHTML = `<strong>${key}.</strong> ${val}`;
+            // Use DOM methods to safely render HTML special chars (e.g. <br>, <a>)
+            const label = document.createElement('strong');
+            label.textContent = key + '. ';
+            const text = document.createTextNode(val);
+            btn.appendChild(label);
+            btn.appendChild(text);
 
             if (isReviewMode || (activeMode === 'practice' && hasAnswered)) {
                 if (key === q.answer)     btn.classList.add('correct');
@@ -605,19 +614,43 @@
             optBox.appendChild(btn);
         });
 
-        const expHtml = q.explanation
-            ? `<br><span style="font-weight:400;font-size:0.88rem;"><strong>Explanation:</strong> ${q.explanation}</span>`
-            : '';
+        // Build explanation node safely (explanation may contain HTML tags like <br>, <link>)
+        function buildFeedback(bgColor, textColor, mainHtml, explanation) {
+            const wrap = document.createElement('div');
+            wrap.className = 'feedback-msg';
+            wrap.style.cssText = `background:${bgColor};color:${textColor}`;
+            wrap.innerHTML = mainHtml; // mainHtml is trusted (our own strings)
+            if (explanation) {
+                const br = document.createElement('br');
+                const expWrap = document.createElement('span');
+                expWrap.style.cssText = 'font-weight:400;font-size:0.88rem;';
+                const expLabel = document.createElement('strong');
+                expLabel.textContent = 'Explanation: ';
+                const expText = document.createTextNode(explanation);
+                expWrap.appendChild(expLabel);
+                expWrap.appendChild(expText);
+                wrap.appendChild(br);
+                wrap.appendChild(expWrap);
+            }
+            return wrap;
+        }
 
         if (isReviewMode || (activeMode === 'practice' && hasAnswered)) {
             const ok = userAns === q.answer;
-            feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">
-                ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}${expHtml}</div>`;
+            feedArea.appendChild(buildFeedback(
+                ok ? '#dcfce7' : '#fee2e2',
+                ok ? '#166534' : '#991b1b',
+                ok ? '✔ Correct!' : `✘ Incorrect. Answer: <strong>${q.answer}</strong>`,
+                q.explanation
+            ));
         }
 
         if (isReviewMode && !hasAnswered) {
-            feedArea.innerHTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
-                ⚠ Not answered. Correct: <strong>${q.answer}</strong>${expHtml}</div>`;
+            feedArea.appendChild(buildFeedback(
+                '#fef9c3', '#854d0e',
+                `⚠ Not answered. Correct: <strong>${q.answer}</strong>`,
+                q.explanation
+            ));
         }
 
         const isLast = currentIndex === currentExamData.length - 1;
