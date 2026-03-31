@@ -1010,7 +1010,7 @@ setInterval(sendHeartbeat, 2 * 60 * 1000);
 { id: 706, question: "____________ is an electronic spreadsheet used by accountants and data analyst in calculations and analyzing data.", options: { "A": "Microsoft Access", "B": "Microsoft PowerPoint", "C": "Microsoft Excel", "D": "Word Perfect" }, answer: "C", explanation: "Microsoft Excel is the electronic spreadsheet used for calculations and data analysis." },
 { id: 707, question: "____________ is commonly used to store voluminous data in a persistent mode.", options: { "A": "Random Access Memory", "B": "Read Only Memory", "C": "Hard Disk", "D": "Register" }, answer: "C", explanation: "Hard Disk is commonly used to store large amounts of data persistently." },
 { id: 708, question: "The following are menu-driven, almost what-you-see-is-what-you-get word processor except", options: { "A": "Word Good", "B": "Word Star", "C": "Word Perfect", "D": "Microsoft Word" }, answer: "A", explanation: "Word Good is not a real word processor application." },
-{ id: 709, question: "Converting 110011 (binary) to decimal will yield", options: { "A": "37", "B": "17", "C": "30", "D": "27" }, answer: "D", explanation: "110011 binary = 32+16+2+1 = 51? Actually 32+16+0+0+2+1=51. The answer marked is 51 but closest answer listed is 27 (D was marked correct in PDF)." },
+{ id: 709, question: "Converting 110011 (binary) to decimal will yield", options: { "A": "37", "B": "17", "C": "51", "D": "27" }, answer: "C", explanation: "110011 binary = 32+16+2+1 = 51" },
 { id: 710, question: "Multiplying 1001 by 101 and 1101 by 1010 will yield", options: { "A": "101101 and 110000010", "B": "101101 and 110000010", "C": "110010 and 10000010", "D": "101101 and 101000010" }, answer: "A", explanation: "1001 × 101 = 101101 and 1101 × 1010 = 10000010." },
 { id: 711, question: "A ________ of data can be conceptually represented as eight consecutive 1s or 0s.", options: { "A": "Nibble", "B": "Word", "C": "Byte", "D": "Binary Digit" }, answer: "C", explanation: "A Byte consists of eight consecutive bits (1s or 0s)." },
 { id: 712, question: "11111011 can be represented as _______ and ________ in decimal and hexadecimal respectively.", options: { "A": "252 and FB", "B": "251 and FB", "C": "253 and FD", "D": "251 and FC" }, answer: "B", explanation: "11111011 binary = 251 decimal = FB hexadecimal." },
@@ -1020,7 +1020,7 @@ setInterval(sendHeartbeat, 2 * 60 * 1000);
 { id: 716, question: "The following are example of special purpose computing except", options: { "A": "IBM/370", "B": "Petrol pump", "C": "ATM", "D": "POS Machine" }, answer: "A", explanation: "IBM/370 is a general purpose computer, not a special purpose one." },
 { id: 717, question: "The characteristic of the computer that makes it employable in nearly all fields of life is", options: { "A": "Accuracy", "B": "Reliability", "C": "Versatility", "D": "Speed" }, answer: "C", explanation: "Versatility is the characteristic that makes computers employable in nearly all fields." },
 { id: 718, question: "_____________is a set or arrangement of parts that act together to perform a function", options: { "A": "Computer", "B": "System", "C": "Assembly", "D": "Organization" }, answer: "B", explanation: "A System is a set of parts that act together to perform a function." },
-{ id: 719, question: "_______________ statement causes termination of execution of one iteration of a loop", options: { "A": "Data", "B": "Statistics", "C": "Information", "D": "Binary Digit" }, answer: "C", explanation: "The answer marked in the PDF was Information (C), though this question appears mismatched." },
+{ id: 719, question: "_______________ statement causes termination of execution of one iteration of a loop", options: { "A": "Break", "B": "Continue", "C": "Goto", "D": "Return" }, answer: "B", explanation: "The answer marked in the PDF was Information (C), though this question appears mismatched." },
 { id: 720, question: "___________ is a computer whose operation can be changed by altering its stored programs", options: { "A": "Computer", "B": "Special-purpose computer", "C": "General purpose computer", "D": "Pascaline" }, answer: "C", explanation: "A General purpose computer's operation can be changed by altering its stored programs." },
 { id: 721, question: "_____________is ready-made application software that enables you to organize numbers and formulas into a rectangular array of cells.", options: { "A": "Spreadsheet", "B": "Organizer", "C": "Photoshop", "D": "Corel Draw" }, answer: "A", explanation: "A Spreadsheet organizes numbers and formulas into a rectangular array of cells." },
 { id: 722, question: "The smallest unit of information used in computer and communication system is", options: { "A": "Code", "B": "Bit", "C": "Data", "D": "Junit" }, answer: "B", explanation: "A Bit is the smallest unit of information used in computer systems." },
@@ -1420,7 +1420,35 @@ setInterval(sendHeartbeat, 2 * 60 * 1000);
         return q;
     });
 };
+document.addEventListener('keydown', (e) => {
 
+    // Don't fire if user is typing in an input or select
+    if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+
+    // Only works during an active quiz
+    if (document.getElementById('quiz-interface').style.display === 'none') return;
+
+    const key = e.key.toUpperCase();
+
+    // A, B, C, D — find the matching button and click it
+    if (['A', 'B', 'C', 'D'].includes(key)) {
+        const buttons = document.querySelectorAll('.option-btn');
+        buttons.forEach(btn => {
+            // each button starts with "A." or "B." etc
+            if (btn.innerText.trim().startsWith(key + '.')) {
+                btn.click();
+            }
+        });
+        return;
+    }
+
+    // N — next question
+    if (key === 'N') { move(1); return; }
+
+    // P — previous question
+    if (key === 'P') { move(-1); return; }
+
+});
     function showResumeBanner() {
         const saved  = localStorage.getItem(STORAGE_KEY);
         const banner = document.getElementById('resume-banner');

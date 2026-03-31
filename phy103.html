@@ -312,7 +312,35 @@
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const COURSE_CODE = 'PHY 103';
     const STORAGE_KEY = 'saved_phy103_exam';
+document.addEventListener('keydown', (e) => {
 
+    // Don't fire if user is typing in an input or select
+    if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+
+    // Only works during an active quiz
+    if (document.getElementById('quiz-interface').style.display === 'none') return;
+
+    const key = e.key.toUpperCase();
+
+    // A, B, C, D — find the matching button and click it
+    if (['A', 'B', 'C', 'D'].includes(key)) {
+        const buttons = document.querySelectorAll('.option-btn');
+        buttons.forEach(btn => {
+            // each button starts with "A." or "B." etc
+            if (btn.innerText.trim().startsWith(key + '.')) {
+                btn.click();
+            }
+        });
+        return;
+    }
+
+    // N — next question
+    if (key === 'N') { move(1); return; }
+
+    // P — previous question
+    if (key === 'P') { move(-1); return; }
+
+});
    async function sendHeartbeat() {
     try {
         const { data: { user } } = await db.auth.getUser();

@@ -1008,7 +1008,35 @@
             </div>`;
         banner.style.display = 'block';
     }
+document.addEventListener('keydown', (e) => {
 
+    // Don't fire if user is typing in an input or select
+    if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+
+    // Only works during an active quiz
+    if (document.getElementById('quiz-interface').style.display === 'none') return;
+
+    const key = e.key.toUpperCase();
+
+    
+    if (['A', 'B', 'C', 'D'].includes(key)) {
+        const buttons = document.querySelectorAll('.option-btn');
+        buttons.forEach(btn => {
+            
+            if (btn.innerText.trim().startsWith(key + '.')) {
+                btn.click();
+            }
+        });
+        return;
+    }
+
+   
+    if (key === 'N') { move(1); return; }
+
+    
+    if (key === 'P') { move(-1); return; }
+
+});
     function discardSaved() {
         if (!confirm('Discard your saved exam progress?')) return;
         localStorage.removeItem('saved_mth101_exam');

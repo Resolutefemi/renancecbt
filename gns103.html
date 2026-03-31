@@ -153,148 +153,6 @@
             .score-big { font-size: 2.8rem; }
             .stats-bar { grid-template-columns: repeat(2, 1fr); }
         }
-        #gns103-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(4px);
-    z-index: 9998;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn 0.4s ease;
-  }
-
-  #gns103-popup {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 40px 36px 32px;
-    max-width: 420px;
-    width: 90%;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.25);
-    animation: slideUp 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
-    border-top: 6px solid #1a73e8;
-  }
-
-  #gns103-popup .popup-badge {
-    display: inline-block;
-    background: #e8f0fe;
-    color: #1a73e8;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 5px 14px;
-    border-radius: 20px;
-    margin-bottom: 16px;
-  }
-
-  #gns103-popup .popup-icon {
-    font-size: 52px;
-    margin-bottom: 12px;
-    display: block;
-  }
-
-  #gns103-popup h2 {
-    font-size: 22px;
-    font-weight: 800;
-    color: #1a1a2e;
-    margin: 0 0 10px;
-    line-height: 1.3;
-  }
-
-  #gns103-popup p {
-    font-size: 15px;
-    color: #555;
-    line-height: 1.6;
-    margin: 0 0 24px;
-  }
-
-  #gns103-popup .popup-count {
-    font-size: 48px;
-    font-weight: 900;
-    color: #1a73e8;
-    display: block;
-    margin: 8px 0 4px;
-    letter-spacing: -1px;
-  }
-
-  #gns103-popup .popup-count-label {
-    font-size: 13px;
-    color: #888;
-    display: block;
-    margin-bottom: 20px;
-    font-weight: 500;
-  }
-
-  #gns103-popup .btn-start {
-    display: inline-block;
-    background: #1a73e8;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 700;
-    padding: 14px 32px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    text-decoration: none;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  #gns103-popup .btn-start:hover {
-    background: #1558b0;
-    transform: translateY(-1px);
-  }
-
-  #gns103-popup .btn-dismiss {
-    display: block;
-    font-size: 13px;
-    color: #aaa;
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-top: 4px;
-    padding: 6px;
-    transition: color 0.2s;
-  }
-
-  #gns103-popup .btn-dismiss:hover {
-    color: #555;
-  }
-
-  #gns103-popup .close-x {
-    position: absolute;
-    top: 14px;
-    right: 16px;
-    background: #f1f1f1;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    color: #555;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
-  }
-
-  #gns103-popup .close-x:hover { background: #ddd; }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(40px) scale(0.95); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
-  }
     </style>
 </head>
 <body>
@@ -426,25 +284,6 @@
             </button>
         </div>
     </div>
-</div>
-
-    <div id="gns103-overlay">
-  <div id="gns103-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
-    <button class="close-x" onclick="closeGNSPopup()" aria-label="Close">✕</button>
-    <span class="popup-badge">📢 Update — GNS 103</span>
-    <span class="popup-icon">🎉</span>
-    <h2 id="popup-title">New Questions Just Dropped!</h2>
-    <span class="popup-count">300</span>
-    <span class="popup-count-label">New practice questions added</span>
-    <p>
-      Fresh GNS 103 questions are now available on RenanceCBT.
-      Sharpen your skills and boost your exam readiness today!
-    </p>
-    <button class="btn-start" onclick="closeGNSPopup()">
-      Start Practising Now →
-    </button>
-    <button class="btn-dismiss" onclick="closeGNSPopup()">Dismiss</button>
-  </div>
 </div>
 
 <script>
@@ -1564,17 +1403,7 @@
             el.innerText = '⚠️ Offline — score not saved';
         }
     }
-function closeGNSPopup() {
-    const overlay = document.getElementById('gns103-overlay');
-    overlay.style.opacity = '0';
-    overlay.style.transition = 'opacity 0.3s ease';
-    setTimeout(() => overlay.remove(), 300);
-  }
 
-  // Optional: close when clicking outside the popup box
-  document.getElementById('gns103-overlay').addEventListener('click', function(e) {
-    if (e.target === this) closeGNSPopup();
-  });
     function enterReviewMode() {
         document.getElementById('quizResultModal').style.display = 'none';
         isReviewMode = true;
@@ -1584,7 +1413,35 @@ function closeGNSPopup() {
         document.getElementById('timer').style.color       = '#1e40af';
         renderQuestion();
     }
+document.addEventListener('keydown', (e) => {
 
+    // Don't fire if user is typing in an input or select
+    if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+
+    // Only works during an active quiz
+    if (document.getElementById('quiz-interface').style.display === 'none') return;
+
+    const key = e.key.toUpperCase();
+
+    // A, B, C, D — find the matching button and click it
+    if (['A', 'B', 'C', 'D'].includes(key)) {
+        const buttons = document.querySelectorAll('.option-btn');
+        buttons.forEach(btn => {
+            // each button starts with "A." or "B." etc
+            if (btn.innerText.trim().startsWith(key + '.')) {
+                btn.click();
+            }
+        });
+        return;
+    }
+
+    // N — next question
+    if (key === 'N') { move(1); return; }
+
+    // P — previous question
+    if (key === 'P') { move(-1); return; }
+
+});
     async function shareQuizResult() {
         const score = document.getElementById('finalScoreText').innerText;
         const section = examSelectionType === 'random' ? 'a random mix' : `Part ${partNum}`;
