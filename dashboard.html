@@ -275,87 +275,6 @@
             .stat-card { padding: 0.85rem 0.9rem; }
             .mobile-top-bar { padding: 0 1rem; }
         }
-       
-.kbd-modal {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    font-family: 'Inter', sans-serif;
-    animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.kbd-card {
-    background: #0f172a;
-    border: 1px solid #1e293b;
-    border-radius: 12px;
-    padding: 16px;
-    width: 320px;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-    color: white;
-}
-
-.kbd-header { display: flex; justify-content: space-between; margin-bottom: 12px; }
-
-.v-tag { 
-    background: rgba(59, 130, 246, 0.15); 
-    color: #3b82f6; 
-    font-size: 10px; 
-    font-weight: 800; 
-    padding: 2px 8px; 
-    border-radius: 4px; 
-}
-
-.desktop-close { background: none; border: none; color: #64748b; cursor: pointer; font-size: 20px; }
-
-.kbd-body { display: flex; gap: 12px; align-items: start; margin-bottom: 16px; }
-
-.icon-box { 
-    background: #1e293b; 
-    min-width: 40px; height: 40px; 
-    border-radius: 8px; 
-    display: flex; align-items: center; justify-content: center; font-size: 20px;
-}
-
-.info h3 { margin: 0; font-size: 15px; font-weight: 600; }
-.info p { margin: 4px 0 0; font-size: 12px; color: #94a3b8; line-height: 1.4; }
-
-.key { background: #334155; padding: 1px 5px; border-radius: 4px; font-family: monospace; color: #fff; }
-
-/* THE MOBILE FIX: Large button for touch */
-.mobile-action-btn {
-    display: none; /* Hidden on desktop */
-    width: 100%;
-    padding: 12px;
-    background: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 13px;
-    cursor: pointer;
-}
-
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* MOBILE RESPONSIVE OVERRIDES */
-@media (max-width: 480px) {
-    .kbd-modal {
-        bottom: 0; right: 0; left: 0; /* Align to bottom like a sheet */
-        padding: 10px;
-    }
-    .kbd-card {
-        width: 100%;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-    .desktop-close { display: none; } /* Hide tiny X */
-    .mobile-action-btn { display: block; } /* Show big button */
-}
-
 
         /* Share card responsive */
         @media (max-width: 640px) {
@@ -492,29 +411,7 @@
             by <strong>Resolute Femi</strong>.
         </div>
     </main>
-    <div id="update-banner" class="renance-dashboard-card">
-    <div class="update-header">
-        <div class="badge">NEW UPDATE</div>
-        <button onclick="dismissUpdate()" class="close-btn">&times;</button>
-    </div>
-    
-    <div id="keyboard-notice" class="kbd-modal">
-    <div class="kbd-card">
-        <div class="kbd-header">
-            <span class="v-tag">v2.1 UPDATE</span>
-            <button class="desktop-close" onclick="closeKbdNotice()">×</button>
-        </div>
-        <div class="kbd-body">
-            <div class="icon-box">⌨️</div>
-            <div class="info">
-                <h3>Keyboard Logic Enabled</h3>
-                <p>Optimize your speed. Use keys <span class="key">A-D</span> to answer and <span class="key">N</span> / <span class="key">P</span> to navigate.</p>
-            </div>
-        </div>
-        <button class="mobile-action-btn" onclick="closeKbdNotice()">GOT IT</button>
-    </div>
-</div>
-</div>
+
     <div id="renanceProfileModal" class="modal-overlay" style="display:none;">
         <div class="modal-content">
             <div style="font-size:2.2rem;margin-bottom:6px;">🎓</div>
@@ -669,28 +566,7 @@
                 if (el) el.textContent = val;
             });
         }
-       function closeKbdNotice() {
-    const notice = document.getElementById('keyboard-notice');
-    if (!notice) return;
-    
-   
-    notice.style.transition = '0.3s ease';
-    notice.style.opacity = '0';
-    notice.style.transform = 'translateY(20px)';
-    
-    setTimeout(() => {
-        notice.remove();
-   
-        localStorage.setItem('renance_kbd_dismissed', 'true');
-    }, 300);
-}
 
-
-document.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('renance_kbd_dismissed')) {
-        document.getElementById('keyboard-notice')?.remove();
-    }
-});
         // ── Courses ──────────────────────────────────────────────────────────
         function filterCourses() { renderCourses(document.getElementById('courseSearch').value); }
 
