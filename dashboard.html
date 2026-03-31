@@ -275,6 +275,92 @@
             .stat-card { padding: 0.85rem 0.9rem; }
             .mobile-top-bar { padding: 0 1rem; }
         }
+        .renance-dashboard-card {
+    background: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    max-width: 600px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+}
+
+.update-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.badge {
+    background: #eef5ff;
+    color: #3182ce;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+}
+
+.update-body h3 {
+    margin: 0 0 8px 0;
+    color: #1a202c;
+    font-size: 18px;
+}
+
+.description {
+    color: #4a5568;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.shortcut-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.shortcut-item {
+    font-size: 14px;
+    color: #2d3748;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.key-cap {
+    background: #fff;
+    border: 1px solid #cbd5e0;
+    border-bottom: 3px solid #cbd5e0;
+    border-radius: 5px;
+    padding: 2px 8px;
+    font-weight: bold;
+    font-family: monospace;
+    min-width: 20px;
+    text-align: center;
+}
+
+.footer-note {
+    font-size: 12px;
+    color: #a0aec0;
+    margin-top: 15px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #cbd5e0;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-btn:hover { color: #4a5568; }
 
         /* Share card responsive */
         @media (max-width: 640px) {
@@ -411,7 +497,29 @@
             by <strong>Resolute Femi</strong>.
         </div>
     </main>
+    <div id="update-banner" class="renance-dashboard-card">
+    <div class="update-header">
+        <div class="badge">NEW UPDATE</div>
+        <button onclick="dismissUpdate()" class="close-btn">&times;</button>
+    </div>
+    
+    <div class="update-body">
+        <h3>Master Your Quizzes with Keyboard Shortcuts</h3>
+        <p class="description">We've added power-user controls to help you navigate Renance faster than ever.</p>
+        
+        <div class="shortcut-grid">
+            <div class="shortcut-item">
+                <span class="key-cap">A</span> - <span class="key-cap">D</span>
+                <span class="label">Select your answer instantly.</span>
+            </div>
+            <div class="shortcut-item">
+                <span class="key-cap">N</span> / <span class="key-cap">P</span>
+                <span class="label">Flip to the <b>N</b>ext or <b>P</b>revious slide.</span>
+            </div>
+        </div>
 
+    </div>
+</div>
     <div id="renanceProfileModal" class="modal-overlay" style="display:none;">
         <div class="modal-content">
             <div style="font-size:2.2rem;margin-bottom:6px;">🎓</div>
@@ -566,7 +674,24 @@
                 if (el) el.textContent = val;
             });
         }
+        function dismissUpdate() {
+    const banner = document.getElementById('update-banner');
+    banner.style.transition = 'all 0.3s ease';
+    banner.style.opacity = '0';
+    banner.style.transform = 'scale(0.95)';
+    
+    setTimeout(() => {
+        banner.remove(); // Removes from DOM
+        localStorage.setItem('renance_shortcuts_tutorial_seen', 'true');
+    }, 300);
+}
 
+// Auto-hide on load if already seen
+window.onload = () => {
+    if (localStorage.getItem('renance_shortcuts_tutorial_seen')) {
+        document.getElementById('update-banner').style.display = 'none';
+    }
+};
         // ── Courses ──────────────────────────────────────────────────────────
         function filterCourses() { renderCourses(document.getElementById('courseSearch').value); }
 
