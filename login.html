@@ -18,34 +18,34 @@
 html,body{height:100%;margin:0;overflow:hidden;touch-action:none}
 body{background:var(--bg);font-family:'Outfit',sans-serif;color:var(--ink);cursor:none;overflow:hidden}
 
-/* ── CURSOR ── */
+
 #cur-dot{position:fixed;width:8px;height:8px;background:#fff;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);box-shadow:0 0 15px #fff, 0 0 30px var(--cyan);transition:width .2s,height .2s}
 #cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(6,182,212,.6);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .4s cubic-bezier(.16,1,.3,1),height .4s cubic-bezier(.16,1,.3,1),border-color .3s}
 
-/* ── BG ── */
+
 #bg-canvas{position:fixed;inset:0;z-index:0}
 .scan{position:fixed;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.06) 3px,rgba(0,0,0,.06) 4px)}
 .grain{position:fixed;inset:-100%;z-index:3;width:300%;height:300%;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain-sh .5s steps(1) infinite}
 @keyframes grain-sh{0%{transform:translate(0,0)}25%{transform:translate(-3%,-6%)}50%{transform:translate(4%,3%)}75%{transform:translate(-6%,7%)}100%{transform:translate(0,0)}}
 
-/* ── CENTERED LAYOUT ── */
+
 .layout{position:relative;z-index:10;display:flex;justify-content:center;align-items:center;height:100vh;padding:20px;overflow-y:auto;scrollbar-width:none}
 .layout::-webkit-scrollbar{display:none}
 
-/* ── CARD ── */
+
 .card{position:relative;width:100%;max-width:420px;background:var(--card);border:1px solid var(--border);border-radius:24px;padding:42px 36px 36px;backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);transform-style:preserve-3d;animation:card-in 1s cubic-bezier(.16,1,.3,1) both;box-shadow:0 0 0 1px rgba(255,255,255,.04),0 40px 100px rgba(0,0,0,.9),0 0 80px rgba(37,99,235,.12)}
 @keyframes card-in{from{opacity:0;transform:translateY(50px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
 
-/* Animated Border Sweep */
+
 .card::before{content:'';position:absolute;inset:-1px;border-radius:25px;background:conic-gradient(from var(--a,0deg),transparent 60%,rgba(6,182,212,.8) 80%,rgba(59,130,246,.8) 100%);z-index:-1;animation:spin 4s linear infinite}
 @property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
 @keyframes spin{to{--a:360deg}}
 .card::after{content:'';position:absolute;inset:1px;border-radius:23px;background:linear-gradient(180deg, rgba(6,9,18,.8), rgba(6,9,18,.95));z-index:-1}
 
-/* Interactive Glare */
+
 .glare{position:absolute;inset:0;border-radius:24px;background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.08),transparent 40%);pointer-events:none;z-index:5;mix-blend-mode:overlay}
 
-/* ── BRAND & HEADER ── */
+
 .brand{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:28px}
 .gem{width:46px;height:46px;background:linear-gradient(135deg,#06b6d4,#3b82f6);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff;box-shadow:0 0 20px rgba(6,182,212,.4), inset 0 2px 0 rgba(255,255,255,.2);position:relative}
 .gem::after{content:'';position:absolute;inset:0;border-radius:14px;box-shadow:0 0 40px rgba(59,130,246,.6);animation:pulse 2s infinite alternate}
@@ -56,7 +56,7 @@ body{background:var(--bg);font-family:'Outfit',sans-serif;color:var(--ink);curso
 .ftitle{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.08em;line-height:1;margin-bottom:8px;color:#fff;text-shadow:0 0 20px rgba(255,255,255,.2)}
 .fsub{text-align:center;font-size:.85rem;font-weight:300;color:var(--muted);margin-bottom:32px}
 
-/* ── FIELDS ── */
+
 .fg{display:flex;flex-direction:column;gap:16px;margin-bottom:12px;position:relative;z-index:10}
 .f{position:relative}
 .fl{font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(148,163,184,.5);display:block;margin-bottom:8px;padding-left:4px;transition:color .3s}
@@ -71,7 +71,7 @@ input{width:100%;height:48px;background:rgba(0,0,0,.3);border:1px solid rgba(255
 input::placeholder{color:rgba(148,163,184,.25);font-weight:300}
 input:focus{border-color:rgba(6,182,212,.5);background:rgba(6,182,212,.05);box-shadow:0 0 0 4px rgba(6,182,212,.1), inset 0 0 15px rgba(6,182,212,.05)}
 
-/* ── UPGRADED REMEMBER / FORGOT ROW ── */
+
 .rf {
   display: flex;
   justify-content: space-between;
@@ -80,8 +80,6 @@ input:focus{border-color:rgba(6,182,212,.5);background:rgba(6,182,212,.05);box-s
   position: relative;
   z-index: 10;
 }
-
-/* Custom Checkbox Container */
 .remember-wrap {
   display: flex;
   align-items: center;
@@ -92,16 +90,8 @@ input:focus{border-color:rgba(6,182,212,.5);background:rgba(6,182,212,.05);box-s
   font-weight: 300;
   transition: color 0.3s;
 }
-.remember-wrap:hover {
-  color: var(--ink);
-}
-
-/* Hide the ugly default browser checkbox completely */
-.remember-wrap input[type=checkbox] {
-  display: none; 
-}
-
-/* The New Glowing Box */
+.remember-wrap:hover { color: var(--ink); }
+.remember-wrap input[type=checkbox] { display: none; }
 .custom-check {
   width: 22px;
   height: 22px;
@@ -112,37 +102,24 @@ input:focus{border-color:rgba(6,182,212,.5);background:rgba(6,182,212,.05);box-s
   align-items: center;
   justify-content: center;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  color: transparent; /* Hides checkmark initially */
+  color: transparent;
   font-size: 0.75rem;
 }
-
-/* The Checked State Animation */
 .remember-wrap input:checked + .custom-check {
   background: var(--cyan);
   border-color: var(--cyan);
-  color: #fff; /* Reveals checkmark */
+  color: #fff;
   box-shadow: 0 0 15px rgba(6, 182, 212, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3);
-  transform: scale(1.1); /* Satisfying pop effect */
+  transform: scale(1.1);
 }
+.rf a { font-size: 0.85rem; color: var(--muted); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+.rf a:hover { color: var(--cyan); text-decoration: underline; }
 
-/* Forgot Password Link */
-.rf a {
-  font-size: 0.85rem;
-  color: var(--muted);
-  text-decoration: none;
-  font-weight: 400;
-  transition: color 0.2s;
-}
-.rf a:hover {
-  color: var(--cyan);
-  text-decoration: underline;
-}
 
-/* Error message */
 #msg{display:none;padding:12px 16px;border-radius:10px;font-size:.8rem;font-weight:600;margin-bottom:16px;animation:shake .4s ease-in-out;border:1px solid rgba(239,68,68,.4);background:rgba(239,68,68,.08);color:#f87171;position:relative;z-index:10}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
 
-/* Button */
+
 .btn-wrap{position:relative;z-index:10}
 .btn{position:relative;width:100%;height:52px;border:none;border-radius:12px;background:linear-gradient(135deg,#0284c7,#06b6d4,#3b82f6);font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.15em;color:#fff;cursor:pointer;overflow:hidden;transition:transform .1s,box-shadow .3s;box-shadow:0 8px 30px rgba(6,182,212,.3),0 0 0 1px rgba(255,255,255,.2);will-change:transform}
 .btn::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.2),transparent)}
@@ -155,7 +132,7 @@ input:focus{border-color:rgba(6,182,212,.5);background:rgba(6,182,212,.05);box-s
 .lr a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--cyan);transform:scaleX(0);transform-origin:right;transition:transform .4s cubic-bezier(.16,1,.3,1)}
 .lr a:hover::after{transform:scaleX(1);transform-origin:left}
 
-/* ── FORGOT PASSWORD MODAL ── */
+
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(12px);z-index:9000;display:none;align-items:center;justify-content:center;padding:20px}
 .modal-overlay.open{display:flex}
 .modal-box{position:relative;background:rgba(8,12,28,.96);border:1px solid rgba(59,130,246,.2);border-radius:24px;padding:40px 32px;width:100%;max-width:400px;animation:modal-in .4s cubic-bezier(.16,1,.3,1);box-shadow:0 40px 80px rgba(0,0,0,.9),0 0 80px rgba(6,182,212,.15)}
@@ -168,19 +145,19 @@ input:focus{border-color:rgba(6,182,212,.5);background:rgba(6,182,212,.05);box-s
 #reset-feedback.ok{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);color:#34d399}
 #reset-feedback.bad{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);color:#f87171}
 
-/* Toast */
+
 #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(8,12,24,.96);border:1px solid rgba(255,255,255,.07);backdrop-filter:blur(24px);border-radius:100px;padding:12px 26px;font-size:.8rem;font-weight:600;color:var(--ink);opacity:0;transition:opacity .3s,transform .3s;z-index:9999;white-space:nowrap;box-shadow:0 10px 40px rgba(0,0,0,.6)}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 #toast.ok{border-color:rgba(16,185,129,.35);color:#34d399}
 #toast.bad{border-color:rgba(239,68,68,.35);color:#f87171}
 
-/* ── MOBILE RESPONSIVE ── */
+
 @media(max-width:768px){
-  #cur, #cur-ring { display: none !important; }
+  #cur, #cur-ring, #bg-canvas { display: none !important; } 
   body { cursor: auto; }
   .card{padding:32px 24px; border-radius:20px;}
   .ftitle{font-size:1.9rem;}
-  input{font-size:16px !important; height:46px;} /* Stop iOS zoom */
+  input{font-size:16px !important; height:46px;} 
   .f, .rf, .btn-wrap, .lr { opacity:0; animation: mobilePop .6s cubic-bezier(.175,.885,.32,1.275) forwards; }
   .f:nth-child(1){animation-delay:.3s}
   .f:nth-child(2){animation-delay:.4s}
@@ -278,43 +255,46 @@ input:focus{border-color:rgba(6,182,212,.5);background:rgba(6,182,212,.05);box-s
 </div>
 
 <script>
-/* ════════════════════════════════════════
-   SUPABASE
-════════════════════════════════════════ */
+
 const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
 if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 const db = window._sb;
 
-/* ════════════════════════════════════════
-   CANVAS — THE QUANTUM NETWORK REVEAL
-════════════════════════════════════════ */
+
 const bgC = document.getElementById('bg-canvas');
 const ct = bgC.getContext('2d');
 let W, H;
 function rs() { W = bgC.width = window.innerWidth; H = bgC.height = window.innerHeight; }
 rs(); window.addEventListener('resize', rs);
 
-// Optimized particle count for 16GB RAM 
+let isAnimating = window.innerWidth > 768;
+window.addEventListener('resize', () => {
+  rs();
+  const wasAnimating = isAnimating;
+  isAnimating = window.innerWidth > 768;
+  if (!wasAnimating && isAnimating) drawNetwork();
+});
+
 const nodes = [];
 for (let i = 0; i < 180; i++) {
   nodes.push({
     x: Math.random() * W,
     y: Math.random() * H,
     vx: (Math.random() - 0.5) * 0.4,
-    vy: (Math.random() - 0.5) * 0.4 - 0.3, // Constant upward drift
+    vy: (Math.random() - 0.5) * 0.4 - 0.3,
     size: Math.random() * 2 + 0.5
   });
 }
 
 let mx = W / 2, my = H / 2;
 window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-window.addEventListener('touchmove', e => { mx = e.touches[0].clientX; my = e.touches[0].clientY; }, {passive: true});
 
 function drawNetwork() {
+  if (!isAnimating) return;
+
   ct.clearRect(0, 0, W, H);
 
-  // Draw the mouse "Flashlight" aura
   const aura = ct.createRadialGradient(mx, my, 0, mx, my, 400);
   aura.addColorStop(0, 'rgba(6, 182, 212, 0.08)');
   aura.addColorStop(1, 'transparent');
@@ -324,24 +304,20 @@ function drawNetwork() {
   nodes.forEach(n => {
     n.x += n.vx;
     n.y += n.vy;
-    
-    // Wrap around screen
+
     if (n.x < 0) n.x = W; if (n.x > W) n.x = 0;
     if (n.y < 0) n.y = H; if (n.y > H) n.y = 0;
 
-    // Calculate distance to mouse
     let dx = n.x - mx, dy = n.y - my;
     let dist = Math.sqrt(dx * dx + dy * dy);
-    
-    // Only reveal network if close to the mouse (Flashlight effect)
+
     if (dist < 350) {
-      // Draw Node
+
       ct.beginPath();
       ct.arc(n.x, n.y, n.size, 0, Math.PI * 2);
       ct.fillStyle = `rgba(6, 182, 212, ${1 - dist/350})`;
       ct.fill();
 
-      // Connect to other nearby nodes
       for (let j = 0; j < nodes.length; j++) {
         let n2 = nodes[j];
         let dx2 = n.x - n2.x, dy2 = n.y - n2.y;
@@ -361,19 +337,19 @@ function drawNetwork() {
 
   requestAnimationFrame(drawNetwork);
 }
-drawNetwork();
+if (isAnimating) drawNetwork();
 
-/* ════════════════════════════════════════
-   CURSOR & MAGNETIC EFFECTS
-════════════════════════════════════════ */
+
 const dot=document.getElementById('cur-dot'), ring=document.getElementById('cur-ring');
 let rx=0,ry=0;
 window.addEventListener('mousemove',e=>{
   dot.style.left=e.clientX+'px'; dot.style.top=e.clientY+'px';
 });
 (function ac(){
-  rx+=(mx-rx)*0.15; ry+=(my-ry)*0.15;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  if (isAnimating) {
+    rx+=(mx-rx)*0.15; ry+=(my-ry)*0.15;
+    ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  }
   requestAnimationFrame(ac);
 })();
 document.querySelectorAll('input,button,a,.icr,.modal-close').forEach(el=>{
@@ -385,9 +361,10 @@ document.querySelectorAll('input,button,a,.icr,.modal-close').forEach(el=>{
   });
 });
 
-/* 3D CARD TILT & GLARE */
+
 const card=document.getElementById('card'), glare=document.getElementById('glare');
 card.addEventListener('mousemove',e=>{
+  if (!isAnimating) return;
   const rect = card.getBoundingClientRect();
   const x = e.clientX - rect.left; const y = e.clientY - rect.top;
   const cx = rect.width/2; const cy = rect.height/2;
@@ -399,24 +376,14 @@ card.addEventListener('mousemove',e=>{
   glare.style.setProperty('--my', (y/rect.height*100)+'%');
 });
 card.addEventListener('mouseleave',()=>{
+  if (!isAnimating) return;
   card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
   card.style.transition = 'transform 0.5s ease';
   setTimeout(()=>card.style.transition='', 500);
 });
 
-if (window.DeviceOrientationEvent && matchMedia('(pointer:coarse)').matches) {
-  window.addEventListener('deviceorientation', function(e) {
-    let tiltX = Math.min(Math.max(e.beta - 45, -10), 10); 
-    let tiltY = Math.min(Math.max(e.gamma, -10), 10);
-    card.style.transform = `perspective(1000px) rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
-    glare.style.setProperty('--mx', (50 + tiltY*2) + '%');
-    glare.style.setProperty('--my', (50 + tiltX*2) + '%');
-  });
-}
 
-/* ════════════════════════════════════════
-   HACKER GLITCH TEXT
-════════════════════════════════════════ */
+
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
 const glitchEl = document.getElementById('glitch-text');
 const originalText = glitchEl.dataset.value;
@@ -433,10 +400,8 @@ window.addEventListener('load', () => {
   }, 35);
 });
 
-/* ════════════════════════════════════════
-   UI INTERACTIONS
-════════════════════════════════════════ */
-// Password Toggle
+
+
 document.getElementById('togPw').addEventListener('click', function(e) {
   e.preventDefault();
   const pw = document.getElementById('password'), t = pw.type === 'text';
@@ -444,23 +409,20 @@ document.getElementById('togPw').addEventListener('click', function(e) {
   this.classList.toggle('fa-eye', t); this.classList.toggle('fa-eye-slash', !t);
 });
 
-// Toast System
 function toast(msg, type='') {
   const t=document.getElementById('toast'); t.textContent=msg;
   t.className='show '+type; clearTimeout(t._);
   t._=setTimeout(()=>t.className='',4000);
 }
 
-// Inline Message
 function showMsg(text, type='') {
   const m = document.getElementById('msg');
   m.textContent = text; m.className = type;
   m.style.display = 'block';
-  void m.offsetWidth; // re-trigger animation
+  void m.offsetWidth;
 }
 function hideMsg() { document.getElementById('msg').style.display = 'none'; }
 
-// Forgot Password Modal
 document.getElementById('forgotLink').addEventListener('click', e => {
   e.preventDefault();
   document.getElementById('forgotModal').classList.add('open');
@@ -500,9 +462,7 @@ document.getElementById('sendResetBtn').addEventListener('click', async function
   }
 });
 
-/* ════════════════════════════════════════
-   LOGIN LOGIC (Supabase)
-════════════════════════════════════════ */
+
 document.getElementById('loginForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   hideMsg();
@@ -527,7 +487,6 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 
     if (authError) throw authError;
 
-    // Save session state
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('student_email', email);
     if (remember) localStorage.setItem('renance_remember', email);
@@ -536,8 +495,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     btxt.innerHTML = '<i class="fa-solid fa-check"></i>&nbsp; SUCCESS';
     btn.style.background = '#10b981';
     btn.style.boxShadow = '0 0 30px rgba(16,185,129,0.5)';
-    
-    // Quick success delay
+
     setTimeout(() => { window.location.href = 'dashboard.html'; }, 1500);
 
   } catch (err) {
@@ -550,13 +508,12 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     }
     showMsg(msg);
     btn.disabled = false;
-    btxt.innerHTML = '<i class="fa-solid fa-bolt"></i>&nbsp; INITIATE LOGIN';
+    btxt.innerHTML = '<i class="fa-solid fa-bolt"></i>&nbsp; LOGIN';
     btn.style.background = '';
     btn.style.boxShadow = '';
   }
 });
 
-// Pre-fill remembered email
 const remembered = localStorage.getItem('renance_remember');
 if (remembered) {
   document.getElementById('email').value = remembered;
@@ -565,3 +522,7 @@ if (remembered) {
 </script>
 </body>
 </html>
+
+
+
+

@@ -48,7 +48,7 @@
 
         main { padding: 2rem 5%; max-width: 960px; margin: 0 auto; }
 
-        /* ── DASHBOARD ── */
+        
         #dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.1rem; }
         .box {
             background: var(--card-bg);
@@ -68,7 +68,7 @@
         .box-random { background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; border: none !important; }
         .box-random p { color: rgba(255,255,255,0.8) !important; }
 
-        /* ── STATS BAR ── */
+        
         .stats-bar {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 0.8rem; margin-bottom: 1.5rem;
@@ -81,7 +81,7 @@
         .stat-card .stat-val { font-size: 1.6rem; font-weight: 800; color: var(--primary); }
         .stat-card .stat-lbl { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
 
-        /* ── SETUP SCREEN ── */
+        
         #setup-screen { text-align: center; background: var(--card-bg); padding: 3rem 2rem; border-radius: 16px; border: 1.5px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
         .setup-group { margin: 1.5rem auto; text-align: left; max-width: 380px; }
         .setup-group label { font-weight: 600; font-size: 0.88rem; color: var(--text); display: block; margin-bottom: 7px; }
@@ -91,7 +91,7 @@
         .custom-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; color: var(--text); font-weight: 500; user-select: none; }
         .custom-checkbox input { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; }
 
-        /* ── QUIZ INTERFACE ── */
+        
         .quiz-header { display: flex; justify-content: space-between; align-items: center; font-weight: 700; margin-bottom: 15px; padding: 0 4px; flex-wrap: wrap; gap: 10px; }
         .quiz-header .q-counter { font-size: 1rem; color: var(--text); }
         .quiz-header .btn-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
@@ -126,7 +126,7 @@
         .btn:hover { opacity: 0.88; transform: translateY(-2px); }
         .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
-        /* ── RESULT MODAL ── */
+        
         .result-modal-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.78);
             backdrop-filter: blur(8px); z-index: 9999;
@@ -165,7 +165,7 @@
 
         #save-status { font-size: 0.78rem; color: var(--text-muted); margin: 8px 0 14px; }
 
-        /* ── RESPONSIVE ── */
+        
         @media (max-width: 600px) {
             #dashboard { grid-template-columns: repeat(2, 1fr); }
             .question-card { padding: 1.3rem; }
@@ -193,13 +193,11 @@
 </nav>
 
 <main>
-    <!-- DASHBOARD -->
     <div id="dashboard-wrap">
         <div id="stats-bar" class="stats-bar" style="display:none;"></div>
         <div id="dashboard"></div>
     </div>
 
-    <!-- SETUP SCREEN -->
     <div id="setup-screen" style="display:none;">
         <h2 id="setup-title" style="margin-bottom:1.8rem; color:var(--primary); line-height:1.4; font-size:1.3rem;"></h2>
 
@@ -244,7 +242,6 @@
         </div>
     </div>
 
-    <!-- QUIZ INTERFACE -->
     <div id="quiz-interface" style="display:none;">
         <div class="quiz-header">
             <span class="q-counter">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
@@ -277,7 +274,6 @@
     </div>
 </main>
 
-<!-- RESULT MODAL -->
 <div id="quizResultModal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
         <span class="result-icon" id="resultIcon">🏆</span>
@@ -937,15 +933,11 @@
  
     ];
 
-    /* ═══════════════════════════════════════
-       NORMALIZE: strip "A ", "B " prefixes
-       and map letter answers to full text
-    ═══════════════════════════════════════ */
+    
     const MASTER_POOL = RAW_DATA.map(item => {
         const prefixRegex = /^[A-E][\.\)]?\s+/i;
         const cleanedOptions = item.options.map(opt => opt.replace(prefixRegex, '').trim());
 
-        // Map letter answer (A/B/C/D) → actual text answer
         const letterIndex = { A:0, B:1, C:2, D:3, E:4 };
         const answerIndex = letterIndex[item.answer.toUpperCase()];
         const textAnswer = cleanedOptions[answerIndex] ?? item.answer;
@@ -960,18 +952,14 @@
         };
     });
 
-    /* ══════════════
-       STATE VARS
-    ══════════════ */
+    
     let currentExamData = [], userAnswers = {}, currentIndex = 0;
     let timeRemaining = 0, timerId = null;
     let activeMode = 'practice', isReviewMode = false;
     let examSelectionType = 'random', selectionValue = '';
     let lastScore = 0, lastCorrect = 0;
 
-    /* ══════════════════
-       INIT
-    ══════════════════ */
+    
     window.onload = () => {
         initDashboard();
         loadStatsBar();
@@ -980,7 +968,7 @@
         }
     };
 
-    /* ── Stats Bar ── */
+    
     async function loadStatsBar() {
         const bar = document.getElementById('stats-bar');
         try {
@@ -1004,10 +992,10 @@
                 <div class="stat-card"><div class="stat-val">${best}%</div><div class="stat-lbl">Best Score</div></div>
             `;
             bar.style.display = 'grid';
-        } catch (e) { /* offline, silently skip */ }
+        } catch (e) {  }
     }
 
-    /* ── Dashboard ── */
+    
     function initDashboard() {
         const board = document.getElementById('dashboard');
         board.innerHTML = '';
@@ -1017,7 +1005,6 @@
             return;
         }
 
-        // Random card
         const rand = document.createElement('div');
         rand.className = 'box box-random';
         rand.innerHTML = `
@@ -1027,7 +1014,6 @@
         rand.onclick = () => openSetup('random', 'Randomised Practice');
         board.appendChild(rand);
 
-        // Group by topic
         const topicMap = {};
         MASTER_POOL.forEach(q => {
             topicMap[q.topic] = (topicMap[q.topic] || 0) + 1;
@@ -1076,7 +1062,7 @@
         loadStatsBar();
     }
 
-    /* ── Helpers ── */
+    
     function shuffleArray(arr) {
         const a = [...arr];
         for (let i = a.length - 1; i > 0; i--) {
@@ -1086,9 +1072,7 @@
         return a;
     }
 
-    /* ══════════════════
-       START EXAM
-    ══════════════════ */
+    
     function startExam() {
         timeRemaining = parseInt(document.getElementById('t-limit').value) * 60;
         activeMode = document.getElementById('quiz-mode').value;
@@ -1111,7 +1095,7 @@
             pool.forEach(q => {
                 const correct = q.answer;
                 q.options = shuffleArray(q.options);
-                // answer stays as text so it still matches
+
             });
         }
 
@@ -1125,9 +1109,7 @@
         renderQuestion();
     }
 
-    /* ══════════════════
-       TIMER
-    ══════════════════ */
+    
     function runTimer() {
         clearInterval(timerId);
         timerId = setInterval(() => {
@@ -1139,9 +1121,7 @@
         }, 1000);
     }
 
-    /* ══════════════════
-       RENDER QUESTION
-    ══════════════════ */
+    
     function renderQuestion() {
         const q = currentExamData[currentIndex];
         const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
@@ -1185,7 +1165,6 @@
             optBox.appendChild(btn);
         });
 
-        // Feedback
         const expHtml = q.explanation
             ? `<br><span style="font-weight:400; font-size:0.88rem;"><strong>Explanation:</strong> ${q.explanation}</span>`
             : '';
@@ -1244,9 +1223,7 @@
         renderQuestion();
     }
 
-    /* ══════════════════
-       SHOW RESULTS
-    ══════════════════ */
+    
     async function showResults(forced = false) {
         const answered = Object.keys(userAnswers).length;
         if (!forced && answered < currentExamData.length) {
@@ -1265,7 +1242,6 @@
         document.getElementById('modalCorrect').innerText = score;
         document.getElementById('modalTotal').innerText = total;
 
-        // Show modal
         document.getElementById('finalScoreText').innerText = pct;
         document.getElementById('resultTopicName').innerText =
             examSelectionType === 'random' ? 'Random Practice' : selectionValue;
@@ -1298,7 +1274,6 @@
             const { data: { user } } = await db.auth.getUser();
             if (!user) { el.innerText = ''; return; }
 
-            // Fetch previous scores for avg display
             const { data: prev } = await db.from('test_results')
                 .select('score').eq('student_id', user.id).eq('course_id', COURSE_CODE);
 
@@ -1343,3 +1318,6 @@
 </script>
 </body>
 </html>
+
+
+

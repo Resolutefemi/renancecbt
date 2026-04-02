@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STA 111 – Descriptive Statistics 1 | Renance Learning Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --navy:#1b1b70;--navy-mid:#392ed7;--blue:#1d6fa4;--blue-bright:#2a9fd6;
+  --amber:#f08400;--amber-light:#fba824;--cream:#faf8f4;--white:#ffffff;
+  --slate:#64748b;--text:#18185c;
+  --sidebar-w:270px;--header-h:64px;--radius:12px;--radius-sm:8px;
+  --shadow:0 2px 12px rgba(27,27,112,.08);--shadow-md:0 6px 24px rgba(27,27,112,.13);
+  --transition:.22s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.68;min-height:100vh;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Fraunces',serif;line-height:1.25;color:var(--navy)}
+a{color:var(--blue);text-decoration:none}
+code,pre{font-family:'Courier New',Courier,monospace}
+
+
+.site-header{position:fixed;top:0;left:0;right:0;height:var(--header-h);background:var(--navy);z-index:200;display:flex;align-items:center;padding:0 1.5rem;gap:1rem;box-shadow:0 2px 16px rgba(0,0,0,.25)}
+.header-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.header-logo .logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--amber),var(--amber-light));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;flex-shrink:0}
+.header-logo .logo-text{display:flex;flex-direction:column;line-height:1.15}
+.header-logo .logo-main{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;color:#fff;letter-spacing:.01em}
+.header-logo .logo-sub{font-size:.7rem;color:rgba(255,255,255,.65);letter-spacing:.04em;font-weight:400}
+.header-center{flex:1;text-align:center}
+.course-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:.28rem .9rem;font-size:.78rem;color:rgba(255,255,255,.9);letter-spacing:.02em}
+.course-badge i{color:var(--amber-light);font-size:.8rem}
+.header-right{display:flex;align-items:center;gap:.75rem;margin-left:auto}
+.curator-tag{font-size:.72rem;color:rgba(255,255,255,.6);white-space:nowrap}
+.curator-tag strong{color:var(--amber-light);font-weight:600}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:.4rem;color:#fff;font-size:1.2rem}
+
+
+.layout{display:flex;margin-top:var(--header-h);min-height:calc(100vh - var(--header-h))}
+
+
+.sidebar{width:var(--sidebar-w);flex-shrink:0;position:sticky;top:var(--header-h);height:calc(100vh - var(--header-h));overflow-y:auto;background:var(--white);border-right:1px solid rgba(27,27,112,.1);display:flex;flex-direction:column;z-index:100}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:rgba(27,27,112,.15);border-radius:4px}
+.sidebar-inner{padding:1.25rem .75rem 2rem}
+.sidebar-label{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);padding:.6rem .6rem .3rem;margin-top:.5rem}
+.nav-item{display:flex;align-items:center;gap:.65rem;padding:.52rem .75rem;border-radius:var(--radius-sm);color:var(--slate);font-size:.84rem;font-weight:500;cursor:pointer;transition:var(--transition);border:none;background:none;width:100%;text-align:left;text-decoration:none;line-height:1.3}
+.nav-item i{width:18px;text-align:center;font-size:.9rem;color:var(--blue);flex-shrink:0;opacity:.7;transition:var(--transition)}
+.nav-item:hover{background:rgba(29,111,164,.07);color:var(--navy)}
+.nav-item:hover i{opacity:1}
+.nav-item.active{background:rgba(29,111,164,.12);color:var(--navy);font-weight:600}
+.nav-item.active i{color:var(--navy-mid);opacity:1}
+.nav-item .nav-num{margin-left:auto;font-size:.65rem;background:rgba(57,46,215,.1);color:var(--navy-mid);padding:.1rem .4rem;border-radius:100px;font-weight:700;flex-shrink:0}
+.sidebar-footer{margin-top:auto;padding:1rem .75rem;border-top:1px solid rgba(27,27,112,.07);font-size:.72rem;color:var(--slate);text-align:center}
+.sidebar-footer strong{color:var(--amber)}
+
+
+.main{flex:1;min-width:0;padding:2rem 2.5rem 4rem}
+.main-inner{max-width:860px;margin:0 auto}
+
+
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 60%,var(--blue) 100%);border-radius:var(--radius);padding:2.5rem 2.5rem 2rem;margin-bottom:2.5rem;color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-40px;top:-40px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.04)}
+.hero::after{content:'';position:absolute;right:60px;bottom:-60px;width:160px;height:160px;border-radius:50%;background:rgba(240,132,0,.1)}
+.hero-eyebrow{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-light);margin-bottom:.5rem}
+.hero h1{font-size:2rem;font-weight:700;color:#fff;margin-bottom:.5rem;position:relative}
+.hero p{font-size:.95rem;color:rgba(255,255,255,.78);max-width:560px;line-height:1.7;margin-bottom:1.25rem}
+.hero-stats{display:flex;flex-wrap:wrap;gap:1.25rem}
+.hero-stat{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-sm);padding:.6rem 1.1rem;min-width:90px}
+.hero-stat .stat-val{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:#fff;line-height:1}
+.hero-stat .stat-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.6);margin-top:.2rem}
+
+
+.section-block{margin-bottom:3.5rem;scroll-margin-top:calc(var(--header-h) + 20px)}
+.section-header{display:flex;align-items:center;gap:.85rem;margin-bottom:1.5rem;padding-bottom:.85rem;border-bottom:2px solid rgba(27,27,112,.08)}
+.section-icon{width:42px;height:42px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--navy),var(--navy-mid));display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;flex-shrink:0}
+.section-header h2{font-size:1.5rem;font-weight:700;color:var(--navy);margin:0}
+.section-header .sec-num{font-size:.75rem;color:var(--slate);font-family:'DM Sans',sans-serif;font-style:italic;margin-top:.1rem}
+.subsection{margin-bottom:2rem}
+.subsection h3{font-size:1.1rem;font-weight:600;color:var(--navy);margin-bottom:.85rem;display:flex;align-items:center;gap:.5rem}
+.subsection h3::before{content:'';display:inline-block;width:4px;height:1em;background:var(--amber);border-radius:4px;flex-shrink:0}
+.subsection h4{font-size:.95rem;font-weight:600;color:var(--blue);margin:.75rem 0 .4rem;font-family:'DM Sans',sans-serif}
+
+
+.formula-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin:1rem 0}
+.formula-card{background:var(--white);border:1px solid rgba(27,27,112,.1);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow);transition:var(--transition);position:relative;overflow:hidden}
+.formula-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy-mid),var(--blue-bright))}
+.formula-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.formula-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.67rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy-mid);background:rgba(57,46,215,.08);border-radius:100px;padding:.22rem .65rem;margin-bottom:.6rem}
+.formula-tag i{font-size:.65rem}
+.formula-card h4{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.5rem;font-family:'DM Sans',sans-serif;line-height:1.3}
+.formula-expr{background:#f1f0fb;border-radius:var(--radius-sm);padding:.7rem 1rem;margin:.5rem 0;font-family:'Courier New',monospace;font-size:.88rem;color:var(--navy);line-height:1.6;border-left:3px solid var(--navy-mid);overflow-x:auto}
+.formula-expr .var{color:var(--blue);font-style:italic}
+.formula-note{font-size:.78rem;color:var(--slate);line-height:1.55;margin-top:.5rem}
+.formula-note strong{color:var(--text);font-weight:600}
+
+
+.formula-card.wide{grid-column:1/-1}
+.formula-card.amber::before{background:linear-gradient(90deg,var(--amber),var(--amber-light))}
+.formula-card.amber .formula-tag{color:#a35a00;background:rgba(240,132,0,.1)}
+.formula-card.amber .formula-expr{background:#fff8ee;border-color:var(--amber)}
+.formula-card.green::before{background:linear-gradient(90deg,#0a7a4e,#1db87a)}
+.formula-card.green .formula-tag{color:#0a5c39;background:rgba(10,122,78,.1)}
+.formula-card.green .formula-expr{background:#eefaf4;border-color:#0a7a4e}
+
+
+.callout{border-radius:var(--radius-sm);padding:1rem 1.25rem;margin:.85rem 0;border-left:4px solid;line-height:1.65}
+.callout-header{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.85rem;margin-bottom:.4rem;font-family:'DM Sans',sans-serif}
+.callout-header i{font-size:.9rem}
+.callout p,.callout ul,.callout ol{font-size:.88rem}
+.callout ul,.callout ol{padding-left:1.25rem;margin-top:.35rem}
+.callout li{margin-bottom:.2rem}
+
+.callout.definition{background:rgba(42,159,214,.07);border-color:var(--blue-bright)}
+.callout.definition .callout-header{color:var(--blue)}
+.callout.definition .callout-header i{color:var(--blue-bright)}
+
+.callout.rule{background:rgba(240,132,0,.07);border-color:var(--amber)}
+.callout.rule .callout-header{color:#9a5500}
+.callout.rule .callout-header i{color:var(--amber)}
+
+.callout.property{background:rgba(27,27,112,.06);border-color:var(--navy-mid)}
+.callout.property .callout-header{color:var(--navy)}
+.callout.property .callout-header i{color:var(--navy-mid)}
+
+.callout.tip{background:rgba(10,122,78,.07);border-color:#0a7a4e}
+.callout.tip .callout-header{color:#064d30}
+.callout.tip .callout-header i{color:#0a7a4e}
+
+.callout.warning{background:rgba(193,0,0,.06);border-color:#c10000}
+.callout.warning .callout-header{color:#8b0000}
+.callout.warning .callout-header i{color:#c10000}
+
+
+.comp-table{width:100%;border-collapse:collapse;font-size:.84rem;margin:1rem 0;border-radius:var(--radius-sm);overflow:hidden;box-shadow:var(--shadow)}
+.comp-table thead{background:var(--navy);color:#fff}
+.comp-table thead th{padding:.65rem .85rem;text-align:left;font-weight:600;font-size:.78rem;letter-spacing:.03em}
+.comp-table tbody tr:nth-child(even){background:rgba(27,27,112,.03)}
+.comp-table tbody tr:hover{background:rgba(29,111,164,.06)}
+.comp-table td{padding:.6rem .85rem;border-bottom:1px solid rgba(27,27,112,.07);color:var(--text);vertical-align:top}
+.comp-table td:first-child{font-weight:600;color:var(--navy)}
+.badge-check{display:inline-block;width:18px;height:18px;background:#0a7a4e;border-radius:50%;color:#fff;font-size:.65rem;line-height:18px;text-align:center}
+.badge-x{display:inline-block;width:18px;height:18px;background:#c10000;border-radius:50%;color:#fff;font-size:.65rem;line-height:18px;text-align:center}
+
+
+.scale-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.75rem;margin:1rem 0}
+.scale-card{border-radius:var(--radius-sm);padding:1rem;border:1px solid rgba(27,27,112,.1);background:var(--white)}
+.scale-card .scale-name{font-weight:700;font-size:.9rem;color:var(--navy);margin-bottom:.35rem;font-family:'DM Sans',sans-serif}
+.scale-card .scale-ops{font-size:.75rem;color:var(--blue);margin-bottom:.35rem;font-weight:600}
+.scale-card p{font-size:.78rem;color:var(--slate);line-height:1.5}
+
+
+.fact-list{display:flex;flex-direction:column;gap:.45rem;margin:.75rem 0}
+.fact-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem}
+.fact-item .fi-icon{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--navy-mid),var(--blue));display:flex;align-items:center;justify-content:center;color:#fff;font-size:.6rem;flex-shrink:0;margin-top:.15rem}
+.fact-item p{line-height:1.55;color:var(--text)}
+.fact-item p strong{color:var(--navy)}
+
+
+.skew-visual{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0}
+.skew-box{border-radius:var(--radius-sm);padding:.85rem;text-align:center;border:1px solid rgba(27,27,112,.1)}
+.skew-box .skew-label{font-size:.78rem;font-weight:700;margin-bottom:.35rem;font-family:'DM Sans',sans-serif}
+.skew-box .skew-rel{font-family:'Courier New',monospace;font-size:.72rem;background:rgba(0,0,0,.05);border-radius:4px;padding:.25rem .5rem;display:inline-block;margin:.2rem 0}
+.skew-pos{background:#fff8ee;border-color:var(--amber)}.skew-pos .skew-label{color:#a35a00}
+.skew-sym{background:#eefaf4;border-color:#0a7a4e}.skew-sym .skew-label{color:#064d30}
+.skew-neg{background:rgba(42,159,214,.07);border-color:var(--blue-bright)}.skew-neg .skew-label{color:var(--blue)}
+
+
+.kurt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0}
+.kurt-box{border-radius:var(--radius-sm);padding:.85rem;text-align:center;border:1px solid rgba(27,27,112,.1);background:var(--white)}
+.kurt-box .kurt-name{font-weight:700;font-size:.88rem;color:var(--navy);margin-bottom:.2rem;font-family:'DM Sans',sans-serif}
+.kurt-box .kurt-val{font-size:.75rem;font-family:'Courier New',monospace;color:var(--blue);margin-bottom:.3rem}
+.kurt-box p{font-size:.76rem;color:var(--slate)}
+
+
+.quant-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin:.75rem 0}
+.quant-box{background:var(--white);border:1px solid rgba(27,27,112,.1);border-radius:var(--radius-sm);padding:.85rem;box-shadow:var(--shadow)}
+.quant-box .qb-title{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-mid);margin-bottom:.4rem}
+.quant-box .qb-body{font-size:.82rem;color:var(--text);line-height:1.55}
+.quant-box .qb-body code{background:#f1f0fb;border-radius:3px;padding:.1rem .35rem;font-size:.8rem;color:var(--navy)}
+
+
+.method-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin:1rem 0}
+.method-card{background:var(--white);border:1px solid rgba(27,27,112,.1);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow);transition:var(--transition)}
+.method-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.method-card .mc-head{display:flex;align-items:center;gap:.6rem;margin-bottom:.65rem}
+.method-card .mc-icon{width:36px;height:36px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:#fff;flex-shrink:0}
+.method-card .mc-name{font-weight:700;font-size:.92rem;color:var(--navy);font-family:'DM Sans',sans-serif}
+.method-card .mc-type{font-size:.68rem;color:var(--slate);font-weight:400}
+.method-card .mc-body{font-size:.83rem;color:var(--text);line-height:1.55;margin-bottom:.65rem}
+.method-card .mc-pros,.method-card .mc-cons{font-size:.78rem;line-height:1.5}
+.method-card .mc-pros{color:#064d30}.method-card .mc-pros strong{color:#0a7a4e}
+.method-card .mc-cons{color:#8b0000;margin-top:.3rem}.method-card .mc-cons strong{color:#c10000}
+.ic-blue{background:var(--blue)}.ic-navy{background:var(--navy)}.ic-amber{background:var(--amber)}.ic-green{background:#0a7a4e}.ic-teal{background:#0e8d7a}.ic-purple{background:#6c3db8}
+
+
+.norm-rule-bar{background:linear-gradient(90deg,rgba(57,46,215,.08),rgba(29,111,164,.12),rgba(57,46,215,.08));border:1px solid rgba(27,27,112,.1);border-radius:var(--radius-sm);padding:1rem 1.25rem;margin:.75rem 0}
+.norm-rule-bar h4{font-size:.82rem;font-weight:700;color:var(--navy);margin-bottom:.5rem;font-family:'DM Sans',sans-serif}
+.norm-rules{display:flex;flex-direction:column;gap:.35rem}
+.norm-rule-item{display:flex;align-items:center;gap:.75rem;font-size:.84rem}
+.norm-rule-item .nri-pct{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--navy);min-width:52px}
+.norm-rule-item .nri-range{font-family:'Courier New',monospace;font-size:.8rem;color:var(--blue);min-width:120px}
+.norm-rule-item .nri-bar{flex:1;height:8px;border-radius:4px;background:rgba(57,46,215,.15)}
+.nri-bar-1{background:linear-gradient(90deg,var(--navy-mid),var(--blue-bright));width:68%}
+.nri-bar-2{background:linear-gradient(90deg,var(--amber),var(--amber-light));width:95%}
+.nri-bar-3{background:linear-gradient(90deg,#0a7a4e,#1db87a);width:100%}
+
+
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(27,27,112,.15),transparent);margin:1.5rem 0}
+
+
+#btt{position:fixed;bottom:1.75rem;right:1.75rem;width:44px;height:44px;background:var(--navy);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:1rem;box-shadow:var(--shadow-md);transition:var(--transition);opacity:0;pointer-events:none;z-index:300;display:flex;align-items:center;justify-content:center}
+#btt.show{opacity:1;pointer-events:auto}
+#btt:hover{background:var(--navy-mid);transform:translateY(-2px)}
+
+
+.site-footer{background:var(--navy);color:rgba(255,255,255,.7);text-align:center;padding:1.5rem;font-size:.8rem;line-height:1.7}
+.site-footer strong{color:var(--amber-light)}
+.site-footer .footer-divider{margin:.3rem 0;opacity:.3}
+
+
+.reading-progress{position:fixed;top:var(--header-h);left:0;right:0;height:3px;background:rgba(255,255,255,.1);z-index:199}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--amber),var(--amber-light));width:0%;transition:width .1s linear}
+
+
+.pill{display:inline-flex;align-items:center;gap:.3rem;font-size:.7rem;font-weight:600;padding:.2rem .6rem;border-radius:100px;margin:.1rem}
+.pill-navy{background:rgba(27,27,112,.1);color:var(--navy)}
+.pill-amber{background:rgba(240,132,0,.12);color:#8a4c00}
+.pill-green{background:rgba(10,122,78,.1);color:#064d30}
+.pill-blue{background:rgba(29,111,164,.1);color:var(--blue)}
+.pill-red{background:rgba(193,0,0,.1);color:#8b0000}
+
+
+@media(max-width:900px){
+  .main{padding:1.5rem 1.25rem 3rem}
+  .formula-grid{grid-template-columns:1fr}
+  .scale-cards{grid-template-columns:repeat(2,1fr)}
+  .skew-visual,.kurt-grid{grid-template-columns:1fr}
+  .method-grid{grid-template-columns:1fr}
+  .quant-row{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .sidebar{position:fixed;left:-100%;top:var(--header-h);height:calc(100vh - var(--header-h));transition:var(--transition);z-index:150;box-shadow:4px 0 20px rgba(0,0,0,.15)}
+  .sidebar.open{left:0}
+  .sidebar-overlay{display:none;position:fixed;inset:0;top:var(--header-h);background:rgba(0,0,0,.4);z-index:140}
+  .sidebar-overlay.show{display:block}
+  .hamburger{display:flex;align-items:center;justify-content:center}
+  .main{padding:1.25rem 1rem 3rem}
+  .hero{padding:1.75rem 1.25rem 1.5rem}
+  .hero h1{font-size:1.5rem}
+  .hero-stats{gap:.75rem}
+  .hero-stat{padding:.5rem .75rem;min-width:75px}
+  .hero-stat .stat-val{font-size:1.2rem}
+  .header-center{display:none}
+  .curator-tag{display:none}
+  .section-header h2{font-size:1.25rem}
+  .scale-cards,.kurt-grid,.quant-row{grid-template-columns:1fr}
+  #btt{bottom:1rem;right:1rem;width:40px;height:40px}
+  .comp-table{font-size:.76rem}
+}
+@media(max-width:400px){
+  .hero-stats{flex-direction:column;gap:.5rem}
+  .hero-stat{min-width:unset;flex-direction:row;gap:.75rem;justify-content:flex-start}
+}
+</style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="progress-bar" id="progressBar"></div></div>
+
+
+<header class="site-header">
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+  <a class="header-logo" href="#">
+    <div class="logo-icon"><i class="fas fa-chart-bar"></i></div>
+    <div class="logo-text">
+      <span class="logo-main">Renance Learning Portal</span>
+      <span class="logo-sub"><strong style="color: #2a44d6;">STA 111</strong> by Resolute Femi</span>
+    </div>
+  </a>
+  <div class="header-center">
+    <span class="course-badge"><i class="fas fa-book-open"></i>STA 111 – Descriptive Statistics 1</span>
+  </div>
+  <div class="header-right">
+    <span class="curator-tag">Curated by <strong>Resolute Femi</strong></span>
+  </div>
+</header>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+
+<div class="layout">
+
+  
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <span class="sidebar-label">Contents</span>
+      <a class="nav-item active" href="#basics" data-target="basics"><i class="fas fa-layer-group"></i>Basics & Types of Data<span class="nav-num">1</span></a>
+      <a class="nav-item" href="#presentation" data-target="presentation"><i class="fas fa-table"></i>Data Presentation<span class="nav-num">2</span></a>
+      <a class="nav-item" href="#central" data-target="central"><i class="fas fa-crosshairs"></i>Central Tendency<span class="nav-num">3</span></a>
+      <a class="nav-item" href="#dispersion" data-target="dispersion"><i class="fas fa-expand-arrows-alt"></i>Dispersion, Skew & Kurtosis<span class="nav-num">4</span></a>
+      <a class="nav-item" href="#quantiles" data-target="quantiles"><i class="fas fa-sliders-h"></i>Quantiles & Percentiles<span class="nav-num">5</span></a>
+      <a class="nav-item" href="#probability" data-target="probability"><i class="fas fa-dice"></i>Probability & Normal Dist.<span class="nav-num">6</span></a>
+      <a class="nav-item" href="#sampling" data-target="sampling"><i class="fas fa-users"></i>Sampling Methods<span class="nav-num">7</span></a>
+      <a class="nav-item" href="#collection" data-target="collection"><i class="fas fa-clipboard-list"></i>Data Collection Methods<span class="nav-num">8</span></a>
+    </div>
+    <div class="sidebar-footer">
+      STA 111 &bull; <strong>Renance</strong> Learning Portal<br>
+      634 MCQ Study Guide
+    </div>
+  </nav>
+
+  
+  <main class="main">
+    <div class="main-inner">
+
+      
+      <div class="hero">
+        <div class="hero-eyebrow"><i class="fas fa-star"></i>&nbsp; Ultimate Cheat Sheet & Study Guide</div>
+        <h1>Descriptive Statistics 1</h1>
+        <p>Every formula, concept, and rule from the STA 111 curriculum. Use this as your one-stop reference for examinations and assignments.</p>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="stat-val">634</span><span class="stat-lbl">MCQs</span></div>
+          <div class="hero-stat"><span class="stat-val">8</span><span class="stat-lbl">Sections</span></div>
+          <div class="hero-stat"><span class="stat-val">40+</span><span class="stat-lbl">Formulas</span></div>
+          <div class="hero-stat"><span class="stat-val">STA 111</span><span class="stat-lbl">Course</span></div>
+        </div>
+      </div>
+
+      
+      <section class="section-block" id="basics">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-layer-group"></i></div>
+          <div>
+            <h2>Basics &amp; Types of Data</h2>
+            <div class="sec-num">Section 1 · Foundations</div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>What is Statistics?</h3>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-info-circle"></i> Definition</div>
+            <p><strong>Statistics</strong> is the scientific method of <em>collecting, organising, summarising, presenting, and analysing data</em>, and making valid conclusions based on that analysis. It is applied in every field where numerical data exists — biology, economics, government, medicine, engineering, and beyond.</p>
+          </div>
+          <div class="fact-list">
+            <div class="fact-item"><div class="fi-icon"><i class="fas fa-check"></i></div><p><strong>Descriptive Statistics:</strong> Concerned with summarising and describing the features of a dataset (tables, graphs, averages, spread). Does NOT generalise beyond the data collected.</p></div>
+            <div class="fact-item"><div class="fi-icon"><i class="fas fa-check"></i></div><p><strong>Inferential Statistics:</strong> Uses sample data to draw conclusions (inferences) about a larger population. Includes hypothesis testing, regression, and confidence intervals.</p></div>
+            <div class="fact-item"><div class="fi-icon"><i class="fas fa-check"></i></div><p><strong>Datum (singular) vs. Data (plural):</strong> A single recorded piece of information is a <em>datum</em>; multiple pieces are <em>data</em>.</p></div>
+            <div class="fact-item"><div class="fi-icon"><i class="fas fa-check"></i></div><p><strong>Variable:</strong> Any characteristic that can take on different values across observations (e.g. height, gender, marks). A <strong>constant</strong> does not vary.</p></div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Types of Variables</h3>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-code-branch"></i> Qualitative vs. Quantitative</div>
+            <p><strong>Qualitative (Categorical)</strong> variables describe attributes or categories that cannot be measured numerically — e.g. blood group, gender, religion, marital status, eye colour.<br>
+            <strong>Quantitative (Numerical)</strong> variables take numeric values on which arithmetic operations are meaningful — e.g. height, weight, age, income.</p>
+          </div>
+          <table class="comp-table">
+            <thead><tr><th>Type</th><th>Sub-type</th><th>Description</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr><td>Qualitative</td><td>Nominal</td><td>Categories with no order</td><td>Blood group, Gender, Religion</td></tr>
+              <tr><td>Qualitative</td><td>Ordinal</td><td>Categories with a meaningful rank</td><td>Degree class, Pain scale, Satisfaction</td></tr>
+              <tr><td>Quantitative</td><td>Discrete</td><td>Countable whole-number values</td><td>No. of students, No. of cars, Goals scored</td></tr>
+              <tr><td>Quantitative</td><td>Continuous</td><td>Any value in a range (measurable)</td><td>Height, Weight, Temperature, Time</td></tr>
+            </tbody>
+          </table>
+          <div class="callout rule">
+            <div class="callout-header"><i class="fas fa-exclamation-triangle"></i> Key Distinction: Discrete vs. Continuous</div>
+            <ul>
+              <li><strong>Discrete:</strong> Values obtained by <em>counting</em>; no fractions possible (e.g. you cannot have 2.5 children). Examples: number of cars in a lot, number of students absent.</li>
+              <li><strong>Continuous:</strong> Values obtained by <em>measuring</em>; any value (including fractions/decimals) is possible between two points. Examples: weight (60.5 kg), time, height.</li>
+              <li><strong>Important:</strong> "Age of a student in class" is <em>continuous</em> — age can be measured to infinite precision. "Number of children born" is <em>discrete</em>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Scales of Measurement (NOIR)</h3>
+          <div class="scale-cards">
+            <div class="scale-card" style="border-top:3px solid #c10000">
+              <div class="scale-name" style="color:#c10000">① Nominal</div>
+              <div class="scale-ops">Operations: = ≠ only</div>
+              <p>Most basic level. Numbers are labels only — no order, no arithmetic. Classifies items into mutually exclusive categories.</p>
+              <p style="margin-top:.4rem;font-size:.75rem"><strong>Examples:</strong> Gender, Religion, Blood group, Nationality, Zip codes, Marital status</p>
+            </div>
+            <div class="scale-card" style="border-top:3px solid var(--amber)">
+              <div class="scale-name" style="color:#8a4c00">② Ordinal</div>
+              <div class="scale-ops">Operations: = ≠ &lt; &gt;</div>
+              <p>Has order/rank, but intervals between ranks are NOT equal or known. Cannot say "the 1st person is twice as tall as the 2nd".</p>
+              <p style="margin-top:.4rem;font-size:.75rem"><strong>Examples:</strong> Class rank (1st, 2nd), Degree class, Pain scale (mild/moderate/severe), Likert scale</p>
+            </div>
+            <div class="scale-card" style="border-top:3px solid var(--blue)">
+              <div class="scale-name" style="color:var(--blue)">③ Interval</div>
+              <div class="scale-ops">Operations: = ≠ &lt; &gt; + −</div>
+              <p>Equal intervals between values. BUT <em>no true zero</em> — zero does not mean "absence". Addition and subtraction are valid; ratios are not.</p>
+              <p style="margin-top:.4rem;font-size:.75rem"><strong>Examples:</strong> Temperature (°C, °F), IQ score, Calendar year, Clock time</p>
+            </div>
+            <div class="scale-card" style="border-top:3px solid var(--navy)">
+              <div class="scale-name" style="color:var(--navy)">④ Ratio</div>
+              <div class="scale-ops">Operations: = ≠ &lt; &gt; + − × ÷</div>
+              <p>Highest level. Equal intervals AND a true zero (zero = absence of the attribute). ALL arithmetic operations are valid; ratios are meaningful.</p>
+              <p style="margin-top:.4rem;font-size:.75rem"><strong>Examples:</strong> Height, Weight, Income, Distance, Temperature (Kelvin), Speed</p>
+            </div>
+          </div>
+          <div class="callout rule">
+            <div class="callout-header"><i class="fas fa-lightbulb"></i> Memory Aid</div>
+            <p>Remember <strong>NOIR</strong>: <strong>N</strong>ominal → <strong>O</strong>rdinal → <strong>I</strong>nterval → <strong>R</strong>atio. Each level includes all properties of the levels below it. "Discrete" is a type of quantitative variable, NOT a level of measurement.</p>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Types of Data: Primary vs. Secondary</h3>
+          <div class="method-grid">
+            <div class="method-card">
+              <div class="mc-head"><div class="mc-icon ic-navy"><i class="fas fa-user-edit"></i></div><div><div class="mc-name">Primary Data</div><div class="mc-type">First-hand / Original</div></div></div>
+              <div class="mc-body">Collected directly by the investigator for the first time, specifically for the study at hand. The researcher is involved at every stage.</div>
+              <div class="mc-pros"><strong>✔ Advantages:</strong> Investigator has confidence in data; comprehensive; definition of terms included; more reliable for specific needs.</div>
+              <div class="mc-cons"><strong>✘ Disadvantages:</strong> Time-consuming; expensive; requires considerable manpower; data may be obsolete by the time of publication.</div>
+            </div>
+            <div class="method-card">
+              <div class="mc-head"><div class="mc-icon ic-blue"><i class="fas fa-database"></i></div><div><div class="mc-name">Secondary Data</div><div class="mc-type">Existing / Published</div></div></div>
+              <div class="mc-body">Obtained from existing published or unpublished sources — journals, government records, statistical divisions, banks, newspapers, research institutions.</div>
+              <div class="mc-pros"><strong>✔ Advantages:</strong> Cheap and fast to collect; easily available; good for historical analysis.</div>
+              <div class="mc-cons"><strong>✘ Disadvantages:</strong> May be misrepresented; may not fit the researcher's exact needs; precision/reliability may be unknown; may contain transcription errors.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Key Terminology</h3>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-book"></i> Population, Sample, Parameter, Statistic</div>
+            <ul>
+              <li><strong>Population:</strong> The entire group of objects/individuals about which information is sought. Can be finite or infinite.</li>
+              <li><strong>Sample:</strong> A subset of the population selected for study. Must be representative.</li>
+              <li><strong>Parameter (μ, σ, etc.):</strong> A numerical summary computed from a <em>population</em> (e.g. population mean μ). Fixed but often unknown.</li>
+              <li><strong>Statistic (x̄, s, etc.):</strong> A numerical summary computed from a <em>sample</em> (e.g. sample mean x̄). Used to estimate parameters.</li>
+              <li><strong>Random Variable:</strong> A variable whose value is determined by the outcome of a random experiment. Can be discrete or continuous.</li>
+              <li><strong>Census:</strong> A complete count/data collection from every member of the population.</li>
+              <li><strong>Sampling:</strong> The process of selecting a representative subset (sample) from a population — used because a census is often impossible or too expensive.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      
+      <section class="section-block" id="presentation">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-table"></i></div>
+          <div>
+            <h2>Data Presentation &amp; Tabulation</h2>
+            <div class="sec-num">Section 2 · Graphs, Charts &amp; Tables</div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Statistical Tables</h3>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-table"></i> Components of a Standard Statistical Table</div>
+            <ul>
+              <li><strong>General Title:</strong> Overall heading at the top describing the table's content.</li>
+              <li><strong>Caption:</strong> Column headings — describe what each column represents.</li>
+              <li><strong>Stub:</strong> Row headings — labels on the left side of the table.</li>
+              <li><strong>Body:</strong> The main area containing actual numerical data values.</li>
+              <li><strong>Source Note:</strong> Indicates where the data was obtained (attribution).</li>
+              <li><strong>Footnote:</strong> Provides additional explanations, qualifications, or clarifications.</li>
+            </ul>
+          </div>
+          <div class="callout rule">
+            <div class="callout-header"><i class="fas fa-times-circle"></i> NOT a Table Requirement</div>
+            <p>Bright colors, embedded graphs, and decorative elements are NOT structural requirements of a statistical table. A table requires: Title, Caption, Stub, Body, and Source Note.</p>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Frequency Distribution Tables</h3>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-info-circle"></i> Key Concepts</div>
+            <ul>
+              <li><strong>Frequency (f):</strong> Count of observations in each class. Total = Σf = n.</li>
+              <li><strong>Relative Frequency:</strong> Class frequency ÷ Total frequency (f/n). All relative frequencies sum to 1.</li>
+              <li><strong>Cumulative Frequency:</strong> Running total of frequencies up to (and including) each class.</li>
+              <li><strong>Tally Marks:</strong> Used to count occurrences of each value when building a frequency table.</li>
+              <li><strong>Class Limits:</strong> The stated lowest and highest values of each class (e.g. 10–19).</li>
+              <li><strong>Class Boundaries:</strong> Adjusted limits obtained by subtracting/adding 0.5 to limits (e.g. 9.5–19.5). Used to eliminate gaps.</li>
+              <li><strong>Class Midpoint (Class Mark):</strong> (Lower limit + Upper limit) / 2. Used in calculations for grouped data.</li>
+              <li><strong>Class Width (c):</strong> Upper boundary − Lower boundary.</li>
+              <li><strong>Open-ended Class:</strong> First or last class with no stated boundary (e.g. "below 10" or "100 and above").</li>
+            </ul>
+          </div>
+          <div class="formula-grid">
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-ruler"></i> Class Width</div>
+              <h4>Class Width Formula</h4>
+              <div class="formula-expr">c = Upper Boundary − Lower Boundary
+c = Range ÷ Number of Classes (k)</div>
+              <div class="formula-note">e.g. For class 10–19: boundaries are 9.5–19.5, so c = 19.5 − 9.5 = <strong>10</strong>.</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-calculator"></i> Class Midpoint</div>
+              <h4>Class Mark / Midpoint</h4>
+              <div class="formula-expr">x = (Lower Limit + Upper Limit) / 2</div>
+              <div class="formula-note">e.g. For class 47–50: midpoint = (47 + 50) / 2 = <strong>48.5</strong>.</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-percent"></i> Relative Frequency</div>
+              <h4>Relative Frequency</h4>
+              <div class="formula-expr">rf = f / Σf = f / n</div>
+              <div class="formula-note">Σ(all relative frequencies) = <strong>1</strong>. Expressed as a proportion or percentage.</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-th-list"></i> Number of Classes</div>
+              <h4>Sturge's Rule (Number of Classes)</h4>
+              <div class="formula-expr">k ≈ √n  (or k = 1 + 3.322 × log₁₀(n))</div>
+              <div class="formula-note">For n = 100: k = √100 = <strong>10</strong>. For n = 200: k ≈ <strong>14</strong>. For n = 400: k ≈ <strong>20</strong>.</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-chart-area"></i> Frequency Density</div>
+              <h4>Frequency Density (Unequal Classes)</h4>
+              <div class="formula-expr">d = f / c  (frequency ÷ class width)</div>
+              <div class="formula-note">Used as the y-axis in histograms with unequal class widths. Area of each bar = frequency.</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-superscript"></i> Pie Chart Angle</div>
+              <h4>Pie Chart Sector Angle</h4>
+              <div class="formula-expr">θ = (f / Σf) × 360°</div>
+              <div class="formula-note">Total of all angles = <strong>360°</strong>. For relative frequency 0.4: angle = 0.4 × 360° = 144°.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Graphical Representations</h3>
+          <table class="comp-table">
+            <thead><tr><th>Graph</th><th>Data Type</th><th>Key Feature</th><th>Used For</th></tr></thead>
+            <tbody>
+              <tr><td>Simple Bar Chart</td><td>Qualitative / Discrete</td><td>Bars separated by gaps; height = frequency</td><td>Comparing single categories</td></tr>
+              <tr><td>Multiple Bar Chart</td><td>Qualitative / Discrete</td><td>Side-by-side bars for each category; multiple variables</td><td>Comparing ≥2 variables simultaneously</td></tr>
+              <tr><td>Component (Stacked) Bar</td><td>Qualitative / Discrete</td><td>Bars stacked; total height = combined frequency</td><td>Showing sub-group contributions to totals</td></tr>
+              <tr><td>Percentage Bar</td><td>Qualitative / Discrete</td><td>All bars = 100%; divided by proportions</td><td>Comparing proportional composition</td></tr>
+              <tr><td>Pie Chart</td><td>Qualitative</td><td>Circle divided into 360° sectors</td><td>Parts-to-whole; best when slice ≈ 25% or 50%</td></tr>
+              <tr><td>Histogram</td><td>Continuous Quantitative</td><td>No gaps between bars; area ∝ frequency</td><td>Frequency distribution of continuous data</td></tr>
+              <tr><td>Frequency Polygon</td><td>Continuous Quantitative</td><td>Midpoints of bars connected; closes on x-axis</td><td>Comparing two+ distributions</td></tr>
+              <tr><td>Ogive (Cumulative Freq. Curve)</td><td>Quantitative</td><td>Cumulative frequency vs. upper boundary</td><td>Estimating median, quartiles, percentiles</td></tr>
+              <tr><td>Line Graph</td><td>Time series</td><td>Data points connected over time</td><td>Trends over time</td></tr>
+              <tr><td>Stem-and-Leaf Plot</td><td>Quantitative</td><td>Preserves original values; stem + leaf</td><td>Small-medium datasets; retain actual values</td></tr>
+              <tr><td>Box Plot</td><td>Quantitative</td><td>Five-number summary + whiskers; outlier dots</td><td>Distribution shape, spread, outliers</td></tr>
+              <tr><td>Scatter Plot</td><td>Bivariate Quantitative</td><td>Pairs of (x, y) plotted</td><td>Relationship between two variables</td></tr>
+            </tbody>
+          </table>
+          <div class="callout rule">
+            <div class="callout-header"><i class="fas fa-exclamation-circle"></i> Histogram vs. Bar Chart — Critical Distinctions</div>
+            <ul>
+              <li><strong>Histogram:</strong> No gaps between bars (continuous data); area of bar ∝ frequency; y-axis can show frequency or frequency density.</li>
+              <li><strong>Bar Chart:</strong> Gaps between bars (discrete/categorical data); height of bar = frequency; width has no meaning.</li>
+              <li>A histogram is applicable <em>only</em> to continuous data. Bar charts are for qualitative or discrete data.</li>
+              <li>The <strong>modal class</strong> in a histogram is the tallest bar (highest frequency density).</li>
+            </ul>
+          </div>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-wave-square"></i> Ogive — How to Use It</div>
+            <ul>
+              <li>A "less than" ogive plots cumulative frequency against the <strong>upper class boundary</strong>.</li>
+              <li>A "more than" ogive plots cumulative frequency against the <strong>lower class boundary</strong>.</li>
+              <li>The ogive starts at zero (lower boundary of first class, cumulative f = 0) and ends at n (last upper boundary).</li>
+              <li>To find the <strong>median</strong>: draw a horizontal line at n/2 on the y-axis; read the x-value.</li>
+              <li>To find <strong>quartiles</strong>: Q1 at n/4, Q2 (median) at n/2, Q3 at 3n/4.</li>
+              <li>For percentages, convert y-axis to % (multiply by 100/n); median is at 50%.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Classification &amp; Tabulation Purpose</h3>
+          <div class="callout tip">
+            <div class="callout-header"><i class="fas fa-check-double"></i> Why We Classify &amp; Tabulate Data</div>
+            <ul>
+              <li>Condense large amounts of raw data into an understandable form.</li>
+              <li>Facilitate comparisons between groups or variables.</li>
+              <li>Enhance clarity of pictorial/graphical representation.</li>
+              <li>Enable calculation of averages, spread, and other statistics.</li>
+              <li>Make data presentation clear, systematic, and informative.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      
+      <section class="section-block" id="central">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-crosshairs"></i></div>
+          <div>
+            <h2>Measures of Central Tendency</h2>
+            <div class="sec-num">Section 3 · Mean, Median, Mode, GM, HM, Weighted Mean</div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Overview</h3>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-bullseye"></i> What is a Measure of Central Tendency?</div>
+            <p>A single value that represents the <em>centre</em> or <em>typical value</em> of a dataset — also called an <strong>average</strong>. The word "average" refers to the centre of a data set. The three most common are: <strong>Mean, Median,</strong> and <strong>Mode</strong>.</p>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>① Arithmetic Mean (x̄ or μ)</h3>
+          <div class="formula-grid">
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-sigma"></i> Ungrouped Data</div>
+              <h4>Simple Arithmetic Mean</h4>
+              <div class="formula-expr">x̄ = Σx / n</div>
+              <div class="formula-note"><strong>x̄:</strong> sample mean &nbsp;|&nbsp; <strong>Σx:</strong> sum of all values &nbsp;|&nbsp; <strong>n:</strong> number of observations.<br>If mean = M and total count = n, then <strong>Σx = n × M</strong>.</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-chart-bar"></i> Grouped Data</div>
+              <h4>Mean for Grouped / Frequency Distribution</h4>
+              <div class="formula-expr">x̄ = Σfx / Σf</div>
+              <div class="formula-note"><strong>f:</strong> class frequency &nbsp;|&nbsp; <strong>x:</strong> class midpoint &nbsp;|&nbsp; <strong>Σf = n</strong>.</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-compress-arrows-alt"></i> Assumed Mean Method</div>
+              <h4>Coding / Assumed Mean Method</h4>
+              <div class="formula-expr">x̄ = A + (Σfd / Σf)
+where d = x − A  (deviation)
+
+For equal class widths:
+x̄ = A + (Σfd' / Σf) × c
+where d' = (x − A) / c</div>
+              <div class="formula-note"><strong>A:</strong> assumed mean (chosen near the centre) &nbsp;|&nbsp; <strong>c:</strong> class width. Reduces arithmetic by using smaller deviations.</div>
+            </div>
+            <div class="formula-card amber">
+              <div class="formula-tag"><i class="fas fa-balance-scale"></i> Combined / Weighted Mean</div>
+              <h4>Combined Mean of Two Groups</h4>
+              <div class="formula-expr">x̄_combined = (n₁x̄₁ + n₂x̄₂) / (n₁ + n₂)
+
+Weighted Mean:
+x̄_w = Σwx / Σw</div>
+              <div class="formula-note"><strong>n₁, n₂:</strong> group sizes &nbsp;|&nbsp; <strong>w:</strong> weights. Used when groups have different sizes or importance.</div>
+            </div>
+          </div>
+          <div class="callout property">
+            <div class="callout-header"><i class="fas fa-star"></i> Properties of the Arithmetic Mean</div>
+            <ul>
+              <li>Uses <em>every</em> data value in its calculation — sensitive to all values.</li>
+              <li><strong>Σ(x − x̄) = 0</strong> — the sum of all deviations from the mean is always zero.</li>
+              <li><strong>Σ(x − x̄)² is minimized</strong> — the mean minimizes the sum of squared deviations (least squares property).</li>
+              <li>If a constant <em>k</em> is added to all values, the new mean = x̄ + k. (Spread unchanged.)</li>
+              <li>If all values are multiplied by <em>k</em>, the new mean = k × x̄.</li>
+              <li>The mean is <strong>not</strong> appropriate for open-ended classes, qualitative data, or when extreme outliers are present.</li>
+            </ul>
+          </div>
+          <div class="callout warning">
+            <div class="callout-header"><i class="fas fa-exclamation-triangle"></i> Disadvantages of Arithmetic Mean</div>
+            <ul>
+              <li>Highly affected by <strong>outliers</strong> (extreme values) — can give a misleading "average".</li>
+              <li>Not meaningful for <strong>qualitative</strong> (categorical) data.</li>
+              <li>Cannot be computed for <strong>open-ended frequency distributions</strong> without assumptions.</li>
+              <li>May produce a non-physical value (e.g. 2.3 children).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Trimmed Mean</h3>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-cut"></i> Trimmed Mean</div>
+            <p>The <strong>α% trimmed mean</strong> is computed by: (1) sorting all values, (2) discarding α% of the smallest <em>and</em> α% of the largest values, (3) computing the arithmetic mean of the remaining values. This makes it robust to outliers.</p>
+            <ul>
+              <li>α = 0% → same as arithmetic mean.</li>
+              <li>α = 50% → same as the median.</li>
+              <li><strong>Example:</strong> 20% trimmed mean of 5 values (32, 10, 8, 9, 11): discard 1 smallest (8) and 1 largest (32); mean of 9, 10, 11 = <strong>10</strong>.</li>
+              <li>Used by judges in competitions (gymnastics, diving) — discard highest and lowest scores.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>② Median</h3>
+          <div class="formula-grid">
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-sort-numeric-up"></i> Ungrouped Data</div>
+              <h4>Median — Ungrouped</h4>
+              <div class="formula-expr">If n is ODD:
+  Median = x_{(n+1)/2}
+
+If n is EVEN:
+  Median = (x_{n/2} + x_{n/2+1}) / 2</div>
+              <div class="formula-note">Always arrange data in ascending order first. For n = 7: Median = 4th value. For n = 6: Median = average of 3rd and 4th values.</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-calculator"></i> Grouped Data</div>
+              <h4>Median — Grouped Data (Interpolation)</h4>
+              <div class="formula-expr">Median = L_m + [(n/2 − F_c) / f_m] × c
+
+Where:
+  L_m = lower boundary of median class
+  n   = total frequency (Σf)
+  F_c = cumulative freq. BEFORE median class
+  f_m = frequency of median class
+  c   = class width</div>
+              <div class="formula-note">The <strong>median class</strong> is the class where cumulative frequency first equals or exceeds n/2.</div>
+            </div>
+          </div>
+          <div class="callout property">
+            <div class="callout-header"><i class="fas fa-star"></i> Properties of the Median</div>
+            <ul>
+              <li>Divides an ordered dataset into two equal halves — 50% below, 50% above.</li>
+              <li><strong>Not affected by outliers</strong> — robust measure; best for skewed data.</li>
+              <li>Minimizes the sum of <em>absolute</em> deviations: Σ|x − M| is minimized at M = median.</li>
+              <li>Equivalent to: Q2 (2nd quartile), D5 (5th decile), P50 (50th percentile).</li>
+              <li>Can be estimated graphically from the <strong>ogive</strong> at the 50% cumulative frequency level.</li>
+              <li>In grouped data, the median is an estimate (interpolation), not an exact value.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>③ Mode</h3>
+          <div class="formula-grid">
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-chart-column"></i> Ungrouped Data</div>
+              <h4>Mode — Ungrouped</h4>
+              <div class="formula-expr">Mode = value that occurs most frequently</div>
+              <div class="formula-note">A dataset can be: <strong>Unimodal</strong> (1 mode), <strong>Bimodal</strong> (2 modes), <strong>Multimodal</strong> (3+ modes), or have <strong>No mode</strong> (all frequencies equal).</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-calculator"></i> Grouped Data</div>
+              <h4>Mode — Grouped Data</h4>
+              <div class="formula-expr">Mode = L_m + [(f_m − f_b) / ((f_m−f_b)+(f_m−f_a))] × c
+
+Where:
+  L_m = lower boundary of modal class
+  f_m = frequency of modal class (highest f)
+  f_b = frequency of class BEFORE modal class
+  f_a = frequency of class AFTER modal class
+  c   = class width</div>
+              <div class="formula-note">The <strong>modal class</strong> is the class with the highest frequency. Mode can also be estimated from the histogram — the tallest bar.</div>
+            </div>
+          </div>
+          <div class="callout property">
+            <div class="callout-header"><i class="fas fa-star"></i> Properties of the Mode</div>
+            <ul>
+              <li><strong>Only</strong> measure of central tendency usable for nominal (qualitative) data.</li>
+              <li>Not affected by extreme values (outliers).</li>
+              <li>May not be unique (multiple modes possible) or may not exist at all.</li>
+              <li>Does not use all data values — only depends on frequency counts.</li>
+              <li>Estimated graphically from the <strong>histogram</strong> (tallest bar).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>④ Geometric Mean (GM)</h3>
+          <div class="formula-grid">
+            <div class="formula-card green">
+              <div class="formula-tag"><i class="fas fa-superscript"></i> Formula</div>
+              <h4>Geometric Mean</h4>
+              <div class="formula-expr">GM = (x₁ × x₂ × … × xₙ)^(1/n)
+     = ⁿ√(x₁ · x₂ · … · xₙ)
+
+For 2 values:  GM = √(a × b)
+For 3 values:  GM = ³√(a × b × c)</div>
+              <div class="formula-note">e.g. GM of 4 and 16: √(4×16) = √64 = <strong>8</strong>. &nbsp;|&nbsp; GM of 4 and 9: √36 = <strong>6</strong>.</div>
+            </div>
+          </div>
+          <div class="callout property">
+            <div class="callout-header"><i class="fas fa-star"></i> When to Use GM &amp; Its Properties</div>
+            <ul>
+              <li>Best for <strong>rates, ratios, percentages, index numbers</strong>, and <strong>growth rates</strong> (multiplicative data).</li>
+              <li><strong>Cannot be computed</strong> if any value is zero or negative (product becomes 0 or imaginary).</li>
+              <li><strong>Always ≤ AM</strong> for positive unequal numbers: HM ≤ GM ≤ AM.</li>
+              <li>Used for averaging compound interest rates and economic growth rates.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>⑤ Harmonic Mean (HM)</h3>
+          <div class="formula-grid">
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-tachometer-alt"></i> Formula</div>
+              <h4>Harmonic Mean</h4>
+              <div class="formula-expr">HM = n / Σ(1/xᵢ)
+   = n / (1/x₁ + 1/x₂ + … + 1/xₙ)</div>
+              <div class="formula-note">e.g. HM of 2 and 3: 2 ÷ (1/2 + 1/3) = 2 ÷ (5/6) = <strong>2.4</strong>. &nbsp;|&nbsp; Best for <strong>rates</strong> (speed, productivity).</div>
+            </div>
+          </div>
+          <div class="callout property">
+            <div class="callout-header"><i class="fas fa-star"></i> Ordering of Means</div>
+            <p>For any set of positive, unequal numbers: &nbsp;<strong>HM ≤ GM ≤ AM</strong>.&nbsp; Equality holds only when all values are identical. This is called the AM-GM-HM inequality.</p>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>When to Use Each Average</h3>
+          <table class="comp-table">
+            <thead><tr><th>Average</th><th>Best For</th><th>Not Suitable For</th><th>Affected by Outliers?</th></tr></thead>
+            <tbody>
+              <tr><td>Arithmetic Mean</td><td>Symmetric numerical data; all levels from interval upward</td><td>Outliers present; open-ended classes; qualitative data</td><td><strong>Yes — highly</strong></td></tr>
+              <tr><td>Median</td><td>Skewed data; ordinal data; outliers present</td><td>When all data must be used in computation</td><td>No — robust</td></tr>
+              <tr><td>Mode</td><td>Nominal/qualitative data; finding most common value</td><td>When a unique average is required</td><td>No</td></tr>
+              <tr><td>Geometric Mean</td><td>Rates, ratios, index numbers, growth rates</td><td>When any value is zero or negative</td><td>Less sensitive</td></tr>
+              <tr><td>Harmonic Mean</td><td>Rates (speed, productivity, flow rates)</td><td>General numerical data</td><td>Less sensitive</td></tr>
+              <tr><td>Weighted Mean</td><td>When values have different importance/frequency</td><td>When all observations are equally important</td><td>Depends on weights</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="subsection">
+          <h3>Empirical Relationship (Moderately Skewed Data)</h3>
+          <div class="formula-grid">
+            <div class="formula-card wide amber">
+              <div class="formula-tag"><i class="fas fa-link"></i> Empirical Relation</div>
+              <h4>Mean – Median – Mode Relationship</h4>
+              <div class="formula-expr">Mean − Mode = 3 × (Mean − Median)
+∴ Mode ≈ 3 × Median − 2 × Mean</div>
+              <div class="formula-note">Valid only for <strong>moderately skewed</strong> distributions. Used to estimate Mode when Median and Mean are known, or to find Median from Mean and Mode.<br><strong>Example:</strong> Mean = 25, Mode = 19 → 25−19 = 3(25−Median) → Median = 23.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      
+      <section class="section-block" id="dispersion">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-expand-arrows-alt"></i></div>
+          <div>
+            <h2>Dispersion, Skewness &amp; Kurtosis</h2>
+            <div class="sec-num">Section 4 · Spread, Shape &amp; Distribution Characteristics</div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>What is Dispersion?</h3>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-arrows-alt-h"></i> Definition</div>
+            <p>A <strong>measure of dispersion (variability/spread)</strong> indicates how much individual values differ from each other and from the central value. If dispersion = 0, all values are identical and the mean perfectly represents every value. Greater dispersion = less representative mean.</p>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>① Range</h3>
+          <div class="formula-grid">
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-arrows-alt-h"></i> Simplest Measure</div>
+              <h4>Range</h4>
+              <div class="formula-expr">R = X_max − X_min  (Largest − Smallest)</div>
+              <div class="formula-note"><strong>Advantage:</strong> Simple to calculate. <strong>Disadvantage:</strong> Uses only 2 extreme values — highly sensitive to outliers. Range ≥ IQR always.</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-ruler-horizontal"></i> Mid-range</div>
+              <h4>Mid-Range</h4>
+              <div class="formula-expr">Mid-range = (X_max + X_min) / 2</div>
+              <div class="formula-note">The average of the two extreme values. Simple to compute but not a robust measure.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>② Quartile Deviation (Semi-IQR)</h3>
+          <div class="formula-grid">
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-arrows-alt-v"></i> IQR &amp; QD</div>
+              <h4>Inter-Quartile Range &amp; Quartile Deviation</h4>
+              <div class="formula-expr">IQR = Q3 − Q1  (middle 50% of data)
+
+Quartile Deviation (QD) = (Q3 − Q1) / 2
+  = Semi-IQR
+
+Coefficient of QD = (Q3 − Q1) / (Q3 + Q1)</div>
+              <div class="formula-note">IQR is the <strong>most robust</strong> measure of dispersion — unaffected by outliers. Covers the middle 50% of data. Lower fence = Q1 − 1.5×IQR; Upper fence = Q3 + 1.5×IQR.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>③ Mean Deviation (MD)</h3>
+          <div class="formula-grid">
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-wave-square"></i> Ungrouped</div>
+              <h4>Mean Absolute Deviation</h4>
+              <div class="formula-expr">MD = Σ|x − x̄| / n
+
+For frequency distribution:
+MD = Σf|x − x̄| / Σf</div>
+              <div class="formula-note">Uses <strong>absolute values</strong> to prevent cancellation of positive and negative deviations. MD is always <strong>≤ SD</strong>. <em>Minimized</em> when deviations are taken from the <strong>median</strong>.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>④ Variance &amp; Standard Deviation</h3>
+          <div class="formula-grid">
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-calculator"></i> Population</div>
+              <h4>Population Variance (σ²)</h4>
+              <div class="formula-expr">σ² = Σ(x − μ)² / N
+   = Σx²/N − (Σx/N)²  (shortcut)
+
+σ = √σ²  (Population SD)</div>
+              <div class="formula-note">Uses <strong>N</strong> in denominator. μ = population mean. σ² in <em>squared units</em>; σ in <em>original units</em>.</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-calculator"></i> Sample</div>
+              <h4>Sample Variance (s²) — Bessel's Correction</h4>
+              <div class="formula-expr">s² = Σ(x − x̄)² / (n−1)
+   = [Σx² − (Σx)²/n] / (n−1)
+
+s = √s²  (Sample SD)</div>
+              <div class="formula-note">Uses <strong>n−1</strong> (Bessel's correction) for an unbiased estimate of population variance. Example: for sample {1,2,3} → mean=2, s²=[(1+0+1)/(3−1)] = <strong>1</strong>.</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-calculator"></i> Grouped Data</div>
+              <h4>Variance — Grouped Frequency Distribution</h4>
+              <div class="formula-expr">σ² = Σf(x − x̄)² / (N−1)
+   = [Σfx² / Σf] − (Σfx/Σf)²  (shortcut)</div>
+              <div class="formula-note">x = class midpoint, f = class frequency, N = Σf.</div>
+            </div>
+            <div class="formula-card amber">
+              <div class="formula-tag"><i class="fas fa-percent"></i> Relative Measure</div>
+              <h4>Coefficient of Variation (CV)</h4>
+              <div class="formula-expr">CV = (s / x̄) × 100%</div>
+              <div class="formula-note"><strong>Unit-free</strong> relative measure — used to compare variability of datasets with different units or different means. Lower CV = more consistent data. CV of 5% is far less variable than CV of 40%.</div>
+            </div>
+          </div>
+          <div class="callout property">
+            <div class="callout-header"><i class="fas fa-star"></i> Key Properties of Variance &amp; Standard Deviation</div>
+            <ul>
+              <li><strong>SD is always ≥ 0.</strong> SD = 0 if and only if all values are identical.</li>
+              <li>SD is in the <em>same units</em> as the original data; variance is in <em>squared units</em>.</li>
+              <li>Adding a constant to all values: <strong>SD unchanged</strong> (shift doesn't change spread).</li>
+              <li>Multiplying all values by k: <strong>SD multiplied by |k|</strong>; variance multiplied by k².</li>
+              <li>SD <em>minimizes</em> the sum of squared deviations: Σ(x − c)² is minimized when c = mean.</li>
+              <li>The squared deviations are minimized at the <strong>mean</strong>; absolute deviations are minimized at the <strong>median</strong>.</li>
+              <li>For data {2,4,4,4,5,5,7,9}: mean=5, σ²=4, σ=<strong>2</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Comparison: Measures of Dispersion</h3>
+          <table class="comp-table">
+            <thead><tr><th>Measure</th><th>Type</th><th>Uses All Values?</th><th>Outlier Resistant?</th><th>Units</th></tr></thead>
+            <tbody>
+              <tr><td>Range</td><td>Absolute</td><td>No (only min/max)</td><td>No — very sensitive</td><td>Original</td></tr>
+              <tr><td>IQR</td><td>Absolute</td><td>No (Q1 &amp; Q3 only)</td><td><strong>Yes — most robust</strong></td><td>Original</td></tr>
+              <tr><td>Quartile Deviation</td><td>Absolute</td><td>No</td><td>Yes</td><td>Original</td></tr>
+              <tr><td>Mean Deviation</td><td>Absolute</td><td>Yes</td><td>Moderately</td><td>Original</td></tr>
+              <tr><td>Variance (σ²)</td><td>Absolute</td><td>Yes</td><td>No</td><td>Squared</td></tr>
+              <tr><td>Standard Deviation</td><td>Absolute</td><td>Yes</td><td>No</td><td>Original</td></tr>
+              <tr><td>Coefficient of Variation</td><td><strong>Relative</strong></td><td>Yes (via SD)</td><td>No</td><td><strong>None (unitless)</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="subsection">
+          <h3>Box Plot (Box-and-Whisker Plot)</h3>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-box"></i> Five-Number Summary &amp; Box Plot</div>
+            <ul>
+              <li>A box plot displays the <strong>five-number summary:</strong> Minimum, Q1, Median (Q2), Q3, Maximum.</li>
+              <li>The <strong>box</strong> spans from Q1 to Q3 — its length = IQR.</li>
+              <li>The <strong>median line</strong> is drawn inside the box at Q2.</li>
+              <li><strong>Whiskers</strong> extend from the box to the most extreme non-outlier values (within 1.5×IQR of Q1 and Q3).</li>
+              <li><strong>Mild outliers:</strong> Between 1.5×IQR and 3×IQR from the quartiles — shown as open circles.</li>
+              <li><strong>Extreme outliers:</strong> Beyond 3×IQR from the quartiles — shown as filled circles.</li>
+              <li>Lower fence = Q1 − 1.5×IQR &nbsp;|&nbsp; Upper fence = Q3 + 1.5×IQR.</li>
+              <li>Box skewed toward Q1 → right skew; box skewed toward Q3 → left skew.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Skewness</h3>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-chart-area"></i> What is Skewness?</div>
+            <p><strong>Skewness</strong> measures the <em>degree of asymmetry</em> (departure from symmetry) of a distribution. A perfectly symmetric distribution has skewness = 0.</p>
+          </div>
+          <div class="skew-visual">
+            <div class="skew-box skew-pos">
+              <div class="skew-label">Positive Skew (Right)</div>
+              <div class="skew-rel">Mean &gt; Median &gt; Mode</div>
+              <p style="font-size:.76rem;margin-top:.35rem">Long tail to the RIGHT. The mean is pulled furthest right. Outliers are on the upper end.</p>
+            </div>
+            <div class="skew-box skew-sym">
+              <div class="skew-label">Symmetric (Zero Skew)</div>
+              <div class="skew-rel">Mean = Median = Mode</div>
+              <p style="font-size:.76rem;margin-top:.35rem">Perfect bell shape. Both halves are mirror images. Skewness = 0.</p>
+            </div>
+            <div class="skew-box skew-neg">
+              <div class="skew-label">Negative Skew (Left)</div>
+              <div class="skew-rel">Mode &gt; Median &gt; Mean</div>
+              <p style="font-size:.76rem;margin-top:.35rem">Long tail to the LEFT. The mean is pulled furthest left. Outliers are on the lower end.</p>
+            </div>
+          </div>
+          <div class="formula-grid">
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-cube"></i> Moment-Based</div>
+              <h4>Skewness (Pearson's Moment Coefficient)</h4>
+              <div class="formula-expr">Skewness = [Σ(xᵢ − x̄)³ / (n−1)] / σ³</div>
+              <div class="formula-note">Positive → right skew | Zero → symmetric | Negative → left skew. |Skewness| &gt; 1 = highly skewed.</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-calculator"></i> Pearson's 1st</div>
+              <h4>Pearson's First Coefficient of Skewness</h4>
+              <div class="formula-expr">Sk₁ = (Mean − Mode) / SD</div>
+              <div class="formula-note">Uses mode. When mode is not well-defined, use Pearson's second coefficient.</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-calculator"></i> Pearson's 2nd</div>
+              <h4>Pearson's Second Coefficient of Skewness</h4>
+              <div class="formula-expr">Sk₂ = 3(Mean − Median) / SD</div>
+              <div class="formula-note">More stable than Sk₁. Positive → right skew | Zero → symmetric | Negative → left skew.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Kurtosis</h3>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-mountain"></i> What is Kurtosis?</div>
+            <p><strong>Kurtosis</strong> measures the <em>peakedness</em> (sharpness) of a distribution relative to the normal curve. It describes whether data values concentrate around the peak (heavy tails) or are spread broadly (light tails).</p>
+          </div>
+          <div class="kurt-grid">
+            <div class="kurt-box" style="border-top:3px solid var(--navy-mid)">
+              <div class="kurt-name">Leptokurtic</div>
+              <div class="kurt-val">Kurtosis &gt; 3 | Excess &gt; 0</div>
+              <p>More peaked than normal. Sharper, thinner peak; heavier tails. "Lepto" = thin/sharp.</p>
+            </div>
+            <div class="kurt-box" style="border-top:3px solid #0a7a4e">
+              <div class="kurt-name">Mesokurtic</div>
+              <div class="kurt-val">Kurtosis = 3 | Excess = 0</div>
+              <p>Same peakedness as normal distribution. The standard normal curve is mesokurtic.</p>
+            </div>
+            <div class="kurt-box" style="border-top:3px solid var(--amber)">
+              <div class="kurt-name">Platykurtic</div>
+              <div class="kurt-val">Kurtosis &lt; 3 | Excess &lt; 0</div>
+              <p>Flatter than normal. Broader, flatter peak; lighter tails. "Platy" = flat/broad.</p>
+            </div>
+          </div>
+          <div class="callout rule">
+            <div class="callout-header"><i class="fas fa-info-circle"></i> Excess Kurtosis</div>
+            <p><strong>Excess Kurtosis = Kurtosis − 3.</strong> The normal distribution has excess kurtosis = 0. Leptokurtic: excess &gt; 0. Platykurtic: excess &lt; 0. Software (Excel, R, SPSS) typically reports excess kurtosis.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      
+      <section class="section-block" id="quantiles">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-sliders-h"></i></div>
+          <div>
+            <h2>Quantiles, Deciles &amp; Percentiles</h2>
+            <div class="sec-num">Section 5 · Partitioning Distributions</div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Quantile Overview</h3>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-info-circle"></i> What Are Quantiles?</div>
+            <p><strong>Quantiles</strong> are values that partition a distribution into equal-sized groups. The key families are: <strong>Quartiles</strong> (4 groups), <strong>Deciles</strong> (10 groups), and <strong>Percentiles</strong> (100 groups).</p>
+          </div>
+          <div class="quant-row">
+            <div class="quant-box">
+              <div class="qb-title">Quartiles (Q)</div>
+              <div class="qb-body">3 values split distribution into <strong>4 equal parts</strong>.<br>Q1 = 25th %ile (P25)<br>Q2 = Median = 50th %ile (P50)<br>Q3 = 75th %ile (P75)</div>
+            </div>
+            <div class="quant-box">
+              <div class="qb-title">Deciles (D)</div>
+              <div class="qb-body">9 values split distribution into <strong>10 equal parts</strong>.<br>D1 = P10 &nbsp;|&nbsp; D5 = Median = P50<br>D9 = P90<br>D5 = Q2 = Median</div>
+            </div>
+            <div class="quant-box">
+              <div class="qb-title">Percentiles (P)</div>
+              <div class="qb-body">99 values split distribution into <strong>100 equal parts</strong>.<br>P50 = Median = Q2 = D5<br>P25 = Q1 &nbsp;|&nbsp; P75 = Q3<br>P10 = D1 &nbsp;|&nbsp; P90 = D9</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Formulas for Grouped Data</h3>
+          <div class="formula-grid">
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-chart-line"></i> Quartiles</div>
+              <h4>Q1, Q2, Q3 — Grouped Data</h4>
+              <div class="formula-expr">Q₁ = L₁ + [(n/4 − F_c) / f₁] × c
+Q₂ = L₂ + [(n/2 − F_c) / f₂] × c
+Q₃ = L₃ + [(3n/4 − F_c) / f₃] × c
+
+IQR = Q3 − Q1</div>
+              <div class="formula-note">Find the class: cumulative frequency first ≥ n/4 for Q1; ≥ n/2 for Q2; ≥ 3n/4 for Q3.</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-th-list"></i> Deciles</div>
+              <h4>Deciles — Grouped Data</h4>
+              <div class="formula-expr">Dₖ = Lₖ + [(kn/10 − F_c) / fₖ] × c
+  where k = 1, 2, …, 9</div>
+              <div class="formula-note">D1 class: cum. freq ≥ n/10. D9 class: cum. freq ≥ 9n/10. Variables same as median formula.</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-percent"></i> Percentiles</div>
+              <h4>Percentiles — Grouped Data</h4>
+              <div class="formula-expr">Pₖ = Lₖ + [(kn/100 − F_c) / fₖ] × c
+  where k = 1, 2, …, 99</div>
+              <div class="formula-note">P50 = Q2 = D5 = Median. Position of Pₖ for ungrouped: k(n+1)/100.</div>
+            </div>
+          </div>
+          <div class="callout property">
+            <div class="callout-header"><i class="fas fa-star"></i> Equivalence Table</div>
+            <table class="comp-table">
+              <thead><tr><th>Quantile</th><th>= Percentile</th><th>= Decile</th><th>= Quartile</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td>Q1</td><td>P25</td><td>D2.5</td><td>—</td><td>25% of data below</td></tr>
+                <tr><td>Q2</td><td>P50</td><td>D5</td><td>Median</td><td>50% of data below</td></tr>
+                <tr><td>Q3</td><td>P75</td><td>D7.5</td><td>—</td><td>75% of data below</td></tr>
+                <tr><td>D1</td><td>P10</td><td>—</td><td>—</td><td>10% of data below</td></tr>
+                <tr><td>D9</td><td>P90</td><td>—</td><td>—</td><td>90% of data below</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout tip">
+            <div class="callout-header"><i class="fas fa-lightbulb"></i> Graphical Estimation Using Ogive</div>
+            <ul>
+              <li>To find Q1 on ogive: draw horizontal line at <strong>25%</strong> (or n/4); read x-value. Q1 → 25% level.</li>
+              <li>To find Q2 (Median): horizontal line at <strong>50%</strong>.</li>
+              <li>To find Q3: horizontal line at <strong>75%</strong>.</li>
+              <li>To find D4: horizontal line at <strong>40%</strong>.</li>
+              <li>To find P10: horizontal line at <strong>10%</strong>.</li>
+              <li>Rule: Quantile level (%) = (k/divisor) × 100. For Q1: (1/4)×100 = 25%; for D9: (9/10)×100 = 90%; for P30: 30%.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      
+      <section class="section-block" id="probability">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-dice"></i></div>
+          <div>
+            <h2>Probability &amp; Normal Distribution</h2>
+            <div class="sec-num">Section 6 · Probability Basics, Normal Curve &amp; Standardisation</div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Basic Probability</h3>
+          <div class="formula-grid">
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-dice"></i> Fundamentals</div>
+              <h4>Basic Probability Rules</h4>
+              <div class="formula-expr">0 ≤ P(A) ≤ 1  (always)
+P(impossible) = 0
+P(certain) = 1
+Σ P(all outcomes) = 1
+
+Complement: P(A') = 1 − P(A)</div>
+              <div class="formula-note"><strong>Mutually Exclusive Events:</strong> P(A and B) = 0; cannot occur simultaneously.<br><strong>Independent Events:</strong> P(A and B) = P(A) × P(B).</div>
+            </div>
+          </div>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-random"></i> Random Variable</div>
+            <ul>
+              <li>A <strong>random variable</strong> is a variable whose value is determined by the outcome of a random experiment.</li>
+              <li><strong>Discrete</strong> random variable: countable outcomes (e.g. number of heads in 10 coin tosses).</li>
+              <li><strong>Continuous</strong> random variable: any value in an interval (e.g. time to complete an exam, weight, height).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>The Normal Distribution</h3>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-bell"></i> Properties of the Normal Distribution</div>
+            <ul>
+              <li>Also called the <strong>Gaussian</strong> (bell) curve. Fully described by <strong>mean (μ) and standard deviation (σ)</strong>.</li>
+              <li><strong>Symmetric</strong> about the mean: Mean = Median = Mode.</li>
+              <li>Bell-shaped: unimodal, approaches (but never touches) x-axis asymptotically.</li>
+              <li>Total area under curve = <strong>1</strong>.</li>
+              <li>Mesokurtic: kurtosis = 3 (excess kurtosis = 0).</li>
+              <li>Skewness = <strong>0</strong> (perfectly symmetric).</li>
+              <li><strong>NOT all symmetric distributions are bell-shaped.</strong></li>
+            </ul>
+          </div>
+          <div class="norm-rule-bar">
+            <h4><i class="fas fa-ruler-combined" style="color:var(--navy-mid)"></i>&nbsp; The Empirical Rule (68–95–99.7 Rule)</h4>
+            <div class="norm-rules">
+              <div class="norm-rule-item"><span class="nri-pct">68%</span><span class="nri-range">μ ± 1σ</span><div class="nri-bar nri-bar-1"></div></div>
+              <div class="norm-rule-item"><span class="nri-pct">95%</span><span class="nri-range">μ ± 2σ</span><div class="nri-bar nri-bar-2"></div></div>
+              <div class="norm-rule-item"><span class="nri-pct">99.7%</span><span class="nri-range">μ ± 3σ</span><div class="nri-bar nri-bar-3"></div></div>
+            </div>
+          </div>
+          <div class="formula-grid">
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-exchange-alt"></i> Standardisation</div>
+              <h4>Z-Score (Standard Score)</h4>
+              <div class="formula-expr">z = (x − μ) / σ
+
+Inverse: x = μ + z·σ</div>
+              <div class="formula-note">Z-score = number of standard deviations from the mean. z = 0 means x = μ. z = +2 means x is 2 SDs above mean. The <strong>Standard Normal Distribution</strong>: μ = 0, σ = 1.</div>
+            </div>
+            <div class="formula-card green">
+              <div class="formula-tag"><i class="fas fa-info-circle"></i> Central Limit Theorem</div>
+              <h4>Standard Error of the Mean</h4>
+              <div class="formula-expr">SE = σ / √n</div>
+              <div class="formula-note">For large n, the sampling distribution of x̄ approaches normality (Central Limit Theorem). The <strong>standard error</strong> is the SD of the sampling distribution of the mean.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      
+      <section class="section-block" id="sampling">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-users"></i></div>
+          <div>
+            <h2>Sampling Methods &amp; Theory</h2>
+            <div class="sec-num">Section 7 · Probability &amp; Non-Probability Sampling</div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Why Sample?</h3>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-question-circle"></i> Rationale for Sampling</div>
+            <p>A <strong>sample survey</strong> collects data from a subset of the population. Sampling is used because a census (studying every unit) is often <em>impractical, too expensive, too time-consuming,</em> or <em>impossible</em>. A good sample must be <strong>representative</strong> — it must accurately reflect the population's characteristics.</p>
+          </div>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-list-ol"></i> Key Sampling Terms</div>
+            <ul>
+              <li><strong>Sampling Frame:</strong> A complete, up-to-date list of all population units from which the sample is drawn. Required for SRS.</li>
+              <li><strong>Sampling Fraction:</strong> n/N (sample size ÷ population size).</li>
+              <li><strong>Sampling Interval (k):</strong> N/n — used in systematic sampling.</li>
+              <li><strong>Sampling Error:</strong> Difference between sample statistic and population parameter (x̄ − μ). Decreases as sample size increases.</li>
+              <li><strong>Non-Sampling Error:</strong> Errors from non-response, measurement mistakes, and bias — NOT reduced by larger samples.</li>
+              <li><strong>Bias:</strong> A systematic tendency to over- or under-estimate the true population value.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Probability Sampling Methods</h3>
+          <div class="method-grid">
+            <div class="method-card">
+              <div class="mc-head"><div class="mc-icon ic-navy"><i class="fas fa-random"></i></div><div><div class="mc-name">Simple Random Sampling</div><div class="mc-type">Probability &bull; Gold Standard</div></div></div>
+              <div class="mc-body">Every unit in the population has an <em>equal probability (1/N)</em> of selection. Selection uses a lottery or random number table. Eliminates selection bias.</div>
+              <div class="mc-pros"><strong>✔ Pros:</strong> Unbiased; equal probability; highest precision among probability methods. No personal bias.</div>
+              <div class="mc-cons"><strong>✘ Cons:</strong> Requires complete sampling frame; impractical/expensive for large, dispersed populations; time-consuming.</div>
+            </div>
+            <div class="method-card">
+              <div class="mc-head"><div class="mc-icon ic-blue"><i class="fas fa-sort-numeric-up"></i></div><div><div class="mc-name">Systematic Sampling</div><div class="mc-type">Probability &bull; Fixed Interval</div></div></div>
+              <div class="mc-body">Select first unit randomly (r, where 1 ≤ r ≤ k), then select every kth unit thereafter. Interval k = N/n. No full sampling frame needed.</div>
+              <div class="mc-pros"><strong>✔ Pros:</strong> Easy to use; sample spread evenly; faster than SRS; no complete frame needed.</div>
+              <div class="mc-cons"><strong>✘ Cons:</strong> If list has a periodic pattern coinciding with k, results will be biased. Not fully random after first selection.</div>
+            </div>
+            <div class="method-card">
+              <div class="mc-head"><div class="mc-icon ic-teal"><i class="fas fa-layer-group"></i></div><div><div class="mc-name">Stratified Sampling</div><div class="mc-type">Probability &bull; Subgroups</div></div></div>
+              <div class="mc-body">Population divided into <strong>strata</strong> (sub-groups) that are internally homogeneous but differ from each other. Random sample taken from each stratum.</div>
+              <div class="mc-pros"><strong>✔ Pros:</strong> More representative; higher precision; all subgroups guaranteed representation; useful for heterogeneous populations.</div>
+              <div class="mc-cons"><strong>✘ Cons:</strong> Requires prior knowledge of strata; complex to execute; needs up-to-date frame per stratum; costly if strata frames unavailable.</div>
+            </div>
+            <div class="method-card">
+              <div class="mc-head"><div class="mc-icon ic-purple"><i class="fas fa-map-marked-alt"></i></div><div><div class="mc-name">Cluster Sampling</div><div class="mc-type">Probability &bull; Geographic Groups</div></div></div>
+              <div class="mc-body">Population divided into <strong>clusters</strong> (heterogeneous groups). Clusters are randomly selected; ALL units within selected clusters are studied. Works without a complete frame.</div>
+              <div class="mc-pros"><strong>✔ Pros:</strong> Cost-effective for geographically dispersed populations; no complete frame needed; reduces travel costs.</div>
+              <div class="mc-cons"><strong>✘ Cons:</strong> If units within clusters are similar (homogeneous), results are less precise. Higher sampling error than SRS with same n.</div>
+            </div>
+          </div>
+          <div class="callout rule">
+            <div class="callout-header"><i class="fas fa-code-branch"></i> Stratified vs. Cluster — Critical Distinction</div>
+            <ul>
+              <li><strong>Stratified:</strong> Strata are internally <em>homogeneous</em> (similar within), externally <em>heterogeneous</em> (different between strata). All strata sampled.</li>
+              <li><strong>Cluster:</strong> Clusters are internally <em>heterogeneous</em> (diverse within). Only <em>selected</em> clusters are studied; all members of chosen clusters are surveyed.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Non-Probability Sampling Methods</h3>
+          <div class="callout warning">
+            <div class="callout-header"><i class="fas fa-exclamation-circle"></i> Non-Probability Sampling</div>
+            <p>In non-probability sampling, the probability of each unit being selected is <em>unknown</em>. Selection depends on human judgment or availability. <strong>Cannot calculate sampling error</strong> or guarantee representativeness. Generally avoided in rigorous research.</p>
+          </div>
+          <div class="method-grid">
+            <div class="method-card">
+              <div class="mc-head"><div class="mc-icon ic-amber"><i class="fas fa-tags"></i></div><div><div class="mc-name">Quota Sampling</div><div class="mc-type">Non-Probability</div></div></div>
+              <div class="mc-body">Pre-assigns quotas (fixed numbers) to subgroups (like stratification), but selection within quotas is <em>non-random</em> — left to interviewer's discretion.</div>
+              <div class="mc-pros"><strong>✔ Pros:</strong> Cheaper and faster than stratified; introduces some representation.</div>
+              <div class="mc-cons"><strong>✘ Cons:</strong> Interviewer bias in selection; not truly random; cannot measure sampling error.</div>
+            </div>
+            <div class="method-card">
+              <div class="mc-head"><div class="mc-icon" style="background:#c10000"><i class="fas fa-walking"></i></div><div><div class="mc-name">Convenience / Accidental</div><div class="mc-type">Non-Probability</div></div></div>
+              <div class="mc-body">Selects whoever is most easily available at the time. No systematic procedure. First persons encountered are selected.</div>
+              <div class="mc-pros"><strong>✔ Pros:</strong> Very quick and cheap; no planning required.</div>
+              <div class="mc-cons"><strong>✘ Cons:</strong> Highly biased; not representative; results cannot be generalized. Most likely to produce a biased sample.</div>
+            </div>
+            <div class="method-card">
+              <div class="mc-head"><div class="mc-icon ic-green"><i class="fas fa-user-tie"></i></div><div><div class="mc-name">Purposive / Judgmental</div><div class="mc-type">Non-Probability</div></div></div>
+              <div class="mc-body">Researcher uses expert knowledge/judgment to select specific units believed to be representative.</div>
+              <div class="mc-pros"><strong>✔ Pros:</strong> Can be useful for specific, expert-driven purposes; quick.</div>
+              <div class="mc-cons"><strong>✘ Cons:</strong> Variability and bias cannot be measured; depends entirely on researcher's accuracy of judgment.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      
+      <section class="section-block" id="collection">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-clipboard-list"></i></div>
+          <div>
+            <h2>Data Collection Methods</h2>
+            <div class="sec-num">Section 8 · Questionnaire, Interview, Observation, Documentary</div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Overview</h3>
+          <div class="callout definition">
+            <div class="callout-header"><i class="fas fa-info-circle"></i> Four Primary Methods</div>
+            <p>Data collection choice depends on: aims/objectives of the survey, nature of information needed, target population, required accuracy, available time, and cost. The four main methods are: <strong>Questionnaire, Interview, Observation,</strong> and <strong>Documentary</strong>.</p>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Data Collection Method Comparison</h3>
+          <div class="method-grid">
+            <div class="method-card">
+              <div class="mc-head"><div class="mc-icon ic-navy"><i class="fas fa-file-alt"></i></div><div><div class="mc-name">Questionnaire Method</div><div class="mc-type">Primary Data</div></div></div>
+              <div class="mc-body">Specially designed forms sent to respondents to answer and return. Can be postal, online, or hand-distributed. The most widely used method.</div>
+              <div class="mc-pros"><strong>✔ Pros:</strong> Wide geographic coverage; saves time; low cost; collects diverse information; respondents can answer at their convenience.</div>
+              <div class="mc-cons"><strong>✘ Cons:</strong> Low response rates; risk of incomplete/inaccurate answers; risk of false information; questionnaire design must be error-free (avoid ambiguous/leading questions).</div>
+            </div>
+            <div class="method-card">
+              <div class="mc-head"><div class="mc-icon ic-blue"><i class="fas fa-comments"></i></div><div><div class="mc-name">Interview Method</div><div class="mc-type">Primary Data</div></div></div>
+              <div class="mc-body">Face-to-face or telephone verbal exchange between interviewer and respondent. Allows direct clarification and follow-up.</div>
+              <div class="mc-pros"><strong>✔ Pros:</strong> Allows free interaction; more detailed information; interviewer can correct false answers; high response rate.</div>
+              <div class="mc-cons"><strong>✘ Cons:</strong> Limited coverage area; time-consuming for large samples; expensive (travel costs); interviewer bias risk; appointment required.</div>
+            </div>
+            <div class="method-card">
+              <div class="mc-head"><div class="mc-icon ic-green"><i class="fas fa-eye"></i></div><div><div class="mc-name">Observation Method</div><div class="mc-type">Primary Data</div></div></div>
+              <div class="mc-body">Systematic, scientific watching and recording of events as they happen in their natural setting. Used in controlled experiments and field studies.</div>
+              <div class="mc-pros"><strong>✔ Pros:</strong> High accuracy (data from actual events); no distortion from respondent memory; observer can control the process.</div>
+              <div class="mc-cons"><strong>✘ Cons:</strong> Very time-consuming (must wait for event); expensive; observer effect (Hawthorne effect); limited to observable behaviours.</div>
+            </div>
+            <div class="method-card">
+              <div class="mc-head"><div class="mc-icon ic-amber"><i class="fas fa-book"></i></div><div><div class="mc-name">Documentary Method</div><div class="mc-type">Secondary Data</div></div></div>
+              <div class="mc-body">Uses existing published or unpublished records — books, reports, newspapers, official registers, government statistics, research publications.</div>
+              <div class="mc-pros"><strong>✔ Pros:</strong> Saves time and money; provides historical data; less labor intensive; provides official information.</div>
+              <div class="mc-cons"><strong>✘ Cons:</strong> Errors in original documents are inherited; false/inaccurate records difficult to correct; may not match researcher's needs exactly.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Questionnaire Design Rules</h3>
+          <div class="callout rule">
+            <div class="callout-header"><i class="fas fa-pen-fancy"></i> Key Rules for Good Questionnaire Design</div>
+            <ul>
+              <li>Avoid <strong>ambiguous</strong> questions (unclear meaning) and <strong>leading</strong> questions (suggest the answer).</li>
+              <li><strong>Pilot test</strong> the questionnaire on a small group before full deployment.</li>
+              <li>Questions should be logically arranged, clear, and concise.</li>
+              <li><strong>Closed-ended questions</strong> (fixed response options) are easier to analyse; <strong>open-ended</strong> allow free responses.</li>
+              <li>A <strong>Likert scale</strong> (Strongly Agree → Strongly Disagree) produces <em>ordinal</em> data.</li>
+              <li><strong>Structured questionnaire:</strong> Pre-defined questions with fixed response options.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Uses of Statistics — Summary</h3>
+          <div class="fact-list">
+            <div class="fact-item"><div class="fi-icon"><i class="fas fa-industry"></i></div><p><strong>Industry &amp; Business:</strong> Market research, feasibility studies, quality control, investment decisions, economic forecasting, auditing.</p></div>
+            <div class="fact-item"><div class="fi-icon"><i class="fas fa-flask"></i></div><p><strong>Biological Sciences:</strong> Crop yield analysis, animal diet studies, medical trials, public health advancement.</p></div>
+            <div class="fact-item"><div class="fi-icon"><i class="fas fa-atom"></i></div><p><strong>Physical Sciences:</strong> Astronomy, meteorology, geology, oil exploration — sampling and lab experiments.</p></div>
+            <div class="fact-item"><div class="fi-icon"><i class="fas fa-landmark"></i></div><p><strong>Government:</strong> Population census, budget planning, health and defense policy, revenue estimation. Government is the most important user AND producer of statistical data.</p></div>
+            <div class="fact-item"><div class="fi-icon"><i class="fas fa-chart-line"></i></div><p><strong>Economics:</strong> Predicting market trends, analysing inflation, modelling economic growth, constructing index numbers.</p></div>
+          </div>
+        </div>
+
+        
+        <div class="subsection">
+          <h3>Quick Reference — Master Formula Sheet</h3>
+          <div class="formula-grid">
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-star"></i> Class Width</div>
+              <h4>Class Width &amp; Boundaries</h4>
+              <div class="formula-expr">Width c = UB − LB = Range / k
+LB = Lower Limit − 0.5
+UB = Upper Limit + 0.5
+Midpoint x = (LL + UL) / 2</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-star"></i> Mean</div>
+              <h4>Arithmetic Mean</h4>
+              <div class="formula-expr">Ungrouped: x̄ = Σx / n
+Grouped:   x̄ = Σfx / Σf
+Assumed:   x̄ = A + Σfd/Σf</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-star"></i> Median</div>
+              <h4>Median (Grouped)</h4>
+              <div class="formula-expr">Md = Lm + [(n/2 − Fc)/fm] × c</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-star"></i> Mode</div>
+              <h4>Mode (Grouped)</h4>
+              <div class="formula-expr">Mo = Lm + [(fm−fb)/((fm−fb)+(fm−fa))] × c</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-star"></i> Variance</div>
+              <h4>Variance &amp; SD</h4>
+              <div class="formula-expr">σ² = Σ(x−μ)²/N  [Population]
+s² = Σ(x−x̄)²/(n−1) [Sample]
+SD = √Variance
+CV = (SD/Mean)×100%</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-star"></i> Quantiles</div>
+              <h4>Quartiles / Deciles / Percentiles</h4>
+              <div class="formula-expr">Qk = Lk + [(kn/4 − Fc)/fk] × c
+Dk = Lk + [(kn/10 − Fc)/fk] × c
+Pk = Lk + [(kn/100 − Fc)/fk] × c
+IQR = Q3 − Q1</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-star"></i> Means</div>
+              <h4>GM, HM &amp; Weighted</h4>
+              <div class="formula-expr">GM = (x₁·x₂·…·xₙ)^(1/n)
+HM = n / Σ(1/xᵢ)
+Ẇ = Σwx / Σw
+Combined: (n₁x̄₁+n₂x̄₂)/(n₁+n₂)
+HM ≤ GM ≤ AM (always)</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-star"></i> Skewness</div>
+              <h4>Skewness &amp; Kurtosis</h4>
+              <div class="formula-expr">Sk₁ = (Mean−Mode)/SD
+Sk₂ = 3(Mean−Median)/SD
+Emp: Mean−Mode = 3(Mean−Median)
+Kurtosis: Leptokurtic &gt; 3
+          Mesokurtic = 3
+          Platykurtic &lt; 3</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-star"></i> Normal</div>
+              <h4>Normal Distribution</h4>
+              <div class="formula-expr">z = (x − μ) / σ
+68% within μ ± 1σ
+95% within μ ± 2σ
+99.7% within μ ± 3σ
+SE = σ / √n</div>
+            </div>
+            <div class="formula-card">
+              <div class="formula-tag"><i class="fas fa-star"></i> Pie</div>
+              <h4>Pie Chart &amp; Frequency</h4>
+              <div class="formula-expr">Angle θ = (f/Σf) × 360°
+rf = f/n ; Σrf = 1
+%f = (f/n) × 100 ; Σ%f = 100%
+fd = f/c (freq. density)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+
+<button id="btt" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+
+<footer class="site-footer">
+  <div><strong>Renance Learning Portal</strong> &mdash; STA 111 Descriptive Statistics 1 &mdash; Ultimate Cheat Sheet</div>
+  <div class="footer-divider">────────────────────────</div>
+  <div>Curated by <strong>Resolute Femi</strong> &nbsp;|&nbsp; 634 MCQs &bull; 8 Sections &bull; 40+ Formulas</div>
+  <div style="margin-top:.5rem;font-size:.72rem;opacity:.55">Based on UNESCO-Nigeria NBTE National Diploma in Statistics STA 111 Curriculum</div>
+</footer>
+
+<script>
+(function(){
+  const hamburger=document.getElementById('hamburgerBtn');
+  const sidebar=document.getElementById('sidebar');
+  const overlay=document.getElementById('sidebarOverlay');
+  const btt=document.getElementById('btt');
+  const progressBar=document.getElementById('progressBar');
+  const navItems=document.querySelectorAll('.nav-item[data-target]');
+  const sections=document.querySelectorAll('.section-block');
+
+  hamburger.addEventListener('click',function(){
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('show');
+    hamburger.innerHTML=sidebar.classList.contains('open')
+      ?'<i class="fas fa-times"></i>':'<i class="fas fa-bars"></i>';
+  });
+  overlay.addEventListener('click',function(){
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+    hamburger.innerHTML='<i class="fas fa-bars"></i>';
+  });
+
+  navItems.forEach(function(item){
+    item.addEventListener('click',function(e){
+      if(window.innerWidth<=768){
+        sidebar.classList.remove('open');
+        overlay.classList.remove('show');
+        hamburger.innerHTML='<i class="fas fa-bars"></i>';
+      }
+    });
+  });
+
+  window.addEventListener('scroll',function(){
+    const scrolled=window.scrollY;
+    const total=document.documentElement.scrollHeight-window.innerHeight;
+    progressBar.style.width=((scrolled/total)*100)+'%';
+    btt.classList.toggle('show',scrolled>400);
+
+    let currentSection='';
+    sections.forEach(function(sec){
+      const top=sec.getBoundingClientRect().top;
+      if(top<=100) currentSection=sec.id;
+    });
+    navItems.forEach(function(item){
+      const active=item.getAttribute('data-target')===currentSection;
+      item.classList.toggle('active',active);
+    });
+  });
+
+  btt.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
+    anchor.addEventListener('click',function(e){
+      const target=document.querySelector(this.getAttribute('href'));
+      if(target){
+        e.preventDefault();
+        const offset=80;
+        const top=target.getBoundingClientRect().top+window.scrollY-offset;
+        window.scrollTo({top:top,behavior:'smooth'});
+      }
+    });
+  });
+
+  document.querySelectorAll('.formula-card,.method-card').forEach(function(card){
+    card.addEventListener('mouseenter',function(){this.style.willChange='transform';});
+    card.addEventListener('mouseleave',function(){this.style.willChange='auto';});
+  });
+})();
+</script>
+</body>
+</html>
+
+
+

@@ -44,7 +44,7 @@
 
         main { padding: 2rem 5%; max-width: 960px; margin: 0 auto; }
 
-        /* RESUME BANNER */
+        
         #resume-banner {
             display: none;
             background: var(--card-bg);
@@ -55,7 +55,7 @@
             box-shadow: 0 2px 10px rgba(22,163,74,0.1);
         }
 
-        /* STATS BAR */
+        
         .stats-bar {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 0.8rem; margin-bottom: 1.5rem;
@@ -68,7 +68,7 @@
         .stat-card .stat-val { font-size: 1.6rem; font-weight: 800; color: var(--primary); }
         .stat-card .stat-lbl { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
 
-        /* DASHBOARD */
+        
         #dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
         .box {
             background: var(--card-bg); padding: 1.5rem 1rem; border-radius: 14px;
@@ -84,7 +84,7 @@
         .box-random { background: linear-gradient(135deg, #16a34a, #4ade80) !important; color: white !important; border: none !important; }
         .box-random p { color: rgba(255,255,255,0.85) !important; }
 
-        /* SETUP SCREEN */
+        
         #setup-screen { text-align: center; background: var(--card-bg); padding: 3rem 2rem; border-radius: 16px; border: 1.5px solid var(--border); box-shadow: 0 4px 20px rgba(22,163,74,0.08); }
         .setup-group { margin: 1.5rem auto; text-align: left; max-width: 360px; }
         .setup-group label { font-weight: 600; font-size: 0.88rem; color: var(--text); display: block; margin-bottom: 7px; }
@@ -94,7 +94,7 @@
         .custom-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; color: var(--text); font-weight: 500; user-select: none; }
         .custom-checkbox input { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; }
 
-        /* QUIZ INTERFACE */
+        
         .quiz-header { display: flex; justify-content: space-between; align-items: center; font-weight: 700; margin-bottom: 15px; padding: 0 4px; flex-wrap: wrap; gap: 10px; }
         .q-counter { font-size: 1rem; color: var(--text); }
         .btn-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
@@ -122,7 +122,7 @@
         .btn:hover { opacity: 0.88; transform: translateY(-2px); }
         .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
-        /* RESULT MODAL */
+        
         .result-modal-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.78);
             backdrop-filter: blur(8px); z-index: 9999;
@@ -154,7 +154,7 @@
         .btn-review { background: rgba(22,163,74,0.08); color: var(--primary); border: 1.5px solid rgba(22,163,74,0.2); }
         .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
 
-        /* RESPONSIVE */
+        
         @media (max-width: 600px) {
             #dashboard { grid-template-columns: repeat(2, 1fr); }
             .question-card { padding: 1.3rem; }
@@ -182,14 +182,12 @@
 </nav>
 
 <main>
-    <!-- DASHBOARD -->
     <div id="dashboard-wrap">
         <div id="resume-banner"></div>
         <div id="stats-bar" class="stats-bar" style="display:none;"></div>
         <div id="dashboard"></div>
     </div>
 
-    <!-- SETUP SCREEN -->
     <div id="setup-screen" style="display:none;">
         <h2 id="setup-title" style="margin-bottom:1.8rem; color:var(--primary); font-size:1.3rem;"></h2>
 
@@ -232,7 +230,6 @@
         </div>
     </div>
 
-    <!-- QUIZ INTERFACE -->
     <div id="quiz-interface" style="display:none;">
         <div class="quiz-header">
             <span class="q-counter">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
@@ -264,7 +261,6 @@
     </div>
 </main>
 
-<!-- RESULT MODAL -->
 <div id="quizResultModal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
         <span class="result-icon" id="resultIcon">🏆</span>
@@ -300,9 +296,7 @@
 const COURSE_CODE = 'BIO101';
 const STORAGE_KEY = 'bio101_session';
 
-/* ══════════════════════════════════════════════════
-   300 BIOLOGY QUESTIONS
-══════════════════════════════════════════════════ */
+
 const ALL_QUESTIONS = [
   { question: "Animals must eat other organisms for food, so they are classified as ___.", options: { A: "Heterotrophs", B: "Autotrophs", C: "Eukaryotic", D: "Prokaryotic" }, answer: "A", explanation: "Animals cannot make their own food and must consume other organisms, making them heterotrophs." },
   { question: "Tigers, Jellyfish, Gorillas and Sponges are all _______.", options: { A: "Animals", B: "Plants", C: "Fungi", D: "Bacteria" }, answer: "A", explanation: "All four organisms belong to Kingdom Animalia as they are all multicellular, heterotrophic, and lack cell walls." },
@@ -501,7 +495,7 @@ const ALL_QUESTIONS = [
   { question: "Endosperm in gymnosperms is formed:", options: { A: "At the time of fertilization", B: "Before fertilization", C: "After fertilization", D: "Along with the development of embryo" }, answer: "B", explanation: "In gymnosperms, the endosperm (female gametophyte tissue) is formed before fertilization, unlike angiosperms where it forms after." },
   { question: "Phloem of gymnosperms differs from angiosperms in:", options: { A: "Having parenchyma", B: "Having no companion cells", C: "Having no sieve tubes", D: "Having no sclerenchyma" }, answer: "B", explanation: "Gymnosperm phloem lacks companion cells (which are characteristic of angiosperm phloem); they have albuminous cells instead." },
 
-  /* ─── 103 ADDITIONAL QUESTIONS ─── */
+  
   { question: "Which of the following macromolecules serves as the primary genetic material in most organisms?", options: { A: "RNA", B: "DNA", C: "Protein", D: "Lipid" }, answer: "B", explanation: "DNA (deoxyribonucleic acid) stores and transmits genetic information in most living organisms." },
   { question: "The process of copying DNA to produce an identical strand is called:", options: { A: "Translation", B: "Transcription", C: "Replication", D: "Transduction" }, answer: "C", explanation: "DNA replication is the process by which a cell duplicates its DNA before cell division." },
   { question: "In RNA, the base adenine pairs with:", options: { A: "Thymine", B: "Guanine", C: "Cytosine", D: "Uracil" }, answer: "D", explanation: "In RNA, uracil (U) replaces thymine (T) and pairs with adenine (A)." },
@@ -610,9 +604,7 @@ const ALL_QUESTIONS = [
   { question: "Cancer is characterized by:", options: { A: "Controlled cell death", B: "Uncontrolled cell division and growth", C: "Reduced metabolic rate", D: "Loss of mitochondria" }, answer: "B", explanation: "Cancer involves unregulated cell proliferation where cells ignore normal growth signals and may invade other tissues (metastasize)." }
 ];
 
-/* ══════════════════════════════════
-   STATE VARIABLES
-══════════════════════════════════ */
+
 let currentExamData = [];
 let userAnswers     = {};
 let currentIndex    = 0;
@@ -623,9 +615,7 @@ let examSelectionType = 'random';
 let partNum         = 1;
 let isReviewMode    = false;
 
-/* ══════════════════════════════════
-   DASHBOARD BUILDER
-══════════════════════════════════ */
+
 function buildDashboard() {
     const dash = document.getElementById('dashboard');
     dash.innerHTML = '';
@@ -634,14 +624,12 @@ function buildDashboard() {
     const partSize = 60;
     const numParts = Math.ceil(totalQ / partSize);
 
-    // Random mix
     const randomBox = document.createElement('div');
     randomBox.className = 'box box-random';
     randomBox.innerHTML = `<i class="fa-solid fa-shuffle" style="font-size:2rem;"></i><h3>Random Mix</h3><p>${totalQ} Questions</p>`;
     randomBox.onclick = () => showSetup('random');
     dash.appendChild(randomBox);
 
-    // Parts
     for (let p = 1; p <= numParts; p++) {
         const start = (p - 1) * partSize + 1;
         const end   = Math.min(p * partSize, totalQ);
@@ -671,19 +659,16 @@ function showSetup(type, pNum = 1) {
 }
 document.addEventListener('keydown', (e) => {
 
-    // Don't fire if user is typing in an input or select
     if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
 
-    // Only works during an active quiz
     if (document.getElementById('quiz-interface').style.display === 'none') return;
 
     const key = e.key.toUpperCase();
 
-    // A, B, C, D — find the matching button and click it
     if (['A', 'B', 'C', 'D'].includes(key)) {
         const buttons = document.querySelectorAll('.option-btn');
         buttons.forEach(btn => {
-            // each button starts with "A." or "B." etc
+
             if (btn.innerText.trim().startsWith(key + '.')) {
                 btn.click();
             }
@@ -710,9 +695,7 @@ function goHome() {
     loadStats();
 }
 
-/* ══════════════════════════════════
-   EXAM START
-══════════════════════════════════ */
+
 function startExam() {
     activeMode  = document.getElementById('quiz-mode').value;
     const mins  = parseInt(document.getElementById('t-limit').value) || 30;
@@ -768,9 +751,7 @@ function startExam() {
     saveState();
 }
 
-/* ══════════════════════════════════
-   TIMER
-══════════════════════════════════ */
+
 function runTimer() {
     clearInterval(timerId);
     updateTimerDisplay();
@@ -791,9 +772,7 @@ function updateTimerDisplay() {
     else if (timeRemaining <= 300) { el.style.background = 'rgba(234,88,12,0.12)'; el.style.color = '#ea580c'; }
 }
 
-/* ══════════════════════════════════
-   RENDER QUESTION
-══════════════════════════════════ */
+
 function renderQuestion() {
     const q        = currentExamData[currentIndex];
     const answered = userAnswers[currentIndex];
@@ -860,9 +839,7 @@ function move(d) {
     if (n >= 0 && n < currentExamData.length) { currentIndex = n; renderQuestion(); }
 }
 
-/* ══════════════════════════════════
-   SAVE / RESUME
-══════════════════════════════════ */
+
 function saveState() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
         currentExamData, userAnswers, currentIndex,
@@ -923,9 +900,7 @@ function resumeExam() {
     renderQuestion();
 }
 
-/* ══════════════════════════════════
-   SHOW RESULTS
-══════════════════════════════════ */
+
 function showResults(forced = false) {
     const answered = Object.keys(userAnswers).length;
     if (!forced && answered < currentExamData.length) {
@@ -945,7 +920,6 @@ function showResults(forced = false) {
     document.getElementById('modalTotal').innerText     = total;
     document.getElementById('modalReviewBtn').style.display = activeMode === 'practice' ? 'none' : 'flex';
 
-    // Update cumulative avg
     const stats = JSON.parse(localStorage.getItem('bio101_stats')) || { tests: 0, total: 0 };
     stats.tests++;
     stats.total += pct;
@@ -985,9 +959,7 @@ function enterReviewMode() {
     renderQuestion();
 }
 
-/* ══════════════════════════════════
-   STATS
-══════════════════════════════════ */
+
 function loadStats() {
     const s = JSON.parse(localStorage.getItem('bio101_stats'));
     const bar = document.getElementById('stats-bar');
@@ -1001,9 +973,7 @@ function loadStats() {
     `;
 }
 
-/* ══════════════════════════════════
-   SHARE
-══════════════════════════════════ */
+
 function shareQuizResult() {
     const score   = document.getElementById('finalScoreText').innerText;
     const section = examSelectionType === 'random' ? 'a random mix' : `Part ${partNum}`;
@@ -1014,9 +984,7 @@ function shareQuizResult() {
     } catch (_) {}
 }
 
-/* ══════════════════════════════════
-   UTILITIES
-══════════════════════════════════ */
+
 function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -1025,12 +993,13 @@ function shuffle(arr) {
     return arr;
 }
 
-/* ══════════════════════════════════
-   INIT
-══════════════════════════════════ */
+
 buildDashboard();
 loadStats();
 checkResume();
 </script>
 </body>
 </html>
+
+
+

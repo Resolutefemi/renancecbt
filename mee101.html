@@ -47,7 +47,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── NAV ── */
+
 .nav {
   background: var(--navy);
   height: var(--nav-h);
@@ -93,7 +93,7 @@ body {
   white-space: nowrap;
 }
 
-/* ── HERO ── */
+
 .hero {
   background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, #1a3a5c 100%);
   padding: clamp(48px, 10vw, 96px) clamp(16px, 5vw, 48px) clamp(72px, 14vw, 120px);
@@ -183,7 +183,7 @@ body {
 .stat-pill:hover { background: rgba(255,255,255,0.11); }
 .stat-pill i { color: var(--amber); font-size: 0.8rem; }
 
-/* ── SEARCH ── */
+
 .search-section {
   max-width: 1100px;
   margin: 0 auto;
@@ -233,7 +233,7 @@ body {
 }
 .search-box .clear-btn:hover { color: var(--text); }
 
-/* ── MAIN ── */
+
 .main-wrap {
   max-width: 1100px;
   margin: 0 auto;
@@ -268,14 +268,14 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* ── CARD GRID ── */
+
 .topic-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
   gap: 24px;
 }
 
-/* ── CARD ── */
+
 .card {
   background: var(--white);
   border-radius: var(--radius-lg);
@@ -297,7 +297,7 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Card header */
+
 .card-header {
   background: var(--navy);
   padding: 16px 18px;
@@ -351,7 +351,7 @@ body {
 }
 .card-tag i { font-size: 0.6rem; }
 
-/* Diagram */
+
 .diagram-panel {
   background: #f0f4f8;
   border-bottom: 1.5px solid var(--border);
@@ -391,7 +391,7 @@ body {
 }
 .diagram-panel:hover .expand-hint { opacity: 1; }
 
-/* Thumbnail strip */
+
 .thumb-strip {
   display: flex;
   height: 80px;
@@ -427,7 +427,7 @@ body {
   gap: 4px;
 }
 
-/* Video */
+
 .video-wrap {
   position: relative;
   padding-bottom: 56.25%;
@@ -481,7 +481,7 @@ body {
 .play-ring i { color: var(--navy); font-size: 1.2rem; margin-left: 3px; }
 .play-label { position: relative; z-index: 2; color: rgba(255,255,255,0.6); font-size: 0.78rem; font-weight: 500; }
 
-/* Card body */
+
 .card-body { padding: 18px 18px 20px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
 .card-desc {
   font-size: 0.855rem;
@@ -522,7 +522,7 @@ body {
 .watch-btn:hover { background: var(--blue); transform: translateY(-1px); }
 .watch-btn i { color: var(--amber); font-size: 0.9rem; }
 
-/* ── EMPTY STATE ── */
+
 .no-results {
   grid-column: 1/-1;
   text-align: center;
@@ -533,7 +533,7 @@ body {
 .no-results h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--navy); margin-bottom: 8px; }
 .no-results p { font-size: 0.9rem; }
 
-/* ── LIGHTBOX ── */
+
 #lightbox {
   display: none;
   position: fixed;
@@ -588,7 +588,7 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* ── FOOTER ── */
+
 footer {
   background: var(--navy);
   color: rgba(255,255,255,0.5);
@@ -601,7 +601,7 @@ footer strong { color: var(--white); font-weight: 600; }
 footer .amber { color: var(--amber); font-weight: 600; }
 footer .divider { opacity: 0.3; margin: 0 8px; }
 
-/* ── BACK TO TOP ── */
+
 #btt {
   position: fixed;
   bottom: 24px; right: 20px;
@@ -621,7 +621,7 @@ footer .divider { opacity: 0.3; margin: 0 8px; }
 }
 #btt:hover { transform: translateY(-3px); background: var(--blue); }
 
-/* ── STAGGER ── */
+
 .card:nth-child(1){animation-delay:.04s}.card:nth-child(2){animation-delay:.08s}.card:nth-child(3){animation-delay:.12s}
 .card:nth-child(4){animation-delay:.16s}.card:nth-child(5){animation-delay:.20s}.card:nth-child(6){animation-delay:.24s}
 .card:nth-child(7){animation-delay:.28s}.card:nth-child(8){animation-delay:.32s}.card:nth-child(9){animation-delay:.36s}
@@ -629,7 +629,7 @@ footer .divider { opacity: 0.3; margin: 0 8px; }
 .card:nth-child(13){animation-delay:.52s}.card:nth-child(14){animation-delay:.56s}.card:nth-child(15){animation-delay:.60s}
 .card:nth-child(16){animation-delay:.64s}.card:nth-child(17){animation-delay:.68s}.card:nth-child(18){animation-delay:.72s}
 
-/* ── MOBILE ── */
+
 @media (max-width: 600px) {
   :root { --nav-h: 58px; }
   .nav-author { display: none; }
@@ -651,7 +651,7 @@ footer .divider { opacity: 0.3; margin: 0 8px; }
 </head>
 <body>
 
-<!-- NAV -->
+
 <nav class="nav">
   <a class="nav-brand" href="#">
     <div class="nav-logo"><i class="fa-solid fa-compass-drafting"></i></div>
@@ -666,7 +666,7 @@ footer .divider { opacity: 0.3; margin: 0 8px; }
   </div>
 </nav>
 
-<!-- HERO -->
+
 <section class="hero">
   <div class="hero-grid-bg"></div>
   <div class="hero-inner">
@@ -682,7 +682,7 @@ footer .divider { opacity: 0.3; margin: 0 8px; }
   </div>
 </section>
 
-<!-- SEARCH -->
+
 <div class="search-section">
   <div class="search-box">
     <i class="fa-solid fa-magnifying-glass s-icon"></i>
@@ -691,7 +691,7 @@ footer .divider { opacity: 0.3; margin: 0 8px; }
   </div>
 </div>
 
-<!-- MAIN -->
+
 <div class="main-wrap">
   <div class="section-header">
     <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> All Tutorials</h2>
@@ -700,7 +700,7 @@ footer .divider { opacity: 0.3; margin: 0 8px; }
   <div class="topic-grid" id="topicGrid"></div>
 </div>
 
-<!-- FOOTER -->
+
 <footer>
   <p><strong>Renance Learning Portal</strong><span class="divider">&middot;</span>MEE 101 Engineering Drawing<span class="divider">&middot;</span>Curated by <span class="amber">Resolute Femi</span></p>
   <p style="margin-top:6px;font-size:0.78rem;opacity:0.6;">All videos hosted on YouTube &mdash; Portal for educational use only.</p>
@@ -708,7 +708,7 @@ footer .divider { opacity: 0.3; margin: 0 8px; }
 
 <button id="btt" title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-chevron-up"></i></button>
 
-<!-- LIGHTBOX -->
+
 <div id="lightbox" onclick="closeLB(event)">
   <div id="lb-inner">
     <button id="lb-close" onclick="closeLB()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
@@ -718,7 +718,7 @@ footer .divider { opacity: 0.3; margin: 0 8px; }
 </div>
 
 <script>
-/* ── SVG DIAGRAMS ── */
+
 const D = {};
 
 D[1] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
@@ -1139,7 +1139,7 @@ D[18] = `<svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" font-fami
 <text x="26" y="325" font-size="8" fill="#64748b">Hidden lines shown dashed | Holes &amp; curves need isometric circles (ellipses) | Dimension lines ∥ isometric axes.</text>
 </svg>`;
 
-/* ── TOPICS DATA ── */
+
 const topics = [
   {num:1,  title:"Bisect Lines, Parallel Lines, Divide Lines & Bisect Angles", url:"https://youtu.be/AzZ8zjJN6w4", vid:"AzZ8zjJN6w4", tag:"Geometric Construction", desc:"The foundation of engineering drawing. Learn to <strong>bisect a line</strong>, draw <strong>parallel lines</strong> at any distance, <strong>divide a line</strong> into equal parts, and <strong>bisect any angle</strong> with compass and straight edge only.", concepts:["Perpendicular Bisector","Parallel Lines","Equal Division","Angle Bisector"]},
   {num:2,  title:"Circumscribe a Circle on a Triangle & Inscribe a Circle in a Triangle", url:"https://youtu.be/_KXB6a14VM0", vid:"_KXB6a14VM0", tag:"Circles & Triangles", desc:"Two classical constructions. The <strong>circumscribed circle</strong> passes through all vertices (perpendicular bisectors). The <strong>inscribed circle</strong> is tangent to all sides (angle bisectors).", concepts:["Circumcircle","Incircle","Perpendicular Bisectors","Angle Bisectors","Circumcenter","Incenter"]},
@@ -1161,7 +1161,7 @@ const topics = [
   {num:18, title:"Isometric, Pictorial & Orthographic Projections – Part 2", url:"https://youtu.be/oY-45fk30fQ", vid:"oY-45fk30fQ", tag:"Projections", desc:"<strong>Converting orthographic views into isometric pictorials</strong> and vice versa. Includes hidden lines, centerlines, dimensioning and complex objects with holes and curves.", concepts:["Isometric Circles","Hidden Lines","Dimensioning","View Conversion","Complex Solids"]}
 ];
 
-/* ── BUILD CARD ── */
+
 function buildCard(t) {
   const chips = t.concepts.map(c=>`<span class="chip">${c}</span>`).join('');
   const svg = D[t.num] || '';
@@ -1203,7 +1203,7 @@ function buildCard(t) {
   </div>`;
 }
 
-/* ── LIGHTBOX ── */
+
 function openLB(num, title) {
   document.getElementById('lb-title').innerHTML = `#${num} &mdash; ${title}`;
   document.getElementById('lb-svg').innerHTML = D[num] || '';
@@ -1219,7 +1219,7 @@ function closeLB(e) {
   }
 }
 
-/* ── VIDEO ── */
+
 function loadVid(el, vid) {
   el.parentElement.innerHTML = `<iframe src="https://www.youtube.com/embed/${vid}?autoplay=1&rel=0" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
 }
@@ -1229,7 +1229,7 @@ function loadVidFromStrip(imgEl, vid) {
   if(ph){ wrap.innerHTML = `<iframe src="https://www.youtube.com/embed/${vid}?autoplay=1&rel=0" allowfullscreen allow="autoplay; encrypted-media"></iframe>`; wrap.scrollIntoView({behavior:'smooth',block:'nearest'}); }
 }
 
-/* ── RENDER / SEARCH ── */
+
 function renderAll(list) {
   const g = document.getElementById('topicGrid');
   g.innerHTML = list.length
@@ -1253,13 +1253,16 @@ function clearSearch() {
   renderAll(topics);
 }
 
-/* ── BACK TO TOP ── */
+
 window.addEventListener('scroll', () => {
   document.getElementById('btt').style.display = window.scrollY > 400 ? 'flex' : 'none';
 });
 
-/* ── INIT ── */
+
 renderAll(topics);
 </script>
 </body>
 </html>
+
+
+

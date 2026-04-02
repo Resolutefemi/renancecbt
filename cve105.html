@@ -75,7 +75,7 @@
 
         main { padding: 2rem 5%; max-width: 980px; margin: 0 auto; }
 
-        /* ── STATS BAR ── */
+        
         .stats-bar {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 0.8rem; margin-bottom: 1.5rem;
@@ -88,7 +88,7 @@
         .stat-card .stat-val { font-size: 1.6rem; font-weight: 800; color: var(--primary); font-family: var(--font-mono); }
         .stat-card .stat-lbl { font-size: 0.73rem; color: var(--text-muted); margin-top: 3px; letter-spacing: 0.3px; text-transform: uppercase; }
 
-        /* ── DASHBOARD ── */
+        
         #dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 1rem; }
         .box {
             background: var(--card-bg); padding: 1.6rem 1rem; border-radius: 16px;
@@ -108,7 +108,7 @@
         .box-random p { color: rgba(255,255,255,0.75) !important; }
         .box-random h3 { color: white !important; }
 
-        /* ── SETUP SCREEN ── */
+        
         #setup-screen {
             text-align: center; background: var(--card-bg);
             padding: 3rem 2rem; border-radius: 20px;
@@ -131,7 +131,7 @@
         .custom-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; color: var(--text); font-weight: 600; user-select: none; }
         .custom-checkbox input { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; }
 
-        /* ── QUIZ INTERFACE ── */
+        
         .quiz-header {
             display: flex; justify-content: space-between; align-items: center;
             font-weight: 700; margin-bottom: 16px; padding: 0 2px;
@@ -158,7 +158,7 @@
             font-size: 1.07rem; font-weight: 600;
         }
 
-        /* ── FILL IN THE GAP INPUT ── */
+        
         .gap-label {
             font-size: 0.78rem; font-weight: 700; color: var(--primary);
             text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 7px;
@@ -217,7 +217,7 @@
         .btn:hover { opacity: 0.88; transform: translateY(-2px); }
         .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
-        /* ── RESULT MODAL ── */
+        
         .result-modal-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.75);
             backdrop-filter: blur(10px); z-index: 9999;
@@ -253,7 +253,7 @@
         .btn-review { background: rgba(15,76,42,0.08); color: var(--primary); border: 1.5px solid rgba(15,76,42,0.2); }
         .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
 
-        /* ── RESPONSIVE ── */
+        
         @media (max-width: 600px) {
             #dashboard { grid-template-columns: repeat(2, 1fr); }
             .question-card { padding: 1.4rem; }
@@ -281,13 +281,11 @@
 </nav>
 
 <main>
-    <!-- DASHBOARD -->
     <div id="dashboard-wrap">
         <div id="stats-bar" class="stats-bar" style="display:none;"></div>
         <div id="dashboard"></div>
     </div>
 
-    <!-- SETUP SCREEN -->
     <div id="setup-screen" style="display:none;">
         <div style="font-size:2.5rem; margin-bottom:0.5rem;">✏️</div>
         <h2 id="setup-title" style="margin-bottom:0.5rem; color:var(--primary); font-size:1.35rem;"></h2>
@@ -329,7 +327,6 @@
         </div>
     </div>
 
-    <!-- QUIZ INTERFACE -->
     <div id="quiz-interface" style="display:none;">
         <div class="quiz-header">
             <span class="q-counter">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
@@ -371,7 +368,6 @@
     </div>
 </main>
 
-<!-- RESULT MODAL -->
 <div id="quizResultModal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
         <span class="result-icon" id="resultIcon">🏆</span>
@@ -404,9 +400,7 @@
 </div>
 
 <script>
-    /* ══════════════════════════════════
-       SUPABASE CONFIG
-    ══════════════════════════════════ */
+    
     const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -835,24 +829,20 @@
   {"id": 419, "question": "In 1905, Albert Einstein expressed the relationship between matter and energy with what formula?", "answers": ["E=mc²", "E=mc2", "e=mc2", "E = mc^2", "E=mc^2"]}
 ];
 
-    /* ══════════════════════════════════
-       STATE
-    ══════════════════════════════════ */
+    
     let currentExamData = [], userAnswers = {}, currentIndex = 0;
     let timeRemaining = 0, timerId = null;
     let activeMode = 'practice', isReviewMode = false;
     let examSelectionType = 'random', partNum = 1;
 
-    /* ══════════════════════════════════
-       INIT
-    ══════════════════════════════════ */
+    
     window.onload = () => {
         initDashboard();
         loadStatsBar();
         if (localStorage.getItem('saved_cve105_exam')) {
             document.getElementById('resume-btn').style.display = 'flex';
         }
-        // Allow Enter key to check answer
+
         document.getElementById('gap-input').addEventListener('keydown', e => {
             if (e.key === 'Enter') checkAnswer();
         });
@@ -874,12 +864,10 @@
                 <div class="stat-card"><div class="stat-val">${avg}%</div><div class="stat-lbl">Average Score</div></div>
                 <div class="stat-card"><div class="stat-val">${best}%</div><div class="stat-lbl">Best Score</div></div>`;
             bar.style.display = 'grid';
-        } catch (e) { /* offline */ }
+        } catch (e) {  }
     }
 
-    /* ══════════════════════════════════
-       DASHBOARD
-    ══════════════════════════════════ */
+    
     function initDashboard() {
         const board = document.getElementById('dashboard');
         board.innerHTML = '';
@@ -932,9 +920,7 @@
         loadStatsBar();
     }
 
-    /* ══════════════════════════════════
-       HELPERS
-    ══════════════════════════════════ */
+    
     function shuffleArray(arr) {
         const a = [...arr];
         for (let i = a.length - 1; i > 0; i--) {
@@ -944,15 +930,13 @@
         return a;
     }
 
-    /** Case-insensitive, trimmed answer comparison */
+    
     function isCorrect(userInput, acceptedAnswers) {
         const clean = userInput.trim().toLowerCase();
         return acceptedAnswers.some(a => a.trim().toLowerCase() === clean);
     }
 
-    /* ══════════════════════════════════
-       START EXAM
-    ══════════════════════════════════ */
+    
     function startExam() {
         timeRemaining = parseInt(document.getElementById('t-limit').value) * 60;
         activeMode    = document.getElementById('quiz-mode').value;
@@ -981,9 +965,7 @@
         renderQuestion();
     }
 
-    /* ══════════════════════════════════
-       TIMER
-    ══════════════════════════════════ */
+    
     function runTimer() {
         clearInterval(timerId);
         timerId = setInterval(() => {
@@ -995,16 +977,13 @@
         }, 1000);
     }
 
-    /* ══════════════════════════════════
-       RENDER QUESTION
-    ══════════════════════════════════ */
+    
     function renderQuestion() {
         const q          = currentExamData[currentIndex];
         const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
         const userAns    = userAnswers[currentIndex] || '';
         const correct    = isCorrect(userAns, q.answers);
 
-        // Progress bar
         const pct = ((currentIndex + 1) / currentExamData.length) * 100;
         document.getElementById('progress-fill').style.width = pct + '%';
         document.getElementById('cur-idx').innerText = currentIndex + 1;
@@ -1047,9 +1026,7 @@
         document.getElementById('finish-review-btn').style.display = isReviewMode ? 'flex' : 'none';
     }
 
-    /* ══════════════════════════════════
-       CHECK ANSWER (practice / exam)
-    ══════════════════════════════════ */
+    
     function checkAnswer() {
         if (isReviewMode) return;
         const input = document.getElementById('gap-input');
@@ -1061,7 +1038,7 @@
     }
 
     function move(d) {
-        // In exam mode, save whatever is typed even without checking
+
         if (activeMode === 'exam' && !isReviewMode) {
             const val = document.getElementById('gap-input').value.trim();
             if (val) userAnswers[currentIndex] = val;
@@ -1096,11 +1073,9 @@
         renderQuestion();
     }
 
-    /* ══════════════════════════════════
-       SHOW RESULTS
-    ══════════════════════════════════ */
+    
     async function showResults(forced = false) {
-        // In exam mode, save current typed answer before submitting
+
         if (activeMode === 'exam' && !isReviewMode) {
             const val = document.getElementById('gap-input').value.trim();
             if (val) userAnswers[currentIndex] = val;
@@ -1144,7 +1119,7 @@
         document.getElementById('quizResultModal').style.display = 'flex';
         await saveTestScore(pct);
     }
-
+    
     async function saveTestScore(pct) {
         const el = document.getElementById('save-status');
         el.innerText = '⏳ Saving...';
@@ -1192,3 +1167,6 @@
 </script>
 </body>
 </html>
+
+
+
