@@ -43,7 +43,7 @@
 
         main { padding: 2rem 5%; max-width: 960px; margin: 0 auto; }
 
-        /* ── RESUME BANNER ── */
+        
         #resume-banner {
             display: none; background: var(--card-bg);
             border: 1.5px solid var(--success); border-radius: 14px;
@@ -51,13 +51,13 @@
             box-shadow: 0 2px 10px rgba(22,163,74,0.1);
         }
 
-        /* ── STATS BAR ── */
+        
         .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.8rem; margin-bottom: 1.5rem; }
         .stat-card { background: var(--card-bg); border-radius: 12px; padding: 1rem; text-align: center; border: 1.5px solid var(--border); box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
         .stat-card .stat-val { font-size: 1.6rem; font-weight: 800; color: var(--primary); }
         .stat-card .stat-lbl { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
 
-        /* ── DASHBOARD ── */
+        
         #dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.1rem; }
         .box {
             background: var(--card-bg); padding: 1.5rem 1rem; border-radius: 14px;
@@ -72,7 +72,7 @@
         .box-random { background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; border: none !important; }
         .box-random p { color: rgba(255,255,255,0.8) !important; }
 
-        /* ── SETUP SCREEN ── */
+        
         #setup-screen { text-align: center; background: var(--card-bg); padding: 3rem 2rem; border-radius: 16px; border: 1.5px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
         .setup-group { margin: 1.5rem auto; text-align: left; max-width: 360px; }
         .setup-group label { font-weight: 600; font-size: 0.88rem; color: var(--text); display: block; margin-bottom: 7px; }
@@ -82,7 +82,7 @@
         .custom-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; color: var(--text); font-weight: 500; user-select: none; }
         .custom-checkbox input { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; }
 
-        /* ── QUIZ INTERFACE ── */
+        
         .quiz-header { display: flex; justify-content: space-between; align-items: center; font-weight: 700; margin-bottom: 15px; padding: 0 4px; flex-wrap: wrap; gap: 10px; }
         .q-counter { font-size: 1rem; color: var(--text); }
         .btn-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
@@ -112,7 +112,7 @@
         .btn:hover { opacity: 0.88; transform: translateY(-2px); }
         .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
-        /* ── RESULT MODAL ── */
+        
         .result-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.78); backdrop-filter: blur(8px); z-index: 9999; display: flex; justify-content: center; align-items: center; padding: 20px; }
         .result-modal-content { background: var(--card-bg); padding: 40px 28px; border-radius: 24px; width: 100%; max-width: 420px; text-align: center; color: var(--text); box-shadow: 0 25px 60px rgba(0,0,0,0.45); animation: bounceIn 0.55s cubic-bezier(0.175,0.885,0.32,1.275); }
         @keyframes bounceIn { 0% { opacity:0; transform:scale(0.78) translateY(30px); } 100% { opacity:1; transform:scale(1) translateY(0); } }
@@ -132,7 +132,7 @@
         .btn-review { background: rgba(30,64,175,0.08); color: var(--primary); border: 1.5px solid rgba(30,64,175,0.2); }
         .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
 
-        /* ── RESPONSIVE ── */
+        
         @media (max-width: 600px) {
             #dashboard { grid-template-columns: repeat(2, 1fr); }
             .question-card { padding: 1.3rem; }
@@ -161,14 +161,12 @@
 </nav>
 
 <main>
-    <!-- DASHBOARD -->
     <div id="dashboard-wrap">
         <div id="resume-banner"></div>
         <div id="stats-bar" class="stats-bar" style="display:none;"></div>
         <div id="dashboard"></div>
     </div>
 
-    <!-- SETUP SCREEN -->
     <div id="setup-screen" style="display:none;">
         <h2 id="setup-title" style="margin-bottom:1.8rem; color:var(--primary); font-size:1.3rem;"></h2>
 
@@ -211,7 +209,6 @@
         </div>
     </div>
 
-    <!-- QUIZ INTERFACE -->
     <div id="quiz-interface" style="display:none;">
         <div class="quiz-header">
             <span class="q-counter">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
@@ -243,7 +240,6 @@
     </div>
 </main>
 
-<!-- RESULT MODAL -->
 <div id="quizResultModal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
         <span class="result-icon" id="resultIcon">🏆</span>
@@ -276,22 +272,20 @@
 </div>
 
 <script>
-    /* ═══════════════════════════════════════════
-       SUPABASE CONFIG
-    ═══════════════════════════════════════════ */
+    
     const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const COURSE_CODE = 'STA 111';
     const STORAGE_KEY = 'saved_sta111_exam';
 
-    /* ── HEARTBEAT ── */
+    
     async function sendHeartbeat() {
         try {
             const { data: { user } } = await db.auth.getUser();
             if (!user) return;
             await db.from('students').update({ last_seen: new Date().toISOString() }).eq('id', user.id);
-        } catch (e) { /* silently ignore */ }
+        } catch (e) {  }
     }
     sendHeartbeat();
     setInterval(sendHeartbeat, 2 * 60 * 1000);
@@ -431,9 +425,507 @@
   { "id": 131, "question": "A negatively skewed distribution is a ____ skewed distribution.", "options": ["Left", "Right", "Symmetric", "Normal"], "answer": "Left", "explanation": "Negative skewness indicates a tail stretching to the left." },
   { "id": 132, "question": "Which variable is a continuous random variable?", "options": ["Time to complete an exam", "Number of tattoos", "Number of women in a sample", "Number of correct guesses"], "answer": "Time to complete an exam", "explanation": "Time is measured on a continuous scale." },
   { "id": 133, "question": "The sum of frequencies (Σf) is equal to:", "options": ["N (Total Sample)", "Mean", "Standard Deviation", "Range"], "answer": "N (Total Sample)", "explanation": "Total frequency represents the total number of observations." },
-  { "id": 134, "question": "Stub and Caption refer to:", "options": ["Rows and Columns", "Graphs and Charts", "Means and Medians", "Primary and Secondary data"], "answer": "Rows and Columns", "explanation": "In a table, the stub describes rows and the caption describes columns." }
-
-    ];
+  { "id": 134, "question": "Stub and Caption refer to:", "options": ["Rows and Columns", "Graphs and Charts", "Means and Medians", "Primary and Secondary data"], "answer": "Rows and Columns", "explanation": "In a table, the stub describes rows and the caption describes columns." },
+  { "id": 135, "question": "Which discipline is concerned with the science of collecting, organizing, and analyzing data?", "options": ["Engineering", "Statistics", "Medicine", "Law"], "answer": "Statistics", "explanation": "Statistics is the branch of science that deals with the collection, analysis, interpretation, and presentation of data." },
+{ "id": 136, "question": "A process carried out to solve social, business, or economic problems by finding facts is a:", "options": ["Statistical survey", "Census", "Lab experiment", "Narrative review"], "answer": "Statistical survey", "explanation": "A statistical survey is a method for collecting data from a population to gain insights into various phenomena." },
+{ "id": 137, "question": "In which study does an investigator manipulate a system and take measurements to determine the effect?", "options": ["Survey", "Census", "Experiment", "Observation"], "answer": "Experiment", "explanation": "An experiment involves active manipulation of variables to observe outcomes, unlike passive observation." },
+{ "id": 138, "question": "Which data quality measure refers to the extent to which data is easily and quickly retrievable?", "options": ["Completeness", "Relevance", "Accessibility", "Accuracy"], "answer": "Accessibility", "explanation": "Accessibility is the ease with which data can be obtained by those who need it." },
+{ "id": 139, "question": "If data is described as being unbiased, unprejudiced, and impartial, it has high:", "options": ["Integrity", "Security", "Objectivity", "Interpretability"], "answer": "Objectivity", "explanation": "Objectivity ensures that data collection and analysis are not influenced by personal feelings or opinions." },
+{ "id": 140, "question": "If a variable can take any value within a range (e.g., 5.5, 5.55), it is classified as:", "options": ["Discrete", "Continuous", "Nominal", "Qualitative"], "answer": "Continuous", "explanation": "Continuous variables can take an infinite number of values within a given range." },
+{ "id": 141, "question": "The error between the actual value and the measured value is called:", "options": ["Absolute error", "Relative error", "Percent error", "Total error"], "answer": "Absolute error", "explanation": "Absolute error is the magnitude of the difference between the exact value and the approximation." },
+{ "id": 142, "question": "The sum of deviations of a set of values from their arithmetic mean is always:", "options": ["1", "Zero", "Maximum", "Unknown"], "answer": "Zero", "explanation": "A fundamental property of the mean is that the sum of the differences between each data point and the mean is zero." },
+{ "id": 143, "question": "Which measure of central tendency is the least affected by extreme values (outliers)?", "options": ["Mean", "Mode", "Median", "Midrange"], "answer": "Median", "explanation": "The median is a positional average, making it more robust against outliers than the mean." },
+{ "id": 144, "question": "The value below which 10% of the data falls is known as:", "options": ["D1", "P10", "Q1", "Median"], "answer": "P10", "explanation": "The 10th percentile (P10) or the 1st decile (D1) represents the point where 10% of observations fall below it." },
+{ "id": 145, "question": "The middle value of a sorted data set is known as the:", "options": ["Mean", "Median", "Mode", "Range"], "answer": "Median", "explanation": "The median is the middle observation when data is arranged in ascending or descending order." },
+{ "id": 146, "question": "Which of the following is a measure of the spread or variation of a data set?", "options": ["Arithmetic Mean", "Standard Deviation", "Median", "Mode"], "answer": "Standard Deviation", "explanation": "Standard deviation measures how much the values in a data set deviate from the mean." },
+{ "id": 147, "question": "The difference between the maximum and minimum values in a data set is the:", "options": ["Variance", "Standard Deviation", "Range", "Quartile Deviation"], "answer": "Range", "explanation": "The range is the simplest measure of dispersion, calculated as Max - Min." },
+{ "id": 148, "question": "A frequency distribution with two peaks is referred to as:", "options": ["Unimodal", "Bimodal", "Multimodal", "Symmetric"], "answer": "Bimodal", "explanation": "A bimodal distribution has two distinct modes or peaks." },
+{ "id": 149, "question": "In a positively skewed distribution, which relationship is generally true?", "options": ["Mean > Median", "Mean < Median", "Mean = Median", "Mean = Mode"], "answer": "Mean > Median", "explanation": "In a right-skewed distribution, the mean is pulled toward the tail, making it larger than the median." },
+{ "id": 150, "question": "The square root of the variance is known as the:", "options": ["Mean Deviation", "Standard Deviation", "Range", "Coefficient of Variation"], "answer": "Standard Deviation", "explanation": "Standard deviation is mathematically defined as the positive square root of the variance." },
+{ "id": 151, "question": "Which measure is expressed as a percentage and used to compare the variability of two datasets?", "options": ["Variance", "Standard Deviation", "Coefficient of Variation", "Interquartile Range"], "answer": "Coefficient of Variation", "explanation": "The CV is (Standard Deviation / Mean) * 100, making it a relative measure of dispersion." },
+{ "id": 152, "question": "The sum of the probabilities of all possible outcomes in a sample space is:", "options": ["0", "0.5", "1", "Infinity"], "answer": "1", "explanation": "According to the axioms of probability, the total probability of an entire sample space must equal 1." },
+{ "id": 153, "question": "An event that cannot happen is called a/an:", "options": ["Simple event", "Sure event", "Impossible event", "Independent event"], "answer": "Impossible event", "explanation": "An impossible event has a probability of 0." },
+{ "id": 154, "question": "The collection of all possible outcomes of an experiment is the:", "options": ["Event", "Sample Space", "Population", "Subset"], "answer": "Sample Space", "explanation": "The sample space contains every potential result of a random experiment." },
+{ "id": 155, "question": "Two events that cannot occur at the same time are said to be:", "options": ["Independent", "Dependent", "Mutually Exclusive", "Complementary"], "answer": "Mutually Exclusive", "explanation": "Mutually exclusive events have no intersection; if one happens, the other cannot." },
+{ "id": 156, "question": "Which level of measurement has a true zero point (e.g., weight, height)?", "options": ["Nominal", "Ordinal", "Interval", "Ratio"], "answer": "Ratio", "explanation": "The ratio scale allows for comparison of magnitudes because it possesses a meaningful absolute zero." },
+{ "id": 157, "question": "The process of selecting a subset from a larger population is called:", "options": ["Census", "Sampling", "Enumeration", "Generalization"], "answer": "Sampling", "explanation": "Sampling is the act of picking a representative group to study the characteristics of a population." },
+{ "id": 158, "question": "In which sampling method does every member of the population have an equal chance of being selected?", "options": ["Quota Sampling", "Convenience Sampling", "Simple Random Sampling", "Judgmental Sampling"], "answer": "Simple Random Sampling", "explanation": "SRS ensures unbiased selection where every individual has an equal probability of inclusion." },
+{ "id": 159, "question": "The geometric mean is most useful for which type of data?", "options": ["Categorical data", "Rates of change and ratios", "Normal distributions", "Extreme outliers"], "answer": "Rates of change and ratios", "explanation": "The geometric mean is ideal for averaging percentages, growth rates, or indices." },
+{ "id": 160, "question": "Which of the following describes the 'Peakness' or 'Flatness' of a distribution?", "options": ["Skewness", "Kurtosis", "Variance", "Dispersion"], "answer": "Kurtosis", "explanation": "Kurtosis measures the tail weight and the sharpness of the peak of a frequency curve." },
+{ "id": 161, "question": "A distribution that is more peaked than a normal distribution is called:", "options": ["Platykurtic", "Mesokurtic", "Leptokurtic", "Asymmetric"], "answer": "Leptokurtic", "explanation": "Leptokurtic distributions have high peaks and heavy tails." },
+{ "id": 162, "question": "If a distribution is perfectly symmetrical, the skewness is:", "options": ["1", "-1", "Zero", "Positive"], "answer": "Zero", "explanation": "Symmetry implies that the left and right sides are mirror images, resulting in zero skewness." },
+{ "id": 163, "question": "The empirical rule states that approximately what percentage of data falls within one standard deviation of the mean?", "options": ["50%", "68%", "95%", "99.7%"], "answer": "68%", "explanation": "In a normal distribution, about 68% of observations fall within ±1 standard deviation of the mean." },
+{ "id": 164, "question": "Which graphical representation uses bars of equal width to show frequencies of categories?", "options": ["Pie Chart", "Histogram", "Bar Chart", "Ogive"], "answer": "Bar Chart", "explanation": "Bar charts represent categorical data, whereas histograms represent continuous grouped data." },
+{ "id": 165, "question": "The total area under a normal probability curve is:", "options": ["0.5", "1", "100", "Dependent on the mean"], "answer": "1", "explanation": "The total area under any probability density function must be exactly 1." },
+{ "id": 166, "question": "In a box-and-whisker plot, the 'box' represents the:", "options": ["Range", "Standard Deviation", "Interquartile Range", "Mode"], "answer": "Interquartile Range", "explanation": "The box covers the distance from the first quartile (Q1) to the third quartile (Q3)." },
+{ "id": 167, "question": "The standard deviation of a sampling distribution is called the:", "options": ["Standard Error", "Sampling Error", "Variance", "Bias"], "answer": "Standard Error", "explanation": "The standard error indicates how much a sample statistic is expected to fluctuate from the population parameter." },
+{ "id": 168, "question": "Which type of correlation exists when both variables increase together?", "options": ["Negative Correlation", "Positive Correlation", "Zero Correlation", "Inverse Correlation"], "answer": "Positive Correlation", "explanation": "A positive correlation means variables move in the same direction." },
+{ "id": 169, "question": "The Pearson correlation coefficient 'r' ranges between:", "options": ["0 and 1", "-1 and 1", "-10 and 10", "Zero and Infinity"], "answer": "-1 and 1", "explanation": "The correlation coefficient is bounded by -1 (perfect negative) and +1 (perfect positive)." },
+{ "id": 170, "question": "A line of best fit used to predict the value of one variable based on another is a:", "options": ["Regression line", "Frequency polygon", "Correlation curve", "Normal curve"], "answer": "Regression line", "explanation": "Regression analysis is used for prediction and modeling the relationship between variables." },
+{ "id": 171, "question": "Which index number is based on base-year quantities?", "options": ["Paasche Index", "Laspeyres Index", "Fisher Index", "Marshall Index"], "answer": "Laspeyres Index", "explanation": "The Laspeyres price index uses quantities from the base period as weights." },
+{ "id": 172, "question": "The 'Ideal' index number that satisfies both time and factor reversal tests is:", "options": ["Laspeyres", "Paasche", "Fisher", "Bowley"], "answer": "Fisher", "explanation": "Fisher's Ideal Index is the geometric mean of Laspeyres and Paasche indices." },
+{ "id": 173, "question": "Which component of a time series describes long-term movements over many years?", "options": ["Seasonal variations", "Cyclical variations", "Secular Trend", "Irregular variations"], "answer": "Secular Trend", "explanation": "The trend component shows the general long-term direction of the data." },
+{ "id": 174, "question": "Weather patterns that repeat every year represent which time series component?", "options": ["Trend", "Seasonal", "Cyclic", "Random"], "answer": "Seasonal", "explanation": "Seasonal variations are movements that repeat within a period of one year or less." },
+{ "id": 175, "question": "The probability of an event A given that event B has already occurred is:", "options": ["Joint probability", "Marginal probability", "Conditional probability", "Subjective probability"], "answer": "Conditional probability", "explanation": "Conditional probability is denoted as P(A|B)." },
+{ "id": 176, "question": "Which distribution is used to model the number of successes in a fixed number of independent trials?", "options": ["Poisson", "Normal", "Binomial", "Exponential"], "answer": "Binomial", "explanation": "The Binomial distribution applies when there are two possible outcomes (success/failure) in 'n' trials." },
+{ "id": 177, "question": "In a Poisson distribution, the mean is equal to the:", "options": ["Standard Deviation", "Variance", "Range", "Mode"], "answer": "Variance", "explanation": "A unique property of the Poisson distribution is that its mean (λ) equals its variance." },
+{ "id": 178, "question": "A statement about a population parameter that we seek to test is a:", "options": ["Conclusion", "Hypothesis", "Estimate", "Confidence Interval"], "answer": "Hypothesis", "explanation": "A statistical hypothesis is a claim or statement regarding a population." },
+{ "id": 179, "question": "The hypothesis of 'no difference' or 'no effect' is called the:", "options": ["Null Hypothesis", "Alternative Hypothesis", "Simple Hypothesis", "Composite Hypothesis"], "answer": "Null Hypothesis", "explanation": "The Null Hypothesis (H0) is the baseline assumption being tested against an alternative." },
+{ "id": 180, "question": "Rejecting a null hypothesis when it is actually true is a:", "options": ["Type I Error", "Type II Error", "Standard Error", "Random Error"], "answer": "Type I Error", "explanation": "A Type I error (False Positive) occurs when we wrongly reject a true H0." },
+{ "id": 181, "question": "Failing to reject a null hypothesis when it is actually false is a:", "options": ["Type I Error", "Type II Error", "Statistical Power", "Confidence Level"], "answer": "Type II Error", "explanation": "A Type II error (False Negative) occurs when we fail to detect an effect that exists." },
+{ "id": 182, "question": "The probability of committing a Type I error is denoted by:", "options": ["Alpha (α)", "Beta (β)", "Gamma (γ)", "Delta (δ)"], "answer": "Alpha (α)", "explanation": "Alpha is also known as the level of significance of a test." },
+{ "id": 183, "question": "Which test is used to compare the means of two independent groups?", "options": ["Z-test", "T-test", "Chi-square", "ANOVA"], "answer": "T-test", "explanation": "The t-test (specifically the independent samples t-test) compares the averages of two groups." },
+{ "id": 184, "question": "ANOVA is used to test the equality of means of how many groups?", "options": ["Exactly two", "Three or more", "Only one", "Infinite"], "answer": "Three or more", "explanation": "Analysis of Variance (ANOVA) extends the t-test to compare multiple groups simultaneously." },
+{ "id": 185, "question": "The Chi-square test of independence is used for which type of data?", "options": ["Numerical", "Categorical", "Continuous", "Ratio"], "answer": "Categorical", "explanation": "Chi-square tests analyze relationships between nominal or ordinal variables." },
+{ "id": 186, "question": "Which value indicates the strength of the relationship between variables in a regression model?", "options": ["R-squared", "P-value", "Standard Error", "Intercept"], "answer": "R-squared", "explanation": "The coefficient of determination (R-squared) shows the proportion of variance explained by the model." },
+{ "id": 187, "question": "In the equation Y = a + bX, 'b' represents the:", "options": ["Y-intercept", "Slope", "Dependent variable", "Error term"], "answer": "Slope", "explanation": "The slope (b) represents the change in Y for every one-unit increase in X." },
+{ "id": 188, "question": "What is the primary purpose of Descriptive Statistics?", "options": ["Making predictions", "Summarizing data", "Testing hypotheses", "Determining causality"], "answer": "Summarizing data", "explanation": "Descriptive statistics aim to describe and present the characteristics of a dataset clearly." },
+{ "id": 189, "question": "Data obtained from a published journal is considered:", "options": ["Primary data", "Secondary data", "Raw data", "Firsthand data"], "answer": "Secondary data", "explanation": "Secondary data is information that has already been collected and processed by someone else." },
+{ "id": 190, "question": "A population containing a limited number of items is called:", "options": ["Infinite population", "Finite population", "Universal population", "Sample"], "answer": "Finite population", "explanation": "A finite population has a countable number of members." },
+{ "id": 191, "question": "The number of times an observation occurs in a data set is its:", "options": ["Cumulative frequency", "Relative frequency", "Frequency", "Density"], "answer": "Frequency", "explanation": "Frequency is simply the count of occurrences of a specific value or category." },
+{ "id": 192, "question": "A pie chart is used to show the relationship of:", "options": ["Trends over time", "Parts to a whole", "Frequency density", "Continuous distributions"], "answer": "Parts to a whole", "explanation": "Pie charts illustrate how a total amount is divided into various categorical proportions." },
+{ "id": 193, "question": "Which average is most appropriate for qualitative data?", "options": ["Mean", "Median", "Mode", "Weighted Mean"], "answer": "Mode", "explanation": "The mode is the only measure of central tendency that can be used for nominal/categorical data." },
+{ "id": 194, "question": "Which quartiles divide the data into four equal parts?", "options": ["Q1, Q2, Q3", "Q1, Q2, Q3, Q4", "D1 to D10", "P1 to P100"], "answer": "Q1, Q2, Q3", "explanation": "There are three quartiles (25th, 50th, and 75th percentiles) that split the data into four segments." },
+{ "id": 195, "question": "A distribution that is flat-topped compared to a normal curve is:", "options": ["Leptokurtic", "Platykurtic", "Mesokurtic", "Skewed"], "answer": "Platykurtic", "explanation": "Platykurtic distributions have thin tails and a flatter peak." },
+{ "id": 196, "question": "The measure of dispersion that ignores the signs of deviations is:", "options": ["Mean Deviation", "Standard Deviation", "Variance", "Range"], "answer": "Mean Deviation", "explanation": "Mean Deviation uses absolute values of differences from the mean or median." },
+{ "id": 197, "question": "In probability, 'at least one' usually implies using which rule?", "options": ["Addition rule", "Multiplication rule", "Complement rule", "Division rule"], "answer": "Complement rule", "explanation": "Calculating P(at least one) is often easiest as 1 - P(none)." },
+{ "id": 198, "question": "A random variable whose values are countable is called:", "options": ["Continuous", "Discrete", "Independent", "Normal"], "answer": "Discrete", "explanation": "Discrete variables take on distinct, separate values (usually integers)." },
+{ "id": 199, "question": "Which distribution is often called the 'Bell Curve'?", "options": ["Binomial", "Poisson", "Normal", "Uniform"], "answer": "Normal", "explanation": "The Normal distribution is famous for its symmetric, bell-shaped probability density function." },
+{ "id": 200, "question": "The Z-score of a value tells us:", "options": ["Its distance from the median", "The probability of the value", "How many standard deviations it is from the mean", "The variance of the sample"], "answer": "How many standard deviations it is from the mean", "explanation": "The Z-score standardizes a value to show its relative position in a distribution." },
+{ "id": 201, "question": "The process of arranging data into rows and columns is called:", "options": ["Classification", "Tabulation", "Editing", "Summarization"], "answer": "Tabulation", "explanation": "Tabulation is the systematic arrangement of statistical data in columns and rows.", },
+{ "id": 202, "question": "Which of the following is NOT a requirement for a good statistical table?", "options": ["Clear Title", "Stub and Caption", "Source Note", "Colorful Background"], "answer": "Colorful Background", "explanation": "A statistical table should be simple and professional; decorative colors are not a technical requirement.", },
+{ "id": 203, "question": "Data classification based on time (years, months, weeks) is known as:", "options": ["Qualitative classification", "Quantitative classification", "Chronological classification", "Spatial classification"], "answer": "Chronological classification", "explanation": "Chronological classification refers to the arrangement of data according to the time of occurrence.", },
+{ "id": 204, "question": "Geographical classification refers to data classified according to:", "options": ["Attributes", "Location", "Magnitude", "Time"], "answer": "Location", "explanation": "Spatial or geographical classification organizes data by area, such as cities, states, or countries.", },
+{ "id": 205, "question": "A frequency distribution where the upper limit of one class is the lower limit of the next is:", "options": ["Inclusive method", "Exclusive method", "Open-ended method", "Mid-value method"], "answer": "Exclusive method", "explanation": "In the exclusive method, the upper limit of a class is excluded from that class and included in the next.", },
+{ "id": 206, "question": "The difference between the upper and lower limits of a class is the:", "options": ["Class mark", "Class frequency", "Class interval", "Class boundary"], "answer": "Class interval", "explanation": "The class interval or class width is the size of the grouping used in a frequency distribution.", },
+{ "id": 207, "question": "The midpoint of a class interval is calculated as:", "options": ["(Upper + Lower) / 2", "(Upper - Lower) / 2", "Upper * Lower", "Upper / Lower"], "answer": "(Upper + Lower) / 2", "explanation": "The class mark or midpoint is the average of the lower and upper limits.", },
+{ "id": 208, "question": "A distribution where the first class has no lower limit or the last has no upper limit is:", "options": ["Discrete distribution", "Open-end distribution", "Cumulative distribution", "Continuous distribution"], "answer": "Open-end distribution", "explanation": "Open-end classes are used when the data range is extremely wide at the ends.", },
+{ "id": 209, "question": "Which chart uses segments of a circle to represent proportions of a total?", "options": ["Bar chart", "Histogram", "Pie chart", "Line graph"], "answer": "Pie chart", "explanation": "Pie charts are circular statistical graphics divided into slices to illustrate numerical proportion.", },
+{ "id": 210, "question": "The most common value in a frequency distribution is the:", "options": ["Mean", "Median", "Mode", "Range"], "answer": "Mode", "explanation": "The mode is the observation with the highest frequency in a data set.", },
+{ "id": 211, "question": "In a symmetrical distribution, which of the following is true?", "options": ["Mean > Mode", "Mean < Median", "Mean = Median = Mode", "Mode > Median"], "answer": "Mean = Median = Mode", "explanation": "In a perfectly bell-shaped normal curve, all three measures of central tendency coincide at the center.", },
+{ "id": 212, "question": "The sum of the relative frequencies in a frequency distribution always equals:", "options": ["0", "0.5", "1", "100"], "answer": "1", "explanation": "Relative frequencies represent proportions of the total, so their sum must be unity.", },
+{ "id": 213, "question": "An Ogive is a graph used to represent:", "options": ["Simple frequency", "Relative frequency", "Cumulative frequency", "Mid-values"], "answer": "Cumulative frequency", "explanation": "Ogives or cumulative frequency polygons show how many data points fall below a certain value.", },
+{ "id": 214, "question": "Which measure of central tendency can be determined graphically using a Histogram?", "options": ["Mean", "Median", "Mode", "Harmonic Mean"], "answer": "Mode", "explanation": "The mode corresponds to the highest bar in a histogram and can be estimated visually.", },
+{ "id": 215, "question": "The 50th percentile of a distribution is equivalent to the:", "options": ["Mode", "Mean", "Median", "Third Quartile"], "answer": "Median", "explanation": "The median is the value that separates the lower 50% of the data from the upper 50%.", },
+{ "id": 216, "question": "Which of the following is a unitless measure of dispersion?", "options": ["Standard Deviation", "Variance", "Coefficient of Variation", "Range"], "answer": "Coefficient of Variation", "explanation": "The CV is a relative measure (expressed as a percentage), making it independent of the units of measurement.", },
+{ "id": 217, "question": "The empirical relationship between Mean, Median, and Mode in a skewed distribution is:", "options": ["Mode = 3 Median - 2 Mean", "Mean = 3 Median - 2 Mode", "Median = 3 Mode - 2 Mean", "Mode = 3 Mean - 2 Median"], "answer": "Mode = 3 Median - 2 Mean", "explanation": "This formula is a standard approximation for moderately asymmetrical distributions.", },
+{ "id": 218, "question": "A 'parameter' refers to a characteristic of a:", "options": ["Sample", "Population", "Experiment", "Variable"], "answer": "Population", "explanation": "Parameters describe populations, while statistics describe samples.", },
+{ "id": 219, "question": "If every item in a population is studied, the process is called a:", "options": ["Sample survey", "Census", "Pilot study", "Case study"], "answer": "Census", "explanation": "A census is a complete enumeration of all members of a population.", },
+{ "id": 220, "question": "Which of the following is a primary source of data?", "options": ["Government reports", "Personal interviews", "Newspapers", "Research journals"], "answer": "Personal interviews", "explanation": "Interviews involve direct data collection from the source for the specific study.", },
+{ "id": 221, "question": "The 'Stub' of a table is the:", "options": ["Right part", "Left part containing row headings", "Top part containing column headings", "Bottom part for footnotes"], "answer": "Left part containing row headings", "explanation": "Stubs are the row descriptions usually found in the leftmost column of a table.", },
+{ "id": 222, "question": "The 'Caption' of a table refers to:", "options": ["Row headings", "Column headings", "Table title", "The main body"], "answer": "Column headings", "explanation": "Captions are the headings at the top of columns in a statistical table.", },
+{ "id": 223, "question": "A qualitative variable that has only two categories (e.g., Yes/No) is called:", "options": ["Continuous", "Ordinal", "Dichotomous", "Ratio"], "answer": "Dichotomous", "explanation": "Dichotomous variables have exactly two mutually exclusive categories.", },
+{ "id": 224, "question": "Which scale of measurement allows for 'greater than' or 'less than' comparisons but not exact differences?", "options": ["Nominal", "Ordinal", "Interval", "Ratio"], "answer": "Ordinal", "explanation": "Ordinal scales provide rank and order but do not have equal intervals between points.", },
+{ "id": 225, "question": "In a frequency distribution, the sum of frequencies is denoted as:", "options": ["X", "f", "N", "Σx"], "answer": "N", "explanation": "N represents the total number of observations or the sum of all frequencies.", },
+{ "id": 226, "question": "A distribution with a long tail on the right side is:", "options": ["Negatively skewed", "Symmetrical", "Positively skewed", "Platykurtic"], "answer": "Positively skewed", "explanation": "Positive skewness occurs when the tail extends towards the higher (right) values.", },
+{ "id": 227, "question": "Which measure is the reciprocal of the arithmetic mean of the reciprocals of values?", "options": ["Geometric Mean", "Harmonic Mean", "Weighted Mean", "Median"], "answer": "Harmonic Mean", "explanation": "The Harmonic Mean is specifically defined as the reciprocal of the average of reciprocals.", },
+{ "id": 228, "question": "The probability of an event always lies between:", "options": ["-1 and 1", "0 and 1", "0 and 100", "Zero and infinity"], "answer": "0 and 1", "explanation": "Probability is expressed as a value from 0 (impossible) to 1 (certain).", },
+{ "id": 229, "question": "If P(A) = 0.3, then the probability of the complement of A is:", "options": ["0.3", "0.7", "1.3", "0"], "answer": "0.7", "explanation": "The sum of an event and its complement is 1; therefore, 1 - 0.3 = 0.7.", },
+{ "id": 230, "question": "Two events are independent if the occurrence of one:", "options": ["Prevents the other", "Forces the other", "Does not affect the other", "Depends on the other"], "answer": "Does not affect the other", "explanation": "Independence means the probability of one event is unchanged by the occurrence of another.", },
+{ "id": 231, "question": "Which of the following is a measure of relative dispersion?", "options": ["Mean Deviation", "Standard Deviation", "Coefficient of Variation", "Range"], "answer": "Coefficient of Variation", "explanation": "Relative measures of dispersion are ratios or percentages used for comparison.", },
+{ "id": 232, "question": "The coefficient of skewness is zero for a:", "options": ["Uniform distribution", "Normal distribution", "Binomial distribution", "Poisson distribution"], "answer": "Normal distribution", "explanation": "Normal distributions are perfectly symmetrical, so they have zero skewness.", },
+{ "id": 233, "question": "The range of a sample is 20 and the smallest value is 5. What is the largest value?", "options": ["15", "25", "100", "4"], "answer": "25", "explanation": "Range = Max - Min; therefore, 20 = Max - 5, so Max = 25.", },
+{ "id": 234, "question": "In a frequency table, the 'Class Boundary' is used to make data:", "options": ["Discrete", "Categorical", "Continuous", "Grouped"], "answer": "Continuous", "explanation": "Boundaries eliminate gaps between classes, creating a continuous scale for analysis.", },
+{ "id": 235, "question": "A Histogram is composed of:", "options": ["Disconnected bars", "Rectangles joined together", "Circular slices", "Data points and lines"], "answer": "Rectangles joined together", "explanation": "In a histogram, the bars are adjacent because they represent continuous intervals.", },
+{ "id": 236, "question": "The median of the data set {2, 5, 8, 10, 12} is:", "options": ["5", "8", "10", "7.4"], "answer": "8", "explanation": "In an ordered set of five values, the third value (8) is the middle one.", },
+{ "id": 237, "question": "Standard Deviation is always:", "options": ["Positive", "Negative", "Zero", "Greater than Mean"], "answer": "Positive", "explanation": "By definition, standard deviation is the positive square root of the variance.", },
+{ "id": 238, "question": "Which level of measurement is used for 'Gender' (Male, Female)?", "options": ["Nominal", "Ordinal", "Interval", "Ratio"], "answer": "Nominal", "explanation": "Nominal data involves categories with no inherent numerical order.", },
+{ "id": 239, "question": "Sampling error can be reduced by:", "options": ["Decreasing sample size", "Increasing sample size", "Ignoring outliers", "Using non-random sampling"], "answer": "Increasing sample size", "explanation": "Larger samples tend to represent the population more accurately, reducing error.", },
+{ "id": 240, "question": "What is the mode of the data set {3, 7, 3, 2, 9, 3}?", "options": ["2", "3", "7", "9"], "answer": "3", "explanation": "The value 3 appears most frequently (three times).", },
+{ "id": 241, "question": "A distribution with a tail on the left side is:", "options": ["Positively skewed", "Symmetrical", "Negatively skewed", "Leptokurtic"], "answer": "Negatively skewed", "explanation": "Negative skewness indicates the tail is pulled towards the lower values on the left.", },
+{ "id": 242, "question": "The Interquartile Range (IQR) is calculated as:", "options": ["Q3 - Q1", "Q3 + Q1", "Q2 - Q1", "Q4 - Q1"], "answer": "Q3 - Q1", "explanation": "IQR measures the spread of the middle 50% of the data.", },
+{ "id": 243, "question": "Data collected from a personal diary for research is:", "options": ["Primary data", "Secondary data", "External data", "Grouped data"], "answer": "Secondary data", "explanation": "Diaries are pre-existing records not specifically created for the current study.", },
+{ "id": 244, "question": "A 'statistic' is a numerical value that describes a:", "options": ["Population", "Sample", "Hypothesis", "Model"], "answer": "Sample", "explanation": "Values derived from sample data are called statistics.", },
+{ "id": 245, "question": "The arithmetic mean of the first five natural numbers (1, 2, 3, 4, 5) is:", "options": ["2", "3", "4", "15"], "answer": "3", "explanation": "(1+2+3+4+5)/5 = 15/5 = 3.", },
+{ "id": 246, "question": "Which chart is best for showing a trend over time?", "options": ["Bar chart", "Pie chart", "Line graph", "Box plot"], "answer": "Line graph", "explanation": "Line graphs are ideal for visualizing how data points change over continuous time intervals.", },
+{ "id": 247, "question": "Relative frequency is calculated by dividing class frequency by:", "options": ["Class width", "Total frequency", "Midpoint", "Class boundary"], "answer": "Total frequency", "explanation": "Relative frequency = (f / N), representing the fraction of the total count.", },
+{ "id": 248, "question": "The range of a constant set of values (e.g., 5, 5, 5) is:", "options": ["5", "15", "0", "1"], "answer": "0", "explanation": "Since Max (5) and Min (5) are the same, the range is 0.", },
+{ "id": 249, "question": "Which of the following is a positional average?", "options": ["Mean", "Median", "Geometric Mean", "Harmonic Mean"], "answer": "Median", "explanation": "The median is based on the position of the data rather than its calculated value.", },
+{ "id": 250, "question": "In an exclusive class interval 10-20, the value 20 is:", "options": ["Included", "Excluded", "The midpoint", "The lower limit"], "answer": "Excluded", "explanation": "In the exclusive method, the upper limit belongs to the following class (20-30).", },
+{ "id": 251, "question": "Which of these is a discrete variable?", "options": ["Height", "Weight", "Number of children", "Temperature"], "answer": "Number of children", "explanation": "You cannot have a fraction of a child; it must be a whole number.", },
+{ "id": 252, "question": "Standard Deviation is also known as:", "options": ["Mean Square Deviation", "Root Mean Square Deviation", "Average Deviation", "Variance"], "answer": "Root Mean Square Deviation", "explanation": "It is the square root of the average of the squared deviations from the mean.", },
+{ "id": 253, "question": "If the mean is 10 and the variance is 4, the coefficient of variation is:", "options": ["40%", "20%", "25%", "2%"], "answer": "20%", "explanation": "SD = √4 = 2. CV = (2/10)*100 = 20%.", },
+{ "id": 254, "question": "Which of the following describes data that is 'multimodal'?", "options": ["One mode", "No mode", "Two modes", "More than two modes"], "answer": "More than two modes", "explanation": "Multimodal distributions have several values with the highest frequency.", },
+{ "id": 255, "question": "Variance is always the square of:", "options": ["The Mean", "The Median", "The Standard Deviation", "The Range"], "answer": "The Standard Deviation", "explanation": "Variance (σ²) is simply the standard deviation (σ) raised to the power of two.", },
+{ "id": 256, "question": "A 'Sure Event' has a probability of:", "options": ["0", "0.5", "1", "100"], "answer": "1", "explanation": "If an event is certain to happen, its probability is 1.0.", },
+{ "id": 257, "question": "The branch of statistics that uses sample data to make predictions about a population is:", "options": ["Descriptive", "Inferential", "Mathematical", "Experimental"], "answer": "Inferential", "explanation": "Inferential statistics involves generalizing results from a sample to a population.", },
+{ "id": 258, "question": "Classification of people according to 'Religion' is an example of:", "options": ["Quantitative classification", "Qualitative classification", "Spatial classification", "Chronological classification"], "answer": "Qualitative classification", "explanation": "Religion is an attribute or category, making it qualitative.", },
+{ "id": 259, "question": "The total of all probabilities in a discrete probability distribution is:", "options": ["0", "1", "Depends on the data", "Infinite"], "answer": "1", "explanation": "The sum of probabilities for all outcomes in a distribution must equal 1.", },
+{ "id": 260, "question": "A frequency polygon is drawn by joining the ________ of a histogram.", "options": ["Upper limits", "Lower limits", "Midpoints", "Boundaries"], "answer": "Midpoints", "explanation": "Lines are drawn connecting the center-top points of each histogram bar.", },
+{ "id": 261, "question": "Which measure of dispersion is based on only two observations?", "options": ["Mean Deviation", "Standard Deviation", "Range", "Quartile Deviation"], "answer": "Range", "explanation": "Range only considers the maximum and minimum values.", },
+{ "id": 262, "question": "Which of the following is NOT a measure of central tendency?", "options": ["Mean", "Median", "Standard Deviation", "Mode"], "answer": "Standard Deviation", "explanation": "Standard deviation is a measure of dispersion (spread), not the center.", },
+{ "id": 263, "question": "If a dataset has a mean of 50 and all values are increased by 5, the new mean is:", "options": ["50", "55", "45", "250"], "answer": "55", "explanation": "Adding a constant to all data points increases the mean by that same constant.", },
+{ "id": 264, "question": "The 'Body' of a table contains:", "options": ["Titles", "Footnotes", "Numerical data", "Row headings"], "answer": "Numerical data", "explanation": "The body is the main part where the actual statistical information is presented.", },
+{ "id": 265, "question": "Which of the following sampling methods is non-random?", "options": ["Simple Random Sampling", "Stratified Sampling", "Quota Sampling", "Cluster Sampling"], "answer": "Quota Sampling", "explanation": "Quota sampling relies on specific proportions rather than random selection.", },
+{ "id": 266, "question": "The 'weighted mean' is used when:", "options": ["All values are equal", "Observations have different importance", "Data is qualitative", "There are no outliers"], "answer": "Observations have different importance", "explanation": "Weights are assigned to reflect the relative significance of different data points.", },
+{ "id": 267, "question": "Median can be determined from which graph?", "options": ["Histogram", "Pie Chart", "Ogive", "Bar Chart"], "answer": "Ogive", "explanation": "By finding the N/2 point on the y-axis of an Ogive, you can locate the median on the x-axis.", },
+{ "id": 268, "question": "The science of data collection, analysis, and presentation is:", "options": ["Mathematics", "Statistics", "Economics", "Accounting"], "answer": "Statistics", "explanation": "This is the fundamental definition of the field of statistics.", },
+{ "id": 269, "question": "A variable that can take only integer values is:", "options": ["Continuous", "Discrete", "Ratio", "Interval"], "answer": "Discrete", "explanation": "Discrete variables jump from one whole number to the next with no values in between.", },
+{ "id": 270, "question": "What is the class mark of the interval 20-30?", "options": ["10", "20", "25", "30"], "answer": "25", "explanation": "(20+30)/2 = 25.", },
+{ "id": 271, "question": "The difference between an upper class boundary and a lower class boundary is the:", "options": ["Midpoint", "Width", "Frequency", "Limit"], "answer": "Width", "explanation": "The class width or interval size is the distance between these two boundaries.", },
+{ "id": 272, "question": "Classification based on 'Gender' is:", "options": ["Manifold classification", "Simple classification", "Chronological classification", "Spatial classification"], "answer": "Simple classification", "explanation": "Simple classification involves dividing data into only two categories based on one attribute.", },
+{ "id": 273, "question": "A table that shows frequency for two variables is a:", "options": ["Simple table", "Complex table", "Bivariate table", "Univariate table"], "answer": "Bivariate table", "explanation": "Bivariate tables (contingency tables) analyze the relationship between two variables.", },
+{ "id": 274, "question": "Primary data is more _______ than secondary data.", "options": ["Cheap", "Expensive", "Old", "Irrelevant"], "answer": "Expensive", "explanation": "Collecting fresh data requires more time, labor, and financial resources.", },
+{ "id": 275, "question": "Which measure is most affected by extreme values?", "options": ["Median", "Mode", "Mean", "Quartiles"], "answer": "Mean", "explanation": "The mean uses every value in the calculation, so outliers pull it significantly.", },
+{ "id": 276, "question": "The sum of squared deviations from the mean is:", "options": ["Maximum", "Minimum", "Zero", "One"], "answer": "Minimum", "explanation": "A mathematical property of the mean is that it minimizes the sum of squared differences.", },
+{ "id": 277, "question": "Which average is used for calculating the average speed of a journey?", "options": ["Arithmetic Mean", "Geometric Mean", "Harmonic Mean", "Weighted Mean"], "answer": "Harmonic Mean", "explanation": "The Harmonic Mean is the correct measure for rates like speed (distance/time).", },
+{ "id": 278, "question": "Probability of a 'Head' in a single toss of a coin is:", "options": ["0", "0.5", "1", "0.25"], "answer": "0.5", "explanation": "There are 2 outcomes; 1/2 = 0.5.", },
+{ "id": 279, "question": "A set of all possible outcomes of an experiment is the:", "options": ["Subset", "Event", "Sample space", "Population"], "answer": "Sample space", "explanation": "The sample space lists every potential result.", },
+{ "id": 280, "question": "The geometric mean of 2 and 8 is:", "options": ["5", "4", "10", "6"], "answer": "4", "explanation": "√(2 * 8) = √16 = 4.", },
+{ "id": 281, "question": "Standard deviation divided by the mean is the:", "options": ["Variance", "Coefficient of variation", "Relative mean", "Standard error"], "answer": "Coefficient of variation", "explanation": "This ratio (without the *100) is the coefficient of dispersion; with *100, it is the CV.", },
+{ "id": 282, "question": "If Skewness is negative, then:", "options": ["Mean > Median", "Mean < Median", "Mean = Median", "Mode < Median"], "answer": "Mean < Median", "explanation": "In a left-skewed distribution, the mean is pulled down by low-value outliers.", },
+{ "id": 283, "question": "Kurtosis refers to the ________ of a curve.", "options": ["Symmetry", "Peakness", "Spread", "Location"], "answer": "Peakness", "explanation": "Kurtosis measures how peaked or flat a distribution is compared to a normal one.", },
+{ "id": 284, "question": "Data classification by 'Literacy' (Literate/Illiterate) is:", "options": ["Quantitative", "Qualitative", "Geographical", "Chronological"], "answer": "Qualitative", "explanation": "Literacy is a descriptive attribute, not a numerical measurement.", },
+{ "id": 285, "question": "A histogram is only suitable for:", "options": ["Discrete data", "Qualitative data", "Continuous data", "Nominal data"], "answer": "Continuous data", "explanation": "Histograms represent grouped continuous variables where bars touch.", },
+{ "id": 286, "question": "The sum of deviations from the median is minimum when using:", "options": ["Squared values", "Absolute values", "Reciprocals", "Logarithms"], "answer": "Absolute values", "explanation": "The median minimizes the sum of absolute differences from the center.", },
+{ "id": 287, "question": "An example of a secondary data source is:", "options": ["Observation", "Mailed questionnaire", "Published report", "Interview"], "answer": "Published report", "explanation": "Published reports are existing data sets compiled by others.", },
+{ "id": 288, "question": "A population is:", "options": ["A part of a sample", "A small group of people", "The entire group of interest", "A selection of data"], "answer": "The entire group of interest", "explanation": "In statistics, a population is the complete set of all items being studied.", },
+{ "id": 289, "question": "What is the mode of {1, 2, 2, 3, 4, 4}?", "options": ["2", "4", "2 and 4", "3"], "answer": "2 and 4", "explanation": "Since both 2 and 4 appear twice, the distribution is bimodal.", },
+{ "id": 290, "question": "Range is a measure of:", "options": ["Central tendency", "Dispersion", "Skewness", "Kurtosis"], "answer": "Dispersion", "explanation": "Range describes the spread of the data.", },
+{ "id": 291, "question": "If a coin is tossed twice, the number of outcomes is:", "options": ["2", "4", "6", "8"], "answer": "4", "explanation": "Outcomes are HH, HT, TH, TT (2^2 = 4).", },
+{ "id": 292, "question": "Which distribution is symmetrical?", "options": ["Positively skewed", "Normal", "Negatively skewed", "Poisson"], "answer": "Normal", "explanation": "The normal distribution is perfectly balanced around the mean.", },
+{ "id": 293, "question": "The value of 'r' (correlation) being +1 means:", "options": ["No correlation", "Weak correlation", "Perfect positive correlation", "Perfect negative correlation"], "answer": "Perfect positive correlation", "explanation": "A value of +1 indicates a direct, perfectly linear relationship.", },
+{ "id": 294, "question": "Which of these scales has a true zero?", "options": ["Nominal", "Ordinal", "Interval", "Ratio"], "answer": "Ratio", "explanation": "Ratio scales represent measurements where zero means 'none'.", },
+{ "id": 295, "question": "Mean deviation can be calculated from:", "options": ["Mean only", "Median only", "Mode only", "Any measure of central tendency"], "answer": "Any measure of central tendency", "explanation": "It is most commonly calculated from the Mean or Median.", },
+{ "id": 296, "question": "Statistics is usually considered as:", "options": ["Only a science", "Only an art", "Both science and art", "Neither science nor art"], "answer": "Both science and art", "explanation": "It uses scientific methods but requires artistic judgment in interpretation.", },
+{ "id": 297, "question": "Data collected via the internet is:", "options": ["Primary", "Secondary", "Always reliable", "Raw data"], "answer": "Secondary", "explanation": "If the data was already posted/processed by others, it is secondary.", },
+{ "id": 298, "question": "The coefficient of variation for a dataset with SD=5 and Mean=50 is:", "options": ["5%", "10%", "50%", "25%"], "answer": "10%", "explanation": "(5/50) * 100 = 10%.", },
+{ "id": 299, "question": "A distribution with a flat top is called:", "options": ["Leptokurtic", "Mesokurtic", "Platykurtic", "Symmetrical"], "answer": "Platykurtic", "explanation": "Platykurtic curves are flatter and have thinner tails than normal curves.", },
+{ "id": 300, "question": "The geometric mean of 1, 3, 9 is:", "options": ["4.3", "3", "9", "27"], "answer": "3", "explanation": "∛(1 * 3 * 9) = ∛27 = 3.", },
+{ "id": 301, "question": "The middle value of an ordered array of numbers is the:", "options": ["Mean", "Median", "Mode", "Midpoint"], "answer": "Median", "explanation": "The median is the value that divides a frequency distribution into two equal halves.", },
+{ "id": 302, "question": "Which of the following is a characteristic of a good average?", "options": ["It should be based on all observations", "It should be affected by extreme values", "It should be difficult to calculate", "It should be fluctuating"], "answer": "It should be based on all observations", "explanation": "A representative average should ideally account for every data point in the set.", },
+{ "id": 303, "question": "The measure of central tendency that cannot be calculated if any data point is missing is:", "options": ["Arithmetic Mean", "Median", "Mode", "Range"], "answer": "Arithmetic Mean", "explanation": "The mean requires the exact sum of all values; if one is missing, the total cannot be determined.", },
+{ "id": 304, "question": "Which average is used for qualitative data such as 'Intelligence' or 'Beauty'?", "options": ["Mean", "Median", "Mode", "Geometric Mean"], "answer": "Median", "explanation": "Median is suitable for ordinal qualitative data where items can be ranked but not measured numerically.", },
+{ "id": 305, "question": "The most frequent value in a data set is the:", "options": ["Mean", "Median", "Mode", "Variance"], "answer": "Mode", "explanation": "Mode is defined as the value with the highest frequency of occurrence.", },
+{ "id": 306, "question": "A distribution with only one mode is called:", "options": ["Bimodal", "Unimodal", "Multimodal", "Normal"], "answer": "Unimodal", "explanation": "Unimodal refers to a frequency distribution having a single peak.", },
+{ "id": 307, "question": "If a distribution is skewed to the right, it is called:", "options": ["Positively skewed", "Negatively skewed", "Symmetrical", "Normal"], "answer": "Positively skewed", "explanation": "Right-skewed distributions have a long tail extending toward the larger values.", },
+{ "id": 308, "question": "In a negatively skewed distribution, the relationship between Mean and Median is:", "options": ["Mean > Median", "Mean < Median", "Mean = Median", "Mean = Mode"], "answer": "Mean < Median", "explanation": "In a left-skewed distribution, the mean is smaller as it is pulled toward the lower-value tail.", },
+{ "id": 309, "question": "The standard deviation of a population is denoted by the Greek letter:", "options": ["Alpha (α)", "Beta (β)", "Sigma (σ)", "Mu (μ)"], "answer": "Sigma (σ)", "explanation": "Lowercase sigma (σ) is the standard symbol for population standard deviation.", },
+{ "id": 310, "question": "Which measure of dispersion is the most widely used and stable?", "options": ["Range", "Mean Deviation", "Standard Deviation", "Quartile Deviation"], "answer": "Standard Deviation", "explanation": "Standard deviation is the most mathematically robust measure of spread.", },
+{ "id": 311, "question": "Variance is the _______ of the standard deviation.", "options": ["Square root", "Square", "Reciprocal", "Logarithm"], "answer": "Square", "explanation": "Variance = (Standard Deviation)².", },
+{ "id": 312, "question": "If all values in a data set are the same, the variance is:", "options": ["Zero", "One", "Maximum", "The value itself"], "answer": "Zero", "explanation": "If there is no variation between data points, the variance must be zero.", },
+{ "id": 313, "question": "The coefficient of variation is a _______ measure of dispersion.", "options": ["Absolute", "Relative", "Logarithmic", "Constant"], "answer": "Relative", "explanation": "Relative measures are ratios or percentages used to compare different datasets.", },
+{ "id": 314, "question": "Which measure of dispersion is based on the middle 50% of the data?", "options": ["Range", "Interquartile Range", "Standard Deviation", "Mean Deviation"], "answer": "Interquartile Range", "explanation": "The IQR ignores the bottom 25% and top 25% of the data.", },
+{ "id": 315, "question": "An outlier is a data point that is:", "options": ["In the middle", "Very large or very small compared to the rest", "Missing", "Negative"], "answer": "Very large or very small compared to the rest", "explanation": "Outliers are extreme values that deviate significantly from other observations.", },
+{ "id": 316, "question": "Which chart uses dots connected by lines to show changes over time?", "options": ["Bar Chart", "Pie Chart", "Line Graph", "Histogram"], "answer": "Line Graph", "explanation": "Line graphs effectively visualize trends and fluctuations over a continuous period.", },
+{ "id": 317, "question": "The process of collecting data from every member of a population is a:", "options": ["Sample", "Census", "Survey", "Poll"], "answer": "Census", "explanation": "A census involves a 100% enumeration of the population.", },
+{ "id": 318, "question": "Which sampling method involves dividing the population into groups and then selecting whole groups?", "options": ["Stratified Sampling", "Cluster Sampling", "Systematic Sampling", "Random Sampling"], "answer": "Cluster Sampling", "explanation": "In cluster sampling, the population is divided into clusters and entire clusters are chosen randomly.", },
+{ "id": 319, "question": "A systematic error that leads to results deviating from the true value is:", "options": ["Random Error", "Bias", "Precision", "Standard Error"], "answer": "Bias", "explanation": "Bias is a consistent, non-random distortion in a result.", },
+{ "id": 320, "question": "The arithmetic mean of 10, 20, 30, 40 is:", "options": ["20", "25", "30", "100"], "answer": "25", "explanation": "(10+20+30+40)/4 = 100/4 = 25.", },
+{ "id": 321, "question": "Which of the following is a primary data collection method?", "options": ["Reading a journal", "Internet search", "Observation", "Library research"], "answer": "Observation", "explanation": "Observation is a firsthand method of gathering original data.", },
+{ "id": 322, "question": "Which table heading describes the vertical columns?", "options": ["Stub", "Caption", "Title", "Footnote"], "answer": "Caption", "explanation": "Captions are the designations for columns in a statistical table.", },
+{ "id": 323, "question": "Data grouped into classes is known as:", "options": ["Raw data", "Primary data", "Grouped data", "Discrete data"], "answer": "Grouped data", "explanation": "Grouped data is organized into intervals or categories to simplify analysis.", },
+{ "id": 324, "question": "The upper limit of a class is 50 and the lower limit is 40. The class mark is:", "options": ["10", "40", "45", "50"], "answer": "45", "explanation": "(40+50)/2 = 45.", },
+{ "id": "325", "question": "What is the range of {12, 5, 8, 20, 15}?", "options": ["8", "12", "15", "20"], "answer": "15", "explanation": "Range = 20 - 5 = 15.", },
+{ "id": 326, "question": "Probability is often expressed as a:", "options": ["Percentage", "Decimal", "Ratio", "All of the above"], "answer": "All of the above", "explanation": "Probability can be written as 0.5, 50%, or 1/2.", },
+{ "id": 327, "question": "Two events that have no outcomes in common are:", "options": ["Independent", "Dependent", "Mutually Exclusive", "Certain"], "answer": "Mutually Exclusive", "explanation": "They cannot happen at the same time.", },
+{ "id": 328, "question": "Which of the following is a measure of skewness?", "options": ["Karl Pearson's Coefficient", "Standard Deviation", "Mean", "Variance"], "answer": "Karl Pearson's Coefficient", "explanation": "This coefficient is used to measure the asymmetry of a distribution.", },
+{ "id": 329, "question": "A distribution with Kurtosis > 3 is:", "options": ["Platykurtic", "Mesokurtic", "Leptokurtic", "Normal"], "answer": "Leptokurtic", "explanation": "Leptokurtic distributions have higher peaks and heavier tails than a normal distribution.", },
+{ "id": 330, "question": "Which level of measurement uses names or labels only?", "options": ["Nominal", "Ordinal", "Interval", "Ratio"], "answer": "Nominal", "explanation": "Nominal data has no numerical value or order (e.g., Colors, Names).", },
+{ "id": 331, "question": "Qualitative data is also known as:", "options": ["Numerical data", "Categorical data", "Continuous data", "Variable data"], "answer": "Categorical data", "explanation": "Qualitative data describes qualities or characteristics in categories.", },
+{ "id": 332, "question": "The collection of all people or items that a researcher is interested in is the:", "options": ["Sample", "Subgroup", "Population", "Frame"], "answer": "Population", "explanation": "The population is the entire group under study.", },
+{ "id": 333, "question": "Selecting every 10th person from a list is called:", "options": ["Random Sampling", "Systematic Sampling", "Stratified Sampling", "Cluster Sampling"], "answer": "Systematic Sampling", "explanation": "Systematic sampling uses a fixed interval (k) to select subjects.", },
+{ "id": 334, "question": "Standard Deviation is always expressed in the _______ units as the original data.", "options": ["Same", "Squared", "Different", "Percentage"], "answer": "Same", "explanation": "Unlike variance, standard deviation shares the same units as the mean and the data.", },
+{ "id": 335, "question": "The total number of observations is denoted by:", "options": ["Σx", "n", "f", "x̄"], "answer": "n", "explanation": "'n' (or 'N') represents the sample size or total frequency.", },
+{ "id": 336, "question": "A bar chart used for categorical data is:", "options": ["Histogram", "Component Bar Chart", "Simple Bar Chart", "Pie Chart"], "answer": "Simple Bar Chart", "explanation": "Simple bar charts display one categorical variable with bars of equal width.", },
+{ "id": 337, "question": "A cumulative frequency curve is called a/an:", "options": ["Histogram", "Polygon", "Ogive", "Scatter Plot"], "answer": "Ogive", "explanation": "Ogives are used to determine percentiles and medians graphically.", },
+{ "id": 338, "question": "Which measure of central tendency is the value that occurs most often?", "options": ["Mean", "Median", "Mode", "Geometric Mean"], "answer": "Mode", "explanation": "The mode is the 'fashionable' or most popular value.", },
+{ "id": 339, "question": "The range of the values 7, 7, 7, 7 is:", "options": ["7", "28", "0", "1"], "answer": "0", "explanation": "Max (7) - Min (7) = 0.", },
+{ "id": 340, "question": "Data collected by the investigator himself for the first time is:", "options": ["Primary data", "Secondary data", "External data", "Historical data"], "answer": "Primary data", "explanation": "Primary data is original and specifically collected for the current research.", },
+{ "id": 341, "question": "In a statistical table, footnotes are placed at the:", "options": ["Top", "Middle", "Bottom", "Left"], "answer": "Bottom", "explanation": "Footnotes explain symbols or source details and are placed below the table body.", },
+{ "id": 342, "question": "The geometric mean is always _______ the arithmetic mean for non-identical values.", "options": ["Greater than", "Less than", "Equal to", "Zero"], "answer": "Less than", "explanation": "For any positive data set, AM ≥ GM ≥ HM.", },
+{ "id": 343, "question": "Which of the following is a non-probability sampling method?", "options": ["Simple Random", "Convenience", "Stratified", "Cluster"], "answer": "Convenience", "explanation": "Convenience sampling is based on ease of access rather than random selection.", },
+{ "id": 344, "question": "A questionnaire is a tool for:", "options": ["Data Analysis", "Data Presentation", "Data Collection", "Data Storage"], "answer": "Data Collection", "explanation": "Questionnaires are used to gather responses directly from subjects.", },
+{ "id": 345, "question": "The square of the standard deviation is:", "options": ["Mean", "Variance", "Range", "Coefficient of Variation"], "answer": "Variance", "explanation": "Standard deviation is the square root of variance, so variance is the square of SD.", },
+{ "id": 346, "question": "Which distribution has a kurtosis of 3?", "options": ["Leptokurtic", "Platykurtic", "Mesokurtic", "Asymmetric"], "answer": "Mesokurtic", "explanation": "Mesokurtic is the name for the kurtosis of a normal distribution.", },
+{ "id": 347, "question": "A value that divides a dataset into 100 equal parts is a:", "options": ["Quartile", "Decile", "Percentile", "Median"], "answer": "Percentile", "explanation": "Percentiles range from P1 to P99, creating 100 segments.", },
+{ "id": 348, "question": "The mean of the values 2, 4, 6, 8 is:", "options": ["4", "5", "6", "20"], "answer": "5", "explanation": "(2+4+6+8)/4 = 20/4 = 5.", },
+{ "id": 349, "question": "If r = 0, it indicates:", "options": ["Perfect correlation", "Negative correlation", "No linear correlation", "Strong correlation"], "answer": "No linear correlation", "explanation": "A correlation coefficient of zero suggests no linear relationship between variables.", },
+{ "id": 350, "question": "Which of the following is a discrete variable?", "options": ["Weight of a person", "Distance between two cities", "Number of students in a class", "Speed of a car"], "answer": "Number of students in a class", "explanation": "Students are counted in whole numbers, making the variable discrete.", },
+{ "id": 351, "question": "The first step in any statistical investigation is:", "options": ["Data collection", "Data analysis", "Data organization", "Defining the problem"], "answer": "Defining the problem", "explanation": "One must know what they are investigating before gathering data.", },
+{ "id": 352, "question": "In classification, data are categorized according to:", "options": ["Similarities", "Differences", "Both similarities and differences", "Neither"], "answer": "Similarities", "explanation": "Classification groups data with similar characteristics together.", },
+{ "id": 353, "question": "Which average is calculated as the nth root of the product of n observations?", "options": ["Arithmetic Mean", "Geometric Mean", "Harmonic Mean", "Weighted Mean"], "answer": "Geometric Mean", "explanation": "This is the mathematical definition of the geometric mean.", },
+{ "id": 354, "question": "The median of 1, 3, 5, 7, 9 is:", "options": ["3", "5", "7", "25"], "answer": "5", "explanation": "5 is the middle value in this sorted list.", },
+{ "id": 355, "question": "The absolute measure of dispersion that uses all observations is:", "options": ["Range", "Quartile Deviation", "Mean Deviation", "None"], "answer": "Mean Deviation", "explanation": "Mean deviation calculates the average distance of every data point from the center.", },
+{ "id": 356, "question": "Standard deviation was introduced by:", "options": ["Karl Pearson", "Fisher", "Bowley", "Galton"], "answer": "Karl Pearson", "explanation": "Karl Pearson is credited with developing the concept of standard deviation in 1893.", },
+{ "id": 357, "question": "If Skewness = 0, the distribution is:", "options": ["Positive", "Negative", "Symmetrical", "Peaked"], "answer": "Symmetrical", "explanation": "Zero skewness means the left and right halves are mirror images.", },
+{ "id": 358, "question": "The probability of an event happening plus the probability of it not happening is:", "options": ["0", "1", "0.5", "Unknown"], "answer": "1", "explanation": "P(A) + P(A') = 1.", },
+{ "id": 359, "question": "Which diagram is best for comparing two or more sets of data?", "options": ["Simple Bar Chart", "Multiple Bar Chart", "Pie Chart", "Line Graph"], "answer": "Multiple Bar Chart", "explanation": "Multiple bar charts allow for a direct comparison of different groups side-by-side.", },
+{ "id": 360, "question": "The 2nd quartile is equal to the:", "options": ["Mean", "Median", "Mode", "5th Decile"], "answer": "Median", "explanation": "Q2, D5, and P50 all represent the median.", },
+{ "id": 361, "question": "A sample that is not representative of the population is:", "options": ["Unbiased", "Biased", "Random", "Stratified"], "answer": "Biased", "explanation": "A biased sample results in misleading conclusions about the population.", },
+{ "id": 362, "question": "Numerical data that can be measured on a scale is:", "options": ["Qualitative", "Quantitative", "Categorical", "Nominal"], "answer": "Quantitative", "explanation": "Quantitative data deal with numbers and things that you can measure.", },
+{ "id": 363, "question": "The range of a probability value is:", "options": ["0 to 1", "-1 to 1", "0 to 100", "-Infinity to +Infinity"], "answer": "0 to 1", "explanation": "Probability cannot be negative or greater than 1.", },
+{ "id": 364, "question": "What is the mode of {5, 8, 5, 2, 5, 9}?", "options": ["2", "5", "8", "9"], "answer": "5", "explanation": "5 occurs three times, more than any other number.", },
+{ "id": 365, "question": "Which of the following is a continuous variable?", "options": ["Number of pets", "Number of rooms", "Time taken to run a race", "Number of books"], "answer": "Time taken to run a race", "explanation": "Time can be measured in infinitely divisible units (seconds, milliseconds, etc.).", },
+{ "id": 366, "question": "Data classification by 'Gender' is called:", "options": ["Quantitative", "Chronological", "Geographical", "Qualitative"], "answer": "Qualitative", "explanation": "Gender is a descriptive characteristic.", },
+{ "id": 367, "question": "The variance of the values 4, 4, 4, 4 is:", "options": ["4", "16", "0", "1"], "answer": "0", "explanation": "Since there is no deviation from the mean, the variance is zero.", },
+{ "id": 368, "question": "The summary result obtained from a sample is called a:", "options": ["Parameter", "Statistic", "Variable", "Hypothesis"], "answer": "Statistic", "explanation": "Statistics describe samples; parameters describe populations.", },
+{ "id": 369, "question": "The total area under the normal curve is:", "options": ["100", "0.5", "1", "3"], "answer": "1", "explanation": "The area under any probability density function represents the total probability, which is 1.", },
+{ "id": 370, "question": "Which of the following is a measure of relative dispersion?", "options": ["Standard Deviation", "Coefficient of Variation", "Range", "Mean Deviation"], "answer": "Coefficient of Variation", "explanation": "Relative measures are unit-less and used for comparisons.", },
+{ "id": 371, "question": "If two events A and B are independent, P(A and B) is:", "options": ["P(A) + P(B)", "P(A) * P(B)", "P(A) - P(B)", "P(A) / P(B)"], "answer": "P(A) * P(B)", "explanation": "The multiplication rule for independent events.", },
+{ "id": 372, "question": "Which curve is also known as a 'Bell-shaped' curve?", "options": ["Binomial", "Poisson", "Normal", "Uniform"], "answer": "Normal", "explanation": "The normal distribution curve is famously bell-shaped.", },
+{ "id": 373, "question": "A distribution with a flat top is:", "options": ["Leptokurtic", "Mesokurtic", "Platykurtic", "Skewed"], "answer": "Platykurtic", "explanation": "Platykurtic distributions have negative excess kurtosis and a flatter peak.", },
+{ "id": 374, "question": "The standard deviation of {10, 10, 10} is:", "options": ["10", "30", "0", "1"], "answer": "0", "explanation": "There is no variation in the data.", },
+{ "id": 375, "question": "Which scale of measurement is the highest and most informative?", "options": ["Nominal", "Ordinal", "Interval", "Ratio"], "answer": "Ratio", "explanation": "Ratio scales have a true zero and allow for all mathematical operations.", },
+{ "id": 376, "question": "Data from a census bureau report is:", "options": ["Primary", "Secondary", "Biased", "Raw"], "answer": "Secondary", "explanation": "It was collected and processed by another agency.", },
+{ "id": 377, "question": "A value that is 2 standard deviations above the mean has a Z-score of:", "options": ["0", "1", "2", "-2"], "answer": "2", "explanation": "Z-score = (Value - Mean) / SD.", },
+{ "id": 378, "question": "The median divides the data into _______ equal parts.", "options": ["Two", "Four", "Ten", "One hundred"], "answer": "Two", "explanation": "50% above and 50% below the median.", },
+{ "id": 379, "question": "Which of the following describes a 'Bimodal' distribution?", "options": ["One peak", "Two peaks", "No peaks", "Flat top"], "answer": "Two peaks", "explanation": "Bimodal means there are two modes (two most frequent values).", },
+{ "id": 380, "question": "The harmonic mean of 2 and 4 is:", "options": ["3", "2.67", "2.5", "8"], "answer": "2.67", "explanation": "2 / (1/2 + 1/4) = 2 / (0.75) = 2.67.", },
+{ "id": 381, "question": "A 'statistic' is used to estimate a:", "options": ["Variable", "Constant", "Parameter", "Sample"], "answer": "Parameter", "explanation": "We use sample statistics to make inferences about population parameters.", },
+{ "id": 382, "question": "The probability of an impossible event is:", "options": ["1", "0", "0.5", "-1"], "answer": "0", "explanation": "If it can't happen, the probability is zero.", },
+{ "id": 383, "question": "Which of these is a measure of dispersion?", "options": ["Mean", "Median", "Range", "Mode"], "answer": "Range", "explanation": "Range measures the spread of the data.", },
+{ "id": 384, "question": "In a symmetric distribution, Mean, Median, and Mode are:", "options": ["Different", "Equal", "Positive", "Negative"], "answer": "Equal", "explanation": "They all fall at the center of the bell curve.", },
+{ "id": 385, "question": "A pie chart represents data using:", "options": ["Bars", "Lines", "Angles of a circle", "Dots"], "answer": "Angles of a circle", "explanation": "The total of 360 degrees is divided proportionally.", },
+{ "id": 386, "question": "The 'Stub' of a table consists of:", "options": ["Column headings", "Row headings", "Table title", "Source notes"], "answer": "Row headings", "explanation": "Stubs identify the rows on the left side of the table.", },
+{ "id": 387, "question": "Which average is most affected by outliers?", "options": ["Arithmetic Mean", "Median", "Mode", "Geometric Mean"], "answer": "Arithmetic Mean", "explanation": "The mean calculation includes every value, so extreme numbers skew it.", },
+{ "id": 388, "question": "The process of gathering data from a subset of the population is:", "options": ["Census", "Sampling", "Tabulation", "Organization"], "answer": "Sampling", "explanation": "Sampling is studying a part to understand the whole.", },
+{ "id": 389, "question": "The difference between the maximum and minimum values is:", "options": ["Mean", "Standard Deviation", "Range", "Variance"], "answer": "Range", "explanation": "Basic definition of range.", },
+{ "id": 390, "question": "A variable that can take any decimal value is:", "options": ["Discrete", "Continuous", "Qualitative", "Categorical"], "answer": "Continuous", "explanation": "Continuous variables have infinite possible values within an interval.", },
+{ "id": 391, "question": "Data collected via a telephone interview is:", "options": ["Primary", "Secondary", "Biased", "Inaccurate"], "answer": "Primary", "explanation": "Direct collection from respondents for the research at hand.", },
+{ "id": 392, "question": "Which of the following is not a measure of central tendency?", "options": ["Mean", "Standard Deviation", "Median", "Mode"], "answer": "Standard Deviation", "explanation": "SD is a measure of dispersion.", },
+{ "id": 393, "question": "The sum of probabilities in a distribution is:", "options": ["0", "0.5", "1", "100"], "answer": "1", "explanation": "Total probability must equal 1.", },
+{ "id": 394, "question": "A histogram has bars that are:", "options": ["Separated", "Touching", "Circular", "Horizontal"], "answer": "Touching", "explanation": "Touching bars indicate the continuity of the data intervals.", },
+{ "id": 395, "question": "Which sampling method gives every item an equal chance of being picked?", "options": ["Simple Random Sampling", "Judgmental Sampling", "Convenience Sampling", "Quota Sampling"], "answer": "Simple Random Sampling", "explanation": "The definition of random selection.", },
+{ "id": 396, "question": "Percentiles divide data into _______ equal parts.", "options": ["4", "10", "50", "100"], "answer": "100", "explanation": "As the name suggests (percent = 100).", },
+{ "id": 397, "question": "A distribution with a long tail on the left is:", "options": ["Positively skewed", "Negatively skewed", "Symmetrical", "Mesokurtic"], "answer": "Negatively skewed", "explanation": "Left-skewed distributions have the tail pointing toward lower values.", },
+{ "id": 398, "question": "The mean of 5, 5, 5, 5 is:", "options": ["0", "5", "20", "4"], "answer": "5", "explanation": "Sum (20) / Count (4) = 5.", },
+{ "id": 399, "question": "In the formula Z = (X - μ) / σ, μ represents the:", "options": ["Standard Deviation", "Mean", "Variance", "Mode"], "answer": "Mean", "explanation": "Mu (μ) is the symbol for the population mean.", },
+{ "id": 400, "question": "Standard deviation is the square root of:", "options": ["Mean", "Median", "Variance", "Range"], "answer": "Variance", "explanation": "Definition of standard deviation.", },
+{ "id": 401, "question": "The collection of all units of a specified type in a given area at a particular time is a:", "options": ["Sample", "Population", "Frame", "Universe"], "answer": "Population", "explanation": "In statistics, the population (or universe) represents the entire group under study.", },
+{ "id": 402, "question": "Which of the following is a characteristic of a discrete variable?", "options": ["It can take any value", "It has no gaps between values", "It is usually obtained by counting", "It is always a fraction"], "answer": "It is usually obtained by counting", "explanation": "Discrete variables represent counts and jump from one distinct value to another.", },
+{ "id": 403, "question": "A frequency distribution with an infinite number of values is:", "options": ["Discrete", "Continuous", "Qualitative", "Categorical"], "answer": "Continuous", "explanation": "Continuous variables can assume any value within a range, leading to an infinite number of possibilities.", },
+{ "id": 404, "question": "The process of checking data for accuracy and completeness is:", "options": ["Tabulation", "Classification", "Editing", "Coding"], "answer": "Editing", "explanation": "Editing involves reviewing the raw data to detect and correct errors or omissions.", },
+{ "id": 405, "question": "Data obtained from an investigator's own field of inquiry is:", "options": ["Primary Data", "Secondary Data", "Internal Data", "External Data"], "answer": "Primary Data", "explanation": "Primary data is collected firsthand for the specific purpose of the study.", },
+{ "id": 406, "question": "Which of the following is a disadvantage of primary data?", "options": ["It is specific to the problem", "It is highly reliable", "It is time-consuming and expensive", "It is original"], "answer": "It is time-consuming and expensive", "explanation": "Primary data collection requires significant resources compared to using existing records.", },
+{ "id": 407, "question": "The 'Source Note' in a statistical table is usually placed:", "options": ["Above the title", "Below the footnotes", "Inside the body", "In the stub"], "answer": "Below the footnotes", "explanation": "Source notes credit the origin of the data and are placed at the very bottom.", },
+{ "id": 408, "question": "A table showing the distribution of a single variable is a:", "options": ["Univariate Table", "Bivariate Table", "Manifold Table", "Complex Table"], "answer": "Univariate Table", "explanation": "Univariate tables summarize data for one characteristic only.", },
+{ "id": 409, "question": "Which chart represents data through lengths of rectangles?", "options": ["Pie Chart", "Bar Chart", "Line Graph", "Ogive"], "answer": "Bar Chart", "explanation": "The length (or height) of bars in a bar chart is proportional to the values they represent.", },
+{ "id": 410, "question": "In a histogram, the area of each rectangle is proportional to the:", "options": ["Class Width", "Class Frequency", "Midpoint", "Lower Limit"], "answer": "Class Frequency", "explanation": "The total area of the histogram represents the total frequency of the distribution.", },
+{ "id": 411, "question": "A frequency curve that is symmetrical and bell-shaped is the:", "options": ["U-shaped Curve", "J-shaped Curve", "Normal Curve", "L-shaped Curve"], "answer": "Normal Curve", "explanation": "The normal curve is perfectly symmetrical around its center.", },
+{ "id": 412, "question": "Which measure of central tendency is the most 'typical' value?", "options": ["Mean", "Median", "Mode", "Range"], "answer": "Mode", "explanation": "Mode represents the most common or 'typical' occurrence in a data set.", },
+{ "id": 413, "question": "The sum of the values divided by the number of values is the:", "options": ["Arithmetic Mean", "Geometric Mean", "Harmonic Mean", "Median"], "answer": "Arithmetic Mean", "explanation": "This is the standard formula for the average.", },
+{ "id": 414, "question": "Which average is calculated using logarithms?", "options": ["Arithmetic Mean", "Geometric Mean", "Harmonic Mean", "Median"], "answer": "Geometric Mean", "explanation": "The geometric mean can be found by taking the antilog of the average of the logs.", },
+{ "id": 415, "question": "Which measure is most suitable for calculating average growth rates?", "options": ["Arithmetic Mean", "Median", "Geometric Mean", "Mode"], "answer": "Geometric Mean", "explanation": "Geometric mean is the best measure for compounding and growth rates.", },
+{ "id": 416, "question": "The median of {20, 10, 30, 50, 40} is:", "options": ["20", "30", "40", "150"], "answer": "30", "explanation": "When sorted (10, 20, 30, 40, 50), 30 is the middle value.", },
+{ "id": 417, "question": "A measure of dispersion indicates the _______ of the data.", "options": ["Center", "Spread", "Symmetry", "Peakness"], "answer": "Spread", "explanation": "Dispersion measures how far apart data points are from each other.", },
+{ "id": 418, "question": "Which measure of dispersion is the easiest to calculate?", "options": ["Range", "Standard Deviation", "Variance", "Mean Deviation"], "answer": "Range", "explanation": "Range only requires finding the maximum and minimum values.", },
+{ "id": 419, "question": "Quartile deviation is also known as:", "options": ["Interquartile Range", "Semi-Interquartile Range", "Standard Deviation", "Mean Deviation"], "answer": "Semi-Interquartile Range", "explanation": "It is calculated as (Q3 - Q1) / 2.", },
+{ "id": 420, "question": "The arithmetic mean of deviations from the mean is always:", "options": ["One", "Zero", "Positive", "Maximum"], "answer": "Zero", "explanation": "The sum of (x - x̄) is 0, so their mean is also 0.", },
+{ "id": 421, "question": "Which measure of dispersion is most affected by the sampling process?", "options": ["Range", "Standard Deviation", "Quartile Deviation", "Mean Deviation"], "answer": "Range", "explanation": "Range changes drastically if a new extreme value is sampled.", },
+{ "id": 422, "question": "Skewness measures the lack of:", "options": ["Spread", "Center", "Symmetry", "Continuity"], "answer": "Symmetry", "explanation": "Skewness determines if a distribution is lopsided.", },
+{ "id": 423, "question": "If Mean > Median > Mode, the distribution is:", "options": ["Symmetrical", "Negatively Skewed", "Positively Skewed", "Uniform"], "answer": "Positively Skewed", "explanation": "The tail on the right pulls the mean to a higher value than the median.", },
+{ "id": 424, "question": "Kurtosis is a measure of the _______ of the distribution.", "options": ["Lopsidedness", "Flatness or Peakness", "Spread", "Average"], "answer": "Flatness or Peakness", "explanation": "Kurtosis describes the shape of the peak relative to a normal distribution.", },
+{ "id": 425, "question": "A normal distribution has a coefficient of kurtosis equal to:", "options": ["0", "1", "3", "-3"], "answer": "3", "explanation": "A mesokurtic distribution (normal) has a kurtosis value of 3.", },
+{ "id": 426, "question": "The probability of an event and its complement always sum to:", "options": ["0", "0.5", "1", "10"], "answer": "1", "explanation": "Something must either happen or not happen; the total probability is 1.", },
+{ "id": 427, "question": "Which sampling method uses a 'Sample Frame' or a list of the population?", "options": ["Simple Random Sampling", "Convenience Sampling", "Quota Sampling", "Snowball Sampling"], "answer": "Simple Random Sampling", "explanation": "Random sampling requires a complete list of the population members to choose from.", },
+{ "id": 428, "question": "Grouping data by 'Age' (0-10, 11-20) is:", "options": ["Qualitative Classification", "Quantitative Classification", "Geographical Classification", "Chronological Classification"], "answer": "Quantitative Classification", "explanation": "Age is a numerical measurement.", },
+{ "id": 429, "question": "A study of the entire population is called a:", "options": ["Sample survey", "Census", "Pilot study", "Field work"], "answer": "Census", "explanation": "The definition of a census is a total count.", },
+{ "id": 430, "question": "The mode of {4, 4, 2, 2, 5, 5} is:", "options": ["4", "2", "5", "No mode"], "answer": "No mode", "explanation": "Since all values appear with the same frequency, there is no distinct mode.", },
+{ "id": 431, "question": "The height of a person is an example of a _______ variable.", "options": ["Discrete", "Continuous", "Qualitative", "Nominal"], "answer": "Continuous", "explanation": "Height can be measured in fractions (e.g., 170.5 cm).", },
+{ "id": 432, "question": "A frequency polygon is a _______ representation of data.", "options": ["Tabular", "Graphical", "Mathematical", "Logical"], "answer": "Graphical", "explanation": "It is a line graph version of a histogram.", },
+{ "id": 433, "question": "The sum of the frequencies in a relative frequency distribution is:", "options": ["1", "100", "Total N", "0"], "answer": "1", "explanation": "Relative frequencies are proportions; their sum is 1.0.", },
+{ "id": 434, "question": "Which level of measurement allows for the 'ranking' of data only?", "options": ["Nominal", "Ordinal", "Interval", "Ratio"], "answer": "Ordinal", "explanation": "Ordinal data provides order but not precise differences.", },
+{ "id": 435, "question": "The range of {100, 100, 100} is:", "options": ["100", "300", "0", "1"], "answer": "0", "explanation": "Max - Min = 0.", },
+{ "id": 436, "question": "Data collected from a previous year's tax records is:", "options": ["Primary", "Secondary", "Biased", "Raw"], "answer": "Secondary", "explanation": "It was collected for another purpose and is being reused.", },
+{ "id": 437, "question": "A value that divides the data into 10 equal parts is a:", "options": ["Quartile", "Decile", "Percentile", "Median"], "answer": "Decile", "explanation": "Deciles range from D1 to D9.", },
+{ "id": 438, "question": "The arithmetic mean of 5, 10, 15 is:", "options": ["5", "10", "15", "30"], "answer": "10", "explanation": "(5+10+15)/3 = 30/3 = 10.", },
+{ "id": 439, "question": "If Skewness = 0, the mean is _______ the median.", "options": ["Greater than", "Less than", "Equal to", "Double"], "answer": "Equal to", "explanation": "Symmetry means central measures coincide.", },
+{ "id": 440, "question": "The square root of variance is:", "options": ["Standard Deviation", "Mean Deviation", "Range", "CV"], "answer": "Standard Deviation", "explanation": "SD = √Variance.", },
+{ "id": 441, "question": "Which average should be used for ratios and percentages?", "options": ["Arithmetic Mean", "Geometric Mean", "Harmonic Mean", "Median"], "answer": "Geometric Mean", "explanation": "GM is mathematically correct for averaging ratios.", },
+{ "id": 442, "question": "The probability of picking an Ace from a deck of cards is:", "options": ["1/52", "4/52", "1/13", "B and C"], "answer": "B and C", "explanation": "There are 4 Aces in 52 cards, which simplifies to 1/13.", },
+{ "id": 443, "question": "Which scale has a true zero and equal intervals?", "options": ["Nominal", "Ordinal", "Interval", "Ratio"], "answer": "Ratio", "explanation": "The ratio scale is the most complete measurement scale.", },
+{ "id": 444, "question": "The 'Stub' describes the:", "options": ["Rows", "Columns", "Titles", "Data"], "answer": "Rows", "explanation": "Stubs are row labels.", },
+{ "id": 445, "question": "A histogram is used for _______ frequency distributions.", "options": ["Discrete", "Continuous", "Qualitative", "Bivariate"], "answer": "Continuous", "explanation": "Histograms show frequency of continuous data classes.", },
+{ "id": 446, "question": "The sum of squared deviations is least when taken from the:", "options": ["Mean", "Median", "Mode", "Geometric Mean"], "answer": "Mean", "explanation": "This is a key mathematical property of the arithmetic mean.", },
+{ "id": 447, "question": "Which sampling method is also known as 'Haphazard' sampling?", "options": ["Random", "Systematic", "Convenience", "Cluster"], "answer": "Convenience", "explanation": "Convenience sampling is based on what is readily available.", },
+{ "id": 448, "question": "Standard deviation divided by Mean multiplied by 100 is:", "options": ["Variance", "Standard Error", "Coefficient of Variation", "Skewness"], "answer": "Coefficient of Variation", "explanation": "Formula for CV.", },
+{ "id": 449, "question": "A distribution with a sharp peak is:", "options": ["Leptokurtic", "Platykurtic", "Mesokurtic", "Normal"], "answer": "Leptokurtic", "explanation": "Lepto = thin/sharp peak.", },
+{ "id": 450, "question": "The mean of the first three natural numbers (1, 2, 3) is:", "options": ["1", "2", "3", "6"], "answer": "2", "explanation": "(1+2+3)/3 = 2.", },
+{ "id": 451, "question": "Statistics as a subject deals with _______ data.", "options": ["Individual", "Qualitative only", "Aggregate", "Personal"], "answer": "Aggregate", "explanation": "Statistics is interested in groups and totals, not single individuals.", },
+{ "id": 452, "question": "Which of the following is a source of primary data?", "options": ["Newspaper", "Mailed Questionnaire", "Government Gazette", "Library"], "answer": "Mailed Questionnaire", "explanation": "A questionnaire generates new, original data.", },
+{ "id": 453, "question": "Classification of data according to 'States' in a country is:", "options": ["Quantitative", "Qualitative", "Geographical", "Chronological"], "answer": "Geographical", "explanation": "Spatial or area-based grouping.", },
+{ "id": 454, "question": "The width of a class interval is the _______ between class boundaries.", "options": ["Sum", "Product", "Difference", "Ratio"], "answer": "Difference", "explanation": "Class Width = Upper Boundary - Lower Boundary.", },
+{ "id": 455, "question": "A pie chart is also called a:", "options": ["Bar graph", "Circle graph", "Linear graph", "Dot plot"], "answer": "Circle graph", "explanation": "Because it uses a circular area.", },
+{ "id": 456, "question": "In a symmetrical distribution, Skewness is:", "options": ["Positive", "Negative", "Zero", "1"], "answer": "Zero", "explanation": "No asymmetry exists.", },
+{ "id": 457, "question": "The harmonic mean of 1 and 2 is:", "options": ["1.5", "1.33", "2", "1"], "answer": "1.33", "explanation": "2 / (1/1 + 1/2) = 2 / 1.5 = 1.33.", },
+{ "id": 458, "question": "The probability of a sure event is:", "options": ["0", "0.5", "1", "100"], "answer": "1", "explanation": "100% certainty = 1.", },
+{ "id": 459, "question": "Which diagram shows the relationship between two variables?", "options": ["Bar Chart", "Pie Chart", "Scatter Diagram", "Histogram"], "answer": "Scatter Diagram", "explanation": "Scatter plots show how two variables correlate.", },
+{ "id": 460, "question": "The second quartile (Q2) is equal to:", "options": ["Mean", "Median", "Mode", "Range"], "answer": "Median", "explanation": "Q2 is the 50th percentile.", },
+{ "id": 461, "question": "Which sampling method is best for a population with distinct subgroups?", "options": ["Simple Random", "Stratified Random", "Systematic", "Convenience"], "answer": "Stratified Random", "explanation": "Stratification ensures each subgroup is represented.", },
+{ "id": 462, "question": "Quantities that vary from one individual to another are:", "options": ["Constants", "Variables", "Parameters", "Statistics"], "answer": "Variables", "explanation": "A variable is any characteristic that can change.", },
+{ "id": 463, "question": "The total of all probabilities in a sample space is:", "options": ["0", "1", "Infinite", "Depends on N"], "answer": "1", "explanation": "Axiom of probability.", },
+{ "id": 464, "question": "What is the mode of {1, 1, 2, 2, 3, 3, 3}?", "options": ["1", "2", "3", "No mode"], "answer": "3", "explanation": "3 appears most often.", },
+{ "id": 465, "question": "Temperature in Celsius is an example of an _______ scale.", "options": ["Nominal", "Ordinal", "Interval", "Ratio"], "answer": "Interval", "explanation": "Interval scales have no true zero (0°C doesn't mean 'no heat').", },
+{ "id": 466, "question": "Data classification by 'Literacy' is:", "options": ["Quantitative", "Chronological", "Geographical", "Qualitative"], "answer": "Qualitative", "explanation": "Literacy is an attribute.", },
+{ "id": 467, "question": "The variance of {5, 5, 5} is:", "options": ["5", "25", "0", "1"], "answer": "0", "explanation": "No variation.", },
+{ "id": 468, "question": "The numerical summary of a population is a:", "options": ["Parameter", "Statistic", "Variable", "Sample"], "answer": "Parameter", "explanation": "Population = Parameter (both start with P).", },
+{ "id": 469, "question": "The area under the normal curve between -1 and +1 SD is approximately:", "options": ["50%", "68%", "95%", "99%"], "answer": "68%", "explanation": "The 68-95-99.7 empirical rule.", },
+{ "id": 470, "question": "Coefficient of variation is used to compare _______ of two groups.", "options": ["Averages", "Consistency", "Totals", "Sizes"], "answer": "Consistency", "explanation": "Lower CV means higher consistency/stability.", },
+{ "id": 471, "question": "If P(A) = 0.5 and P(B) = 0.5 for independent events, P(A and B) is:", "options": ["1", "0", "0.25", "0.5"], "answer": "0.25", "explanation": "0.5 * 0.5 = 0.25.", },
+{ "id": 472, "question": "A normal distribution is also called _______ distribution.", "options": ["Poisson", "Gaussian", "Binomial", "Bernoulli"], "answer": "Gaussian", "explanation": "Named after Carl Friedrich Gauss.", },
+{ "id": 473, "question": "A distribution with kurtosis < 3 is:", "options": ["Leptokurtic", "Mesokurtic", "Platykurtic", "Asymmetric"], "answer": "Platykurtic", "explanation": "Platy = flat.", },
+{ "id": 474, "question": "Standard deviation is never:", "options": ["Zero", "Positive", "Negative", "One"], "answer": "Negative", "explanation": "SD is a positive square root.", },
+{ "id": 475, "question": "The highest level of measurement is:", "options": ["Nominal", "Ordinal", "Interval", "Ratio"], "answer": "Ratio", "explanation": "Ratio contains all info from lower levels plus a true zero.", },
+{ "id": 476, "question": "Data from an old encyclopedia is _______ data.", "options": ["Primary", "Secondary", "Grouped", "Reliable"], "answer": "Secondary", "explanation": "It's an existing source.", },
+{ "id": 477, "question": "A Z-score of 0 means the value is _______ the mean.", "options": ["Above", "Below", "Equal to", "Twice"], "answer": "Equal to", "explanation": "Z = (X - μ)/σ; if X=μ, Z=0.", },
+{ "id": 478, "question": "Median divides the data into _______ halves.", "options": ["Two", "Four", "Ten", "Unequal"], "answer": "Two", "explanation": "By definition.", },
+{ "id": 479, "question": "A distribution with three modes is:", "options": ["Unimodal", "Bimodal", "Trimodal", "Normal"], "answer": "Trimodal", "explanation": "Tri = three.", },
+{ "id": 480, "question": "The harmonic mean of 1, 1, 1 is:", "options": ["1", "3", "0", "0.33"], "answer": "1", "explanation": "3 / (1/1 + 1/1 + 1/1) = 3/3 = 1.", },
+{ "id": 481, "question": "A 'statistic' is calculated from a:", "options": ["Parameter", "Sample", "Population", "Universe"], "answer": "Sample", "explanation": "Sample = Statistic (both start with S).", },
+{ "id": 482, "question": "The probability of an event that is impossible is:", "options": ["1", "0", "0.5", "Negative"], "answer": "0", "explanation": "Cannot happen.", },
+{ "id": 483, "question": "Which of these is a measure of dispersion?", "options": ["Mean", "Median", "Mode", "Mean Deviation"], "answer": "Mean Deviation", "explanation": "Measures spread from the center.", },
+{ "id": 484, "question": "In a symmetric curve, the mean and mode are:", "options": ["Different", "Equal", "Positive", "Negative"], "answer": "Equal", "explanation": "They coincide at the peak center.", },
+{ "id": 485, "question": "Pie charts use _______ to show proportions.", "options": ["Bars", "Squares", "Angles", "Lines"], "answer": "Angles", "explanation": "Slices are degrees of 360.", },
+{ "id": 486, "question": "Row headings in a table are found in the:", "options": ["Caption", "Stub", "Body", "Title"], "answer": "Stub", "explanation": "Standard table terminology.", },
+{ "id": 487, "question": "Which measure is most affected by extreme values?", "options": ["Arithmetic Mean", "Median", "Mode", "Harmonic Mean"], "answer": "Arithmetic Mean", "explanation": "Every data point contributes to the total.", },
+{ "id": 488, "question": "The process of picking a few items from many is:", "options": ["Census", "Tabulation", "Sampling", "Coding"], "answer": "Sampling", "explanation": "Choosing a representative subset.", },
+{ "id": 489, "question": "The difference between Max and Min is:", "options": ["Variance", "Range", "SD", "CV"], "answer": "Range", "explanation": "Simplest measure of spread.", },
+{ "id": 490, "question": "A variable that can be measured in decimals is:", "options": ["Discrete", "Continuous", "Nominal", "Qualitative"], "answer": "Continuous", "explanation": "Height, weight, time, etc.", },
+{ "id": 491, "question": "Interviewing a person directly for data is:", "options": ["Primary", "Secondary", "Inaccurate", "Cheap"], "answer": "Primary", "explanation": "Firsthand collection.", },
+{ "id": 492, "question": "Which is not a measure of central tendency?", "options": ["Arithmetic Mean", "Median", "Range", "Mode"], "answer": "Range", "explanation": "Range is dispersion.", },
+{ "id": 493, "question": "The total probability of all outcomes is:", "options": ["0.5", "1", "100", "Infinite"], "answer": "1", "explanation": "Axiom of probability.", },
+{ "id": 494, "question": "Bars in a histogram are:", "options": ["Separated", "Touching", "Diagonal", "Dotted"], "answer": "Touching", "explanation": "Shows continuity.", },
+{ "id": 495, "question": "Each item having an equal chance of selection is _______ sampling.", "options": ["Random", "Convenience", "Quota", "Judgmental"], "answer": "Random", "explanation": "Unbiased selection.", },
+{ "id": 496, "question": "Percentiles divide data into _______ parts.", "options": ["4", "10", "100", "2"], "answer": "100", "explanation": "Per-cent.", },
+{ "id": 497, "question": "A distribution lopsided to the left is _______ skewed.", "options": ["Positively", "Negatively", "Not", "Normally"], "answer": "Negatively", "explanation": "Tail is on the left.", },
+{ "id": 498, "question": "The mean of 10, 10, 10 is:", "options": ["10", "30", "0", "3"], "answer": "10", "explanation": "Average of constant values.", },
+{ "id": 499, "question": "In Z = (X - μ) / σ, σ is the:", "options": ["Mean", "Variance", "Standard Deviation", "Mode"], "answer": "Standard Deviation", "explanation": "Standard symbol.", },
+{ "id": 500, "question": "Variance is the _______ of standard deviation.", "options": ["Square root", "Square", "Half", "Double"], "answer": "Square", "explanation": "σ² = Variance.", },
+{ "id": 501, "question": "The collection of data by a researcher for the first time is:", "options": ["Secondary data", "Primary data", "Internal data", "Published data"], "answer": "Primary data", "explanation": "Primary data is original information collected specifically for the research project at hand.", },
+{ "id": 502, "question": "Which of the following is a characteristic of a continuous variable?", "options": ["It can only take integer values", "It is usually obtained by counting", "It can take any value within a range", "It has distinct gaps between values"], "answer": "It can take any value within a range", "explanation": "Continuous variables can assume any numerical value, including fractions and decimals.", },
+{ "id": 503, "question": "The process of organizing data into groups based on similar characteristics is:", "options": ["Tabulation", "Classification", "Editing", "Summarization"], "answer": "Classification", "explanation": "Classification involves grouping data according to shared attributes or traits.", },
+{ "id": 504, "question": "A table that presents data according to two or more characteristics is a:", "options": ["Simple table", "Complex table", "Univariate table", "One-way table"], "answer": "Complex table", "explanation": "Complex tables (double, treble, or manifold) show relationships between multiple variables.", },
+{ "id": 505, "question": "The heading for the rows in a statistical table is the:", "options": ["Caption", "Stub", "Title", "Footnote"], "answer": "Stub", "explanation": "The stub contains the descriptions for the rows, usually on the left side of the table.", },
+{ "id": 506, "question": "Which chart uses rectangles to represent frequency, where the bars touch each other?", "options": ["Bar Chart", "Histogram", "Pie Chart", "Line Graph"], "answer": "Histogram", "explanation": "Histograms are used for continuous data, so the bars are adjacent to show the continuity of the scale.", },
+{ "id": 507, "question": "The most frequent value in a frequency distribution is the:", "options": ["Mean", "Median", "Mode", "Range"], "answer": "Mode", "explanation": "The mode is the observation with the highest frequency.", },
+{ "id": 508, "question": "In a symmetrical distribution, the relationship between Mean, Median, and Mode is:", "options": ["Mean > Median > Mode", "Mean < Median < Mode", "Mean = Median = Mode", "Mean = Range"], "answer": "Mean = Median = Mode", "explanation": "In a perfectly balanced distribution, all three central measures fall at the same center point.", },
+{ "id": 509, "question": "Which measure of central tendency is the least affected by extreme outliers?", "options": ["Arithmetic Mean", "Geometric Mean", "Median", "Midrange"], "answer": "Median", "explanation": "As a positional average, the median is robust against the influence of very high or very low values.", },
+{ "id": 510, "question": "The difference between the third quartile (Q3) and the first quartile (Q1) is the:", "options": ["Range", "Standard Deviation", "Interquartile Range", "Mean Deviation"], "answer": "Interquartile Range", "explanation": "The IQR measures the spread of the middle 50% of the observations.", },
+{ "id": 511, "question": "The square root of the variance is known as the:", "options": ["Mean Deviation", "Standard Deviation", "Coefficient of Variation", "Range"], "answer": "Standard Deviation", "explanation": "Standard deviation is the positive square root of the average squared deviations.", },
+{ "id": 512, "question": "A distribution with a long tail on the right is said to be:", "options": ["Negatively skewed", "Symmetrical", "Positively skewed", "Platykurtic"], "answer": "Positively skewed", "explanation": "Positive skewness occurs when a tail extends toward the higher values on the right.", },
+{ "id": 513, "question": "Kurtosis refers to the ________ of a frequency distribution curve.", "options": ["Symmetry", "Spread", "Peakness", "Average"], "answer": "Peakness", "explanation": "Kurtosis measures how peaked or flat a distribution is relative to a normal distribution.", },
+{ "id": 514, "question": "The probability of an event that is certain to occur is:", "options": ["0", "0.5", "1", "100"], "answer": "1", "explanation": "A sure event has a probability of 1.0 (or 100%).", },
+{ "id": 515, "question": "Which sampling method ensures that every member of the population has an equal chance of selection?", "options": ["Quota Sampling", "Convenience Sampling", "Simple Random Sampling", "Judgmental Sampling"], "answer": "Simple Random Sampling", "explanation": "SRS is a probability sampling technique where every unit has an identical probability of inclusion.", },
+{ "id": 516, "question": "Which level of measurement is used for variables like 'Blood Group'?", "options": ["Nominal", "Ordinal", "Interval", "Ratio"], "answer": "Nominal", "explanation": "Nominal scales are used for naming or labeling categories without any quantitative value.", },
+{ "id": 517, "question": "A frequency curve that is flatter than the normal curve is:", "options": ["Leptokurtic", "Mesokurtic", "Platykurtic", "Positively skewed"], "answer": "Platykurtic", "explanation": "Platykurtic distributions have a lower, broader peak and thinner tails.", },
+{ "id": 518, "question": "The median of the set {5, 12, 3, 8, 10} is:", "options": ["3", "8", "10", "12"], "answer": "8", "explanation": "Arranging the data (3, 5, 8, 10, 12) shows that 8 is the middle observation.", },
+{ "id": 519, "question": "If the variance of a dataset is 25, the standard deviation is:", "options": ["5", "12.5", "50", "625"], "answer": "5", "explanation": "The standard deviation is the square root of the variance (√25 = 5).", },
+{ "id": 520, "question": "Primary data is also known as:", "options": ["Secondhand data", "Firsthand data", "Published data", "Archival data"], "answer": "Firsthand data", "explanation": "Primary data is collected directly from the source by the researcher.", },
+{ "id": 521, "question": "Data arranged according to geographic locations is:", "options": ["Chronological classification", "Spatial classification", "Qualitative classification", "Quantitative classification"], "answer": "Spatial classification", "explanation": "Spatial (or geographical) classification organizes data by area or location.", },
+{ "id": 522, "question": "Which measure is best for comparing the consistency of two different datasets?", "options": ["Standard Deviation", "Mean", "Coefficient of Variation", "Range"], "answer": "Coefficient of Variation", "explanation": "CV is a relative measure of dispersion used to compare variability across different units or means.", },
+{ "id": 523, "question": "The sum of probabilities in a sample space must equal:", "options": ["0", "0.5", "1", "N"], "answer": "1", "explanation": "The total probability for all mutually exclusive and exhaustive events is always 1.", },
+{ "id": 524, "question": "A distribution with two modes is called:", "options": ["Unimodal", "Bimodal", "Multimodal", "Normal"], "answer": "Bimodal", "explanation": "Bimodal distributions have two distinct peaks in their frequency curve.", },
+{ "id": 525, "question": "Which average is calculated as the nth root of the product of n observations?", "options": ["Arithmetic Mean", "Geometric Mean", "Harmonic Mean", "Weighted Mean"], "answer": "Geometric Mean", "explanation": "GM = (x1 * x2 * ... * xn)^(1/n).", },
+{ "id": 526, "question": "A pie chart is used to show:", "options": ["Trends over time", "Frequency density", "Parts of a whole", "Bivariate relationships"], "answer": "Parts of a whole", "explanation": "Pie charts illustrate the proportional contribution of different categories to a total.", },
+{ "id": 527, "question": "The distance between the maximum and minimum values is the:", "options": ["Variance", "Standard Deviation", "Range", "Mean Deviation"], "answer": "Range", "explanation": "Range is the simplest measure of dispersion, calculated as Max - Min.", },
+{ "id": 528, "question": "What is the mode of the data {2, 5, 2, 8, 2, 10}?", "options": ["2", "5", "8", "10"], "answer": "2", "explanation": "The value 2 occurs three times, which is the highest frequency.", },
+{ "id": 529, "question": "Continuous data is best represented by a:", "options": ["Bar Chart", "Pie Chart", "Histogram", "Simple Table"], "answer": "Histogram", "explanation": "Histograms effectively display the distribution of continuous variables.", },
+{ "id": 530, "question": "In a negatively skewed distribution, the tail is longer on the:", "options": ["Right side", "Left side", "Center", "Both sides"], "answer": "Left side", "explanation": "Negative skewness indicates a tail pointing toward the lower values on the left.", },
+{ "id": 531, "question": "A sample is a _______ of the population.", "options": ["Subset", "Superset", "Parameter", "Universe"], "answer": "Subset", "explanation": "A sample is a smaller group selected from the larger population for study.", },
+{ "id": 532, "question": "Which index is based on current year quantities?", "options": ["Laspeyres Index", "Paasche Index", "Fisher Index", "Marshall Index"], "answer": "Paasche Index", "explanation": "The Paasche index uses current-period quantities as weights.", },
+{ "id": 533, "question": "The Z-score of a value exactly equal to the mean is:", "options": ["-1", "0", "1", "Unpredictable"], "answer": "0", "explanation": "Z = (X - Mean) / SD; if X = Mean, then Z = 0.", },
+{ "id": 534, "question": "Probability values cannot be:", "options": ["Zero", "One", "Negative", "Fractions"], "answer": "Negative", "explanation": "Probability is bounded between 0 and 1; it can never be less than zero.", },
+{ "id": 535, "question": "Grouping data by 'Gender' is an example of:", "options": ["Quantitative data", "Qualitative data", "Continuous data", "Numerical data"], "answer": "Qualitative data", "explanation": "Gender represents a non-numerical attribute or category.", },
+{ "id": 536, "question": "Which scale of measurement has an absolute zero point?", "options": ["Nominal", "Ordinal", "Interval", "Ratio"], "answer": "Ratio", "explanation": "The ratio scale allows for comparison of absolute magnitudes because 0 represents 'nothing'.", },
+{ "id": 537, "question": "The standard deviation of {10, 10, 10, 10} is:", "options": ["10", "40", "0", "1"], "answer": "0", "explanation": "Since there is no variation between values, the standard deviation is zero.", },
+{ "id": 538, "question": "Which measure is most sensitive to every value in the dataset?", "options": ["Arithmetic Mean", "Median", "Mode", "Quartile Deviation"], "answer": "Arithmetic Mean", "explanation": "The mean is calculated using every single data point, so any change in data affects it.", },
+{ "id": 539, "question": "A frequency polygon is drawn by joining the _______ of the bars of a histogram.", "options": ["Upper limits", "Lower limits", "Midpoints", "Class boundaries"], "answer": "Midpoints", "explanation": "Connecting the midpoints of the tops of histogram bars creates a frequency polygon.", },
+{ "id": 540, "question": "The arithmetic mean of 4, 8, and 12 is:", "options": ["4", "8", "12", "24"], "answer": "8", "explanation": "(4 + 8 + 12) / 3 = 8.", },
+{ "id": 541, "question": "A complete enumeration of the population is called a:", "options": ["Sample", "Census", "Survey", "Experiment"], "answer": "Census", "explanation": "A census collects data from every single member of the population.", },
+{ "id": 542, "question": "Data obtained from a textbook is:", "options": ["Primary data", "Secondary data", "Original data", "Raw data"], "answer": "Secondary data", "explanation": "Textbooks compile data originally collected by others, making it secondary.", },
+{ "id": 543, "question": "The second quartile (Q2) is also known as the:", "options": ["Mean", "Median", "Mode", "Variance"], "answer": "Median", "explanation": "The 50th percentile, the 5th decile, and the 2nd quartile all equal the median.", },
+{ "id": 544, "question": "A distribution that is perfectly symmetrical has a skewness of:", "options": ["1", "-1", "0", "0.5"], "answer": "0", "explanation": "Skewness measures asymmetry; zero indicates perfect balance.", },
+{ "id": 545, "question": "Which component of a time series reflects long-term movements?", "options": ["Seasonal variation", "Cyclical variation", "Secular Trend", "Irregular variation"], "answer": "Secular Trend", "explanation": "The trend describes the general direction in which data moves over a long period.", },
+{ "id": 546, "question": "The harmonic mean is the reciprocal of the arithmetic mean of the:", "options": ["Squares", "Square roots", "Reciprocals", "Logarithms"], "answer": "Reciprocals", "explanation": "HM = n / Σ(1/x).", },
+{ "id": 547, "question": "Which chart is best for displaying the trend of sales over 12 months?", "options": ["Pie Chart", "Bar Chart", "Line Graph", "Box Plot"], "answer": "Line Graph", "explanation": "Line graphs are ideal for visualizing how data changes over continuous time.", },
+{ "id": 548, "question": "The sum of absolute deviations from the _______ is minimum.", "options": ["Mean", "Median", "Mode", "Geometric Mean"], "answer": "Median", "explanation": "A mathematical property of the median is that it minimizes the sum of absolute distances.", },
+{ "id": 549, "question": "Standard deviation divided by the square root of the sample size (n) is the:", "options": ["Variance", "Standard Error", "Relative dispersion", "Skewness"], "answer": "Standard Error", "explanation": "The standard error measures the variability of the sample mean.", },
+{ "id": 550, "question": "Which of these is a measure of dispersion?", "options": ["Mean", "Median", "Standard Deviation", "Geometric Mean"], "answer": "Standard Deviation", "explanation": "Standard deviation describes the spread of the data, not its center.", },
+{ "id": 551, "question": "Statistical results are:", "options": ["Absolutely true", "True on average", "Always biased", "Infallible"], "answer": "True on average", "explanation": "Statistics deals with probabilities and aggregates rather than individual certainties.", },
+{ "id": 552, "question": "Which of the following is not a source of secondary data?", "options": ["Internet", "Government reports", "Personal observation", "Newspapers"], "answer": "Personal observation", "explanation": "Observation is a primary data collection method.", },
+{ "id": 553, "question": "Data classified by 'Years' is:", "options": ["Qualitative", "Quantitative", "Chronological", "Spatial"], "answer": "Chronological", "explanation": "Time-based classification is chronological.", },
+{ "id": 554, "question": "A table with three or more characteristics is called a:", "options": ["Simple table", "Double table", "Manifold table", "Bivariate table"], "answer": "Manifold table", "explanation": "Manifold tables represent complex relationships between several variables.", },
+{ "id": 555, "question": "The caption of a table contains headings for:", "options": ["Rows", "Columns", "Titles", "Footnotes"], "answer": "Columns", "explanation": "Column headings are formally called captions.", },
+{ "id": 556, "question": "Total area under the normal curve is:", "options": ["0.5", "1", "100", "Infinite"], "answer": "1", "explanation": "The area represents the total probability, which is always 1.0.", },
+{ "id": 557, "question": "If Skewness is positive, then:", "options": ["Mean > Median", "Mean < Median", "Mean = Median", "Mode > Mean"], "answer": "Mean > Median", "explanation": "In a right-skewed distribution, the mean is pulled higher than the median by outliers.", },
+{ "id": 558, "question": "Which measure is based on only the two extreme values?", "options": ["Standard Deviation", "Range", "Mean Deviation", "Quartile Deviation"], "answer": "Range", "explanation": "Range is simply the difference between the Max and the Min.", },
+{ "id": 559, "question": "Probability of an event always lies between:", "options": ["-1 and 1", "0 and 1", "0 and 100", "0 and infinity"], "answer": "0 and 1", "explanation": "Basic axiom of probability.", },
+{ "id": 560, "question": "What is the mode of {1, 2, 3, 4, 5}?", "options": ["1", "3", "5", "No mode"], "answer": "No mode", "explanation": "If no value repeats more than others, there is no mode.", },
+{ "id": 561, "question": "Weights of students are _______ variables.", "options": ["Discrete", "Continuous", "Qualitative", "Nominal"], "answer": "Continuous", "explanation": "Weight can take any value, including decimals.", },
+{ "id": 562, "question": "A bar chart represents _______ variables.", "options": ["Continuous", "Discrete or Qualitative", "Bivariate", "Infinite"], "answer": "Discrete or Qualitative", "explanation": "Bar charts use separate bars for distinct categories or counts.", },
+{ "id": 563, "question": "The 50th percentile of a distribution is the:", "options": ["Mean", "Median", "Mode", "Third Quartile"], "answer": "Median", "explanation": "The median divides the distribution into two equal halves (50/50).", },
+{ "id": 564, "question": "Standard deviation squared is the:", "options": ["Mean", "Median", "Variance", "Range"], "answer": "Variance", "explanation": "Variance is defined as σ².", },
+{ "id": 565, "question": "Which average is used for speed and rates?", "options": ["Arithmetic Mean", "Geometric Mean", "Harmonic Mean", "Median"], "answer": "Harmonic Mean", "explanation": "HM is the correct measure for averaging rates of work or speeds.", },
+{ "id": 566, "question": "The probability of 'Tail' in a coin toss is:", "options": ["0", "0.5", "1", "0.25"], "answer": "0.5", "explanation": "There are 2 outcomes; 1/2 = 0.5.", },
+{ "id": 567, "question": "In classification, data are grouped by:", "options": ["Similarities", "Differences", "Colors", "Names"], "answer": "Similarities", "explanation": "Classification creates homogeneous groups based on shared traits.", },
+{ "id": 568, "question": "Numerical summary of a sample is a:", "options": ["Parameter", "Statistic", "Variable", "Constant"], "answer": "Statistic", "explanation": "Sample results are called statistics.", },
+{ "id": 569, "question": "Interquartile range covers _______ of the data.", "options": ["25%", "50%", "75%", "100%"], "answer": "50%", "explanation": "IQR is the distance between the 25th and 75th percentiles.", },
+{ "id": 570, "question": "Which of these is a measure of central tendency?", "options": ["Range", "Standard Deviation", "Mean", "Skewness"], "answer": "Mean", "explanation": "The mean locates the center of the data.", },
+{ "id": 571, "question": "If all observations are multiplied by 2, the mean will be:", "options": ["Same", "Doubled", "Halved", "Zero"], "answer": "Doubled", "explanation": "Multiplying all values by a constant k multiplies the mean by k.", },
+{ "id": 572, "question": "Range of correlation coefficient is:", "options": ["0 to 1", "-1 to 1", "-infinity to +infinity", "0 to 100"], "answer": "-1 to 1", "explanation": "Correlation (r) must be between -1 and +1.", },
+{ "id": 573, "question": "Coefficient of variation is expressed as a:", "options": ["Ratio", "Percentage", "Integer", "Fraction"], "answer": "Percentage", "explanation": "CV = (SD / Mean) * 100.", },
+{ "id": 574, "question": "A distribution with kurtosis > 3 is:", "options": ["Leptokurtic", "Platykurtic", "Mesokurtic", "Symmetrical"], "answer": "Leptokurtic", "explanation": "Lepto curves are more peaked than normal curves.", },
+{ "id": 575, "question": "Which chart uses segments of a circle?", "options": ["Bar Chart", "Line graph", "Pie Chart", "Histogram"], "answer": "Pie Chart", "explanation": "Pie charts divide a circle into categorical slices.", },
+{ "id": 576, "question": "The first step in statistics is:", "options": ["Analysis", "Collection", "Presentation", "Interpretation"], "answer": "Collection", "explanation": "You must gather data before you can organize or analyze it.", },
+{ "id": 577, "question": "Data from a questionnaire sent by mail is:", "options": ["Primary", "Secondary", "Biased", "Raw"], "answer": "Primary", "explanation": "It is original data collected for the study.", },
+{ "id": 578, "question": "Which scale represents the lowest level of measurement?", "options": ["Nominal", "Ordinal", "Interval", "Ratio"], "answer": "Nominal", "explanation": "Nominal is the simplest, involving only labels or categories.", },
+{ "id": 579, "question": "What is the class mark of 10-20?", "options": ["10", "15", "20", "30"], "answer": "15", "explanation": "(10 + 20) / 2 = 15.", },
+{ "id": 580, "question": "The geometric mean of 4 and 16 is:", "options": ["10", "8", "20", "64"], "answer": "8", "explanation": "√(4 * 16) = √64 = 8.", },
+{ "id": 581, "question": "Which average is calculated for qualitative data?", "options": ["Mean", "Median", "Mode", "Geometric Mean"], "answer": "Mode", "explanation": "Mode is the only central measure applicable to nominal/qualitative data.", },
+{ "id": 582, "question": "The difference between the upper and lower limits of a class is:", "options": ["Frequency", "Width", "Midpoint", "Boundary"], "answer": "Width", "explanation": "Class width or interval size.", },
+{ "id": 583, "question": "Which sampling method picks the 'nth' item?", "options": ["Simple Random", "Systematic", "Stratified", "Cluster"], "answer": "Systematic", "explanation": "Systematic sampling uses a calculated interval k.", },
+{ "id": 584, "question": "A table that presents one variable is:", "options": ["Simple", "Complex", "Manifold", "Treble"], "answer": "Simple", "explanation": "Simple tables are univariate.", },
+{ "id": 585, "question": "Standard deviation is always:", "options": ["Positive", "Negative", "Zero", "A and C"], "answer": "A and C", "explanation": "SD cannot be negative; it is either positive or zero (if all values are the same).", },
+{ "id": 586, "question": "Total area under a probability curve is:", "options": ["100", "0.5", "1", "Infinite"], "answer": "1", "explanation": "Fundamental probability rule.", },
+{ "id": 587, "question": "Which diagram is best for correlation?", "options": ["Scatter diagram", "Pie Chart", "Histogram", "Line graph"], "answer": "Scatter diagram", "explanation": "Scatter plots show the relationship between two variables.", },
+{ "id": 588, "question": "Relative frequency is:", "options": ["f / N", "f * N", "N / f", "Σf"], "answer": "f / N", "explanation": "Frequency of a class divided by the total frequency.", },
+{ "id": 589, "question": "The range of {5, 5, 5, 5} is:", "options": ["5", "20", "0", "1"], "answer": "0", "explanation": "Max - Min = 0.", },
+{ "id": 590, "question": "In a symmetric distribution, Mean = Median = _______.", "options": ["Range", "Mode", "Standard Deviation", "Variance"], "answer": "Mode", "explanation": "The three measures are identical in a bell-shaped curve.", },
+{ "id": 591, "question": "Classification by 'Religions' is:", "options": ["Quantitative", "Qualitative", "Geographical", "Chronological"], "answer": "Qualitative", "explanation": "Religion is an attribute.", },
+{ "id": 592, "question": "A curve that is bell-shaped is:", "options": ["J-shaped", "U-shaped", "Normal", "L-shaped"], "answer": "Normal", "explanation": "The normal distribution is the classic bell curve.", },
+{ "id": 593, "question": "Percentiles divide data into _______ parts.", "options": ["10", "4", "100", "50"], "answer": "100", "explanation": "Prefix 'percent' means 100.", },
+{ "id": 594, "question": "If Skewness = -1, the distribution is:", "options": ["Positively skewed", "Negatively skewed", "Symmetrical", "Leptokurtic"], "answer": "Negatively skewed", "explanation": "Negative value indicates negative skewness.", },
+{ "id": 595, "question": "Median can be found using which graph?", "options": ["Histogram", "Ogive", "Pie Chart", "Bar Chart"], "answer": "Ogive", "explanation": "The cumulative frequency curve (ogive) can be used to estimate quantiles.", },
+{ "id": 596, "question": "Mean of first 5 natural numbers (1-5) is:", "options": ["2", "3", "4", "5"], "answer": "3", "explanation": "(1+2+3+4+5) / 5 = 3.", },
+{ "id": 597, "question": "Variance of {2, 2, 2} is:", "options": ["2", "4", "0", "1"], "answer": "0", "explanation": "No deviation from the mean.", },
+{ "id": 598, "question": "Which average is used for compounding interest?", "options": ["Arithmetic Mean", "Geometric Mean", "Harmonic Mean", "Median"], "answer": "Geometric Mean", "explanation": "GM is suitable for growth rates and compounding.", },
+{ "id": 599, "question": "Which sampling method is non-random?", "options": ["Simple Random", "Stratified", "Quota", "Cluster"], "answer": "Quota", "explanation": "Quota sampling is a non-probability technique.", },
+{ "id": 600, "question": "Probability of a sure event is:", "options": ["0", "0.5", "1", "Infinite"], "answer": "1", "explanation": "Certainty = 1.0.", },
+{ "id": 601, "question": "A distribution with a flat top is:", "options": ["Leptokurtic", "Mesokurtic", "Platykurtic", "Uniform"], "answer": "Platykurtic", "explanation": "Platy = flat peak.", },
+{ "id": 602, "question": "Row headings are the _______ of a table.", "options": ["Caption", "Stub", "Body", "Note"], "answer": "Stub", "explanation": "Rows = Stub; Columns = Caption.", },
+{ "id": 603, "question": "Interquartile Range is Q3 - _______.", "options": ["Q1", "Q2", "Mean", "Median"], "answer": "Q1", "explanation": "Standard IQR formula.", },
+{ "id": 604, "question": "Sum of squared deviations is minimum from:", "options": ["Mode", "Median", "Mean", "Range"], "answer": "Mean", "explanation": "Mathematical property of the mean.", },
+{ "id": 605, "question": "A variable with infinite values is:", "options": ["Discrete", "Continuous", "Qualitative", "Nominal"], "answer": "Continuous", "explanation": "Continuous scales have no gaps.", },
+{ "id": 606, "question": "The median of 10, 20, 30 is:", "options": ["10", "20", "30", "60"], "answer": "20", "explanation": "Middle value.", },
+{ "id": 607, "question": "Range is Max - _______.", "options": ["Mean", "Median", "Min", "SD"], "answer": "Min", "explanation": "Standard Range formula.", },
+{ "id": 608, "question": "Harmonic mean of 1 and 3 is:", "options": ["2", "1.5", "1.33", "0.75"], "answer": "1.5", "explanation": "2 / (1/1 + 1/3) = 2 / (4/3) = 1.5.", },
+{ "id": 609, "question": "Which chart uses rectangular bars?", "options": ["Pie Chart", "Line graph", "Bar Chart", "Scatter"], "answer": "Bar Chart", "explanation": "Simple bar chart definition.", },
+{ "id": 610, "question": "The mean of {5, 5, 5, 5} is:", "options": ["0", "5", "20", "1"], "answer": "5", "explanation": "Average of constants is the constant.", },
+{ "id": 611, "question": "Z-score formula is (X - Mean) / _______.", "options": ["Variance", "SD", "Range", "N"], "answer": "SD", "explanation": "Standardizing formula.", },
+{ "id": 612, "question": "Total probability of a sample space is:", "options": ["0", "0.5", "1", "100"], "answer": "1", "explanation": "Basic probability axiom.", },
+{ "id": 613, "question": "Which scale has a true zero?", "options": ["Nominal", "Ordinal", "Interval", "Ratio"], "answer": "Ratio", "explanation": "Highest level of measurement.", },
+{ "id": 614, "question": "Coefficient of variation formula is (SD / Mean) * _______.", "options": ["10", "100", "50", "N"], "answer": "100", "explanation": "Standard CV formula.", },
+{ "id": 615, "question": "If Skewness = 0, the curve is:", "options": ["Positive", "Negative", "Symmetrical", "Peaked"], "answer": "Symmetrical", "explanation": "Balanced halves.", },
+{ "id": 616, "question": "A histogram shows frequencies of _______ data.", "options": ["Discrete", "Continuous", "Qualitative", "Categorical"], "answer": "Continuous", "explanation": "Shows the distribution of a continuous variable.", },
+{ "id": 617, "question": "Data collected via interview is _______ data.", "options": ["Primary", "Secondary", "Historical", "Internal"], "answer": "Primary", "explanation": "Original collection method.", },
+{ "id": 618, "question": "Which average is used for growth rates?", "options": ["Arithmetic Mean", "Geometric Mean", "Harmonic Mean", "Mode"], "answer": "Geometric Mean", "explanation": "Correct for rates of change.", },
+{ "id": 619, "question": "Mode of {1, 1, 2, 3} is:", "options": ["1", "2", "3", "0"], "answer": "1", "explanation": "Most frequent value.", },
+{ "id": 620, "question": "Standard deviation is never _______.", "options": ["Positive", "Zero", "Negative", "Large"], "answer": "Negative", "explanation": "Square root cannot be negative in this context.", },
+{ "id": 621, "question": "The sum of frequencies is denoted by:", "options": ["x", "f", "N", "p"], "answer": "N", "explanation": "Total number of observations.", },
+{ "id": 622, "question": "Which measure is most sensitive to outliers?", "options": ["Mean", "Median", "Mode", "Range"], "answer": "Mean", "explanation": "Every value is factored in.", },
+{ "id": 623, "question": "Probability of Head and Tail together in one toss is:", "options": ["0", "0.5", "1", "0.25"], "answer": "0", "explanation": "Mutually exclusive events.", },
+{ "id": 624, "question": "Deciles divide data into _______ parts.", "options": ["4", "10", "100", "2"], "answer": "10", "explanation": "Deci = ten.", },
+{ "id": 625, "question": "Mean of {2, 4, 6} is:", "options": ["2", "4", "6", "12"], "answer": "4", "explanation": "(2+4+6) / 3 = 4.", },
+{ "id": 626, "question": "Pie charts use _______ to show data.", "options": ["Lines", "Bars", "Slices", "Dots"], "answer": "Slices", "explanation": "Sectors of a circle.", },
+{ "id": 627, "question": "Which sampling method is haphazard?", "options": ["Random", "Convenience", "Stratified", "Cluster"], "answer": "Convenience", "explanation": "Based on what is easiest.", },
+{ "id": 628, "question": "A table with one variable is:", "options": ["One-way", "Two-way", "Complex", "Manifold"], "answer": "One-way", "explanation": "Simple classification.", },
+{ "id": 629, "question": "SD squared is _______.", "options": ["Mean", "Median", "Variance", "Range"], "answer": "Variance", "explanation": "σ² definition.", },
+{ "id": 630, "question": "The probability of an impossible event is:", "options": ["1", "0", "0.5", "Negative"], "answer": "0", "explanation": "Zero chance of happening.", },
+{ "id": 631, "question": "The geometric mean can be computed when:", "options": ["All values are positive", "One value is zero", "One value is negative", "It is the sum of values"], "answer": "All values are positive", "explanation": "If any value is zero or negative, the GM might be zero or undefined.", },
+{ "id": 632, "question": "For large samples, the sampling distribution of the mean approaches which distribution?", "options": ["Binomial", "Poisson", "Normal", "Uniform"], "answer": "Normal", "explanation": "By the Central Limit Theorem, the sampling distribution of the mean approaches normality for large n.", },
+{ "id": 633, "question": "Stratified random sampling is preferred when:", "options": ["The population is homogeneous", "Subgroups differ significantly from each other", "A complete sampling frame is unavailable", "Only qualitative data is collected"], "answer": "Subgroups differ significantly from each other", "explanation": "Stratification is most beneficial when there is significant variation between strata.", },
+{ "id": 634, "question": "A researcher who draws conclusions about all students in Nigeria based on a survey of 500 students is practising:", "options": ["Descriptive statistics", "Data classification", "Inferential statistics", "Tabulation"], "answer": "Inferential statistics", "explanation": "Generalizing from a sample to a larger population is inferential statistics.", },   ];
 
    
     let currentExamData = [], userAnswers = {}, currentIndex = 0;
@@ -441,9 +933,7 @@
     let activeMode = 'practice', isReviewMode = false;
     let examSelectionType = 'random', partNum = 1;
 
-    /* ══════════════
-       INIT
-    ══════════════ */
+    
     window.onload = () => {
         initDashboard();
         loadStatsBar();
@@ -453,7 +943,7 @@
         }
     };
 
-    /* ── Stats Bar ── */
+    
     async function loadStatsBar() {
         const bar = document.getElementById('stats-bar');
         try {
@@ -470,10 +960,10 @@
                 <div class="stat-card"><div class="stat-val">${avg}%</div><div class="stat-lbl">Average Score</div></div>
                 <div class="stat-card"><div class="stat-val">${best}%</div><div class="stat-lbl">Best Score</div></div>`;
             bar.style.display = 'grid';
-        } catch (e) { /* offline */ }
+        } catch (e) {  }
     }
 
-    /* ── Resume Banner ── */
+    
     function showResumeBanner() {
         const saved  = localStorage.getItem(STORAGE_KEY);
         const banner = document.getElementById('resume-banner');
@@ -515,7 +1005,7 @@
         document.getElementById('resume-btn').style.display    = 'none';
     }
 
-    /* ── Dashboard ── */
+    
     function initDashboard() {
         const board = document.getElementById('dashboard');
         board.innerHTML = '';
@@ -568,7 +1058,7 @@
         loadStatsBar();
     }
 
-    /* ── Helpers ── */
+    
     function shuffleArray(arr) {
         const a = [...arr];
         for (let i = a.length - 1; i > 0; i--) {
@@ -578,9 +1068,7 @@
         return a;
     }
 
-    /* ══════════════════
-       START EXAM
-    ══════════════════ */
+    
     function startExam() {
         timeRemaining = parseInt(document.getElementById('t-limit').value) * 60;
         activeMode    = document.getElementById('quiz-mode').value;
@@ -602,7 +1090,7 @@
 
         if (document.getElementById('shuffle-options').checked) {
             pool.forEach(q => {
-                // answer is full text — safe to shuffle array directly
+
                 q.options = shuffleArray([...q.options]);
             });
         }
@@ -616,9 +1104,7 @@
         renderQuestion();
     }
 
-    /* ══════════════════
-       TIMER
-    ══════════════════ */
+    
     function runTimer() {
         clearInterval(timerId);
         timerId = setInterval(() => {
@@ -630,9 +1116,7 @@
         }, 1000);
     }
 
-    /* ══════════════════
-       RENDER QUESTION
-    ══════════════════ */
+    
     function renderQuestion() {
         const q          = currentExamData[currentIndex];
         const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
@@ -704,9 +1188,7 @@
         if (n >= 0 && n < currentExamData.length) { currentIndex = n; renderQuestion(); }
     }
 
-    /* ══════════════════
-       SAVE / RESUME
-    ══════════════════ */
+    
     function saveState() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify({
             currentExamData, userAnswers, currentIndex,
@@ -745,9 +1227,7 @@
         renderQuestion();
     }
 
-    /* ══════════════════
-       SHOW RESULTS
-    ══════════════════ */
+    
     async function showResults(forced = false) {
         const answered = Object.keys(userAnswers).length;
         if (!forced && answered < currentExamData.length) {
@@ -822,10 +1302,8 @@
     }
 document.addEventListener('keydown', (e) => {
 
-    // Don't fire if user is typing in an input or select
     if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
 
-    // Only works during an active quiz
     if (document.getElementById('quiz-interface').style.display === 'none') return;
 
     const key = e.key.toUpperCase();
@@ -860,3 +1338,6 @@ document.addEventListener('keydown', (e) => {
 </script>
 </body>
 </html>
+
+
+

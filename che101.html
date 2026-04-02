@@ -46,7 +46,7 @@
 
         main { padding: 2rem 5%; max-width: 960px; margin: 0 auto; }
 
-        /* ── STATS BAR ── */
+        
         .stats-bar {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 0.8rem; margin-bottom: 1.5rem;
@@ -59,7 +59,7 @@
         .stat-card .stat-val { font-size: 1.6rem; font-weight: 800; color: var(--primary); }
         .stat-card .stat-lbl { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
 
-        /* ── DASHBOARD ── */
+        
         #dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
         .box {
             background: var(--card-bg); padding: 1.5rem 1rem; border-radius: 14px;
@@ -75,7 +75,7 @@
         .box-random { background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; border: none !important; }
         .box-random p { color: rgba(255,255,255,0.8) !important; }
 
-        /* ── SETUP SCREEN ── */
+        
         #setup-screen { text-align: center; background: var(--card-bg); padding: 3rem 2rem; border-radius: 16px; border: 1.5px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
         .setup-group { margin: 1.5rem auto; text-align: left; max-width: 360px; }
         .setup-group label { font-weight: 600; font-size: 0.88rem; color: var(--text); display: block; margin-bottom: 7px; }
@@ -85,7 +85,7 @@
         .custom-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; color: var(--text); font-weight: 500; user-select: none; }
         .custom-checkbox input { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; }
 
-        /* ── QUIZ INTERFACE ── */
+        
         .quiz-header { display: flex; justify-content: space-between; align-items: center; font-weight: 700; margin-bottom: 15px; padding: 0 4px; flex-wrap: wrap; gap: 10px; }
         .q-counter { font-size: 1rem; color: var(--text); }
         .btn-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
@@ -113,7 +113,7 @@
         .btn:hover { opacity: 0.88; transform: translateY(-2px); }
         .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
-        /* ── RESULT MODAL ── */
+        
         .result-modal-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.78);
             backdrop-filter: blur(8px); z-index: 9999;
@@ -145,7 +145,7 @@
         .btn-review { background: rgba(30,64,175,0.08); color: var(--primary); border: 1.5px solid rgba(30,64,175,0.2); }
         .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
 
-        /* ── RESPONSIVE ── */
+        
         @media (max-width: 600px) {
             #dashboard { grid-template-columns: repeat(2, 1fr); }
             .question-card { padding: 1.3rem; }
@@ -173,13 +173,11 @@
 </nav>
 
 <main>
-    <!-- DASHBOARD -->
     <div id="dashboard-wrap">
         <div id="stats-bar" class="stats-bar" style="display:none;"></div>
         <div id="dashboard"></div>
     </div>
 
-    <!-- SETUP SCREEN -->
     <div id="setup-screen" style="display:none;">
         <h2 id="setup-title" style="margin-bottom:1.8rem; color:var(--primary); font-size:1.3rem;"></h2>
 
@@ -222,7 +220,6 @@
         </div>
     </div>
 
-    <!-- QUIZ INTERFACE -->
     <div id="quiz-interface" style="display:none;">
         <div class="quiz-header">
             <span class="q-counter">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
@@ -254,7 +251,6 @@
     </div>
 </main>
 
-<!-- RESULT MODAL -->
 <div id="quizResultModal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
         <span class="result-icon" id="resultIcon">🏆</span>
@@ -605,17 +601,13 @@
 
     ];
 
-    /* ══════════════
-       STATE VARS
-    ══════════════ */
+    
     let currentExamData = [], userAnswers = {}, currentIndex = 0;
     let timeRemaining = 0, timerId = null;
     let activeMode = 'practice', isReviewMode = false;
     let examSelectionType = 'random', partNum = 1;
 
-    /* ══════════════
-       INIT
-    ══════════════ */
+    
     window.onload = () => {
         initDashboard();
         loadStatsBar();
@@ -624,7 +616,7 @@
         }
     };
 
-    /* ── Stats Bar ── */
+    
     async function loadStatsBar() {
         const bar = document.getElementById('stats-bar');
         try {
@@ -641,10 +633,10 @@
                 <div class="stat-card"><div class="stat-val">${avg}%</div><div class="stat-lbl">Average Score</div></div>
                 <div class="stat-card"><div class="stat-val">${best}%</div><div class="stat-lbl">Best Score</div></div>`;
             bar.style.display = 'grid';
-        } catch (e) { /* offline */ }
+        } catch (e) {  }
     }
 
-    /* ── Dashboard ── */
+    
     function initDashboard() {
         const board = document.getElementById('dashboard');
         board.innerHTML = '';
@@ -696,7 +688,7 @@
         loadStatsBar();
     }
 
-    /* ── Helpers ── */
+    
     function shuffleArray(arr) {
         const a = [...arr];
         for (let i = a.length - 1; i > 0; i--) {
@@ -706,9 +698,7 @@
         return a;
     }
 
-    /* ══════════════════
-       START EXAM
-    ══════════════════ */
+    
     function startExam() {
         timeRemaining = parseInt(document.getElementById('t-limit').value) * 60;
         activeMode    = document.getElementById('quiz-mode').value;
@@ -730,7 +720,7 @@
 
         if (document.getElementById('shuffle-options').checked) {
             pool.forEach(q => {
-                // answer is full text so shuffling options array is safe — answer stays correct
+
                 q.options = shuffleArray([...q.options]);
             });
         }
@@ -745,10 +735,8 @@
     }
     document.addEventListener('keydown', (e) => {
 
-    // Don't fire if user is typing in an input or select
     if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
 
-    // Only works during an active quiz
     if (document.getElementById('quiz-interface').style.display === 'none') return;
 
     const key = e.key.toUpperCase();
@@ -772,9 +760,7 @@
     if (key === 'P') { move(-1); return; }
 
 });
-    /* ══════════════════
-       TIMER
-    ══════════════════ */
+    
     function runTimer() {
         clearInterval(timerId);
         timerId = setInterval(() => {
@@ -786,9 +772,7 @@
         }, 1000);
     }
 
-    /* ══════════════════
-       RENDER QUESTION
-    ══════════════════ */
+    
     function renderQuestion() {
         const q          = currentExamData[currentIndex];
         const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
@@ -827,7 +811,6 @@
             optBox.appendChild(btn);
         });
 
-        // Feedback + optional explanation
         const expHtml = q.explanation
             ? `<br><span style="font-weight:400; font-size:0.88rem;"><strong>Explanation:</strong> ${q.explanation}</span>`
             : '';
@@ -883,9 +866,7 @@
         renderQuestion();
     }
 
-    /* ══════════════════
-       SHOW RESULTS
-    ══════════════════ */
+    
     async function showResults(forced = false) {
         const answered = Object.keys(userAnswers).length;
         if (!forced && answered < currentExamData.length) {
@@ -971,3 +952,6 @@
 </script>
 </body>
 </html>
+
+
+

@@ -43,7 +43,7 @@
 
         main { padding: 2rem 5%; max-width: 960px; margin: 0 auto; }
 
-        /* ── RESUME BANNER ── */
+        
         #resume-banner {
             display: none; background: var(--card-bg);
             border: 1.5px solid var(--success); border-radius: 14px;
@@ -51,13 +51,13 @@
             box-shadow: 0 2px 10px rgba(22,163,74,0.1);
         }
 
-        /* ── STATS BAR ── */
+        
         .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.8rem; margin-bottom: 1.5rem; }
         .stat-card { background: var(--card-bg); border-radius: 12px; padding: 1rem; text-align: center; border: 1.5px solid var(--border); box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
         .stat-card .stat-val { font-size: 1.6rem; font-weight: 800; color: var(--primary); }
         .stat-card .stat-lbl { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
 
-        /* ── DASHBOARD ── */
+        
         #dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.1rem; }
         .box {
             background: var(--card-bg); padding: 1.5rem 1rem; border-radius: 14px;
@@ -72,7 +72,7 @@
         .box-random { background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; border: none !important; }
         .box-random p { color: rgba(255,255,255,0.8) !important; }
 
-        /* ── SETUP SCREEN ── */
+        
         #setup-screen { text-align: center; background: var(--card-bg); padding: 3rem 2rem; border-radius: 16px; border: 1.5px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
         .setup-group { margin: 1.5rem auto; text-align: left; max-width: 360px; }
         .setup-group label { font-weight: 600; font-size: 0.88rem; color: var(--text); display: block; margin-bottom: 7px; }
@@ -82,7 +82,7 @@
         .custom-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; color: var(--text); font-weight: 500; user-select: none; }
         .custom-checkbox input { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; }
 
-        /* ── QUIZ INTERFACE ── */
+        
         .quiz-header { display: flex; justify-content: space-between; align-items: center; font-weight: 700; margin-bottom: 15px; padding: 0 4px; flex-wrap: wrap; gap: 10px; }
         .q-counter { font-size: 1rem; color: var(--text); }
         .btn-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
@@ -113,7 +113,7 @@
         .btn:hover { opacity: 0.88; transform: translateY(-2px); }
         .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
-        /* ── RESULT MODAL ── */
+        
         .result-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.78); backdrop-filter: blur(8px); z-index: 9999; display: flex; justify-content: center; align-items: center; padding: 20px; }
         .result-modal-content { background: var(--card-bg); padding: 40px 28px; border-radius: 24px; width: 100%; max-width: 420px; text-align: center; color: var(--text); box-shadow: 0 25px 60px rgba(0,0,0,0.45); animation: bounceIn 0.55s cubic-bezier(0.175,0.885,0.32,1.275); }
         @keyframes bounceIn { 0% { opacity:0; transform:scale(0.78) translateY(30px); } 100% { opacity:1; transform:scale(1) translateY(0); } }
@@ -133,7 +133,7 @@
         .btn-review { background: rgba(30,64,175,0.08); color: var(--primary); border: 1.5px solid rgba(30,64,175,0.2); }
         .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
 
-        /* ── RESPONSIVE ── */
+        
         @media (max-width: 600px) {
             #dashboard { grid-template-columns: repeat(2, 1fr); }
             .question-card { padding: 1.3rem; }
@@ -162,14 +162,12 @@
 </nav>
 
 <main>
-    <!-- DASHBOARD -->
     <div id="dashboard-wrap">
         <div id="resume-banner"></div>
         <div id="stats-bar" class="stats-bar" style="display:none;"></div>
         <div id="dashboard"></div>
     </div>
 
-    <!-- SETUP SCREEN -->
     <div id="setup-screen" style="display:none;">
         <h2 id="setup-title" style="margin-bottom:1.8rem; color:var(--primary); font-size:1.3rem; line-height:1.4;"></h2>
 
@@ -212,7 +210,6 @@
         </div>
     </div>
 
-    <!-- QUIZ INTERFACE -->
     <div id="quiz-interface" style="display:none;">
         <div class="quiz-header">
             <span class="q-counter">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
@@ -245,7 +242,6 @@
     </div>
 </main>
 
-<!-- RESULT MODAL -->
 <div id="quizResultModal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
         <span class="result-icon" id="resultIcon">🏆</span>
@@ -278,9 +274,7 @@
 </div>
 
 <script>
-    /* ═══════════════════════════════════════════
-       SUPABASE CONFIG
-    ═══════════════════════════════════════════ */
+    
     const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -893,17 +887,13 @@
 { "id": 603, "topic": "Kinematics", "question": "Acceleration due to gravity is approximately ______ m/s².", "options": ["5", "10", "15", "20"], "answer": "10", "explanation": "Round figure for earth gravity." },
     ];
 
-    /* ══════════════
-       STATE VARS
-    ══════════════ */
+    
     let currentExamData = [], userAnswers = {}, currentIndex = 0;
     let timeRemaining = 0, timerId = null;
     let activeMode = 'practice', isReviewMode = false;
     let examSelectionType = 'random', selectionValue = '';
 
-    /* ══════════════
-       INIT
-    ══════════════ */
+    
     window.onload = () => {
         initDashboard();
         loadStatsBar();
@@ -914,19 +904,16 @@
     };
 document.addEventListener('keydown', (e) => {
 
-    // Don't fire if user is typing in an input or select
     if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
 
-    // Only works during an active quiz
     if (document.getElementById('quiz-interface').style.display === 'none') return;
 
     const key = e.key.toUpperCase();
 
-    // A, B, C, D — find the matching button and click it
     if (['A', 'B', 'C', 'D'].includes(key)) {
         const buttons = document.querySelectorAll('.option-btn');
         buttons.forEach(btn => {
-            // each button starts with "A." or "B." etc
+
             if (btn.innerText.trim().startsWith(key + '.')) {
                 btn.click();
             }
@@ -934,14 +921,12 @@ document.addEventListener('keydown', (e) => {
         return;
     }
 
-    // N — next question
     if (key === 'N') { move(1); return; }
 
-    // P — previous question
     if (key === 'P') { move(-1); return; }
 
 });
-    /* ── Stats Bar ── */
+    
     async function loadStatsBar() {
         const bar = document.getElementById('stats-bar');
         try {
@@ -958,10 +943,10 @@ document.addEventListener('keydown', (e) => {
                 <div class="stat-card"><div class="stat-val">${avg}%</div><div class="stat-lbl">Average Score</div></div>
                 <div class="stat-card"><div class="stat-val">${best}%</div><div class="stat-lbl">Best Score</div></div>`;
             bar.style.display = 'grid';
-        } catch (e) { /* offline */ }
+        } catch (e) {  }
     }
 
-    /* ── Resume Banner ── */
+    
     function showResumeBanner() {
         const saved  = localStorage.getItem(STORAGE_KEY);
         const banner = document.getElementById('resume-banner');
@@ -1003,7 +988,7 @@ document.addEventListener('keydown', (e) => {
         document.getElementById('resume-btn').style.display    = 'none';
     }
 
-    /* ── Dashboard — topic-based ── */
+    
     function initDashboard() {
         const board = document.getElementById('dashboard');
         board.innerHTML = '';
@@ -1061,7 +1046,7 @@ document.addEventListener('keydown', (e) => {
         loadStatsBar();
     }
 
-    /* ── Helpers ── */
+    
     function shuffleArray(arr) {
         const a = [...arr];
         for (let i = a.length - 1; i > 0; i--) {
@@ -1071,9 +1056,7 @@ document.addEventListener('keydown', (e) => {
         return a;
     }
 
-    /* ══════════════════
-       START EXAM
-    ══════════════════ */
+    
     function startExam() {
         timeRemaining = parseInt(document.getElementById('t-limit').value) * 60;
         activeMode    = document.getElementById('quiz-mode').value;
@@ -1094,7 +1077,7 @@ document.addEventListener('keydown', (e) => {
 
         if (document.getElementById('shuffle-options').checked) {
             pool.forEach(q => {
-                // answer is full text — safe to shuffle array directly
+
                 q.options = shuffleArray([...q.options]);
             });
         }
@@ -1108,9 +1091,7 @@ document.addEventListener('keydown', (e) => {
         renderQuestion();
     }
 
-    /* ══════════════════
-       TIMER
-    ══════════════════ */
+    
     function runTimer() {
         clearInterval(timerId);
         timerId = setInterval(() => {
@@ -1122,9 +1103,7 @@ document.addEventListener('keydown', (e) => {
         }, 1000);
     }
 
-    /* ══════════════════
-       RENDER QUESTION
-    ══════════════════ */
+    
     function renderQuestion() {
         const q          = currentExamData[currentIndex];
         const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
@@ -1164,7 +1143,6 @@ document.addEventListener('keydown', (e) => {
             optBox.appendChild(btn);
         });
 
-        // Feedback + explanation
         const expHtml = q.explanation
             ? `<div class="explanation-box"><strong>Explanation:</strong> ${q.explanation}</div>`
             : '';
@@ -1198,9 +1176,7 @@ document.addEventListener('keydown', (e) => {
         if (n >= 0 && n < currentExamData.length) { currentIndex = n; renderQuestion(); }
     }
 
-    /* ══════════════════
-       SAVE / RESUME
-    ══════════════════ */
+    
     function saveState() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify({
             currentExamData, userAnswers, currentIndex,
@@ -1239,9 +1215,7 @@ document.addEventListener('keydown', (e) => {
         renderQuestion();
     }
 
-    /* ══════════════════
-       SHOW RESULTS
-    ══════════════════ */
+    
     async function showResults(forced = false) {
         const answered = Object.keys(userAnswers).length;
         if (!forced && answered < currentExamData.length) {
@@ -1327,3 +1301,6 @@ document.addEventListener('keydown', (e) => {
 </script>
 </body>
 </html>
+
+
+
