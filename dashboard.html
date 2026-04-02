@@ -71,22 +71,43 @@
 
         
         .whatsapp-float {
-            position: fixed; width: 52px; height: 52px;
-            bottom: 24px; right: 24px;
-            background-color: var(--whatsapp-green); color: #FFF;
-            border-radius: 50%; text-align: center; font-size: 24px;
-            box-shadow: 0 4px 18px rgba(37,211,102,0.4);
-            z-index: 3000; display: flex; align-items: center; justify-content: center;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .whatsapp-float:hover { transform: scale(1.12) rotate(8deg); color: white; }
-        
-        /* Remove the font-family and font-weight lines */
-.whatsapp-float i {
-    display: inline-block;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 64px;
+    height: 64px;
+    /* Beautiful gradient from WhatsApp green to a deeper teal */
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    border-radius: 20px; /* Modern "Squircle" shape instead of a plain circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Soft, colored glow shadow */
+    box-shadow: 0 12px 24px -8px rgba(37, 211, 102, 0.5);
+    z-index: 9999;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 20px 30px -10px rgba(37, 211, 102, 0.6);
+    color: white;
+}
+
+@keyframes softPulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+    100% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-float {
+    animation: softPulse 2s infinite;
+}
+
+.lucide-whatsapp {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
 
         
