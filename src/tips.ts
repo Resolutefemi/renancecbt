@@ -3,8 +3,6 @@
  * tips.ts - Learning Tips & Analytics
  */
 
-export {};
-
 declare const lucide: any;
 
 /**
