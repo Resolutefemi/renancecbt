@@ -24,6 +24,14 @@ export interface Question {
     topic?: string;
 }
 
+export interface Course {
+    id: string;
+    title: string;
+    icon: string;
+    isReady: boolean;
+    semester: 1 | 2;
+}
+
 export type QuizMode = 'practice' | 'exam';
 
 export interface QuizState {
