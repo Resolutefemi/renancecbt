@@ -18,21 +18,21 @@ const courses: Course[] = [
     { id: 'CHE 103', title: 'EXPERIMENTAL CHEMISTRY I',          icon: 'test-tube',  isReady: true, semester: 1 },
 ];
 
-let currentSemester: number = 2;
+let currentSemester: number = 1; // Defaulting to 1 as it seems more logical for first load
 
-export function setSemester(sem: number): void {
+function setSemester(sem: number): void {
     currentSemester = sem;
     document.getElementById('sem1Btn')?.classList.toggle('active', sem === 1);
     document.getElementById('sem2Btn')?.classList.toggle('active', sem === 2);
     renderCourses((document.getElementById('courseSearch') as HTMLInputElement)?.value || '');
 }
 
-export function filterCourses(): void {
+function filterCourses(): void {
     const courseSearch = document.getElementById('courseSearch') as HTMLInputElement;
     renderCourses(courseSearch.value);
 }
 
-export function renderCourses(filterText: string = ''): void {
+function renderCourses(filterText: string = ''): void {
     const grid = document.getElementById('courseGrid');
     if (!grid) return;
     
@@ -53,11 +53,11 @@ export function renderCourses(filterText: string = ''): void {
         filtered.forEach(course => {
             const card = document.createElement('div');
             card.className = 'course-card glass animate-slide';
-            card.onclick = () => {
+            card.addEventListener('click', () => {
                 if (course.isReady) {
                     window.location.href = `${course.id.toLowerCase().replace(/\s+/g, '')}.html`;
                 }
-            };
+            });
 
             card.innerHTML = `
                 <div class="course-card-header">
@@ -141,12 +141,30 @@ function animateValue(id: string, start: number, end: number, duration: number, 
     window.requestAnimationFrame(step);
 }
 
+function triggerShare(): void {
+    if (navigator.share) {
+        navigator.share({
+            title: 'RENANCE CBT Portal',
+            text: 'Join the ultimate FUTA CBT simulation platform. Practice with hundreds of past questions!',
+            url: window.location.origin
+        }).catch(err => console.log('Error sharing:', err));
+    } else {
+        navigator.clipboard.writeText(window.location.origin).then(() => {
+            alert('Portal link copied to clipboard: ' + window.location.origin);
+        });
+    }
+}
+
 // Initial render
 document.addEventListener('DOMContentLoaded', () => {
-    renderCourses();
+    // Event Listeners
+    document.getElementById('sem1Btn')?.addEventListener('click', () => setSemester(1));
+    document.getElementById('sem2Btn')?.addEventListener('click', () => setSemester(2));
+    document.getElementById('courseSearch')?.addEventListener('input', filterCourses);
+    document.getElementById('btn-share-portal')?.addEventListener('click', triggerShare);
+
+    // Set initial semester and render
+    setSemester(1);
     loadUserStats();
-    
-    // Attach to window for HTML onclick attributes
-    (window as any).setSemester = setSemester;
-    (window as any).filterCourses = filterCourses;
 });
+
