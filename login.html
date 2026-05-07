@@ -258,12 +258,9 @@ input:focus{border-color:rgba(6,182,212,.5);background:rgba(6,182,212,.05);box-s
   </div>
 </div>
 
-<script>
-
-const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
-if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-const db = window._sb;
+<script type="module">
+// Centralized database client from ui-core.js
+const db = window._db;
 
 
 const bgC = document.getElementById('bg-canvas');
