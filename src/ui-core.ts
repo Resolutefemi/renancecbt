@@ -6,6 +6,59 @@
 
 import { SUPABASE_CONFIG } from './config';
 
+// --- Global Styles Injection ---
+(function injectGlobalStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0a;
+            --bg-glass: rgba(15, 15, 15, 0.85);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --accent: #06b6d4;
+            --accent-glow: rgba(6, 182, 212, 0.1);
+            --border: rgba(255, 255, 255, 0.1);
+            --glow: #06b6d4;
+        }
+        html, body {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+            font-family: 'Cabinet Grotesk', 'Outfit', sans-serif !important;
+            margin: 0;
+            padding: 0;
+        }
+        .glass, .glass-heavy {
+            background: var(--bg-glass) !important;
+            border: 1px solid var(--border) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.8) !important;
+            border-bottom: 1px solid var(--border) !important;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0284c7, #06b6d4) !important;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3) !important;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: #ffffff !important;
+        }
+        input, select, textarea {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid var(--border) !important;
+            color: #ffffff !important;
+            outline: none !important;
+        }
+        input:focus, select:focus {
+            border-color: var(--accent) !important;
+            box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2) !important;
+        }
+    `;
+    document.head.appendChild(style);
+})();
+
 // Declare Supabase global (provided by CDN)
 declare const supabase: any;
 
