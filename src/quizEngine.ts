@@ -1,5 +1,6 @@
 
 import { Question, QuizMode, QuizState } from './types';
+import { sendToAI } from './ai-bridge';
 
 // Declare Supabase global
 declare const supabase: any;
