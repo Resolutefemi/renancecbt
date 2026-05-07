@@ -6,29 +6,6 @@
 
 import { db } from './ui-core';
 
-// --- Global Styles Injection ---
-(function injectStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-        :root {
-            --bg: #000000;
-            --blue: #3b82f6;
-            --glow: #06b6d4;
-            --cyan: #22d3ee;
-            --violet: #818cf8;
-            --ink: #ffffff;
-            --muted: #94a3b8;
-            --card: rgba(10, 10, 10, 0.8);
-            --border: rgba(255, 255, 255, 0.1);
-        }
-        html, body {
-            background-color: #000000 !important;
-            color: #ffffff !important;
-        }
-    `;
-    document.head.appendChild(style);
-})();
-
 // --- Background Animation ---
 const bgC = document.getElementById('bg-canvas') as HTMLCanvasElement;
 const ct = bgC?.getContext('2d');
