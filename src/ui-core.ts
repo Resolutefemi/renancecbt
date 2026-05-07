@@ -10,7 +10,7 @@ import { SUPABASE_CONFIG } from './config';
 declare const supabase: any;
 
 // Initialize Supabase once
-let db: any = null;
+export let db: any = null;
 if (typeof supabase !== 'undefined') {
     db = supabase.createClient(SUPABASE_CONFIG.URL, SUPABASE_CONFIG.KEY);
     (window as any)._db = db; // Global reference for legacy scripts
