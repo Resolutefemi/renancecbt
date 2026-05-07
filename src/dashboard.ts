@@ -1,6 +1,5 @@
 
 import { Course } from './types';
-import { db } from './ui-core';
 
 const courses: Course[] = [
     { id: 'STA 111', title: 'DESCRIPTIVE STATISTICS',            icon: 'bar-chart',  isReady: true, semester: 1 },
