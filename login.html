@@ -14,12 +14,18 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:var(--bg-primary);--blue:var(--accent);--glow:var(--accent);--cyan:var(--secondary);
-  --violet:#818cf8;--ink:var(--text-main);--muted:var(--text-muted);
-  --card:var(--bg-glass);--border:var(--border);
+  --bg: #000000;
+  --blue: #3b82f6;
+  --glow: #06b6d4;
+  --cyan: #22d3ee;
+  --violet: #818cf8;
+  --ink: #ffffff;
+  --muted: #94a3b8;
+  --card: rgba(10, 10, 10, 0.8);
+  --border: rgba(255, 255, 255, 0.1);
 }
-html,body{height:100%;margin:0;overflow:hidden;touch-action:none}
-body{background:var(--bg);font-family:'Outfit',sans-serif;color:var(--ink);cursor:default;overflow:hidden}
+html,body{height:100%;margin:0;overflow:hidden;touch-action:none;background:#000;}
+body{font-family:'Outfit',sans-serif;color:var(--ink);cursor:default;overflow:hidden}
 
 /* Performance Mode Styles */
 .perf-mode #bg-canvas, .perf-mode .scan, .perf-mode .grain { display: none !important; }
