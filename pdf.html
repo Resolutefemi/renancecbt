@@ -20,7 +20,7 @@
             margin: auto; 
             background: white; 
             border: 1px solid #ddd; 
-            padding: 20px; 
+            padding: 20px; /* Responsive padding */
             border-radius: 12px; 
             box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
         }
@@ -30,7 +30,7 @@
             margin-bottom: 20px; 
             padding-bottom: 15px; 
             display: flex; 
-            flex-direction: column; 
+            flex-direction: column; /* Stack header on mobile */
             align-items: center; 
             text-align: center;
             gap: 15px;
@@ -48,21 +48,21 @@
         
         h1 { margin: 0; color: #2c3e50; font-size: 20px; }
 
-        
+        /* Search Bar Responsive */
         .search-container { position: relative; margin-bottom: 25px; width: 100%; }
         .search-container i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #adb5bd; }
         #courseSearch { 
             width: 100%; 
-            padding: 14px 12px 14px 45px; 
+            padding: 14px 12px 14px 45px; /* Larger tap target */
             border-radius: 8px; 
             border: 2px solid #eee; 
-            font-size: 16px; 
+            font-size: 16px; /* Prevents iOS auto-zoom on focus */
             outline: none; 
             transition: 0.3s; 
             box-sizing: border-box;
         }
 
-        
+        /* Grid - Default 1 Column (Mobile) */
         .grid { 
             display: grid; 
             grid-template-columns: 1fr; 
@@ -91,7 +91,7 @@
         .btn-link, .btn-disabled { 
             display: block; 
             text-align: center; 
-            padding: 14px; 
+            padding: 14px; /* Touch-friendly height */
             border-radius: 8px; 
             font-size: 13px; 
             font-weight: bold;
@@ -103,7 +103,7 @@
 
         .coming-soon-tag { font-size: 10px; color: #dc3545; text-transform: uppercase; font-weight: bold; margin-top: 10px; text-align: center; }
 
-        
+        /* WhatsApp Floating Icon - Smaller for Mobile */
         .whatsapp-float {
             position: fixed; width: 55px; height: 55px; bottom: 20px; right: 20px;
             background-color: #25d366; color: #FFF; border-radius: 50%;
@@ -115,7 +115,7 @@
         footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; }
         .contact-info { display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: #4a4a4a; }
 
-        
+        /* Desktop & Tablet Adjustments */
         @media (min-width: 650px) {
             body { padding: 40px; }
             .wrapper { padding: 30px; }
@@ -123,7 +123,7 @@
             h1 { font-size: 24px; }
             .grid { grid-template-columns: 1fr 1fr; gap: 20px; }
             .contact-info { flex-direction: row; justify-content: center; gap: 20px; }
-            .name { height: 45px; } 
+            .name { height: 45px; } /* Consistent card height on desktop */
         }
 
         @media print { .whatsapp-float, .search-container { display: none; } }
@@ -220,6 +220,3 @@
 
 </body>
 </html>
-
-
-
