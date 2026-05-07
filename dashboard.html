@@ -205,7 +205,7 @@
                 <h1 id="welcomeText">Welcome Back, Student</h1>
                 <p>Select a course to begin your CBT practice session.</p>
             </div>
-            <button class="btn btn-primary" id="btn-share-portal">
+            <button class="btn btn-primary" onclick="triggerShare()">
                 <i class="fa-solid fa-share-nodes"></i> Share Portal
             </button>
         </div>
@@ -229,12 +229,12 @@
 
         <div class="section-header">
             <div class="semester-tabs glass">
-                <button id="sem1Btn" class="sem-btn">First Sem</button>
-                <button id="sem2Btn" class="sem-btn">Second Sem</button>
+                <button onclick="setSemester(1)" id="sem1Btn" class="sem-btn">First Sem</button>
+                <button onclick="setSemester(2)" id="sem2Btn" class="sem-btn active">Second Sem</button>
             </div>
             <div class="search-wrapper">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="courseSearch" class="search-input" placeholder="Search course code or name...">
+                <input type="text" id="courseSearch" class="search-input" placeholder="Search course code or name..." oninput="filterCourses()">
             </div>
         </div>
 
@@ -247,5 +247,19 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <script>
+        // Placeholder for functions that will be attached to window in dashboard.ts
+        function triggerShare() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'RENANCE CBT Portal',
+                    text: 'Join the ultimate FUTA CBT simulation platform. Practice with hundreds of past questions!',
+                    url: window.location.origin
+                });
+            } else {
+                alert('Portal link: ' + window.location.origin);
+            }
+        }
+    </script>
 </body>
 </html>
