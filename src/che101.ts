@@ -10,6 +10,4 @@ document.addEventListener('DOMContentLoaded', () => {
     (window as any).move = (d: number) => engine.move(d);
     (window as any).showResults = () => engine.showResults();
     (window as any).goHome = () => engine.goHome();
-    (window as any).reviewWithAI = () => engine.reviewWithAI();
-    (window as any).enterReviewMode = () => engine.enterReviewMode();
 });
