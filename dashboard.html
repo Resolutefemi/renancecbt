@@ -7,259 +7,1221 @@
     <meta name="author" content="Resolute Femi">
     <title>RENANCE CBT | Dashboard</title>
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="theme.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script type="module" src="dist/ui-core.js"></script>
-    <script type="module" src="dist/dashboard.js"></script>
 
     <style>
-        main {
-            padding: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
+        :root {
+            --bg-body: #f1f5f9;
+            --sidebar: #0f172a;
+            --card-bg: #ffffff;
+            --primary-accent: #2563eb;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --whatsapp-green: #25d366;
+            --glass: rgba(15, 23, 42, 0.97);
+            --share-gradient: linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #7c3aed 100%);
+
+            
+            --practice-btn:        #059669;
+            --practice-btn-hover:  #047857;
+            --practice-btn-text:   #ffffff;
+
+            
+            --study-btn:           #4f46e5;
+            --study-btn-hover:     #4338ca;
+            --study-btn-text:      #ffffff;
         }
 
-        .header-top {
+        .dark-mode {
+            --bg-body: #0f172a;
+            --sidebar: #020617;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --primary-accent: #60a5fa;
+            --glass: rgba(2, 6, 23, 0.97);
+
+            --practice-btn:        #10b981;
+            --practice-btn-hover:  #059669;
+            --study-btn:           #6366f1;
+            --study-btn-hover:     #4f46e5;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-body);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+            min-height: 100vh;
+            color: var(--text-main);
+            overflow-x: hidden;
+            
+            overscroll-behavior-y: none;
         }
 
+        
+        .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 64px;
+    height: 64px;
+    /* Beautiful gradient from WhatsApp green to a deeper teal */
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    border-radius: 20px; /* Modern "Squircle" shape instead of a plain circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Soft, colored glow shadow */
+    box-shadow: 0 12px 24px -8px rgba(37, 211, 102, 0.5);
+    z-index: 9999;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 20px 30px -10px rgba(37, 211, 102, 0.6);
+    color: white;
+}
+
+@keyframes softPulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+    100% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-float {
+    animation: softPulse 2s infinite;
+}
+
+.lucide-whatsapp {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+        
+        .mobile-top-bar {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: var(--sidebar);
+            color: white;
+            padding: 0 1.1rem;
+            height: 56px;
+            z-index: 1500;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+
+            
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            will-change: transform;
+            -webkit-perspective: 1000;
+            perspective: 1000;
+
+            
+            padding-top: env(safe-area-inset-top, 0);
+        }
+        .mobile-top-bar .mobile-brand {
+            display: flex; flex-direction: column;
+            align-items: center; line-height: 1.2;
+            user-select: none;
+        }
+        .mobile-top-bar .mobile-brand span:first-child {
+            font-weight: 800; font-size: 0.92rem; letter-spacing: 1.5px;
+        }
+        .mobile-top-bar .mobile-brand span:last-child {
+            font-size: 0.56rem; font-weight: 700; color: #60a5fa; letter-spacing: 0.8px;
+        }
+        .mobile-icon-btn {
+            background: rgba(255,255,255,0.08);
+            border: none; color: white;
+            width: 36px; height: 36px;
+            border-radius: 9px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: background 0.2s;
+            flex-shrink: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .mobile-icon-btn:hover { background: rgba(255,255,255,0.14); }
+        .mobile-right-actions { display: flex; align-items: center; gap: 7px; }
+
+        
+        nav {
+            width: 260px; background: var(--glass);
+            backdrop-filter: blur(16px);
+            color: white; padding: 1.5rem;
+            display: flex; flex-direction: column;
+            position: fixed; left: 0; top: 0; height: 100vh;
+            z-index: 2000;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-right: 1px solid rgba(255,255,255,0.07);
+            overflow-y: auto; overflow-x: hidden;
+        }
+        .nav-header {
+            display: flex; align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem; flex-shrink: 0;
+        }
+        .logo-area {
+            display: flex; align-items: center; gap: 10px;
+            font-weight: 800; color: #f8fafc;
+            font-size: 0.9rem; letter-spacing: 0.5px; min-width: 0;
+        }
+        .logo-area span { line-height: 1.2; }
+        .nav-close { display: none; cursor: pointer; color: #94a3b8; padding: 4px; flex-shrink: 0; }
+        .nav-menu-content { flex-grow: 1; display: flex; flex-direction: column; min-width: 0; }
+        .nav-item {
+            display: flex; align-items: center; gap: 12px;
+            padding: 11px 13px; text-decoration: none; color: #94a3b8;
+            border-radius: 10px; margin-bottom: 3px;
+            transition: background 0.2s, color 0.2s;
+            font-weight: 500; font-size: 0.88rem;
+            white-space: nowrap; overflow: hidden;
+        }
+        .nav-item:hover { background: rgba(255,255,255,0.06); color: white; }
+        .nav-item.active {
+            background: linear-gradient(135deg, rgba(37,99,235,0.25), rgba(37,99,235,0.08));
+            color: #60a5fa; border: 1px solid rgba(96,165,250,0.2);
+        }
+        .nav-item i { flex-shrink: 0; }
+        .nav-built-by {
+            padding: 14px 10px 8px;
+            font-size: 0.7rem; color: #475569; text-align: center;
+        }
+        .nav-footer {
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            flex-shrink: 0; display: flex;
+            align-items: center; gap: 10px;
+            min-height: 58px;
+            padding-bottom: env(safe-area-inset-bottom, 8px);
+        }
+        .mini-profile {
+            display: flex; align-items: center; gap: 9px;
+            flex: 1; min-width: 0; overflow: hidden;
+        }
+        .mini-avatar {
+            width: 34px; height: 34px; min-width: 34px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 9px; display: flex; align-items: center;
+            justify-content: center; font-weight: 700;
+            font-size: 0.72rem; color: white; flex-shrink: 0;
+        }
+        .mini-info { min-width: 0; flex: 1; overflow: hidden; }
+        .mini-info p {
+            font-size: 0.8rem; font-weight: 600;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #f1f5f9;
+        }
+        .mini-info small { font-size: 0.65rem; color: #64748b; display: block; }
+        .logout-pill {
+            background: rgba(239,68,68,0.12);
+            border: 1px solid rgba(239,68,68,0.2);
+            color: #ef4444; padding: 8px; border-radius: 9px;
+            cursor: pointer; transition: background 0.2s;
+            flex-shrink: 0; display: flex;
+            align-items: center; justify-content: center;
+            min-width: 36px; min-height: 36px;
+        }
+        .logout-pill:hover { background: rgba(239,68,68,0.22); }
+
+        .nav-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.5); z-index: 1999;
+            backdrop-filter: blur(3px);
+        }
+        .nav-overlay.visible { display: block; }
+
+        
+        main {
+            flex-grow: 1; margin-left: 260px;
+            padding: 2.5rem 2.5rem 3rem;
+            width: 100%; display: flex; flex-direction: column; min-width: 0;
+        }
+
+        
+        .header-top {
+            display: flex; justify-content: space-between;
+            align-items: center; margin-bottom: 2rem;
+            flex-wrap: wrap; gap: 1rem;
+        }
+        .header-actions { display: flex; align-items: center; gap: 10px; }
+        .user-profile-card {
+            display: flex; align-items: center; gap: 10px;
+            background: var(--card-bg); padding: 8px 14px;
+            border-radius: 11px; border: 1px solid var(--border-color);
+            text-decoration: none; color: inherit; transition: border-color 0.2s;
+        }
+        .user-profile-card:hover { border-color: var(--primary-accent); }
+        .share-btn-header {
+            display: flex; align-items: center; gap: 7px;
+            background: var(--share-gradient); color: white;
+            padding: 9px 16px; border-radius: 11px; border: none;
+            font-weight: 700; font-size: 0.8rem; cursor: pointer;
+            letter-spacing: 0.3px; white-space: nowrap;
+            box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .share-btn-header:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.4); }
+        .share-btn-header:active { transform: translateY(0); }
+        .theme-btn {
+            background: var(--card-bg); color: var(--text-main);
+            border: 1px solid var(--border-color); padding: 9px;
+            border-radius: 11px; cursor: pointer; transition: border-color 0.2s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .theme-btn:hover { border-color: var(--primary-accent); }
+
+        
+        @keyframes popIn {
+            0%   { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1);   opacity: 1; }
+        }
+        .stat-animated {
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+        }
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem; margin-bottom: 2.2rem;
         }
-
         .stat-card {
-            padding: 1.5rem;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
+            background: var(--card-bg); padding: 1.2rem 1.3rem;
+            border-radius: 14px; border: 1px solid var(--border-color);
+            display: flex; align-items: center; gap: 1rem;
         }
-
         .icon-box {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--accent-glow);
-            color: var(--accent);
-            font-size: 1.5rem;
+            width: 42px; height: 42px; min-width: 42px;
+            background: rgba(37,99,235,0.1); color: var(--primary-accent);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
         }
 
-        .stat-info h3 {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-            margin-bottom: 0.2rem;
-        }
-
-        .stat-info p {
-            font-size: 1.8rem;
-            font-weight: 800;
-        }
-
+        
         .section-header {
-            display: flex;
+            display: flex; align-items: center;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+            margin-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem;
         }
-
-        .semester-tabs {
-            display: flex;
-            gap: 0.5rem;
-            padding: 0.4rem;
-            border-radius: 14px;
-        }
-
-        .sem-btn {
-            padding: 0.6rem 1.2rem;
-            border-radius: 10px;
-            border: none;
-            background: transparent;
-            color: var(--text-muted);
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .sem-btn.active {
-            background: var(--accent);
-            color: white;
-            box-shadow: 0 4px 12px var(--accent-glow);
-        }
-
-        .search-wrapper {
-            position: relative;
-            flex: 1;
-            max-width: 400px;
-        }
-
+        .search-wrapper { position: relative; width: 100%; max-width: 400px; }
         .search-wrapper i {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
+            position: absolute; left: 12px; top: 50%;
+            transform: translateY(-50%); color: var(--text-muted);
+            pointer-events: none;
         }
-
         .search-input {
-            width: 100%;
-            padding: 0.8rem 1rem 0.8rem 2.8rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: var(--bg-glass);
-            color: var(--text-main);
-            outline: none;
-            font-family: inherit;
+            width: 100%; padding: 10px 12px 10px 40px;
+            border-radius: 10px; border: 1px solid var(--border-color);
+            background: var(--card-bg); color: var(--text-main);
+            font-size: 0.88rem; outline: none;
+            transition: border-color 0.25s, box-shadow 0.25s;
         }
+        .search-input:focus {
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+        .search-input::placeholder { color: var(--text-muted); }
 
+        
         .course-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.1rem;
         }
-
         .course-card {
-            padding: 1.5rem;
-            border-radius: 20px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 17px; padding: 1.4rem; cursor: pointer;
+            display: flex; flex-direction: column; gap: 0.9rem;
+            transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+            position: relative; overflow: hidden;
         }
-
         .course-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-            border-color: var(--accent);
+            transform: translateY(-4px);
+            border-color: var(--primary-accent);
+            box-shadow: 0 8px 24px rgba(37,99,235,0.12);
+        }
+        .card-footer {
+            margin-top: auto; padding-top: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            display: flex; justify-content: space-between;
+            align-items: center; font-weight: 700;
+            font-size: 0.8rem; color: var(--primary-accent);
         }
 
-        .course-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+        
+        .card-footer-dual {
+            margin-top: auto; padding-top: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            display: flex; gap: 8px;
+        }
+        .dual-btn {
+            flex: 1; min-width: 0;
+            display: flex; align-items: center; justify-content: center;
+            gap: 5px; padding: 10px 8px;
+            border-radius: 10px; font-weight: 700;
+            font-size: 0.72rem; letter-spacing: 0.3px;
+            cursor: pointer; border: none;
+            white-space: nowrap; line-height: 1;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+            transition: transform 0.18s, filter 0.18s, box-shadow 0.18s;
+        }
+        .dual-btn:active { transform: scale(0.97) !important; }
+
+        
+        .dual-btn-primary {
+            background: var(--practice-btn);
+            color: var(--practice-btn-text);
+            box-shadow: 0 2px 8px rgba(5,150,105,0.3);
+        }
+        .dual-btn-primary:hover {
+            background: var(--practice-btn-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(5,150,105,0.4);
         }
 
-        .course-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.2rem;
+        
+        .dual-btn-secondary {
+            background: var(--study-btn);
+            color: var(--study-btn-text);
+            box-shadow: 0 2px 8px rgba(79,70,229,0.3);
+        }
+        .dual-btn-secondary:hover {
+            background: var(--study-btn-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(79,70,229,0.4);
         }
 
-        .course-card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
+        
+        .share-grid-card {
+            background: var(--share-gradient);
+            border: none !important; color: white; cursor: pointer;
+            position: relative; overflow: hidden;
+        }
+        .share-grid-card::before {
+            content: ''; position: absolute; top: -40%; right: -20%;
+            width: 200px; height: 200px;
+            background: rgba(255,255,255,0.06); border-radius: 50%;
+            pointer-events: none;
+        }
+        .share-grid-card::after {
+            content: ''; position: absolute; bottom: -30%; left: -10%;
+            width: 150px; height: 150px;
+            background: rgba(255,255,255,0.04); border-radius: 50%;
+            pointer-events: none;
+        }
+        .share-grid-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(37,99,235,0.4);
+            border-color: transparent !important;
+        }
+        .share-grid-card .card-footer {
+            border-top: 1px solid rgba(255,255,255,0.2); color: white;
+        }
+        .share-grid-card .icon-box {
+            background: rgba(255,255,255,0.15); color: white;
         }
 
-        .whatsapp-float {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: #25d366;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-            z-index: 1000;
-            transition: transform 0.2s;
+        
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+            z-index: 9999; justify-content: center; align-items: center; padding: 1.2rem;
+        }
+        .modal-content {
+            background: var(--card-bg); padding: 26px 24px;
+            border-radius: 18px; width: 100%; max-width: 400px;
+            text-align: center; color: var(--text-main);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            animation: modalIn 0.3s ease;
+            max-height: 90vh; overflow-y: auto;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.97); }
+            to   { opacity: 1; transform: none; }
+        }
+        .modal-content h2 { margin-bottom: 5px; font-size: 1.15rem; }
+        .modal-content .modal-sub { color: var(--text-muted); font-size: 0.83rem; margin-bottom: 18px; }
+        .input-group { margin-bottom: 12px; text-align: left; }
+        .input-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.83rem; }
+        .input-group input, .input-group select {
+            width: 100%; padding: 10px 12px;
+            border: 1px solid var(--border-color); border-radius: 9px;
+            font-size: 0.9rem; background: var(--card-bg); color: var(--text-main);
+            outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .input-group select { cursor: pointer; appearance: none; }
+        .input-group input:focus, .input-group select:focus {
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+        #saveProfileBtn {
+            width: 100%; padding: 12px;
+            background: var(--primary-accent); color: white;
+            border: none; border-radius: 9px;
+            font-size: 0.93rem; font-weight: 700; cursor: pointer;
+            margin-top: 8px; transition: background 0.2s;
+        }
+        #saveProfileBtn:hover:not(:disabled) { background: #1d4ed8; }
+        #saveProfileBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        
+        .welcome-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(8px);
+            z-index: 10000; justify-content: center; align-items: center; padding: 1.5rem;
+        }
+        .welcome-overlay.show { display: flex; }
+        .welcome-popup {
+            background: var(--card-bg); border-radius: 22px; padding: 0;
+            width: 100%; max-width: 460px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.05);
+            animation: welcomeIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+            overflow: hidden; position: relative;
+        }
+        @keyframes welcomeIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.94); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .welcome-header {
+            background: var(--share-gradient); padding: 26px 26px 20px;
+            position: relative; overflow: hidden;
+        }
+        .welcome-header::before {
+            content: ''; position: absolute; top: -50%; right: -20%;
+            width: 220px; height: 220px;
+            background: rgba(255,255,255,0.07); border-radius: 50%;
+        }
+        .welcome-header::after {
+            content: ''; position: absolute; bottom: -40%; left: -10%;
+            width: 160px; height: 160px;
+            background: rgba(255,255,255,0.05); border-radius: 50%;
+        }
+        .welcome-badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 99px; padding: 4px 11px;
+            font-size: 0.63rem; font-weight: 700; color: white;
+            letter-spacing: 0.8px; text-transform: uppercase;
+            margin-bottom: 11px; position: relative; z-index: 1;
+        }
+        .welcome-title {
+            font-size: 1.45rem; font-weight: 800; color: white;
+            letter-spacing: -0.3px; line-height: 1.2;
+            position: relative; z-index: 1; margin-bottom: 6px;
+        }
+        .welcome-sub {
+            font-size: 0.8rem; color: rgba(255,255,255,0.75);
+            position: relative; z-index: 1;
+        }
+        .welcome-body { padding: 20px 26px 24px; }
+        .welcome-features { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 18px; }
+        .wf-item {
+            display: flex; align-items: flex-start; gap: 9px; padding: 11px;
+            border-radius: 11px; background: var(--bg-body); border: 1px solid var(--border-color);
+        }
+        .wf-icon {
+            width: 30px; height: 30px; min-width: 30px; border-radius: 8px;
+            background: rgba(37,99,235,0.1); color: var(--primary-accent);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .wf-text strong { display: block; font-size: 0.73rem; font-weight: 700; color: var(--text-main); }
+        .wf-text span { font-size: 0.64rem; color: var(--text-muted); }
+        .welcome-actions { display: flex; gap: 9px; }
+        .welcome-cta {
+            flex: 1; padding: 12px; background: var(--primary-accent); color: white;
+            border: none; border-radius: 10px; font-size: 0.86rem; font-weight: 700;
+            cursor: pointer; transition: background 0.2s, transform 0.2s;
+            display: flex; align-items: center; justify-content: center; gap: 7px;
+        }
+        .welcome-cta:hover { background: #1d4ed8; transform: translateY(-1px); }
+        .welcome-dismiss {
+            padding: 12px 16px; background: var(--bg-body); color: var(--text-muted);
+            border: 1px solid var(--border-color); border-radius: 10px;
+            font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: color 0.2s, border-color 0.2s;
+        }
+        .welcome-dismiss:hover { color: var(--text-main); border-color: var(--text-muted); }
+        .welcome-close-x {
+            position: absolute; top: 13px; right: 13px;
+            width: 28px; height: 28px; border-radius: 8px;
+            background: rgba(255,255,255,0.15); border: none; color: white;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-size: 0.82rem; z-index: 2; transition: background 0.2s;
+        }
+        .welcome-close-x:hover { background: rgba(255,255,255,0.25); }
+
+        
+        #shareToast {
+            position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%);
+            background: #1e293b; color: white; padding: 10px 20px;
+            border-radius: 30px; font-size: 0.82rem; font-weight: 600;
+            z-index: 9999; box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            opacity: 0; transition: opacity 0.3s ease;
+            pointer-events: none; white-space: nowrap;
         }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1);
+        
+        .page-footer {
+            margin-top: auto; padding-top: 2.5rem;
+            text-align: center; color: var(--text-muted); font-size: 0.8rem;
         }
 
-        @media (max-width: 768px) {
-            main { padding: 1.5rem; }
-            .header-top h1 { font-size: 1.8rem; }
-            .course-grid { grid-template-columns: 1fr; }
+        
+        @media (max-width: 1024px) {
+            nav { transform: translateX(-100%); width: 270px; }
+            nav.open { transform: translateX(0); box-shadow: 8px 0 40px rgba(0,0,0,0.4); }
+            main { margin-left: 0; padding: 72px 1rem 2.5rem; }
+            .mobile-top-bar { display: flex; }
+            .nav-close { display: flex; }
+            .header-top { display: none; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-bottom: 1.6rem; }
+            .course-grid { grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+            .search-wrapper { max-width: 100%; }
+            .welcome-overlay { display: none !important; }
+        }
+
+        @media (max-width: 600px) {
+            main { padding: 64px 0.9rem 2.5rem; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+            .stat-card { padding: 0.95rem 1rem; gap: 0.7rem; border-radius: 12px; }
+            .icon-box { width: 38px; height: 38px; min-width: 38px; border-radius: 9px; }
+            .stat-card p:last-child { font-size: 1.1rem !important; }
+            .course-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+            .course-card { padding: 1.15rem; border-radius: 14px; }
+            .search-input { padding: 10px 12px 10px 38px; font-size: 0.86rem; }
+            h1 { font-size: 1.25rem !important; }
+
+            
+            .dual-btn { padding: 11px 8px; font-size: 0.7rem; border-radius: 9px; }
+            .card-footer-dual { gap: 7px; }
+
+            .whatsapp-float { width: 48px; height: 48px; font-size: 22px; bottom: 18px; right: 16px; }
+        }
+
+        @media (max-width: 380px) {
+            main { padding: 60px 0.75rem 2.5rem; }
+            .stats-grid { gap: 0.6rem; }
+            .stat-card { padding: 0.85rem; }
+            .mobile-top-bar { padding: 0 0.85rem; height: 52px; }
+            .dual-btn { font-size: 0.65rem; padding: 10px 4px; gap: 3px; }
+        }
+
+        
+        @media (max-height: 600px) {
+            nav { padding: 1.1rem 1.5rem; }
+            .nav-footer { padding-top: 0.75rem; min-height: 50px; }
+            .nav-menu-content { overflow-y: auto; }
+        }
+
+        
+        @supports (padding-top: env(safe-area-inset-top)) {
+            .mobile-top-bar {
+                height: calc(56px + env(safe-area-inset-top, 0px));
+                padding-top: env(safe-area-inset-top, 0);
+            }
+            @media (max-width: 1024px) {
+                main { padding-top: calc(72px + env(safe-area-inset-top, 0px)); }
+            }
         }
     </style>
 </head>
 <body>
 
-    <main class="animate-fade">
-        <div class="header-top">
-            <div>
-                <h1 id="welcomeText">Welcome Back, Student</h1>
-                <p>Select a course to begin your CBT practice session.</p>
-            </div>
-            <button class="btn btn-primary" onclick="triggerShare()">
-                <i class="fa-solid fa-share-nodes"></i> Share Portal
-            </button>
-        </div>
-
-        <div class="stats-grid">
-            <div class="stat-card glass animate-slide" style="animation-delay: 0.1s">
-                <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
-                <div class="stat-info">
-                    <h3>Tests Taken</h3>
-                    <p id="testsTakenEl">0</p>
+    <div class="layout">
+        <nav id="sidebar">
+            <div class="nav-header">
+                <div class="logo-area">
+                    <i data-lucide="graduation-cap" size="24"></i>
+                    <span>RENANCE<br><span style="font-size:0.6rem;color:var(--cyan);letter-spacing:1.5px;">FUTA CBT</span></span>
                 </div>
             </div>
-            <div class="stat-card glass animate-slide" style="animation-delay: 0.2s">
-                <div class="icon-box" style="background: rgba(16, 185, 129, 0.1); color: #10b981;"><i class="fa-solid fa-award"></i></div>
-                <div class="stat-info">
-                    <h3>Avg Score</h3>
-                    <p id="avgScoreEl">0%</p>
+            <div class="nav-menu-content">
+                <a href="#" class="nav-item active"><i data-lucide="layout-dashboard"></i> <span>Dashboard</span></a>
+                <a href="pdf.html" class="nav-item"><i data-lucide="book"></i> <span>PDFs</span></a>
+                <a href="gpa.html" class="nav-item"><i data-lucide="calculator"></i> <span>GPA Calc</span></a>
+                <a href="ai.html" class="nav-item"><i data-lucide="brain"></i> <span>Renance AI</span></a>
+                <a href="Tips.html" class="nav-item"><i data-lucide="lightbulb"></i> <span>Study Tips</span></a>
+                <div class="nav-built-by" style="padding: 20px; font-size: 0.7rem; color: var(--muted); text-align: center;">Built by <b>Resolute Femi</b></div>
+            </div>
+            <div class="nav-footer">
+                <div class="mini-avatar" id="navInitials">??</div>
+                <div class="mini-info">
+                    <p id="navUserName">Student</p>
+                    <small>100 Level</small>
+                </div>
+                <button onclick="logout()" style="background:none; border:none; color:rgba(239,68,68,0.6); cursor:pointer; margin-left:auto;">
+                    <i data-lucide="log-out" size="18"></i>
+                </button>
+            </div>
+        </nav>
+
+        <main>
+            <div class="header-top">
+                <div>
+                    <h1>Student Dashboard</h1>
+                    <p>Select a course to begin your CBT practice.</p>
+                </div>
+                <div style="display:flex; gap:12px;">
+                    <button class="share-btn-header" onclick="triggerShare()" style="background:var(--share-gradient); border:none; color:#fff; padding:10px 20px; border-radius:12px; font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:1px; box-shadow:0 8px 20px rgba(37,99,235,0.3); display:flex; align-items:center; gap:8px;">
+                        <i data-lucide="share-2" size="16"></i> SHARE
+                    </button>
+                    <a href="registration.html" style="display:flex; align-items:center; gap:12px; text-decoration:none; background:rgba(255,255,255,0.03); padding:6px 16px; border-radius:14px; border:1px solid var(--border);">
+                        <div style="text-align:right;">
+                            <div id="displayUserName" style="font-weight:700; font-size:0.85rem; color:#fff;">Student</div>
+                            <div id="displayUserDept" style="font-size:0.7rem; color:var(--muted);">Department</div>
+                        </div>
+                        <div class="mini-avatar" id="displayInitials">??</div>
+                    </a>
                 </div>
             </div>
-        </div>
 
-        <div class="section-header">
-            <div class="semester-tabs glass">
-                <button onclick="setSemester(1)" id="sem1Btn" class="sem-btn">First Sem</button>
-                <button onclick="setSemester(2)" id="sem2Btn" class="sem-btn active">Second Sem</button>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="icon-box"><i data-lucide="activity"></i></div>
+                    <div>
+                        <p style="font-size:0.65rem; color:var(--muted); font-weight:700; letter-spacing:1px; text-transform:uppercase;">Tests Taken</p>
+                        <p id="testsTakenEl" style="font-size:1.5rem; font-weight:800; color:#fff;">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon-box" style="background:rgba(34,197,94,0.1); color:#22c55e;"><i data-lucide="award"></i></div>
+                    <div>
+                        <p style="font-size:0.65rem; color:var(--muted); font-weight:700; letter-spacing:1px; text-transform:uppercase;">Avg Score</p>
+                        <p id="avgScoreEl" style="font-size:1.5rem; font-weight:800; color:#fff;">0%</p>
+                    </div>
+                </div>
             </div>
-            <div class="search-wrapper">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="courseSearch" class="search-input" placeholder="Search course code or name..." oninput="filterCourses()">
-            </div>
-        </div>
 
-        <div class="course-grid" id="courseGrid">
-            <!-- Courses injected here -->
+            <div class="section-header">
+                <div>
+                    <h2 id="semesterTitle">Second Semester</h2>
+                    <p style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Showing currently active courses</p>
+                </div>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <div class="semester-tabs" style="display:flex; background:rgba(0,0,0,0.05); padding:4px; border-radius:10px; border:1px solid var(--border-color);">
+                        <button onclick="setSemester(2)" id="sem2Btn" class="sem-btn active" style="padding:6px 12px; border-radius:7px; border:none; font-size:0.75rem; font-weight:700; cursor:pointer; transition:0.2s;">Second Sem</button>
+                        <button onclick="setSemester(1)" id="sem1Btn" class="sem-btn" style="padding:6px 12px; border-radius:7px; border:none; font-size:0.75rem; font-weight:700; cursor:pointer; transition:0.2s; background:transparent; color:var(--text-muted);">First Sem</button>
+                    </div>
+                    <div class="search-wrapper">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="courseSearch" class="search-input" placeholder="Search course..." oninput="filterCourses()">
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                .sem-btn.active { background: var(--primary-accent); color: white; box-shadow: 0 2px 6px rgba(37,99,235,0.2); }
+                .dark-mode .semester-tabs { background: rgba(255,255,255,0.05); }
+            </style>
+
+            <div class="course-grid" id="courseGrid"></div>
+        </main>
+    </div>
+
+    <a href="https://wa.me/2347046203544" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div id="shareToast" style="position:fixed; bottom:100px; left:50%; transform:translateX(-50%); background:var(--blue); color:#fff; padding:10px 24px; border-radius:30px; font-size:0.85rem; font-weight:700; opacity:0; transition:0.3s; z-index:1000; pointer-events:none;"></div>
+
+        <div class="page-footer">
+            &copy; 2026 RENANCE CBT. Built with
+            <i data-lucide="heart" size="12" style="color:#ef4444;fill:#ef4444;vertical-align:-2px;"></i>
+            by <strong>Resolute Femi</strong>.
         </div>
     </main>
 
-    <a href="https://wa.me/2347046203544" class="whatsapp-float" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    
+    <div id="renanceProfileModal" class="modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <div style="font-size:2rem;margin-bottom:6px;">🎓</div>
+            <h2>Complete Your Profile</h2>
+            <p class="modal-sub">Fill this in before accessing your exams.</p>
+            <form id="profileUpdateForm" onsubmit="saveProfile(event)">
+                <div class="input-group">
+                    <label for="studentName">Full Name</label>
+                    <input type="text" id="studentName" placeholder="e.g. Osarekpame Williams" required>
+                </div>
+                <div class="input-group">
+                    <label for="studentFaculty">Faculty / School</label>
+                    <select id="studentFaculty" required>
+                        <option value="" disabled selected>Select Faculty</option>
+                        <option value="SOC">School of Computing (SOC)</option>
+                        <option value="SLIT">School of Logistics and Innovation Technology (SLIT)</option>
+                        <option value="SPS">School of Physical Sciences (SPS)</option>
+                        <option value="SESE">School of Electrical Systems Engineering (SESE)</option>
+                        <option value="SIMME">School of Infrastructure, Minerals &amp; Mfg Eng (SIMME)</option>
+                        <option value="SET">School of Environmental Technology (SET)</option>
+                        <option value="SAAT">School of Agriculture and Agricultural Technology (SAAT)</option>
+                        <option value="SEMS">School of Earth and Mineral Sciences (SEMS)</option>
+                        <option value="SLS">School of Life Sciences (SLS)</option>
+                        <option value="CHS">College of Health Sciences (CHS)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="studentDept">Department</label>
+                    <select id="studentDept" required>
+                        <option value="" disabled selected>Select Department First</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="studentPhone">Phone Number</label>
+                    <input type="tel" id="studentPhone" placeholder="e.g. 08012345678" required>
+                </div>
+                <button type="submit" id="saveProfileBtn">Save &amp; Continue 🚀</button>
+            </form>
+            <p id="modalError" style="color:#ef4444;font-size:0.78rem;margin-top:10px;display:none;"></p>
+        </div>
+    </div>
 
     <script>
-        // Placeholder for functions that will be attached to window in dashboard.ts
-        function triggerShare() {
+        
+        const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+        if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        const db = window._sb;
+
+        
+        function showWelcome() {
+            if (window.innerWidth <= 1024) return;
+            if (localStorage.getItem('renance_welcome_dismissed')) return;
+            setTimeout(() => {
+                document.getElementById('welcomeOverlay').classList.add('show');
+                lucide.createIcons();
+            }, 800);
+        }
+        function closeWelcome() { document.getElementById('welcomeOverlay').classList.remove('show'); }
+        function closeWelcomePermanent() {
+            localStorage.setItem('renance_welcome_dismissed', 'true');
+            closeWelcome();
+        }
+        document.getElementById('welcomeOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeWelcome();
+        });
+
+        
+        const SHARE_TEXT = `🚀 Ace Your FUTA Exams with Renance! 🎓\nLevel up your study game this semester! 📈\nSmash your grades with the ultimate preparation tool. 🛠️\n\nHere is what you get:\n⏱️ Timed CBT Practice: Beat exam anxiety with real simulations.\n📚 Course PDFs: Download essential materials to your device.\n🔥 500+ Past Questions: Tackle real FUTA plus plus & exam questions.\n🧮 GPA Calculators: Track your academic progress easily.\n🧠 Study Tips: Master techniques like Pomodoro & Feynman.\n\nStudy smarter, not harder! ✨ Visit the portal today. 🌐\n👉 renancecbt1.vercel.app\n📢 Share with friends so everyone excels!`;
+        const SHARE_URL   = 'https://renancecbt1.vercel.app';
+        const SHARE_TITLE = '🚀 Renance FUTA CBT Portal';
+
+        async function triggerShare() {
             if (navigator.share) {
-                navigator.share({
-                    title: 'RENANCE CBT Portal',
-                    text: 'Join the ultimate FUTA CBT simulation platform. Practice with hundreds of past questions!',
-                    url: window.location.origin
-                });
+                try { await navigator.share({ title: SHARE_TITLE, text: SHARE_TEXT, url: SHARE_URL }); return; }
+                catch (e) { if (e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(SHARE_TEXT + '\n\n' + SHARE_URL);
+                showToast('✅ Copied! Paste & share with your friends.');
+            } catch { prompt('Copy this and share:', SHARE_TEXT + '\n\n' + SHARE_URL); }
+        }
+        function showToast(msg) {
+            const t = document.getElementById('shareToast');
+            t.textContent = msg; t.style.opacity = '1';
+            clearTimeout(t._timer);
+            t._timer = setTimeout(() => { t.style.opacity = '0'; }, 3000);
+        }
+
+        
+        const courses = [
+            { id: 'STA 111', title: 'DESCRIPTIVE STATISTICS',            icon: 'bar-chart',  isReady: true, semester: 1 },
+            { id: 'AMS 101', title: 'PRNCIPLES OF MANAGEMENT',            icon: 'briefcase',  isReady: true, semester: 1 },
+            { id: 'COS 101', title: 'INTRODUCTION TO COMPUTER',          icon: 'cpu',        isReady: true, semester: 1 },
+            { id: 'BIO 101', title: 'GENERAL BIOLOGY I',                 icon: 'dna',        isReady: true, semester: 1 },
+            { id: 'SEN 101', title: 'SOFTWARE EXPERIMENTAL LAB I',       icon: 'code',       isReady: true, semester: 1 },
+            { id: 'MEE 101', title: 'ENGINEERING DRAWING I',             icon: 'compass',    isReady: true, semester: 1 },
+            { id: 'GNS 103', title: 'INFORMATION LITERACY',              icon: 'library',    isReady: true, semester: 1 },
+            { id: 'CVE 105', title: 'HISTORY AND PHILOSOPHY OF SCIENCE', icon: 'clock',      isReady: true, semester: 1 },
+            { id: 'MTH 101', title: 'ELEMENTARY MATHEMATICS I',          icon: 'calculator', isReady: true, semester: 1 },
+            { id: 'PHY 101', title: 'GENERAL PHYSICS I',                 icon: 'atom',       isReady: true, semester: 1 },
+            { id: 'PHY 103', title: 'GENERAL PHYSICS III',               icon: 'zap',        isReady: true, semester: 1 },
+            { id: 'GST 111', title: 'COMMUNICATION IN ENGLISH',          icon: 'languages',  isReady: true, semester: 1 },
+            { id: 'CHE 101', title: 'GENERAL CHEMISTRY I',               icon: 'beaker',     isReady: true, semester: 1 },
+            { id: 'CHE 103', title: 'EXPERIMENTAL CHEMISTRY I',          icon: 'test-tube',  isReady: true, semester: 1 },
+        ];
+
+        function getCourseFooterText(course) {
+            if (course.id === 'MEE 101') return 'START LEARNING';
+            return course.isReady ? 'PRACTICE' : 'COMING SOON';
+        }
+
+        
+        function toggleNav() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('navOverlay');
+            const isOpen  = sidebar.classList.toggle('open');
+            overlay.classList.toggle('visible', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        }
+
+        
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateIcons(isDark);
+        }
+        function updateIcons(isDark) {
+            const name = isDark ? 'sun' : 'moon';
+            document.getElementById('desktopThemeIcon').setAttribute('data-lucide', name);
+            document.getElementById('mobileThemeIcon').setAttribute('data-lucide', name);
+            lucide.createIcons();
+        }
+
+        
+        function setUserUI(name, dept) {
+            const initials = name
+                ? name.trim().split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase()
+                : '??';
+            ['navInitials','displayInitials'].forEach(id => {
+                const el = document.getElementById(id); if (el) el.textContent = initials;
+            });
+            const map = { displayUserName: name||'Student', displayUserDept: dept||'Department', navUserName: name||'Student' };
+            Object.entries(map).forEach(([id, val]) => { const el = document.getElementById(id); if (el) el.textContent = val; });
+        }
+
+        
+        let currentSemester = 2;
+        function setSemester(sem) {
+            currentSemester = sem;
+            document.getElementById('sem1Btn').classList.toggle('active', sem === 1);
+            document.getElementById('sem2Btn').classList.toggle('active', sem === 2);
+            document.getElementById('sem1Btn').style.background = sem === 1 ? 'var(--primary-accent)' : 'transparent';
+            document.getElementById('sem1Btn').style.color = sem === 1 ? 'white' : 'var(--text-muted)';
+            document.getElementById('sem2Btn').style.background = sem === 2 ? 'var(--primary-accent)' : 'transparent';
+            document.getElementById('sem2Btn').style.color = sem === 2 ? 'white' : 'var(--text-muted)';
+            
+            document.getElementById('semesterTitle').textContent = sem === 1 ? 'First Semester' : 'Second Semester';
+            renderCourses(document.getElementById('courseSearch').value);
+        }
+
+        function filterCourses() { renderCourses(document.getElementById('courseSearch').value); }
+
+        function renderCourses(filterText = '') {
+            const grid = document.getElementById('courseGrid');
+            grid.innerHTML = '';
+
+            const filtered = courses.filter(c =>
+                (c.semester === currentSemester) &&
+                (c.id.toLowerCase().includes(filterText.toLowerCase()) ||
+                c.title.toLowerCase().includes(filterText.toLowerCase()))
+            );
+
+            if (filtered.length === 0) {
+                const msg = currentSemester === 2 
+                    ? `No courses available for the Second Semester yet. Check back soon! 🚀`
+                    : `No courses found for "${filterText}"`;
+                grid.innerHTML = `<p style="color:var(--text-muted);padding:16px;grid-column:1/-1;text-align:center;">${msg}</p>`;
             } else {
-                alert('Portal link: ' + window.location.origin);
+                filtered.forEach(course => {
+                    const card = document.createElement('div');
+                    card.className = 'course-card';
+                    if (!course.isReady) card.style.opacity = '0.55';
+
+                    if (course.id === 'STA 111') {
+                        card.innerHTML = `
+                            <div class="icon-box">
+                                <i data-lucide="${course.icon}" size="19"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size:0.95rem;font-weight:700;">${course.id}</h3>
+                                <p style="font-size:0.7rem;color:var(--text-muted);font-weight:500;margin-top:3px;">${course.title}</p>
+                            </div>
+                            <div class="card-footer-dual">
+                                <button class="dual-btn dual-btn-primary"
+                                    onclick="event.stopPropagation();window.location.href='sta111.html'">
+                                    ⚡ PRACTICE
+                                </button>
+                                <button class="dual-btn dual-btn-secondary"
+                                    onclick="event.stopPropagation();window.location.href='sta111cheat.html'">
+                                    📖 STUDY
+                                </button>
+                            </div>
+                        `;
+                        card.onclick = () => window.location.href = 'sta111.html';
+                    } else {
+                        card.innerHTML = `
+                            <div class="icon-box">
+                                <i data-lucide="${course.isReady ? course.icon : 'lock'}" size="19"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size:0.95rem;font-weight:700;">${course.id}</h3>
+                                <p style="font-size:0.7rem;color:var(--text-muted);font-weight:500;margin-top:3px;">${course.title}</p>
+                            </div>
+                            <div class="card-footer">
+                                <span>${getCourseFooterText(course)}</span>
+                                <i data-lucide="${course.isReady ? 'chevron-right' : 'clock'}" size="14"></i>
+                            </div>
+                        `;
+                        card.onclick = () => {
+                            if (course.isReady) window.location.href = course.id.toLowerCase().replace(/\s+/g,'') + '.html';
+                            else alert('This course is coming soon! ⏳');
+                        };
+                    }
+
+                    grid.appendChild(card);
+                });
+            }
+
+            appendShareCard(grid);
+            lucide.createIcons();
+        }
+
+        function appendShareCard(grid) {
+            const card = document.createElement('div');
+            card.className = 'course-card share-grid-card';
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', 'Share this portal');
+            card.innerHTML = `
+                <div style="display:flex;align-items:center;gap:11px;position:relative;z-index:1;">
+                    <img src="share.jpg" alt="Share" onerror="this.style.display='none'"
+                         style="width:46px;height:46px;object-fit:contain;border-radius:10px;
+                                background:rgba(255,255,255,0.15);padding:6px;flex-shrink:0;">
+                    <div>
+                        <h3 style="font-size:0.95rem;font-weight:700;color:white;">Share with Friends</h3>
+                        <p style="font-size:0.7rem;color:rgba(255,255,255,0.75);font-weight:500;margin-top:3px;">Help your classmates ace their exams!</p>
+                    </div>
+                </div>
+                <p style="font-size:0.76rem;color:rgba(255,255,255,0.8);line-height:1.55;position:relative;z-index:1;">
+                    🔥 500+ past questions &nbsp;·&nbsp; 📚 PDFs &nbsp;·&nbsp; 🧮 GPA calc &nbsp;·&nbsp; 🧠 Tips
+                </p>
+                <div class="card-footer" style="position:relative;z-index:1;">
+                    <span>TAP TO SHARE</span>
+                    <i data-lucide="share-2" size="14"></i>
+                </div>
+            `;
+            card.onclick = triggerShare;
+            grid.appendChild(card);
+        }
+
+        
+        function showModal() { document.getElementById('renanceProfileModal').style.display = 'flex'; }
+        function hideModal()  { document.getElementById('renanceProfileModal').style.display = 'none'; }
+
+        
+        const futaDepartments = {
+            "SOC":   ["Software Engineering (SEN)","Computer Science (CSC)","Cybersecurity (CYS)","Data Science (DSC)","Information Systems (IFS)","Information Technology (IFT)"],
+            "SLIT":  ["Financial Technology (FinTech)","Business Information Technology (BIT)","Entrepreneurship Management Technology (EMT)","Logistics and Transport Technology (LTT)","Maritime Technology and Logistics (MTL)","Project Management Technology (PMT)","Securities and Investment Management Technology (SIMT)","Supply Chain Management (SCM)"],
+            "SPS":   ["Educational Technology (EDT)","Library and Information Science (LIS)","Physics (PHY)","Mathematics (MTH)","Chemistry (CHE)","Statistics (STA)"],
+            "SESE":  ["Computer Engineering (CPE)","Electrical and Electronics Engineering (EEE)","Information and Communication Engineering (ICE)","Mechatronics Engineering (MCE)","Biomedical Engineering (BME)"],
+            "SIMME": ["Mechanical Engineering (MEE)","Civil and Environmental Engineering (CVE)","Agricultural Engineering (AGE)","Chemical Engineering (CHE)","Industrial and Production Engineering (IPE)","Metallurgical and Materials Engineering (MME)","Mining Engineering (MNE)"],
+            "SET":   ["Architecture (ARC)","Building (BDG)","Environmental Management (EVM)","Estate Management (ESM)","Industrial Design (IDD)","Quantity Surveying (QSV)","Surveying and Geoinformatics (SVG)","Urban and Regional Planning (URP)"],
+            "SAAT":  ["Agricultural and Resource Economics (ARE)","Agricultural Extension and Communication Technology (AEC)","Animal Production and Health (APH)","Crop, Soil and Pest Management (CSP)","Ecotourism and Wildlife Management (EWM)","Fisheries and Aquaculture Technology (FAT)","Food Science and Technology (FST)","Forestry and Wood Technology (FWT)","Nutrition and Dietetics (NUD)"],
+            "SEMS":  ["Applied Geology (AGY)","Applied Geophysics (AGP)","Marine Science and Technology (MST)","Meteorology and Climate Science (MET)","Remote Sensing and Geoscience Information Systems (RSG)"],
+            "SLS":   ["Biochemistry (BCH)","Biology (BIO)","Biotechnology (BTH)","Microbiology (MCB)"],
+            "CHS":   ["Medicine and Surgery (MBBS)","Nursing Science (NSC)","Human Anatomy (ANA)","Physiology (PHS)","Medical Laboratory Science (MLS)","Public Health (PHS)"],
+            "GNS":   ["General Studies (GNS)"]
+        };
+
+        document.getElementById('studentFaculty').addEventListener('change', function() {
+            const deptSelect = document.getElementById('studentDept');
+            deptSelect.innerHTML = '<option value="" disabled selected>Select Department</option>';
+            (futaDepartments[this.value] || []).forEach(dept => {
+                const o = document.createElement('option'); o.value = dept; o.textContent = dept;
+                deptSelect.appendChild(o);
+            });
+        });
+
+        
+        async function saveProfile(e) {
+            e.preventDefault();
+            const btn        = document.getElementById('saveProfileBtn');
+            const errorEl    = document.getElementById('modalError');
+            const fullname   = document.getElementById('studentName').value.trim();
+            const faculty    = document.getElementById('studentFaculty').value;
+            const department = document.getElementById('studentDept').value;
+            const phone      = document.getElementById('studentPhone').value.trim();
+            errorEl.style.display = 'none';
+            btn.disabled = true; btn.textContent = 'Saving…';
+            try {
+                const { data: { user }, error: authErr } = await db.auth.getUser();
+                if (authErr || !user) throw new Error('Session expired. Please log in again.');
+                const { error: upErr } = await db.from('students').update({ fullname, faculty, department, phone }).eq('id', user.id);
+                if (upErr) throw upErr;
+                setUserUI(fullname, department);
+                hideModal();
+            } catch (err) {
+                errorEl.textContent = err.message || 'Something went wrong. Please try again.';
+                errorEl.style.display = 'block';
+                btn.disabled = false; btn.textContent = 'Save & Continue 🚀';
             }
         }
+
+        
+        async function checkUserProfile() {
+            try {
+                const { data: { user }, error: authErr } = await db.auth.getUser();
+                if (authErr || !user) { window.location.href = 'index.html'; return; }
+                const { data: student, error: fetchErr } = await db
+                    .from('students')
+                    .select('fullname, faculty, department, phone')
+                    .eq('id', user.id)
+                    .single();
+                if (fetchErr || !student) { showModal(); return; }
+                setUserUI(student.fullname, student.department);
+                if (!student.fullname || !student.department || !student.faculty || !student.phone) {
+                    showModal(); return;
+                }
+                showWelcome();
+            } catch (err) { console.error('Profile check:', err); }
+        }
+
+        
+        function animateValue(id, start, end, duration, suffix = '') {
+            const obj = document.getElementById(id); if (!obj) return;
+            let startTimestamp = null;
+            const step = (ts) => {
+                if (!startTimestamp) startTimestamp = ts;
+                const progress = Math.min((ts - startTimestamp) / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3);
+                obj.innerHTML = Math.floor(ease * (end - start) + start) + suffix;
+                if (progress < 1) window.requestAnimationFrame(step);
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        async function loadUserStats() {
+            try {
+                const { data: { user }, error: authErr } = await db.auth.getUser();
+                if (authErr || !user) return;
+                const { data: results, error: fetchErr } = await db.from('test_results').select('score').eq('student_id', user.id);
+                if (fetchErr) throw fetchErr;
+                let testsTaken = 0, avgScore = 0;
+                if (results && results.length > 0) {
+                    testsTaken = results.length;
+                    avgScore = Math.round(results.reduce((s, r) => s + Number(r.score), 0) / testsTaken);
+                }
+                animateValue('testsTakenEl', 0, testsTaken, 1500);
+                animateValue('avgScoreEl',   0, avgScore,   1500, '%');
+            } catch {
+                document.getElementById('testsTakenEl').textContent = '0';
+                document.getElementById('avgScoreEl').textContent   = '0%';
+            }
+        }
+
+        function logout() { db.auth.signOut().then(() => { window.location.href = 'index.html'; }); }
+
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCourses();
+            const isDark = localStorage.getItem('theme') === 'dark';
+            if (isDark) document.body.classList.add('dark-mode');
+            updateIcons(isDark);
+            checkUserProfile();
+            loadUserStats();
+        });
+    </script>
+</body>
+</html>
+studentDept');
+            deptSelect.innerHTML = '<option value="" disabled selected>Select Department</option>';
+            (futaDepartments[this.value] || []).forEach(dept => {
+                const o = document.createElement('option'); o.value = dept; o.textContent = dept;
+                deptSelect.appendChild(o);
+            });
+        });
+
+        
+        async function saveProfile(e) {
+            e.preventDefault();
+            const btn        = document.getElementById('saveProfileBtn');
+            const errorEl    = document.getElementById('modalError');
+            const fullname   = document.getElementById('studentName').value.trim();
+            const faculty    = document.getElementById('studentFaculty').value;
+            const department = document.getElementById('studentDept').value;
+            const phone      = document.getElementById('studentPhone').value.trim();
+            errorEl.style.display = 'none';
+            btn.disabled = true; btn.textContent = 'Saving…';
+            try {
+                const { data: { user }, error: authErr } = await db.auth.getUser();
+                if (authErr || !user) throw new Error('Session expired. Please log in again.');
+                const { error: upErr } = await db.from('students').update({ fullname, faculty, department, phone }).eq('id', user.id);
+                if (upErr) throw upErr;
+                setUserUI(fullname, department);
+                hideModal();
+            } catch (err) {
+                errorEl.textContent = err.message || 'Something went wrong. Please try again.';
+                errorEl.style.display = 'block';
+                btn.disabled = false; btn.textContent = 'Save & Continue 🚀';
+            }
+        }
+
+        
+        async function checkUserProfile() {
+            try {
+                const { data: { user }, error: authErr } = await db.auth.getUser();
+                if (authErr || !user) { window.location.href = 'index.html'; return; }
+                const { data: student, error: fetchErr } = await db
+                    .from('students')
+                    .select('fullname, faculty, department, phone')
+                    .eq('id', user.id)
+                    .single();
+                if (fetchErr || !student) { showModal(); return; }
+                setUserUI(student.fullname, student.department);
+                if (!student.fullname || !student.department || !student.faculty || !student.phone) {
+                    showModal(); return;
+                }
+                showWelcome();
+            } catch (err) { console.error('Profile check:', err); }
+        }
+
+        
+        function animateValue(id, start, end, duration, suffix = '') {
+            const obj = document.getElementById(id); if (!obj) return;
+            let startTimestamp = null;
+            const step = (ts) => {
+                if (!startTimestamp) startTimestamp = ts;
+                const progress = Math.min((ts - startTimestamp) / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3);
+                obj.innerHTML = Math.floor(ease * (end - start) + start) + suffix;
+                if (progress < 1) window.requestAnimationFrame(step);
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        async function loadUserStats() {
+            try {
+                const { data: { user }, error: authErr } = await db.auth.getUser();
+                if (authErr || !user) return;
+                const { data: results, error: fetchErr } = await db.from('test_results').select('score').eq('student_id', user.id);
+                if (fetchErr) throw fetchErr;
+                let testsTaken = 0, avgScore = 0;
+                if (results && results.length > 0) {
+                    testsTaken = results.length;
+                    avgScore = Math.round(results.reduce((s, r) => s + Number(r.score), 0) / testsTaken);
+                }
+                animateValue('testsTakenEl', 0, testsTaken, 1500);
+                animateValue('avgScoreEl',   0, avgScore,   1500, '%');
+            } catch {
+                document.getElementById('testsTakenEl').textContent = '0';
+                document.getElementById('avgScoreEl').textContent   = '0%';
+            }
+        }
+
+        function logout() { db.auth.signOut().then(() => { window.location.href = 'index.html'; }); }
+
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCourses();
+            const isDark = localStorage.getItem('theme') === 'dark';
+            if (isDark) document.body.classList.add('dark-mode');
+            updateIcons(isDark);
+            checkUserProfile();
+            loadUserStats();
+        });
     </script>
 </body>
 </html>
