@@ -4,408 +4,592 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-    <title>GPA Calculator | RENANCE</title>
+    <title>GPA Calculator | Resolutefemi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --text-main: #ffffff;
-            --text-muted: rgba(255, 255, 255, 0.7);
-            --brand-blue: #74b9ff;
-            --brand-green: #55efc4;
-            --brand-red: #ff7675;
-            --brand-orange: #fab1a0;
-            --whatsapp-green: #25d366;
-            --card-radius: 20px;
-        }
-
-        [data-theme="light"] {
-            /* If we want to support light mode with glassmorphism, we might need a different bg or just a semi-opaque white */
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(0, 0, 0, 0.1);
+            --bg-body: #f0f2f8;
+            --bg-card: #ffffff;
+            --bg-card2: #f7f8fc;
             --text-main: #1a1d2e;
-            --text-muted: #64748b;
+            --text-muted: #7b8099;
+            --border: #e2e5f0;
             --brand-blue: #0984e3;
+            --brand-green: #27ae60;
+            --brand-red: #d63031;
+            --brand-orange: #e17055;
+            --whatsapp-green: #25d366;
+            --table-head: #f0f2f8;
+            --shadow: 0 8px 32px rgba(9,132,227,0.08);
+            --shadow-card: 0 2px 12px rgba(0,0,0,0.06);
+            --glow: 0 0 24px rgba(9,132,227,0.18);
+        }
+        [data-theme="dark"] {
+            --bg-body: #0d1117;
+            --bg-card: #161b27;
+            --bg-card2: #1c2333;
+            --text-main: #e8eaf6;
+            --text-muted: #8892a4;
+            --border: #252d3f;
+            --table-head: #1c2333;
+            --shadow: 0 8px 32px rgba(0,0,0,0.4);
+            --shadow-card: 0 2px 12px rgba(0,0,0,0.3);
+            --glow: 0 0 32px rgba(9,132,227,0.25);
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'DM Sans', sans-serif;
-            background: url('beauty.jpg') center/cover fixed no-repeat;
+            background: var(--bg-body);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding: 100px 10px 40px; /* Top padding for fixed navbar */
+            padding: 16px 10px 40px;
             transition: background 0.35s, color 0.35s;
         }
 
-        .calc-container {
-            width: 100%;
-            max-width: 800px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--card-radius);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            padding: 30px;
-            animation: fadeUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+        body::before {
+            content: '';
+            position: fixed;
+            top: -180px; left: 50%;
+            transform: translateX(-50%);
+            width: 700px; height: 400px;
+            background: radial-gradient(ellipse, rgba(9,132,227,0.12) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
         }
 
-        @keyframes fadeUp { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
+        
+        .whatsapp-float {
+            position: fixed; width: 52px; height: 52px;
+            bottom: 22px; right: 18px;
+            background: var(--whatsapp-green);
+            color: #fff; border-radius: 50%;
+            font-size: 26px; z-index: 1000;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.12) rotate(6deg); color: white; box-shadow: 0 8px 24px rgba(37,211,102,0.45); }
 
+        
+        .calc-card {
+            width: 100%; max-width: 720px;
+            background: var(--bg-card);
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            animation: fadeUp 0.5s ease both;
+        }
+        @keyframes fadeUp { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
+
+        
+        .card-stripe {
+            height: 5px;
+            background: linear-gradient(90deg, var(--brand-blue), #74b9ff, var(--brand-green));
+        }
+
+        .card-inner { padding: 22px 20px 28px; }
+        @media(min-width:600px) { .card-inner { padding: 32px 36px 36px; } }
+
+        
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--glass-border);
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 24px; padding-bottom: 18px;
+            border-bottom: 1px solid var(--border);
         }
-
-        .header h1 {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: 1.8rem;
+        .header-left h1 {
+            font-family: 'Syne', sans-serif; font-weight: 800;
+            font-size: 1.55rem; letter-spacing: -0.5px; line-height: 1.1;
+            color: var(--text-main);
         }
-
-        .header h1 span { color: var(--brand-blue); }
+        .header-left h1 span { color: var(--brand-blue); }
+        .header-left p { font-size: 0.68rem; letter-spacing: 2px; color: var(--brand-blue); font-weight: 600; margin-top: 3px; text-transform: uppercase; }
+        .header-right { display: flex; gap: 8px; align-items: center; }
 
         .theme-toggle {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--glass-border);
-            color: var(--text-main);
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
+            background: var(--bg-card2); border: 1px solid var(--border);
+            color: var(--text-muted); font-size: 1rem;
+            width: 38px; height: 38px; border-radius: 10px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
         }
+        .theme-toggle:hover { color: var(--brand-blue); border-color: var(--brand-blue); }
 
+        
         .tab-bar {
-            display: flex;
-            gap: 10px;
-            background: rgba(0, 0, 0, 0.1);
-            padding: 5px;
-            border-radius: 15px;
-            margin-bottom: 25px;
+            display: flex; gap: 4px;
+            background: var(--bg-card2); border: 1px solid var(--border);
+            border-radius: 12px; padding: 4px; margin-bottom: 22px;
         }
-
         .tab-btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            background: none;
-            color: var(--text-muted);
-            font-weight: 600;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
+            flex: 1; padding: 9px 6px; border: none; background: none;
+            font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500;
+            color: var(--text-muted); border-radius: 9px; cursor: pointer;
+            transition: all 0.2s; white-space: nowrap;
         }
-
         .tab-btn.active {
-            background: var(--brand-blue);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(116, 185, 255, 0.3);
+            background: var(--bg-card); color: var(--brand-blue);
+            font-weight: 700; box-shadow: var(--shadow-card);
+            border: 1px solid var(--border);
         }
-
         .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
 
-        /* Form Styles */
+        
         .input-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px; margin-bottom: 14px;
         }
+        @media(min-width:520px) { .input-grid { grid-template-columns: 2fr 1fr 1.8fr auto; } }
 
-        .input-group { display: flex; flex-direction: column; gap: 8px; }
-        .input-group label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
-
+        .input-group { display: flex; flex-direction: column; gap: 4px; }
+        .input-label { font-size: 0.68rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; padding-left: 2px; }
         input, select {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1.5px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 12px 15px;
-            color: var(--text-main);
-            outline: none;
-            transition: all 0.3s;
+            padding: 11px 13px; border-radius: 10px;
+            border: 1.5px solid var(--border);
+            background: var(--bg-card2); color: var(--text-main);
+            font-family: 'DM Sans', sans-serif; font-size: 0.92rem;
+            outline: none; transition: border 0.2s, box-shadow 0.2s;
+            width: 100%;
         }
-
-        input:focus, select:focus { border-color: var(--brand-blue); background: rgba(255, 255, 255, 0.1); }
+        input:focus, select:focus { border-color: var(--brand-blue); box-shadow: 0 0 0 3px rgba(9,132,227,0.1); }
 
         .btn-add {
-            background: var(--brand-blue);
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            padding: 12px 25px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            height: 48px;
-            margin-top: auto;
+            background: var(--brand-blue); color: white;
+            border: none; border-radius: 10px; padding: 11px 18px;
+            font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem;
+            cursor: pointer; white-space: nowrap; align-self: flex-end;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(9,132,227,0.3);
         }
+        .btn-add:hover { background: #0773c5; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(9,132,227,0.4); }
+        .btn-add:active { transform: scale(0.97); }
 
-        /* Table Styles */
-        .table-container {
-            overflow-x: auto;
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            margin-bottom: 25px;
-            background: rgba(0, 0, 0, 0.05);
+        
+        .grade-info-bar {
+            background: linear-gradient(135deg, rgba(9,132,227,0.06), rgba(39,174,96,0.06));
+            border: 1px solid var(--border); border-radius: 10px;
+            padding: 8px 14px; margin-bottom: 18px;
+            font-size: 0.72rem; color: var(--text-muted);
+            display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center;
         }
+        .grade-pill {
+            display: inline-flex; align-items: center; gap: 4px;
+            font-size: 0.7rem; font-weight: 600;
+        }
+        .grade-pill span { background: var(--border); border-radius: 4px; padding: 2px 6px; }
 
-        table { width: 100%; border-collapse: collapse; text-align: left; }
-        th { padding: 15px; font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--glass-border); }
-        td { padding: 15px; border-bottom: 1px solid var(--glass-border); }
+        
+        .table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 16px; }
+        table { width: 100%; border-collapse: collapse; min-width: 380px; }
+        thead { background: var(--table-head); }
+        th {
+            color: var(--text-muted); padding: 11px 13px;
+            text-align: left; font-size: 0.68rem; text-transform: uppercase;
+            letter-spacing: 1px; font-weight: 700; border-bottom: 1px solid var(--border);
+        }
+        td { padding: 11px 13px; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr { transition: background 0.15s; }
+        tbody tr:hover { background: var(--bg-card2); }
 
         .grade-badge {
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 700;
+            display: inline-block; padding: 3px 10px;
+            border-radius: 6px; font-size: 0.75rem; font-weight: 700;
         }
+        .grade-A { background: rgba(39,174,96,0.12); color: #27ae60; }
+        .grade-B { background: rgba(9,132,227,0.12); color: #0984e3; }
+        .grade-C { background: rgba(253,203,110,0.18); color: #d4a017; }
+        .grade-D { background: rgba(225,112,85,0.12); color: #e17055; }
+        .grade-E { background: rgba(214,48,49,0.1); color: #d63031; }
+        .grade-F { background: rgba(214,48,49,0.15); color: #c0392b; }
 
-        /* Result Cards */
-        .gpa-display {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 25px;
+        .delete-btn {
+            background: none; border: none; color: var(--text-muted);
+            cursor: pointer; font-size: 1rem; padding: 4px 8px; border-radius: 6px;
+            transition: color 0.2s, background 0.2s;
         }
+        .delete-btn:hover { color: var(--brand-red); background: rgba(214,48,49,0.08); }
 
-        .gpa-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
+        .empty-state {
+            text-align: center; padding: 32px 16px; color: var(--text-muted);
         }
+        .empty-state i { font-size: 2rem; margin-bottom: 10px; opacity: 0.3; display: block; }
+        .empty-state p { font-size: 0.85rem; }
 
-        .gpa-card.primary { background: var(--brand-blue); color: #fff; }
-        .gpa-card h3 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; opacity: 0.8; }
-        .gpa-val { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; display: block; }
+        
+        .gpa-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+        @media(min-width:520px) { .gpa-row { grid-template-columns: 1.4fr 1fr 1fr; } }
+
+        .gpa-box {
+            border-radius: 14px; padding: 16px 14px;
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .gpa-box-main {
+            background: linear-gradient(135deg, var(--brand-blue) 0%, #0066c7 100%);
+            grid-column: span 2;
+            box-shadow: 0 4px 20px rgba(9,132,227,0.3);
+        }
+        @media(min-width:520px) { .gpa-box-main { grid-column: span 1; } }
+        .gpa-box-main::before {
+            content: ''; position: absolute; top: -20px; right: -20px;
+            width: 100px; height: 100px;
+            border-radius: 50%; background: rgba(255,255,255,0.06);
+        }
+        .gpa-box-secondary { background: var(--bg-card2); border: 1px solid var(--border); }
+
+        .gpa-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.75; }
+        .gpa-box-main .gpa-label { color: rgba(255,255,255,0.8); }
+        .gpa-box-secondary .gpa-label { color: var(--text-muted); }
+
+        .gpa-val {
+            font-family: 'Syne', sans-serif; font-weight: 800;
+            font-size: 2.4rem; display: block; line-height: 1.1; margin: 4px 0;
+        }
+        .gpa-box-main .gpa-val { color: #55efc4; }
+        .gpa-box-secondary .gpa-val { color: var(--brand-blue); font-size: 1.6rem; }
 
         .class-badge {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            background: rgba(0, 0, 0, 0.2);
+            display: inline-block; padding: 4px 12px;
+            border-radius: 20px; font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.5px; margin-top: 4px;
         }
+        .class-first { background: rgba(85,239,196,0.2); color: #00b894; }
+        .class-second-upper { background: rgba(116,185,255,0.2); color: #0984e3; }
+        .class-second-lower { background: rgba(253,203,110,0.2); color: #d4a017; }
+        .class-third { background: rgba(225,112,85,0.2); color: #e17055; }
+        .class-pass { background: rgba(200,214,229,0.3); color: #7b8099; }
+        .class-fail { background: rgba(214,48,49,0.15); color: #d63031; }
 
-        /* Controls */
-        .controls {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+        
+        .stats-row {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px;
         }
+        .stat-box {
+            background: var(--bg-card2); border: 1px solid var(--border);
+            border-radius: 12px; padding: 12px 10px; text-align: center;
+        }
+        .stat-label { font-size: 0.62rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+        .stat-val { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--text-main); }
+
+        
+        .controls { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+        @media(min-width:480px) { .controls { flex-direction: row; } }
 
         .btn-action {
-            flex: 1;
-            min-width: 150px;
-            padding: 15px;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.3s;
+            flex: 1; padding: 13px 16px; border: none; border-radius: 11px;
+            font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            gap: 8px; transition: all 0.2s;
+        }
+        .btn-share { background: var(--brand-green); color: white; box-shadow: 0 2px 8px rgba(39,174,96,0.25); }
+        .btn-share:hover { background: #219a52; transform: translateY(-1px); }
+        .btn-reset { background: var(--bg-card2); color: var(--brand-red); border: 1.5px solid rgba(214,48,49,0.25); }
+        .btn-reset:hover { background: rgba(214,48,49,0.08); }
+        .btn-print { background: var(--bg-card2); color: var(--text-muted); border: 1.5px solid var(--border); }
+        .btn-print:hover { color: var(--brand-blue); border-color: var(--brand-blue); background: rgba(9,132,227,0.05); }
+
+        
+        .semester-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+        .semester-card {
+            background: var(--bg-card2); border: 1px solid var(--border);
+            border-radius: 12px; padding: 14px 16px;
+            display: flex; align-items: center; justify-content: space-between; gap: 10px;
+        }
+        .semester-info { flex: 1; }
+        .semester-name { font-weight: 600; font-size: 0.9rem; color: var(--text-main); }
+        .semester-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+        .semester-gpa-pill {
+            font-family: 'Syne', sans-serif; font-weight: 800;
+            font-size: 1.2rem; color: var(--brand-blue);
+            background: rgba(9,132,227,0.1); border-radius: 8px;
+            padding: 6px 14px;
         }
 
-        .btn-share { background: var(--brand-green); color: #fff; }
-        .btn-print { background: rgba(255, 255, 255, 0.1); border: 1px solid var(--glass-border); color: var(--text-main); }
-        .btn-reset { background: rgba(255, 118, 117, 0.1); border: 1px solid var(--brand-red); color: var(--brand-red); }
-
-        /* Modal */
-        .modal-overlay {
-            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px); display: none;
-            align-items: center; justify-content: center; z-index: 1000;
+        .semester-input-row {
+            display: grid; grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 8px; margin-bottom: 14px;
+            align-items: flex-end;
         }
-        .modal-overlay.open { display: flex; }
-        .modal {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px; padding: 30px;
-            width: 90%; max-width: 450px;
-            color: var(--text-main);
+        @media(max-width:500px) {
+            .semester-input-row { grid-template-columns: 1fr 1fr; }
         }
 
-        /* Utils */
-        .no-print { display: block; }
-        @media print { .no-print { display: none !important; } body { padding: 0; background: #fff !important; color: #000; } .calc-container { border: none; box-shadow: none; background: #fff; } }
+        .cgpa-result {
+            background: linear-gradient(135deg, #1a1d2e 0%, #2d3561 100%);
+            border-radius: 14px; padding: 20px; text-align: center;
+            margin-top: 6px;
+        }
+        [data-theme="dark"] .cgpa-result { background: linear-gradient(135deg, #0d1117 0%, #1a2340 100%); }
+        .cgpa-result .cgpa-label { font-size: 0.65rem; letter-spacing: 2px; color: rgba(255,255,255,0.55); font-weight: 700; text-transform: uppercase; }
+        .cgpa-big { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 3rem; color: #55efc4; display: block; line-height: 1; margin: 6px 0 4px; }
 
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background: var(--whatsapp-green); color: #fff;
-            width: 60px; height: 60px; border-radius: 50%;
+        
+        .footer { text-align: center; margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border); }
+        .footer p { font-size: 0.78rem; color: var(--text-muted); }
+        .footer strong { color: var(--brand-blue); }
+        .socials { margin-top: 10px; display: flex; justify-content: center; gap: 6px; }
+        .socials a {
+            text-decoration: none; color: var(--text-muted);
+            width: 34px; height: 34px; border-radius: 9px;
+            background: var(--bg-card2); border: 1px solid var(--border);
             display: flex; align-items: center; justify-content: center;
-            font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            text-decoration: none; z-index: 999;
+            font-size: 0.9rem; transition: all 0.2s;
         }
+        .socials a:hover { color: var(--brand-blue); border-color: var(--brand-blue); transform: translateY(-2px); }
 
-        .toast {
-            position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%);
-            background: #333; color: #fff; padding: 12px 25px;
-            border-radius: 30px; font-size: 0.9rem; opacity: 0;
-            transition: all 0.3s; pointer-events: none; z-index: 9999;
+        
+        .modal-overlay {
+            position: fixed; inset: 0; z-index: 9999;
+            background: rgba(0,0,0,0.5); backdrop-filter: blur(6px);
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.25s;
         }
-        .toast.show { opacity: 1; }
+        .modal-overlay.open { opacity: 1; pointer-events: all; }
+        .modal {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 18px; padding: 28px 24px; max-width: 420px; width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transform: translateY(16px); transition: transform 0.25s;
+        }
+        .modal-overlay.open .modal { transform: translateY(0); }
+        .modal h3 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; margin-bottom: 4px; }
+        .modal p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 18px; }
+        .share-preview {
+            background: var(--bg-card2); border: 1px solid var(--border);
+            border-radius: 12px; padding: 14px; font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem; line-height: 1.6; color: var(--text-main);
+            margin-bottom: 14px; white-space: pre-wrap;
+        }
+        .modal-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+        .modal-btn {
+            flex: 1; min-width: 100px; padding: 11px; border: none; border-radius: 10px;
+            font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.8rem;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .modal-copy { background: var(--brand-blue); color: white; }
+        .modal-copy:hover { background: #0773c5; }
+        .modal-wa { background: var(--whatsapp-green); color: white; }
+        .modal-wa:hover { background: #1ebe5d; }
+        .modal-close { background: var(--bg-card2); color: var(--text-muted); border: 1px solid var(--border); }
+        .toast {
+            position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%) translateY(20px);
+            background: #1a1d2e; color: white; padding: 10px 20px;
+            border-radius: 30px; font-size: 0.8rem; font-weight: 600;
+            z-index: 99999; opacity: 0; transition: all 0.3s; pointer-events: none;
+            white-space: nowrap;
+        }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        @media print {
+            .no-print, .whatsapp-float, .modal-overlay, .toast { display: none !important; }
+            body { padding: 0; background: white !important; }
+            .calc-card { box-shadow: none !important; border: none !important; max-width: 100%; border-radius: 0; }
+            .card-stripe { display: none; }
+        }
     </style>
 </head>
-<body data-theme="dark">
+<body data-theme="light">
 
-<a href="https://wa.me/2347046203544" class="whatsapp-float no-print" target="_blank">
+<a href="https://wa.me/2347046203544" class="whatsapp-float no-print" target="_blank" title="Chat with Resolutefemi">
     <i class="fab fa-whatsapp"></i>
 </a>
 
 <div class="modal-overlay" id="shareModal">
     <div class="modal">
-        <h3 style="margin-bottom:15px;">📤 Share Result</h3>
-        <div id="shareText" style="background:rgba(0,0,0,0.2); padding:15px; border-radius:10px; font-size:0.85rem; margin-bottom:20px; white-space:pre-wrap;"></div>
-        <div style="display:flex; gap:10px;">
-            <button class="btn-action" id="btn-copy-result" style="background:var(--brand-blue); color:#fff;"><i class="far fa-copy"></i> Copy</button>
-            <button class="btn-action" id="btn-share-wa" style="background:var(--whatsapp-green); color:#fff;"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+        <h3>📤 Share Result</h3>
+        <p>Your GPA result is ready to share</p>
+        <div class="share-preview" id="shareText"></div>
+        <div class="modal-btns">
+            <button class="modal-btn modal-copy" onclick="copyResult()"><i class="far fa-copy"></i> Copy</button>
+            <button class="modal-btn modal-wa" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+            <button class="modal-btn modal-close" onclick="closeModal()">Close</button>
         </div>
-        <button class="btn-action" id="btn-close-modal" style="margin-top:10px; width:100%; background:none; border:1px solid var(--glass-border); color:var(--text-main);">Close</button>
     </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
-<div class="calc-container">
-    <div class="header">
-        <div>
-            <h1>GPA <span>Calculator</span></h1>
-            <p style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-top:5px;">⚡ FUTA Grading System · Resolutefemi</p>
-        </div>
-        <button class="theme-toggle no-print" id="themeBtn">
-            <i class="fas fa-moon"></i>
-        </button>
-    </div>
+<div class="calc-card">
+    <div class="card-stripe"></div>
+    <div class="card-inner">
 
-    <div class="tab-bar no-print">
-        <button class="tab-btn active" id="btn-tab-semester">📘 Semester GPA</button>
-        <button class="tab-btn" id="btn-tab-cgpa">📊 CGPA Tracker</button>
-    </div>
-
-    <div class="tab-content active" id="tab-semester">
-        <div class="no-print">
-            <div class="input-grid">
-                <div class="input-group">
-                    <label>Course Code</label>
-                    <input type="text" id="courseCode" placeholder="e.g. CST 301">
-                </div>
-                <div class="input-group">
-                    <label>Units</label>
-                    <input type="number" id="courseUnit" placeholder="e.g. 3" min="1" max="10">
-                </div>
-                <div class="input-group">
-                    <label>Grade</label>
-                    <select id="courseGrade">
-                        <option value="5">A (5.0)</option>
-                        <option value="4">B (4.0)</option>
-                        <option value="3">C (3.0)</option>
-                        <option value="2">D (2.0)</option>
-                        <option value="1">E (1.0)</option>
-                        <option value="0">F (0.0)</option>
-                    </select>
-                </div>
-                <button class="btn-add" id="btn-add-course">Add Course</button>
+        <div class="header">
+            <div class="header-left">
+                <h1>GPA <span>Calculator</span></h1>
+                <p>⚡ FUTA Grading System · Resolutefemi</p>
+            </div>
+            <div class="header-right no-print">
+                <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
 
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Course</th>
-                        <th>Units</th>
-                        <th>Grade</th>
-                        <th>Points</th>
-                        <th class="no-print">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="courseBody">
-                    <!-- Dynamic Rows -->
-                </tbody>
-            </table>
+        <div class="tab-bar no-print">
+            <button class="tab-btn active" onclick="switchTab('semester')">📘 Semester GPA</button>
+            <button class="tab-btn" onclick="switchTab('cgpa')">📊 CGPA Tracker</button>
         </div>
 
-        <div class="gpa-display">
-            <div class="gpa-card primary">
-                <h3>Semester GPA</h3>
-                <span class="gpa-val" id="gpaScore">0.00</span>
-                <div id="classLabel" class="class-badge">—</div>
-            </div>
-            <div class="gpa-card">
-                <h3>Total Units</h3>
-                <span class="gpa-val" id="totalUnits">0</span>
-            </div>
-            <div class="gpa-card">
-                <h3>Total Points</h3>
-                <span class="gpa-val" id="totalPoints">0</span>
-            </div>
-        </div>
-
-        <div class="controls no-print">
-            <button class="btn-action btn-share" id="btn-open-share"><i class="fas fa-share-alt"></i> Share</button>
-            <button class="btn-action btn-print" id="btn-print"><i class="fas fa-print"></i> Print</button>
-            <button class="btn-action btn-reset" id="btn-reset"><i class="fas fa-trash-alt"></i> Reset</button>
-        </div>
-    </div>
-
-    <div class="tab-content" id="tab-cgpa">
-        <div class="no-print">
-            <div class="input-grid">
-                <div class="input-group">
-                    <label>Semester Name</label>
-                    <input type="text" id="semName" placeholder="e.g. 100L 1st">
+        <div class="tab-content active" id="tab-semester">
+            <div class="no-print">
+                <div class="input-grid">
+                    <div class="input-group" style="grid-column:span 2;">
+                        <label class="input-label">Course Code</label>
+                        <input type="text" id="courseCode" placeholder="e.g. CST 301" onkeydown="if(event.key==='Enter')addCourse()">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">Credit Units</label>
+                        <input type="number" id="courseUnit" placeholder="e.g. 3" min="1" max="6" onkeydown="if(event.key==='Enter')addCourse()">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">Grade (FUTA)</label>
+                        <select id="courseGrade">
+                            <option value="5">A — 70–100 (5pts)</option>
+                            <option value="4">B — 60–69 (4pts)</option>
+                            <option value="3">C — 50–59 (3pts)</option>
+                            <option value="2">D — 45–49 (2pts)</option>
+                            <option value="1">E — 40–44 (1pt)</option>
+                            <option value="0">F — 0–39 (0pts)</option>
+                        </select>
+                    </div>
+                    <div class="input-group" style="align-self:flex-end;">
+                        <button class="btn-add" onclick="addCourse()"><i class="fas fa-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label>GPA</label>
-                    <input type="number" id="semGPA" placeholder="4.50" step="0.01" min="0" max="5">
+                <div class="grade-info-bar">
+                    <span style="font-weight:600;color:var(--text-main);">FUTA Scale:</span>
+                    <span class="grade-pill"><span style="background:rgba(39,174,96,0.15);color:#27ae60;">A</span> 70-100</span>
+                    <span class="grade-pill"><span style="background:rgba(9,132,227,0.15);color:#0984e3;">B</span> 60-69</span>
+                    <span class="grade-pill"><span style="background:rgba(253,203,110,0.2);color:#d4a017;">C</span> 50-59</span>
+                    <span class="grade-pill"><span style="background:rgba(225,112,85,0.15);color:#e17055;">D</span> 45-49</span>
+                    <span class="grade-pill"><span style="background:rgba(214,48,49,0.12);color:#d63031;">E</span> 40-44</span>
+                    <span class="grade-pill"><span style="background:rgba(214,48,49,0.2);color:#c0392b;">F</span> 0-39</span>
                 </div>
-                <div class="input-group">
-                    <label>Total Units</label>
-                    <input type="number" id="semUnits" placeholder="20">
+            </div>
+
+            <div id="printSection">
+                <div class="table-container">
+                    <table id="gpaTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Course</th>
+                                <th>Units</th>
+                                <th>Grade</th>
+                                <th>Points</th>
+                                <th class="no-print">Del</th>
+                            </tr>
+                        </thead>
+                        <tbody id="courseBody">
+                            <tr id="emptyRow">
+                                <td colspan="6">
+                                    <div class="empty-state">
+                                        <i class="fas fa-book-open"></i>
+                                        <p>No courses added yet. Add your first course above.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <button class="btn-add" id="btn-add-semester">Add</button>
+
+                <div class="gpa-row">
+                    <div class="gpa-box gpa-box-main">
+                        <div class="gpa-label">Semester GPA</div>
+                        <span class="gpa-val" id="gpaScore">0.00</span>
+                        <div id="classLabel" class="class-badge class-pass">—</div>
+                    </div>
+                    <div class="gpa-box gpa-box-secondary">
+                        <div class="gpa-label">Total Units</div>
+                        <span class="gpa-val" id="totalUnits">0</span>
+                        <div style="font-size:0.65rem;color:var(--text-muted);margin-top:2px;">credit hours</div>
+                    </div>
+                    <div class="gpa-box gpa-box-secondary">
+                        <div class="gpa-label">Total Points</div>
+                        <span class="gpa-val" id="totalPoints">0</span>
+                        <div style="font-size:0.65rem;color:var(--text-muted);margin-top:2px;">quality points</div>
+                    </div>
+                </div>
+
+                <div class="stats-row" id="statsRow" style="display:none;">
+                    <div class="stat-box">
+                        <div class="stat-label">Courses</div>
+                        <div class="stat-val" id="statCourses">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Best Grade</div>
+                        <div class="stat-val" id="statBest">—</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Lowest Grade</div>
+                        <div class="stat-val" id="statWorst">—</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls no-print">
+                <button class="btn-action btn-share" onclick="openShareModal()"><i class="fas fa-share-alt"></i> Share Result</button>
+                <button class="btn-action btn-print" onclick="window.print()"><i class="fas fa-print"></i> Print</button>
+                <button class="btn-action btn-reset" onclick="resetAll()"><i class="fas fa-trash-alt"></i> Reset</button>
             </div>
         </div>
 
-        <div id="semesterList" style="margin-bottom:25px;">
-            <!-- Dynamic Cards -->
+        <div class="tab-content" id="tab-cgpa">
+            <div class="no-print">
+                <div class="semester-input-row">
+                    <div class="input-group">
+                        <label class="input-label">Semester</label>
+                        <input type="text" id="semName" placeholder="e.g. 100L First">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">GPA</label>
+                        <input type="number" id="semGPA" placeholder="e.g. 4.25" min="0" max="5" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">Units</label>
+                        <input type="number" id="semUnits" placeholder="e.g. 18">
+                    </div>
+                    <div class="input-group" style="align-self:flex-end;">
+                        <button class="btn-add" onclick="addSemester()"><i class="fas fa-plus"></i> Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="semester-list" id="semesterList">
+                <div class="empty-state" style="padding:24px 0;">
+                    <i class="fas fa-chart-line"></i>
+                    <p>No semesters added. Track your CGPA across semesters.</p>
+                </div>
+            </div>
+
+            <div class="cgpa-result">
+                <div class="cgpa-label">Cumulative GPA (CGPA)</div>
+                <span class="cgpa-big" id="cgpaScore">0.00</span>
+                <div id="cgpaClass" class="class-badge class-pass" style="margin-top:6px;">—</div>
+            </div>
         </div>
 
-        <div class="gpa-card primary" style="width:100%;">
-            <h3>Cumulative GPA (CGPA)</h3>
-            <span class="gpa-val" id="cgpaScore">0.00</span>
-            <div id="cgpaClass" class="class-badge">—</div>
+        <div class="footer no-print">
+            <p>Developed by <strong>Resolutefemi</strong> &mdash; FUTA Grading System</p>
+            <div class="socials">
+                <a href="https://facebook.com/resolutefemi" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/resolutefemi" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://wa.me/2347046203544" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
         </div>
-    </div>
 
-    <div class="footer no-print" style="margin-top:30px; text-align:center; border-top:1px solid var(--glass-border); padding-top:20px;">
-        <p style="font-size:0.8rem; opacity:0.7;">Developed with ❤️ by Resolutefemi</p>
     </div>
 </div>
 
@@ -413,3 +597,6 @@
 <script src="dist/gpa.js"></script>
 </body>
 </html>
+
+
+
