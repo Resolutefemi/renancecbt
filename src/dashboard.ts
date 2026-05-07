@@ -100,7 +100,6 @@ function getIcon(lucideIcon: string): string {
 }
 
 async function loadUserStats(): Promise<void> {
-    const db = (window as any)._db;
     if (!db) return;
 
     try {
