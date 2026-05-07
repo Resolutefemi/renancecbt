@@ -17,5 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Resume banner listeners (if they are not handled by the engine's internal HTML generation)
     // Note: QuizEngine.ts handles resume banner buttons internally by querySelector after innerHTML.
+    (window as any).reviewWithAI = () => engine.reviewWithAI();
+    (window as any).enterReviewMode = () => engine.enterReviewMode();
 });
 
