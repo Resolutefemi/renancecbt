@@ -1,4 +1,5 @@
 
+// Simple form validator (keeps old callers working if referenced)
 function validate() {
     const matricEl = document.getElementById('matric');
     const passEl = document.getElementById('password');
@@ -20,4 +21,3 @@ function get_getsomething() {
     const el = document.getElementById('login-successful') || document.getElementById('login successful');
     if (el) el.innerText = 'Login successful';
 }
-
