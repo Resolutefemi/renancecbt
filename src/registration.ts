@@ -1,242 +1,460 @@
+export {};
 
-/**
- * registration.ts - Logic for the Create Account page
- * Handles: Multi-step form, faculty/department selection, and Supabase sign up.
- */
+// ── Types ─────────────────────────────────────────────────────────────────────
 
-import { db } from './ui-core';
-
-// --- Toast Utility ---
-function toast(m: string, t: string = '') {
-    const el = document.getElementById('toast');
-    if (!el) return;
-    el.textContent = m;
-    el.className = 'show ' + t;
-    const timeoutId = setTimeout(() => el.className = '', 4000);
-    (el as any)._ = timeoutId;
+interface RegistrationFormData {
+  fullname: string;
+  email: string;
+  password: string;
+  phone: string;
+  faculty: string;
+  dept: string;
 }
 
-// --- Multi-step Navigation ---
-const track = document.getElementById('formTrack') as HTMLElement;
-const dot1 = document.getElementById('dot1');
-const dot2 = document.getElementById('dot2');
+type ToastType = "ok" | "bad" | "info";
 
-function setErr(id: string, show: boolean) {
-    const el = document.getElementById('e-' + id);
-    if (el) el.style.display = show ? 'block' : 'none';
-}
+// ── Faculty → Dept map ────────────────────────────────────────────────────────
 
-document.getElementById('nextBtn')?.addEventListener('click', () => {
-    let ok = true;
-    const fn = (document.getElementById('fullname') as HTMLInputElement).value.trim();
-    const em = (document.getElementById('email') as HTMLInputElement).value.trim();
-    const pw = (document.getElementById('password') as HTMLInputElement).value;
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!fn) { setErr('name', true); ok = false; } else { setErr('name', false); }
-    if (!re.test(em)) { setErr('email', true); ok = false; } else { setErr('email', false); }
-    if (pw.length < 8) { setErr('pw', true); ok = false; } else { setErr('pw', false); }
-
-    if (ok && track) {
-        track.style.transform = 'translateX(-50%)';
-        dot1?.classList.remove('active');
-        dot2?.classList.add('active');
-    }
-});
-
-document.getElementById('backBtn')?.addEventListener('click', () => {
-    if (track) {
-        track.style.transform = 'translateX(0)';
-        dot2?.classList.remove('active');
-        dot1?.classList.add('active');
-    }
-});
-
-// --- Faculty & Department Logic ---
-const depts: Record<string, string[]> = {
-    SOC: ['Software Engineering (SEN)', 'Computer Science (CSC)', 'Cybersecurity (CYS)', 'Data Science (DSC)', 'Information Systems (IFS)', 'Information Technology (IFT)'],
-    SLIT: ['Financial Technology (FinTech)', 'Business Information Technology (BIT)', 'Entrepreneurship Management Technology (EMT)', 'Logistics and Transport Technology (LTT)', 'Maritime Technology and Logistics (MTL)', 'Project Management Technology (PMT)', 'Securities and Investment Management Technology (SIMT)', 'Supply Chain Management (SCM)'],
-    SPS: ['Educational Technology (EDT)', 'Library and Information Science (LIS)', 'Physics (PHY)', 'Mathematics (MTH)', 'Chemistry (CHE)', 'Statistics (STA)'],
-    SESE: ['Computer Engineering (CPE)', 'Electrical and Electronics Engineering (EEE)', 'Information and Communication Engineering (ICE)', 'Mechatronics Engineering (MCE)', 'Biomedical Engineering (BME)'],
-    SIMME: ['Mechanical Engineering (MEE)', 'Civil and Environmental Engineering (CVE)', 'Agricultural Engineering (AGE)', 'Chemical Engineering (CHE)', 'Industrial and Production Engineering (IPE)', 'Metallurgical and Materials Engineering (MME)', 'Mining Engineering (MNE)'],
-    SET: ['Architecture (ARC)', 'Building (BDG)', 'Environmental Management (EVM)', 'Estate Management (ESM)', 'Industrial Design (IDD)', 'Quantity Surveying (QSV)', 'Surveying and Geoinformatics (SVG)', 'Urban and Regional Planning (URP)'],
-    SAAT: ['Agricultural and Resource Economics (ARE)', 'Agricultural Extension and Communication Technology (AEC)', 'Animal Production and Health (APH)', 'Crop, Soil and Pest Management (CSP)', 'Ecotourism and Wildlife Management (EWM)', 'Fisheries and Aquaculture Technology (FAT)', 'Food Science and Technology (FST)', 'Forestry and Wood Technology (FWT)', 'Nutrition and Dietetics (NUD)'],
-    SEMS: ['Applied Geology (AGY)', 'Applied Geophysics (AGP)', 'Marine Science and Technology (MST)', 'Meteorology and Climate Science (MET)', 'Remote Sensing and Geoscience Information Systems (RSG)'],
-    SLS: ['Biochemistry (BCH)', 'Biology (BIO)', 'Biotechnology (BTH)', 'Microbiology (MCB)'],
-    CHS: ['Medicine and Surgery (MBBS)', 'Nursing Science (NSC)', 'Human Anatomy (ANA)', 'Physiology (PHS)', 'Medical Laboratory Science (MLS)', 'Public Health (PUH)'],
-    GNS: ['General Studies (GNS)']
+const FACULTY_DEPTS: Record<string, string[]> = {
+  SOC:   ["Computer Science", "Information Technology", "Software Engineering", "Cybersecurity"],
+  SLIT:  ["Logistics Technology", "Innovation Management", "Supply Chain Systems"],
+  SPS:   ["Physics", "Chemistry", "Mathematics", "Statistics"],
+  SESE:  ["Electrical Engineering", "Electronic Engineering", "Computer Engineering", "Mechatronics"],
+  SIMME: ["Mechanical Engineering", "Manufacturing Engineering", "Industrial Engineering"],
+  SET:   ["Civil Engineering", "Architecture", "Urban Planning", "Environmental Engineering"],
+  SAAT:  ["Agricultural Science", "Food Technology", "Agricultural Engineering"],
+  SEMS:  ["Geology", "Mining Engineering", "Petroleum Engineering"],
+  SLS:   ["Biochemistry", "Biology", "Microbiology"],
+  CHS:   ["Medicine", "Pharmacy", "Nursing", "Medical Laboratory Science"],
+  GNS:   ["General Studies"],
 };
 
-document.getElementById('faculty')?.addEventListener('change', function (this: HTMLSelectElement) {
-    const s = document.getElementById('dept') as HTMLSelectElement;
-    if (!s) return;
-    s.innerHTML = '<option value="" disabled selected>Select department</option>';
-    const selectedFaculty = this.value;
+// ── Password Strength ─────────────────────────────────────────────────────────
 
-    if (depts[selectedFaculty]) {
-        depts[selectedFaculty].forEach(d => {
-            const o = document.createElement('option');
-            o.value = d;
-            o.textContent = d;
-            s.appendChild(o);
-        });
+const STRENGTH_COLORS = ["", "#ef4444", "#f97316", "#eab308", "#22c55e"];
+const STRENGTH_LABELS = ["", "Weak", "Fair", "Good", "Strong"];
+
+function getStrength(pw: string): number {
+  let s = 0;
+  if (pw.length >= 8)           s++;
+  if (/[A-Z]/.test(pw))        s++;
+  if (/[0-9]/.test(pw))        s++;
+  if (/[^A-Za-z0-9]/.test(pw)) s++;
+  return s;
+}
+
+// ── DOM Helpers ───────────────────────────────────────────────────────────────
+
+function qs<T extends HTMLElement>(sel: string): T {
+  const el = document.querySelector<T>(sel);
+  if (!el) throw new Error(`Element not found: ${sel}`);
+  return el;
+}
+
+function showErr(el: HTMLElement, msg: string): void {
+  el.textContent = msg;
+  el.style.display = "block";
+}
+
+function hideErr(el: HTMLElement): void {
+  el.style.display = "none";
+}
+
+// ── Toast ─────────────────────────────────────────────────────────────────────
+
+let toastTimer: ReturnType<typeof setTimeout> | null = null;
+
+function showToast(msg: string, type: ToastType = "info"): void {
+  const toast = qs<HTMLDivElement>("#toast");
+  toast.textContent = msg;
+  toast.className = `show ${type}`;
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.className = toast.className.replace("show", "").trim();
+  }, 3000);
+}
+
+// ── Password visibility toggle ────────────────────────────────────────────────
+
+function initPasswordToggle(): void {
+  const togBtn  = qs<HTMLElement>("#togPw");
+  const pwInput = qs<HTMLInputElement>("#password");
+
+  togBtn.addEventListener("click", () => {
+    const isHidden = pwInput.type === "password";
+    pwInput.type = isHidden ? "text" : "password";
+    togBtn.classList.toggle("fa-eye",       !isHidden);
+    togBtn.classList.toggle("fa-eye-slash",  isHidden);
+  });
+}
+
+// ── Password strength bar ─────────────────────────────────────────────────────
+
+function initStrengthBar(): void {
+  const pwInput = qs<HTMLInputElement>("#password");
+  const bars    = [
+    qs<HTMLDivElement>("#s1"),
+    qs<HTMLDivElement>("#s2"),
+    qs<HTMLDivElement>("#s3"),
+    qs<HTMLDivElement>("#s4"),
+  ];
+
+  pwInput.addEventListener("input", () => {
+    const strength = getStrength(pwInput.value);
+
+    bars.forEach((bar, i) => {
+      const active = strength >= i + 1;
+      bar.style.background    = active ? STRENGTH_COLORS[strength] : "rgba(255,255,255,0.05)";
+      bar.style.boxShadow     = active ? `0 0 6px ${STRENGTH_COLORS[strength]}80` : "none";
+    });
+
+    // Show/hide strength label (reuse the error slot for UX)
+    const errEl = qs<HTMLDivElement>("#e-pw");
+    if (pwInput.value && strength > 0) {
+      errEl.textContent     = STRENGTH_LABELS[strength];
+      errEl.style.color     = STRENGTH_COLORS[strength];
+      errEl.style.display   = "block";
+    } else {
+      errEl.style.display   = "none";
     }
-    setErr('fac', false);
-});
+  });
+}
 
-// --- Registration Submission ---
-document.getElementById('sf')?.addEventListener('submit', async function (e) {
+// ── Department population ─────────────────────────────────────────────────────
+
+function populateDepts(facultyVal: string): void {
+  const deptSelect = qs<HTMLSelectElement>("#dept");
+  deptSelect.innerHTML = "";
+
+  const placeholder = document.createElement("option");
+  placeholder.value    = "";
+  placeholder.disabled = true;
+  placeholder.selected = true;
+  placeholder.textContent = facultyVal ? "Select department" : "Select faculty first";
+  deptSelect.appendChild(placeholder);
+
+  const depts = FACULTY_DEPTS[facultyVal] ?? [];
+  depts.forEach((dept) => {
+    const opt = document.createElement("option");
+    opt.value       = dept;
+    opt.textContent = dept;
+    deptSelect.appendChild(opt);
+  });
+}
+
+function initFacultySelect(): void {
+  const facultySelect = qs<HTMLSelectElement>("#faculty");
+  facultySelect.addEventListener("change", () => {
+    populateDepts(facultySelect.value);
+    hideErr(qs<HTMLDivElement>("#e-fac"));
+    hideErr(qs<HTMLDivElement>("#e-dept"));
+  });
+}
+
+// ── Step navigation ───────────────────────────────────────────────────────────
+
+let currentStep = 1;
+
+function goToStep(step: 1 | 2): void {
+  currentStep = step;
+
+  const track = qs<HTMLDivElement>("#formTrack");
+  const dot1  = qs<HTMLDivElement>("#dot1");
+  const dot2  = qs<HTMLDivElement>("#dot2");
+
+  track.style.transform = step === 1 ? "translateX(0)" : "translateX(-50%)";
+
+  dot1.classList.toggle("active", step === 1);
+  dot2.classList.toggle("active", step === 2);
+}
+
+// ── Validation ────────────────────────────────────────────────────────────────
+
+function validateStep1(): boolean {
+  const fullname = qs<HTMLInputElement>("#fullname").value.trim();
+  const email    = qs<HTMLInputElement>("#email").value.trim();
+  const password = qs<HTMLInputElement>("#password").value;
+  let valid = true;
+
+  const nameErr  = qs<HTMLDivElement>("#e-name");
+  const emailErr = qs<HTMLDivElement>("#e-email");
+  const pwErr    = qs<HTMLDivElement>("#e-pw");
+
+  if (!fullname) {
+    showErr(nameErr, "Enter your full name");
+    valid = false;
+  } else {
+    hideErr(nameErr);
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showErr(emailErr, "Enter a valid email");
+    valid = false;
+  } else {
+    hideErr(emailErr);
+  }
+
+  if (password.length < 8) {
+    showErr(pwErr, "Minimum 8 characters");
+    pwErr.style.color = "#f87171";
+    valid = false;
+  } else if (valid) {
+    hideErr(pwErr);
+  }
+
+  return valid;
+}
+
+function validateStep2(): boolean {
+  const phone   = qs<HTMLInputElement>("#phone").value.replace(/\s/g, "");
+  const faculty = qs<HTMLSelectElement>("#faculty").value;
+  const dept    = qs<HTMLSelectElement>("#dept").value;
+  let valid = true;
+
+  const phoneErr = qs<HTMLDivElement>("#e-phone");
+  const facErr   = qs<HTMLDivElement>("#e-fac");
+  const deptErr  = qs<HTMLDivElement>("#e-dept");
+
+  if (!/^0\d{10}$/.test(phone)) {
+    showErr(phoneErr, "Enter a valid 11-digit number");
+    valid = false;
+  } else {
+    hideErr(phoneErr);
+  }
+
+  if (!faculty) {
+    showErr(facErr, "Select your faculty");
+    valid = false;
+  } else {
+    hideErr(facErr);
+  }
+
+  if (!dept) {
+    showErr(deptErr, "Select your department");
+    valid = false;
+  } else {
+    hideErr(deptErr);
+  }
+
+  return valid;
+}
+
+// ── Form submission ───────────────────────────────────────────────────────────
+
+async function handleSubmit(): Promise<void> {
+  if (!validateStep2()) return;
+
+  const subBtn = qs<HTMLButtonElement>("#subBtn");
+  const btxt   = subBtn.querySelector<HTMLSpanElement>(".btxt")!;
+
+  subBtn.disabled     = true;
+  btxt.innerHTML      = `<i class="fa-solid fa-circle-notch fa-spin"></i> CREATING...`;
+
+  const formData: RegistrationFormData = {
+    fullname: qs<HTMLInputElement>("#fullname").value.trim(),
+    email:    qs<HTMLInputElement>("#email").value.trim(),
+    password: qs<HTMLInputElement>("#password").value,
+    phone:    qs<HTMLInputElement>("#phone").value.replace(/\s/g, ""),
+    faculty:  qs<HTMLSelectElement>("#faculty").value,
+    dept:     qs<HTMLSelectElement>("#dept").value,
+  };
+
+  try {
+    // TODO: replace with your actual Supabase / API call
+    // e.g. const { error } = await supabase.auth.signUp({ email: formData.email, password: formData.password })
+    await new Promise<void>((resolve) => setTimeout(resolve, 1800)); // dev stub
+    console.log("Registering:", formData);
+    showToast("Account created successfully!", "ok");
+    setTimeout(() => { window.location.href = "login.html"; }, 1500);
+  } catch (err) {
+    console.error(err);
+    showToast("Registration failed. Try again.", "bad");
+    subBtn.disabled = false;
+    btxt.innerHTML  = `<i class="fa-solid fa-user-plus"></i> REGISTER`;
+  }
+}
+
+// ── Custom cursor ─────────────────────────────────────────────────────────────
+
+function initCursor(): void {
+  if (window.innerWidth < 1024) return;
+
+  const cur  = qs<HTMLDivElement>("#cur");
+  const ring = qs<HTMLDivElement>("#cur-ring");
+
+  document.addEventListener("mousemove", (e: MouseEvent) => {
+    cur.style.left  = e.clientX + "px";
+    cur.style.top   = e.clientY + "px";
+    ring.style.left = e.clientX + "px";
+    ring.style.top  = e.clientY + "px";
+  });
+
+  document.addEventListener("mousedown", () => {
+    cur.style.width  = "6px";
+    cur.style.height = "6px";
+    ring.style.width  = "28px";
+    ring.style.height = "28px";
+  });
+
+  document.addEventListener("mouseup", () => {
+    cur.style.width  = "10px";
+    cur.style.height = "10px";
+    ring.style.width  = "40px";
+    ring.style.height = "40px";
+  });
+
+  // Scale cursor on interactive elements
+  document.querySelectorAll<HTMLElement>("a, button, input, select").forEach((el) => {
+    el.addEventListener("mouseenter", () => {
+      ring.style.width       = "56px";
+      ring.style.height      = "56px";
+      ring.style.borderColor = "rgba(0,207,255,0.6)";
+    });
+    el.addEventListener("mouseleave", () => {
+      ring.style.width       = "40px";
+      ring.style.height      = "40px";
+      ring.style.borderColor = "rgba(59,130,246,0.45)";
+    });
+  });
+}
+
+// ── Glare effect ──────────────────────────────────────────────────────────────
+
+function initGlare(): void {
+  const card  = qs<HTMLDivElement>("#card");
+  const glare = qs<HTMLDivElement>("#glare");
+
+  card.addEventListener("mousemove", (e: MouseEvent) => {
+    const rect = card.getBoundingClientRect();
+    const x    = ((e.clientX - rect.left) / rect.width)  * 100;
+    const y    = ((e.clientY - rect.top)  / rect.height) * 100;
+    glare.style.setProperty("--mx", `${x}%`);
+    glare.style.setProperty("--my", `${y}%`);
+  });
+}
+
+// ── Particle canvas ───────────────────────────────────────────────────────────
+
+interface Particle {
+  x: number; y: number;
+  vx: number; vy: number;
+  r: number; a: number;
+  hue: number;
+}
+
+function initCanvas(): void {
+  const canvas = document.querySelector<HTMLCanvasElement>("#c");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  const resize = (): void => {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  };
+  resize();
+  window.addEventListener("resize", resize);
+
+  const particles: Particle[] = Array.from({ length: 55 }, () => ({
+    x:   Math.random() * window.innerWidth,
+    y:   Math.random() * window.innerHeight,
+    vx:  (Math.random() - 0.5) * 0.35,
+    vy:  (Math.random() - 0.5) * 0.35,
+    r:   Math.random() * 1.6 + 0.3,
+    a:   Math.random() * 0.5 + 0.08,
+    hue: Math.random() > 0.6 ? 200 : 340,
+  }));
+
+  const draw = (): void => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach((p) => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0)             p.x = canvas.width;
+      if (p.x > canvas.width)  p.x = 0;
+      if (p.y < 0)             p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${p.hue}, 90%, 65%, ${p.a})`;
+      ctx.fill();
+    });
+
+    // Connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx   = particles[i].x - particles[j].x;
+        const dy   = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 110) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(0, 207, 255, ${(1 - dist / 110) * 0.12})`;
+          ctx.lineWidth   = 0.7;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  };
+
+  draw();
+}
+
+// ── Real-time inline validation (clear errors on input) ───────────────────────
+
+function initLiveValidation(): void {
+  const fields: Array<[string, string]> = [
+    ["#fullname", "#e-name"],
+    ["#email",    "#e-email"],
+    ["#phone",    "#e-phone"],
+  ];
+
+  fields.forEach(([inputSel, errSel]) => {
+    const input = document.querySelector<HTMLInputElement>(inputSel);
+    const err   = document.querySelector<HTMLDivElement>(errSel);
+    if (!input || !err) return;
+    input.addEventListener("input", () => hideErr(err));
+  });
+
+  // Faculty / dept selects
+  qs<HTMLSelectElement>("#faculty").addEventListener("change", () =>
+    hideErr(qs<HTMLDivElement>("#e-fac"))
+  );
+  qs<HTMLSelectElement>("#dept").addEventListener("change", () =>
+    hideErr(qs<HTMLDivElement>("#e-dept"))
+  );
+}
+
+// ── Wire up buttons ───────────────────────────────────────────────────────────
+
+function initButtons(): void {
+  qs<HTMLButtonElement>("#nextBtn").addEventListener("click", () => {
+    if (validateStep1()) goToStep(2);
+  });
+
+  qs<HTMLButtonElement>("#backBtn").addEventListener("click", () => goToStep(1));
+
+  qs<HTMLFormElement>("#sf").addEventListener("submit", (e: Event) => {
     e.preventDefault();
-    let ok = true;
+    void handleSubmit();
+  });
+}
 
-    const fn = (document.getElementById('fullname') as HTMLInputElement).value.trim();
-    const em = (document.getElementById('email') as HTMLInputElement).value.trim();
-    const pw = (document.getElementById('password') as HTMLInputElement).value;
-    const cd = (document.getElementById('code') as HTMLSelectElement).value;
-    const phNum = (document.getElementById('phone') as HTMLInputElement).value.trim();
-    const ph = cd + phNum;
-    const fa = (document.getElementById('faculty') as HTMLSelectElement).value;
-    const de = (document.getElementById('dept') as HTMLSelectElement).value;
+// ── Boot ──────────────────────────────────────────────────────────────────────
 
-    if (phNum.length < 7) { setErr('phone', true); ok = false; } else { setErr('phone', false); }
-    if (!fa) { setErr('fac', true); ok = false; } else { setErr('fac', false); }
-    if (!de) { setErr('dept', true); ok = false; } else { setErr('dept', false); }
-
-    if (ok) {
-        const btn = document.getElementById('subBtn') as HTMLButtonElement;
-        const btxt = btn?.querySelector('.btxt');
-
-        if (btn && btxt) {
-            btn.disabled = true;
-            btxt.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> CREATING...';
-
-            try {
-                if (!db) throw new Error('Database not initialized');
-                const { data: authData, error: authError } = await db.auth.signUp({
-                    email: em,
-                    password: pw
-                });
-                if (authError) throw authError;
-
-                const uid = authData.user?.id;
-                if (uid) {
-                    const { error: dbError } = await db.from('students').insert([{
-                        id: uid, fullname: fn, email: em, faculty: fa, department: de, phone: ph
-                    }]);
-                    if (dbError) throw dbError;
-                }
-
-                btxt.innerHTML = '<i class="fa-solid fa-check"></i> SUCCESS';
-                btn.style.background = '#10b981';
-                btn.style.boxShadow = '0 0 30px rgba(16,185,129,0.5)';
-
-                toast('🎉 Account created! Redirecting to login...', 'ok');
-                setTimeout(() => window.location.href = 'login.html', 2000);
-
-            } catch (err: any) {
-                console.error(err);
-                toast('❌ ' + (err.message || 'Something went wrong. Please try again.'), 'bad');
-                btn.disabled = false;
-                btxt.innerHTML = '<i class="fa-solid fa-user-plus"></i> REGISTER';
-            }
-        }
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  initCanvas();
+  initCursor();
+  initGlare();
+  initPasswordToggle();
+  initStrengthBar();
+  initFacultySelect();
+  initButtons();
+  initLiveValidation();
+  populateDepts(""); // seed empty dept list
 });
-
-// --- Background Blobs Animation ---
-const cv = document.getElementById('c') as HTMLCanvasElement;
-const ct = cv?.getContext('2d');
-let W: number, H: number;
-
-function rs() {
-    if (!cv) return;
-    W = cv.width = window.innerWidth;
-    H = cv.height = window.innerHeight;
-}
-
-if (cv) {
-    rs();
-    window.addEventListener('resize', rs);
-}
-
-const blobs = Array.from({ length: document.body.classList.contains('perf-mode') ? 3 : 7 }, (_, i) => ({
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight,
-    vx: (Math.random() - .5) * .3,
-    vy: (Math.random() - .5) * .3,
-    r: 120 + Math.random() * 150,
-    ph: Math.random() * Math.PI * 2,
-    sp: .0015 + Math.random() * .003
-}));
-
-let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-
-let fr = 0;
-function loop() {
-    if ((window as any).stopCanvasAnimation || !ct) {
-        if (ct) ct.clearRect(0, 0, W, H);
-        return;
-    }
-
-    fr++;
-    ct.clearRect(0, 0, W, H);
-
-    blobs.forEach((b, i) => {
-        b.x += b.vx + Math.sin(fr * b.sp + b.ph) * .3;
-        b.y += b.vy + Math.cos(fr * b.sp + b.ph * 1.4) * .25;
-        if (b.x < -b.r) b.x = W + b.r; if (b.x > W + b.r) b.x = -b.r;
-        if (b.y < -b.r) b.y = H + b.r; if (b.y > H + b.r) b.y = -b.r;
-
-        const pr = b.r + Math.sin(fr * .0008 + b.ph) * 20;
-        const hue = document.documentElement.getAttribute('data-theme') === 'dark' ? '210,100%,55%' : '210,100%,40%';
-        const alpha = i < 3 ? .04 : .02;
-        const g = ct.createRadialGradient(b.x, b.y, 0, b.x, b.y, pr);
-        g.addColorStop(0, `hsla(${hue},${alpha})`);
-        g.addColorStop(1, 'transparent');
-        ct.beginPath(); ct.arc(b.x, b.y, pr, 0, Math.PI * 2);
-        ct.fillStyle = g; ct.fill();
-    });
-
-    requestAnimationFrame(loop);
-}
-if (cv) loop();
-
-// --- Form Enhancements ---
-const togPw = document.getElementById('togPw');
-if (togPw) {
-    togPw.addEventListener('click', function (e) {
-        e.preventDefault();
-        const p = document.getElementById('password') as HTMLInputElement;
-        const t = p.type === 'text';
-        p.type = t ? 'password' : 'text';
-        this.classList.toggle('fa-eye', t); this.classList.toggle('fa-eye-slash', !t);
-    });
-}
-
-document.getElementById('password')?.addEventListener('input', function (this: HTMLInputElement) {
-    const v = this.value; let s = 0;
-    if (v.length >= 8) s++; if (/[A-Z]/.test(v)) s++; if (/[0-9]/.test(v)) s++; if (/[^A-Za-z0-9]/.test(v)) s++;
-    const c = ['#ef4444', '#f59e0b', '#10b981', '#3b82f6'];
-    [1, 2, 3, 4].forEach(i => {
-        const sg = document.getElementById('s' + i);
-        if (sg) {
-            if (i <= s) { sg.style.background = c[s - 1]; }
-            else { sg.style.background = 'rgba(255,255,255,.05)'; }
-        }
-    });
-});
-
-const cur = document.getElementById('cur'), ring = document.getElementById('cur-ring');
-let rx = 0, ry = 0;
-window.addEventListener('mousemove', e => {
-    if (cur) { cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px'; }
-});
-
-(function animateRing() {
-    if (ring) {
-        rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
-        ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-    }
-    requestAnimationFrame(animateRing);
-})();
