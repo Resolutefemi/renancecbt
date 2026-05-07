@@ -7,27 +7,23 @@
 <link rel="shortcut icon" href="logo.png" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="theme.css">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="ui-core.js"></script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:var(--bg-primary);--blue:var(--accent);--glow:var(--accent);--cyan:var(--secondary);
-  --violet:#818cf8;--ink:var(--text-main);--muted:var(--text-muted);
-  --card:var(--bg-glass);--border:var(--border);
+  --bg:#03050a;--blue:#2563eb;--glow:#3b82f6;--cyan:#06b6d4;
+  --violet:#818cf8;--ink:#f1f5f9;--muted:rgba(148,163,184,.6);
+  --card:rgba(6,9,18,.85);--border:rgba(59,130,246,.2);
 }
 html,body{height:100%;margin:0;overflow:hidden;touch-action:none}
-body{background:var(--bg);font-family:'Outfit',sans-serif;color:var(--ink);cursor:default;overflow:hidden}
+body{background:var(--bg);font-family:'Outfit',sans-serif;color:var(--ink);cursor:none;overflow:hidden}
 
-/* Performance Mode Styles */
-.perf-mode #bg-canvas, .perf-mode .scan, .perf-mode .grain { display: none !important; }
 
-#cur-dot{position:fixed;width:8px;height:8px;background:#fff;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);box-shadow:0 0 15px #fff, 0 0 30px var(--cyan);transition:width .2s,height .2s;display:none}
-#cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(6,182,212,.6);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .4s cubic-bezier(.16,1,.3,1),height .4s cubic-bezier(.16,1,.3,1),border-color .3s;display:none}
-@media (min-width: 1024px) { #cur-dot, #cur-ring { display: block; } body { cursor: none; } }
+#cur-dot{position:fixed;width:8px;height:8px;background:#fff;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);box-shadow:0 0 15px #fff, 0 0 30px var(--cyan);transition:width .2s,height .2s}
+#cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(6,182,212,.6);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .4s cubic-bezier(.16,1,.3,1),height .4s cubic-bezier(.16,1,.3,1),border-color .3s}
 
-#bg-canvas{position:fixed;inset:0;z-index:0;opacity: 0.5;}
+
+#bg-canvas{position:fixed;inset:0;z-index:0}
 .scan{position:fixed;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.06) 3px,rgba(0,0,0,.06) 4px)}
 .grain{position:fixed;inset:-100%;z-index:3;width:300%;height:300%;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain-sh .5s steps(1) infinite}
 @keyframes grain-sh{0%{transform:translate(0,0)}25%{transform:translate(-3%,-6%)}50%{transform:translate(4%,3%)}75%{transform:translate(-6%,7%)}100%{transform:translate(0,0)}}

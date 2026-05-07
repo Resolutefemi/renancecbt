@@ -7,27 +7,23 @@
 <link rel="shortcut icon" href="logo.png" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabinet+Grotesk:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="theme.css">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="ui-core.js"></script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --b:var(--bg-primary);--blue:var(--accent);--glow:var(--accent);--cyan:var(--secondary);
-  --ink:var(--text-main);--muted:var(--text-muted);
-  --card:var(--bg-glass);--border:var(--border);
+  --b:#070a12;--blue:#2563eb;--glow:#3b82f6;--cyan:#06b6d4;
+  --ink:#f8fafc;--muted:rgba(148,163,184,.55);
+  --card:rgba(8,12,22,.9);--border:rgba(59,130,246,.15);
 }
-html{height:100%;overflow-x:hidden}
-body{height:100%;background:var(--b);font-family:'Cabinet Grotesk',sans-serif;color:var(--ink);overflow-x:hidden;cursor:default}
+html{height:100%;overflow:hidden}
+body{height:100%;background:var(--b);font-family:'Cabinet Grotesk',sans-serif;color:var(--ink);overflow:hidden;cursor:none}
 
-/* Performance Mode Styles */
-.perf-mode #c, .perf-mode .scan, .perf-mode .grain { display: none !important; }
 
-#cur{position:fixed;width:10px;height:10px;background:var(--glow);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:width .15s,height .15s;display:none}
-#cur-ring{position:fixed;width:40px;height:40px;border:1.5px solid rgba(59,130,246,.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s;display:none}
-@media (min-width: 1024px) { #cur, #cur-ring { display: block; } body { cursor: none; } }
+#cur{position:fixed;width:10px;height:10px;background:var(--glow);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:width .15s,height .15s}
+#cur-ring{position:fixed;width:40px;height:40px;border:1.5px solid rgba(59,130,246,.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
 
-#c{position:fixed;inset:0;z-index:0;opacity: 0.4;}
+
+#c{position:fixed;inset:0;z-index:0}
 .scan{position:fixed;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.06) 2px,rgba(0,0,0,.06) 4px);animation:scan-d 10s linear infinite}
 @keyframes scan-d{0%{background-position:0 0}100%{background-position:0 400px}}
 .grain{position:fixed;inset:-200%;z-index:2;width:400%;height:400%;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:g .7s steps(1) infinite}
@@ -363,12 +359,15 @@ input:focus,select:focus{border-color:rgba(59,130,246,.5);background:rgba(17,27,
 </div>
 
 <script>
-// Use centralized database client from ui-core.js
-const db = window._db;
+
+const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const db = window._sb;
+
 
 function toast(m, t=''){
   const el = document.getElementById('toast');
-  if(!el) return;
   el.textContent = m;
   el.className = 'show ' + t;
   clearTimeout(el._);
@@ -411,17 +410,93 @@ document.getElementById('backBtn').addEventListener('click', () => {
 
 
 const depts = {
-  SOC: ['Software Engineering (SEN)', 'Computer Science (CSC)', 'Cybersecurity (CYS)', 'Data Science (DSC)', 'Information Systems (IFS)', 'Information Technology (IFT)'],
-  SLIT: ['Financial Technology (FinTech)', 'Business Information Technology (BIT)', 'Entrepreneurship Management Technology (EMT)', 'Logistics and Transport Technology (LTT)', 'Maritime Technology and Logistics (MTL)', 'Project Management Technology (PMT)', 'Securities and Investment Management Technology (SIMT)', 'Supply Chain Management (SCM)'],
-  SPS: ['Educational Technology (EDT)', 'Library and Information Science (LIS)', 'Physics (PHY)', 'Mathematics (MTH)', 'Chemistry (CHE)', 'Statistics (STA)'],
-  SESE: ['Computer Engineering (CPE)', 'Electrical and Electronics Engineering (EEE)', 'Information and Communication Engineering (ICE)', 'Mechatronics Engineering (MCE)', 'Biomedical Engineering (BME)'],
-  SIMME: ['Mechanical Engineering (MEE)', 'Civil and Environmental Engineering (CVE)', 'Agricultural Engineering (AGE)', 'Chemical Engineering (CHE)', 'Industrial and Production Engineering (IPE)', 'Metallurgical and Materials Engineering (MME)', 'Mining Engineering (MNE)'],
-  SET: ['Architecture (ARC)', 'Building (BDG)', 'Environmental Management (EVM)', 'Estate Management (ESM)', 'Industrial Design (IDD)', 'Quantity Surveying (QSV)', 'Surveying and Geoinformatics (SVG)', 'Urban and Regional Planning (URP)'],
-  SAAT: ['Agricultural and Resource Economics (ARE)', 'Agricultural Extension and Communication Technology (AEC)', 'Animal Production and Health (APH)', 'Crop, Soil and Pest Management (CSP)', 'Ecotourism and Wildlife Management (EWM)', 'Fisheries and Aquaculture Technology (FAT)', 'Food Science and Technology (FST)', 'Forestry and Wood Technology (FWT)', 'Nutrition and Dietetics (NUD)'],
-  SEMS: ['Applied Geology (AGY)', 'Applied Geophysics (AGP)', 'Marine Science and Technology (MST)', 'Meteorology and Climate Science (MET)', 'Remote Sensing and Geoscience Information Systems (RSG)'],
-  SLS: ['Biochemistry (BCH)', 'Biology (BIO)', 'Biotechnology (BTH)', 'Microbiology (MCB)'],
-  CHS: ['Medicine and Surgery (MBBS)', 'Nursing Science (NSC)', 'Human Anatomy (ANA)', 'Physiology (PHS)', 'Medical Laboratory Science (MLS)', 'Public Health (PUH)'],
-  GNS: ['General Studies (GNS)']
+  SOC: [
+    'Software Engineering (SEN)',
+    'Computer Science (CSC)',
+    'Cybersecurity (CYS)',
+    'Data Science (DSC)',
+    'Information Systems (IFS)',
+    'Information Technology (IFT)'
+  ],
+  SLIT: [
+    'Financial Technology (FinTech)',
+    'Business Information Technology (BIT)',
+    'Entrepreneurship Management Technology (EMT)',
+    'Logistics and Transport Technology (LTT)',
+    'Maritime Technology and Logistics (MTL)',
+    'Project Management Technology (PMT)',
+    'Securities and Investment Management Technology (SIMT)',
+    'Supply Chain Management (SCM)'
+  ],
+  SPS: [
+    'Educational Technology (EDT)',
+    'Library and Information Science (LIS)',
+    'Physics (PHY)',
+    'Mathematics (MTH)',
+    'Chemistry (CHE)',
+    'Statistics (STA)'
+  ],
+  SESE: [
+    'Computer Engineering (CPE)',
+    'Electrical and Electronics Engineering (EEE)',
+    'Information and Communication Engineering (ICE)',
+    'Mechatronics Engineering (MCE)',
+    'Biomedical Engineering (BME)'
+  ],
+  SIMME: [
+    'Mechanical Engineering (MEE)',
+    'Civil and Environmental Engineering (CVE)',
+    'Agricultural Engineering (AGE)',
+    'Chemical Engineering (CHE)',
+    'Industrial and Production Engineering (IPE)',
+    'Metallurgical and Materials Engineering (MME)',
+    'Mining Engineering (MNE)'
+  ],
+  SET: [
+    'Architecture (ARC)',
+    'Building (BDG)',
+    'Environmental Management (EVM)',
+    'Estate Management (ESM)',
+    'Industrial Design (IDD)',
+    'Quantity Surveying (QSV)',
+    'Surveying and Geoinformatics (SVG)',
+    'Urban and Regional Planning (URP)'
+  ],
+  SAAT: [
+    'Agricultural and Resource Economics (ARE)',
+    'Agricultural Extension and Communication Technology (AEC)',
+    'Animal Production and Health (APH)',
+    'Crop, Soil and Pest Management (CSP)',
+    'Ecotourism and Wildlife Management (EWM)',
+    'Fisheries and Aquaculture Technology (FAT)',
+    'Food Science and Technology (FST)',
+    'Forestry and Wood Technology (FWT)',
+    'Nutrition and Dietetics (NUD)'
+  ],
+  SEMS: [
+    'Applied Geology (AGY)',
+    'Applied Geophysics (AGP)',
+    'Marine Science and Technology (MST)',
+    'Meteorology and Climate Science (MET)',
+    'Remote Sensing and Geoscience Information Systems (RSG)'
+  ],
+  SLS: [
+    'Biochemistry (BCH)',
+    'Biology (BIO)',
+    'Biotechnology (BTH)',
+    'Microbiology (MCB)'
+  ],
+  CHS: [
+    'Medicine and Surgery (MBBS)',
+    'Nursing Science (NSC)',
+    'Human Anatomy (ANA)',
+    'Physiology (PHS)',
+    'Medical Laboratory Science (MLS)',
+    'Public Health (PUH)'
+  ],
+  GNS: [
+    'General Studies (GNS)'
+  ]
 };
 
 document.getElementById('faculty').addEventListener('change',function(){
@@ -503,47 +578,84 @@ let W,H;
 function rs(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight}
 rs();window.addEventListener('resize',rs);
 
-// Optimized Blobs for performance
-const blobs=Array.from({length: document.body.classList.contains('perf-mode') ? 3 : 7},(_,i)=>({
+let isAnimating = window.innerWidth > 768;
+window.addEventListener('resize', () => {
+  rs();
+  const wasAnimating = isAnimating;
+  isAnimating = window.innerWidth > 768;
+  if (!wasAnimating && isAnimating) loop(); 
+});
+
+const blobs=Array.from({length:7},(_,i)=>({
   x:Math.random()*W,y:Math.random()*H,
-  vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,
-  r:120+Math.random()*150,
+  vx:(Math.random()-.5)*.45,vy:(Math.random()-.5)*.45,
+  r:160+Math.random()*200,
   ph:Math.random()*Math.PI*2,
-  sp:.0015+Math.random()*.003
+  sp:.0025+Math.random()*.004
 }));
 
 let mx=W/2,my=H/2;
-window.addEventListener('mousemove',e=>{mx=e.clientX; my=e.clientY;});
+const trail=[];
+
+function updateTrail(x, y) {
+  mx=x; my=y;
+  trail.push({x:x,y:y});
+  if(trail.length>24)trail.shift();
+}
+
+window.addEventListener('mousemove',e=>updateTrail(e.clientX, e.clientY));
 
 let fr=0;
 function loop(){
-  if (window.stopCanvasAnimation) {
-     ct.clearRect(0,0,W,H);
-     return;
-  }
+  if (!isAnimating) return;
   
   fr++;
   ct.clearRect(0,0,W,H);
 
   blobs.forEach((b,i)=>{
-    b.x+=b.vx+Math.sin(fr*b.sp+b.ph)*.3;
-    b.y+=b.vy+Math.cos(fr*b.sp+b.ph*1.4)*.25;
+    b.x+=b.vx+Math.sin(fr*b.sp+b.ph)*.35;
+    b.y+=b.vy+Math.cos(fr*b.sp+b.ph*1.4)*.28;
     if(b.x<-b.r)b.x=W+b.r;if(b.x>W+b.r)b.x=-b.r;
     if(b.y<-b.r)b.y=H+b.r;if(b.y>H+b.r)b.y=-b.r;
-    
-    const pr=b.r+Math.sin(fr*.0008+b.ph)*20;
-    const hue=document.documentElement.getAttribute('data-theme') === 'dark' ? '210,100%,55%' : '210,100%,40%';
-    const alpha=i<3?.04:.02;
+    const dx=b.x-mx,dy=b.y-my,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<280){b.x+=(dx/d)*.7;b.y+=(dy/d)*.7}
+    const pr=b.r+Math.sin(fr*.0008+b.ph)*28;
+    const hue=i%2===0?'210,100%,55%':'195,90%,50%';
+    const alpha=i<3?.055:.035;
     const g=ct.createRadialGradient(b.x,b.y,0,b.x,b.y,pr);
     g.addColorStop(0,`hsla(${hue},${alpha})`);
+    g.addColorStop(.6,`hsla(${hue},${alpha*.3})`);
     g.addColorStop(1,'transparent');
     ct.beginPath();ct.arc(b.x,b.y,pr,0,Math.PI*2);
     ct.fillStyle=g;ct.fill();
   });
 
+  for(let i=0;i<blobs.length;i++)for(let j=i+1;j<blobs.length;j++){
+    const dx=blobs[i].x-blobs[j].x,dy=blobs[i].y-blobs[j].y;
+    const d=Math.sqrt(dx*dx+dy*dy);
+    if(d<380){
+      ct.beginPath();ct.moveTo(blobs[i].x,blobs[i].y);ct.lineTo(blobs[j].x,blobs[j].y);
+      ct.strokeStyle=`rgba(59,130,246,${(1-d/380)*.028})`;ct.lineWidth=1;ct.stroke();
+    }
+  }
+
+  if(trail.length>1){
+    for(let i=1;i<trail.length;i++){
+      const a=i/trail.length;
+      ct.beginPath();ct.moveTo(trail[i-1].x,trail[i-1].y);ct.lineTo(trail[i].x,trail[i].y);
+      ct.strokeStyle=`rgba(59,130,246,${a*.22})`;ct.lineWidth=a*2.5;ct.lineCap='round';ct.stroke();
+    }
+    if(trail.length){
+      const tip=trail[trail.length-1];
+      const tg=ct.createRadialGradient(tip.x,tip.y,0,tip.x,tip.y,18);
+      tg.addColorStop(0,'rgba(59,130,246,.35)');tg.addColorStop(1,'transparent');
+      ct.beginPath();ct.arc(tip.x,tip.y,18,0,Math.PI*2);ct.fillStyle=tg;ct.fill();
+    }
+  }
+
   requestAnimationFrame(loop);
 }
-loop();
+if (isAnimating) loop();
 
 
 document.getElementById('togPw').addEventListener('click',function(e){
@@ -556,11 +668,11 @@ document.getElementById('togPw').addEventListener('click',function(e){
 document.getElementById('password').addEventListener('input',function(){
   const v=this.value;let s=0;
   if(v.length>=8)s++;if(/[A-Z]/.test(v))s++;if(/[0-9]/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;
-  const c=['#ef4444','#f59e0b','#10b981','#3b82f6'];
+  const c=['#ef4444','#f59e0b','#10b981','#3b82f6'],g=['rgba(239,68,68,.4)','rgba(245,158,11,.4)','rgba(16,185,129,.4)','rgba(59,130,246,.4)'];
   [1,2,3,4].forEach(i=>{
     const sg=document.getElementById('s'+i);
-    if(i<=s){sg.style.background=c[s-1];}
-    else{sg.style.background='rgba(255,255,255,.05)';}
+    if(i<=s){sg.style.background=c[s-1];sg.style.boxShadow=`0 0 6px ${g[s-1]}`}
+    else{sg.style.background='rgba(255,255,255,.05)';sg.style.boxShadow='none'}
   });
 });
 
@@ -568,15 +680,46 @@ document.getElementById('password').addEventListener('input',function(){
 const cur=document.getElementById('cur'), ring=document.getElementById('cur-ring');
 let rx=0,ry=0;
 window.addEventListener('mousemove',e=>{
-  if(cur) { cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px'; }
+  cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px';
 });
 (function animateRing(){
-  if(ring) {
+  if(isAnimating) {
     rx+=(mx-rx)*0.15; ry+=(my-ry)*0.15;
     ring.style.left=rx+'px'; ring.style.top=ry+'px';
   }
   requestAnimationFrame(animateRing);
 })();
+document.querySelectorAll('input,select,button,a,.icr').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{
+    ring.style.width='50px'; ring.style.height='50px'; 
+    ring.style.borderColor='rgba(59,130,246,0.8)';
+  });
+  el.addEventListener('mouseleave',()=>{
+    ring.style.width='36px'; ring.style.height='36px'; 
+    ring.style.borderColor='rgba(6,182,212,0.6)';
+  });
+});
+
+
+const card=document.getElementById('card'), glare=document.getElementById('glare');
+card.addEventListener('mousemove',e=>{
+  if (!isAnimating) return;
+  const rect = card.getBoundingClientRect();
+  const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+  const cx = rect.width/2; const cy = rect.height/2;
+  const rotateX = ((y - cy) / cy) * -5; 
+  const rotateY = ((x - cx) / cx) * 5;
+  
+  card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  glare.style.setProperty('--mx', (x/rect.width*100)+'%');
+  glare.style.setProperty('--my', (y/rect.height*100)+'%');
+});
+card.addEventListener('mouseleave',()=>{
+  if (!isAnimating) return;
+  card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+  card.style.transition = 'transform 0.5s ease';
+  setTimeout(()=>card.style.transition='', 500);
+});
 </script>
 </body>
 </html>
