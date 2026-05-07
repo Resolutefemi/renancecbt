@@ -12,7 +12,7 @@ declare const lucide: any;
 /**
  * Toggle sidebar navigation on mobile
  */
-export function toggleNav(): void {
+function toggleNav(): void {
     const sidebar = document.getElementById('sidebar');
     if (sidebar) sidebar.classList.toggle('open');
 }
@@ -20,7 +20,7 @@ export function toggleNav(): void {
 /**
  * Toggle between light and dark themes
  */
-export function toggleTheme(): void {
+function toggleTheme(): void {
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
@@ -29,7 +29,7 @@ export function toggleTheme(): void {
 /**
  * Load student data from database or localStorage
  */
-export async function loadData(): Promise<void> {
+async function loadData(): Promise<void> {
     let name = localStorage.getItem('studentName') || "FUTA Student";
     let dept = localStorage.getItem('studentDept') || "Department";
     let matric = localStorage.getItem('studentMatric') || "CSC/25/0000";
@@ -48,8 +48,6 @@ export async function loadData(): Promise<void> {
                 if (data && !error) {
                     name = data.fullname || name;
                     dept = data.department || dept;
-                    // Note: 'phone' is used in registration, but 'matric' is shown in UI.
-                    // We'll keep them in sync if possible or just use the DB value.
                     localStorage.setItem('studentName', name);
                     localStorage.setItem('studentDept', dept);
                 }
@@ -91,7 +89,7 @@ function updateUI(name: string, dept: string, matric: string): void {
 /**
  * Enter edit mode
  */
-export function toggleEdit(): void {
+function toggleEdit(): void {
     const infoValues = document.querySelectorAll('.info-value');
     const editInputs = document.querySelectorAll('.edit-input');
     
@@ -119,7 +117,7 @@ export function toggleEdit(): void {
 /**
  * Save profile changes to local storage and database
  */
-export async function saveProfile(): Promise<void> {
+async function saveProfile(): Promise<void> {
     const inputName = document.getElementById('input_name') as HTMLInputElement;
     const inputDept = document.getElementById('input_dept') as HTMLInputElement;
     const inputMatric = document.getElementById('input_matric') as HTMLInputElement;
@@ -171,7 +169,7 @@ export async function saveProfile(): Promise<void> {
 /**
  * Log out and clear session
  */
-export async function logout(): Promise<void> {
+async function logout(): Promise<void> {
     if (db) {
         await db.auth.signOut();
     }
@@ -180,7 +178,7 @@ export async function logout(): Promise<void> {
 }
 
 // Initialize page
-window.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     loadData();
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
@@ -189,10 +187,12 @@ window.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
-    // Bind event listeners to global scope for HTML onclicks (or refactor HTML)
-    (window as any).toggleNav = toggleNav;
-    (window as any).toggleTheme = toggleTheme;
-    (window as any).toggleEdit = toggleEdit;
-    (window as any).saveProfile = saveProfile;
-    (window as any).logout = logout;
+    // Event Listeners
+    document.getElementById('btn-toggle-nav')?.addEventListener('click', toggleNav);
+    document.getElementById('btn-close-nav')?.addEventListener('click', toggleNav);
+    document.getElementById('btn-toggle-theme')?.addEventListener('click', toggleTheme);
+    document.getElementById('editBtn')?.addEventListener('click', toggleEdit);
+    document.getElementById('saveBtn')?.addEventListener('click', saveProfile);
+    document.getElementById('btn-logout')?.addEventListener('click', logout);
 });
+

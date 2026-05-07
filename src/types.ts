@@ -1,4 +1,12 @@
 
+export interface Course {
+    id: string;
+    title: string;
+    icon: string;
+    isReady: boolean;
+    semester: number;
+}
+
 export interface OptionGroup {
     A: string;
     B: string;
