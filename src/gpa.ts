@@ -1,4 +1,6 @@
 
+export {};
+
 /**
  * gpa.ts - GPA Calculator Logic
  * Handles semester and CGPA calculations for FUTA students.
