@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES6",
     "module": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
