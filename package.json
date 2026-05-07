@@ -1,0 +1,13 @@
+{
+  "name": "cos-101-quiz",
+  "version": "1.0.0",
+  "description": "CBT Practice Portal with TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

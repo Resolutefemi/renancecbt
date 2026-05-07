@@ -1,0 +1,5065 @@
+[
+  {
+    "id": 1,
+    "topic": "Mathematical Induction",
+    "question": "____ is used to prove the validity of proposition of the set of non-negative integers.",
+    "options": [
+      "Real number system",
+      "Real line",
+      "Associativity",
+      "The principle of mathematical induction"
+    ],
+    "answer": "The principle of mathematical induction"
+  },
+  {
+    "id": 2,
+    "topic": "Mathematical Induction",
+    "question": "Which of the following statements is false for all positive integers using the principle of mathematical induction.",
+    "options": [
+      "2ⁿ > n",
+      "5²ⁿ + 3n + 1 is a multiple of 9",
+      "5ⁿ - 1 is a multiple of 4",
+      "7²ⁿ⁺¹ + 1 is a multiple of 3"
+    ],
+    "answer": "7²ⁿ⁺¹ + 1 is a multiple of 3"
+  },
+  {
+    "id": 3,
+    "topic": "Mathematical Induction",
+    "question": "A student... was asked to show that 5ⁿ - 1 is divisible by 4... Which of the following mathematical statements is correct for all positive integers M?",
+    "options": [
+      "f(1)=8",
+      "f(M)=4(5M+1)",
+      "f(k+1)=4(5M+1)",
+      "f(k)=4(5M+1)"
+    ],
+    "answer": "f(k+1)=4(5M+1)"
+  },
+  {
+    "id": 4,
+    "topic": "Real Numbers",
+    "question": "Which of the following is not one of the properties of real numbers?",
+    "options": [
+      "existence of the multiplicative inverse",
+      "closure",
+      "it satisfies the principle of mathematical induction",
+      "existence of the zero of the set"
+    ],
+    "answer": "it satisfies the principle of mathematical induction"
+  },
+  {
+    "id": 5,
+    "topic": "Real Numbers",
+    "question": "Let a, b, c and d be real numbers. Which of the following statements is false?",
+    "options": [
+      "if a > b, then a + c < b + c",
+      "if a < b and c > 0, then ac > bc",
+      "if a < b and c < 0, then ac < bc",
+      "if a > b and c > d then a + c > b + d"
+    ],
+    "answer": "if a > b, then a + c < b + c"
+  },
+  {
+    "id": 6,
+    "topic": "Sequence and Series",
+    "question": "For what values of x can she prove that Σ xⁱ = (1 - xⁿ⁺¹) / (1 - x)?",
+    "options": [
+      "for all real numbers x",
+      "for all real numbers x satisfying x ≠ 1",
+      "for all real numbers x satisfying x = 1",
+      "for all positive integers n"
+    ],
+    "answer": "for all real numbers x satisfying x ≠ 1"
+  },
+  {
+    "id": 7,
+    "topic": "Mathematical Induction",
+    "question": "If f(n) = n⁴ + 4n² + 11 is divisible by 16 for all odd positive integers, what are the possible values of n?",
+    "options": [
+      "1, 2, 3, ..., k, k+1",
+      "1, 2, 3, ..., k, k+1, ..., ∞",
+      "1, 3, ..., 2k-1, 2k+1, ..."
+    ],
+    "answer": "1, 3, ..., 2k-1, 2k+1, ..."
+  },
+  {
+    "id": 8,
+    "topic": "Mathematical Induction",
+    "question": "In proving f(n) = 7²ⁿ⁺¹ + 1 is a multiple of 8, which is correct for n=k+1?",
+    "options": [
+      "f(K+1)=344",
+      "f(K+1)=8(49M-6)",
+      "f(K+1)=8M-1",
+      "f(K+1)=8(49M+6)"
+    ],
+    "answer": "f(K+1)=8(49M-6)"
+  },
+  {
+    "id": 9,
+    "topic": "Real Numbers",
+    "question": "Which law of algebra is incorrect for all x, y, z ∈ N?",
+    "options": [
+      "Closure",
+      "Commutative",
+      "Associative: x.(y+z)=(x.y).z",
+      "Distributive"
+    ],
+    "answer": "Associative: x.(y+z)=(x.y).z"
+  },
+  {
+    "id": 10,
+    "topic": "Mathematical Induction",
+    "question": "Given 5²ⁿ + 3n - 1 is a multiple of 9, by induction f(k+1) is:",
+    "options": [
+      "9(25M+8k+3)",
+      "9(25M-8k+3)",
+      "5²⁽ᵏ⁺¹⁾+3k+2",
+      "f(k)=5²⁽ᵏ⁺¹⁾+3k+2"
+    ],
+    "answer": "9(25M-8k+3)"
+  },
+  {
+    "id": 11,
+    "topic": "Mathematical Induction",
+    "question": "Which is the correct sequential arrangement of the principle of mathematical induction?",
+    "options": [
+      "ii, i and iii",
+      "i, ii and iii",
+      "i, iii and ii",
+      "iii, ii and i"
+    ],
+    "answer": "i, iii and ii"
+  },
+  {
+    "id": 12,
+    "topic": "Sequence and Series",
+    "question": "Find f(k+1) for the series 1/(1·2) + 1/(2·3) + ... + 1/n(n+1).",
+    "options": [
+      "f(k+1)=(k+3)/[(k+1)(k+2)]",
+      "f(k+1)=(k+3)/[(k+1)(k+3)]",
+      "f(k+1)=1/[(k+1)(k+2)]",
+      "f(k+1)=k/(k+1)"
+    ],
+    "answer": "f(k+1)=(k+3)/[(k+1)(k+2)]"
+  },
+  {
+    "id": 13,
+    "topic": "Sequence and Series",
+    "question": "Find f(k+1) for 1/(1·3) + 1/(3·5) + ... + 1/((2n-1)(2n+1)) = n/(2n+1).",
+    "options": [
+      "f(k+1)=(k+1)/(2k+3)",
+      "f(k+1)=k/(2k+3)",
+      "f(k+1)=k/(2k+1)",
+      "f(k+1)=1/[(2k+1)(2k+3)]"
+    ],
+    "answer": "f(k+1)=(k+1)/(2k+3)"
+  },
+  {
+    "id": 14,
+    "topic": "Sequence and Series",
+    "question": "Find f(k+1) for the summation of 1/xⁿ.",
+    "options": [
+      "f(k+1)=1/(x+1)-1/[xᵏ⁺¹(x-1)]",
+      "f(k+1)=1/(x-1)-1/[xᵏ(x-1)]",
+      "f(k+1)=(xᵏ-1)/[xᵏ⁺¹(x-1)]",
+      "f(k+1)=(xᵏ⁺¹-1)/[xᵏ⁺¹(x-1)]"
+    ],
+    "answer": "f(k+1)=(xᵏ⁺¹-1)/[xᵏ⁺¹(x-1)]"
+  },
+  {
+    "id": 15,
+    "topic": "Set theory",
+    "question": "Given A={a,b,c,d}; which is not an element of the power set of A?",
+    "options": [
+      "{a,b}",
+      "{{∅}}",
+      "A",
+      "{a,b,c}"
+    ],
+    "answer": "{{∅}}"
+  },
+  {
+    "id": 16,
+    "topic": "Set theory",
+    "question": "How many subsets will a set containing 5 elements have?",
+    "options": [
+      "32",
+      "25",
+      "36",
+      "64"
+    ],
+    "answer": "32"
+  },
+  {
+    "id": 17,
+    "topic": "Set theory",
+    "question": "If μ={e,f,g,h,p,q,r,s}, M={e,h,q,s} and N={h,p,r}. Find Mᶜ ∪ Nᶜ.",
+    "options": [
+      "{f,p,r}",
+      "{e,f,q,s}",
+      "{e,f,g,p,q,r,s}",
+      "{e,g,p,q,r,s}"
+    ],
+    "answer": "{e,f,g,p,q,r,s}"
+  },
+  {
+    "id": 18,
+    "topic": "Set theory",
+    "question": "U={x: 1<x<15}, P={odd}, Q={prime}. Find the cardinal number of Pᶜ ∩ Qᶜ.",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "answer": "6"
+  },
+  {
+    "id": 19,
+    "topic": "Set theory",
+    "question": "If P={1,2,3,4,5,6,7,8}, Q={1,4,9}, R={2,4,8,9}. Find (P ∩ Q) ∪ R.",
+    "options": [
+      "{1,2,4,8}",
+      "{1,2,4,8,9}",
+      "{1,2,4,7,8}",
+      "{1,2,3,4,5,6,7,8}"
+    ],
+    "answer": "{1,2,4,8,9}"
+  },
+  {
+    "id": 20,
+    "topic": "Set theory",
+    "question": "In a class of 40, 24 play football, 18 play volleyball and 6 play none. How many play both?",
+    "options": [
+      "2",
+      "7",
+      "8",
+      "9"
+    ],
+    "answer": "8"
+  },
+  {
+    "id": 21,
+    "topic": "Set theory",
+    "question": "4 members of a cricket team (11) are also in rugby (14). How many play only one team?",
+    "options": [
+      "25",
+      "21",
+      "17",
+      "29"
+    ],
+    "answer": "17"
+  },
+  {
+    "id": 22,
+    "topic": "Set theory",
+    "question": "If S = {x: x² = 9, x < 2} then S is equal to:",
+    "options": [
+      "{-3}",
+      "{3}",
+      "Ø",
+      "{-3,3}"
+    ],
+    "answer": "{-3}"
+  },
+  {
+    "id": 23,
+    "topic": "Set theory",
+    "question": "School of 38 teachers, 15 are married women. 6 are couples. How many neither married nor spouses in school?",
+    "options": [
+      "17",
+      "23",
+      "20",
+      "21"
+    ],
+    "answer": "20"
+  },
+  {
+    "id": 24,
+    "topic": "Set theory",
+    "question": "Which of the following is equivalent to [Pᶜ ∪ (Q ∩ Qᶜ)]ᶜ?",
+    "options": [
+      "P",
+      "Pᶜ",
+      "Q",
+      "Qᶜ"
+    ],
+    "answer": "P"
+  },
+  {
+    "id": 25,
+    "topic": "Set theory",
+    "question": "Given sets A and B are partitioned sets of E; then A ∩ (E ∩ B)ᶜ is:",
+    "options": [
+      "A",
+      "Ø",
+      "B",
+      "E"
+    ],
+    "answer": "A"
+  },
+  {
+    "id": 26,
+    "topic": "Set theory",
+    "question": "Which of the following sets is equivalent to (P ∪ Q) ∩ (P ∩ Qᶜ)?",
+    "options": [
+      "P",
+      "Q",
+      "P ∩ Q",
+      "Ø"
+    ],
+    "answer": "P"
+  },
+  {
+    "id": 27,
+    "topic": "Set theory",
+    "question": "U={x: x³-x²-x+1=0}. P={integers}, Q={odd}. Find P ∩ Q.",
+    "options": [
+      "{-1,1,1}",
+      "{-1,1}",
+      "{1,1,-1}",
+      "{-1,-1}"
+    ],
+    "answer": "{-1,1}"
+  },
+  {
+    "id": 28,
+    "topic": "Set theory",
+    "question": "If E={1,2,3,4} and A={1,3,5}, the symmetric difference A Δ E is:",
+    "options": [
+      "{1,2}",
+      "{2,4,5}",
+      "{1,2,3,4,5}",
+      "{1,3}"
+    ],
+    "answer": "{2,4,5}"
+  },
+  {
+    "id": 29,
+    "topic": "Set theory",
+    "question": "If U={7≤x≤9} and Q={2,4,6,8}. Find (P ∪ Q)ᶜ.",
+    "options": [
+      "{1,2,3,4,5,6,7,8,9}",
+      "{1,2,3,4,6,8}",
+      "{1,5,6,7}",
+      "{5,7,9}"
+    ],
+    "answer": "{5,7,9}"
+  },
+  {
+    "id": 30,
+    "topic": "Set theory",
+    "question": "In a class of 41, 22 offer Physics and 28 offer Mathematics. How many offer Physics only?",
+    "options": [
+      "19",
+      "9",
+      "13",
+      "14"
+    ],
+    "answer": "13"
+  },
+  {
+    "id": 31,
+    "topic": "Set theory",
+    "question": "J={0,2,3,6,7,8,9,10}, E={0,6,8,10}, F={x: x⁴=14}. Find (E ∪ F)ᶜ.",
+    "options": [
+      "{3,7,9}",
+      "{2,3,7,9}",
+      "[3,7,9]",
+      "Ø"
+    ],
+    "answer": "{3,7,9}"
+  },
+  {
+    "id": 32,
+    "topic": "Set theory",
+    "question": "X={prime factors of 44} and Y={prime factors of 60}. Find X ∪ Y and X ∩ Y.",
+    "options": [
+      "X∪Y={2,3,5,11}, X∩Y={2}",
+      "various",
+      "various",
+      "various"
+    ],
+    "answer": "X∪Y={2,3,5,11}, X∩Y={2}"
+  },
+  {
+    "id": 33,
+    "topic": "Set theory",
+    "question": "Simplify (A ∪ B)ᶜ ∩ (A ∩ B).",
+    "options": [
+      "(Aᶜ ∪ B)",
+      "A ∪ Bᶜ",
+      "(A ∪ B)ᶜ",
+      "Ø"
+    ],
+    "answer": "Ø"
+  },
+  {
+    "id": 34,
+    "topic": "Set theory",
+    "question": "Simplify (A ∪ B)ᶜ ∩ Aᶜ.",
+    "options": [
+      "(A ∪ B)",
+      "A ∩ Bᶜ",
+      "Aᶜ ∩ B",
+      "(Aᶜ ∩ Bᶜ)"
+    ],
+    "answer": "(Aᶜ ∩ Bᶜ)"
+  },
+  {
+    "id": 35,
+    "topic": "Set theory",
+    "question": "If 56% speak Hausa and 63% speak English, what percentage speak both?",
+    "options": [
+      "19%",
+      "119%",
+      "62%",
+      "38%"
+    ],
+    "answer": "19%"
+  },
+  {
+    "id": 36,
+    "topic": "Set theory",
+    "question": "____ is a set that contains another set.",
+    "options": [
+      "Power set",
+      "Super set",
+      "Subset",
+      "Proper Set"
+    ],
+    "answer": "Super set"
+  },
+  {
+    "id": 37,
+    "topic": "Set theory",
+    "question": "Club of 94: 60 like modern, 50 like traditional. Both is 3x none. How many like only one?",
+    "options": [
+      "8",
+      "24",
+      "62",
+      "86"
+    ],
+    "answer": "62"
+  },
+  {
+    "id": 38,
+    "topic": "Set theory",
+    "question": "The symmetric difference (A Δ B) is equal to:",
+    "options": [
+      "(A-B) ∩ (B-A)",
+      "(A-B) ∪ (B-A)",
+      "(A ∩ B) ∪ (B ∩ A)",
+      "(A ∪ B) ∩ (B ∪ A)"
+    ],
+    "answer": "(A-B) ∪ (B-A)"
+  },
+  {
+    "id": 39,
+    "topic": "Set theory",
+    "question": "μ={e,f,g,h,p,q,r,s}, M={e,h,q,s}, N={h,p,r}. Find Mᶜ ∪ Nᶜ.",
+    "options": [
+      "{f,p,r}",
+      "{e,f,q,s}",
+      "{e,f,g,p,q,r,s}",
+      "{e,g,p,q,r,s}"
+    ],
+    "answer": "{e,f,g,p,q,r,s}"
+  },
+  {
+    "id": 40,
+    "topic": "Set theory",
+    "question": "How many subsets will a set containing 6 elements have?",
+    "options": [
+      "25",
+      "32",
+      "36",
+      "64"
+    ],
+    "answer": "64"
+  },
+  {
+    "id": 41,
+    "topic": "Set theory",
+    "question": "Which of the following is equivalent to [P ∩ (Q ∪ Qᶜ)]ᶜ?",
+    "options": [
+      "P",
+      "Pᶜ",
+      "Q",
+      "Ø"
+    ],
+    "answer": "Pᶜ"
+  },
+  {
+    "id": 42,
+    "topic": "Set theory",
+    "question": "Which of the following options below is true?",
+    "options": [
+      "A ∪ Aᶜ = A",
+      "A ∩ Aᶜ = A",
+      "(Aᶜ)ᶜ = U",
+      "nP(A) = 2ⁿ⁽ᴬ⁾"
+    ],
+    "answer": "nP(A) = 2ⁿ⁽ᴬ⁾"
+  },
+  {
+    "id": 43,
+    "topic": "Set theory",
+    "question": "25 teachers, 16 married, 15 women. 6 men married. How many women not married?",
+    "options": [
+      "6",
+      "10",
+      "5",
+      "9"
+    ],
+    "answer": "5"
+  },
+  {
+    "id": 44,
+    "topic": "Set theory",
+    "question": "Which is not a true property of a Cartesian product?",
+    "options": [
+      "(A∩B)x(C∩D)=(AxC)∩(BxD)",
+      "(A∪B)x(C∪D)=(AxC)∪(BxD)",
+      "(A∪B)xC=(AxC)∪(BxC)",
+      "Axϕ=ϕxA=A"
+    ],
+    "answer": "Axϕ=ϕxA=A"
+  },
+  {
+    "id": 45,
+    "topic": "Set theory",
+    "question": "In (A∩Bᶜ) ∪ (Ac∩B) = A Δ B, what does Δ signify?",
+    "options": [
+      "difference",
+      "asymmetric difference",
+      "symmetric difference",
+      "union"
+    ],
+    "answer": "symmetric difference"
+  },
+  {
+    "id": 46,
+    "topic": "Set theory",
+    "question": "U={1,2,3,4,5,6}, A={1,2,3}, B={4,5,6}. Find Aᶜ ∪ (B ∪ Bᶜ).",
+    "options": [
+      "Ø",
+      "{1,2,3}",
+      "{4,5,6}",
+      "U"
+    ],
+    "answer": "U"
+  },
+  {
+    "id": 47,
+    "topic": "Set theory",
+    "question": "C = {1, 2, 3, 4, ...}. What is the name of set C?",
+    "options": [
+      "Finite set",
+      "Closed set",
+      "Universal set",
+      "Infinite set"
+    ],
+    "answer": "Infinite set"
+  },
+  {
+    "id": 48,
+    "topic": "Set theory",
+    "question": "What does the set {x: x ∉ A and x ∈ B} define?",
+    "options": [
+      "A not B",
+      "B not A",
+      "A and B",
+      "A or B"
+    ],
+    "answer": "B not A"
+  },
+  {
+    "id": 49,
+    "topic": "Set theory",
+    "question": "When a set C = {}, it means that C is ____",
+    "options": [
+      "universal",
+      "finite",
+      "empty",
+      "infinite"
+    ],
+    "answer": "empty"
+  },
+  {
+    "id": 50,
+    "topic": "Set theory",
+    "question": "A ⊆ B and B ⊆ C implies A ⊆ C is the ____",
+    "options": [
+      "Complementary law",
+      "Transitivity Law",
+      "Inverse law",
+      "Commutativity law"
+    ],
+    "answer": "Transitivity Law"
+  },
+  {
+    "id": 51,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If a, β and γ are the roots of the equation x³ - 8x² + 9x + 18 = 0. Given the sum of the two roots as 5 then, find the value of α + β + γ",
+    "options": [
+      "8",
+      "-8",
+      "9",
+      "-9"
+    ],
+    "answer": "8"
+  },
+  {
+    "id": 52,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If a, β and γ are the roots of the equation x³ - 8x² + 9x + 18 = 0. Given the sum of the two roots as 5 then, find the value of αβ + βγ + αγ",
+    "options": [
+      "-9",
+      "9",
+      "8",
+      "-8"
+    ],
+    "answer": "9"
+  },
+  {
+    "id": 53,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If a, β and γ are the roots of the equation x³ - 8x² + 9x + 18 = 0. Given the sum of the two roots as 5 then, find the value of αβγ",
+    "options": [
+      "-8",
+      "9",
+      "18",
+      "-18"
+    ],
+    "answer": "-18"
+  },
+  {
+    "id": 54,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If a, β and γ are the roots of the equation x³ - 8x² + 9x + 18 = 0. Given the sum of the two roots as 5 then, find the values of the roots a, β and γ",
+    "options": [
+      "1, -3, 6",
+      "-1, 3, 6",
+      "-1, -3, 6",
+      "-1, 3, -6"
+    ],
+    "answer": "-1, 3, 6"
+  },
+  {
+    "id": 55,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If α, β are the roots of the equation 3x² + 5x = 0, find α⁴ + β⁴",
+    "options": [
+      "625/81",
+      "25/9",
+      "5/3",
+      "81/625"
+    ],
+    "answer": "625/81"
+  },
+  {
+    "id": 56,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Find the sum of the roots of the equation 2x² + 7x + 2 = 0",
+    "options": [
+      "-7",
+      "-3.5",
+      "2",
+      "3.5"
+    ],
+    "answer": "-3.5"
+  },
+  {
+    "id": 57,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Find the quotient when 2x² - 5x + 7 is divided by 3x + 2",
+    "options": [
+      "101/9",
+      "2/3x - 19/9",
+      "2/3x - 11/3",
+      "3/2x + 19/9"
+    ],
+    "answer": "2/3x - 19/9"
+  },
+  {
+    "id": 58,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Find in terms of k, the remainder when 2x² + kx - 6 is divisible by 2x + 1",
+    "options": [
+      "-2k + 2",
+      "-1/2k - 6.5",
+      "-1/2k - 5.5",
+      "1/2k - 5.5"
+    ],
+    "answer": "-1/2k - 5.5"
+  },
+  {
+    "id": 59,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Find the quotient if 21y³ - 38y² + 29y - 40 is divided by 3y - 5",
+    "options": [
+      "7y² - 73/8y + 453/3",
+      "7y² + 73/8y - 453/3",
+      "7y² - y + 8",
+      "7y² + y + 8"
+    ],
+    "answer": "7y² - y + 8"
+  },
+  {
+    "id": 60,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If (x - 1) and (x - 2) are factors of x³ + ax² - 7x + b where a and b are constants, find a and b",
+    "options": [
+      "0, 6",
+      "2, 3",
+      "3, 2",
+      "1, 6"
+    ],
+    "answer": "0, 6"
+  },
+  {
+    "id": 61,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If (x - 1) and (x - 2) are factors of x³ + ax² - 7x + b where a and b are constants, find the third factor",
+    "options": [
+      "(x - 2)",
+      "(x + 1)",
+      "(x + 3)",
+      "(x - 3)"
+    ],
+    "answer": "(x + 3)"
+  },
+  {
+    "id": 62,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Solve the equation 2x³ - 3x² - 5x + 6 = 0",
+    "options": [
+      "3/2, -2, 1",
+      "-3/2, -2, 1",
+      "3/2, -2, -1",
+      "1, 2, -3/2"
+    ],
+    "answer": "1, 2, -3/2"
+  },
+  {
+    "id": 63,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "When ax³ + bx² + cx + 6 is divided by (x - 1) the remainder is -8. It also has (x - 2) and (x + 3) as factors, find a, b, c",
+    "options": [
+      "2, 3, -19",
+      "2, -3, 19",
+      "-2, 3, -19",
+      "-2, -3, 19"
+    ],
+    "answer": "2, 3, -19"
+  },
+  {
+    "id": 64,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "When ax³ + bx² + cx + 6 is divided by (x - 1) the remainder is -8. It also has (x - 2) and (x + 3) as factors, find the third factor",
+    "options": [
+      "(3x - 1)",
+      "(x - 3)",
+      "(3x + 1)",
+      "(x + 3)"
+    ],
+    "answer": "(3x - 1)"
+  },
+  {
+    "id": 65,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Solve for x in the equation 1/x + 1/(x + 1) = 9/20",
+    "options": [
+      "-4, -5/9",
+      "2, 4",
+      "9, 5/9, -4",
+      "4, -5/9"
+    ],
+    "answer": "4, -5/9"
+  },
+  {
+    "id": 66,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Solve x(x + 1) + (x + 2)(x + 3) = 42",
+    "options": [
+      "-6, 3",
+      "-6, -3",
+      "3, 6",
+      "-3, 6"
+    ],
+    "answer": "-6, 3"
+  },
+  {
+    "id": 67,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Solve (x - 1)(2x + 1) = 15",
+    "options": [
+      "-3/2, 3/2",
+      "-3/2, 2",
+      "-2, 3.5",
+      "No Solution"
+    ],
+    "answer": "-3/2, 2"
+  },
+  {
+    "id": 68,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Solve 3b + ac/m = 0 for b",
+    "options": [
+      "3m/ac",
+      "-3m/ac",
+      "-ac/3",
+      "-ac/3m"
+    ],
+    "answer": "-ac/3m"
+  },
+  {
+    "id": 69,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If α and β are the roots of the equation 6x² - 5x + 1 = 0, obtain the values of 1/α + 1/β",
+    "options": [
+      "-5",
+      "5",
+      "5/6",
+      "1/6"
+    ],
+    "answer": "5"
+  },
+  {
+    "id": 70,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If α and β are the roots of the equation 6x² - 5x + 1 = 0, obtain the values of α² + β²",
+    "options": [
+      "13/36",
+      "36/13",
+      "13",
+      "-13/36"
+    ],
+    "answer": "13/36"
+  },
+  {
+    "id": 71,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Find the roots of the equation x² - 3(x - p) = 0 if one of the roots is 3 less than twice the other",
+    "options": [
+      "3, 1",
+      "1, 2",
+      "2, 1",
+      "-2, 1"
+    ],
+    "answer": "2, 1"
+  },
+  {
+    "id": 72,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Find the value of k if (x - 2) is a factor of x³ + kx² + 6x - 4",
+    "options": [
+      "4",
+      "6",
+      "2",
+      "-6"
+    ],
+    "answer": "-6"
+  },
+  {
+    "id": 73,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Simplify (x - x²) / (1 - x²), where x ≠ 0",
+    "options": [
+      "1/x",
+      "(1 - x) / x",
+      "x / (1 + x)",
+      "x / (1 - x)"
+    ],
+    "answer": "x / (1 + x)"
+  },
+  {
+    "id": 74,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If √3ˣ = √9, then the value of x is",
+    "options": [
+      "3/4",
+      "1/2",
+      "4/3",
+      "3/4"
+    ],
+    "answer": "1/2"
+  },
+  {
+    "id": 75,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Find the roots of the equation 10x² - 13x - 3 = 0",
+    "options": [
+      "x = 3/5 or -1/2",
+      "x = 3/10 or -1",
+      "x = -3/10 or 1",
+      "x = -1/5 or 3/2"
+    ],
+    "answer": "x = -1/5 or 3/2"
+  },
+  {
+    "id": 76,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Factorize 3x³ + 4x² - 13x + 6 completely, given that (x - 1) is a factor",
+    "options": [
+      "(x - 1)(x + 3)(3x - 2)",
+      "(x - 1)(x + 3)(x - 2)",
+      "(x - 1)(x + 3)(3x + 2)",
+      "(x - 1)(x - 3)(3x + 2)"
+    ],
+    "answer": "(x - 1)(x + 3)(3x - 2)"
+  },
+  {
+    "id": 77,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "The factors of 6x - 5 - x² are",
+    "options": [
+      "-(x + 3)(x + 2)",
+      "(x - 5)(x - 1)",
+      "-(x + 5)(x + 1)",
+      "(x - 5)(1 - x)"
+    ],
+    "answer": "(x - 5)(1 - x)"
+  },
+  {
+    "id": 78,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "The solution of the quadratic equation bx² + cx + a = 0, is given by",
+    "options": [
+      "x = [-c ± √(c² - 4ab)] / 2b",
+      "x = [-b ± √(b² - 4ac)] / 2a",
+      "x = [c ± √(b² - 4ac)] / 2b",
+      "x = [b ± √(b² - 4ac)] / 2a"
+    ],
+    "answer": "x = [-c ± √(c² - 4ab)] / 2b"
+  },
+  {
+    "id": 79,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If f(x - 2) = 3x² + 4x + 1, Find f(1)",
+    "options": [
+      "8",
+      "40",
+      "7",
+      "32"
+    ],
+    "answer": "40"
+  },
+  {
+    "id": 80,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If (x + 2) and (x - 1) are factors of the expression lx³ + 2kx² + 24, find the values of l and k",
+    "options": [
+      "l = -6, k = -9",
+      "l = -6, k = 9",
+      "l = 6, k = -9",
+      "l = 0, k = 0"
+    ],
+    "answer": "l = -6, k = -9"
+  },
+  {
+    "id": 81,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If x = 1 is a root of the equation x³ - 2x² - 5x + 6, find the other roots",
+    "options": [
+      "-3 and 2",
+      "-2 and 2",
+      "3 and -2",
+      "1 and 3"
+    ],
+    "answer": "3 and -2"
+  },
+  {
+    "id": 82,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Simplify [(x - 7) / (x² - 9)] * [(x² - 3x) / (x² - 49)]",
+    "options": [
+      "x / [(x - 3)(x + 7)]",
+      "[(x + 3)(x + 7)] / x",
+      "x / [(x - 3)(x - 7)]",
+      "x / [(x + 3)(x + 7)]"
+    ],
+    "answer": "x / [(x + 3)(x + 7)]"
+  },
+  {
+    "id": 83,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If f(x) = 1/(x-1) + (x-1)/(x²-1), find f(1-x)",
+    "options": [
+      "1/x + 1/(x-2)",
+      "-1/x - 1/(x-2)",
+      "-1/x - 1/(2x-1)",
+      "x + 1/(2x-1)"
+    ],
+    "answer": "-1/x - 1/(x-2)"
+  },
+  {
+    "id": 84,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If f(x) = 2(x-3)² + 3(x-3) + 4 and g(y) = √(5+y), find g[f(3)] and f[g(4)]",
+    "options": [
+      "3 and 4",
+      "-3 and 4",
+      "-3 and -4",
+      "3 and -4"
+    ],
+    "answer": "3 and 4"
+  },
+  {
+    "id": 85,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "The quadratic equation whose roots are 1 - √13 and 1 + √13 is",
+    "options": [
+      "x² - 2x - 12 = 0",
+      "x² + 2x + 12 = 0",
+      "x² - 2x + 12 = 0",
+      "x² + (1-√13)x - 12 = 0"
+    ],
+    "answer": "x² - 2x - 12 = 0"
+  },
+  {
+    "id": 86,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If (x - 2) and (x + 1) are factors of the expression x³ + px² + qx + 1, what is the sum of p and q?",
+    "options": [
+      "0",
+      "-3",
+      "3",
+      "-17/3"
+    ],
+    "answer": "-3"
+  },
+  {
+    "id": 87,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Find the values of p for which the equation x² - (p - 2)x + 2p + 1 = 0 has equal roots",
+    "options": [
+      "0, 12",
+      "1, 2",
+      "21, 0",
+      "4, 5"
+    ],
+    "answer": "0, 12"
+  },
+  {
+    "id": 88,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "The factors of 9 - (x² - 3x - 1)² are",
+    "options": [
+      "-(x - 4)(x + 1)(x - 1)(x - 2)",
+      "(x - 4)(x - 2)(x - 1)(x + 1)",
+      "-(x - 2)(x + 1)(x + 2)(x + 4)",
+      "(x - 2)(x + 2)(x - 1)(x + 1)"
+    ],
+    "answer": "-(x - 4)(x + 1)(x - 1)(x - 2)"
+  },
+  {
+    "id": 89,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If 3²ʸ - 6(3ʸ) = 27, find y",
+    "options": [
+      "3",
+      "-1",
+      "1",
+      "-3"
+    ],
+    "answer": "1"
+  },
+  {
+    "id": 90,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If the quadratic function 3x² - 7x + R is a perfect square, find R",
+    "options": [
+      "49/24",
+      "49/3",
+      "49/6",
+      "49/12"
+    ],
+    "answer": "49/12"
+  },
+  {
+    "id": 91,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Solve the equation 2/(2r-1) - 5/3 = 1/(r+2)",
+    "options": [
+      "(-1, 5/2)",
+      "(1, -5/2)",
+      "(2, 1)",
+      "(1, 2)"
+    ],
+    "answer": "(1, -5/2)"
+  },
+  {
+    "id": 92,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If f(x - 2) = 4x² + x + 7, find f(1)",
+    "options": [
+      "12",
+      "27",
+      "7",
+      "46"
+    ],
+    "answer": "46"
+  },
+  {
+    "id": 93,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Factorize completely 8a + 125ax³",
+    "options": [
+      "(2a + 5x²)(4 + 25ax)",
+      "a(2 + 5x)(4 - 10x + 25x²)",
+      "(2a + 5x)(4 - 10ax + 25x²)",
+      "a(2 + 5x)(4 + 10ax + 25x²)"
+    ],
+    "answer": "a(2 + 5x)(4 - 10x + 25x²)"
+  },
+  {
+    "id": 94,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Factorize (a + 3)² - (3a - 2)²",
+    "options": [
+      "(a + 1)(a + 5)²",
+      "(a - 5)(7a - 1)",
+      "(a + 5)(7a + 1)",
+      "a(7a + 1)"
+    ],
+    "answer": "(a + 5)(7a + 1)"
+  },
+  {
+    "id": 95,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Find the values of x which satisfy the equation 4ˣ - 5*2ˣ + 4 = 0",
+    "options": [
+      "1 and 4",
+      "-2 and 2",
+      "0 and 1",
+      "-1 and 0"
+    ],
+    "answer": "0 and 1"
+  },
+  {
+    "id": 96,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Find the values of m which make the function x² + 2(m + 1)x + m + 3 a perfect square",
+    "options": [
+      "-1, 1",
+      "-1, 2",
+      "1, -2",
+      "2, -2"
+    ],
+    "answer": "1, -2"
+  },
+  {
+    "id": 97,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "The minimum value of y in the equation y = x² - 6x + 8 is",
+    "options": [
+      "8",
+      "3",
+      "0",
+      "-1"
+    ],
+    "answer": "-1"
+  },
+  {
+    "id": 98,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Factorize completely (x² + x)² - (2x + 2)²",
+    "options": [
+      "(x + 1)(x + 2)(x - 2)",
+      "(x + 1)²(x - 2)²",
+      "(x + 1)²(x + 2)²",
+      "(x + 1)²(x + 2)(x - 2)"
+    ],
+    "answer": "(x + 1)²(x + 2)(x - 2)"
+  },
+  {
+    "id": 99,
+    "topic": "Set theory",
+    "question": "Which of the following is equivalent to [Pᶜ ∪ (Q ∩ Qᶜ)]ᶜ?",
+    "options": [
+      "P",
+      "Pᶜ",
+      "Q",
+      "Qᶜ"
+    ],
+    "answer": "P"
+  },
+  {
+    "id": 100,
+    "topic": "Set theory",
+    "question": "Given that the sets A and B are partitioned sets of E; then A ∩ (E ∩ B)ᶜ is:",
+    "options": [
+      "A",
+      "Ø",
+      "B",
+      "E"
+    ],
+    "answer": "A"
+  },
+  {
+    "id": 101,
+    "topic": "Set theory",
+    "question": "Which of the following sets is equivalent to (P ∪ Q) ∩ (P ∩ Qᶜ)?",
+    "options": [
+      "P ∪ Q",
+      "P",
+      "P ∩ Q",
+      "Ø"
+    ],
+    "answer": "P"
+  },
+  {
+    "id": 102,
+    "topic": "Set theory",
+    "question": "If E = {1, 2, 3, 4} and A = {1, 3, 5}, the symmetric difference A Δ E is:",
+    "options": [
+      "{1, 2}",
+      "{2, 4, 5}",
+      "{1, 2, 3, 4, 5}",
+      "{1, 3}"
+    ],
+    "answer": "{2, 4, 5}"
+  },
+  {
+    "id": 103,
+    "topic": "Set theory",
+    "question": "In a class of 41 students, 22 offer Physics and 28 offer Mathematics. How many offer Physics only?",
+    "options": [
+      "19",
+      "9",
+      "13",
+      "14"
+    ],
+    "answer": "13"
+  },
+  {
+    "id": 104,
+    "topic": "Set theory",
+    "question": "Simplify (A ∪ B)ᶜ ∩ Aᶜ:",
+    "options": [
+      "(A ∪ B)",
+      "A ∩ Bᶜ",
+      "Aᶜ ∩ B",
+      "(Aᶜ ∩ Bᶜ)"
+    ],
+    "answer": "(Aᶜ ∩ Bᶜ)"
+  },
+  {
+    "id": 105,
+    "topic": "Set theory",
+    "question": "If 56% speak Hausa and 63% speak English, what percentage speak both?",
+    "options": [
+      "19%",
+      "119%",
+      "62%",
+      "38%"
+    ],
+    "answer": "19%"
+  },
+  {
+    "id": 106,
+    "topic": "Set theory",
+    "question": "A set that contains another set is known as a:",
+    "options": [
+      "Power set",
+      "Super set",
+      "Subset",
+      "Proper Set"
+    ],
+    "answer": "Super set"
+  },
+  {
+    "id": 107,
+    "topic": "Set theory",
+    "question": "The symmetric difference (A Δ B) is defined as:",
+    "options": [
+      "(A-B) ∩ (B-A)",
+      "(A-B) ∪ (B-A)",
+      "(A ∩ B) ∪ (B ∩ A)",
+      "(A ∪ B) ∩ (B ∪ A)"
+    ],
+    "answer": "(A-B) ∪ (B-A)"
+  },
+  {
+    "id": 108,
+    "topic": "Set theory",
+    "question": "How many subsets will a set containing 6 elements have?",
+    "options": [
+      "25",
+      "32",
+      "36",
+      "64"
+    ],
+    "answer": "64"
+  },
+  {
+    "id": 109,
+    "topic": "Set theory",
+    "question": "Which is NOT a property of a Cartesian product?",
+    "options": [
+      "(A∩B)x(C∩D)=(AxC)∩(BxD)",
+      "(A∪B)x(C∪D)=(AxC)∪(BxD)",
+      "(A∪B)xC=(AxC)∪(BxC)",
+      "AxØ=ØxA=A"
+    ],
+    "answer": "AxØ=ØxA=A"
+  },
+  {
+    "id": 110,
+    "topic": "Set theory",
+    "question": "A set C = {} is classified as:",
+    "options": [
+      "Universal",
+      "Finite",
+      "Empty",
+      "Infinite"
+    ],
+    "answer": "Empty"
+  },
+  {
+    "id": 111,
+    "topic": "Set theory",
+    "question": "The property A ⊆ B and B ⊆ C implies A ⊆ C is called:",
+    "options": [
+      "Complementary law",
+      "Transitivity Law",
+      "Inverse law",
+      "Commutativity law"
+    ],
+    "answer": "Transitivity Law"
+  },
+  {
+    "id": 112,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If α and β are the roots of 6x² - 5x + 1 = 0, find α² + β²:",
+    "options": [
+      "13/36",
+      "36/13",
+      "13",
+      "-13/36"
+    ],
+    "answer": "13/36"
+  },
+  {
+    "id": 113,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Find the remainder when 2x² + kx - 6 is divided by 2x + 1:",
+    "options": [
+      "-2k + 2",
+      "-1/2k - 6.5",
+      "-1/2k - 5.5",
+      "1/2k - 5.5"
+    ],
+    "answer": "-1/2k - 5.5"
+  },
+  {
+    "id": 114,
+    "topic": "Set theory",
+    "question": "In a class of 50 students, 30 study Basic Science, 25 study Mathematics and 10 study both. How many study neither?",
+    "options": [
+      "5",
+      "10",
+      "15",
+      "20"
+    ],
+    "answer": "5"
+  },
+  {
+    "id": 115,
+    "topic": "Set theory",
+    "question": "Which of the following is equivalent to (A ∪ B) ∩ (A ∪ Bᶜ)?",
+    "options": [
+      "A",
+      "B",
+      "A ∪ B",
+      "A ∩ B"
+    ],
+    "answer": "A"
+  },
+  {
+    "id": 116,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "If α, β are the roots of 2x² - 5x + 3 = 0, find the value of α/β + β/α:",
+    "options": [
+      "13/6",
+      "25/6",
+      "7/6",
+      "19/6"
+    ],
+    "answer": "13/6"
+  },
+  {
+    "id": 117,
+    "topic": "Set theory",
+    "question": "The power set of an empty set { } has how many elements?",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "Infinite"
+    ],
+    "answer": "1"
+  },
+  {
+    "id": 118,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Find the value of p if x² - 8x + p = 0 has real and equal roots:",
+    "options": [
+      "4",
+      "8",
+      "16",
+      "64"
+    ],
+    "answer": "16"
+  },
+  {
+    "id": 119,
+    "topic": "Set theory",
+    "question": "If A = {2, 4, 6} and B = {1, 2, 3}, find A - B:",
+    "options": [
+      "{4, 6}",
+      "{1, 3}",
+      "{2}",
+      "{1, 2, 3, 4, 6}"
+    ],
+    "answer": "{4, 6}"
+  },
+  {
+    "id": 120,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "The degree of the polynomial p(x) = 4x³ - 5x² + 7 is:",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "answer": "3"
+  },
+  {
+    "id": 121,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "Find the sum of the roots of the equation 3x² + 12x - 9 = 0:",
+    "options": [
+      "4",
+      "-4",
+      "3",
+      "-3"
+    ],
+    "answer": "-4"
+  },
+  {
+    "id": 122,
+    "topic": "Set theory",
+    "question": "If n(A) = 10, n(B) = 15 and n(A ∩ B) = 5, find n(A ∪ B):",
+    "options": [
+      "20",
+      "25",
+      "30",
+      "15"
+    ],
+    "answer": "20"
+  },
+  {
+    "id": 123,
+    "topic": "Quadratic and Polynomial Equations",
+    "question": "For a quadratic equation ax² + bx + c = 0 to have complex roots, the discriminant must be:",
+    "options": [
+      "D > 0",
+      "D = 0",
+      "D < 0",
+      "D ≥ 0"
+    ],
+    "answer": "D < 0"
+  },
+  {
+    "id": 124,
+    "topic": "Trigonometry",
+    "question": "Simplify the expression: (sin θ + cos θ)² - 1.",
+    "options": [
+      "sin 2θ",
+      "cos 2θ",
+      "2 sin θ",
+      "2 cos θ"
+    ],
+    "answer": "sin 2θ"
+  },
+  {
+    "id": 125,
+    "topic": "Trigonometry",
+    "question": "Evaluate the value of cos(A + B) cos(A - B).",
+    "options": [
+      "cos²A - sin²B",
+      "cos²A + sin²B",
+      "sin²A - cos²B",
+      "cos²A - cos²B"
+    ],
+    "answer": "cos²A - sin²B"
+  },
+  {
+    "id": 126,
+    "topic": "Sequence and Series",
+    "question": "Find the 10th term of an Arithmetic Progression (AP) whose first term is 5 and common difference is 3.",
+    "options": [
+      "32",
+      "35",
+      "38",
+      "41"
+    ],
+    "answer": "32"
+  },
+  {
+    "id": 127,
+    "topic": "Sequence and Series",
+    "question": "The sum of the first n terms of an AP is given by Sₙ = n² + 2n. Find the first term.",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "answer": "3"
+  },
+  {
+    "id": 128,
+    "topic": "Sequence and Series",
+    "question": "Calculate the common ratio of a Geometric Progression (GP) where the first term is 2 and the 4th term is 54.",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "9"
+    ],
+    "answer": "3"
+  },
+  {
+    "id": 129,
+    "topic": "Sequence and Series",
+    "question": "What is the sum to infinity of a GP with first term 10 and common ratio 1/2?",
+    "options": [
+      "5",
+      "15",
+      "20",
+      "Infinity"
+    ],
+    "answer": "20"
+  },
+  {
+    "id": 130,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the coefficient of x² in the expansion of (1 + 2x)⁵.",
+    "options": [
+      "10",
+      "20",
+      "40",
+      "80"
+    ],
+    "answer": "40"
+  },
+  {
+    "id": 131,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "How many terms are in the expansion of (x + y)¹⁵?",
+    "options": [
+      "14",
+      "15",
+      "16",
+      "30"
+    ],
+    "answer": "16"
+  },
+  {
+    "id": 132,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "The value of ⁿCᵣ is equivalent to which of the following?",
+    "options": [
+      "ⁿCₙ₋ᵣ",
+      "ⁿPᵣ",
+      "r! * ⁿCᵣ",
+      "n! / r!"
+    ],
+    "answer": "ⁿCₙ₋ᵣ"
+  },
+  {
+    "id": 133,
+    "topic": "Trigonometry",
+    "question": "Express 150° in radians.",
+    "options": [
+      "2π/3",
+      "5π/6",
+      "3π/4",
+      "π/2"
+    ],
+    "answer": "5π/6"
+  },
+  {
+    "id": 134,
+    "topic": "Sequence and Series",
+    "question": "If the third term of an AP is 8 and the seventh term is 20, find the common difference.",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "3"
+  },
+  {
+    "id": 135,
+    "topic": "Trigonometry",
+    "question": "The value of sin(-θ) is strictly equal to:",
+    "options": [
+      "sin θ",
+      "-sin θ",
+      "cos θ",
+      "-cos θ"
+    ],
+    "answer": "-sin θ"
+  },
+  {
+    "id": 136,
+    "topic": "Trigonometry",
+    "question": "Evaluate cos(270° + θ).",
+    "options": [
+      "sin θ",
+      "-sin θ",
+      "cos θ",
+      "-cos θ"
+    ],
+    "answer": "sin θ"
+  },
+  {
+    "id": 137,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "The middle term in the expansion of (x + a)⁸ is the:",
+    "options": [
+      "4th term",
+      "5th term",
+      "6th term",
+      "No middle term"
+    ],
+    "answer": "5th term"
+  },
+  {
+    "id": 138,
+    "topic": "Sequence and Series",
+    "question": "Find the sum of the first 20 natural numbers.",
+    "options": [
+      "190",
+      "200",
+      "210",
+      "420"
+    ],
+    "answer": "210"
+  },
+  {
+    "id": 139,
+    "topic": "Real Numbers",
+    "question": "Which of the following is an irrational number?",
+    "options": [
+      "0.5",
+      "√4",
+      "2/3",
+      "√2"
+    ],
+    "answer": "√2"
+  },
+  {
+    "id": 140,
+    "topic": "Set theory",
+    "question": "The intersection of a set A and its complement Aᶜ is:",
+    "options": [
+      "A",
+      "Aᶜ",
+      "Universal set U",
+      "Empty set Ø"
+    ],
+    "answer": "Empty set Ø"
+  },
+  {
+    "id": 141,
+    "topic": "Trigonometry",
+    "question": "If sin A = 3/5 and A is acute, find cos A.",
+    "options": [
+      "4/5",
+      "3/4",
+      "1/5",
+      "5/3"
+    ],
+    "answer": "4/5"
+  },
+  {
+    "id": 142,
+    "topic": "Trigonometry",
+    "question": "Find the value of tan 45° + cot 45°.",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "√2"
+    ],
+    "answer": "2"
+  },
+  {
+    "id": 143,
+    "topic": "Sequence and Series",
+    "question": "The geometric mean of 4 and 16 is:",
+    "options": [
+      "8",
+      "10",
+      "12",
+      "64"
+    ],
+    "answer": "8"
+  },
+  {
+    "id": 144,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Expand (1 - x)⁻¹ for |x| < 1.",
+    "options": [
+      "1 - x + x² - x³ + ...",
+      "1 + x + x² + x³ + ...",
+      "1 + x - x² + x³ - ...",
+      "1 - x - x² - x³ - ..."
+    ],
+    "answer": "1 + x + x² + x³ + ..."
+  },
+  {
+    "id": 145,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the coefficient of x⁴ in the expansion of (1 + 3/4 x)⁴.",
+    "options": [
+      "8/25",
+      "81/25",
+      "81/256",
+      "81/26"
+    ],
+    "answer": "81/256"
+  },
+  {
+    "id": 146,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the coefficient of x in the expansion of (1 + 3/4 x)⁴.",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "31"
+    ],
+    "answer": "3"
+  },
+  {
+    "id": 147,
+    "topic": "Sequence and Series",
+    "question": "If a, b, and c are in Geometric Progression, then b² is equal to:",
+    "options": [
+      "a + c",
+      "ac",
+      "a/c",
+      "2ac"
+    ],
+    "answer": "ac"
+  },
+  {
+    "id": 148,
+    "topic": "Trigonometry",
+    "question": "What is the period of the function f(x) = sin x?",
+    "options": [
+      "π",
+      "2π",
+      "π/2",
+      "4π"
+    ],
+    "answer": "2π"
+  },
+  {
+    "id": 149,
+    "topic": "Set theory",
+    "question": "If n(A) = 10, n(B) = 15, and n(A ∩ B) = 5, find n(A ∪ B).",
+    "options": [
+      "10",
+      "20",
+      "25",
+      "30"
+    ],
+    "answer": "20"
+  },
+  {
+    "id": 150,
+    "topic": "Real Numbers",
+    "question": "The set of all rational and irrational numbers is called the set of:",
+    "options": [
+      "Natural numbers",
+      "Integers",
+      "Complex numbers",
+      "Real numbers"
+    ],
+    "answer": "Real numbers"
+  },
+  {
+    "id": 151,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "What is the value of n when ⁿC₂ = 120?",
+    "options": [
+      "-15",
+      "15",
+      "16",
+      "20"
+    ],
+    "answer": "16"
+  },
+  {
+    "id": 152,
+    "topic": "Sequence and Series",
+    "question": "Find the sum of the first 5 terms of the GP: 3, 6, 12, ...",
+    "options": [
+      "45",
+      "90",
+      "93",
+      "186"
+    ],
+    "answer": "93"
+  },
+  {
+    "id": 153,
+    "topic": "Trigonometry",
+    "question": "The value of sec²θ - 1 is strictly equal to:",
+    "options": [
+      "sin²θ",
+      "cos²θ",
+      "tan²θ",
+      "cot²θ"
+    ],
+    "answer": "tan²θ"
+  },
+  {
+    "id": 154,
+    "topic": "Trigonometry",
+    "question": "What is the result of cos(180° - θ)?",
+    "options": [
+      "cos θ",
+      "-cos θ",
+      "sin θ",
+      "-sin θ"
+    ],
+    "answer": "-cos θ"
+  },
+  {
+    "id": 155,
+    "topic": "Set theory",
+    "question": "If A = {2, 4, 6} and B = {1, 2, 3}, find the number of elements in A × B.",
+    "options": [
+      "3",
+      "6",
+      "9",
+      "12"
+    ],
+    "answer": "9"
+  },
+  {
+    "id": 156,
+    "topic": "Sequence and Series",
+    "question": "Find the common difference of an AP if the 1st term is 10 and the 15th term is 52.",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "3"
+  },
+  {
+    "id": 157,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "The coefficient of the first term in any binomial expansion of (a + b)ⁿ is always:",
+    "options": [
+      "0",
+      "1",
+      "n",
+      "n!"
+    ],
+    "answer": "1"
+  },
+  {
+    "id": 158,
+    "topic": "Trigonometry",
+    "question": "Evaluate sin 30° + cos 60°.",
+    "options": [
+      "0",
+      "1/2",
+      "1",
+      "√3"
+    ],
+    "answer": "1"
+  },
+  {
+    "id": 159,
+    "topic": "Set theory",
+    "question": "A set with no proper subsets is:",
+    "options": [
+      "The universal set",
+      "A finite set",
+      "The empty set",
+      "A singleton set"
+    ],
+    "answer": "The empty set"
+  },
+  {
+    "id": 160,
+    "topic": "Sequence and Series",
+    "question": "The 5th term of a GP is 81 and the first term is 1. Find the common ratio.",
+    "options": [
+      "3",
+      "-3",
+      "9",
+      "3 or -3"
+    ],
+    "answer": "3 or -3"
+  },
+  {
+    "id": 161,
+    "topic": "Trigonometry",
+    "question": "If tan θ = 1, what is the value of θ in the first quadrant?",
+    "options": [
+      "0°",
+      "30°",
+      "45°",
+      "60°"
+    ],
+    "answer": "45°"
+  },
+  {
+    "id": 162,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "The expansion of (x + y)ⁿ has n+1 terms. This is true for:",
+    "options": [
+      "Positive integers n",
+      "Any real number n",
+      "Negative integers n",
+      "Fractional n"
+    ],
+    "answer": "Positive integers n"
+  },
+  {
+    "id": 163,
+    "topic": "Real Numbers",
+    "question": "The additive inverse of a real number 'a' is:",
+    "options": [
+      "1/a",
+      "0",
+      "-a",
+      "|a|"
+    ],
+    "answer": "-a"
+  },
+  {
+    "id": 164,
+    "topic": "Trigonometry",
+    "question": "Simplify 2 sin 15° cos 15°.",
+    "options": [
+      "sin 15°",
+      "cos 30°",
+      "sin 30°",
+      "1/2"
+    ],
+    "answer": "sin 30°"
+  },
+  {
+    "id": 165,
+    "topic": "Set theory",
+    "question": "The set of all subsets of a set A is called the:",
+    "options": [
+      "Universal set",
+      "Power set",
+      "Super set",
+      "Null set"
+    ],
+    "answer": "Power set"
+  },
+  {
+    "id": 166,
+    "topic": "Sequence and Series",
+    "question": "The sum of an infinite GP exists only if the common ratio r satisfies:",
+    "options": [
+      "r > 1",
+      "r < 1",
+      "|r| < 1",
+      "|r| > 1"
+    ],
+    "answer": "|r| < 1"
+  },
+  {
+    "id": 167,
+    "topic": "Trigonometry",
+    "question": "The reciprocal of the cosecant function is:",
+    "options": [
+      "secant",
+      "cosine",
+      "sine",
+      "tangent"
+    ],
+    "answer": "sine"
+  },
+  {
+    "id": 168,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "What is the value of 5! / 3!?",
+    "options": [
+      "20",
+      "10",
+      "5",
+      "120"
+    ],
+    "answer": "20"
+  },
+  {
+    "id": 169,
+    "topic": "Real Numbers",
+    "question": "The multiplicative identity for real numbers is:",
+    "options": [
+      "-1",
+      "0",
+      "1",
+      "Infinity"
+    ],
+    "answer": "1"
+  },
+  {
+    "id": 170,
+    "topic": "Set theory",
+    "question": "If n(A) = 5, how many elements are in the power set P(A)?",
+    "options": [
+      "5",
+      "10",
+      "25",
+      "32"
+    ],
+    "answer": "32"
+  },
+  {
+    "id": 171,
+    "topic": "Trigonometry",
+    "question": "Convert π/3 radians to degrees.",
+    "options": [
+      "30°",
+      "45°",
+      "60°",
+      "90°"
+    ],
+    "answer": "60°"
+  },
+  {
+    "id": 172,
+    "topic": "Sequence and Series",
+    "question": "If the first term of an AP is a and common difference is d, the nth term is:",
+    "options": [
+      "a + nd",
+      "a + (n+1)d",
+      "a + (n-1)d",
+      "nd - a"
+    ],
+    "answer": "a + (n-1)d"
+  },
+  {
+    "id": 173,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "In the expansion of (x + y)ⁿ, the sum of the powers of x and y in each term is:",
+    "options": [
+      "n-1",
+      "n",
+      "n+1",
+      "2n"
+    ],
+    "answer": "n"
+  },
+  {
+    "id": 174,
+    "topic": "Set theory",
+    "question": "If A ⊆ B and B ⊆ A, then:",
+    "options": [
+      "A is a proper subset of B",
+      "B is a proper subset of A",
+      "A = B",
+      "A ∩ B = Ø"
+    ],
+    "answer": "A = B"
+  },
+  {
+    "id": 175,
+    "topic": "Trigonometry",
+    "question": "Which of these is equivalent to cos 2θ?",
+    "options": [
+      "2 cos θ",
+      "cos²θ + sin²θ",
+      "1 - 2 sin²θ",
+      "2 sin θ cos θ"
+    ],
+    "answer": "1 - 2 sin²θ"
+  },
+  {
+    "id": 176,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "What is the coefficient of xʳ in the expansion of (1 + x)ⁿ?",
+    "options": [
+      "ⁿCᵣ₋₁",
+      "ⁿ⁺¹Cᵣ₊₁",
+      "ⁿCᵣ",
+      "ⁿ⁻¹Cᵣ"
+    ],
+    "answer": "ⁿCᵣ"
+  },
+  {
+    "id": 177,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Which of the following has an equal value as ⁿC₁?",
+    "options": [
+      "ⁿCₙ₋₁",
+      "ⁿCᵣ",
+      "ⁿCᵣ",
+      "ⁿ⁻¹Cᵣ"
+    ],
+    "answer": "ⁿCₙ₋₁"
+  },
+  {
+    "id": 178,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "From Pascal's triangle, the addition of ⁿCᵣ and ⁿCᵣ₋₁ gives:",
+    "options": [
+      "ⁿ⁺¹Cᵣ",
+      "ⁿCᵣ₊₁",
+      "ⁿ⁺¹Cᵣ₋₁",
+      "ⁿCᵣ₋₁"
+    ],
+    "answer": "ⁿ⁺¹Cᵣ"
+  },
+  {
+    "id": 179,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Considering the expansion in ascending powers of x, (a + x)ⁿ is expressed as:",
+    "options": [
+      "Σ ⁿCᵣ xʳ aⁿ⁻ʳ (r=1 to n)",
+      "Σ ⁿCᵣ xʳ aⁿ⁻ʳ (r=0 to n)",
+      "Σ ⁿCᵣ xⁿ⁻ʳ aⁿ⁻ʳ (r=0 to n)",
+      "Σ ⁿCᵣ xⁿ⁻ʳ aʳ (r=0 to n)"
+    ],
+    "answer": "Σ ⁿCᵣ xʳ aⁿ⁻ʳ (r=0 to n)"
+  },
+  {
+    "id": 180,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Differentiate (1 + x)ⁿ twice with respect to x, set x = 0 and simplify. What is the result?",
+    "options": [
+      "ⁿCᵣ = 2/n",
+      "ⁿC₁ = 2/(n+1)",
+      "ⁿC₂ = n(n-1)/2",
+      "ⁿC₂ = 2/(n(n-1))"
+    ],
+    "answer": "ⁿC₂ = n(n-1)/2"
+  },
+  {
+    "id": 181,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "For a positive integer n, the factorial n! is equivalent to:",
+    "options": [
+      "(n-1)!",
+      "n(n+1)(n-2)!",
+      "n(n-1)(n-2)!",
+      "(n+1)!"
+    ],
+    "answer": "n(n-1)(n-2)!"
+  },
+  {
+    "id": 182,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "What is the value of the sum Σ ⁿCₖ from k=0 to n?",
+    "options": [
+      "2ⁿ⁻²",
+      "2ⁿ",
+      "2n",
+      "n²"
+    ],
+    "answer": "2ⁿ"
+  },
+  {
+    "id": 183,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Expand (x + 2y)⁷ in ascending powers of x.",
+    "options": [
+      "x⁷ + 14x⁶y + 84x⁵y² + ...",
+      "128y⁷ + 448xy⁶ + 672x²y⁵ + 560x³y⁴ + 280x⁴y³ + 84x⁵y² + 14x⁶y + x⁷",
+      "x⁷ + 4x⁶y + ...",
+      "128y⁷ + 448xy⁶ + ... + x⁷"
+    ],
+    "answer": "128y⁷ + 448xy⁶ + 672x²y⁵ + 560x³y⁴ + 280x⁴y³ + 84x⁵y² + 14x⁶y + x⁷"
+  },
+  {
+    "id": 184,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the term independent of y in the expansion of (x⁴/y³ + y²/2x)¹⁰.",
+    "options": [
+      "105/32 x¹¹",
+      "15/32 x¹⁰",
+      "105/32 x¹⁰",
+      "105x¹⁰"
+    ],
+    "answer": "105/32 x¹⁰"
+  },
+  {
+    "id": 185,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the maximum coefficient in the expansion of (3x + 5)¹⁰.",
+    "options": [
+      "26581250",
+      "26578250",
+      "26578125",
+      "265781250"
+    ],
+    "answer": "265781250"
+  },
+  {
+    "id": 186,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Obtain the first four terms of the expansion of (1 + 3x)^(1/3).",
+    "options": [
+      "1 + x - x² + 5/3 x³",
+      "1 - x - x² + 5/3 x³",
+      "1 - x + x² + 5/3 x³",
+      "1 + x - x² - 3/5 x³"
+    ],
+    "answer": "1 + x - x² + 5/3 x³"
+  },
+  {
+    "id": 187,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Obtain the expansion of sqrt(9 + x²) as far as the term in x⁴.",
+    "options": [
+      "3 + 1/3 x² + x - 1/216 x⁴",
+      "3 + 1/6 x² - 1/216 x⁴",
+      "3 - 1/6 x² - 1/216 x⁴",
+      "3 + 1/6 x² + 1/216 x⁴"
+    ],
+    "answer": "3 + 1/6 x² - 1/216 x⁴"
+  },
+  {
+    "id": 188,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "For what value of x is the expansion of 1/(a + bx) valid?",
+    "options": [
+      "|x| < a/b",
+      "|x| > a/b",
+      "|x| < 1/b",
+      "|x| < a/2"
+    ],
+    "answer": "|x| < a/b"
+  },
+  {
+    "id": 189,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the sum of the constant coefficients in the expansion of (3 + 2x)⁴.",
+    "options": [
+      "620",
+      "630",
+      "625",
+      "216"
+    ],
+    "answer": "625"
+  },
+  {
+    "id": 190,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the first four terms in the expansion of (1 - 3x²)⁵ in ascending powers of x.",
+    "options": [
+      "1 - 15x² + 90x⁴ - 270x⁶",
+      "1 + 15x² + 90x⁴ - 270x⁶",
+      "1 - 15x² - 90x⁴ + 270x⁶",
+      "1 + 15x² + 90x⁴ + 270x⁶"
+    ],
+    "answer": "1 - 15x² + 90x⁴ - 270x⁶"
+  },
+  {
+    "id": 191,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "State the value of |x| for which (27 - 6x)^(-2/3) can be expanded in ascending powers of x.",
+    "options": [
+      "|x| < 2/9",
+      "|x| < 9/2",
+      "|x| < 1/9",
+      "|x| > 2/9"
+    ],
+    "answer": "|x| < 9/2"
+  },
+  {
+    "id": 192,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "State the condition under which the expansion of (x + 2y)⁻⁵ is valid in ascending powers of y.",
+    "options": [
+      "|y/x| < 1/2",
+      "|y/x| < 1",
+      "|y/x| > 1/2",
+      "|x/y| < 1/2"
+    ],
+    "answer": "|y/x| < 1/2"
+  },
+  {
+    "id": 193,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Simplify the ratio of consecutive binomial coefficients ⁿCᵣ₊₁ / ⁿCᵣ.",
+    "options": [
+      "(r+1)/(n-r)",
+      "n-r",
+      "r+1",
+      "(n-r)/(r+1)"
+    ],
+    "answer": "(n-r)/(r+1)"
+  },
+  {
+    "id": 194,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the term independent of y in the expansion of (4/x⁵ - 2x/3y)¹⁰.",
+    "options": [
+      "1048576/x⁵⁰",
+      "1048576/x²⁰",
+      "1048576/y³⁰",
+      "1048576/x³⁰"
+    ],
+    "answer": "1048576/x⁵⁰"
+  },
+  {
+    "id": 195,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the fifth term in the expansion of (3x + 2y²)¹² in descending powers of x.",
+    "options": [
+      "5196312x⁸y⁸",
+      "51963120x⁶y⁹",
+      "51963120x⁷y⁸",
+      "51963120x⁸y⁸"
+    ],
+    "answer": "51963120x⁸y⁸"
+  },
+  {
+    "id": 196,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the ratio ⁿCᵣ / ⁿCᵣ₊₁ for n=10.",
+    "options": [
+      "(r+1)/(10-r)",
+      "r/(10-r)",
+      "(r-1)/(10+r)",
+      "r/(10+r)"
+    ],
+    "answer": "(r+1)/(10-r)"
+  },
+  {
+    "id": 197,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Evaluate the term independent of x in the expansion of (x² - 1/2x)⁹.",
+    "options": [
+      "16/21",
+      "21/16",
+      "21",
+      "16"
+    ],
+    "answer": "21/16"
+  },
+  {
+    "id": 198,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the constant term in the expansion of (x² - 2/x)⁶.",
+    "options": [
+      "360",
+      "240",
+      "140",
+      "420"
+    ],
+    "answer": "240"
+  },
+  {
+    "id": 199,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the value of the sum Σ k ⁵Cₖ for k=1 to 5.",
+    "options": [
+      "60",
+      "6",
+      "32",
+      "80"
+    ],
+    "answer": "80"
+  },
+  {
+    "id": 200,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the coefficient of x⁴ in the expansion of (2x - 3/x²)⁴.",
+    "options": [
+      "16",
+      "32",
+      "42",
+      "14"
+    ],
+    "answer": "16"
+  },
+  {
+    "id": 201,
+    "topic": "Sequence and Series",
+    "question": "The first term of an arithmetic series is 3, the common difference is 4 and the sum is 820. Find the number of terms and the last term.",
+    "options": [
+      "79, 20",
+      "20, 79",
+      "-20.5, 80",
+      "80, -20.5"
+    ],
+    "answer": "20, 79"
+  },
+  {
+    "id": 202,
+    "topic": "Sequence and Series",
+    "question": "Find the sum to which the series converges: 1/5 + 1/25 + 1/125 + ...",
+    "options": [
+      "1/2",
+      "1/4",
+      "1/8",
+      "1/16"
+    ],
+    "answer": "1/4"
+  },
+  {
+    "id": 203,
+    "topic": "Sequence and Series",
+    "question": "What is the ninth term of the geometric sequence if the third term and the seventh term are -1 and -81?",
+    "options": [
+      "3",
+      "-1/9",
+      "-729",
+      "927"
+    ],
+    "answer": "-729"
+  },
+  {
+    "id": 204,
+    "topic": "Sequence and Series",
+    "question": "What is the second term of a geometric sequence if the three numbers have a sum of 13 and a product of 64?",
+    "options": [
+      "4",
+      "3",
+      "5",
+      "6"
+    ],
+    "answer": "4"
+  },
+  {
+    "id": 205,
+    "topic": "Sequence and Series",
+    "question": "Evaluate the tenth term of the series 3 + 9 + 27 + 81 + ...",
+    "options": [
+      "50499",
+      "59490",
+      "59049",
+      "59940"
+    ],
+    "answer": "59049"
+  },
+  {
+    "id": 206,
+    "topic": "Sequence and Series",
+    "question": "Find three numbers in AP whose sum is 3 and whose product is -15.",
+    "options": [
+      "5, -3, -1",
+      "-3, 1, 5",
+      "1, 5, -3",
+      "None"
+    ],
+    "answer": "-3, 1, 5"
+  },
+  {
+    "id": 207,
+    "topic": "Sequence and Series",
+    "question": "If U₁ = -1, U₂ = -5 and Uᵣ = a + br, find a and b.",
+    "options": [
+      "2, -3",
+      "-1, -5",
+      "3, -4",
+      "4, -3"
+    ],
+    "answer": "3, -4"
+  },
+  {
+    "id": 208,
+    "topic": "Sequence and Series",
+    "question": "To what sum does the series converge: 1 - 1/3 + 1/9 - 1/27 + ...",
+    "options": [
+      "1/3",
+      "3",
+      "3/4",
+      "4, -3"
+    ],
+    "answer": "3/4"
+  },
+  {
+    "id": 209,
+    "topic": "Sequence and Series",
+    "question": "The first and last terms of a geometric series are 3 and 768. If the sum is 1533, find the common ratio.",
+    "options": [
+      "3",
+      "1/2",
+      "2",
+      "-1/2"
+    ],
+    "answer": "2"
+  },
+  {
+    "id": 210,
+    "topic": "Sequence and Series",
+    "question": "Find the first term and common ratio of a GP if the 3rd term is 81 and the 7th term is 16.",
+    "options": [
+      "729, 2/3",
+      "3/2, 4/729",
+      "2/3, 4/729",
+      "3/2, 729/4"
+    ],
+    "answer": "729, 2/3"
+  },
+  {
+    "id": 211,
+    "topic": "Sequence and Series",
+    "question": "The sum of the first 20 terms of an AP is 45, and the sum of the first 40 terms is 290. Find a and d.",
+    "options": [
+      "-5/2, 2",
+      "-2/5, 1/2",
+      "1/2, -5/2",
+      "-5/2, 1/2"
+    ],
+    "answer": "-5/2, 1/2"
+  },
+  {
+    "id": 212,
+    "topic": "Sequence and Series",
+    "question": "Find the formula for the sequence: 12, 6, 3, 3/2, 3/4, ...",
+    "options": [
+      "n!",
+      "16-4n",
+      "24/2ⁿ",
+      "2n+3"
+    ],
+    "answer": "24/2ⁿ"
+  },
+  {
+    "id": 213,
+    "topic": "Sequence and Series",
+    "question": "What limit does the sequence {(n² + 1) / (3n² + 4n + 2)} converge to as n approaches infinity?",
+    "options": [
+      "0",
+      "∞",
+      "1/3",
+      "1"
+    ],
+    "answer": "1/3"
+  },
+  {
+    "id": 214,
+    "topic": "Sequence and Series",
+    "question": "Find the sum Sₙ for the arithmetic sequence: 8, 12, 16, 20...",
+    "options": [
+      "4n + 4",
+      "2n(n + 3)",
+      "2n(n - 1)",
+      "2n(n + 4)"
+    ],
+    "answer": "2n(n + 3)"
+  },
+  {
+    "id": 215,
+    "topic": "Sequence and Series",
+    "question": "Find the sum of all the odd numbers between 1 and 99.",
+    "options": [
+      "25000",
+      "2500",
+      "250",
+      "250000"
+    ],
+    "answer": "2500"
+  },
+  {
+    "id": 216,
+    "topic": "Sequence and Series",
+    "question": "A track enthusiast buys 5 pieces of lengths 8, 10, 12... up to 38cm. Total length?",
+    "options": [
+      "345",
+      "300",
+      "380",
+      "400"
+    ],
+    "answer": "345"
+  },
+  {
+    "id": 217,
+    "topic": "Sequence and Series",
+    "question": "The general formula for the reciprocal of geometric sequences sum is:",
+    "options": [
+      "r(rⁿ-1) / ar²(r-1)",
+      "r(rⁿ-1) / rⁿ(r-1)",
+      "(r-1) / a(rⁿ-1)",
+      "d(rⁿ-1) / rⁿ(r-1)"
+    ],
+    "answer": "r(rⁿ-1) / ar²(r-1)"
+  },
+  {
+    "id": 218,
+    "topic": "Sequence and Series",
+    "question": "The sums 1, 1+2, 1+2+3... are referred to as:",
+    "options": [
+      "Sequence",
+      "triangular number",
+      "amicable number",
+      "perfect square"
+    ],
+    "answer": "triangular number"
+  },
+  {
+    "id": 219,
+    "topic": "Sequence and Series",
+    "question": "Which one of the following is correct for Harmonic progression?",
+    "options": [
+      "1 / [a + (n-1)d]",
+      "a + l",
+      "arᵖ⁻¹",
+      "sqrt(a + (n-l)d)"
+    ],
+    "answer": "1 / [a + (n-1)d]"
+  },
+  {
+    "id": 220,
+    "topic": "Sequence and Series",
+    "question": "Find the sum of the first twenty-five odd numbers.",
+    "options": [
+      "526",
+      "625",
+      "265",
+      "562"
+    ],
+    "answer": "625"
+  },
+  {
+    "id": 221,
+    "topic": "Sequence and Series",
+    "question": "If the second term and fourth term of an exponential function are 6 and 54, find the nth term.",
+    "options": [
+      "3ⁿ⁻¹ / 2",
+      "3ⁿ⁻¹",
+      "2 * 3ⁿ⁻¹",
+      "6ⁿ⁻¹"
+    ],
+    "answer": "2 * 3ⁿ⁻¹"
+  },
+  {
+    "id": 222,
+    "topic": "Sequence and Series",
+    "question": "The first term of a GP is 10 and the sum to infinity is 20. Find the common ratio.",
+    "options": [
+      "2",
+      "1/2",
+      "1/4",
+      "4"
+    ],
+    "answer": "1/2"
+  },
+  {
+    "id": 223,
+    "topic": "Sequence and Series",
+    "question": "The first term of a series is 4 while the sum to infinity is 20. Find the common ratio.",
+    "options": [
+      "4/5",
+      "4",
+      "5/4",
+      "5"
+    ],
+    "answer": "4/5"
+  },
+  {
+    "id": 224,
+    "topic": "Sequence and Series",
+    "question": "If the sixth term of an arithmetic progression is 11 and the first term is 1, find the common difference.",
+    "options": [
+      "2",
+      "1/2",
+      "1/4",
+      "4"
+    ],
+    "answer": "2"
+  },
+  {
+    "id": 225,
+    "topic": "Sequence and Series",
+    "question": "The 4th term of an AP is 13 while the 10th term is 31. Find the 21st term.",
+    "options": [
+      "46",
+      "64",
+      "1/3",
+      "3"
+    ],
+    "answer": "64"
+  },
+  {
+    "id": 226,
+    "topic": "Sequence and Series",
+    "question": "The second and fourth terms of a GP are 8 and 32 respectively. Sum of the first four terms?",
+    "options": [
+      "2",
+      "4",
+      "60",
+      "15"
+    ],
+    "answer": "60"
+  },
+  {
+    "id": 227,
+    "topic": "Sequence and Series",
+    "question": "Express the recurring decimal 0.33... as a fraction in its lowest term.",
+    "options": [
+      "33/99",
+      "1/3",
+      "13/99",
+      "None"
+    ],
+    "answer": "1/3"
+  },
+  {
+    "id": 228,
+    "topic": "Sequence and Series",
+    "question": "For what values of x does the series 1/(1+4x) - (1+x)/(1+4x)² + ... converge?",
+    "options": [
+      "x > 0",
+      "-1/4 < x < 0",
+      "-2/5 < x < -1/4",
+      "None"
+    ],
+    "answer": "-2/5 < x < -1/4"
+  },
+  {
+    "id": 229,
+    "topic": "Sequence and Series",
+    "question": "How many terms of the series 2 + 3 + 9/2 + ... must be taken for the sum to exceed 30?",
+    "options": [
+      "4",
+      "3",
+      "6",
+      "5"
+    ],
+    "answer": "6"
+  },
+  {
+    "id": 230,
+    "topic": "Sequence and Series",
+    "question": "Insert three arithmetic means between 3 and 19. What is their sum?",
+    "options": [
+      "4",
+      "15",
+      "19",
+      "55"
+    ],
+    "answer": "55"
+  },
+  {
+    "id": 231,
+    "topic": "Sequence and Series",
+    "question": "How many terms are in an AP if the first and last terms are 4 and 26, and the sum is 180?",
+    "options": [
+      "12",
+      "10",
+      "4",
+      "30"
+    ],
+    "answer": "12"
+  },
+  {
+    "id": 232,
+    "topic": "Sequence and Series",
+    "question": "Find a, b in sequence 7.5, a, b, 4 where first three are AP and last three are GP.",
+    "options": [
+      "5, 25/4",
+      "4/25, 5",
+      "5, -25/4",
+      "25/4, 5"
+    ],
+    "answer": "5, 25/4"
+  },
+  {
+    "id": 233,
+    "topic": "Sequence and Series",
+    "question": "Find x, b in sequence x, 25/4, 5, b if first three are AP and last three are GP.",
+    "options": [
+      "4, 25/4",
+      "4, 15/2",
+      "15/2, 4",
+      "4, -15/2"
+    ],
+    "answer": "15/2, 4"
+  },
+  {
+    "id": 234,
+    "topic": "Sequence and Series",
+    "question": "An uncle deposits money doubling each year. Total sum of first 11 deposits is $20,480. First deposit?",
+    "options": [
+      "$20",
+      "$10",
+      "$100",
+      "$1000"
+    ],
+    "answer": "$10"
+  },
+  {
+    "id": 235,
+    "topic": "Sequence and Series",
+    "question": "Father deposits sums increasing by 2 each year. Total of 13 deposits is #40,955. Sum of last three?",
+    "options": [
+      "#2591",
+      "#1259",
+      "#9521",
+      "#5912"
+    ],
+    "answer": "#9521"
+  },
+  {
+    "id": 236,
+    "topic": "Sequence and Series",
+    "question": "Given Uᵣ = a + (r-1)d in sequence 2, 5, 8, 11... Find the sum of the first ten terms.",
+    "options": [
+      "513",
+      "153",
+      "155",
+      "551"
+    ],
+    "answer": "155"
+  },
+  {
+    "id": 237,
+    "topic": "Sequence and Series",
+    "question": "The 6th and 13th terms of an AP are 0 and 14. Find the sum of the first twenty terms.",
+    "options": [
+      "0",
+      "14",
+      "-20",
+      "-10"
+    ],
+    "answer": "-20"
+  },
+  {
+    "id": 238,
+    "topic": "Sequence and Series",
+    "question": "Find the geometric mean for consecutive terms x, y, z.",
+    "options": [
+      "y = sqrt(xz)",
+      "y = xz",
+      "z = xy",
+      "y = z/x"
+    ],
+    "answer": "y = sqrt(xz)"
+  },
+  {
+    "id": 239,
+    "topic": "Sequence and Series",
+    "question": "Find the arithmetic mean for consecutive terms x, y, z.",
+    "options": [
+      "y = (x+2)/z",
+      "y = (x+z)/2",
+      "z = (x+2)/y",
+      "None"
+    ],
+    "answer": "y = (x+z)/2"
+  },
+  {
+    "id": 240,
+    "topic": "Sequence and Series",
+    "question": "Find the geometric mean for consecutive terms 2, 4, 8.",
+    "options": [
+      "2",
+      "4",
+      "8",
+      "16"
+    ],
+    "answer": "4"
+  },
+  {
+    "id": 241,
+    "topic": "Sequence and Series",
+    "question": "Find the arithmetic mean for consecutive terms -3, 2, 7.",
+    "options": [
+      "2",
+      "7",
+      "-3",
+      "None"
+    ],
+    "answer": "2"
+  },
+  {
+    "id": 242,
+    "topic": "Sequence and Series",
+    "question": "To what sum does the series converge: 1 - 1/5 + 1/25 - ...",
+    "options": [
+      "1/5",
+      "5/6",
+      "6/5",
+      "4/5"
+    ],
+    "answer": "5/6"
+  },
+  {
+    "id": 243,
+    "topic": "Sequence and Series",
+    "question": "Find the sum to which the series converges: 1/6 + 1/12 + 1/24 + ...",
+    "options": [
+      "1/6",
+      "2",
+      "1/3",
+      "4"
+    ],
+    "answer": "1/3"
+  },
+  {
+    "id": 244,
+    "topic": "Sequence and Series",
+    "question": "Find first term and difference of 3 numbers in AP whose sum is 12 and product 64.",
+    "options": [
+      "0, 2",
+      "4, 0",
+      "0, 4",
+      "2, 0"
+    ],
+    "answer": "4, 0"
+  },
+  {
+    "id": 245,
+    "topic": "Sequence and Series",
+    "question": "The third and fourth terms of an arithmetic sequence are 15 and 5. First term and difference?",
+    "options": [
+      "35, 10",
+      "10, -35",
+      "35, -10",
+      "-10, -35"
+    ],
+    "answer": "35, -10"
+  },
+  {
+    "id": 246,
+    "topic": "Sequence and Series",
+    "question": "Find first term and ratio of GP whose 3rd and 7th terms are -1 and -81.",
+    "options": [
+      "-1/9, 3",
+      "3, -1/9",
+      "1/9, -3",
+      "-1/9, -3"
+    ],
+    "answer": "-1/9, 3"
+  },
+  {
+    "id": 247,
+    "topic": "Sequence and Series",
+    "question": "Find first term and difference of AP whose 3rd and 7th terms are -1 and -81.",
+    "options": [
+      "39, 20",
+      "20, 39",
+      "39, -20",
+      "-20, -39"
+    ],
+    "answer": "39, -20"
+  },
+  {
+    "id": 248,
+    "topic": "Sequence and Series",
+    "question": "Express the recurring decimal 0.3131... as a fraction in its lowest term.",
+    "options": [
+      "31/99",
+      "13/99",
+      "99/31",
+      "31/91"
+    ],
+    "answer": "31/99"
+  },
+  {
+    "id": 249,
+    "topic": "Sequence and Series",
+    "question": "Express the recurring decimal 0.2727... as a fraction in its lowest term.",
+    "options": [
+      "27/99",
+      "72/99",
+      "99/27",
+      "None"
+    ],
+    "answer": "27/99"
+  },
+  {
+    "id": 250,
+    "topic": "Sequence and Series",
+    "question": "Find the first term of GP whose 2nd term is 1/3 and last term is 2/27.",
+    "options": [
+      "2/3",
+      "3/2",
+      "-2/3",
+      "-1/3"
+    ],
+    "answer": "2/3"
+  },
+  {
+    "id": 251,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "What is the coefficient of xʳ in the expansion of (1 + x)ⁿ?",
+    "options": [
+      "ⁿCᵣ₋₁",
+      "ⁿ⁺¹Cᵣ₊₁",
+      "ⁿCᵣ",
+      "ⁿ⁻¹Cᵣ"
+    ],
+    "answer": "ⁿCᵣ"
+  },
+  {
+    "id": 252,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Which of the following has equal value as ⁿC₁?",
+    "options": [
+      "ⁿCₙ₋₁",
+      "ⁿCᵣ",
+      "ⁿCᵣ",
+      "ⁿ⁻¹Cᵣ"
+    ],
+    "answer": "ⁿCₙ₋₁"
+  },
+  {
+    "id": 253,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "From Pascal's triangle, addition of ⁿCᵣ and ⁿCᵣ₋₁ gives:",
+    "options": [
+      "ⁿ⁺¹Cᵣ",
+      "ⁿCᵣ₊₁",
+      "ⁿ⁺¹Cᵣ₋₁",
+      "ⁿCᵣ₋₁"
+    ],
+    "answer": "ⁿ⁺¹Cᵣ"
+  },
+  {
+    "id": 254,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "In notation form, considering expansion in ascending powers of x, (a+x)ⁿ is:",
+    "options": [
+      "Σ ⁿCᵣ xʳ aⁿ⁻ʳ (r=1 to n)",
+      "Σ ⁿCᵣ xʳ aⁿ⁻ʳ (r=0 to n)",
+      "Σ ⁿCᵣ xⁿ⁻ʳ aⁿ⁻ʳ (r=0 to n)",
+      "Σ ⁿCᵣ xⁿ⁻ʳ aʳ (r=0 to n)"
+    ],
+    "answer": "Σ ⁿCᵣ xʳ aⁿ⁻ʳ (r=0 to n)"
+  },
+  {
+    "id": 255,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Differentiate expansion of (1+x)ⁿ twice wrt x, put x=0 and simplify. Result?",
+    "options": [
+      "ⁿCᵣ = 2/n",
+      "ⁿC₁ = 2/(n+1)",
+      "ⁿC₂ = n(n-1)/2",
+      "ⁿC₂ = 2/n(n-1)"
+    ],
+    "answer": "ⁿC₂ = n(n-1)/2"
+  },
+  {
+    "id": 256,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "For positive integer n, factorial n! is equivalent to:",
+    "options": [
+      "(n-1)!",
+      "n(n+1)(n-2)!",
+      "n(n-1)(n-2)!",
+      "(n+1)!"
+    ],
+    "answer": "n(n-1)(n-2)!"
+  },
+  {
+    "id": 257,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "The value of Σ ⁿCₖ from k=0 to n is:",
+    "options": [
+      "2ⁿ⁻²",
+      "2ⁿ",
+      "2n",
+      "n²"
+    ],
+    "answer": "2ⁿ"
+  },
+  {
+    "id": 258,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Expand (x+2y)⁷ in ascending powers of x.",
+    "options": [
+      "x⁷+14x⁶y+...",
+      "128y⁷+448xy⁶+672x²y⁵+560x³y⁴+280x⁴y³+84x⁵y²+14x⁶y+x⁷",
+      "x⁷+4x⁶y+...",
+      "None"
+    ],
+    "answer": "128y⁷+448xy⁶+672x²y⁵+560x³y⁴+280x⁴y³+84x⁵y²+14x⁶y+x⁷"
+  },
+  {
+    "id": 259,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the term independent of y in (x⁴/y³ + y²/2x)¹⁰.",
+    "options": [
+      "105/32 x¹¹",
+      "15/32 x¹⁰",
+      "105/32 x¹⁰",
+      "105x¹⁰"
+    ],
+    "answer": "105/32 x¹⁰"
+  },
+  {
+    "id": 260,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the maximum coefficient in the expansion of (3x+5)¹⁰.",
+    "options": [
+      "26581250",
+      "26578250",
+      "26578125",
+      "265781250"
+    ],
+    "answer": "265781250"
+  },
+  {
+    "id": 261,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Obtain the first four terms of (1+3x)^{1/3} in ascending powers of x.",
+    "options": [
+      "1+x-x²+5/3x³",
+      "1-x-x²+5/3x³",
+      "1-x+x²+5/3x³",
+      "1+x-x²-3/5x³"
+    ],
+    "answer": "1+x-x²+5/3x³"
+  },
+  {
+    "id": 262,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Obtain expansion of sqrt(9+x²) as far as x⁴.",
+    "options": [
+      "3+1/3x²+x-1/216x⁴",
+      "3+1/6x²-1/216x⁴",
+      "3-1/6x²-1/216x⁴",
+      "3+1/6x²+1/216x⁴"
+    ],
+    "answer": "3+1/6x²-1/216x⁴"
+  },
+  {
+    "id": 263,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "For what value of x is the expansion of 1/(a+bx) valid?",
+    "options": [
+      "|x| < a/b",
+      "|x| > a/b",
+      "|x| < 1/b",
+      "|x| < a/2"
+    ],
+    "answer": "|x| < a/b"
+  },
+  {
+    "id": 264,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find the sum of constant coefficients in expansion of (3+2x)⁴.",
+    "options": [
+      "620",
+      "630",
+      "625",
+      "216"
+    ],
+    "answer": "625"
+  },
+  {
+    "id": 265,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find first four terms of (1-3x²)⁵ in ascending powers of x.",
+    "options": [
+      "1-15x²+90x⁴-270x⁶",
+      "1+15x²+90x⁴-270x⁶",
+      "1-15x²-90x⁴+270x⁶",
+      "1+15x²+90x⁴+270x⁶"
+    ],
+    "answer": "1-15x²+90x⁴-270x⁶"
+  },
+  {
+    "id": 266,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "State value of |x| for which (27-6x)^{-2/3} can be expanded as ascending x series.",
+    "options": [
+      "|x| < 2/9",
+      "|x| < 9/2",
+      "|x| < 1/9",
+      "|x| > 2/9"
+    ],
+    "answer": "|x| < 9/2"
+  },
+  {
+    "id": 267,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Condition under which (x+2y)⁻⁵ is valid in ascending powers of y.",
+    "options": [
+      "|y/x| < 1/2",
+      "|y/x| < 1",
+      "|y/x| > 1/2",
+      "|x/y| < 1/2"
+    ],
+    "answer": "|y/x| < 1/2"
+  },
+  {
+    "id": 268,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Simplify ⁿCᵣ₊₁ / ⁿCᵣ.",
+    "options": [
+      "(r+1)/(n-r)",
+      "n-r",
+      "r+1",
+      "(n-r)/(r+1)"
+    ],
+    "answer": "(n-r)/(r+1)"
+  },
+  {
+    "id": 269,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find term independent of y in (4/x⁵ - 2x/3y)¹⁰.",
+    "options": [
+      "1048576/x⁵⁰",
+      "1048576/x²⁰",
+      "1048576/y³⁰",
+      "1048576/x³⁰"
+    ],
+    "answer": "1048576/x⁵⁰"
+  },
+  {
+    "id": 270,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find fifth term of (3x+2y²)¹² in descending powers of x.",
+    "options": [
+      "5196312x⁸y⁸",
+      "51963120x⁶y⁹",
+      "51963120x⁷y⁸",
+      "51963120x⁸y⁸"
+    ],
+    "answer": "51963120x⁸y⁸"
+  },
+  {
+    "id": 271,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find value of ¹⁰Cᵣ / ¹⁰Cᵣ₊₁.",
+    "options": [
+      "(r+1)/(10-r)",
+      "r/(10-r)",
+      "(r-1)/(10+r)",
+      "r/(10+r)"
+    ],
+    "answer": "(r+1)/(10-r)"
+  },
+  {
+    "id": 272,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Evaluate term independent of x in (x² - 1/2x)⁹.",
+    "options": [
+      "16/21",
+      "21/16",
+      "21",
+      "16"
+    ],
+    "answer": "21/16"
+  },
+  {
+    "id": 273,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find constant term in (x² - 2/x)⁶.",
+    "options": [
+      "360",
+      "240",
+      "140",
+      "420"
+    ],
+    "answer": "240"
+  },
+  {
+    "id": 274,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find value of Σ k ⁵Cₖ from k=1 to 5.",
+    "options": [
+      "60",
+      "6",
+      "32",
+      "80"
+    ],
+    "answer": "80"
+  },
+  {
+    "id": 275,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find coefficient of x⁴ in (2x - 3/x²)⁴.",
+    "options": [
+      "16",
+      "32",
+      "42",
+      "14"
+    ],
+    "answer": "16"
+  },
+  {
+    "id": 276,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Determine greatest coefficient in (3x+1)⁸.",
+    "options": [
+      "17496",
+      "20412",
+      "2941",
+      "204120"
+    ],
+    "answer": "20412"
+  },
+  {
+    "id": 277,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find constant term in (3x+1)⁸.",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "answer": "1"
+  },
+  {
+    "id": 278,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Value of x for which expansion of (2 + 1/4 x)⁵ is valid.",
+    "options": [
+      "|x| < 2",
+      "|x| < 4",
+      "|x| < 8",
+      "|x| < 1/2"
+    ],
+    "answer": "|x| < 2"
+  },
+  {
+    "id": 279,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Evaluate Σ (r+3)! from r=1 to 5.",
+    "options": [
+      "46224",
+      "4624",
+      "4224",
+      "46228"
+    ],
+    "answer": "46224"
+  },
+  {
+    "id": 280,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Simplify ⁿ⁺¹Cₙ₋₁ + ⁿCₙ₋₁.",
+    "options": [
+      "2/(n+3)",
+      "2/(n²+3)",
+      "(n²+3n)/2",
+      "(n²-3n)/2"
+    ],
+    "answer": "(n²+3n)/2"
+  },
+  {
+    "id": 281,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find constant term in (1/β² - β)¹⁸.",
+    "options": [
+      "18564",
+      "1856",
+      "64531",
+      "185640"
+    ],
+    "answer": "18564"
+  },
+  {
+    "id": 282,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Simplify ⁿ⁺¹Cₙ₋₁ - ⁿCₙ₋₁.",
+    "options": [
+      "(n²-3n)/2",
+      "(n²+3n)/2",
+      "n(n+1)/2",
+      "n(n-1)/2"
+    ],
+    "answer": "n(n-1)/2"
+  },
+  {
+    "id": 283,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Simplify ⁿ⁺¹Cₙ₋₁ / ⁿCₙ₋₁.",
+    "options": [
+      "(n-1)/2",
+      "(n+1)/2",
+      "n/2",
+      "n/2 + 1"
+    ],
+    "answer": "n/2 + 1"
+  },
+  {
+    "id": 284,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find term independent of y in (x⁴/3y³ + y²/2x)⁵.",
+    "options": [
+      "5/36 x⁵",
+      "5/6 x⁵",
+      "36/5 x⁵",
+      "36x⁵"
+    ],
+    "answer": "5/36 x⁵"
+  },
+  {
+    "id": 285,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find coefficient of x¹⁴ in (20x² - 1)⁸.",
+    "options": [
+      "10240000000",
+      "10240000",
+      "-10240000000",
+      "1024000000"
+    ],
+    "answer": "-10240000000"
+  },
+  {
+    "id": 286,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Subtract coefficient of x¹⁴ in (20x²-1)⁸ from coefficient of x¹⁴ in (1+x)¹⁴.",
+    "options": [
+      "10240000001",
+      "1024000",
+      "10240000",
+      "1024000001"
+    ],
+    "answer": "10240000001"
+  },
+  {
+    "id": 287,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Express n in factorial form.",
+    "options": [
+      "n!",
+      "(n-1)!",
+      "n! / (n-1)!",
+      "n! / (n-1)"
+    ],
+    "answer": "n! / (n-1)!"
+  },
+  {
+    "id": 288,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find binomial expansion of (1 + 3/4 x)⁴ in descending powers of x.",
+    "options": [
+      "81/256x⁴ + 27/16x³ + 27/8x² + 3x + 1",
+      "1 + 3x + 27/8x² + 27/16x³ + 81/256x⁴",
+      "Negative signs",
+      "None"
+    ],
+    "answer": "81/256x⁴ + 27/16x³ + 27/8x² + 3x + 1"
+  },
+  {
+    "id": 289,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find coefficient of x⁴ in (1 + 3/4 x)⁴.",
+    "options": [
+      "8/25",
+      "81/25",
+      "81/256",
+      "81/26"
+    ],
+    "answer": "81/256"
+  },
+  {
+    "id": 290,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find coefficient of x in (1 + 3/4 x)⁴.",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "31"
+    ],
+    "answer": "3"
+  },
+  {
+    "id": 291,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find value of n when ⁿC₂ = 120.",
+    "options": [
+      "-15",
+      "15",
+      "-16",
+      "16"
+    ],
+    "answer": "16"
+  },
+  {
+    "id": 292,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Express ⁿ⁺ʳCₙ₋ᵣ in factorial form.",
+    "options": [
+      "(n+r)! / (2r)!(n-r)!",
+      "(n+r)! / (2r)!(n-r+1)!",
+      "n! / 2!r!",
+      "(n-r)! / (2r)!(n+r)!"
+    ],
+    "answer": "(n+r)! / (2r)!(n-r)!"
+  },
+  {
+    "id": 293,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find value of n when ⁿ⁻²C₁ = 5.",
+    "options": [
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "answer": "7"
+  },
+  {
+    "id": 294,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Express n(n-1)/2 in factorial form.",
+    "options": [
+      "n(n-1)! / 2!",
+      "n(n+1)! / 2!",
+      "n! / 2!",
+      "n! / (n-2)!2!"
+    ],
+    "answer": "n! / (n-2)!2!"
+  },
+  {
+    "id": 295,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "Find term independent of y in (1/2 x + 3y)¹⁰⁰⁰.",
+    "options": [
+      "(x/2)¹⁰⁰⁰",
+      "x / 2¹⁰⁰⁰",
+      "(x/2)¹⁰⁰",
+      "None"
+    ],
+    "answer": "(x/2)¹⁰⁰⁰"
+  },
+  {
+    "id": 296,
+    "topic": "Binomial Theorem and Expansion",
+    "question": "In (1/2 x + 3y)¹⁰⁰⁰, find coefficient of x in the term independent of y.",
+    "options": [
+      "1/2¹⁰⁰",
+      "1/2¹⁰⁰⁰",
+      "x/2¹⁰⁰",
+      "x/2¹⁰⁰⁰"
+    ],
+    "answer": "1/2¹⁰⁰⁰"
+  },
+  {
+    "id": 297,
+    "topic": "Set theory",
+    "question": "If set A has 5 elements, how many subsets does it have?",
+    "options": [
+      "32",
+      "25",
+      "36",
+      "64"
+    ],
+    "answer": "64"
+  },
+  {
+    "id": 298,
+    "topic": "Set theory",
+    "question": "Which of the following is equivalent to [Pᶜ ∪ (Q ∩ Qᶜ)]?",
+    "options": [
+      "P",
+      "Pᶜ",
+      "Q",
+      "Qᶜ"
+    ],
+    "answer": "Pᶜ"
+  },
+  {
+    "id": 299,
+    "topic": "Set theory",
+    "question": "How many subsets will a set containing 6 elements have?",
+    "options": [
+      "25",
+      "32",
+      "36",
+      "64"
+    ],
+    "answer": "64"
+  },
+  {
+    "id": 300,
+    "topic": "Trigonometry",
+    "question": "Evaluate sin²θ / (cos²θ - 1).",
+    "options": [
+      "-1",
+      "1",
+      "2",
+      "-2"
+    ],
+    "answer": "-1"
+  },
+  {
+    "id": 319,
+    "topic": "Set theory",
+    "question": "If P={1,2,3,4,5,6,7,8}, Q={1,4,9}, R={2,4,8}. Find (P ∩ Q) ∪ R.",
+    "options": [
+      "{1,2,4,8}",
+      "{1,2,4,8,9}",
+      "{1,2,4,7,8}",
+      "{1,2,3,4,5,6,7,8}"
+    ],
+    "answer": "{1,2,4,8,9}"
+  },
+  {
+    "id": 320,
+    "topic": "Set theory",
+    "question": "In a class of 40 students, 24 play football, 18 play volleyball and 6 do not play any game. How many Students play both Football and Volleyball?",
+    "options": [
+      "2",
+      "7",
+      "8",
+      "9"
+    ],
+    "answer": "8"
+  },
+  {
+    "id": 321,
+    "topic": "Set theory",
+    "question": "Four members of a school first eleven cricket team are also members of the first fourteen Rugby team. How many boys play in only one of the two teams?",
+    "options": [
+      "25",
+      "21",
+      "17",
+      "29"
+    ],
+    "answer": "17"
+  },
+  {
+    "id": 322,
+    "topic": "Set theory",
+    "question": "If S = {x: x² = 9, x < 2} then S is equal to",
+    "options": [
+      "{-3}",
+      "{3}",
+      "Ø",
+      "{-3,3}"
+    ],
+    "answer": "{-3}"
+  },
+  {
+    "id": 323,
+    "topic": "Set theory",
+    "question": "A School of 38 teachers has 15 married women. If 6 of the teachers are couples, how many of the teachers are neither married nor have their spouses not in the school?",
+    "options": [
+      "17",
+      "23",
+      "20",
+      "21"
+    ],
+    "answer": "20"
+  },
+  {
+    "id": 325,
+    "topic": "Set theory",
+    "question": "Given that the sets A and B are partitioned sets of E; then A ∪ (E ∩ B) is",
+    "options": [
+      "A",
+      "Ø",
+      "B",
+      "E"
+    ],
+    "answer": "A"
+  },
+  {
+    "id": 326,
+    "topic": "Set theory",
+    "question": "Which of the following sets is equivalent to (P ∪ Q) ∩ (P ∩ Qᶜ)?",
+    "options": [
+      "P ∪ Q",
+      "P ∪ Qᶜ",
+      "P ∩ Qᶜ",
+      "Ø"
+    ],
+    "answer": "P ∩ Qᶜ"
+  },
+  {
+    "id": 327,
+    "topic": "Set theory",
+    "question": "P and Q are subsets of the universal set U defined as U = {x: x³ - x² - x + 1 = 0}. P = {x: x is an integer} and Q = {x: x is odd}, find P ∩ Q.",
+    "options": [
+      "{-1,1,1}",
+      "{-1,1}",
+      "{1,1,-1}",
+      "{-1,-1}"
+    ],
+    "answer": "{-1,1}"
+  },
+  {
+    "id": 328,
+    "topic": "Set theory",
+    "question": "If E = {1,2,3,4} and A = {1,3,5}, the symmetric difference of E and A written A Δ E is",
+    "options": [
+      "{1,2}",
+      "{2,4,5}",
+      "{1,2,3,4,5}",
+      "{1,3}"
+    ],
+    "answer": "{2,4,5}"
+  },
+  {
+    "id": 329,
+    "topic": "Set theory",
+    "question": "If the universal set U = {x: x is a natural number and 1 <= x <= 9}, P = {x: 1 <= x < 4} and Q = {2,4,6,8}. Find (P ∪ Q)ᶜ",
+    "options": [
+      "{1,2,3,4,5,6,7,8,9}",
+      "{1,2,3,4,6,8}",
+      "{1,5,6,7}",
+      "{5,7,9}"
+    ],
+    "answer": "{5,7,9}"
+  },
+  {
+    "id": 330,
+    "topic": "Set theory",
+    "question": "In a science class of 41 students, each student offers at least one of Mathematics and Physics. If 22 Students offer Physics and 28 Students offer Mathematics, how many Students offer Physics only?",
+    "options": [
+      "19",
+      "9",
+      "13",
+      "14"
+    ],
+    "answer": "13"
+  },
+  {
+    "id": 331,
+    "topic": "Set theory",
+    "question": "If U = {0,2,3,6,7,8,9,10} is the universal set, E = {0,6,8,10} and F = {x: x⁴ = 16}. Find (E ∪ F)ᶜ",
+    "options": [
+      "{3,7,9}",
+      "{2,3,7,9}",
+      "[3,7,9]",
+      "Ø"
+    ],
+    "answer": "{3,7,9}"
+  },
+  {
+    "id": 332,
+    "topic": "Set theory",
+    "question": "If X = {all prime factors of 44} and Y = {all prime factors of 60}. The elements of X ∪ Y and X ∩ Y respectively are:",
+    "options": [
+      "{2,4,3,5,11} and {4}",
+      "{4,3,5,11} and {3,4}",
+      "{2,5,11} and {2}",
+      "{2,3,5,11} and {2}"
+    ],
+    "answer": "{2,3,5,11} and {2}"
+  },
+  {
+    "id": 333,
+    "topic": "Set theory",
+    "question": "Simplify (A ∪ B)ᶜ ∩ (A ∩ Bᶜ)",
+    "options": [
+      "(Aᶜ ∪ B)",
+      "A ∪ Bᶜ",
+      "(A ∪ B)ᶜ",
+      "Ø"
+    ],
+    "answer": "Ø"
+  },
+  {
+    "id": 337,
+    "topic": "Set theory",
+    "question": "In a youth club with 94 members, 60 like modern music and 50 like traditional music. The number of members who like both traditional and modern music is thrice those who do not like any type of music. How many members like only one type of music?",
+    "options": [
+      "8",
+      "24",
+      "62",
+      "86"
+    ],
+    "answer": "62"
+  },
+  {
+    "id": 343,
+    "topic": "Set theory",
+    "question": "Out of 25 teachers, 16 are married and 15 are women. If 6 of the men are married, how many of the women are not married?",
+    "options": [
+      "6",
+      "10",
+      "5",
+      "9"
+    ],
+    "answer": "5"
+  },
+  {
+    "id": 344,
+    "topic": "Set theory",
+    "question": "Which of the following is not a true property of a Cartesian product?",
+    "options": [
+      "(A ∩ B) x (C ∩ D) = (A x C) ∩ (B x D)",
+      "(A ∪ B) x (C ∪ D) = (A x C) ∪ (B x D)",
+      "(A ∪ B) x C = (A x C) ∪ (B x C)",
+      "A x Ø = Ø x A = A"
+    ],
+    "answer": "A x Ø = Ø x A = A"
+  },
+  {
+    "id": 345,
+    "topic": "Set theory",
+    "question": "If (A ∩ Bᶜ) ∪ (Aᶜ ∩ B) = A Δ B, what does the symbol 'Δ' signify?",
+    "options": [
+      "difference",
+      "asymmetric difference",
+      "symmetric difference",
+      "union"
+    ],
+    "answer": "symmetric difference"
+  },
+  {
+    "id": 346,
+    "topic": "Set theory",
+    "question": "Let U = {1,2,3,4,5,6} be the universal set, A = {1,2,3} and B = {4,5,6}. Find Aᶜ ∪ (B ∪ Bᶜ).",
+    "options": [
+      "Ø",
+      "{1,2,3}",
+      "{4,5,6}",
+      "U"
+    ],
+    "answer": "U"
+  },
+  {
+    "id": 347,
+    "topic": "Set theory",
+    "question": "C = {1,2,3,4,.........} What is the name of the set C?",
+    "options": [
+      "Finite set",
+      "Closed set",
+      "Universal set",
+      "Infinite set"
+    ],
+    "answer": "Infinite set"
+  },
+  {
+    "id": 348,
+    "topic": "Set theory",
+    "question": "What does the set {x: x not in A and x in B} define?",
+    "options": [
+      "set containing elements in A and not in B",
+      "set containing elements not in A but in B",
+      "set containing elements both in A and B",
+      "set containing elements either in A or B"
+    ],
+    "answer": "set containing elements not in A but in B"
+  },
+  {
+    "id": 352,
+    "topic": "Trigonometry",
+    "question": "Simplify sin²(x) / tan(x).",
+    "options": [
+      "sin x",
+      "cos x",
+      "sin x cos x",
+      "sin²(x) cos²(x)"
+    ],
+    "answer": "sin x cos x"
+  },
+  {
+    "id": 353,
+    "topic": "Trigonometry",
+    "question": "If tan(1/2 x) = b, express tan x in terms of b.",
+    "options": [
+      "2b",
+      "1 - b²",
+      "(1 - b²) / 2b",
+      "2b / (1 - b²)"
+    ],
+    "answer": "2b / (1 - b²)"
+  },
+  {
+    "id": 354,
+    "topic": "Trigonometry",
+    "question": "If tan(1/2 x) = f, what is sin x in terms of f?",
+    "options": [
+      "2f / (1 + f²)",
+      "2f / (1 + f)",
+      "2f² / (1 + f)",
+      "2f² / (1 + f²)"
+    ],
+    "answer": "2f / (1 + f²)"
+  },
+  {
+    "id": 355,
+    "topic": "Trigonometry",
+    "question": "If tan(1/2 x) = k, what is cos x in terms of k?",
+    "options": [
+      "2k² / (1 + k²)",
+      "(1 - 2k²) / (1 + k²)",
+      "(1 - k²) / (1 + k²)",
+      "(1 + k²) / (1 - k²)"
+    ],
+    "answer": "(1 - k²) / (1 + k²)"
+  },
+  {
+    "id": 358,
+    "topic": "Trigonometry",
+    "question": "Simplify sin²(p) + (1 + cos(p))².",
+    "options": [
+      "2(1 + cos p)",
+      "2 cos p",
+      "1 + cos p",
+      "cos p - 1"
+    ],
+    "answer": "2(1 + cos p)"
+  },
+  {
+    "id": 359,
+    "topic": "Trigonometry",
+    "question": "Evaluate (1 + sin φ)/(1 + cos φ) * (1 + sec φ)/(1 + cosec φ).",
+    "options": [
+      "sin φ",
+      "cos φ",
+      "tan φ",
+      "cot φ"
+    ],
+    "answer": "tan φ"
+  },
+  {
+    "id": 360,
+    "topic": "Trigonometry",
+    "question": "Expand tan(45° + A).",
+    "options": [
+      "(1 + tan A) / (1 + tan A)",
+      "(1 - tan A) / (1 - tan A)",
+      "(1 + tan A) / tan A",
+      "(1 + tan A) / (1 - tan A)"
+    ],
+    "answer": "(1 + tan A) / (1 - tan A)"
+  },
+  {
+    "id": 362,
+    "topic": "Trigonometry",
+    "question": "If sin 45° = cos 45° = 1/√2, sin 30° = 1/2, cos 30° = √3/2; evaluate sin 75°",
+    "options": [
+      "(√2 + √6) / 4",
+      "(√2 - √6) / 4",
+      "(√6 - √2) / 4",
+      "(√2 + √3) / 4"
+    ],
+    "answer": "(√2 + √6) / 4"
+  },
+  {
+    "id": 363,
+    "topic": "Trigonometry",
+    "question": "If sin 45° = cos 45° = 1/√2, sin 30° = 1/2, cos 30° = √3/2, evaluate cos 75°",
+    "options": [
+      "(√6 + √2) / 4",
+      "(√2 + √3) / 4",
+      "(√6 - √2) / 4",
+      "(√2 - √6) / 4"
+    ],
+    "answer": "(√6 - √2) / 4"
+  },
+  {
+    "id": 364,
+    "topic": "Trigonometry",
+    "question": "Find cos 105° if sin 45° = cos 45° = 1/√2, sin 60° = √3/2, cos 60° = 1/2",
+    "options": [
+      "(√2 + √6) / 4",
+      "(√2 - √6) / 4",
+      "(√2 - √6) / 5",
+      "(√2 - √3) / 4"
+    ],
+    "answer": "(√2 - √6) / 4"
+  },
+  {
+    "id": 371,
+    "topic": "Trigonometry",
+    "question": "Which of these is equivalent to sin 2w?",
+    "options": [
+      "2 sin w cos w",
+      "2 sin²(w)",
+      "2 cos²(w)",
+      "sin w cos w"
+    ],
+    "answer": "2 sin w cos w"
+  },
+  {
+    "id": 372,
+    "topic": "Trigonometry",
+    "question": "Which of these is equivalent to cos 2z?",
+    "options": [
+      "1 - cos²(z)",
+      "1 + cos z",
+      "2 cos²(z) - 1",
+      "1 + 2 cos²(z)"
+    ],
+    "answer": "2 cos²(z) - 1"
+  },
+  {
+    "id": 373,
+    "topic": "Trigonometry",
+    "question": "Which of these is equivalent to tan 2t?",
+    "options": [
+      "(1 - tan²(t)) / t",
+      "2 tan t / (1 - tan²(t))",
+      "(1 - tan²(t)) / (2 tan t)",
+      "(2 tan t) / (tan t + 1)"
+    ],
+    "answer": "2 tan t / (1 - tan²(t))"
+  },
+  {
+    "id": 374,
+    "topic": "Trigonometry",
+    "question": "Expand sin v.",
+    "options": [
+      "sin(v/2) cos(v/2)",
+      "sin²(v/2)",
+      "cos²(v/2)",
+      "2 sin(v/2) cos(v/2)"
+    ],
+    "answer": "2 sin(v/2) cos(v/2)"
+  },
+  {
+    "id": 375,
+    "topic": "Trigonometry",
+    "question": "Expand cos a.",
+    "options": [
+      "cos²(a/2) + 1",
+      "2 cos²(a/2) - 1",
+      "2 cos²(a/2) + 1",
+      "2 - cos²(a/2)"
+    ],
+    "answer": "2 cos²(a/2) - 1"
+  },
+  {
+    "id": 376,
+    "topic": "Trigonometry",
+    "question": "What is the equivalence of sin(p + q)?",
+    "options": [
+      "sin p sin q + cos p cos q",
+      "sin p sin q - cos p cos q",
+      "sin p cos q - cos p sin q",
+      "sin p cos q + cos p sin q"
+    ],
+    "answer": "sin p cos q + cos p sin q"
+  },
+  {
+    "id": 377,
+    "topic": "Trigonometry",
+    "question": "What is the equivalence of sin(p - q)?",
+    "options": [
+      "sin p sin q + cos p cos q",
+      "sin p sin q - cos p cos q",
+      "sin p cos q - cos p sin q",
+      "sin p cos q + cos p sin q"
+    ],
+    "answer": "sin p cos q - cos p sin q"
+  },
+  {
+    "id": 378,
+    "topic": "Trigonometry",
+    "question": "Expand cos(x + y).",
+    "options": [
+      "cos x cos y - sin x sin y",
+      "cos x cos y + sin x sin y",
+      "sin x sin y - cos x cos y",
+      "sin x sin y + cos x cos y"
+    ],
+    "answer": "cos x cos y - sin x sin y"
+  },
+  {
+    "id": 379,
+    "topic": "Trigonometry",
+    "question": "Expand cos(x - y).",
+    "options": [
+      "cos x cos y - sin x sin y",
+      "cos x cos y + sin x sin y",
+      "sin x sin y - cos x cos y",
+      "sin x sin y + cos x cos y"
+    ],
+    "answer": "cos x cos y + sin x sin y"
+  },
+  {
+    "id": 382,
+    "topic": "Trigonometry",
+    "question": "Which of these is equal to sin 9°?",
+    "options": [
+      "1 - cos 9°",
+      "cos(90° - 9°)",
+      "sin(90° - 9°)",
+      "cos 9° - 1"
+    ],
+    "answer": "cos(90° - 9°)"
+  },
+  {
+    "id": 383,
+    "topic": "Trigonometry",
+    "question": "Which of these is equivalent to cos 13°?",
+    "options": [
+      "sin 77°",
+      "cos 77°",
+      "sin 87°",
+      "cos 87°"
+    ],
+    "answer": "sin 77°"
+  },
+  {
+    "id": 384,
+    "topic": "Trigonometry",
+    "question": "Which of these is equivalent to cos β?",
+    "options": [
+      "cos(90° - β)",
+      "sin(90° - β)",
+      "sec(90° - β)",
+      "cosec(90° - β)"
+    ],
+    "answer": "sin(90° - β)"
+  },
+  {
+    "id": 385,
+    "topic": "Trigonometry",
+    "question": "sin 81° is the same as",
+    "options": [
+      "cos 9°",
+      "sin 9°",
+      "tan 9°",
+      "sec 9°"
+    ],
+    "answer": "cos 9°"
+  },
+  {
+    "id": 386,
+    "topic": "Trigonometry",
+    "question": "What is the equivalence of tan(A + B)?",
+    "options": [
+      "cos(A+B) / sin(A+B)",
+      "1 / tan(A+B)",
+      "(tan A + tan B) / (1 - tan A tan B)",
+      "(tan A - tan B) / (1 + tan A tan B)"
+    ],
+    "answer": "(tan A + tan B) / (1 - tan A tan B)"
+  },
+  {
+    "id": 387,
+    "topic": "Trigonometry",
+    "question": "Which of the following is the same as tan(A - B)?",
+    "options": [
+      "cos(A+B) / sin(A+B)",
+      "1 / tan(A+B)",
+      "(1 - tan A tan B) / (tan A - tan B)",
+      "(tan A - tan B) / (1 + tan A tan B)"
+    ],
+    "answer": "(tan A - tan B) / (1 + tan A tan B)"
+  },
+  {
+    "id": 389,
+    "topic": "Trigonometry",
+    "question": "If cos δ = a/b, find 1 + tan²(δ).",
+    "options": [
+      "a² / b",
+      "b / a²",
+      "a / b²",
+      "b² / a²"
+    ],
+    "answer": "b² / a²"
+  },
+  {
+    "id": 390,
+    "topic": "Trigonometry",
+    "question": "If cos δ = a/b, find 1 - tan²(δ).",
+    "options": [
+      "b / a",
+      "(2a² - b²) / a²",
+      "(2a² - b²) / b²",
+      "(a² - b²) / b"
+    ],
+    "answer": "(2a² - b²) / a²"
+  },
+  {
+    "id": 391,
+    "topic": "Trigonometry",
+    "question": "If cos δ = a/b, find tan²(δ) - 1.",
+    "options": [
+      "(b² - 2a²) / a²",
+      "b² / a²",
+      "b² / (a - b²)",
+      "(a² - b) / b"
+    ],
+    "answer": "(b² - 2a²) / a²"
+  },
+  {
+    "id": 392,
+    "topic": "Trigonometry",
+    "question": "If cos δ = a/b, find cosec²(δ) - 1.",
+    "options": [
+      "a² / (b² - a²)",
+      "b² / (b² - a²)",
+      "b² / (a - b²)",
+      "(a² - b) / b"
+    ],
+    "answer": "a² / (b² - a²)"
+  },
+  {
+    "id": 393,
+    "topic": "Trigonometry",
+    "question": "If cos δ = a/b, find cosec²(δ) + 1.",
+    "options": [
+      "(2b² - a²) / (b² - a²)",
+      "b² / (b² - a²)",
+      "b² / (a - b²)",
+      "(a² - b) / b"
+    ],
+    "answer": "(2b² - a²) / (b² - a²)"
+  },
+  {
+    "id": 394,
+    "topic": "Trigonometry",
+    "question": "If cos δ = a/b, find cot²(δ) + cos²(δ).",
+    "options": [
+      "(2b² - a²) / (b² - a⁴)",
+      "a⁴ / (b²(b² - a²))",
+      "b⁴ / (a² - b²)",
+      "(a² - b) / b"
+    ],
+    "answer": "a⁴ / (b²(b² - a²))"
+  },
+  {
+    "id": 395,
+    "topic": "Trigonometry",
+    "question": "Given that tan q = 7/2, evaluate sin 2q.",
+    "options": [
+      "28/35",
+      "35/28",
+      "28/53",
+      "53/28"
+    ],
+    "answer": "28/53"
+  },
+  {
+    "id": 396,
+    "topic": "Trigonometry",
+    "question": "Given that tan q = 7/2, evaluate cos 2q.",
+    "options": [
+      "-53/45",
+      "53/45",
+      "-45/53",
+      "45/53"
+    ],
+    "answer": "-45/53"
+  },
+  {
+    "id": 397,
+    "topic": "Trigonometry",
+    "question": "Given that tan q = 7/2, evaluate tan 2q.",
+    "options": [
+      "-45/28",
+      "54/29",
+      "29/54",
+      "-28/45"
+    ],
+    "answer": "-28/45"
+  },
+  {
+    "id": 398,
+    "topic": "Trigonometry",
+    "question": "Given that tan q = 7/2, evaluate sin 2q - cos 2q.",
+    "options": [
+      "-53/73",
+      "54/29",
+      "73/53",
+      "-28/45"
+    ],
+    "answer": "73/53"
+  },
+  {
+    "id": 399,
+    "topic": "Trigonometry",
+    "question": "If sin γ = a / (1 - b), find cot γ.",
+    "options": [
+      "sqrt((1-a-b)(1+a-b)) / a",
+      "a / sqrt((1-a-b)(1+a-b))",
+      "sqrt((1-a+b)(1+a-b)) / b",
+      "b / sqrt((1-a+b)(1+a-b))"
+    ],
+    "answer": "sqrt((1-a-b)(1+a-b)) / a"
+  },
+  {
+    "id": 400,
+    "topic": "Trigonometry",
+    "question": "If sin γ = a / (1 - b), find cos γ.",
+    "options": [
+      "sqrt((1-a-b)(1+a-b)) / (1-b)",
+      "(1-b) / sqrt((1+a-b)(1+a-b))",
+      "(1-b) / sqrt((1-a-b)(1+a+b))",
+      "sqrt((1-a+b)(1+a-b)) / (1-b)"
+    ],
+    "answer": "sqrt((1-a-b)(1+a-b)) / (1-b)"
+  },
+  {
+    "id": 401,
+    "topic": "Trigonometry",
+    "question": "If sin γ = a / (1 - b), find sec γ.",
+    "options": [
+      "(1-b) / sqrt((1-a-b)(1+a-b))",
+      "sqrt((1-a-b)(1+a-b)) / (1-b)",
+      "(1-b) / sqrt((1-a+b)(1+a+b))",
+      "sqrt((1-a+b)(1+a-b)) / (1-b)"
+    ],
+    "answer": "(1-b) / sqrt((1-a-b)(1+a-b))"
+  },
+  {
+    "id": 402,
+    "topic": "Trigonometry",
+    "question": "If sin γ = a / (1 - b), find csc γ.",
+    "options": [
+      "(1-b) / a",
+      "a / (1-b)",
+      "sqrt((1-a-b)(1+a-b)) / a",
+      "a / sqrt((1-a-b)(1+a-b))"
+    ],
+    "answer": "(1-b) / a"
+  },
+  {
+    "id": 403,
+    "topic": "Partial Fraction",
+    "question": "What is the correct partial fraction decomposition form for (3x+1)/((x-1)(x+2))?",
+    "options": [
+      "A/(x-1) + B/(x+2)",
+      "A/(x-1)² + B/(x+2)",
+      "(Ax+B)/(x-1) + C/(x+2)",
+      "A/(x-1) + B/(x+2)²"
+    ],
+    "answer": "A/(x-1) + B/(x+2)"
+  },
+  {
+    "id": 404,
+    "topic": "Partial Fraction",
+    "question": "What is the correct partial fraction decomposition form for 1/(x(x-3)²)?",
+    "options": [
+      "A/x + B/(x-3)",
+      "A/x + B/(x-3) + C/(x-3)²",
+      "(Ax+B)/x + C/(x-3)²",
+      "A/x + (Bx+C)/(x-3)²"
+    ],
+    "answer": "A/x + B/(x-3) + C/(x-3)²"
+  },
+  {
+    "id": 405,
+    "topic": "Partial Fraction",
+    "question": "Identify the correct partial fraction form for 5/((x-1)(x²+4)).",
+    "options": [
+      "A/(x-1) + B/(x²+4)",
+      "A/(x-1) + Bx/(x²+4)",
+      "A/(x-1) + (Bx+C)/(x²+4)",
+      "(Ax+B)/(x-1) + C/(x²+4)"
+    ],
+    "answer": "A/(x-1) + (Bx+C)/(x²+4)"
+  },
+  {
+    "id": 406,
+    "topic": "Partial Fraction",
+    "question": "Identify the correct partial fraction form for (x²-2)/(x²(x+5)).",
+    "options": [
+      "A/x + B/x² + C/(x+5)",
+      "A/x² + B/(x+5)",
+      "(Ax+B)/x² + C/(x+5)",
+      "A/x + B/(x+5)"
+    ],
+    "answer": "A/x + B/x² + C/(x+5)"
+  },
+  {
+    "id": 407,
+    "topic": "Partial Fraction",
+    "question": "Identify the correct partial fraction form for x²/((x-2)(x²+1)²).",
+    "options": [
+      "A/(x-2) + (Bx+C)/(x²+1)",
+      "A/(x-2) + B/(x²+1) + C/(x²+1)²",
+      "A/(x-2) + (Bx+C)/(x²+1) + (Dx+E)/(x²+1)²",
+      "A/(x-2) + (Bx+C)/(x²+1)²"
+    ],
+    "answer": "A/(x-2) + (Bx+C)/(x²+1) + (Dx+E)/(x²+1)²"
+  },
+  {
+    "id": 408,
+    "topic": "Partial Fraction",
+    "question": "What is the correct partial fraction form for the improper fraction (x³+2)/(x²-x)?",
+    "options": [
+      "Ax+B + C/x + D/(x-1)",
+      "Ax + B/x + C/(x-1)",
+      "A + B/x + C/(x-1)",
+      "Ax+B + C/(x²-x)"
+    ],
+    "answer": "Ax+B + C/x + D/(x-1)"
+  },
+  {
+    "id": 409,
+    "topic": "Partial Fraction",
+    "question": "What is the correct partial fraction form for the improper fraction (x²+1)/(x²-1)?",
+    "options": [
+      "A + B/(x-1) + C/(x+1)",
+      "Ax + B/(x-1) + C/(x+1)",
+      "A + B/(x²-1)",
+      "A/(x-1) + B/(x+1)"
+    ],
+    "answer": "A + B/(x-1) + C/(x+1)"
+  },
+  {
+    "id": 410,
+    "topic": "Partial Fraction",
+    "question": "If 2/((x-1)(x+1)) = A/(x-1) + B/(x+1), find the value of A.",
+    "options": [
+      "1",
+      "-1",
+      "2",
+      "-2"
+    ],
+    "answer": "1"
+  },
+  {
+    "id": 411,
+    "topic": "Partial Fraction",
+    "question": "If 2/((x-1)(x+1)) = A/(x-1) + B/(x+1), find the value of B.",
+    "options": [
+      "1",
+      "-1",
+      "2",
+      "-2"
+    ],
+    "answer": "-1"
+  },
+  {
+    "id": 412,
+    "topic": "Partial Fraction",
+    "question": "If x/((x-2)(x-3)) = A/(x-2) + B/(x-3), find the value of A.",
+    "options": [
+      "-2",
+      "2",
+      "-3",
+      "3"
+    ],
+    "answer": "-2"
+  },
+  {
+    "id": 413,
+    "topic": "Partial Fraction",
+    "question": "If x/((x-2)(x-3)) = A/(x-2) + B/(x-3), find the value of B.",
+    "options": [
+      "-2",
+      "2",
+      "-3",
+      "3"
+    ],
+    "answer": "3"
+  },
+  {
+    "id": 414,
+    "topic": "Partial Fraction",
+    "question": "If (2x+1)/((x-1)(x+2)) = A/(x-1) + B/(x+2), find the value of A.",
+    "options": [
+      "1",
+      "-1",
+      "3",
+      "-3"
+    ],
+    "answer": "1"
+  },
+  {
+    "id": 415,
+    "topic": "Partial Fraction",
+    "question": "If (2x+1)/((x-1)(x+2)) = A/(x-1) + B/(x+2), find the value of B.",
+    "options": [
+      "1",
+      "-1",
+      "3",
+      "-3"
+    ],
+    "answer": "1"
+  },
+  {
+    "id": 416,
+    "topic": "Partial Fraction",
+    "question": "If (3x-1)/(x(x-1)) = A/x + B/(x-1), find the value of A.",
+    "options": [
+      "1",
+      "-1",
+      "2",
+      "-2"
+    ],
+    "answer": "1"
+  },
+  {
+    "id": 417,
+    "topic": "Partial Fraction",
+    "question": "If (3x-1)/(x(x-1)) = A/x + B/(x-1), find the value of B.",
+    "options": [
+      "1",
+      "-1",
+      "2",
+      "-2"
+    ],
+    "answer": "2"
+  },
+  {
+    "id": 418,
+    "topic": "Partial Fraction",
+    "question": "If (x-5)/((x-2)(x-4)) = A/(x-2) + B/(x-4), find the value of A.",
+    "options": [
+      "3/2",
+      "-3/2",
+      "1/2",
+      "-1/2"
+    ],
+    "answer": "3/2"
+  },
+  {
+    "id": 419,
+    "topic": "Partial Fraction",
+    "question": "If (x-5)/((x-2)(x-4)) = A/(x-2) + B/(x-4), find the value of B.",
+    "options": [
+      "3/2",
+      "-3/2",
+      "1/2",
+      "-1/2"
+    ],
+    "answer": "-1/2"
+  },
+  {
+    "id": 420,
+    "topic": "Partial Fraction",
+    "question": "If 1/(x(x-1)²) = A/x + B/(x-1) + C/(x-1)², find the value of A.",
+    "options": [
+      "1",
+      "-1",
+      "0",
+      "2"
+    ],
+    "answer": "1"
+  },
+  {
+    "id": 421,
+    "topic": "Partial Fraction",
+    "question": "If 1/(x(x-1)²) = A/x + B/(x-1) + C/(x-1)², find the value of C.",
+    "options": [
+      "1",
+      "-1",
+      "0",
+      "2"
+    ],
+    "answer": "1"
+  },
+  {
+    "id": 422,
+    "topic": "Partial Fraction",
+    "question": "If 1/(x(x-1)²) = A/x + B/(x-1) + C/(x-1)², find the value of B.",
+    "options": [
+      "1",
+      "-1",
+      "0",
+      "2"
+    ],
+    "answer": "-1"
+  },
+  {
+    "id": 423,
+    "topic": "Partial Fraction",
+    "question": "If (x+1)/(x²(x-2)) = A/x + B/x² + C/(x-2), find the value of B.",
+    "options": [
+      "1/2",
+      "-1/2",
+      "3/4",
+      "-3/4"
+    ],
+    "answer": "-1/2"
+  },
+  {
+    "id": 424,
+    "topic": "Partial Fraction",
+    "question": "If (x+1)/(x²(x-2)) = A/x + B/x² + C/(x-2), find the value of C.",
+    "options": [
+      "1/2",
+      "-1/2",
+      "3/4",
+      "-3/4"
+    ],
+    "answer": "3/4"
+  },
+  {
+    "id": 425,
+    "topic": "Partial Fraction",
+    "question": "If x/((x+1)²(x+2)) = A/(x+1) + B/(x+1)² + C/(x+2), find the value of B.",
+    "options": [
+      "1",
+      "-1",
+      "2",
+      "-2"
+    ],
+    "answer": "-1"
+  },
+  {
+    "id": 426,
+    "topic": "Partial Fraction",
+    "question": "If x/((x+1)²(x+2)) = A/(x+1) + B/(x+1)² + C/(x+2), find the value of C.",
+    "options": [
+      "1",
+      "-1",
+      "2",
+      "-2"
+    ],
+    "answer": "-2"
+  },
+  {
+    "id": 427,
+    "topic": "Partial Fraction",
+    "question": "If 1/((x-1)(x²+1)) = A/(x-1) + (Bx+C)/(x²+1), find the value of A.",
+    "options": [
+      "1",
+      "-1",
+      "1/2",
+      "-1/2"
+    ],
+    "answer": "1/2"
+  },
+  {
+    "id": 428,
+    "topic": "Partial Fraction",
+    "question": "If 1/((x-1)(x²+1)) = A/(x-1) + (Bx+C)/(x²+1), find the value of C.",
+    "options": [
+      "1",
+      "-1",
+      "1/2",
+      "-1/2"
+    ],
+    "answer": "-1/2"
+  },
+  {
+    "id": 429,
+    "topic": "Partial Fraction",
+    "question": "If 1/((x-1)(x²+1)) = A/(x-1) + (Bx+C)/(x²+1), find the value of B.",
+    "options": [
+      "1",
+      "-1",
+      "1/2",
+      "-1/2"
+    ],
+    "answer": "-1/2"
+  },
+  {
+    "id": 430,
+    "topic": "Partial Fraction",
+    "question": "If x/((x+1)(x²+2)) = A/(x+1) + (Bx+C)/(x²+2), find the value of A.",
+    "options": [
+      "1/3",
+      "-1/3",
+      "2/3",
+      "-2/3"
+    ],
+    "answer": "-1/3"
+  },
+  {
+    "id": 431,
+    "topic": "Partial Fraction",
+    "question": "If (x²+1)/(x(x²+4)) = A/x + (Bx+C)/(x²+4), find the value of A.",
+    "options": [
+      "1/4",
+      "-1/4",
+      "3/4",
+      "-3/4"
+    ],
+    "answer": "1/4"
+  },
+  {
+    "id": 432,
+    "topic": "Partial Fraction",
+    "question": "If (x²+1)/(x(x²+4)) = A/x + (Bx+C)/(x²+4), find the value of B.",
+    "options": [
+      "1/4",
+      "-1/4",
+      "3/4",
+      "-3/4"
+    ],
+    "answer": "3/4"
+  },
+  {
+    "id": 433,
+    "topic": "Partial Fraction",
+    "question": "If (x²+1)/(x(x²+4)) = A/x + (Bx+C)/(x²+4), find the value of C.",
+    "options": [
+      "0",
+      "1",
+      "1/4",
+      "-1/4"
+    ],
+    "answer": "0"
+  },
+  {
+    "id": 434,
+    "topic": "Partial Fraction",
+    "question": "Resolve 2/(x²-1) into partial fractions.",
+    "options": [
+      "1/(x-1) - 1/(x+1)",
+      "1/(x-1) + 1/(x+1)",
+      "2/(x-1) - 2/(x+1)",
+      "1/(x+1) - 1/(x-1)"
+    ],
+    "answer": "1/(x-1) - 1/(x+1)"
+  },
+  {
+    "id": 435,
+    "topic": "Partial Fraction",
+    "question": "Resolve 4/(x²-4) into partial fractions.",
+    "options": [
+      "1/(x-2) + 1/(x+2)",
+      "1/(x-2) - 1/(x+2)",
+      "2/(x-2) - 2/(x+2)",
+      "1/(x+2) - 1/(x-2)"
+    ],
+    "answer": "1/(x-2) - 1/(x+2)"
+  },
+  {
+    "id": 436,
+    "topic": "Partial Fraction",
+    "question": "Resolve 3x/(x²-9) into partial fractions.",
+    "options": [
+      "(3/2)/(x-3) + (3/2)/(x+3)",
+      "(3/2)/(x-3) - (3/2)/(x+3)",
+      "3/(x-3) + 3/(x+3)",
+      "1/(x-3) + 2/(x+3)"
+    ],
+    "answer": "(3/2)/(x-3) + (3/2)/(x+3)"
+  },
+  {
+    "id": 437,
+    "topic": "Partial Fraction",
+    "question": "Resolve (x+3)/(x²-3x+2) into partial fractions.",
+    "options": [
+      "5/(x-2) - 4/(x-1)",
+      "4/(x-2) - 5/(x-1)",
+      "5/(x-1) - 4/(x-2)",
+      "4/(x-1) - 5/(x-2)"
+    ],
+    "answer": "5/(x-2) - 4/(x-1)"
+  },
+  {
+    "id": 438,
+    "topic": "Partial Fraction",
+    "question": "Resolve (5x+1)/(x²+x-2) into partial fractions.",
+    "options": [
+      "2/(x-1) + 3/(x+2)",
+      "3/(x-1) + 2/(x+2)",
+      "2/(x+1) + 3/(x-2)",
+      "3/(x+1) + 2/(x-2)"
+    ],
+    "answer": "2/(x-1) + 3/(x+2)"
+  },
+  {
+    "id": 439,
+    "topic": "Partial Fraction",
+    "question": "Resolve (x-4)/(x²-5x+6) into partial fractions.",
+    "options": [
+      "2/(x-2) - 1/(x-3)",
+      "1/(x-2) - 2/(x-3)",
+      "2/(x-3) - 1/(x-2)",
+      "1/(x-3) - 2/(x-2)"
+    ],
+    "answer": "2/(x-2) - 1/(x-3)"
+  },
+  {
+    "id": 440,
+    "topic": "Partial Fraction",
+    "question": "Resolve (x+5)/(x²-1) into partial fractions.",
+    "options": [
+      "3/(x-1) - 2/(x+1)",
+      "2/(x-1) - 3/(x+1)",
+      "3/(x+1) - 2/(x-1)",
+      "2/(x+1) - 3/(x-1)"
+    ],
+    "answer": "3/(x-1) - 2/(x+1)"
+  },
+  {
+    "id": 441,
+    "topic": "Partial Fraction",
+    "question": "Resolve (7x-1)/(x²-x-6) into partial fractions.",
+    "options": [
+      "4/(x-3) + 3/(x+2)",
+      "3/(x-3) + 4/(x+2)",
+      "4/(x+3) + 3/(x-2)",
+      "3/(x+3) + 4/(x-2)"
+    ],
+    "answer": "4/(x-3) + 3/(x+2)"
+  },
+  {
+    "id": 442,
+    "topic": "Partial Fraction",
+    "question": "Resolve (3x-2)/(x²-4) into partial fractions.",
+    "options": [
+      "1/(x-2) + 2/(x+2)",
+      "2/(x-2) + 1/(x+2)",
+      "1/(x+2) + 2/(x-2)",
+      "2/(x-2) - 1/(x+2)"
+    ],
+    "answer": "1/(x-2) + 2/(x+2)"
+  },
+  {
+    "id": 443,
+    "topic": "Partial Fraction",
+    "question": "Resolve (8x+2)/(x²-x-2) into partial fractions.",
+    "options": [
+      "6/(x-2) + 2/(x+1)",
+      "2/(x-2) + 6/(x+1)",
+      "6/(x+2) + 2/(x-1)",
+      "2/(x+2) + 6/(x-1)"
+    ],
+    "answer": "6/(x-2) + 2/(x+1)"
+  },
+  {
+    "id": 444,
+    "topic": "Partial Fraction",
+    "question": "Resolve (x+10)/(x²-x-12) into partial fractions.",
+    "options": [
+      "2/(x-4) - 1/(x+3)",
+      "1/(x-4) - 2/(x+3)",
+      "2/(x-4) + 1/(x+3)",
+      "-1/(x-4) + 2/(x+3)"
+    ],
+    "answer": "2/(x-4) - 1/(x+3)"
+  },
+  {
+    "id": 445,
+    "topic": "Partial Fraction",
+    "question": "What is the first step in resolving the improper fraction (x³+2)/(x²-1) into partial fractions?",
+    "options": [
+      "Divide the numerator by the denominator using polynomial long division",
+      "Factor the denominator into (x-1)(x+1)",
+      "Set up the form A/(x-1) + B/(x+1)",
+      "Multiply by the common denominator"
+    ],
+    "answer": "Divide the numerator by the denominator using polynomial long division"
+  },
+  {
+    "id": 446,
+    "topic": "Partial Fraction",
+    "question": "The expression (x²+2)/(x²-1) can be rewritten for partial fraction decomposition as:",
+    "options": [
+      "1 + 3/(x²-1)",
+      "x + 2/(x²-1)",
+      "1 + 2/(x²-1)",
+      "x + 3/(x²-1)"
+    ],
+    "answer": "1 + 3/(x²-1)"
+  },
+  {
+    "id": 447,
+    "topic": "Partial Fraction",
+    "question": "The expression (2x²+1)/(x²-x) can be rewritten via polynomial division as:",
+    "options": [
+      "2 + (2x+1)/(x²-x)",
+      "1 + (2x+1)/(x²-x)",
+      "2 + x/(x²-x)",
+      "1 + x/(x²-x)"
+    ],
+    "answer": "2 + (2x+1)/(x²-x)"
+  },
+  {
+    "id": 448,
+    "topic": "Partial Fraction",
+    "question": "The partial fraction decomposition of x²/(x²-1) includes a constant term. What is this constant?",
+    "options": [
+      "1",
+      "0",
+      "2",
+      "-1"
+    ],
+    "answer": "1"
+  },
+  {
+    "id": 449,
+    "topic": "Partial Fraction",
+    "question": "The partial fraction decomposition of (3x²+5)/(x²-4) includes a constant polynomial term. What is it?",
+    "options": [
+      "3",
+      "5",
+      "1",
+      "0"
+    ],
+    "answer": "3"
+  },
+  {
+    "id": 450,
+    "topic": "Partial Fraction",
+    "question": "When decomposing (x³+x)/(x²-1), what is the quotient polynomial obtained from long division?",
+    "options": [
+      "x",
+      "x+1",
+      "1",
+      "x²"
+    ],
+    "answer": "x"
+  },
+  {
+    "id": 451,
+    "topic": "Partial Fraction",
+    "question": "A rational function P(x)/Q(x) is classified as 'proper' if:",
+    "options": [
+      "The degree of P(x) is strictly less than the degree of Q(x)",
+      "The degree of P(x) is greater than or equal to Q(x)",
+      "P(x) and Q(x) share no common factors",
+      "The degree of P(x) equals the degree of Q(x)"
+    ],
+    "answer": "The degree of P(x) is strictly less than the degree of Q(x)"
+  },
+  {
+    "id": 452,
+    "topic": "Partial Fraction",
+    "question": "If the denominator Q(x) contains a repeated linear factor (x-a)³, how many partial fraction terms does this specific factor produce?",
+    "options": [
+      "3 terms",
+      "1 term",
+      "2 terms",
+      "4 terms"
+    ],
+    "answer": "3 terms"
+  },
+  {
+    "id": 453,
+    "topic": "Partial Fraction",
+    "question": "In partial fraction decomposition, the numerator form (Bx+C) is exclusively used for which type of denominator factor?",
+    "options": [
+      "An irreducible quadratic factor",
+      "A repeated linear factor",
+      "A distinct linear factor",
+      "A cubic linear factor"
+    ],
+    "answer": "An irreducible quadratic factor"
+  },
+  {
+    "id": 454,
+    "topic": "Partial Fraction",
+    "question": "What is the correct partial fraction decomposition form for (3x+5)/((x²+1)(x²+3))?",
+    "options": [
+      "A/(x²+1) + B/(x²+3)",
+      "(Ax+B)/(x²+1) + C/(x²+3)",
+      "A/(x²+1) + (Bx+C)/(x²+3)",
+      "(Ax+B)/(x²+1) + (Cx+D)/(x²+3)"
+    ],
+    "answer": "(Ax+B)/(x²+1) + (Cx+D)/(x²+3)"
+  },
+  {
+    "id": 455,
+    "topic": "Partial Fraction",
+    "question": "If 1/((x²+1)(x²+2)) = (Ax+B)/(x²+1) + (Cx+D)/(x²+2), find the value of B.",
+    "options": [
+      "1",
+      "-1",
+      "0",
+      "2"
+    ],
+    "answer": "1"
+  },
+  {
+    "id": 456,
+    "topic": "Partial Fraction",
+    "question": "If 1/((x²+1)(x²+2)) = (Ax+B)/(x²+1) + (Cx+D)/(x²+2), find the value of D.",
+    "options": [
+      "1",
+      "-1",
+      "0",
+      "2"
+    ],
+    "answer": "-1"
+  },
+  {
+    "id": 457,
+    "topic": "Partial Fraction",
+    "question": "What is the correct form for the decomposition of x³/((x²+2)(x²+5))?",
+    "options": [
+      "(Ax+B)/(x²+2) + (Cx+D)/(x²+5)",
+      "A/(x²+2) + B/(x²+5)",
+      "Ax/(x²+2) + Cx/(x²+5)",
+      "(Ax+B)/(x²+2) + C/(x²+5)"
+    ],
+    "answer": "(Ax+B)/(x²+2) + (Cx+D)/(x²+5)"
+  },
+  {
+    "id": 458,
+    "topic": "Partial Fraction",
+    "question": "Resolve (2x²+3)/((x²+1)(x²+2)) into partial fractions.",
+    "options": [
+      "1/(x²+1) - 1/(x²+2)",
+      "1/(x²+1) + 1/(x²+2)",
+      "2/(x²+1) + 1/(x²+2)",
+      "x/(x²+1) + x/(x²+2)"
+    ],
+    "answer": "1/(x²+1) + 1/(x²+2)"
+  },
+  {
+    "id": 459,
+    "topic": "Partial Fraction",
+    "question": "If x/((x²+1)(x²+4)) = (Ax+B)/(x²+1) + (Cx+D)/(x²+4), find the value of A.",
+    "options": [
+      "1/3",
+      "-1/3",
+      "1",
+      "0"
+    ],
+    "answer": "1/3"
+  },
+  {
+    "id": 460,
+    "topic": "Partial Fraction",
+    "question": "If x/((x²+1)(x²+4)) = (Ax+B)/(x²+1) + (Cx+D)/(x²+4), find the value of C.",
+    "options": [
+      "1/3",
+      "-1/3",
+      "1",
+      "0"
+    ],
+    "answer": "-1/3"
+  },
+  {
+    "id": 461,
+    "topic": "Partial Fraction",
+    "question": "Resolve (x³+x)/((x²+2)(x²+3)) into partial fractions.",
+    "options": [
+      "x/(x²+2) + 2x/(x²+3)",
+      "-x/(x²+2) + 2x/(x²+3)",
+      "2x/(x²+2) - x/(x²+3)",
+      "x/(x²+2) - 2x/(x²+3)"
+    ],
+    "answer": "-x/(x²+2) + 2x/(x²+3)"
+  },
+  {
+    "id": 462,
+    "topic": "Partial Fraction",
+    "question": "Identify the proper partial fraction setup for (4x²-x+1)/((x²+x+1)(x²-x+1)).",
+    "options": [
+      "A/(x²+x+1) + B/(x²-x+1)",
+      "(Ax+B)/(x²+x+1) + C/(x²-x+1)",
+      "A/(x²+x+1) + (Cx+D)/(x²-x+1)",
+      "(Ax+B)/(x²+x+1) + (Cx+D)/(x²-x+1)"
+    ],
+    "answer": "(Ax+B)/(x²+x+1) + (Cx+D)/(x²-x+1)"
+  },
+  {
+    "id": 463,
+    "topic": "Partial Fraction",
+    "question": "If x²/((x²+1)(x²+3)) = (Ax+B)/(x²+1) + (Cx+D)/(x²+3), find the value of B.",
+    "options": [
+      "1/2",
+      "-1/2",
+      "3/2",
+      "-3/2"
+    ],
+    "answer": "-1/2"
+  },
+  {
+    "id": 464,
+    "topic": "Partial Fraction",
+    "question": "If x²/((x²+1)(x²+3)) = (Ax+B)/(x²+1) + (Cx+D)/(x²+3), find the value of D.",
+    "options": [
+      "1/2",
+      "-1/2",
+      "3/2",
+      "-3/2"
+    ],
+    "answer": "3/2"
+  }
+]

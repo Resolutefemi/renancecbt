@@ -1,0 +1,3954 @@
+[
+  {
+    "id": 1,
+    "question": "What is the systematic way of acquiring knowledge about a particular field of study?",
+    "answers": [
+      "Science",
+      "science",
+      "SCIENCE"
+    ]
+  },
+  {
+    "id": 2,
+    "question": "What are the basic fields of pure science mentioned in the text?",
+    "answers": [
+      "Biology, chemistry, physics and Earth science",
+      "biology, chemistry, physics, earth science",
+      "biology, chemistry, physics and earth science"
+    ]
+  },
+  {
+    "id": 3,
+    "question": "What is roughly concerned with what can be considered as fact about the world we live in?",
+    "answers": [
+      "Science",
+      "science",
+      "SCIENCE"
+    ]
+  },
+  {
+    "id": 4,
+    "question": "What is the application of science to solve a problem?",
+    "answers": [
+      "Technology",
+      "technology",
+      "TECHNOLOGY"
+    ]
+  },
+  {
+    "id": 5,
+    "question": "What involves the application of engineering and applied sciences to solve practical human problems?",
+    "answers": [
+      "Technology",
+      "technology",
+      "TECHNOLOGY"
+    ]
+  },
+  {
+    "id": 6,
+    "question": "What is defined as the collection of techniques, methods or processes used in the production of goods or services?",
+    "answers": [
+      "Technology",
+      "technology",
+      "TECHNOLOGY"
+    ]
+  },
+  {
+    "id": 7,
+    "question": "The word technology relates to the using of what in practical action?",
+    "answers": [
+      "The hand",
+      "Hand",
+      "hand",
+      "the hand"
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What is a mechanical device that enables man to perform tasks beyond his manual or physical strength?",
+    "answers": [
+      "Engine",
+      "engine",
+      "ENGINE",
+      "An engine"
+    ]
+  },
+  {
+    "id": 9,
+    "question": "What is the creative application of scientific principles to design or develop structures and machines?",
+    "answers": [
+      "Engineering",
+      "engineering",
+      "ENGINEERING"
+    ]
+  },
+  {
+    "id": 10,
+    "question": "What Greek word translates to 'love of wisdom'?",
+    "answers": [
+      "Philosophia",
+      "philosophia",
+      "PHILOSOPHIA"
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Which branch of philosophy is the investigation of ultimate reality?",
+    "answers": [
+      "Metaphysics",
+      "metaphysics",
+      "METAPHYSICS"
+    ]
+  },
+  {
+    "id": 12,
+    "question": "Which branch of philosophy is the study of the origins, validity, and limits of knowledge?",
+    "answers": [
+      "Epistemology",
+      "epistemology",
+      "EPISTEMOLOGY"
+    ]
+  },
+  {
+    "id": 13,
+    "question": "Which branch of philosophy is the study of morality and the good?",
+    "answers": [
+      "Ethics",
+      "ethics",
+      "ETHICS"
+    ]
+  },
+  {
+    "id": 14,
+    "question": "Which branch of philosophy is the study of the nature of beauty and art?",
+    "answers": [
+      "Aesthetics",
+      "aesthetics",
+      "AESTHETICS"
+    ]
+  },
+  {
+    "id": 15,
+    "question": "What type of philosophy is the logical study of concepts?",
+    "answers": [
+      "Analytic philosophy",
+      "analytic philosophy",
+      "ANALYTIC PHILOSOPHY"
+    ]
+  },
+  {
+    "id": 16,
+    "question": "What type of philosophy is the arrangement of concepts into a unified system?",
+    "answers": [
+      "Synthetic philosophy",
+      "synthetic philosophy",
+      "SYNTHETIC PHILOSOPHY"
+    ]
+  },
+  {
+    "id": 17,
+    "question": "What is the investigation into the general nature of scientific practice called?",
+    "answers": [
+      "Philosophy of science",
+      "philosophy of science",
+      "PHILOSOPHY OF SCIENCE"
+    ]
+  },
+  {
+    "id": 18,
+    "question": "Who published Principia Mathematica in 1687?",
+    "answers": [
+      "Isaac Newton",
+      "isaac newton",
+      "Newton",
+      "newton"
+    ]
+  },
+  {
+    "id": 19,
+    "question": "What is the first of Newton's laws of motion generally called?",
+    "answers": [
+      "Law of inertia",
+      "law of inertia",
+      "LAW OF INERTIA"
+    ]
+  },
+  {
+    "id": 20,
+    "question": "What are the two entities that make up the composition of the universe in the study of science?",
+    "answers": [
+      "Matter and energy",
+      "matter and energy",
+      "MATTER AND ENERGY"
+    ]
+  },
+  {
+    "id": 21,
+    "question": "What includes the materials in the universe like rocks, water, air, and living things?",
+    "answers": [
+      "Matter",
+      "matter",
+      "MATTER"
+    ]
+  },
+  {
+    "id": 22,
+    "question": "Who takes matter apart to determine its building blocks?",
+    "answers": [
+      "Chemist",
+      "chemist",
+      "The chemist",
+      "CHEMIST"
+    ]
+  },
+  {
+    "id": 23,
+    "question": "Who wants to know what holds the building blocks of matter together?",
+    "answers": [
+      "Physicist",
+      "physicist",
+      "The physicist",
+      "PHYSICIST"
+    ]
+  },
+  {
+    "id": 24,
+    "question": "What doesn't weigh anything and can be measured only while being transformed, released, or absorbed?",
+    "answers": [
+      "Energy",
+      "energy",
+      "ENERGY"
+    ]
+  },
+  {
+    "id": 25,
+    "question": "Who expressed the relationship between matter and energy with the formula E=mc² in 1905?",
+    "answers": [
+      "Albert Einstein",
+      "albert einstein",
+      "Einstein",
+      "einstein"
+    ]
+  },
+  {
+    "id": 26,
+    "question": "What does the 'c' stand for in Einstein's formula E=mc²?",
+    "answers": [
+      "Speed of light",
+      "speed of light",
+      "SPEED OF LIGHT"
+    ]
+  },
+  {
+    "id": 27,
+    "question": "What type of science is focused more on yielding knowledge that might assist the development of products and processes in the market-place?",
+    "answers": [
+      "Strategic science",
+      "strategic science",
+      "STRATEGIC SCIENCE"
+    ]
+  },
+  {
+    "id": 28,
+    "question": "What is an effort to reconstruct the past to discover what people thought and did?",
+    "answers": [
+      "History",
+      "history",
+      "HISTORY"
+    ]
+  },
+  {
+    "id": 29,
+    "question": "What are firsthand accounts of people who lived through events called?",
+    "answers": [
+      "Primary sources",
+      "primary sources",
+      "PRIMARY SOURCES"
+    ]
+  },
+  {
+    "id": 30,
+    "question": "Letters, chronicles, diaries, memoirs, and laws are examples of what?",
+    "answers": [
+      "Primary sources",
+      "primary sources",
+      "PRIMARY SOURCES"
+    ]
+  },
+  {
+    "id": 31,
+    "question": "When historians establish facts and tell a story, the result is what kind of source?",
+    "answers": [
+      "Secondary source",
+      "secondary source",
+      "SECONDARY SOURCE"
+    ]
+  },
+  {
+    "id": 32,
+    "question": "What is a systematic way of learning about the world around us and answering questions?",
+    "answers": [
+      "Scientific method",
+      "scientific method",
+      "SCIENTIFIC METHOD",
+      "The scientific method"
+    ]
+  },
+  {
+    "id": 33,
+    "question": "What is a statement used to predict the outcome of an experiment?",
+    "answers": [
+      "Hypothesis",
+      "hypothesis",
+      "HYPOTHESIS"
+    ]
+  },
+  {
+    "id": 34,
+    "question": "What type of hypothesis assumes changing a variable will have no effect on the outcome?",
+    "answers": [
+      "Null hypothesis",
+      "null hypothesis",
+      "NULL HYPOTHESIS",
+      "no-difference hypothesis"
+    ]
+  },
+  {
+    "id": 35,
+    "question": "In an experiment, what do you change or control to record its effect?",
+    "answers": [
+      "Independent variable",
+      "independent variable",
+      "INDEPENDENT VARIABLE"
+    ]
+  },
+  {
+    "id": 36,
+    "question": "In an experiment, what variable is affected and recorded?",
+    "answers": [
+      "Dependent variable",
+      "dependent variable",
+      "DEPENDENT VARIABLE"
+    ]
+  },
+  {
+    "id": 37,
+    "question": "What field of history examines how humanity's understanding of the natural world and ability to manipulate it have changed?",
+    "answers": [
+      "History of science and technology",
+      "history of science and technology",
+      "HST",
+      "hst"
+    ]
+  },
+  {
+    "id": 38,
+    "question": "Who was the Greek philosopher and teacher who lived in Athens in the 400s BC and was sentenced to death?",
+    "answers": [
+      "Socrates",
+      "socrates",
+      "SOCRATES"
+    ]
+  },
+  {
+    "id": 39,
+    "question": "Who was Socrates' most famous pupil?",
+    "answers": [
+      "Plato",
+      "plato",
+      "PLATO"
+    ]
+  },
+  {
+    "id": 40,
+    "question": "What does the Latin word 'universum' literally mean?",
+    "answers": [
+      "Turned into one",
+      "turned into one",
+      "TURNED INTO ONE"
+    ]
+  },
+  {
+    "id": 41,
+    "question": "What word is derived from the Greek word 'kosmos' meaning 'order, universe, ornament'?",
+    "answers": [
+      "Cosmos",
+      "cosmos",
+      "COSMOS"
+    ]
+  },
+  {
+    "id": 42,
+    "question": "What word means the physical world including all natural phenomena and living things?",
+    "answers": [
+      "Nature",
+      "nature",
+      "NATURE"
+    ]
+  },
+  {
+    "id": 43,
+    "question": "In ancient and medieval philosophy, what were the four elements from which everything was made?",
+    "answers": [
+      "Earth, air, fire, and water",
+      "earth, air, fire, and water",
+      "earth, air, fire, water"
+    ]
+  },
+  {
+    "id": 44,
+    "question": "What is the ability of man to arrange or adapt natural things or condition to his own use?",
+    "answers": [
+      "Arts",
+      "arts",
+      "Art",
+      "art"
+    ]
+  },
+  {
+    "id": 45,
+    "question": "From which two Greek words does the word 'philosophy' come?",
+    "answers": [
+      "Philein and sophia",
+      "philein and sophia",
+      "PHILEIN AND SOPHIA"
+    ]
+  },
+  {
+    "id": 46,
+    "question": "What is a mechanical device that enables man to perform tasks beyond his manual or physical strength?",
+    "answers": [
+      "Engine",
+      "engine",
+      "ENGINE"
+    ]
+  },
+  {
+    "id": 47,
+    "question": "The word technology relates to the using of what in practical action?",
+    "answers": [
+      "The hand",
+      "Hand",
+      "hand"
+    ]
+  },
+  {
+    "id": 48,
+    "question": "What is the total body of factual material accumulated relating to the events of the material world?",
+    "answers": [
+      "Scientific knowledge",
+      "scientific knowledge",
+      "SCIENTIFIC KNOWLEDGE"
+    ]
+  },
+  {
+    "id": 49,
+    "question": "According to Karl Popper, facts of scientific knowledge must be capable of what?",
+    "answers": [
+      "Refutation",
+      "refutation",
+      "REFUTATION"
+    ]
+  },
+  {
+    "id": 50,
+    "question": "Knowledge which cannot be investigated scientifically is described as what?",
+    "answers": [
+      "Metaphysical",
+      "metaphysical",
+      "METAPHYSICAL"
+    ]
+  },
+  {
+    "id": 51,
+    "question": "What are all facts related to a particular problem called?",
+    "answers": [
+      "Data",
+      "data",
+      "DATA"
+    ]
+  },
+  {
+    "id": 52,
+    "question": "What does the Latin word 'datum' mean?",
+    "answers": [
+      "Something given",
+      "something given",
+      "SOMETHING GIVEN"
+    ]
+  },
+  {
+    "id": 53,
+    "question": "What type of observation involves the measurement of an amount or quantity?",
+    "answers": [
+      "Quantitative",
+      "quantitative",
+      "QUANTITATIVE",
+      "Quantitative observation"
+    ]
+  },
+  {
+    "id": 54,
+    "question": "What type of observation describes color, shape, or presence?",
+    "answers": [
+      "Qualitative",
+      "qualitative",
+      "QUALITATIVE",
+      "Qualitative observation"
+    ]
+  },
+  {
+    "id": 55,
+    "question": "What is a particular natural event called in science?",
+    "answers": [
+      "Phenomenon",
+      "phenomenon",
+      "PHENOMENON"
+    ]
+  },
+  {
+    "id": 56,
+    "question": "When the weight of evidence seems to indicate a hypothesis is sound, what are the findings announced as?",
+    "answers": [
+      "Theory",
+      "theory",
+      "THEORY",
+      "A theory"
+    ]
+  },
+  {
+    "id": 57,
+    "question": "If a theory is subsequently proven to be a non-varying performance in Nature, what is it said to be?",
+    "answers": [
+      "Natural law",
+      "natural law",
+      "NATURAL LAW",
+      "A natural law"
+    ]
+  },
+  {
+    "id": 58,
+    "question": "What is the group called in an experiment that does not receive the new drug or treatment?",
+    "answers": [
+      "Control group",
+      "control group",
+      "CONTROL GROUP",
+      "The control group"
+    ]
+  },
+  {
+    "id": 59,
+    "question": "What is the group called in an experiment that receives the new drug or treatment?",
+    "answers": [
+      "Experimental group",
+      "experimental group",
+      "EXPERIMENTAL GROUP",
+      "The experimental group"
+    ]
+  },
+  {
+    "id": 60,
+    "question": "What principle states that mass is neither created nor destroyed?",
+    "answers": [
+      "Conservation of Mass",
+      "conservation of mass",
+      "CONSERVATION OF MASS"
+    ]
+  },
+  {
+    "id": 61,
+    "question": "Which of Newton's laws states that the momentum of a body remains constant unless acted upon by a net force?",
+    "answers": [
+      "Conservation of momentum",
+      "conservation of momentum",
+      "First law",
+      "first law"
+    ]
+  },
+  {
+    "id": 62,
+    "question": "Which law states that energy is neither created nor destroyed?",
+    "answers": [
+      "Conservation of energy",
+      "conservation of energy",
+      "First law of thermodynamics",
+      "first law of thermodynamics"
+    ]
+  },
+  {
+    "id": 63,
+    "question": "What kind of research is concerned with the application of scientific knowledge to the development of new and better products?",
+    "answers": [
+      "Applied research",
+      "applied research",
+      "APPLIED RESEARCH"
+    ]
+  },
+  {
+    "id": 64,
+    "question": "What kind of research is concerned with checking and rechecking of apparently sound theories?",
+    "answers": [
+      "Basic research",
+      "basic research",
+      "BASIC RESEARCH"
+    ]
+  },
+  {
+    "id": 65,
+    "question": "What is an existing knowledge set or expectation that can cause problems for scientists called?",
+    "answers": [
+      "Preconception",
+      "preconception",
+      "PRECONCEPTION"
+    ]
+  },
+  {
+    "id": 66,
+    "question": "What is defined as a particular tendency or inclination that prevents impartial consideration of a question?",
+    "answers": [
+      "Bias",
+      "bias",
+      "BIAS"
+    ]
+  },
+  {
+    "id": 67,
+    "question": "What is a negative opinion or feeling formed before an investigation without evidence called?",
+    "answers": [
+      "Prejudice",
+      "prejudice",
+      "PREJUDICE"
+    ]
+  },
+  {
+    "id": 68,
+    "question": "In the nomadic era, what accidental discovery led to organized agricultural practice?",
+    "answers": [
+      "Domesticated animals",
+      "domesticated animals",
+      "DOMESTICATED ANIMALS"
+    ]
+  },
+  {
+    "id": 69,
+    "question": "What was the earliest period of human culture when tools were made of stone, bone, antler, or wood?",
+    "answers": [
+      "Stone Age",
+      "stone age",
+      "STONE AGE",
+      "The stone age"
+    ]
+  },
+  {
+    "id": 70,
+    "question": "What were man's very first tools before wood, bones, and stones?",
+    "answers": [
+      "Bare hands",
+      "bare hands",
+      "BARE HANDS"
+    ]
+  },
+  {
+    "id": 71,
+    "question": "Who coined the terms Palaeolithic and Neolithic in 1865?",
+    "answers": [
+      "Sir John Lubbock",
+      "sir john lubbock",
+      "John Lubbock",
+      "john lubbock"
+    ]
+  },
+  {
+    "id": 72,
+    "question": "What does the Greek word 'palaeo' mean?",
+    "answers": [
+      "Old",
+      "old",
+      "OLD"
+    ]
+  },
+  {
+    "id": 73,
+    "question": "What does the Greek word 'lithos' mean?",
+    "answers": [
+      "Stone",
+      "stone",
+      "STONE"
+    ]
+  },
+  {
+    "id": 74,
+    "question": "What was the primary material for tool-making in the Stone Age because it produces sharp edges?",
+    "answers": [
+      "Flint",
+      "flint",
+      "FLINT"
+    ]
+  },
+  {
+    "id": 75,
+    "question": "What era corresponds to the introduction of metallurgy and spans roughly 2000 to 700 BC in Europe?",
+    "answers": [
+      "Bronze Age",
+      "bronze age",
+      "BRONZE AGE",
+      "The bronze age"
+    ]
+  },
+  {
+    "id": 76,
+    "question": "Bronze is an alloy of which two metals?",
+    "answers": [
+      "Tin and copper",
+      "tin and copper",
+      "copper and tin",
+      "Copper and tin"
+    ]
+  },
+  {
+    "id": 77,
+    "question": "What era denotes the period between the end of the Bronze Age and the spread of the Roman Empire?",
+    "answers": [
+      "Iron Age",
+      "iron age",
+      "IRON AGE",
+      "The iron age"
+    ]
+  },
+  {
+    "id": 78,
+    "question": "What is the body of philosophical concepts developed between 600 and 200 BC called?",
+    "answers": [
+      "Greek Philosophy",
+      "greek philosophy",
+      "GREEK PHILOSOPHY"
+    ]
+  },
+  {
+    "id": 79,
+    "question": "Who established a movement in 6th-century BC emphasizing the study of mathematics to understand nature?",
+    "answers": [
+      "Pythagoras",
+      "pythagoras",
+      "PYTHAGORAS"
+    ]
+  },
+  {
+    "id": 80,
+    "question": "Which group was the first to teach that the Earth is a sphere revolving around the Sun?",
+    "answers": [
+      "Pythagoreans",
+      "pythagoreans",
+      "PYTHAGOREANS",
+      "The Pythagoreans"
+    ]
+  },
+  {
+    "id": 81,
+    "question": "Who was the first to use the term 'philosophy'?",
+    "answers": [
+      "Plato",
+      "plato",
+      "PLATO"
+    ]
+  },
+  {
+    "id": 82,
+    "question": "What theory proposed by Plato states that objects merely resemble perfect forms in an ideal world?",
+    "answers": [
+      "Theory of forms",
+      "theory of forms",
+      "THEORY OF FORMS"
+    ]
+  },
+  {
+    "id": 83,
+    "question": "Who taught that all things are made up of four elements: air, earth, fire, and water?",
+    "answers": [
+      "Aristotle",
+      "aristotle",
+      "ARISTOTLE"
+    ]
+  },
+  {
+    "id": 84,
+    "question": "Which ancient philosophers believed that matter could be subdivided into tiny atoms?",
+    "answers": [
+      "Democritus and Epicurus",
+      "democritus and epicurus",
+      "DEMOCRITUS AND EPICURUS"
+    ]
+  },
+  {
+    "id": 85,
+    "question": "Who formulated laws describing the behavior of falling bodies and investigated the pendulum?",
+    "answers": [
+      "Galileo Galilei",
+      "galileo galilei",
+      "Galileo",
+      "galileo"
+    ]
+  },
+  {
+    "id": 86,
+    "question": "Who discovered that the orbits of the planets were elliptical in shape?",
+    "answers": [
+      "Johannes Kepler",
+      "johannes kepler",
+      "Kepler",
+      "kepler"
+    ]
+  },
+  {
+    "id": 87,
+    "question": "Who developed the laws of motion and gravitation and made discoveries concerning light?",
+    "answers": [
+      "Isaac Newton",
+      "isaac newton",
+      "Newton",
+      "newton"
+    ]
+  },
+  {
+    "id": 88,
+    "question": "Which two scientists did much of the pioneer work in electricity during the 18th century?",
+    "answers": [
+      "Benjamin Franklin and Michael Faraday",
+      "benjamin franklin and michael faraday"
+    ]
+  },
+  {
+    "id": 89,
+    "question": "Which era started in the 19th century and remains the hallmark of the modern technological civilization?",
+    "answers": [
+      "Industrial Revolution",
+      "industrial revolution",
+      "INDUSTRIAL REVOLUTION"
+    ]
+  },
+  {
+    "id": 90,
+    "question": "Who was the first person to use high-pressure steam to power a vehicle in 1801?",
+    "answers": [
+      "Richard Trevithick",
+      "richard trevithick",
+      "RICHARD TREVITHICK"
+    ]
+  },
+  {
+    "id": 91,
+    "question": "Who were the father and son engineers that ushered in the railway era?",
+    "answers": [
+      "George Stephenson and Robert Stephenson",
+      "george stephenson and robert stephenson"
+    ]
+  },
+  {
+    "id": 92,
+    "question": "Who developed a new process in 1855 for converting crude iron into steel?",
+    "answers": [
+      "Henry Bessemer",
+      "henry bessemer",
+      "Bessemer",
+      "bessemer"
+    ]
+  },
+  {
+    "id": 93,
+    "question": "Who arrived at the design of the modern steam engine 70 years after the first ones were built?",
+    "answers": [
+      "James Watt",
+      "james watt",
+      "JAMES WATT",
+      "Watt",
+      "watt"
+    ]
+  },
+  {
+    "id": 94,
+    "question": "What was the name of the first artificial satellite launched by the Soviet Union in October 1957?",
+    "answers": [
+      "Sputnik 1",
+      "sputnik 1",
+      "Sputnik I",
+      "sputnik i"
+    ]
+  },
+  {
+    "id": 95,
+    "question": "What was the name of the dog that went to space in Sputnik 2?",
+    "answers": [
+      "Laika",
+      "laika",
+      "LAIKA"
+    ]
+  },
+  {
+    "id": 96,
+    "question": "What did the Americans launch three months after Sputnik 2?",
+    "answers": [
+      "Explorer 1",
+      "explorer 1",
+      "EXPLORER 1"
+    ]
+  },
+  {
+    "id": 97,
+    "question": "What agency was created in the United States in October 1958?",
+    "answers": [
+      "NASA",
+      "nasa",
+      "National Aeronautics and Space Administration"
+    ]
+  },
+  {
+    "id": 98,
+    "question": "Who was the Soviet Cosmonaut that manned the first space vehicle in 1961?",
+    "answers": [
+      "Yury A. Gagarin",
+      "yury gagarin",
+      "Yury Gagarin",
+      "yury a gagarin"
+    ]
+  },
+  {
+    "id": 99,
+    "question": "Who were the first humans to set foot on the moon in 1969?",
+    "answers": [
+      "Neil Armstrong and Edwin Aldrin",
+      "neil armstrong and edwin aldrin",
+      "Neil A. Armstrong and Edwin E. Aldrin"
+    ]
+  },
+  {
+    "id": 100,
+    "question": "During which war did the United States drop atomic bombs on Nagasaki and Hiroshima?",
+    "answers": [
+      "Second World War",
+      "second world war",
+      "World War II",
+      "world war 2"
+    ]
+  },
+  {
+    "id": 101,
+    "question": "In what year did the Chernobyl nuclear power plant disaster occur?",
+    "answers": [
+      "1986",
+      "1986",
+      "nineteen eighty six"
+    ]
+  },
+  {
+    "id": 102,
+    "question": "What was developed around 3000 BC as the first computing instrument for general calculation?",
+    "answers": [
+      "Abacus",
+      "abacus",
+      "ABACUS"
+    ]
+  },
+  {
+    "id": 103,
+    "question": "Who invented the slide rule in the 1930s?",
+    "answers": [
+      "William Oughtred",
+      "william oughtred",
+      "WILLIAM OUGHTRED"
+    ]
+  },
+  {
+    "id": 104,
+    "question": "Who built the second mechanical calculator in 1642?",
+    "answers": [
+      "Blaise Pascal",
+      "blaise pascal",
+      "Pascal",
+      "pascal"
+    ]
+  },
+  {
+    "id": 105,
+    "question": "Who built the difference engine in 1822 and the digital analytical engine in 1834?",
+    "answers": [
+      "Charles Babbage",
+      "charles babbage",
+      "Babbage",
+      "babbage"
+    ]
+  },
+  {
+    "id": 106,
+    "question": "Who built the electronic mechanical machine in 1880?",
+    "answers": [
+      "Herman Hollerith",
+      "herman hollerith",
+      "HERMAN HOLLERITH"
+    ]
+  },
+  {
+    "id": 107,
+    "question": "What does IC stand for in the context of computer development?",
+    "answers": [
+      "Integrated circuits",
+      "integrated circuits",
+      "Integrated Circuits"
+    ]
+  },
+  {
+    "id": 108,
+    "question": "Who discovered the properties of hydrogen gas in 1776 and that water is made of hydrogen and oxygen in 1784?",
+    "answers": [
+      "Henry Cavendish",
+      "henry cavendish",
+      "Cavendish",
+      "cavendish"
+    ]
+  },
+  {
+    "id": 109,
+    "question": "Who invented the vacuum (Thermos) flask?",
+    "answers": [
+      "Sir James Dewar",
+      "sir james dewar",
+      "James Dewar",
+      "james dewar"
+    ]
+  },
+  {
+    "id": 110,
+    "question": "Who was the Mayor of Magdeburg that invented the air-pump in 1654?",
+    "answers": [
+      "Otto von Guericke",
+      "otto von guericke",
+      "Otto von guericke"
+    ]
+  },
+  {
+    "id": 111,
+    "question": "Who discovered a layer of gas in the upper atmosphere that could reflect radio waves?",
+    "answers": [
+      "Oliver Heaviside",
+      "oliver heaviside",
+      "Heaviside",
+      "heaviside"
+    ]
+  },
+  {
+    "id": 112,
+    "question": "Who is famous for his discovery of X-rays?",
+    "answers": [
+      "Wilhelm Rontgen",
+      "wilhelm rontgen",
+      "Rontgen",
+      "rontgen"
+    ]
+  },
+  {
+    "id": 113,
+    "question": "Who showed in 1911 that an atom could be split into a nucleus with electrons spinning around it?",
+    "answers": [
+      "Sir Ernest Rutherford",
+      "sir ernest rutherford",
+      "Ernest Rutherford",
+      "ernest rutherford"
+    ]
+  },
+  {
+    "id": 114,
+    "question": "Who succeeded Galileo at Florence University and is best known for making a mercury barometer?",
+    "answers": [
+      "Evangelista Torricelli",
+      "evangelista torricelli",
+      "Torricelli",
+      "torricelli"
+    ]
+  },
+  {
+    "id": 115,
+    "question": "What are the remains of an animal or plant preserved from an earlier era inside a rock called?",
+    "answers": [
+      "Fossil",
+      "fossil",
+      "FOSSILS",
+      "fossils"
+    ]
+  },
+  {
+    "id": 116,
+    "question": "What are fossilized excrements that may contain remains of eaten animals and plants called?",
+    "answers": [
+      "Coprolites",
+      "coprolites",
+      "COPROLITES"
+    ]
+  },
+  {
+    "id": 117,
+    "question": "What is an object made by a human being with archaeological interest called?",
+    "answers": [
+      "Artefact",
+      "artefact",
+      "Artifact",
+      "artifact"
+    ]
+  },
+  {
+    "id": 118,
+    "question": "What is the study of life in prehistoric times using fossil evidence called?",
+    "answers": [
+      "Palaeontology",
+      "palaeontology",
+      "Paleontology",
+      "paleontology"
+    ]
+  },
+  {
+    "id": 119,
+    "question": "What is the theoretical process by which all species develop from earlier forms of life called?",
+    "answers": [
+      "Evolution",
+      "evolution",
+      "EVOLUTION"
+    ]
+  },
+  {
+    "id": 120,
+    "question": "Which prehistoric human skulls were first found in 1856 near Düsseldorf, Germany?",
+    "answers": [
+      "Neanderthals",
+      "neanderthals",
+      "NEANDERTHALS",
+      "Neandertals"
+    ]
+  },
+  {
+    "id": 121,
+    "question": "What term refers to a primate with a two-legged gait, relatively small face and teeth, and large brain?",
+    "answers": [
+      "Hominine",
+      "hominine",
+      "HOMININE",
+      "hominines"
+    ]
+  },
+  {
+    "id": 122,
+    "question": "What is the geological time frame known collectively as the Precambrian era?",
+    "answers": [
+      "Proterozoic, Archaean, and Priscoan eons",
+      "proterozoic, archaean, and priscoan",
+      "Proterozoic, Archaean, and Hadean"
+    ]
+  },
+  {
+    "id": 123,
+    "question": "What anatomical feature seems to have been one of the earliest major hominine characteristics to evolve?",
+    "answers": [
+      "Bipedalism",
+      "bipedalism",
+      "BIPEDALISM",
+      "two-legged walking"
+    ]
+  },
+  {
+    "id": 124,
+    "question": "Most modern human beings have a braincase volume ranging between what sizes in cubic centimeters?",
+    "answers": [
+      "1,200 and 1,500",
+      "1200 and 1500",
+      "1,200 and 1,500 cm3"
+    ]
+  },
+  {
+    "id": 125,
+    "question": "What name means 'Handy Man' and was given to fossils found associated with early stone tools?",
+    "answers": [
+      "Homo habilis",
+      "homo habilis",
+      "HOMO HABILIS"
+    ]
+  },
+  {
+    "id": 126,
+    "question": "What species is also known as 'Work Man'?",
+    "answers": [
+      "Homo ergaster",
+      "homo ergaster",
+      "HOMO ERGASTER"
+    ]
+  },
+  {
+    "id": 127,
+    "question": "At what cave site in northern China is there possible evidence of the use of fire by Homo erectus?",
+    "answers": [
+      "Zhoukoudian",
+      "zhoukoudian",
+      "ZHOUKOUDIAN",
+      "Peking Man cave"
+    ]
+  },
+  {
+    "id": 128,
+    "question": "According to the text, what important event took place about 12,000 years ago?",
+    "answers": [
+      "Plants and animals began to be domesticated",
+      "domestication of plants and animals",
+      "agriculture revolution"
+    ]
+  },
+  {
+    "id": 129,
+    "question": "What term is fittingly used to call the greatest of systems of life, dealing with both living and non-living environments?",
+    "answers": [
+      "Ecosphere",
+      "ecosphere",
+      "ECOSPHERE"
+    ]
+  },
+  {
+    "id": 130,
+    "question": "What refers to the totality of the Earth's living inhabitants?",
+    "answers": [
+      "Biosphere",
+      "biosphere",
+      "BIOSPHERE"
+    ]
+  },
+  {
+    "id": 131,
+    "question": "What refers to the Earth's supply of water, both frozen and liquid?",
+    "answers": [
+      "Hydrosphere",
+      "hydrosphere",
+      "HYDROSPHERE"
+    ]
+  },
+  {
+    "id": 132,
+    "question": "What refers to the rocks and their derivatives wrapping up the core of the earth?",
+    "answers": [
+      "Lithosphere",
+      "lithosphere",
+      "LITHOSPHERE"
+    ]
+  },
+  {
+    "id": 133,
+    "question": "What refers to the mixture of gases surrounding the Earth?",
+    "answers": [
+      "Atmosphere",
+      "atmosphere",
+      "ATMOSPHERE"
+    ]
+  },
+  {
+    "id": 134,
+    "question": "What gas makes up 78 percent of the principal constituents of the Earth's atmosphere?",
+    "answers": [
+      "Nitrogen",
+      "nitrogen",
+      "NITROGEN"
+    ]
+  },
+  {
+    "id": 135,
+    "question": "What gas makes up 21 percent of the principal constituents of the Earth's atmosphere?",
+    "answers": [
+      "Oxygen",
+      "oxygen",
+      "OXYGEN"
+    ]
+  },
+  {
+    "id": 136,
+    "question": "In which atmospheric layer do most clouds occur?",
+    "answers": [
+      "Troposphere",
+      "troposphere",
+      "TROPOSPHERE"
+    ]
+  },
+  {
+    "id": 137,
+    "question": "Which atmospheric layer sits directly above the troposphere?",
+    "answers": [
+      "Stratosphere",
+      "stratosphere",
+      "STRATOSPHERE"
+    ]
+  },
+  {
+    "id": 138,
+    "question": "Which layer is characterized by a marked decrease in temperature as the altitude increases from 50 to 80 km?",
+    "answers": [
+      "Mesosphere",
+      "mesosphere",
+      "MESOSPHERE"
+    ]
+  },
+  {
+    "id": 139,
+    "question": "Which layer is also termed the thermosphere because of its high temperatures and reflects radio waves?",
+    "answers": [
+      "Ionosphere",
+      "ionosphere",
+      "IONOSPHERE"
+    ]
+  },
+  {
+    "id": 140,
+    "question": "What is the region beyond the ionosphere called, extending to the outer limit of the atmosphere?",
+    "answers": [
+      "Exosphere",
+      "exosphere",
+      "EXOSPHERE"
+    ]
+  },
+  {
+    "id": 141,
+    "question": "Normal atmospheric pressure at sea level is how many torrs?",
+    "answers": [
+      "760",
+      "760 torrs",
+      "760 mm"
+    ]
+  },
+  {
+    "id": 142,
+    "question": "What process occurs when carbon dioxide in the atmosphere prevents the escape of outgoing long-wave radiation, raising Earth's temperature?",
+    "answers": [
+      "Greenhouse effect",
+      "greenhouse effect",
+      "GREENHOUSE EFFECT"
+    ]
+  },
+  {
+    "id": 143,
+    "question": "What gas is produced by decomposition in rice paddies, swamps, and intestines of grazing animals, and contributes to the greenhouse effect?",
+    "answers": [
+      "Methane",
+      "methane",
+      "METHANE"
+    ]
+  },
+  {
+    "id": 144,
+    "question": "What type of compounds used in refrigerants and aerosols attack and destroy stratospheric ozone?",
+    "answers": [
+      "Chlorofluorocarbons",
+      "chlorofluorocarbons",
+      "CFCs",
+      "cfcs"
+    ]
+  },
+  {
+    "id": 145,
+    "question": "What environmental phenomenon is caused by the combination of sulphur dioxide and nitrogen compounds with water in the atmosphere?",
+    "answers": [
+      "Acid rain",
+      "acid rain",
+      "ACID RAIN",
+      "Acid deposition"
+    ]
+  },
+  {
+    "id": 146,
+    "question": "What chemical attacks ozone by taking one molecule away to form chlorine monoxide?",
+    "answers": [
+      "Chlorine",
+      "chlorine",
+      "CHLORINE"
+    ]
+  },
+  {
+    "id": 147,
+    "question": "What highly persistent synthetic chemicals are derived from chlorinated hydrocarbons and accumulate in the food chain?",
+    "answers": [
+      "Organochlorine pesticides",
+      "organochlorine pesticides",
+      "Pesticides",
+      "pesticides",
+      "DDT"
+    ]
+  },
+  {
+    "id": 148,
+    "question": "Agent Orange, a defoliant, contains minute traces of what highly toxic compound?",
+    "answers": [
+      "Dioxin",
+      "dioxin",
+      "DIOXIN"
+    ]
+  },
+  {
+    "id": 149,
+    "question": "What type of pollution involves sources that can be specifically identified, such as factories or outfall pipes?",
+    "answers": [
+      "Point pollution",
+      "point pollution",
+      "POINT POLLUTION"
+    ]
+  },
+  {
+    "id": 150,
+    "question": "What type of pollution comes from sources that cannot be precisely identified, such as agricultural runoff?",
+    "answers": [
+      "Non-point pollution",
+      "non-point pollution",
+      "NON-POINT POLLUTION"
+    ]
+  },
+  {
+    "id": 151,
+    "question": "According to the text, how many people worldwide die each year from drinking contaminated water?",
+    "answers": [
+      "10 million",
+      "10 million",
+      "ten million",
+      "10,000,000"
+    ]
+  },
+  {
+    "id": 152,
+    "question": "What severe form of soil erosion is greatly accelerated by human activities like deforestation and overgrazing?",
+    "answers": [
+      "Gully formation",
+      "gully formation",
+      "GULLY FORMATION"
+    ]
+  },
+  {
+    "id": 153,
+    "question": "In what year did Albert Einstein express the relationship between matter and energy with the formula E=mc²?",
+    "answers": [
+      "1905",
+      "1905",
+      "nineteen oh five"
+    ]
+  },
+  {
+    "id": 154,
+    "question": "In its most basic form, what is science driven by?",
+    "answers": [
+      "Curiosity and speculation",
+      "curiosity and speculation",
+      "CURIOSITY AND SPECULATION"
+    ]
+  },
+  {
+    "id": 155,
+    "question": "What has the goal of creating and improving artefacts and systems to satisfy human wants or aspirations?",
+    "answers": [
+      "Technology",
+      "technology",
+      "TECHNOLOGY"
+    ]
+  },
+  {
+    "id": 156,
+    "question": "Whereas the output from technology is a patent, what is the typical output from science?",
+    "answers": [
+      "Published paper",
+      "published paper",
+      "PUBLISHED PAPER",
+      "A published paper"
+    ]
+  },
+  {
+    "id": 157,
+    "question": "What is the typical output of technology that confers sole ownership of the invention on the holder?",
+    "answers": [
+      "Patent",
+      "patent",
+      "PATENT",
+      "A patent"
+    ]
+  },
+  {
+    "id": 158,
+    "question": "Name one notable achievement of Asian technology by the end of the first millennium AD.",
+    "answers": [
+      "Iron production",
+      "iron production",
+      "Printing",
+      "printing",
+      "Hydraulic engineering",
+      "hydraulic engineering"
+    ]
+  },
+  {
+    "id": 159,
+    "question": "What high-quality textile products from southern Asia set standards that incentivized technological developments in Britain?",
+    "answers": [
+      "Painted and printed cotton goods",
+      "painted and printed cotton goods",
+      "Indian textile products",
+      "indian textile products"
+    ]
+  },
+  {
+    "id": 160,
+    "question": "Why is history considered not to be an exact science?",
+    "answers": [
+      "It cannot reproduce experiments",
+      "cannot reproduce experiments",
+      "history cannot reproduce experiments"
+    ]
+  },
+  {
+    "id": 161,
+    "question": "How many steps are typically in the standard list of the scientific method?",
+    "answers": [
+      "Six",
+      "six",
+      "6",
+      "SIX"
+    ]
+  },
+  {
+    "id": 162,
+    "question": "What is the first step of the scientific method?",
+    "answers": [
+      "Purpose",
+      "purpose",
+      "PURPOSE",
+      "Question",
+      "question"
+    ]
+  },
+  {
+    "id": 163,
+    "question": "What is the second step of the scientific method where you conduct background investigation?",
+    "answers": [
+      "Research",
+      "research",
+      "RESEARCH"
+    ]
+  },
+  {
+    "id": 164,
+    "question": "What is the step of the scientific method where you propose an educated guess?",
+    "answers": [
+      "Hypothesis",
+      "hypothesis",
+      "HYPOTHESIS"
+    ]
+  },
+  {
+    "id": 165,
+    "question": "What is the step of the scientific method where you design and perform tests?",
+    "answers": [
+      "Experiment",
+      "experiment",
+      "EXPERIMENT"
+    ]
+  },
+  {
+    "id": 166,
+    "question": "What is the step of the scientific method where you record observations and interpret what they mean?",
+    "answers": [
+      "Data/Analysis",
+      "data/analysis",
+      "Data",
+      "data",
+      "Analysis",
+      "analysis"
+    ]
+  },
+  {
+    "id": 167,
+    "question": "What is the final step of the scientific method where you accept or reject your hypothesis?",
+    "answers": [
+      "Conclusion",
+      "conclusion",
+      "CONCLUSION"
+    ]
+  },
+  {
+    "id": 168,
+    "question": "In an experiment, which variable do you change or control?",
+    "answers": [
+      "Independent variable",
+      "independent variable",
+      "INDEPENDENT VARIABLE"
+    ]
+  },
+  {
+    "id": 169,
+    "question": "In an experiment, which variable's effect do you record?",
+    "answers": [
+      "Dependent variable",
+      "dependent variable",
+      "DEPENDENT VARIABLE"
+    ]
+  },
+  {
+    "id": 170,
+    "question": "Who originally wrote histories of science to communicate the virtues of science to the public?",
+    "answers": [
+      "Scientists",
+      "scientists",
+      "practicing and retired scientists",
+      "Practicing and retired scientists"
+    ]
+  },
+  {
+    "id": 171,
+    "question": "Histories of science originally started primarily with which individual?",
+    "answers": [
+      "William Whewell",
+      "william whewell",
+      "WILLIAM WHEWELL"
+    ]
+  },
+  {
+    "id": 172,
+    "question": "Which Soviet historian gave a famous paper in the early 1930s about scientific practices?",
+    "answers": [
+      "Boris Hessen",
+      "boris hessen",
+      "BORIS HESSEN"
+    ]
+  },
+  {
+    "id": 173,
+    "question": "Whose work in the 1960s led the history of science discipline to critically examine the scientific enterprise?",
+    "answers": [
+      "Thomas Kuhn",
+      "thomas kuhn",
+      "THOMAS KUHN"
+    ]
+  },
+  {
+    "id": 174,
+    "question": "As used originally by the ancient Greeks, what did the term 'philosophy' mean?",
+    "answers": [
+      "Pursuit of knowledge for its own sake",
+      "pursuit of knowledge for its own sake",
+      "pursuit of knowledge"
+    ]
+  },
+  {
+    "id": 175,
+    "question": "What term defines all matter and energy that exists in the vastness of space?",
+    "answers": [
+      "Universe",
+      "universe",
+      "UNIVERSE"
+    ]
+  },
+  {
+    "id": 176,
+    "question": "What word means an ordered system or harmonious whole?",
+    "answers": [
+      "Cosmos",
+      "cosmos",
+      "COSMOS"
+    ]
+  },
+  {
+    "id": 177,
+    "question": "What word describes the physical world including all natural phenomena and living things?",
+    "answers": [
+      "Nature",
+      "nature",
+      "NATURE"
+    ]
+  },
+  {
+    "id": 178,
+    "question": "What word means the solid dry land surface of the planet, as opposed to the sea or sky?",
+    "answers": [
+      "Earth",
+      "earth",
+      "EARTH"
+    ]
+  },
+  {
+    "id": 179,
+    "question": "What is defined as the ability of man to arrange or adapt natural things to his own use?",
+    "answers": [
+      "Arts",
+      "arts",
+      "ARTS",
+      "Art",
+      "art"
+    ]
+  },
+  {
+    "id": 180,
+    "question": "Who stated, 'If they do not depend on true evidence, scientists are no better than gossips.'?",
+    "answers": [
+      "Penelope Fitzgerald",
+      "penelope fitzgerald",
+      "PENELOPE FITZGERALD"
+    ]
+  },
+  {
+    "id": 181,
+    "question": "Who stated, 'It is a capital mistake to theorize before one has data'?",
+    "answers": [
+      "Sir Arthur Conan Doyle",
+      "sir arthur conan doyle",
+      "Arthur Conan Doyle",
+      "arthur conan doyle"
+    ]
+  },
+  {
+    "id": 182,
+    "question": "According to philosopher Karl Popper, aspects of knowledge described as scientific must be capable of what?",
+    "answers": [
+      "Refutation",
+      "refutation",
+      "REFUTATION"
+    ]
+  },
+  {
+    "id": 183,
+    "question": "Knowledge which cannot be investigated scientifically is described as what?",
+    "answers": [
+      "Metaphysical",
+      "metaphysical",
+      "METAPHYSICAL"
+    ]
+  },
+  {
+    "id": 184,
+    "question": "What are the four parts of an experiment?",
+    "answers": [
+      "Problem, Procedure, Observation, Conclusion",
+      "problem, procedure, observation, conclusion"
+    ]
+  },
+  {
+    "id": 185,
+    "question": "In an experiment, what do you call the group that does not receive the drug?",
+    "answers": [
+      "Control group",
+      "control group",
+      "CONTROL GROUP",
+      "The control group"
+    ]
+  },
+  {
+    "id": 186,
+    "question": "In an experiment, what do you call the group that is given the new drug?",
+    "answers": [
+      "Experimental group",
+      "experimental group",
+      "EXPERIMENTAL GROUP",
+      "The experimental group"
+    ]
+  },
+  {
+    "id": 187,
+    "question": "What are three characteristics of a scientific theory?",
+    "answers": [
+      "Rational, relevant, extensible",
+      "rational, relevant, extensible",
+      "Rational, Relevant, Extensible"
+    ]
+  },
+  {
+    "id": 188,
+    "question": "Which characteristic of a scientific theory means it must hang together logically without inner contradictions?",
+    "answers": [
+      "Rational",
+      "rational",
+      "RATIONAL"
+    ]
+  },
+  {
+    "id": 189,
+    "question": "Which characteristic of a scientific theory means it should explain more facts than it was originally intended to cover?",
+    "answers": [
+      "Extensible",
+      "extensible",
+      "EXTENSIBLE"
+    ]
+  },
+  {
+    "id": 190,
+    "question": "A scientific theory that remains unchanged for many years may be accepted as what?",
+    "answers": [
+      "Scientific law",
+      "scientific law",
+      "SCIENTIFIC LAW",
+      "A scientific law"
+    ]
+  },
+  {
+    "id": 191,
+    "question": "What law states that a diffusing substance moves from where its concentration is larger to where it is smaller?",
+    "answers": [
+      "Fick's First Law of Diffusion",
+      "fick's first law of diffusion",
+      "Fick's first law",
+      "fick's first law"
+    ]
+  },
+  {
+    "id": 192,
+    "question": "What model illustrates how scientific knowledge is generated by discoveries, validated, published, and applied?",
+    "answers": [
+      "Discovery model",
+      "discovery model",
+      "DISCOVERY MODEL",
+      "Linear discovery model"
+    ]
+  },
+  {
+    "id": 193,
+    "question": "What is the term for an existing knowledge set or 'initial state idea' held by a learner concerning an event?",
+    "answers": [
+      "Preconception",
+      "preconception",
+      "PRECONCEPTION"
+    ]
+  },
+  {
+    "id": 194,
+    "question": "What is a particular tendency or inclination that prevents impartial consideration of a question?",
+    "answers": [
+      "Bias",
+      "bias",
+      "BIAS"
+    ]
+  },
+  {
+    "id": 195,
+    "question": "What are negative opinions or feelings formed before an investigation without evidence called?",
+    "answers": [
+      "Prejudice",
+      "prejudice",
+      "PREJUDICE",
+      "Prejudices",
+      "prejudices"
+    ]
+  },
+  {
+    "id": 196,
+    "question": "What was man's first hard metal utilized in the making of weapons and tools?",
+    "answers": [
+      "Bronze",
+      "bronze",
+      "BRONZE"
+    ]
+  },
+  {
+    "id": 197,
+    "question": "Bronze is an alloy of what two metals?",
+    "answers": [
+      "Tin and copper",
+      "tin and copper",
+      "copper and tin",
+      "Copper and tin"
+    ]
+  },
+  {
+    "id": 198,
+    "question": "The Bronze Age spans the period from about 2000 BC to what year in Europe?",
+    "answers": [
+      "700 BC",
+      "700 bc",
+      "700",
+      "700 B.C."
+    ]
+  },
+  {
+    "id": 199,
+    "question": "In the early Bronze Age, what geological problem in Cyprus was caused by deforestation and intensive agriculture?",
+    "answers": [
+      "Soil erosion",
+      "soil erosion",
+      "SOIL EROSION"
+    ]
+  },
+  {
+    "id": 200,
+    "question": "What heavy neck rings worn by Celtic warriors were made from gold and silver prestige materials?",
+    "answers": [
+      "Torcs",
+      "torcs",
+      "TORCS"
+    ]
+  },
+  {
+    "id": 201,
+    "question": "Who was the Greek philosopher that profoundly altered Western philosophical thought and died in Athens around 400 BC?",
+    "answers": [
+      "Socrates",
+      "socrates",
+      "SOCRATES"
+    ]
+  },
+  {
+    "id": 202,
+    "question": "Which famous ancient Greek philosopher proposed the theory of forms?",
+    "answers": [
+      "Plato",
+      "plato",
+      "PLATO"
+    ]
+  },
+  {
+    "id": 203,
+    "question": "Where was Aristotle born?",
+    "answers": [
+      "Stagira",
+      "stagira",
+      "STAGIRA"
+    ]
+  },
+  {
+    "id": 204,
+    "question": "At age seventeen, Aristotle became a pupil of whom at Athens?",
+    "answers": [
+      "Plato",
+      "plato",
+      "PLATO"
+    ]
+  },
+  {
+    "id": 205,
+    "question": "Name one of the ancient philosophers who believed matter could be subdivided into tiny atoms.",
+    "answers": [
+      "Democritus",
+      "democritus",
+      "Epicurus",
+      "epicurus"
+    ]
+  },
+  {
+    "id": 206,
+    "question": "Who formulated laws describing the behavior of falling bodies and investigated the pendulum?",
+    "answers": [
+      "Galileo Galilei",
+      "galileo galilei",
+      "Galileo",
+      "galileo"
+    ]
+  },
+  {
+    "id": 207,
+    "question": "Who discovered that the orbits of the planets were elliptical in shape?",
+    "answers": [
+      "Johannes Kepler",
+      "johannes kepler",
+      "Kepler",
+      "kepler"
+    ]
+  },
+  {
+    "id": 208,
+    "question": "Who developed the laws of motion and gravitation and made basic discoveries concerning light?",
+    "answers": [
+      "Isaac Newton",
+      "isaac newton",
+      "Newton",
+      "newton"
+    ]
+  },
+  {
+    "id": 209,
+    "question": "Name one of the two scientists who did pioneer work in electricity during the 18th century.",
+    "answers": [
+      "Benjamin Franklin",
+      "benjamin franklin",
+      "Michael Faraday",
+      "michael faraday"
+    ]
+  },
+  {
+    "id": 210,
+    "question": "Name one of the two scientists who put the study of heat on a scholarly basis.",
+    "answers": [
+      "Count Rumford",
+      "count rumford",
+      "James P. Joule",
+      "james p. joule",
+      "James Joule",
+      "james joule"
+    ]
+  },
+  {
+    "id": 211,
+    "question": "What was considered the great invention of the 19th century that linked industrial centres?",
+    "answers": [
+      "Railway",
+      "railway",
+      "RAILWAY"
+    ]
+  },
+  {
+    "id": 212,
+    "question": "Who was the first person to use high-pressure steam to power a vehicle in 1801?",
+    "answers": [
+      "Richard Trevithick",
+      "richard trevithick",
+      "RICHARD TREVITHICK"
+    ]
+  },
+  {
+    "id": 213,
+    "question": "Who developed a new process in 1855 for converting crude iron into steel?",
+    "answers": [
+      "Henry Bessemer",
+      "henry bessemer",
+      "Bessemer",
+      "bessemer"
+    ]
+  },
+  {
+    "id": 214,
+    "question": "Name one of the early pioneers of space exploration mentioned alongside Robert H. Goddard.",
+    "answers": [
+      "Konstantin K. Tsiolkovsky",
+      "konstantin tsiolkovsky",
+      "Hermann Oberth",
+      "hermann oberth"
+    ]
+  },
+  {
+    "id": 215,
+    "question": "What was the name of the first artificial satellite launched into the earth orbit in October 1957?",
+    "answers": [
+      "Sputnik 1",
+      "sputnik 1",
+      "Sputnik I",
+      "sputnik i"
+    ]
+  },
+  {
+    "id": 216,
+    "question": "What was the name of the live dog launched in Sputnik 2?",
+    "answers": [
+      "Laika",
+      "laika",
+      "LAIKA"
+    ]
+  },
+  {
+    "id": 217,
+    "question": "What agency was created in the United States in October 1958?",
+    "answers": [
+      "NASA",
+      "nasa",
+      "National Aeronautics and Space Administration"
+    ]
+  },
+  {
+    "id": 218,
+    "question": "Who was the Soviet Cosmonaut that manned the first space vehicle on 12th April 1961?",
+    "answers": [
+      "Yury A. Gagarin",
+      "yury gagarin",
+      "Yury Gagarin",
+      "yury a gagarin"
+    ]
+  },
+  {
+    "id": 219,
+    "question": "Who were the two U.S. Astronauts of the Apollo 11 Lunar Module to set foot on the moon in 1969?",
+    "answers": [
+      "Neil A. Armstrong and Edwin E. Aldrin",
+      "neil armstrong and edwin aldrin",
+      "Armstrong and Aldrin",
+      "armstrong and aldrin"
+    ]
+  },
+  {
+    "id": 220,
+    "question": "During the Second World War in 1945, the U.S. dropped atomic bombs on which two Japanese cities?",
+    "answers": [
+      "Nagasaki and Hiroshima",
+      "nagasaki and hiroshima",
+      "Hiroshima and Nagasaki",
+      "hiroshima and nagasaki"
+    ]
+  },
+  {
+    "id": 221,
+    "question": "In what year did the disastrous nuclear power plant accident in Chernobyl occur?",
+    "answers": [
+      "1986",
+      "1986",
+      "nineteen eighty six"
+    ]
+  },
+  {
+    "id": 222,
+    "question": "What was developed around 3000 BC as the first computing instrument for exclusive general calculation?",
+    "answers": [
+      "Abacus",
+      "abacus",
+      "ABACUS"
+    ]
+  },
+  {
+    "id": 223,
+    "question": "Who invented the mechanical computing machine in 1623-24?",
+    "answers": [
+      "Wilhelm Schickard",
+      "wilhelm schickard",
+      "WILHELM SCHICKARD"
+    ]
+  },
+  {
+    "id": 224,
+    "question": "Who invented the slide rule in the 1930s?",
+    "answers": [
+      "William Oughtred",
+      "william oughtred",
+      "WILLIAM OUGHTRED"
+    ]
+  },
+  {
+    "id": 225,
+    "question": "Who built the second mechanical calculator in 1642?",
+    "answers": [
+      "Blaise Pascal",
+      "blaise pascal",
+      "Pascal",
+      "pascal"
+    ]
+  },
+  {
+    "id": 226,
+    "question": "Who built the difference engine in 1822?",
+    "answers": [
+      "Charles Babbage",
+      "charles babbage",
+      "Babbage",
+      "babbage"
+    ]
+  },
+  {
+    "id": 227,
+    "question": "Who built the electronic mechanical machine in 1880?",
+    "answers": [
+      "Herman Hollerith",
+      "herman hollerith",
+      "HERMAN HOLLERITH"
+    ]
+  },
+  {
+    "id": 228,
+    "question": "Who discovered the properties of hydrogen gas in 1776 and split water into hydrogen and oxygen in 1784?",
+    "answers": [
+      "Henry Cavendish",
+      "henry cavendish",
+      "Cavendish",
+      "cavendish"
+    ]
+  },
+  {
+    "id": 229,
+    "question": "Who invented the vacuum (Thermos) flask and was the first to turn hydrogen gas into a liquid?",
+    "answers": [
+      "Sir James Dewar",
+      "sir james dewar",
+      "James Dewar",
+      "james dewar"
+    ]
+  },
+  {
+    "id": 230,
+    "question": "Who was the Mayor of Magdeburg that invented the air-pump in 1654?",
+    "answers": [
+      "Otto von Guericke",
+      "otto von guericke",
+      "Otto von Guericke",
+      "otto von guericke"
+    ]
+  },
+  {
+    "id": 231,
+    "question": "Who discovered a layer of gas in the upper atmosphere that could reflect back radio waves to the earth?",
+    "answers": [
+      "Oliver Heaviside",
+      "oliver heaviside",
+      "Heaviside",
+      "heaviside"
+    ]
+  },
+  {
+    "id": 232,
+    "question": "Who is famous for the discovery of X-rays?",
+    "answers": [
+      "Wilhelm Rontgen",
+      "wilhelm rontgen",
+      "Rontgen",
+      "rontgen"
+    ]
+  },
+  {
+    "id": 233,
+    "question": "Who showed in 1911 that an atom could be split into a nucleus at the centre with electrons spinning around it?",
+    "answers": [
+      "Sir Ernest Rutherford",
+      "sir ernest rutherford",
+      "Ernest Rutherford",
+      "ernest rutherford"
+    ]
+  },
+  {
+    "id": 234,
+    "question": "Who succeeded Galileo as Professor at Florence University and is best known for making a mercury barometer?",
+    "answers": [
+      "Evangelista Torricelli",
+      "evangelista torricelli",
+      "Torricelli",
+      "torricelli"
+    ]
+  },
+  {
+    "id": 235,
+    "question": "What are the remains of an animal or plant preserved from an earlier era inside a rock called?",
+    "answers": [
+      "Fossil",
+      "fossil",
+      "FOSSILS",
+      "fossils"
+    ]
+  },
+  {
+    "id": 236,
+    "question": "What is fossilized excrement that may contain remains of eaten animals and plants called?",
+    "answers": [
+      "Coprolites",
+      "coprolites",
+      "COPROLITES"
+    ]
+  },
+  {
+    "id": 237,
+    "question": "What is an object made by a human being that has archaeological or cultural interest called?",
+    "answers": [
+      "Artefact",
+      "artefact",
+      "Artifact",
+      "artifact"
+    ]
+  },
+  {
+    "id": 238,
+    "question": "What is the study of life in prehistoric times using fossil evidence called?",
+    "answers": [
+      "Palaeontology",
+      "palaeontology",
+      "Paleontology",
+      "paleontology"
+    ]
+  },
+  {
+    "id": 239,
+    "question": "What is the sequence of events involved in the evolutionary development of a species or taxonomic group called?",
+    "answers": [
+      "Phylogeny",
+      "phylogeny",
+      "PHYLOGENY"
+    ]
+  },
+  {
+    "id": 240,
+    "question": "What term contrasts with phylogeny and means the development of an individual?",
+    "answers": [
+      "Ontogeny",
+      "ontogeny",
+      "ONTOGENY"
+    ]
+  },
+  {
+    "id": 241,
+    "question": "What is the theoretical process by which all species develop from earlier forms of life called?",
+    "answers": [
+      "Evolution",
+      "evolution",
+      "EVOLUTION"
+    ]
+  },
+  {
+    "id": 242,
+    "question": "What prehistoric human skulls were once thought to be primitive ancestors of modern human beings and found between 100,000 and 30,000 BC?",
+    "answers": [
+      "Neanderthals",
+      "neanderthals",
+      "NEANDERTHALS",
+      "Neandertals",
+      "neandertals"
+    ]
+  },
+  {
+    "id": 243,
+    "question": "Which two German anthropologists first found Neanderthal fossils in 1856?",
+    "answers": [
+      "Johann Fuhlrott and Hermann Schaaffhausen",
+      "johann fuhlrott and hermann schaaffhausen"
+    ]
+  },
+  {
+    "id": 244,
+    "question": "What is the term for a primate with a two-legged gait, relatively small face and teeth, and large brain?",
+    "answers": [
+      "Hominine",
+      "hominine",
+      "HOMININE"
+    ]
+  },
+  {
+    "id": 245,
+    "question": "What eons are collectively and informally known as the Precambrian era?",
+    "answers": [
+      "Proterozoic, Archaean, and Priscoan",
+      "proterozoic, archaean, and priscoan",
+      "Proterozoic, Archaean, and Hadean"
+    ]
+  },
+  {
+    "id": 246,
+    "question": "What form of locomotion led to skeletal modifications in the neck, lower spinal column, pelvis, and legs?",
+    "answers": [
+      "Bipedalism",
+      "bipedalism",
+      "BIPEDALISM",
+      "Two-legged walking"
+    ]
+  },
+  {
+    "id": 247,
+    "question": "Most modern human beings have a braincase volume ranging between what numbers in cubic centimetres?",
+    "answers": [
+      "1,200 and 1,500",
+      "1200 and 1500",
+      "1,200 and 1,500 cm3"
+    ]
+  },
+  {
+    "id": 248,
+    "question": "About how many years ago were human beings able to cross the water barrier into Australia?",
+    "answers": [
+      "60,000",
+      "60000",
+      "sixty thousand"
+    ]
+  },
+  {
+    "id": 249,
+    "question": "Which species is known as 'Handy Man' because the fossils were found associated with early stone tools?",
+    "answers": [
+      "Homo habilis",
+      "homo habilis",
+      "HOMO HABILIS"
+    ]
+  },
+  {
+    "id": 250,
+    "question": "Which species was named after an old name for Lake Turkana in northern Kenya?",
+    "answers": [
+      "Homo rudolfensis",
+      "homo rudolfensis",
+      "HOMO RUDOLFENSIS"
+    ]
+  },
+  {
+    "id": 251,
+    "question": "When was Principia Mathematica published?",
+    "answers": [
+      "1687",
+      "1687 AD"
+    ]
+  },
+  {
+    "id": 252,
+    "question": "The love of wisdom can be described as the desire to find out what is ___ and ___.",
+    "answers": [
+      "Real and True",
+      "real and true",
+      "REAL AND TRUE",
+      "true and real"
+    ]
+  },
+  {
+    "id": 253,
+    "question": "Philosophy is a kind of calling or ___.",
+    "answers": [
+      "Vocation",
+      "vocation",
+      "VOCATION"
+    ]
+  },
+  {
+    "id": 254,
+    "question": "The definition of the term philosophy remains a subject of ___.",
+    "answers": [
+      "Controversy",
+      "controversy",
+      "CONTROVERSY"
+    ]
+  },
+  {
+    "id": 255,
+    "question": "The investigation of ultimate reality is known as ___.",
+    "answers": [
+      "Metaphysics",
+      "metaphysics",
+      "METAPHYSICS"
+    ]
+  },
+  {
+    "id": 256,
+    "question": "The study of morality and good is called ___.",
+    "answers": [
+      "Ethics",
+      "ethics",
+      "ETHICS"
+    ]
+  },
+  {
+    "id": 257,
+    "question": "What branch of philosophy is the study of origin, validity and limits of knowledge?",
+    "answers": [
+      "Epistemology",
+      "epistemology",
+      "EPISTEMOLOGY"
+    ]
+  },
+  {
+    "id": 258,
+    "question": "What is the study of the nature of beauty and art?",
+    "answers": [
+      "Aesthetics",
+      "aesthetics",
+      "AESTHETICS"
+    ]
+  },
+  {
+    "id": 259,
+    "question": "What is the arrangement of concepts into a unified system known as?",
+    "answers": [
+      "Synthetic Philosophy",
+      "synthetic philosophy",
+      "SYNTHETIC PHILOSOPHY",
+      "Synthetic philosophy"
+    ]
+  },
+  {
+    "id": 260,
+    "question": "What is the logical study of concepts known as?",
+    "answers": [
+      "Analytic Philosophy",
+      "analytic philosophy",
+      "ANALYTIC PHILOSOPHY",
+      "Analytic philosophy"
+    ]
+  },
+  {
+    "id": 261,
+    "question": "The philosopher's concern is not with observation and experiment, but rather with the ___ of observation and experiment.",
+    "answers": [
+      "Significance",
+      "significance",
+      "SIGNIFICANCE"
+    ]
+  },
+  {
+    "id": 262,
+    "question": "The interpretation of observation leads to ___.",
+    "answers": [
+      "Knowledge",
+      "knowledge",
+      "KNOWLEDGE"
+    ]
+  },
+  {
+    "id": 263,
+    "question": "Newton's first law is also known as the Law of ___.",
+    "answers": [
+      "Inertia",
+      "inertia",
+      "INERTIA"
+    ]
+  },
+  {
+    "id": 264,
+    "question": "Science may be defined in terms of either ___ and ___.",
+    "answers": [
+      "Knowledge and Method",
+      "knowledge and method",
+      "method and knowledge"
+    ]
+  },
+  {
+    "id": 265,
+    "question": "Karl Popper stated that scientific knowledge must be capable of ___.",
+    "answers": [
+      "Refutation",
+      "refutation",
+      "REFUTATION"
+    ]
+  },
+  {
+    "id": 266,
+    "question": "Knowledge which cannot be investigated is not scientific and is described as ___.",
+    "answers": [
+      "Metaphysical",
+      "metaphysical",
+      "METAPHYSICAL"
+    ]
+  },
+  {
+    "id": 267,
+    "question": "All facts related to a particular problem are called ___.",
+    "answers": [
+      "Data",
+      "data",
+      "DATA"
+    ]
+  },
+  {
+    "id": 268,
+    "question": "The word data originated as the plural of the Latin word datum, meaning ___.",
+    "answers": [
+      "Something given",
+      "something given",
+      "SOMETHING GIVEN"
+    ]
+  },
+  {
+    "id": 269,
+    "question": "A particular natural event is called a ___.",
+    "answers": [
+      "Phenomenon",
+      "phenomenon",
+      "PHENOMENON"
+    ]
+  },
+  {
+    "id": 270,
+    "question": "Scientists use hypotheses to formulate a logical explanation for a phenomenon, which are essentially scientific ___.",
+    "answers": [
+      "Hunches",
+      "hunches",
+      "HUNCHES",
+      "Guesses",
+      "guesses"
+    ]
+  },
+  {
+    "id": 271,
+    "question": "Hypotheses can be tested by ___.",
+    "answers": [
+      "Experiments",
+      "experiments",
+      "EXPERIMENTS"
+    ]
+  },
+  {
+    "id": 272,
+    "question": "An important feature of an experiment is the ___, which helps compare results.",
+    "answers": [
+      "Control",
+      "control",
+      "CONTROL"
+    ]
+  },
+  {
+    "id": 273,
+    "question": "What was discovered so that food could be cooked rather than eaten raw or dried?",
+    "answers": [
+      "Fire",
+      "fire",
+      "FIRE"
+    ]
+  },
+  {
+    "id": 274,
+    "question": "What resulted in the sudden stoppage of wandering and the periodic supply of food?",
+    "answers": [
+      "Soil cultivation",
+      "soil cultivation",
+      "SOIL CULTIVATION",
+      "Agriculture",
+      "agriculture"
+    ]
+  },
+  {
+    "id": 275,
+    "question": "What is the earliest period of human culture when tools were made of stone, bones, antler, or wood?",
+    "answers": [
+      "Stone Age",
+      "stone age",
+      "STONE AGE"
+    ]
+  },
+  {
+    "id": 276,
+    "question": "What was man's very first tool before the use of wood or stone?",
+    "answers": [
+      "Bare hands",
+      "bare hands",
+      "BARE HANDS"
+    ]
+  },
+  {
+    "id": 277,
+    "question": "Sir John Lubbock subdivided the Stone Age into the Neolithic and ___ periods.",
+    "answers": [
+      "Palaeolithic",
+      "palaeolithic",
+      "Paleolithic",
+      "paleolithic",
+      "PALAEOLITHIC"
+    ]
+  },
+  {
+    "id": 278,
+    "question": "What primary material was used for tool making in the Stone Age because it fractured with sharp edges?",
+    "answers": [
+      "Flint",
+      "flint",
+      "FLINT"
+    ]
+  },
+  {
+    "id": 279,
+    "question": "The period in antiquity that corresponds to the introduction of metallurgy is the ___ Age.",
+    "answers": [
+      "Bronze",
+      "bronze",
+      "BRONZE",
+      "Bronze Age",
+      "bronze age"
+    ]
+  },
+  {
+    "id": 280,
+    "question": "In Europe, the Bronze Age spans the period of about 2000 to ___ BC.",
+    "answers": [
+      "700",
+      "700 BC",
+      "700 bc"
+    ]
+  },
+  {
+    "id": 281,
+    "question": "What denotes the period between the end of the bronze age and the spread of the Roman empire?",
+    "answers": [
+      "Iron Age",
+      "iron age",
+      "IRON AGE"
+    ]
+  },
+  {
+    "id": 282,
+    "question": "Who established a movement in 6th century BC southern Italy that emphasized the study of mathematics?",
+    "answers": [
+      "Pythagoras",
+      "pythagoras",
+      "PYTHAGORAS"
+    ]
+  },
+  {
+    "id": 283,
+    "question": "At what age did Aristotle become a pupil of Plato at Athens?",
+    "answers": [
+      "Seventeen",
+      "seventeen",
+      "17"
+    ]
+  },
+  {
+    "id": 284,
+    "question": "Aristotle taught that all things are made up of 4 elements namely Air, Earth, Fire, and ___.",
+    "answers": [
+      "Water",
+      "water",
+      "WATER"
+    ]
+  },
+  {
+    "id": 285,
+    "question": "Who developed the laws of motion and gravitation?",
+    "answers": [
+      "Isaac Newton",
+      "isaac newton",
+      "Newton",
+      "newton"
+    ]
+  },
+  {
+    "id": 286,
+    "question": "The industrial revolution started in the ___ century.",
+    "answers": [
+      "19th",
+      "19th century",
+      "nineteenth",
+      "19"
+    ]
+  },
+  {
+    "id": 287,
+    "question": "Who was the first person to use high-pressure steam to power a vehicle in 1801?",
+    "answers": [
+      "Richard Trevithick",
+      "richard trevithick",
+      "RICHARD TREVITHICK"
+    ]
+  },
+  {
+    "id": 288,
+    "question": "Who arrived at the design of the modern steam engine in 1760?",
+    "answers": [
+      "James Watt",
+      "james watt",
+      "JAMES WATT"
+    ]
+  },
+  {
+    "id": 289,
+    "question": "The Soviet Union launched its first satellite named ___ in October 1957.",
+    "answers": [
+      "Sputnik 1",
+      "sputnik 1",
+      "Sputnik I",
+      "SPUTNIK 1"
+    ]
+  },
+  {
+    "id": 290,
+    "question": "How many men have walked on the moon's surface and returned to earth?",
+    "answers": [
+      "12",
+      "Twelve",
+      "12 men",
+      "twelve"
+    ]
+  },
+  {
+    "id": 291,
+    "question": "Atomic energy was utilized militarily during which war?",
+    "answers": [
+      "Second World War",
+      "second world war",
+      "World War 2",
+      "WW2"
+    ]
+  },
+  {
+    "id": 292,
+    "question": "The disastrous effect of the ___ nuclear power plant in the USSR happened in 1986.",
+    "answers": [
+      "Chernobyl",
+      "chernobyl",
+      "CHERNOBYL"
+    ]
+  },
+  {
+    "id": 293,
+    "question": "What is the remains of an animal or plant preserved from an earlier era inside a rock or geological deposit?",
+    "answers": [
+      "Fossils",
+      "fossils",
+      "Fossil",
+      "fossil"
+    ]
+  },
+  {
+    "id": 294,
+    "question": "What is an object made by a human being, especially one that has archaeological or cultural interest?",
+    "answers": [
+      "Artefact",
+      "artefact",
+      "Artifact",
+      "artifact"
+    ]
+  },
+  {
+    "id": 295,
+    "question": "What is the sequence of events involved in the evolutionary development of a species or taxonomic group of organisms?",
+    "answers": [
+      "Phylogeny",
+      "phylogeny",
+      "PHYLOGENY"
+    ]
+  },
+  {
+    "id": 296,
+    "question": "Who first found Neanderthal fossils in 1856 in the Neander Valley?",
+    "answers": [
+      "Johann Fuhlrott and Hermann Schaaffhausen",
+      "Fuhlrott and Schaaffhausen",
+      "johann fuhlrott and hermann schaaffhausen"
+    ]
+  },
+  {
+    "id": 297,
+    "question": "The human skull has changed dramatically during the past ___ years.",
+    "answers": [
+      "3 million",
+      "3,000,000",
+      "three million"
+    ]
+  },
+  {
+    "id": 298,
+    "question": "Homo sapiens is also known as modern ___.",
+    "answers": [
+      "Human beings",
+      "human beings",
+      "Humans",
+      "humans"
+    ]
+  },
+  {
+    "id": 299,
+    "question": "Homo erectus is also known as ___ man.",
+    "answers": [
+      "Workman",
+      "workman",
+      "Work man",
+      "work man"
+    ]
+  },
+  {
+    "id": 300,
+    "question": "The planet earth has often been converted to a vast ___.",
+    "answers": [
+      "Spaceship",
+      "spaceship",
+      "SPACESHIP",
+      "Spacecraft"
+    ]
+  },
+  {
+    "id": 301,
+    "question": "What deals with the non-living environment as well as the living?",
+    "answers": [
+      "Science of ecology",
+      "science of ecology",
+      "Ecology",
+      "ecology"
+    ]
+  },
+  {
+    "id": 302,
+    "question": "The earth is composed of the Biosphere, Hydrosphere, Atmosphere, and ___.",
+    "answers": [
+      "Lithosphere",
+      "lithosphere",
+      "LITHOSPHERE"
+    ]
+  },
+  {
+    "id": 303,
+    "question": "The principal constituents of the atmosphere of the earth are ___ (78%) and Oxygen (21%).",
+    "answers": [
+      "Nitrogen",
+      "nitrogen",
+      "NITROGEN"
+    ]
+  },
+  {
+    "id": 304,
+    "question": "What is the lowest layer of the earth's atmosphere?",
+    "answers": [
+      "Troposphere",
+      "troposphere",
+      "TROPOSPHERE"
+    ]
+  },
+  {
+    "id": 305,
+    "question": "What is the layer in which most clouds occur?",
+    "answers": [
+      "Troposphere",
+      "troposphere",
+      "TROPOSPHERE"
+    ]
+  },
+  {
+    "id": 306,
+    "question": "What layer is above the troposphere?",
+    "answers": [
+      "Stratosphere",
+      "stratosphere",
+      "STRATOSPHERE"
+    ]
+  },
+  {
+    "id": 307,
+    "question": "What is the region beyond the ionosphere called?",
+    "answers": [
+      "Exosphere",
+      "exosphere",
+      "EXOSPHERE"
+    ]
+  },
+  {
+    "id": 308,
+    "question": "Normal atmospheric pressure at sea level is ___ mmHg.",
+    "answers": [
+      "760",
+      "760 mmHg",
+      "760mmhg"
+    ]
+  },
+  {
+    "id": 309,
+    "question": "The ozone became the subject of concern in the early ___.",
+    "answers": [
+      "1970s",
+      "1970's",
+      "seventies"
+    ]
+  },
+  {
+    "id": 310,
+    "question": "___ is the capacity of a physical system to perform work.",
+    "answers": [
+      "Energy",
+      "energy",
+      "ENERGY"
+    ]
+  },
+  {
+    "id": 311,
+    "question": "___ possesses energy as a result of its motion or its position in relation to forces acting on it.",
+    "answers": [
+      "Matter",
+      "matter",
+      "MATTER"
+    ]
+  },
+  {
+    "id": 312,
+    "question": "Energy associated with motion is known as ___ energy.",
+    "answers": [
+      "Kinetic",
+      "kinetic",
+      "KINETIC"
+    ]
+  },
+  {
+    "id": 313,
+    "question": "Energy related to position is called ___ energy.",
+    "answers": [
+      "Potential",
+      "potential",
+      "POTENTIAL"
+    ]
+  },
+  {
+    "id": 314,
+    "question": "List an example of renewable energy resources.",
+    "answers": [
+      "Solar",
+      "solar",
+      "Wind",
+      "wind",
+      "Biomass",
+      "biomass",
+      "Hydro",
+      "hydro"
+    ]
+  },
+  {
+    "id": 315,
+    "question": "Fossil fuels are considered ___ resources.",
+    "answers": [
+      "Non-renewable",
+      "non-renewable",
+      "Nonrenewable",
+      "nonrenewable",
+      "Depletable",
+      "depletable"
+    ]
+  },
+  {
+    "id": 316,
+    "question": "What is the systematic enterprise that builds and organizes knowledge in the form of explanations and predictions about nature?",
+    "answers": [
+      "Science",
+      "science",
+      "SCIENCE"
+    ]
+  },
+  {
+    "id": 317,
+    "question": "What is the application of scientific knowledge to the solution of specific problems?",
+    "answers": [
+      "Technology",
+      "technology",
+      "TECHNOLOGY"
+    ]
+  },
+  {
+    "id": 318,
+    "question": "What is described as a flexible combination of skills, knowledge and methods for attaining desired results?",
+    "answers": [
+      "Technology",
+      "technology",
+      "TECHNOLOGY"
+    ]
+  },
+  {
+    "id": 319,
+    "question": "The 'love of wisdom' can also be described as the desire to find out what?",
+    "answers": [
+      "What is real and true",
+      "what is real and true",
+      "Real and true",
+      "real and true"
+    ]
+  },
+  {
+    "id": 320,
+    "question": "According to the text, philosophy is first of all a deepening of what?",
+    "answers": [
+      "One's own self",
+      "one's own self",
+      "ones own self"
+    ]
+  },
+  {
+    "id": 321,
+    "question": "The business of the philosopher of science is to take a critical look at what is claimed to be what?",
+    "answers": [
+      "Fact",
+      "fact",
+      "FACT"
+    ]
+  },
+  {
+    "id": 322,
+    "question": "Anything that is solid, liquid or gaseous is a form of what?",
+    "answers": [
+      "Matter",
+      "matter",
+      "MATTER"
+    ]
+  },
+  {
+    "id": 323,
+    "question": "In Einstein's formula E=mc², what does the 'm' stand for?",
+    "answers": [
+      "Mass",
+      "mass",
+      "MASS"
+    ]
+  },
+  {
+    "id": 324,
+    "question": "What is essentially comprised of science, engineering and technology?",
+    "answers": [
+      "Applied science",
+      "applied science",
+      "APPLIED SCIENCE"
+    ]
+  },
+  {
+    "id": 325,
+    "question": "What key action separates the scientific method from other ways of acquiring knowledge?",
+    "answers": [
+      "Forming a hypothesis and testing it",
+      "forming a hypothesis and testing it",
+      "Testing a hypothesis",
+      "testing a hypothesis"
+    ]
+  },
+  {
+    "id": 326,
+    "question": "In which step of the scientific method do you often prepare a table or graph?",
+    "answers": [
+      "Data/Analysis",
+      "data/analysis",
+      "Data",
+      "data",
+      "Analysis",
+      "analysis"
+    ]
+  },
+  {
+    "id": 327,
+    "question": "Is there a right or wrong outcome to a scientific experiment?",
+    "answers": [
+      "No",
+      "no",
+      "NO"
+    ]
+  },
+  {
+    "id": 328,
+    "question": "What theory is the basis for the statement 'All gases consist of molecules in chaotic motion in empty space'?",
+    "answers": [
+      "Kinetic theory of gases",
+      "kinetic theory of gases",
+      "KINETIC THEORY OF GASES"
+    ]
+  },
+  {
+    "id": 329,
+    "question": "Skill, luck, intuition, serendipity, and intelligent guessing are involved in whose success? ",
+    "answers": [
+      "Scientists",
+      "scientists",
+      "SCIENTISTS",
+      "A scientist"
+    ]
+  },
+  {
+    "id": 330,
+    "question": "Careful observation + Persistent search for truth + what equals Progress?",
+    "answers": [
+      "Intelligent thought",
+      "intelligent thought",
+      "INTELLIGENT THOUGHT"
+    ]
+  },
+  {
+    "id": 331,
+    "question": "Which characteristic of a scientific theory means it must not have obvious inner contradictions?",
+    "answers": [
+      "Rational",
+      "rational",
+      "RATIONAL"
+    ]
+  },
+  {
+    "id": 332,
+    "question": "Which characteristic of a scientific theory means it must be accompanied by interpretative principles?",
+    "answers": [
+      "Relevant",
+      "relevant",
+      "RELEVANT"
+    ]
+  },
+  {
+    "id": 333,
+    "question": "In Southern Asia, what high-quality products set standards that incentivized technological development in Britain?",
+    "answers": [
+      "Indian textile products",
+      "indian textile products",
+      "Painted and printed cotton goods",
+      "painted and printed cotton goods"
+    ]
+  },
+  {
+    "id": 334,
+    "question": "In the early agricultural division of labour, who did the heavier tasks?",
+    "answers": [
+      "Man",
+      "man",
+      "MAN",
+      "The man"
+    ]
+  },
+  {
+    "id": 335,
+    "question": "In the early agricultural division of labour, who did the lighter domestic tasks?",
+    "answers": [
+      "Wife and children",
+      "wife and children",
+      "WIFE AND CHILDREN",
+      "Women and children"
+    ]
+  },
+  {
+    "id": 336,
+    "question": "What was introduced when early markets were formed for the exchange of surplus food?",
+    "answers": [
+      "Trade by barter",
+      "trade by barter",
+      "Barter",
+      "barter"
+    ]
+  },
+  {
+    "id": 337,
+    "question": "What was man's first hard metal?",
+    "answers": [
+      "Bronze",
+      "bronze",
+      "BRONZE"
+    ]
+  },
+  {
+    "id": 338,
+    "question": "Which historical period corresponds to the introduction of metallurgy?",
+    "answers": [
+      "Bronze Age",
+      "bronze age",
+      "BRONZE AGE"
+    ]
+  },
+  {
+    "id": 339,
+    "question": "What metallurgical process was developed for castings during the Bronze Age?",
+    "answers": [
+      "Wax process",
+      "wax process",
+      "WAX PROCESS"
+    ]
+  },
+  {
+    "id": 340,
+    "question": "What was the major advantage of iron over bronze?",
+    "answers": [
+      "Ores were widely available",
+      "ores were widely available",
+      "It was inexpensive",
+      "it was inexpensive"
+    ]
+  },
+  {
+    "id": 341,
+    "question": "Greek philosophy formed the basis of all later philosophical speculation in which part of the world?",
+    "answers": [
+      "Western world",
+      "western world",
+      "WESTERN WORLD",
+      "The western world"
+    ]
+  },
+  {
+    "id": 342,
+    "question": "Which group of people in the 6th century BC were the first to teach that the Earth is a sphere revolving around the Sun?",
+    "answers": [
+      "Pythagoreans",
+      "pythagoreans",
+      "PYTHAGOREANS",
+      "The Pythagoreans"
+    ]
+  },
+  {
+    "id": 343,
+    "question": "According to Plato, what is the goal of the philosopher?",
+    "answers": [
+      "To know the perfect forms",
+      "to know the perfect forms",
+      "Know the perfect forms"
+    ]
+  },
+  {
+    "id": 344,
+    "question": "Who was the physician to the monarch of Macedon?",
+    "answers": [
+      "Aristotle's father",
+      "aristotles father",
+      "Aristotle father"
+    ]
+  },
+  {
+    "id": 345,
+    "question": "The whole of Aristotle's science was deeply influenced by what type of experience?",
+    "answers": [
+      "Biological experience",
+      "biological experience",
+      "BIOLOGICAL EXPERIENCE",
+      "Biological"
+    ]
+  },
+  {
+    "id": 346,
+    "question": "Which two ancient philosophers believed that matter could be subdivided into tiny atoms?",
+    "answers": [
+      "Democritus and Epicurus",
+      "democritus and epicurus",
+      "DEMOCRITUS AND EPICURUS"
+    ]
+  },
+  {
+    "id": 347,
+    "question": "The economy and social system of which era contributed principally to great achievements in the 19th century?",
+    "answers": [
+      "Industrial Revolution",
+      "industrial revolution",
+      "INDUSTRIAL REVOLUTION"
+    ]
+  },
+  {
+    "id": 348,
+    "question": "Who developed a new process in 1855 by blowing air through pig iron to convert it to steel?",
+    "answers": [
+      "Henry Bessemer",
+      "henry bessemer",
+      "Bessemer",
+      "bessemer"
+    ]
+  },
+  {
+    "id": 349,
+    "question": "Which country forged ahead in steel production due to huge deposits of raw iron?",
+    "answers": [
+      "United States",
+      "united states",
+      "USA",
+      "usa",
+      "The United States"
+    ]
+  },
+  {
+    "id": 350,
+    "question": "Which Russian pioneered space exploration early in the 20th century?",
+    "answers": [
+      "Konstantin K. Tsiolkovsky",
+      "konstantin tsiolkovsky",
+      "Tsiolkovsky",
+      "tsiolkovsky"
+    ]
+  },
+  {
+    "id": 351,
+    "question": "Which American pioneered space exploration alongside Tsiolkovsky and Oberth?",
+    "answers": [
+      "Robert H. Goddard",
+      "robert h goddard",
+      "Robert Goddard",
+      "robert goddard",
+      "Goddard",
+      "goddard"
+    ]
+  },
+  {
+    "id": 352,
+    "question": "Which German pioneered space exploration early in the 20th century?",
+    "answers": [
+      "Hermann Oberth",
+      "hermann oberth",
+      "Oberth",
+      "oberth"
+    ]
+  },
+  {
+    "id": 353,
+    "question": "In what month and year was the Sputnik I satellite launched?",
+    "answers": [
+      "October 1957",
+      "october 1957",
+      "Oct 1957"
+    ]
+  },
+  {
+    "id": 354,
+    "question": "What spacecraft was launched by the Americans three months after Sputnik 2?",
+    "answers": [
+      "Explorer 1",
+      "explorer 1",
+      "EXPLORER 1"
+    ]
+  },
+  {
+    "id": 355,
+    "question": "Who became the first American astronaut in a manned space vehicle?",
+    "answers": [
+      "Alan B. Shepard Jr.",
+      "alan b shepard jr",
+      "Alan Shepard",
+      "alan shepard"
+    ]
+  },
+  {
+    "id": 356,
+    "question": "What was the name of the spacecraft that Armstrong and Aldrin used to land on the moon?",
+    "answers": [
+      "Apollo 11 Lunar Module",
+      "apollo 11 lunar module",
+      "Apollo 11",
+      "apollo 11"
+    ]
+  },
+  {
+    "id": 357,
+    "question": "In 1945, over 200,000 people were killed by atomic bombs dropped on which two cities?",
+    "answers": [
+      "Nagasaki and Hiroshima",
+      "nagasaki and hiroshima",
+      "Hiroshima and Nagasaki",
+      "hiroshima and nagasaki"
+    ]
+  },
+  {
+    "id": 358,
+    "question": "What simple items were used as the very first analog-computing device?",
+    "answers": [
+      "Sticks and ropes",
+      "sticks and ropes",
+      "STICKS AND ROPES"
+    ]
+  },
+  {
+    "id": 359,
+    "question": "Who built the difference engine in 1822?",
+    "answers": [
+      "Charles Babbage",
+      "charles babbage",
+      "Babbage",
+      "babbage"
+    ]
+  },
+  {
+    "id": 360,
+    "question": "In what decade did modern computers begin to evolve, ranging from vacuum tube relays to transistors?",
+    "answers": [
+      "1950s",
+      "1950's",
+      "1950",
+      "mid twentieth century"
+    ]
+  },
+  {
+    "id": 361,
+    "question": "Which American software giant spearheaded the software direction with its 'windows' products?",
+    "answers": [
+      "Microsoft",
+      "microsoft",
+      "MICROSOFT"
+    ]
+  },
+  {
+    "id": 362,
+    "question": "What gas did English scientist Henry Cavendish discover the properties of in 1776?",
+    "answers": [
+      "Hydrogen gas",
+      "hydrogen gas",
+      "Hydrogen",
+      "hydrogen"
+    ]
+  },
+  {
+    "id": 363,
+    "question": "In 1781, Henry Cavendish discovered that air was a mixture of what?",
+    "answers": [
+      "Gases",
+      "gases",
+      "GASES"
+    ]
+  },
+  {
+    "id": 364,
+    "question": "Sir James Dewar was the first to turn hydrogen gas into what state in 1898?",
+    "answers": [
+      "Liquid",
+      "liquid",
+      "LIQUID",
+      "A liquid"
+    ]
+  },
+  {
+    "id": 365,
+    "question": "How many horses were attached to each hollow cup in Otto von Guericke's air pressure experiment?",
+    "answers": [
+      "Eight",
+      "eight",
+      "8"
+    ]
+  },
+  {
+    "id": 366,
+    "question": "What country was the British physicist Sir Ernest Rutherford born in?",
+    "answers": [
+      "New Zealand",
+      "new zealand",
+      "NEW ZEALAND"
+    ]
+  },
+  {
+    "id": 367,
+    "question": "Evangelista Torricelli made a mercury barometer by filling a long tube with mercury and inverting it in what?",
+    "answers": [
+      "A dish of mercury",
+      "a dish of mercury",
+      "Dish of mercury",
+      "dish of mercury"
+    ]
+  },
+  {
+    "id": 368,
+    "question": "What is the physical evidence of a prehistoric organism comprising a shell, bone, or other durable skeletal part called?",
+    "answers": [
+      "Fossil",
+      "fossil",
+      "FOSSILS"
+    ]
+  },
+  {
+    "id": 369,
+    "question": "Besides peat bogs and asphalt lakes, name another place where fossils are found remarkably unaltered.",
+    "answers": [
+      "Frozen ground or amber",
+      "frozen ground or amber",
+      "Frozen ground",
+      "frozen ground",
+      "Amber",
+      "amber"
+    ]
+  },
+  {
+    "id": 370,
+    "question": "What is the earth science that studies fossil organisms and related remains?",
+    "answers": [
+      "Palaeontology",
+      "palaeontology",
+      "Paleontology",
+      "paleontology"
+    ]
+  },
+  {
+    "id": 371,
+    "question": "What is the natural or artificially induced process by which new organisms develop as a result of genetic changes?",
+    "answers": [
+      "Evolution",
+      "evolution",
+      "EVOLUTION"
+    ]
+  },
+  {
+    "id": 372,
+    "question": "What prehistoric humans lived in Europe and North Africa between 100,000 and 30,000 BC?",
+    "answers": [
+      "Neanderthals",
+      "neanderthals",
+      "NEANDERTHALS",
+      "Neandertals"
+    ]
+  },
+  {
+    "id": 373,
+    "question": "The main physical evidence of our evolution is a large number of fossil bones and what else?",
+    "answers": [
+      "Teeth",
+      "teeth",
+      "TEETH"
+    ]
+  },
+  {
+    "id": 374,
+    "question": "Human beings are classified in what mammalian order?",
+    "answers": [
+      "Primates",
+      "primates",
+      "PRIMATES"
+    ]
+  },
+  {
+    "id": 375,
+    "question": "Classification systems commonly still place great apes in a separate family called what?",
+    "answers": [
+      "Pongidae",
+      "pongidae",
+      "PONGIDAE"
+    ]
+  },
+  {
+    "id": 376,
+    "question": "Over the course of human evolution, the size of the human brain has increased by more than how much?",
+    "answers": [
+      "Tripled",
+      "tripled",
+      "TRIPLED"
+    ]
+  },
+  {
+    "id": 377,
+    "question": "Approximately how many years ago did human beings move into the New World?",
+    "answers": [
+      "Less than 30,000 years ago",
+      "less than 30,000",
+      "30,000",
+      "30000"
+    ]
+  },
+  {
+    "id": 378,
+    "question": "Fossil bones suggest that males in early hominine groups were somewhat more than what height?",
+    "answers": [
+      "1.5 m",
+      "1.5m",
+      "5 ft",
+      "5 feet"
+    ]
+  },
+  {
+    "id": 379,
+    "question": "What is the translation or meaning of Homo habilis?",
+    "answers": [
+      "Handy Man",
+      "handy man",
+      "HANDY MAN"
+    ]
+  },
+  {
+    "id": 380,
+    "question": "What is the translation or meaning of Homo ergaster?",
+    "answers": [
+      "Work Man",
+      "work man",
+      "WORK MAN",
+      "Workman",
+      "workman"
+    ]
+  },
+  {
+    "id": 381,
+    "question": "At what cave site in northern China was there possible evidence of the use of fire by Homo erectus?",
+    "answers": [
+      "Zhoukoudian",
+      "zhoukoudian",
+      "ZHOUKOUDIAN",
+      "Peking Man cave",
+      "peking man cave"
+    ]
+  },
+  {
+    "id": 382,
+    "question": "Homo erectus fossils from Java, Indonesia were recently dated to 30,000 to 50,000 years ago using what associated items?",
+    "answers": [
+      "Buffalo teeth",
+      "buffalo teeth",
+      "BUFFALO TEETH"
+    ]
+  },
+  {
+    "id": 383,
+    "question": "The Neanderthals were named from the Neander Valley located in which country?",
+    "answers": [
+      "Germany",
+      "germany",
+      "GERMANY"
+    ]
+  },
+  {
+    "id": 384,
+    "question": "Palaeolithic art appeared in caves from 35,000 years ago until the end of the ice age, which was about how many years ago?",
+    "answers": [
+      "12,000 years ago",
+      "12,000",
+      "12000"
+    ]
+  },
+  {
+    "id": 385,
+    "question": "On the 'spaceship' Earth, what entities produce oxygen, cleanse air, and recycle waste products?",
+    "answers": [
+      "Living things",
+      "living things",
+      "LIVING THINGS"
+    ]
+  },
+  {
+    "id": 386,
+    "question": "What term defines the totality of the Earth's living inhabitants?",
+    "answers": [
+      "Biosphere",
+      "biosphere",
+      "BIOSPHERE"
+    ]
+  },
+  {
+    "id": 387,
+    "question": "What gas constitutes 78 percent of the atmosphere of the Earth? ",
+    "answers": [
+      "Nitrogen",
+      "nitrogen",
+      "NITROGEN"
+    ]
+  },
+  {
+    "id": 388,
+    "question": "What gas constitutes 21 percent of the atmosphere of the Earth? ",
+    "answers": [
+      "Oxygen",
+      "oxygen",
+      "OXYGEN"
+    ]
+  },
+  {
+    "id": 389,
+    "question": "What gas constitutes 0.9 percent of the atmosphere of the Earth?",
+    "answers": [
+      "Argon",
+      "argon",
+      "ARGON"
+    ]
+  },
+  {
+    "id": 390,
+    "question": "What gas constitutes 0.03 percent of the atmosphere of the Earth? ",
+    "answers": [
+      "Carbon dioxide",
+      "carbon dioxide",
+      "CARBON DIOXIDE"
+    ]
+  },
+  {
+    "id": 391,
+    "question": "The water-vapour content of the air varies considerably depending on temperature and what?",
+    "answers": [
+      "Relative humidity",
+      "relative humidity",
+      "RELATIVE HUMIDITY"
+    ]
+  },
+  {
+    "id": 392,
+    "question": "In the troposphere, the temperature decreases upwards at the rate of how many degrees Celsius per 1,000 m? ",
+    "answers": [
+      "5.5",
+      "5.5°C",
+      "5.5 degrees"
+    ]
+  },
+  {
+    "id": 393,
+    "question": "Which layer of the atmosphere is located from 50 to 80 km and is characterized by a marked decrease in temperature?",
+    "answers": [
+      "Mesosphere",
+      "mesosphere",
+      "MESOSPHERE"
+    ]
+  },
+  {
+    "id": 394,
+    "question": "Ultraviolet radiation and X-rays ionize several layers of which part of the atmosphere above 80 km?",
+    "answers": [
+      "Ionosphere",
+      "ionosphere",
+      "IONOSPHERE"
+    ]
+  },
+  {
+    "id": 395,
+    "question": "The ionosphere is also termed the thermosphere because temperatures there can rise to about how many degrees Celsius?",
+    "answers": [
+      "1,200",
+      "1,200°C",
+      "1200"
+    ]
+  },
+  {
+    "id": 396,
+    "question": "The density of dry air at sea level is about what fraction of the density of water?",
+    "answers": [
+      "1/800",
+      "1 over 800",
+      "one eight hundredth"
+    ]
+  },
+  {
+    "id": 397,
+    "question": "One torr of atmospheric pressure equals how many mm of mercury?",
+    "answers": [
+      "1 mm",
+      "1",
+      "one millimeter"
+    ]
+  },
+  {
+    "id": 398,
+    "question": "The troposphere and most of the stratosphere can be explored directly by means of what instruments?",
+    "answers": [
+      "Sounding balloons",
+      "sounding balloons",
+      "SOUNDING BALLOONS"
+    ]
+  },
+  {
+    "id": 399,
+    "question": "Carbon dioxide and hydrocarbon emissions are produced as a by-product of the combustion of what type of fuels?",
+    "answers": [
+      "Petroleum-based fuels",
+      "petroleum-based fuels",
+      "Fossil fuels",
+      "fossil fuels"
+    ]
+  },
+  {
+    "id": 400,
+    "question": "Over the past 100 years, the amount of atmospheric CO2 has increased to how many parts per million?",
+    "answers": [
+      "350 ppm",
+      "350",
+      "three hundred and fifty"
+    ]
+  },
+  {
+    "id": 401,
+    "question": "Atmospheric methane levels have risen by what percent since 1978?",
+    "answers": [
+      "11 per cent",
+      "11%",
+      "11"
+    ]
+  },
+  {
+    "id": 402,
+    "question": "About 80 percent of methane is produced by decomposition in rice paddies, swamps, intestines of grazing animals, and what insects?",
+    "answers": [
+      "Tropical termites",
+      "tropical termites",
+      "Termites",
+      "termites"
+    ]
+  },
+  {
+    "id": 403,
+    "question": "The layer of atmosphere containing more ozone is found from 19 km up to how many km?",
+    "answers": [
+      "48 km",
+      "48",
+      "forty eight"
+    ]
+  },
+  {
+    "id": 404,
+    "question": "What chemicals were rising into the atmosphere in large quantities because of their use as refrigerants and aerosol propellants?",
+    "answers": [
+      "Chlorofluorocarbons",
+      "chlorofluorocarbons",
+      "CFCs",
+      "cfcs"
+    ]
+  },
+  {
+    "id": 405,
+    "question": "What is the normal pH of rainwater? ",
+    "answers": [
+      "6.5",
+      "6.5 pH"
+    ]
+  },
+  {
+    "id": 406,
+    "question": "With the addition of sulphur and nitrogen compounds, the pH of rainwater may drop to as low as what? ",
+    "answers": [
+      "2.0 or 3.0",
+      "2.0",
+      "3.0",
+      "2 or 3"
+    ]
+  },
+  {
+    "id": 407,
+    "question": "In 1985, a growing ozone hole was revealed to be concentrated above which continent? ",
+    "answers": [
+      "Antarctica",
+      "antarctica",
+      "ANTARCTICA"
+    ]
+  },
+  {
+    "id": 408,
+    "question": "CFCs can remain in the atmosphere for more than how many years? ",
+    "answers": [
+      "100 years",
+      "100",
+      "one hundred"
+    ]
+  },
+  {
+    "id": 409,
+    "question": "Extensive use of synthetic pesticides derived from what chemical group has had disastrous environmental side effects?",
+    "answers": [
+      "Chlorinated hydrocarbons",
+      "chlorinated hydrocarbons",
+      "CHLORINATED HYDROCARBONS"
+    ]
+  },
+  {
+    "id": 410,
+    "question": "Chlorinated hydrocarbons interfere in the calcium metabolism of birds, causing the thinning of what?",
+    "answers": [
+      "Egg shells",
+      "egg shells",
+      "EGG SHELLS"
+    ]
+  },
+  {
+    "id": 411,
+    "question": "The halogenated pesticide EDB, which aroused great concern as a potential carcinogen, stands for what?",
+    "answers": [
+      "Ethylene Dibromide",
+      "ethylene dibromide",
+      "ETHYLENE DIBROMIDE"
+    ]
+  },
+  {
+    "id": 412,
+    "question": "Polychlorinated biphenyls (PCBs) are now restricted to use as insulators in what?",
+    "answers": [
+      "Electrical transformers and capacitors",
+      "electrical transformers and capacitors",
+      "Transformers and capacitors"
+    ]
+  },
+  {
+    "id": 413,
+    "question": "What is the abbreviation for the most toxic compound of the dioxins?",
+    "answers": [
+      "PCDD",
+      "pcdd",
+      "Pcdd"
+    ]
+  },
+  {
+    "id": 414,
+    "question": "Soil erosion is degrading what fraction of the cropland of the world?",
+    "answers": [
+      "One fifth to one third",
+      "one fifth to one third",
+      "1/5 to 1/3"
+    ]
+  },
+  {
+    "id": 415,
+    "question": "Human beings currently use what percentage of available freshwater run-off?",
+    "answers": [
+      "55 per cent",
+      "55%",
+      "55"
+    ]
+  },
+  {
+    "id": 416,
+    "question": "The composition of the universe is divided into two entities, namely ___ and ___.",
+    "answers": [
+      "Matter and energy",
+      "matter and energy",
+      "MATTER AND ENERGY",
+      "Energy and matter",
+      "energy and matter"
+    ]
+  },
+  {
+    "id": 417,
+    "question": "What is the investigation into the general nature of scientific practice?",
+    "answers": [
+      "Philosophy of science",
+      "philosophy of science",
+      "PHILOSOPHY OF SCIENCE",
+      "Philosophy of Science"
+    ]
+  },
+  {
+    "id": 418,
+    "question": "What is roughly speaking concerned with what can be considered as fact?",
+    "answers": [
+      "Science",
+      "science",
+      "SCIENCE"
+    ]
+  },
+  {
+    "id": 419,
+    "question": "In 1905, Albert Einstein expressed the relationship between matter and energy with what formula?",
+    "answers": [
+      "E=mc²",
+      "E=mc2",
+      "e=mc2",
+      "E = mc^2",
+      "E=mc^2"
+    ]
+  }
+]

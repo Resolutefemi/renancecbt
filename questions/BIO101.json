@@ -1,0 +1,3324 @@
+[
+  {
+    "question": "Animals must eat other organisms for food, so they are classified as ___.",
+    "options": {
+      "A": "Heterotrophs",
+      "B": "Autotrophs",
+      "C": "Eukaryotic",
+      "D": "Prokaryotic"
+    },
+    "answer": "A",
+    "explanation": "Animals cannot make their own food and must consume other organisms, making them heterotrophs."
+  },
+  {
+    "question": "Tigers, Jellyfish, Gorillas and Sponges are all _______.",
+    "options": {
+      "A": "Animals",
+      "B": "Plants",
+      "C": "Fungi",
+      "D": "Bacteria"
+    },
+    "answer": "A",
+    "explanation": "All four organisms belong to Kingdom Animalia as they are all multicellular, heterotrophic, and lack cell walls."
+  },
+  {
+    "question": "What kingdom is always multicellular, heterotrophic and has NO cell wall?",
+    "options": {
+      "A": "Protista",
+      "B": "Fungi",
+      "C": "Plantae",
+      "D": "Animalia"
+    },
+    "answer": "D",
+    "explanation": "Kingdom Animalia consists of multicellular organisms that are heterotrophic and have no cell wall, only a plasma membrane."
+  },
+  {
+    "question": "All of the following have a nucleus EXCEPT...",
+    "options": {
+      "A": "Bacteria",
+      "B": "Animalia",
+      "C": "Plantae",
+      "D": "Protista"
+    },
+    "answer": "A",
+    "explanation": "Bacteria are prokaryotes and lack a membrane-bound nucleus. All others (Animalia, Plantae, Protista) are eukaryotes."
+  },
+  {
+    "question": "You would find mushrooms in which group?",
+    "options": {
+      "A": "Plants",
+      "B": "Protists",
+      "C": "Fungi",
+      "D": "Animals"
+    },
+    "answer": "C",
+    "explanation": "Mushrooms are the fruiting bodies of organisms belonging to Kingdom Fungi."
+  },
+  {
+    "question": "This kingdom contains heterotrophic organisms that can be unicellular or multicellular and can cause athlete's foot or ringworm.",
+    "options": {
+      "A": "Fungi",
+      "B": "Animals",
+      "C": "Protists",
+      "D": "Archaebacteria"
+    },
+    "answer": "A",
+    "explanation": "Fungi are heterotrophs used in baking (yeast) and can also be pathogenic, causing conditions like athlete's foot (Tinea pedis)."
+  },
+  {
+    "question": "Which kingdom do humans belong to?",
+    "options": {
+      "A": "Plants",
+      "B": "Fungi",
+      "C": "Animals",
+      "D": "Protists"
+    },
+    "answer": "C",
+    "explanation": "Humans (Homo sapiens) belong to Kingdom Animalia under phylum Chordata, class Mammalia."
+  },
+  {
+    "question": "This group contains all organisms that have a true nucleus in each of their cells.",
+    "options": {
+      "A": "Animals",
+      "B": "Plants",
+      "C": "Bacteria",
+      "D": "Eukarya"
+    },
+    "answer": "D",
+    "explanation": "Domain Eukarya includes all organisms whose cells have a membrane-bound nucleus."
+  },
+  {
+    "question": "Organisms that are classified as unicellular are ___.",
+    "options": {
+      "A": "Seen with the naked eye",
+      "B": "Many-celled organisms",
+      "C": "Single-celled organisms",
+      "D": "Able to make their own food"
+    },
+    "answer": "C",
+    "explanation": "Unicellular means the entire organism consists of a single cell."
+  },
+  {
+    "question": "Which group contains organisms that are unicellular, prokaryotic, and can cause strep throat or E. coli infections?",
+    "options": {
+      "A": "Eukarya",
+      "B": "Plants",
+      "C": "Fungi",
+      "D": "Bacteria"
+    },
+    "answer": "D",
+    "explanation": "Streptococcus (strep throat) and Escherichia coli are both unicellular prokaryotes in domain Bacteria."
+  },
+  {
+    "question": "Sexual reproduction requires ______ parents.",
+    "options": {
+      "A": "0",
+      "B": "1",
+      "C": "2",
+      "D": "3"
+    },
+    "answer": "C",
+    "explanation": "Sexual reproduction involves the fusion of gametes from two parents (one providing sperm, one providing egg)."
+  },
+  {
+    "question": "What type of organism makes its own food internally?",
+    "options": {
+      "A": "Heterotroph",
+      "B": "Autotroph",
+      "C": "Carnivore",
+      "D": "Omnivore"
+    },
+    "answer": "B",
+    "explanation": "Autotrophs (producers) synthesize their own organic molecules from inorganic sources using light or chemical energy."
+  },
+  {
+    "question": "Cells that do NOT have a true nucleus are called...",
+    "options": {
+      "A": "Eukaryote",
+      "B": "Prokaryote",
+      "C": "Unicellular",
+      "D": "Multicellular"
+    },
+    "answer": "B",
+    "explanation": "Prokaryotes (bacteria and archaea) lack a membrane-bound nucleus; their genetic material is in a region called the nucleoid."
+  },
+  {
+    "question": "Cells that have a true nucleus are called...",
+    "options": {
+      "A": "Eukaryotes",
+      "B": "Prokaryotes",
+      "C": "Unicellular",
+      "D": "Multicellular"
+    },
+    "answer": "A",
+    "explanation": "Eukaryotes are defined by having a membrane-bound nucleus containing their DNA."
+  },
+  {
+    "question": "Which of the following structures can be found in a plant cell but NOT an animal cell?",
+    "options": {
+      "A": "Vacuole",
+      "B": "Nucleus",
+      "C": "Chloroplast",
+      "D": "Mitochondria"
+    },
+    "answer": "C",
+    "explanation": "Chloroplasts are plastids unique to plant cells and some protists that carry out photosynthesis."
+  },
+  {
+    "question": "What cell part is NOT found in all cells?",
+    "options": {
+      "A": "Cell Wall",
+      "B": "Cell Membrane",
+      "C": "Cytoplasm",
+      "D": "Genetic Material"
+    },
+    "answer": "A",
+    "explanation": "Animal cells lack a cell wall; only plants, fungi, and bacteria have cell walls (of different compositions)."
+  },
+  {
+    "question": "In what organelle does the food-making process in plants take place?",
+    "options": {
+      "A": "Endoplasmic Reticulum",
+      "B": "Vacuole",
+      "C": "Chloroplasts",
+      "D": "Mitochondria"
+    },
+    "answer": "C",
+    "explanation": "Chloroplasts are the site of photosynthesis, where light energy is converted into chemical energy (glucose)."
+  },
+  {
+    "question": "What is the difference between prokaryotes vs. eukaryotes?",
+    "options": {
+      "A": "Prokaryotes have a nucleus",
+      "B": "Eukaryotes do not have a nucleus",
+      "C": "Prokaryotes have a cell wall",
+      "D": "Eukaryotes do have a nucleus"
+    },
+    "answer": "D",
+    "explanation": "The key distinction is that eukaryotes have a membrane-bound nucleus while prokaryotes do not."
+  },
+  {
+    "question": "In what organelle is the genetic material found inside?",
+    "options": {
+      "A": "Endoplasmic Reticulum",
+      "B": "Golgi Complex",
+      "C": "Nucleolus",
+      "D": "Nucleus"
+    },
+    "answer": "D",
+    "explanation": "The nucleus houses the cell's chromosomal DNA and is bound by a double membrane called the nuclear envelope."
+  },
+  {
+    "question": "Living things need energy to survive.",
+    "options": {
+      "A": "True",
+      "B": "False",
+      "C": "Sometimes",
+      "D": "Only animals"
+    },
+    "answer": "A",
+    "explanation": "Energy is required for all life processes including growth, reproduction, and maintaining homeostasis."
+  },
+  {
+    "question": "The main source of energy for all living things is ___.",
+    "options": {
+      "A": "The Earth",
+      "B": "The Sun",
+      "C": "The Moon",
+      "D": "Food"
+    },
+    "answer": "B",
+    "explanation": "The sun is the ultimate energy source; autotrophs capture solar energy, which then flows through food chains to all organisms."
+  },
+  {
+    "question": "About how many species have been given scientific names so far?",
+    "options": {
+      "A": "100,000",
+      "B": "500,000",
+      "C": "1 million",
+      "D": "1¾ million"
+    },
+    "answer": "D",
+    "explanation": "Approximately 1.75 million species have been formally described and named to date."
+  },
+  {
+    "question": "Most species live in ___ regions.",
+    "options": {
+      "A": "Arctic",
+      "B": "Tropical",
+      "C": "Temperate",
+      "D": "Desert"
+    },
+    "answer": "B",
+    "explanation": "Tropical regions have the highest biodiversity due to warm temperatures, abundant rainfall, and year-round growing seasons."
+  },
+  {
+    "question": "'Naming, describing, and classifying organisms into different categories based on their characteristics' is a definition of:",
+    "options": {
+      "A": "Adaptive radiation",
+      "B": "Natural selection",
+      "C": "Taxonomy",
+      "D": "Morphology"
+    },
+    "answer": "C",
+    "explanation": "Taxonomy is the science of classifying organisms using systematic naming and categorization."
+  },
+  {
+    "question": "The system of biological classification used today was created by:",
+    "options": {
+      "A": "Charles Darwin",
+      "B": "Carolus Linnaeus",
+      "C": "Stephen Jay Gould",
+      "D": "Carl Woese"
+    },
+    "answer": "B",
+    "explanation": "Carl Linnaeus (Carolus Linnaeus) developed the binomial nomenclature system and hierarchical classification in the 18th century."
+  },
+  {
+    "question": "Charles Darwin believed that:",
+    "options": {
+      "A": "Evolution occurs",
+      "B": "Natural selection is the cause of evolution",
+      "C": "Both of the above",
+      "D": "Neither of the above"
+    },
+    "answer": "C",
+    "explanation": "Darwin proposed evolution via natural selection, arguing that heritable variations and environmental pressures drive change in populations over time."
+  },
+  {
+    "question": "Which structure is the location where proteins are made in the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Mitochondria",
+      "D": "Golgi Body"
+    },
+    "answer": "A",
+    "explanation": "Ribosomes are the molecular machines that synthesize proteins by translating messenger RNA."
+  },
+  {
+    "question": "Which structure processes and modifies proteins for excretion from cells?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Golgi Body",
+      "C": "Mitochondria",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": "The Golgi apparatus modifies, sorts, packages, and dispatches proteins and lipids for transport to their destinations."
+  },
+  {
+    "question": "Which structure regulates what enters and leaves the cell?",
+    "options": {
+      "A": "Cell Wall",
+      "B": "Nucleus",
+      "C": "Plasma Membrane",
+      "D": "Vacuole"
+    },
+    "answer": "C",
+    "explanation": "The plasma membrane is a selectively permeable barrier that controls the passage of substances into and out of the cell."
+  },
+  {
+    "question": "What is the small membrane sac which can form from the endoplasmic reticulum or from the Golgi body?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Vacuole",
+      "C": "Vesicle",
+      "D": "Peroxisome"
+    },
+    "answer": "C",
+    "explanation": "Vesicles are small membrane-bound sacs that transport materials within the cell or to the plasma membrane for secretion."
+  },
+  {
+    "question": "What is the large, fluid-filled, central structure found in the middle of plant cells that stores a variety of materials?",
+    "options": {
+      "A": "Vesicle",
+      "B": "Vacuole",
+      "C": "Lysosome",
+      "D": "Chloroplast"
+    },
+    "answer": "B",
+    "explanation": "The central vacuole in plant cells stores water, nutrients, waste products, and helps maintain turgor pressure."
+  },
+  {
+    "question": "The plastid that captures light energy and manufactures food is the __________.",
+    "options": {
+      "A": "Mitochondrion",
+      "B": "Lysosome",
+      "C": "Chloroplast",
+      "D": "Ribosome"
+    },
+    "answer": "C",
+    "explanation": "Chloroplasts contain chlorophyll and are the sites of photosynthesis."
+  },
+  {
+    "question": "The organelle associated with energy release in the cell is the __________.",
+    "options": {
+      "A": "Nucleus",
+      "B": "Chloroplast",
+      "C": "Ribosome",
+      "D": "Mitochondrion"
+    },
+    "answer": "D",
+    "explanation": "Mitochondria are the powerhouses of the cell, generating ATP through cellular respiration."
+  },
+  {
+    "question": "What organelle is associated with digestion of materials inside the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Lysosome",
+      "C": "Peroxisome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": "Lysosomes contain hydrolytic enzymes that digest worn-out organelles, food particles, and foreign invaders."
+  },
+  {
+    "question": "What structure is involved in the initial routing and modification of newly formed proteins and in the formation of lipids?",
+    "options": {
+      "A": "Golgi Body",
+      "B": "Endoplasmic Reticulum",
+      "C": "Ribosome",
+      "D": "Nucleus"
+    },
+    "answer": "B",
+    "explanation": "The rough ER modifies newly synthesized proteins; the smooth ER synthesizes lipids and detoxifies substances."
+  },
+  {
+    "question": "What is the structure that directs and coordinates all cellular activity?",
+    "options": {
+      "A": "Mitochondria",
+      "B": "Ribosome",
+      "C": "Golgi Body",
+      "D": "Nucleus"
+    },
+    "answer": "D",
+    "explanation": "The nucleus contains the cell's genetic instructions (DNA) that direct all cellular activities."
+  },
+  {
+    "question": "Ribosomes are assembled in which nuclear structure?",
+    "options": {
+      "A": "Nuclear Membrane",
+      "B": "Chromatin",
+      "C": "Nucleolus",
+      "D": "Nuclear Pore"
+    },
+    "answer": "C",
+    "explanation": "The nucleolus is the site of ribosomal RNA (rRNA) synthesis and initial assembly of ribosomal subunits."
+  },
+  {
+    "question": "When first proposed, Darwin's theory of natural selection did not fully explain how evolution could occur because:",
+    "options": {
+      "A": "Darwin failed to recognize over-reproduction",
+      "B": "Darwin overemphasized genetic drift",
+      "C": "Accurate mechanisms explaining genetic inheritance were not widely known",
+      "D": "Embryological development was not accurately described"
+    },
+    "answer": "C",
+    "explanation": "Darwin proposed natural selection but lacked knowledge of genetics. Mendel's work was not yet widely recognized, leaving a gap in explaining how traits were inherited."
+  },
+  {
+    "question": "Which of the following is NOT a part of Darwin's theory of natural selection?",
+    "options": {
+      "A": "Individuals of a population vary",
+      "B": "Organisms tend to over-reproduce themselves",
+      "C": "There are limited resources for which individuals compete",
+      "D": "Modifications an organism acquires during its lifetime can be passed to its offspring"
+    },
+    "answer": "D",
+    "explanation": "This describes Lamarck's theory of inheritance of acquired characteristics, not Darwin's theory."
+  },
+  {
+    "question": "The evolutionary theory proposed by Charles Darwin was:",
+    "options": {
+      "A": "Change in populations through time as a result of mutations",
+      "B": "The spontaneous generation of new organisms",
+      "C": "The passing on of genes from one generation to the next",
+      "D": "Change in populations through time as a response to environmental change"
+    },
+    "answer": "D",
+    "explanation": "Darwin's core idea was descent with modification via natural selection, where populations change over generations in response to environmental pressures."
+  },
+  {
+    "question": "What is the only factor that can change allele frequencies in populations to produce adaptive evolutionary change?",
+    "options": {
+      "A": "Mutation",
+      "B": "Gene flow",
+      "C": "Non-random mating",
+      "D": "Selection"
+    },
+    "answer": "D",
+    "explanation": "Natural selection is the primary mechanism that consistently leads to adaptive evolutionary change by increasing the frequency of beneficial alleles."
+  },
+  {
+    "question": "A species is defined as:",
+    "options": {
+      "A": "A population of organisms similar in size, shape, and color",
+      "B": "A group of organisms that live in the same habitat",
+      "C": "A population of organisms that are able to interbreed",
+      "D": "A population of organisms that have the same number of chromosomes"
+    },
+    "answer": "C",
+    "explanation": "This reflects the biological species concept, which emphasizes reproductive isolation as the key criterion."
+  },
+  {
+    "question": "The correct sequence from the most to the least comprehensive, of the taxonomic levels listed here is:",
+    "options": {
+      "A": "Family, phylum, class, kingdom, order, species, and genus",
+      "B": "Kingdom, phylum, class, order, family, genus, and species",
+      "C": "Kingdom, phylum, order, class, family, genus, and species",
+      "D": "Phylum, kingdom, order, class, species, family, and genus"
+    },
+    "answer": "B",
+    "explanation": "The standard hierarchical order from broadest to most specific is: Domain > Kingdom > Phylum > Class > Order > Family > Genus > Species."
+  },
+  {
+    "question": "Organisms having many organelles are called:",
+    "options": {
+      "A": "Prokaryotes",
+      "B": "Eukaryotes",
+      "C": "Protist",
+      "D": "Unicellular"
+    },
+    "answer": "B",
+    "explanation": "Eukaryotic cells are defined by having membrane-bound organelles such as the nucleus, mitochondria, and ER."
+  },
+  {
+    "question": "Branch of biology 'paleontology' deals with the study of:",
+    "options": {
+      "A": "Insects",
+      "B": "Fossils",
+      "C": "Parasites",
+      "D": "Welfare of mankind"
+    },
+    "answer": "B",
+    "explanation": "Paleontology is the study of fossils to understand the history of life on Earth."
+  },
+  {
+    "question": "Study of life in a scientific manner is called:",
+    "options": {
+      "A": "Biology",
+      "B": "Geology",
+      "C": "Anatomy",
+      "D": "Entomology"
+    },
+    "answer": "A",
+    "explanation": "Biology is the scientific study of life and living organisms."
+  },
+  {
+    "question": "An example of an organism which shows colonial organization is:",
+    "options": {
+      "A": "Amoeba",
+      "B": "Euglena",
+      "C": "Paramecium",
+      "D": "Volvox"
+    },
+    "answer": "D",
+    "explanation": "Volvox is a classic example of a colonial green alga, where individual cells live together in a coordinated spherical colony."
+  },
+  {
+    "question": "Branch of biology 'embryology' deals with the study of:",
+    "options": {
+      "A": "Study of tissues",
+      "B": "Study of organelles",
+      "C": "Study of genetics",
+      "D": "Study of embryo development"
+    },
+    "answer": "D",
+    "explanation": "Embryology is the branch of biology that studies the formation, early growth, and development of organisms from fertilization to birth."
+  },
+  {
+    "question": "The group of similar plants which breed freely among themselves constitute a:",
+    "options": {
+      "A": "Species",
+      "B": "Family",
+      "C": "Order",
+      "D": "Genus"
+    },
+    "answer": "A",
+    "explanation": "A species is a fundamental definition — a group of organisms that can interbreed and produce fertile offspring."
+  },
+  {
+    "question": "The five-kingdom arrangement of organisms was proposed by:",
+    "options": {
+      "A": "Whittaker",
+      "B": "John Ray",
+      "C": "De Vries",
+      "D": "Julian Huxley"
+    },
+    "answer": "A",
+    "explanation": "Robert Whittaker proposed the influential Five-Kingdom system (Monera, Protista, Fungi, Plantae, Animalia) in 1969."
+  },
+  {
+    "question": "Which of the following definitions covers a greater number of organisms?",
+    "options": {
+      "A": "Class",
+      "B": "Genus",
+      "C": "Order",
+      "D": "Family"
+    },
+    "answer": "A",
+    "explanation": "In taxonomic hierarchy, higher categories contain more organisms. Class is the highest rank among these options."
+  },
+  {
+    "question": "The basic taxonomy unit is:",
+    "options": {
+      "A": "Kingdom",
+      "B": "Genus",
+      "C": "Species",
+      "D": "Order"
+    },
+    "answer": "C",
+    "explanation": "The species is the most basic and fundamental unit of biological classification."
+  },
+  {
+    "question": "The replacement of two-kingdom classification by five-kingdom classification was proposed in the year:",
+    "options": {
+      "A": "1853",
+      "B": "1859",
+      "C": "1969",
+      "D": "1863"
+    },
+    "answer": "C",
+    "explanation": "Robert Whittaker published his five-kingdom classification system in 1969."
+  },
+  {
+    "question": "Which statement best describes the contribution of Rudolf Virchow to cell theory?",
+    "options": {
+      "A": "He discovered that cells contain a nucleus",
+      "B": "He proposed that all cells arise from pre-existing cells",
+      "C": "He stated that cells are the building blocks of life",
+      "D": "He identified different types of cells in plants and animals"
+    },
+    "answer": "B",
+    "explanation": "Virchow's famous principle 'Omnis cellula e cellula' (all cells come from cells) completed the modern cell theory."
+  },
+  {
+    "question": "What is one of the key tenets of cell theory?",
+    "options": {
+      "A": "All living organisms are unicellular",
+      "B": "Cells are the basic units of structure and function in living things",
+      "C": "All cells have a nucleus",
+      "D": "Cells can spontaneously generate"
+    },
+    "answer": "B",
+    "explanation": "This is one of the three core principles of the cell theory."
+  },
+  {
+    "question": "Which type of reproduction involves the fusion of male and female gametes?",
+    "options": {
+      "A": "Asexual reproduction",
+      "B": "Budding",
+      "C": "Sexual reproduction",
+      "D": "Fragmentation"
+    },
+    "answer": "C",
+    "explanation": "Sexual reproduction is defined by the fusion of haploid gametes (sperm and egg) to form a diploid zygote."
+  },
+  {
+    "question": "What is the primary advantage of sexual reproduction?",
+    "options": {
+      "A": "Produces identical offspring",
+      "B": "Greater genetic variation",
+      "C": "Faster reproduction rate",
+      "D": "Requires less energy"
+    },
+    "answer": "B",
+    "explanation": "Sexual reproduction creates genetic diversity through meiosis and fertilization, helping populations adapt to changing environments."
+  },
+  {
+    "question": "Which of the following is a type of asexual reproduction?",
+    "options": {
+      "A": "Binary fission",
+      "B": "Cross-fertilization",
+      "C": "Budding",
+      "D": "Both binary fission and budding"
+    },
+    "answer": "D",
+    "explanation": "Both binary fission (in bacteria) and budding (in yeast) are forms of asexual reproduction producing genetically identical offspring."
+  },
+  {
+    "question": "Which scientist is known for discovering bacteria?",
+    "options": {
+      "A": "Edward Jenner",
+      "B": "Louis Pasteur",
+      "C": "Robert Koch",
+      "D": "Anton van Leeuwenhoek"
+    },
+    "answer": "D",
+    "explanation": "Using handmade microscopes, Leeuwenhoek was the first to observe and describe bacteria (called 'animalcules') in the 1670s."
+  },
+  {
+    "question": "Who is credited with the discovery of protozoa?",
+    "options": {
+      "A": "Anton van Leeuwenhoek",
+      "B": "Robert Hooke",
+      "C": "Louis Pasteur",
+      "D": "Gregor Mendel"
+    },
+    "answer": "A",
+    "explanation": "Leeuwenhoek was also the first to observe and document single-celled organisms, now known as protozoa."
+  },
+  {
+    "question": "An example of the artificial system of classification is:",
+    "options": {
+      "A": "Bentham and Hooker",
+      "B": "Linnaeus system",
+      "C": "Engler and Prantl",
+      "D": "Hutchison"
+    },
+    "answer": "B",
+    "explanation": "Linnaeus's system, based primarily on floral parts, is a classic example of an artificial system using a few easily observable traits."
+  },
+  {
+    "question": "What is the definition of a population in ecology?",
+    "options": {
+      "A": "A group of different species living in the same area",
+      "B": "All the individual organisms of a single species in a specific area",
+      "C": "The total number of organisms in a particular ecosystem",
+      "D": "A collection of plants and animals living together"
+    },
+    "answer": "B",
+    "explanation": "This is the precise ecological definition of a population."
+  },
+  {
+    "question": "Who is often referred to as the 'Father of Ecology'?",
+    "options": {
+      "A": "Charles Darwin",
+      "B": "Ernst Haeckel",
+      "C": "John Muir",
+      "D": "Aldo Leopold"
+    },
+    "answer": "B",
+    "explanation": "German biologist Ernst Haeckel coined the term 'ecology' (oekologie) in 1866 and is widely credited as its founding figure."
+  },
+  {
+    "question": "The term 'oekologie' coined by Haeckel comes from which Greek words?",
+    "options": {
+      "A": "Oikos (house) and logos (study)",
+      "B": "Oikeia (family) and bios (life)",
+      "C": "Oikos (habitat) and bios (life)",
+      "D": "Oken (form) and logos (reason)"
+    },
+    "answer": "A",
+    "explanation": "Haeckel derived it from Greek oikos (house/dwelling) and logos (study), meaning 'the study of the household of nature.'"
+  },
+  {
+    "question": "What does ATP stand for?",
+    "options": {
+      "A": "Adenosine Triphosphate",
+      "B": "Adenine Triphosphate",
+      "C": "Adenosine Tetrasubphosphate",
+      "D": "Adenosine Trisubphosphate"
+    },
+    "answer": "A",
+    "explanation": "ATP is composed of adenine, ribose, and three phosphate groups."
+  },
+  {
+    "question": "Which of the following best describes the primary function of ATP in biological systems?",
+    "options": {
+      "A": "It serves as a structural component of DNA",
+      "B": "It acts as a long-term energy storage molecule",
+      "C": "It provides energy for cellular processes",
+      "D": "It is involved in the synthesis of proteins"
+    },
+    "answer": "C",
+    "explanation": "ATP is the cell's primary short-term energy currency, coupling energy-releasing reactions with energy-requiring ones."
+  },
+  {
+    "question": "What is the primary characteristic of autotrophs?",
+    "options": {
+      "A": "They can produce their own food",
+      "B": "They rely entirely on other organisms for energy",
+      "C": "They are always multicellular",
+      "D": "They can only survive in aquatic environments"
+    },
+    "answer": "A",
+    "explanation": "Autotrophs synthesize their own organic molecules from inorganic sources using light or chemical energy."
+  },
+  {
+    "question": "Which process do most autotrophs use to convert sunlight into energy?",
+    "options": {
+      "A": "Respiration",
+      "B": "Photosynthesis",
+      "C": "Fermentation",
+      "D": "Digestion"
+    },
+    "answer": "B",
+    "explanation": "Photosynthesis is the process used by plants, algae, and cyanobacteria to convert light energy into chemical energy."
+  },
+  {
+    "question": "Which of the following is an example of an autotroph?",
+    "options": {
+      "A": "Lion",
+      "B": "Mushroom",
+      "C": "Grass",
+      "D": "Earthworm"
+    },
+    "answer": "C",
+    "explanation": "Grass is a green plant that performs photosynthesis, making it an autotroph (producer)."
+  },
+  {
+    "question": "Which of the following is NOT an example of a heterotroph?",
+    "options": {
+      "A": "Human",
+      "B": "Bear",
+      "C": "Oak tree",
+      "D": "Fungi"
+    },
+    "answer": "C",
+    "explanation": "An oak tree is an autotroph that produces its own food via photosynthesis. All others must consume organic matter."
+  },
+  {
+    "question": "What does the term 'poikilothermic' refer to?",
+    "options": {
+      "A": "Organisms that maintain a constant internal body temperature",
+      "B": "Organisms whose body temperature varies with the environment",
+      "C": "Organisms that can produce heat through metabolic processes",
+      "D": "Organisms that hibernate during winter months"
+    },
+    "answer": "B",
+    "explanation": "Poikilotherms (ectotherms) have body temperatures that fluctuate with the ambient temperature."
+  },
+  {
+    "question": "Which of the following is an example of a poikilothermic organism?",
+    "options": {
+      "A": "Dolphin",
+      "B": "Human",
+      "C": "Lizard",
+      "D": "Eagle"
+    },
+    "answer": "C",
+    "explanation": "Lizards are reptiles and are ectothermic/poikilothermic. Dolphins, humans, and eagles are endothermic."
+  },
+  {
+    "question": "What is an ectopic pregnancy?",
+    "options": {
+      "A": "A pregnancy that occurs in the uterus",
+      "B": "A pregnancy that occurs outside the uterus",
+      "C": "A type of miscarriage",
+      "D": "A multiple pregnancy"
+    },
+    "answer": "B",
+    "explanation": "An ectopic pregnancy is a dangerous condition where the embryo implants and grows outside the uterine cavity, most commonly in a fallopian tube."
+  },
+  {
+    "question": "At what stage does a fertilized egg become a zygote?",
+    "options": {
+      "A": "When it undergoes meiosis",
+      "B": "After the fusion of sperm and egg",
+      "C": "After implantation in the uterus",
+      "D": "After it divides into multiple cells"
+    },
+    "answer": "B",
+    "explanation": "A zygote is formed immediately upon the fusion of haploid gamete nuclei (fertilization)."
+  },
+  {
+    "question": "First step in taxonomy:",
+    "options": {
+      "A": "Naming",
+      "B": "Description",
+      "C": "Identification",
+      "D": "Classification"
+    },
+    "answer": "C",
+    "explanation": "Before you can name, describe, or classify an organism, you must first identify what it is."
+  },
+  {
+    "question": "Binomial nomenclature means writing the name of a plant in two words which designate:",
+    "options": {
+      "A": "Order and family",
+      "B": "Family and genus",
+      "C": "Species and variety",
+      "D": "Genus and species"
+    },
+    "answer": "D",
+    "explanation": "The binomial name consists of the genus name (capitalized) followed by the specific epithet (lowercase), e.g., Homo sapiens."
+  },
+  {
+    "question": "What is the correct descending sequence of taxonomic categories?",
+    "options": {
+      "A": "Division-class-order-family-tribe-genus",
+      "B": "Class-order-division-family-species-tribe",
+      "C": "Tribe-genus-class-division-family-order",
+      "D": "Family-order-genus-order-division-class"
+    },
+    "answer": "A",
+    "explanation": "This is a subset of the standard hierarchy, correctly ordered from higher to lower rank (Division = Phylum in plants)."
+  },
+  {
+    "question": "The term 'systematic' was proposed by:",
+    "options": {
+      "A": "John Ray",
+      "B": "Adanson",
+      "C": "De Vries",
+      "D": "Julian Huxley"
+    },
+    "answer": "B",
+    "explanation": "French botanist Michel Adanson is credited with founding the concept of a natural system and advancing systematics."
+  },
+  {
+    "question": "Modern classification is based on:",
+    "options": {
+      "A": "Physiology",
+      "B": "Fossils",
+      "C": "Phylogeny",
+      "D": "Morphology"
+    },
+    "answer": "C",
+    "explanation": "Modern taxonomy aims to reflect evolutionary history and relationships (phylogeny), using evidence from morphology, genetics, and fossils."
+  },
+  {
+    "question": "A small group of individuals or organisms which resemble closely in structure as well as function is called:",
+    "options": {
+      "A": "Phylum",
+      "B": "Family",
+      "C": "Species",
+      "D": "Genus"
+    },
+    "answer": "C",
+    "explanation": "This is a descriptive definition of a species based on morphological and functional similarity."
+  },
+  {
+    "question": "Taxon is:",
+    "options": {
+      "A": "A genus",
+      "B": "A species",
+      "C": "A taxonomic unit",
+      "D": "A taxonomic category of any rank"
+    },
+    "answer": "D",
+    "explanation": "A taxon (plural: taxa) is any named group of organisms at any level, e.g., Mammalia (Class) or Panthera leo (Species)."
+  },
+  {
+    "question": "'Systema Naturae' was written by:",
+    "options": {
+      "A": "Linnaeus",
+      "B": "Charles Darwin",
+      "C": "Aristotle",
+      "D": "Wallace"
+    },
+    "answer": "A",
+    "explanation": "Systema Naturae is the landmark work by Carl Linnaeus that laid the foundation for modern biological nomenclature and classification."
+  },
+  {
+    "question": "A system of classification based on all important morphological characters is termed as:",
+    "options": {
+      "A": "Artificial system",
+      "B": "Natural system",
+      "C": "Genetic system",
+      "D": "Both artificial and natural system"
+    },
+    "answer": "B",
+    "explanation": "A natural system uses many morphological (and now genetic) characters to group organisms based on overall similarity and evolutionary relationships."
+  },
+  {
+    "question": "Extra nuclear DNA is found in:",
+    "options": {
+      "A": "Chloroplast",
+      "B": "Endoplasmic reticulum",
+      "C": "Ribosomes",
+      "D": "Nucleus"
+    },
+    "answer": "A",
+    "explanation": "Chloroplasts (and mitochondria) contain their own small, circular DNA — a relic of their endosymbiotic origin."
+  },
+  {
+    "question": "Cell theory states that:",
+    "options": {
+      "A": "All cells have nuclei",
+      "B": "All cells are living",
+      "C": "Cells reproduce by mitosis and meiosis",
+      "D": "Cells are fundamental structural units of plants and animals"
+    },
+    "answer": "D",
+    "explanation": "This is one of the core principles of cell theory. Not all cells have nuclei (prokaryotes lack them)."
+  },
+  {
+    "question": "Mitochondria were first seen by:",
+    "options": {
+      "A": "Robert Hooke",
+      "B": "Robert Brown",
+      "C": "Lipmann",
+      "D": "Altmann"
+    },
+    "answer": "D",
+    "explanation": "Richard Altmann observed them in 1890 and called them 'bioblasts.' The term 'mitochondrion' was coined later by Carl Benda."
+  },
+  {
+    "question": "Prokaryotic cell does NOT possess:",
+    "options": {
+      "A": "Cell wall",
+      "B": "Nuclear membrane",
+      "C": "Cytoplasm",
+      "D": "Plasma membrane"
+    },
+    "answer": "B",
+    "explanation": "The defining feature of prokaryotes is the absence of a membrane-bound nucleus. They do have cell walls, cytoplasm, and plasma membrane."
+  },
+  {
+    "question": "Plasma membrane is composed of:",
+    "options": {
+      "A": "Protein",
+      "B": "Lipids",
+      "C": "Cellulose",
+      "D": "Protein and Lipids"
+    },
+    "answer": "D",
+    "explanation": "The fluid mosaic model describes the plasma membrane as a phospholipid bilayer with embedded proteins."
+  },
+  {
+    "question": "Cellular organelles containing hydrolytic enzymes are called:",
+    "options": {
+      "A": "Peroxisomes",
+      "B": "Lysosomes",
+      "C": "Ribosomes",
+      "D": "Mesosomes"
+    },
+    "answer": "B",
+    "explanation": "Lysosomes are membrane-bound vesicles containing digestive (hydrolytic) enzymes for breaking down waste materials and pathogens."
+  },
+  {
+    "question": "The sedimentation constant of a prokaryotic ribosome is generally 70S. It breaks up into two subunits whose sedimentation constants are:",
+    "options": {
+      "A": "50S and 20S",
+      "B": "40S and 30S",
+      "C": "60S and 10S",
+      "D": "50S and 30S"
+    },
+    "answer": "D",
+    "explanation": "Prokaryotic 70S ribosomes consist of a large 50S subunit and a small 30S subunit. (S = Svedberg unit)"
+  },
+  {
+    "question": "Ribosomes help in:",
+    "options": {
+      "A": "Photosynthesis",
+      "B": "Protein synthesis",
+      "C": "Lipid synthesis",
+      "D": "Respiration"
+    },
+    "answer": "B",
+    "explanation": "Ribosomes are the sites of translation, where mRNA is decoded to build polypeptide (protein) chains."
+  },
+  {
+    "question": "Food is converted to energy in:",
+    "options": {
+      "A": "Nucleus",
+      "B": "Nucleolus",
+      "C": "Chloroplast",
+      "D": "Mitochondria"
+    },
+    "answer": "D",
+    "explanation": "Mitochondria are the sites of cellular respiration (Krebs cycle and oxidative phosphorylation), where food molecules are oxidized to produce ATP."
+  },
+  {
+    "question": "What is the main characteristic of animals?",
+    "options": {
+      "A": "They are autotrophs",
+      "B": "They are heterotrophs",
+      "C": "They are cold-blooded",
+      "D": "They are warm-blooded"
+    },
+    "answer": "B",
+    "explanation": "All animals are heterotrophic, meaning they must ingest other organisms for nutrition."
+  },
+  {
+    "question": "What is the main characteristic of plants?",
+    "options": {
+      "A": "They are heterotrophs",
+      "B": "They are autotrophs",
+      "C": "They are cold-blooded",
+      "D": "They are warm-blooded"
+    },
+    "answer": "B",
+    "explanation": "Plants are primarily photoautotrophic, producing their own food via photosynthesis."
+  },
+  {
+    "question": "What is the main difference between plants and animals in terms of growth?",
+    "options": {
+      "A": "Plants grow throughout their life while animals have definite growth",
+      "B": "Animals grow throughout their life while plants have definite growth",
+      "C": "Both plants and animals grow throughout their life",
+      "D": "Neither plants nor animals grow throughout their life"
+    },
+    "answer": "A",
+    "explanation": "Plants exhibit indeterminate growth from meristematic tissues, while animals generally have determinate growth, ceasing at adulthood."
+  },
+  {
+    "question": "What is the main difference between plants and animals in terms of cellular structure?",
+    "options": {
+      "A": "Plants have cell walls while animals do not",
+      "B": "Animals have cell walls while plants do not",
+      "C": "Both plants and animals have cell walls",
+      "D": "Neither plants nor animals have cell walls"
+    },
+    "answer": "A",
+    "explanation": "Plant cells are surrounded by a rigid cellulose cell wall. Animal cells lack a cell wall, having only a flexible plasma membrane."
+  },
+  {
+    "question": "What is the main characteristic of animals in the phylum Arthropoda?",
+    "options": {
+      "A": "They have a true body cavity",
+      "B": "They have a sac-like cavity with a single opening",
+      "C": "They are bilaterally symmetrical and triploblastic",
+      "D": "They have jointed legs and a hard exoskeleton"
+    },
+    "answer": "D",
+    "explanation": "'Arthropoda' means 'jointed feet.' The presence of a chitinous exoskeleton and jointed appendages are their defining features."
+  },
+  {
+    "question": "What is the main characteristic of animals in the class Mammalia?",
+    "options": {
+      "A": "They have a four-chambered heart",
+      "B": "They have a three-chambered heart",
+      "C": "They have a two-chambered heart",
+      "D": "They have hair and produce milk for their young"
+    },
+    "answer": "D",
+    "explanation": "The defining characteristics of Mammalia are mammary glands (for milk production) and the presence of hair/fur."
+  },
+  {
+    "question": "What is the main characteristic of animals in the class Aves?",
+    "options": {
+      "A": "They have a four-chambered heart",
+      "B": "They have a three-chambered heart",
+      "C": "They have a two-chambered heart",
+      "D": "They have feathers and wings"
+    },
+    "answer": "D",
+    "explanation": "Feathers are a unique, defining characteristic of birds (Aves)."
+  },
+  {
+    "question": "What is the main characteristic of animals in the class Pisces?",
+    "options": {
+      "A": "They have a four-chambered heart",
+      "B": "They have a three-chambered heart",
+      "C": "They have a two-chambered heart",
+      "D": "They have gills for respiration"
+    },
+    "answer": "D",
+    "explanation": "The universal characteristic of fish is the presence of gills for breathing underwater."
+  },
+  {
+    "question": "What is the main characteristic of animals in the phylum Porifera?",
+    "options": {
+      "A": "They have a true body cavity",
+      "B": "They have a canal system that circulates water, food, and oxygen",
+      "C": "They have a hard exoskeleton",
+      "D": "They have a notochord at some life stage"
+    },
+    "answer": "B",
+    "explanation": "Sponges (Porifera) are filter feeders whose unique body plan is built around a system of pores and canals."
+  },
+  {
+    "question": "What is the main characteristic of plants in the phylum Pteridophyta?",
+    "options": {
+      "A": "They produce seeds in cones",
+      "B": "They have flowers and produce seeds protected inside fruits",
+      "C": "They have roots, stems, and leaves and reproduce by spores",
+      "D": "They are small plants with tiny leaves one cell thick"
+    },
+    "answer": "C",
+    "explanation": "Pteridophytes (ferns and allies) are vascular plants but reproduce via spores, not seeds."
+  },
+  {
+    "question": "What is the hierarchical system of classification used in biology?",
+    "options": {
+      "A": "Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species",
+      "B": "Kingdom, Phylum, Class, Order, Family, Genus, Species",
+      "C": "Domain, Kingdom, Phylum, Class, Order, Family",
+      "D": "Phylum, Class, Order, Family, Genus, Species"
+    },
+    "answer": "A",
+    "explanation": "The modern hierarchy includes Domain as the most inclusive rank, followed by the traditional Linnaean ranks."
+  },
+  {
+    "question": "What are the three domains of life?",
+    "options": {
+      "A": "Archaea, Bacteria, and Eukarya",
+      "B": "Animalia, Plantae, and Fungi",
+      "C": "Protista, Chromista, and Monera",
+      "D": "Eukarya, Prokaryota, and Archaea"
+    },
+    "answer": "A",
+    "explanation": "The three-domain system, based on molecular phylogeny, was proposed by Carl Woese and is now the standard."
+  },
+  {
+    "question": "Who modified the taxonomy hierarchy in 1990 to include the Domain?",
+    "options": {
+      "A": "Carl Linnaeus",
+      "B": "Carl Woese",
+      "C": "Cavalier-Smith",
+      "D": "Haeckel"
+    },
+    "answer": "B",
+    "explanation": "Carl Woese, based on rRNA sequencing, proposed the three-domain system, elevating the domain above the kingdom."
+  },
+  {
+    "question": "What is the advantage of using Latin language in biological nomenclature?",
+    "options": {
+      "A": "It is a universal language",
+      "B": "It is a simple language",
+      "C": "It is a language easy to learn",
+      "D": "It provides stability and universality to the names"
+    },
+    "answer": "D",
+    "explanation": "Latin is a 'dead' language that does not evolve colloquially, ensuring scientific names remain consistent and universally understood."
+  },
+  {
+    "question": "Who is credited with developing the binomial system of nomenclature?",
+    "options": {
+      "A": "Carl Linnaeus",
+      "B": "Carl Woese",
+      "C": "Cavalier-Smith",
+      "D": "Haeckel"
+    },
+    "answer": "A",
+    "explanation": "Carl Linnaeus formalized and popularized the binomial nomenclature system in the 18th century."
+  },
+  {
+    "question": "What is biodiversity?",
+    "options": {
+      "A": "The variety of life on Earth in all its forms and interactions",
+      "B": "The number of species in a habitat",
+      "C": "The genetic variation within a species",
+      "D": "The number of ecosystems in a region"
+    },
+    "answer": "A",
+    "explanation": "This is the comprehensive definition of biodiversity, encompassing genetic, species, and ecosystem diversity."
+  },
+  {
+    "question": "What are the three basic levels of diversity of life?",
+    "options": {
+      "A": "Genetic, species, and ecosystem",
+      "B": "Species, ecosystem, and community",
+      "C": "Genetic, ecosystem, and community",
+      "D": "Species, genetic, and community"
+    },
+    "answer": "A",
+    "explanation": "These are the three universally recognized hierarchical levels of biodiversity."
+  },
+  {
+    "question": "What is the main characteristic of plants in the phylum Bryophyta?",
+    "options": {
+      "A": "They produce seeds in cones",
+      "B": "They have flowers and produce seeds in fruits",
+      "C": "They have roots, stems, and leaves and reproduce by spores",
+      "D": "They are small plants with tiny leaves one cell thick and single-celled rootlets"
+    },
+    "answer": "D",
+    "explanation": "Bryophytes (mosses, liverworts) are non-vascular plants lacking true roots, stems, and leaves, with rhizoids that are usually single-celled."
+  },
+  {
+    "question": "What is the main characteristic of animals in the phylum Coelenterata/Cnidaria?",
+    "options": {
+      "A": "They have a true body cavity",
+      "B": "They have a sac-like cavity with a single opening for ingestion and egestion",
+      "C": "They have a hard exoskeleton of calcium carbonate",
+      "D": "They have a notochord at some life stage"
+    },
+    "answer": "B",
+    "explanation": "Cnidarians (jellyfish, corals) have a gastrovascular cavity with a single opening that serves as both mouth and anus."
+  },
+  {
+    "question": "What is the main characteristic of animals in the phylum Mollusca?",
+    "options": {
+      "A": "They have a true body cavity",
+      "B": "They have a sac-like cavity with one opening",
+      "C": "They are bilaterally symmetrical and triploblastic",
+      "D": "They have a soft, unsegmented body, often protected by a shell"
+    },
+    "answer": "D",
+    "explanation": "'Mollusca' means 'soft-bodied.' Their hallmark is the soft body along with the frequent presence of a calcium carbonate shell."
+  },
+  {
+    "question": "What is the standard unit of biological activity?",
+    "options": {
+      "A": "Cell",
+      "B": "Tissue",
+      "C": "Organ",
+      "D": "System"
+    },
+    "answer": "A",
+    "explanation": "The cell is the basic structural and functional unit of all living organisms."
+  },
+  {
+    "question": "Who coined the term 'cell'?",
+    "options": {
+      "A": "Robert Hooke",
+      "B": "Matthias Schleiden",
+      "C": "Theodor Schwann",
+      "D": "Rudolf Virchow"
+    },
+    "answer": "A",
+    "explanation": "In 1665, Robert Hooke observed cork cells and named them 'cells' because they reminded him of monks' rooms (cellulae)."
+  },
+  {
+    "question": "What is the term for the 'powerhouse' of the cell?",
+    "options": {
+      "A": "Mitochondria",
+      "B": "Chloroplast",
+      "C": "Nucleus",
+      "D": "Endoplasmic reticulum"
+    },
+    "answer": "A",
+    "explanation": "Mitochondria generate most of the cell's supply of ATP, the energy currency."
+  },
+  {
+    "question": "What is the process by which cells produce energy?",
+    "options": {
+      "A": "Photosynthesis",
+      "B": "Respiration",
+      "C": "Fermentation",
+      "D": "Mitosis"
+    },
+    "answer": "B",
+    "explanation": "Cellular respiration (aerobic or anaerobic) is the process that breaks down organic molecules to release energy stored as ATP."
+  },
+  {
+    "question": "What is the function of the Golgi complex?",
+    "options": {
+      "A": "To synthesize proteins",
+      "B": "To store and modify proteins",
+      "C": "To produce energy",
+      "D": "To regulate cell growth"
+    },
+    "answer": "B",
+    "explanation": "The Golgi apparatus modifies, sorts, packages, and tags proteins and lipids for storage or transport."
+  },
+  {
+    "question": "What is the term for the process by which cells become specialized?",
+    "options": {
+      "A": "Mitosis",
+      "B": "Meiosis",
+      "C": "Differentiation",
+      "D": "Photosynthesis"
+    },
+    "answer": "C",
+    "explanation": "Cellular differentiation is the process where a less specialized cell becomes a more specialized cell type."
+  },
+  {
+    "question": "What is the basic structure of cilia and flagella?",
+    "options": {
+      "A": "Nine-plus-one arrangement of tubules",
+      "B": "Nine-plus-two arrangement of tubules",
+      "C": "Ten-plus-one arrangement of tubules",
+      "D": "Ten-plus-two arrangement of tubules"
+    },
+    "answer": "B",
+    "explanation": "The core axoneme of eukaryotic cilia and flagella has a characteristic '9+2' microtubule structure."
+  },
+  {
+    "question": "What is the function of the nucleolus?",
+    "options": {
+      "A": "To synthesize DNA",
+      "B": "To synthesize ribosomal RNA",
+      "C": "To synthesize proteins",
+      "D": "To store genetic information"
+    },
+    "answer": "B",
+    "explanation": "The nucleolus is the site of rRNA transcription and initial assembly of ribosomal subunits."
+  },
+  {
+    "question": "What is the term for the simplest cell known?",
+    "options": {
+      "A": "Eukaryotic cell",
+      "B": "Prokaryotic cell",
+      "C": "Nucleated cell",
+      "D": "Non-nucleated cell"
+    },
+    "answer": "B",
+    "explanation": "Prokaryotic cells (bacteria and archaea) are structurally simpler and smaller than eukaryotic cells, lacking membrane-bound organelles."
+  },
+  {
+    "question": "What is the main difference in the structure of genetic material between prokaryotes and eukaryotes?",
+    "options": {
+      "A": "Prokaryotes have a single chromosome, while eukaryotes have multiple",
+      "B": "Prokaryotes have a membrane-bound nucleus, while eukaryotes do not",
+      "C": "Prokaryotes have DNA complexed with histones, while eukaryotes do not",
+      "D": "Prokaryotes have a simple, circular chromosome, while eukaryotes have complex, linear chromosomes"
+    },
+    "answer": "D",
+    "explanation": "Prokaryotes typically have a single, circular DNA molecule not enclosed in a nucleus. Eukaryotes have multiple, linear chromosomes within the nucleus."
+  },
+  {
+    "question": "How do prokaryotes divide?",
+    "options": {
+      "A": "By mitotic division",
+      "B": "By meiotic division",
+      "C": "By binary fission",
+      "D": "By endoreduplication"
+    },
+    "answer": "C",
+    "explanation": "Prokaryotes reproduce asexually through binary fission, a simpler process than mitosis."
+  },
+  {
+    "question": "What is the term for the region in prokaryotic cells where the genetic material is located?",
+    "options": {
+      "A": "Nucleus",
+      "B": "Nucleoid",
+      "C": "Chromosome",
+      "D": "Plasmid"
+    },
+    "answer": "B",
+    "explanation": "The nucleoid is the irregularly-shaped region in a prokaryote that contains its chromosomal DNA. It is not membrane-bound."
+  },
+  {
+    "question": "What is the main component of the cell wall in plant cells?",
+    "options": {
+      "A": "Amino acids and muramic acid",
+      "B": "Cellulose",
+      "C": "Chitin",
+      "D": "Pectin"
+    },
+    "answer": "B",
+    "explanation": "The primary structural component of the plant cell wall is cellulose, a polysaccharide. Chitin is for fungal walls; muramic acid is for bacterial walls."
+  },
+  {
+    "question": "What characteristic distinguishes viruses from other living organisms?",
+    "options": {
+      "A": "Presence of cell wall",
+      "B": "Presence of nucleus",
+      "C": "Presence of mitochondria",
+      "D": "Absence of cellular structure"
+    },
+    "answer": "D",
+    "explanation": "Viruses are acellular. They consist of genetic material (DNA or RNA) surrounded by a protein coat (capsid), lacking cytoplasm and organelles."
+  },
+  {
+    "question": "What is the term for the protein coat that surrounds the genetic material of a virus?",
+    "options": {
+      "A": "Capsid",
+      "B": "Envelope",
+      "C": "Nucleocapsid",
+      "D": "Virion"
+    },
+    "answer": "A",
+    "explanation": "The capsid is the protein shell that encases the viral genome."
+  },
+  {
+    "question": "What is the term for the study of the relationships between organisms and their environment?",
+    "options": {
+      "A": "Ecology",
+      "B": "Botany",
+      "C": "Horticulture",
+      "D": "Taxonomy"
+    },
+    "answer": "A",
+    "explanation": "Ecology is the scientific study of interactions between organisms and their physical and biological environment."
+  },
+  {
+    "question": "What is the term for the process by which plants release water vapor into the air?",
+    "options": {
+      "A": "Respiration",
+      "B": "Photosynthesis",
+      "C": "Transpiration",
+      "D": "Evaporation"
+    },
+    "answer": "C",
+    "explanation": "Transpiration is the loss of water vapor from the aerial parts of plants, primarily through stomata."
+  },
+  {
+    "question": "What is the term for the study of the structure, behavior, and evolution of fungi?",
+    "options": {
+      "A": "Mycology",
+      "B": "Botany",
+      "C": "Horticulture",
+      "D": "Ecology"
+    },
+    "answer": "A",
+    "explanation": "Mycology is the branch of biology devoted to the study of fungi."
+  },
+  {
+    "question": "What is the mode of reproduction in bacteria?",
+    "options": {
+      "A": "Mitosis",
+      "B": "Meiosis",
+      "C": "Binary fission",
+      "D": "Sexual reproduction"
+    },
+    "answer": "C",
+    "explanation": "Bacteria primarily reproduce asexually through binary fission."
+  },
+  {
+    "question": "What is the function of akinetes in blue-green algae?",
+    "options": {
+      "A": "Resting spore",
+      "B": "Vegetative propagation",
+      "C": "Food storage",
+      "D": "Photosynthesis"
+    },
+    "answer": "A",
+    "explanation": "Akinetes are thick-walled, dormant cells formed by cyanobacteria (blue-green algae) to survive unfavorable conditions."
+  },
+  {
+    "question": "What is the characteristic of fungi?",
+    "options": {
+      "A": "Presence of chlorophyll",
+      "B": "Absence of chlorophyll",
+      "C": "Presence of vascular tissue",
+      "D": "Absence of vascular tissue"
+    },
+    "answer": "B",
+    "explanation": "Fungi are heterotrophic (they cannot photosynthesize) because they lack chlorophyll."
+  },
+  {
+    "question": "What is the mode of nutrition in fungi?",
+    "options": {
+      "A": "Autotrophic",
+      "B": "Heterotrophic",
+      "C": "Mixotrophic",
+      "D": "Saprotrophic"
+    },
+    "answer": "B",
+    "explanation": "All fungi are heterotrophs. Most are saprotrophic (absorbing nutrients from dead organic matter), but the broad category is heterotrophic."
+  },
+  {
+    "question": "What is the characteristic of mycelium?",
+    "options": {
+      "A": "A single hypha",
+      "B": "A mass of interwoven hyphae",
+      "C": "A type of spore",
+      "D": "A type of fungus"
+    },
+    "answer": "B",
+    "explanation": "The mycelium is the vegetative part of a fungus, consisting of a network of fine filaments (hyphae)."
+  },
+  {
+    "question": "What is the study of forms and features of different plant organs called?",
+    "options": {
+      "A": "Plant morphology",
+      "B": "Plant anatomy",
+      "C": "Plant physiology",
+      "D": "Plant taxonomy"
+    },
+    "answer": "A",
+    "explanation": "Morphology is the study of the form and external structure of plants and their organs."
+  },
+  {
+    "question": "Infectious RNA particles without a protein coat are called:",
+    "options": {
+      "A": "Viroid",
+      "B": "Virion",
+      "C": "Virusoid",
+      "D": "Prion"
+    },
+    "answer": "A",
+    "explanation": "Viroids are the smallest known infectious pathogens, consisting solely of a short strand of circular, single-stranded RNA without a protein coat."
+  },
+  {
+    "question": "The unique feature of bryophytes compared to other green plant groups is that:",
+    "options": {
+      "A": "They produce spores",
+      "B": "They lack vascular tissue",
+      "C": "They lack roots",
+      "D": "Their sporophyte is attached to the gametophyte"
+    },
+    "answer": "D",
+    "explanation": "The most unique feature of bryophytes is that the sporophyte generation is permanently physically and nutritionally dependent on the dominant gametophyte."
+  },
+  {
+    "question": "Which group of plants constitute the lower bryophytes?",
+    "options": {
+      "A": "Liverworts",
+      "B": "Mosses",
+      "C": "Anthocerotales",
+      "D": "Jungermaniales"
+    },
+    "answer": "A",
+    "explanation": "Liverworts (Hepaticae) are considered the most primitive or 'lower' bryophytes."
+  },
+  {
+    "question": "Liverworts are closely related to:",
+    "options": {
+      "A": "Algae",
+      "B": "Fungi",
+      "C": "Lichen",
+      "D": "Mosses"
+    },
+    "answer": "A",
+    "explanation": "Bryophytes, particularly liverworts, are believed to have evolved from green algae, sharing chlorophyll types and storage compounds."
+  },
+  {
+    "question": "The first land-inhabitant plants are:",
+    "options": {
+      "A": "Pteridophytes",
+      "B": "Bryophytes",
+      "C": "Gymnosperms",
+      "D": "Angiosperms"
+    },
+    "answer": "B",
+    "explanation": "Bryophytes are considered the earliest plants to colonize land, though they required moist environments."
+  },
+  {
+    "question": "The only positive evidence of the aquatic ancestry of bryophytes is:",
+    "options": {
+      "A": "Thread-like protonema",
+      "B": "Green colour",
+      "C": "Some forms are still aquatic",
+      "D": "Ciliated sperms"
+    },
+    "answer": "D",
+    "explanation": "Bryophyte sperm are flagellated and must swim through water to reach the egg — a strong indicator of aquatic ancestry."
+  },
+  {
+    "question": "To which group would you assign a plant which produces spores and embryos, but lacks seeds and vasculature?",
+    "options": {
+      "A": "Algae",
+      "B": "Fungi",
+      "C": "Pteridophyte",
+      "D": "Bryophyte"
+    },
+    "answer": "D",
+    "explanation": "This perfectly describes bryophytes: they are embryophytes, reproduce via spores, are non-vascular, and do not produce seeds."
+  },
+  {
+    "question": "Viruses are:",
+    "options": {
+      "A": "Obligate parasites",
+      "B": "Free living",
+      "C": "Both free living and parasitic",
+      "D": "None of these"
+    },
+    "answer": "A",
+    "explanation": "Viruses cannot replicate outside a host cell; they are obligate intracellular parasites."
+  },
+  {
+    "question": "A fully formed infectious viral particle is called a:",
+    "options": {
+      "A": "Viroid",
+      "B": "Virusoid",
+      "C": "Virion",
+      "D": "Capsid"
+    },
+    "answer": "C",
+    "explanation": "A virion is the complete, mature, extracellular form of a virus capable of infecting a host cell."
+  },
+  {
+    "question": "The protein coat of a virus is called a:",
+    "options": {
+      "A": "Nucleid",
+      "B": "Capsid",
+      "C": "Capsomere",
+      "D": "Outer envelope"
+    },
+    "answer": "B",
+    "explanation": "The capsid is the protein shell encasing the viral genome."
+  },
+  {
+    "question": "Tobacco mosaic virus is:",
+    "options": {
+      "A": "Spherical shaped",
+      "B": "Rod shaped",
+      "C": "Cuboidal",
+      "D": "Oval shaped"
+    },
+    "answer": "B",
+    "explanation": "Tobacco mosaic virus (TMV) is a classic example of a helical (rod-shaped) virus."
+  },
+  {
+    "question": "The virus with the smallest genome is:",
+    "options": {
+      "A": "Circovirus",
+      "B": "Mimivirus",
+      "C": "Herpes virus",
+      "D": "Rabies virus"
+    },
+    "answer": "A",
+    "explanation": "Circoviruses are among the smallest viruses known, with single-stranded circular DNA genomes of about 1.7–2 kb."
+  },
+  {
+    "question": "Viruses that attack bacteria are called:",
+    "options": {
+      "A": "Lysophage",
+      "B": "Bacteriophage",
+      "C": "Virophage",
+      "D": "None of these"
+    },
+    "answer": "B",
+    "explanation": "Bacteriophages (or phages) are viruses that specifically infect bacteria."
+  },
+  {
+    "question": "T2 phage is a:",
+    "options": {
+      "A": "ds DNA phage",
+      "B": "ss DNA phage",
+      "C": "ss RNA phage",
+      "D": "ds RNA phage"
+    },
+    "answer": "A",
+    "explanation": "T2 phage (T-even phage) is a double-stranded DNA bacteriophage that infects E. coli."
+  },
+  {
+    "question": "Viral genome attached to the bacterial genome is termed as:",
+    "options": {
+      "A": "Prophage",
+      "B": "Lysogeny",
+      "C": "Lytic cycle",
+      "D": "Virulent phage"
+    },
+    "answer": "A",
+    "explanation": "A prophage is the viral genome that has been integrated into the bacterial chromosome during the lysogenic cycle."
+  },
+  {
+    "question": "TMV is a:",
+    "options": {
+      "A": "DNA virus",
+      "B": "RNA virus",
+      "C": "ss DNA or ds DNA",
+      "D": "Bacteriophage"
+    },
+    "answer": "B",
+    "explanation": "Tobacco Mosaic Virus (TMV) has a single-stranded positive-sense RNA genome."
+  },
+  {
+    "question": "Bacteriophages that induce bacterial cell lysis are called:",
+    "options": {
+      "A": "Temperate phages",
+      "B": "Virulent phages",
+      "C": "Lysogenic phages",
+      "D": "Viroids"
+    },
+    "answer": "B",
+    "explanation": "Virulent phages (lytic phages) replicate within the host bacterium and lyse it to release new phages."
+  },
+  {
+    "question": "Kingdom Protista includes organisms like:",
+    "options": {
+      "A": "Euglena, Spirogyra and Penicillium",
+      "B": "Amoeba, Spirogyra and Penicillium",
+      "C": "Amoeba, Euglena and Penicillium",
+      "D": "Amoeba, Euglena and Diatoms"
+    },
+    "answer": "D",
+    "explanation": "Amoeba, Euglena, and Diatoms are all unicellular eukaryotes belonging to Kingdom Protista. Penicillium is a fungus."
+  },
+  {
+    "question": "Protista differs from Monera in having:",
+    "options": {
+      "A": "Cell wall",
+      "B": "Nuclear membrane",
+      "C": "Flagella",
+      "D": "Autotrophic nutrition"
+    },
+    "answer": "B",
+    "explanation": "The key difference is that Protista are eukaryotes (with a membrane-bound nucleus), while Monera (bacteria) are prokaryotes."
+  },
+  {
+    "question": "Which of the following is NOT a characteristic of Protista?",
+    "options": {
+      "A": "Protista are prokaryotic",
+      "B": "Body organization is cellular",
+      "C": "Some protists have cell walls",
+      "D": "Membrane-bound organelles are present"
+    },
+    "answer": "A",
+    "explanation": "Protista are eukaryotic, not prokaryotic. They have membrane-bound organelles including a nucleus."
+  },
+  {
+    "question": "Plants which are not differentiated into roots, stem and leaves are grouped under:",
+    "options": {
+      "A": "Gymnosperms",
+      "B": "Pteridophytes",
+      "C": "Thallophytes",
+      "D": "Spermatophytes"
+    },
+    "answer": "C",
+    "explanation": "Thallophytes (algae, fungi, lichens) are the most primitive plants lacking true roots, stems, and leaves; they have an undifferentiated thallus body."
+  },
+  {
+    "question": "Which are the most primitive group of algae?",
+    "options": {
+      "A": "Blue-green algae",
+      "B": "Red algae",
+      "C": "Brown algae",
+      "D": "Green algae"
+    },
+    "answer": "A",
+    "explanation": "Blue-green algae (Cyanobacteria/Cyanophyta) are prokaryotic and considered the most primitive group of photosynthetic organisms."
+  },
+  {
+    "question": "Iodine is obtained from:",
+    "options": {
+      "A": "Ulothrix",
+      "B": "Ectocarpus",
+      "C": "Laminaria",
+      "D": "Oedogonium"
+    },
+    "answer": "C",
+    "explanation": "Laminaria (kelp) is a brown alga that is a commercial source of iodine and alginates."
+  },
+  {
+    "question": "Ability to fix atmospheric nitrogen is found in:",
+    "options": {
+      "A": "Leaves of some crop plants",
+      "B": "Chlorella",
+      "C": "Some marine red algae",
+      "D": "Some blue-green algae"
+    },
+    "answer": "D",
+    "explanation": "Certain cyanobacteria (blue-green algae) like Anabaena and Nostoc are capable of fixing atmospheric nitrogen via specialized cells called heterocysts."
+  },
+  {
+    "question": "Zygotic meiosis is a characteristic feature of:",
+    "options": {
+      "A": "Algae",
+      "B": "Bryophytes",
+      "C": "Pteridophytes",
+      "D": "Gymnosperms"
+    },
+    "answer": "A",
+    "explanation": "In zygotic meiosis (seen in most algae), the zygote is the only diploid stage; meiosis occurs immediately after zygote formation."
+  },
+  {
+    "question": "In which of the following group would you place a plant which produces seeds but lacks flowers?",
+    "options": {
+      "A": "Fungi",
+      "B": "Pteridophytes",
+      "C": "Bryophytes",
+      "D": "Gymnosperms"
+    },
+    "answer": "D",
+    "explanation": "Gymnosperms (e.g., pines, cycads) produce naked seeds in cones but do not have flowers or enclosed fruits."
+  },
+  {
+    "question": "In gymnosperms, pollination is exclusively by:",
+    "options": {
+      "A": "Animals",
+      "B": "Wind",
+      "C": "Insects",
+      "D": "Water"
+    },
+    "answer": "B",
+    "explanation": "Gymnosperms are wind-pollinated (anemophilous), relying on wind to carry pollen to the female cones."
+  },
+  {
+    "question": "Coralloid roots are found in:",
+    "options": {
+      "A": "Cycas",
+      "B": "Pinus",
+      "C": "Dryopteris",
+      "D": "Lycopodium"
+    },
+    "answer": "A",
+    "explanation": "Cycas has specialized coralloid (coral-like) roots that harbor nitrogen-fixing cyanobacteria in a symbiotic relationship."
+  },
+  {
+    "question": "Angiosperms differ from gymnosperms in having:",
+    "options": {
+      "A": "Fruits",
+      "B": "Cotyledon",
+      "C": "Tracheid",
+      "D": "Broad leaves"
+    },
+    "answer": "A",
+    "explanation": "Angiosperms have enclosed ovules that develop into fruits after fertilization, unlike gymnosperms which have naked seeds."
+  },
+  {
+    "question": "The branch of botany that deals with the form of the plant is known as:",
+    "options": {
+      "A": "Physiology",
+      "B": "Anatomy",
+      "C": "Morphology",
+      "D": "Cytology"
+    },
+    "answer": "C",
+    "explanation": "Plant morphology is the study of the form and external structure of plants."
+  },
+  {
+    "question": "The roots which develop from any portion of the plant except the radicle are known as:",
+    "options": {
+      "A": "Tap roots",
+      "B": "Stilt roots",
+      "C": "Fibrous roots",
+      "D": "Adventitious roots"
+    },
+    "answer": "D",
+    "explanation": "Adventitious roots arise from stem nodes, leaves, or other non-root tissue, unlike normal roots which arise from the radicle."
+  },
+  {
+    "question": "The arrangement of leaves on branches:",
+    "options": {
+      "A": "Phyllotaxy",
+      "B": "Vernation",
+      "C": "Venation",
+      "D": "Phytotaxy"
+    },
+    "answer": "A",
+    "explanation": "Phyllotaxy refers to the pattern or arrangement of leaves on a stem or branches."
+  },
+  {
+    "question": "Bulb is a modification of:",
+    "options": {
+      "A": "Root",
+      "B": "Stem",
+      "C": "Radicle",
+      "D": "Plumule"
+    },
+    "answer": "B",
+    "explanation": "A bulb (e.g., onion) is a modified underground stem with fleshy leaf bases that store food."
+  },
+  {
+    "question": "The crossing of F1 to homozygous recessive parent is called:",
+    "options": {
+      "A": "Back cross",
+      "B": "Test cross",
+      "C": "F1 cross",
+      "D": "All of these"
+    },
+    "answer": "B",
+    "explanation": "A test cross involves crossing an organism with an unknown genotype to a homozygous recessive to determine whether the unknown is heterozygous or homozygous dominant."
+  },
+  {
+    "question": "The test cross is used to determine the:",
+    "options": {
+      "A": "Genotype of the plant",
+      "B": "Phenotype of the plant",
+      "C": "Both genotype and phenotype",
+      "D": "None of these"
+    },
+    "answer": "A",
+    "explanation": "The test cross reveals the genotype by showing which alleles are present in the organism."
+  },
+  {
+    "question": "Monohybrid test cross ratio is:",
+    "options": {
+      "A": "3:1",
+      "B": "2:1",
+      "C": "1:1",
+      "D": "9:3:3:1"
+    },
+    "answer": "C",
+    "explanation": "When a heterozygous (Aa) is test-crossed with homozygous recessive (aa), the result is a 1:1 ratio of Aa:aa."
+  },
+  {
+    "question": "The cross in which parents differ in two pairs of contrasting characters is called:",
+    "options": {
+      "A": "Monohybrid cross",
+      "B": "Dihybrid cross",
+      "C": "Trihybrid cross",
+      "D": "Tetrahybrid cross"
+    },
+    "answer": "B",
+    "explanation": "A dihybrid cross involves two pairs of contrasting traits and produces the classic 9:3:3:1 F2 ratio."
+  },
+  {
+    "question": "The phenotypic dihybrid ratio is:",
+    "options": {
+      "A": "9:3:2:1",
+      "B": "9:3:2:2",
+      "C": "1:1",
+      "D": "9:3:3:1"
+    },
+    "answer": "D",
+    "explanation": "Mendel's dihybrid cross produces a 9:3:3:1 phenotypic ratio in the F2 generation."
+  },
+  {
+    "question": "The Dihybrid test cross ratio is:",
+    "options": {
+      "A": "9:3:2:1",
+      "B": "9:3:2:2",
+      "C": "1:1:1:1",
+      "D": "9:3:3:1"
+    },
+    "answer": "C",
+    "explanation": "When a dihybrid (AaBb) is test-crossed with homozygous recessive (aabb), the result is a 1:1:1:1 ratio."
+  },
+  {
+    "question": "All of the following obey Mendel's laws EXCEPT:",
+    "options": {
+      "A": "Linkage",
+      "B": "Independent assortment",
+      "C": "Dominance",
+      "D": "Purity of gametes"
+    },
+    "answer": "A",
+    "explanation": "Linked genes (on the same chromosome) do not assort independently and violate Mendel's law of independent assortment."
+  },
+  {
+    "question": "The title of Mendel's paper while presenting at Brunn Natural History Society in 1865 was:",
+    "options": {
+      "A": "Laws of inheritance",
+      "B": "Laws of heredity",
+      "C": "Experiments on pea plants",
+      "D": "Experiments in plant hybridization"
+    },
+    "answer": "D",
+    "explanation": "Mendel's famous 1865 paper presented to the Brunn Natural History Society was titled 'Versuche über Pflanzenhybriden' (Experiments on Plant Hybridization)."
+  },
+  {
+    "question": "Down syndrome is usually the result of an extra chromosome ___, so that each body cell has a total of 47 chromosomes.",
+    "options": {
+      "A": "18",
+      "B": "19",
+      "C": "20",
+      "D": "21"
+    },
+    "answer": "D",
+    "explanation": "Down syndrome (Trisomy 21) results from an extra copy of chromosome 21, giving 47 chromosomes total."
+  },
+  {
+    "question": "A gene showing co-dominance:",
+    "options": {
+      "A": "Has one allele dominant to the other",
+      "B": "Has both alleles independently expressed in the heterozygote",
+      "C": "Has alleles tightly linked on the same chromosome",
+      "D": "Has alleles expressed at the same time in development"
+    },
+    "answer": "B",
+    "explanation": "In co-dominance, both alleles are fully expressed simultaneously in the heterozygote, as seen in ABO blood types."
+  },
+  {
+    "question": "In DNA, adenine normally pairs with:",
+    "options": {
+      "A": "Cytosine",
+      "B": "Guanine",
+      "C": "Thymine",
+      "D": "Uracil"
+    },
+    "answer": "C",
+    "explanation": "According to Chargaff's rules, adenine (A) pairs with thymine (T) via two hydrogen bonds in DNA."
+  },
+  {
+    "question": "Normal humans have __________ pairs of autosomes and __________ pair(s) of sex chromosomes.",
+    "options": {
+      "A": "23 and 23",
+      "B": "23 and 2",
+      "C": "46 and 1",
+      "D": "22 and 1"
+    },
+    "answer": "D",
+    "explanation": "Humans have 22 pairs of autosomes and 1 pair of sex chromosomes (XX in females, XY in males), totaling 46 chromosomes."
+  },
+  {
+    "question": "To enter or leave a cell, substances must pass through:",
+    "options": {
+      "A": "Microtubule",
+      "B": "The Golgi apparatus",
+      "C": "A ribosome",
+      "D": "The plasma membrane"
+    },
+    "answer": "D",
+    "explanation": "The plasma membrane is the selectively permeable boundary that all substances must cross to enter or exit the cell."
+  },
+  {
+    "question": "Bacterial cells are prokaryotic; in comparison to a typical eukaryotic cell they would:",
+    "options": {
+      "A": "Be smaller",
+      "B": "Have a smaller nucleus",
+      "C": "Lack a plasma membrane",
+      "D": "Have fewer internal membranous compartments"
+    },
+    "answer": "D",
+    "explanation": "Prokaryotes lack the extensive endomembrane system (ER, Golgi, etc.) found in eukaryotes, resulting in fewer internal membranous compartments."
+  },
+  {
+    "question": "You would expect a cell with an extensive Golgi apparatus to:",
+    "options": {
+      "A": "Make a lot of ATP",
+      "B": "Secrete a lot of material",
+      "C": "Move actively",
+      "D": "Perform photosynthesis"
+    },
+    "answer": "B",
+    "explanation": "The Golgi apparatus packages and ships proteins for secretion; a well-developed Golgi indicates high secretory activity."
+  },
+  {
+    "question": "Which of the following correctly matches an organelle with its function?",
+    "options": {
+      "A": "Mitochondrion — photosynthesis",
+      "B": "Nucleus — cellular respiration",
+      "C": "Ribosome — manufacture of lipids",
+      "D": "Central vacuole — storage"
+    },
+    "answer": "D",
+    "explanation": "The central vacuole in plant cells stores water, ions, nutrients, and waste products."
+  },
+  {
+    "question": "Which clue would tell you whether a cell is prokaryotic or eukaryotic?",
+    "options": {
+      "A": "The presence or absence of a rigid cell wall",
+      "B": "Whether or not the cell is partitioned by internal membranes",
+      "C": "The presence or absence of ribosomes",
+      "D": "Whether or not the cell carries out cellular metabolism"
+    },
+    "answer": "B",
+    "explanation": "The defining feature of eukaryotes is compartmentalization via internal membrane systems. Prokaryotes lack this internal membrane partitioning."
+  },
+  {
+    "question": "Which among the following is NOT a model organism in genetic analysis?",
+    "options": {
+      "A": "The Zebrafish",
+      "B": "The plant Arabidopsis thaliana",
+      "C": "The mouse deer",
+      "D": "The nematode Caenorhabditis elegans"
+    },
+    "answer": "C",
+    "explanation": "The mouse deer (Tragulus) is not a standard genetic model organism. Common models include zebrafish, Arabidopsis, and C. elegans."
+  },
+  {
+    "question": "Which of the following is NOT a property of the genetic code?",
+    "options": {
+      "A": "Non-overlapping",
+      "B": "Almost universal",
+      "C": "Four stop codons",
+      "D": "Redundant"
+    },
+    "answer": "C",
+    "explanation": "There are only THREE stop codons (UAA, UAG, UGA), not four. The genetic code is non-overlapping, nearly universal, and redundant (degenerate)."
+  },
+  {
+    "question": "Which of the following conditions is caused by trinucleotide (triplet) repeat expansion?",
+    "options": {
+      "A": "Cystic fibrosis",
+      "B": "Duchenne muscular dystrophy",
+      "C": "Huntington disease",
+      "D": "Osteogenesis imperfecta"
+    },
+    "answer": "C",
+    "explanation": "Huntington disease is caused by an expansion of CAG trinucleotide repeats in the HTT gene on chromosome 4."
+  },
+  {
+    "question": "The Nobel Prize in Physiology or Medicine 1962 was awarded jointly to Crick, Watson, and _____ for discoveries concerning the molecular structure of nucleic acids.",
+    "options": {
+      "A": "Rosalind Franklin",
+      "B": "Maurice Hugh Frederick Wilkins",
+      "C": "Erwin Chargaff",
+      "D": "Frederick Sanger"
+    },
+    "answer": "B",
+    "explanation": "The 1962 Nobel Prize was shared by Watson, Crick, and Wilkins. Rosalind Franklin had died in 1958 and Nobel Prizes are not awarded posthumously."
+  },
+  {
+    "question": "Which is WRONG in respect to bryophytes?",
+    "options": {
+      "A": "Water is essential for fertilization",
+      "B": "Presence of archegonia",
+      "C": "Presence of ciliated sperms",
+      "D": "Presence of autotrophic independent sporophyte"
+    },
+    "answer": "D",
+    "explanation": "In bryophytes, the sporophyte is NOT independent — it is nutritionally dependent on the gametophyte."
+  },
+  {
+    "question": "Which of the following is diploid in moss plants?",
+    "options": {
+      "A": "Spore",
+      "B": "Leaves",
+      "C": "Spore mother cell",
+      "D": "Gametes"
+    },
+    "answer": "C",
+    "explanation": "The spore mother cell (sporocyte) is diploid (2n) and undergoes meiosis to produce haploid spores."
+  },
+  {
+    "question": "Bryophytes differ from pteridophytes in being:",
+    "options": {
+      "A": "Non-vascular",
+      "B": "Seeded",
+      "C": "Vascular",
+      "D": "Sporophytic"
+    },
+    "answer": "A",
+    "explanation": "Bryophytes lack true vascular tissue (xylem and phloem), while pteridophytes are vascular plants."
+  },
+  {
+    "question": "Alternation of generation is exhibited by:",
+    "options": {
+      "A": "Bryophytes",
+      "B": "Pteridophytes",
+      "C": "Gymnosperms",
+      "D": "All plants"
+    },
+    "answer": "D",
+    "explanation": "All plants exhibit alternation of generations, alternating between a haploid gametophyte and a diploid sporophyte phase."
+  },
+  {
+    "question": "Endosperm in gymnosperms is formed:",
+    "options": {
+      "A": "At the time of fertilization",
+      "B": "Before fertilization",
+      "C": "After fertilization",
+      "D": "Along with the development of embryo"
+    },
+    "answer": "B",
+    "explanation": "In gymnosperms, the endosperm (female gametophyte tissue) is formed before fertilization, unlike angiosperms where it forms after."
+  },
+  {
+    "question": "Phloem of gymnosperms differs from angiosperms in:",
+    "options": {
+      "A": "Having parenchyma",
+      "B": "Having no companion cells",
+      "C": "Having no sieve tubes",
+      "D": "Having no sclerenchyma"
+    },
+    "answer": "B",
+    "explanation": "Gymnosperm phloem lacks companion cells (which are characteristic of angiosperm phloem); they have albuminous cells instead."
+  },
+  {
+    "question": "Which of the following macromolecules serves as the primary genetic material in most organisms?",
+    "options": {
+      "A": "RNA",
+      "B": "DNA",
+      "C": "Protein",
+      "D": "Lipid"
+    },
+    "answer": "B",
+    "explanation": "DNA (deoxyribonucleic acid) stores and transmits genetic information in most living organisms."
+  },
+  {
+    "question": "The process of copying DNA to produce an identical strand is called:",
+    "options": {
+      "A": "Translation",
+      "B": "Transcription",
+      "C": "Replication",
+      "D": "Transduction"
+    },
+    "answer": "C",
+    "explanation": "DNA replication is the process by which a cell duplicates its DNA before cell division."
+  },
+  {
+    "question": "In RNA, the base adenine pairs with:",
+    "options": {
+      "A": "Thymine",
+      "B": "Guanine",
+      "C": "Cytosine",
+      "D": "Uracil"
+    },
+    "answer": "D",
+    "explanation": "In RNA, uracil (U) replaces thymine (T) and pairs with adenine (A)."
+  },
+  {
+    "question": "The term 'genotype' refers to:",
+    "options": {
+      "A": "The physical appearance of an organism",
+      "B": "The genetic makeup of an organism",
+      "C": "The environment of an organism",
+      "D": "The behavior of an organism"
+    },
+    "answer": "B",
+    "explanation": "Genotype refers to the complete set of genes an organism carries, whether expressed or not."
+  },
+  {
+    "question": "The term 'phenotype' refers to:",
+    "options": {
+      "A": "The physical appearance of an organism",
+      "B": "The genetic makeup of an organism",
+      "C": "The number of chromosomes",
+      "D": "The habitat of an organism"
+    },
+    "answer": "A",
+    "explanation": "Phenotype is the observable characteristics of an organism, resulting from its genotype and environment."
+  },
+  {
+    "question": "Mendel's Law of Segregation states that:",
+    "options": {
+      "A": "Two genes always stay together",
+      "B": "Genes for two traits assort independently",
+      "C": "Each organism carries two alleles for each trait, which separate during gamete formation",
+      "D": "Mutations occur at random"
+    },
+    "answer": "C",
+    "explanation": "The Law of Segregation states that paired alleles separate during meiosis so each gamete gets only one allele for each trait."
+  },
+  {
+    "question": "Which blood type is considered the universal donor?",
+    "options": {
+      "A": "A",
+      "B": "B",
+      "C": "AB",
+      "D": "O"
+    },
+    "answer": "D",
+    "explanation": "Blood type O negative (O−) is the universal donor for red blood cells because it lacks A, B, and Rh antigens."
+  },
+  {
+    "question": "Which blood type is considered the universal recipient?",
+    "options": {
+      "A": "A",
+      "B": "B",
+      "C": "AB",
+      "D": "O"
+    },
+    "answer": "C",
+    "explanation": "Blood type AB positive (AB+) is the universal recipient, as it can accept blood from all other types."
+  },
+  {
+    "question": "Crossing over in meiosis occurs during:",
+    "options": {
+      "A": "Prophase I",
+      "B": "Metaphase I",
+      "C": "Anaphase I",
+      "D": "Telophase I"
+    },
+    "answer": "A",
+    "explanation": "Crossing over (exchange of segments between homologous chromosomes) occurs during Prophase I of meiosis."
+  },
+  {
+    "question": "Which type of mutation results in all subsequent codons being misread?",
+    "options": {
+      "A": "Missense mutation",
+      "B": "Nonsense mutation",
+      "C": "Frameshift mutation",
+      "D": "Silent mutation"
+    },
+    "answer": "C",
+    "explanation": "Frameshift mutations occur when bases are inserted or deleted, shifting the reading frame of all downstream codons."
+  },
+  {
+    "question": "The central dogma of molecular biology states:",
+    "options": {
+      "A": "RNA → DNA → Protein",
+      "B": "DNA → RNA → Protein",
+      "C": "Protein → DNA → RNA",
+      "D": "DNA → Protein → RNA"
+    },
+    "answer": "B",
+    "explanation": "The central dogma describes the flow of genetic information: DNA is transcribed to RNA, which is then translated to protein."
+  },
+  {
+    "question": "Which organelle is responsible for the light reactions of photosynthesis?",
+    "options": {
+      "A": "Stroma",
+      "B": "Thylakoid membrane",
+      "C": "Matrix",
+      "D": "Inner mitochondrial membrane"
+    },
+    "answer": "B",
+    "explanation": "The light-dependent reactions occur in the thylakoid membrane where chlorophyll captures light energy."
+  },
+  {
+    "question": "Which molecule serves as the primary electron carrier in photosynthesis?",
+    "options": {
+      "A": "ATP",
+      "B": "NADH",
+      "C": "NADPH",
+      "D": "FAD"
+    },
+    "answer": "C",
+    "explanation": "NADPH is the primary reducing agent (electron carrier) produced during the light reactions of photosynthesis."
+  },
+  {
+    "question": "The Calvin cycle (dark reactions) occurs in the:",
+    "options": {
+      "A": "Thylakoid membrane",
+      "B": "Stroma of the chloroplast",
+      "C": "Inner mitochondrial membrane",
+      "D": "Cytoplasm"
+    },
+    "answer": "B",
+    "explanation": "The Calvin cycle uses ATP and NADPH from light reactions to fix CO₂ into glucose in the stroma."
+  },
+  {
+    "question": "Which of the following is the final electron acceptor in aerobic respiration?",
+    "options": {
+      "A": "NAD⁺",
+      "B": "FAD",
+      "C": "Oxygen",
+      "D": "Pyruvate"
+    },
+    "answer": "C",
+    "explanation": "In the electron transport chain, oxygen is the final electron acceptor, forming water."
+  },
+  {
+    "question": "How many ATP molecules are produced per glucose molecule in aerobic cellular respiration?",
+    "options": {
+      "A": "2",
+      "B": "4",
+      "C": "32-38",
+      "D": "18"
+    },
+    "answer": "C",
+    "explanation": "Complete aerobic oxidation of one glucose molecule yields approximately 32-38 ATP molecules."
+  },
+  {
+    "question": "Glycolysis occurs in the:",
+    "options": {
+      "A": "Mitochondrial matrix",
+      "B": "Cytoplasm",
+      "C": "Nucleus",
+      "D": "Endoplasmic reticulum"
+    },
+    "answer": "B",
+    "explanation": "Glycolysis, the first stage of respiration, occurs in the cytoplasm and does not require oxygen."
+  },
+  {
+    "question": "The Krebs cycle (citric acid cycle) occurs in the:",
+    "options": {
+      "A": "Cytoplasm",
+      "B": "Nucleus",
+      "C": "Mitochondrial matrix",
+      "D": "Thylakoid"
+    },
+    "answer": "C",
+    "explanation": "The Krebs cycle takes place in the mitochondrial matrix, producing CO₂, NADH, FADH₂, and ATP."
+  },
+  {
+    "question": "Which process produces 2 ATP molecules per glucose and does not require oxygen?",
+    "options": {
+      "A": "Aerobic respiration",
+      "B": "Glycolysis",
+      "C": "Krebs cycle",
+      "D": "Oxidative phosphorylation"
+    },
+    "answer": "B",
+    "explanation": "Glycolysis produces a net gain of 2 ATP molecules and does not require oxygen."
+  },
+  {
+    "question": "Osmosis is defined as:",
+    "options": {
+      "A": "Movement of solutes from low to high concentration",
+      "B": "Movement of water across a selectively permeable membrane from high to low water potential",
+      "C": "Active transport of ions against a concentration gradient",
+      "D": "Movement of large particles through the cell membrane"
+    },
+    "answer": "B",
+    "explanation": "Osmosis is the passive diffusion of water molecules across a semipermeable membrane from higher to lower water potential."
+  },
+  {
+    "question": "Active transport differs from passive transport in that active transport:",
+    "options": {
+      "A": "Moves substances with the concentration gradient",
+      "B": "Requires energy (ATP)",
+      "C": "Does not require carrier proteins",
+      "D": "Only moves water molecules"
+    },
+    "answer": "B",
+    "explanation": "Active transport moves substances against their concentration gradient and requires ATP energy."
+  },
+  {
+    "question": "A solution that causes a cell to shrink due to water loss is called:",
+    "options": {
+      "A": "Hypotonic",
+      "B": "Isotonic",
+      "C": "Hypertonic",
+      "D": "Tonic"
+    },
+    "answer": "C",
+    "explanation": "A hypertonic solution has a higher solute concentration than the cell, so water moves out by osmosis, causing the cell to shrink."
+  },
+  {
+    "question": "Mitosis produces:",
+    "options": {
+      "A": "Two haploid daughter cells",
+      "B": "Four haploid daughter cells",
+      "C": "Two diploid daughter cells identical to the parent",
+      "D": "Four diploid daughter cells"
+    },
+    "answer": "C",
+    "explanation": "Mitosis produces two genetically identical diploid daughter cells used in growth and repair."
+  },
+  {
+    "question": "Meiosis produces:",
+    "options": {
+      "A": "Two diploid daughter cells",
+      "B": "Four haploid daughter cells",
+      "C": "Two haploid daughter cells",
+      "D": "Four diploid daughter cells"
+    },
+    "answer": "B",
+    "explanation": "Meiosis produces four non-identical haploid cells (gametes) through two rounds of division."
+  },
+  {
+    "question": "The process by which mRNA is decoded to produce a protein is called:",
+    "options": {
+      "A": "Replication",
+      "B": "Transcription",
+      "C": "Translation",
+      "D": "Transduction"
+    },
+    "answer": "C",
+    "explanation": "Translation is the process at the ribosome where the mRNA sequence is read to assemble a polypeptide."
+  },
+  {
+    "question": "A codon consists of how many nucleotides?",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "answer": "B",
+    "explanation": "A codon is a sequence of three nucleotides in mRNA that codes for a specific amino acid or stop signal."
+  },
+  {
+    "question": "Which of the following is an example of a sex-linked trait in humans?",
+    "options": {
+      "A": "ABO blood type",
+      "B": "Sickle cell anemia",
+      "C": "Red-green color blindness",
+      "D": "Cystic fibrosis"
+    },
+    "answer": "C",
+    "explanation": "Red-green color blindness is caused by genes on the X chromosome and is more prevalent in males."
+  },
+  {
+    "question": "The Hardy-Weinberg principle applies when:",
+    "options": {
+      "A": "Population size is small",
+      "B": "Mutations occur frequently",
+      "C": "Mating is non-random",
+      "D": "Population is large, random mating, no mutation, no migration, no selection"
+    },
+    "answer": "D",
+    "explanation": "The Hardy-Weinberg equilibrium assumes ideal conditions: large population, random mating, no mutation, migration, or natural selection."
+  },
+  {
+    "question": "Which of the following types of selection reduces variation in a population by favoring the average phenotype?",
+    "options": {
+      "A": "Directional selection",
+      "B": "Disruptive selection",
+      "C": "Stabilizing selection",
+      "D": "Sexual selection"
+    },
+    "answer": "C",
+    "explanation": "Stabilizing selection favors intermediate phenotypes and reduces the frequency of extreme variants."
+  },
+  {
+    "question": "Reproductive isolation between two populations can lead to:",
+    "options": {
+      "A": "Gene flow",
+      "B": "Speciation",
+      "C": "Genetic drift",
+      "D": "Bottleneck effect"
+    },
+    "answer": "B",
+    "explanation": "When gene flow between populations stops due to reproductive isolation, they may diverge genetically, eventually becoming separate species."
+  },
+  {
+    "question": "Which of the following is NOT a characteristic of living organisms?",
+    "options": {
+      "A": "Reproduction",
+      "B": "Response to stimuli",
+      "C": "Made entirely of metal",
+      "D": "Growth and development"
+    },
+    "answer": "C",
+    "explanation": "Living organisms are made of organic molecules (cells), not metal. All other options are properties of life."
+  },
+  {
+    "question": "Homeostasis refers to:",
+    "options": {
+      "A": "Movement of organisms from one place to another",
+      "B": "The ability to maintain a stable internal environment",
+      "C": "The process of growth",
+      "D": "Reproduction by asexual means"
+    },
+    "answer": "B",
+    "explanation": "Homeostasis is the regulation of internal conditions (temperature, pH, glucose) to maintain a stable, balanced state."
+  },
+  {
+    "question": "Which level of ecological organization includes all organisms of different species in an area and their physical environment?",
+    "options": {
+      "A": "Population",
+      "B": "Community",
+      "C": "Ecosystem",
+      "D": "Biome"
+    },
+    "answer": "C",
+    "explanation": "An ecosystem includes all living organisms (biotic) and their physical environment (abiotic) in a defined area."
+  },
+  {
+    "question": "Which of the following correctly describes a food chain?",
+    "options": {
+      "A": "Energy flows from consumers to producers",
+      "B": "Energy flows from producers to consumers",
+      "C": "Nutrients flow from carnivores to herbivores",
+      "D": "Decomposers are at the top of the food chain"
+    },
+    "answer": "B",
+    "explanation": "In a food chain, energy flows from producers (plants) to primary consumers (herbivores) and then to higher consumers."
+  },
+  {
+    "question": "Which ecological term describes an organism that feeds on dead organic matter?",
+    "options": {
+      "A": "Producer",
+      "B": "Herbivore",
+      "C": "Carnivore",
+      "D": "Decomposer"
+    },
+    "answer": "D",
+    "explanation": "Decomposers (bacteria and fungi) break down dead organic matter, recycling nutrients back into the ecosystem."
+  },
+  {
+    "question": "What is the term for the place where an organism lives?",
+    "options": {
+      "A": "Niche",
+      "B": "Habitat",
+      "C": "Ecosystem",
+      "D": "Community"
+    },
+    "answer": "B",
+    "explanation": "A habitat is the specific environment where an organism lives and finds the resources it needs."
+  },
+  {
+    "question": "An ecological niche refers to:",
+    "options": {
+      "A": "The physical location of an organism",
+      "B": "The role and position a species occupies in its environment",
+      "C": "The number of individuals in a population",
+      "D": "The type of food an organism eats"
+    },
+    "answer": "B",
+    "explanation": "A niche encompasses all aspects of an organism's role: what it eats, where it lives, when it's active, and how it interacts with other species."
+  },
+  {
+    "question": "Which type of symbiosis benefits both organisms involved?",
+    "options": {
+      "A": "Commensalism",
+      "B": "Parasitism",
+      "C": "Mutualism",
+      "D": "Competition"
+    },
+    "answer": "C",
+    "explanation": "Mutualism is a symbiotic relationship where both organisms benefit, e.g., bees and flowers."
+  },
+  {
+    "question": "In commensalism, one organism benefits while the other:",
+    "options": {
+      "A": "Is harmed",
+      "B": "Is neither harmed nor benefited",
+      "C": "Also benefits",
+      "D": "Dies"
+    },
+    "answer": "B",
+    "explanation": "Commensalism involves one organism benefiting while the other is neither helped nor harmed."
+  },
+  {
+    "question": "Which of the following is an example of a mutualistic relationship?",
+    "options": {
+      "A": "Tapeworm in a human gut",
+      "B": "A remora fish attached to a shark",
+      "C": "Nitrogen-fixing bacteria in root nodules of legumes",
+      "D": "A cuckoo laying eggs in a warbler's nest"
+    },
+    "answer": "C",
+    "explanation": "Rhizobium bacteria fix nitrogen for legume plants while the plant provides carbohydrates for the bacteria — a classic mutualism."
+  },
+  {
+    "question": "Which gas is primarily responsible for the greenhouse effect?",
+    "options": {
+      "A": "Oxygen",
+      "B": "Nitrogen",
+      "C": "Carbon dioxide",
+      "D": "Hydrogen"
+    },
+    "answer": "C",
+    "explanation": "CO₂ traps heat in the atmosphere by absorbing infrared radiation re-emitted from Earth's surface."
+  },
+  {
+    "question": "The nitrogen cycle involves which of the following processes?",
+    "options": {
+      "A": "Nitrogen fixation, nitrification, denitrification",
+      "B": "Photosynthesis, respiration, transpiration",
+      "C": "Oxidation, reduction, hydrolysis",
+      "D": "Condensation, evaporation, precipitation"
+    },
+    "answer": "A",
+    "explanation": "Key steps in the nitrogen cycle include fixation (N₂ to NH₃), nitrification (NH₃ to NO₃⁻), and denitrification (NO₃⁻ back to N₂)."
+  },
+  {
+    "question": "Which hormone regulates blood glucose levels in the body?",
+    "options": {
+      "A": "Adrenaline",
+      "B": "Insulin",
+      "C": "Thyroxine",
+      "D": "Estrogen"
+    },
+    "answer": "B",
+    "explanation": "Insulin (produced by the pancreatic beta cells) lowers blood glucose by facilitating glucose uptake into cells."
+  },
+  {
+    "question": "Diabetes mellitus type 1 is caused by:",
+    "options": {
+      "A": "Insulin resistance",
+      "B": "Destruction of insulin-producing beta cells",
+      "C": "Excess glucagon production",
+      "D": "Poor dietary habits alone"
+    },
+    "answer": "B",
+    "explanation": "Type 1 diabetes is an autoimmune condition where the immune system destroys pancreatic beta cells, stopping insulin production."
+  },
+  {
+    "question": "Which part of the brain controls breathing and heart rate?",
+    "options": {
+      "A": "Cerebrum",
+      "B": "Cerebellum",
+      "C": "Medulla oblongata",
+      "D": "Thalamus"
+    },
+    "answer": "C",
+    "explanation": "The medulla oblongata (brainstem) regulates vital autonomic functions including respiration, heart rate, and blood pressure."
+  },
+  {
+    "question": "The functional unit of the kidney is called:",
+    "options": {
+      "A": "Alveolus",
+      "B": "Nephron",
+      "C": "Neuron",
+      "D": "Sarcomere"
+    },
+    "answer": "B",
+    "explanation": "The nephron is the structural and functional unit of the kidney responsible for filtering blood and forming urine."
+  },
+  {
+    "question": "Gas exchange in the lungs occurs in the:",
+    "options": {
+      "A": "Bronchi",
+      "B": "Trachea",
+      "C": "Alveoli",
+      "D": "Bronchioles"
+    },
+    "answer": "C",
+    "explanation": "Alveoli are tiny air sacs with thin walls richly supplied with capillaries where O₂ and CO₂ exchange occurs."
+  },
+  {
+    "question": "The process by which plants absorb water from the soil through roots is primarily through:",
+    "options": {
+      "A": "Active transport only",
+      "B": "Osmosis",
+      "C": "Diffusion of glucose",
+      "D": "Transpiration pull"
+    },
+    "answer": "B",
+    "explanation": "Water moves from soil into root hair cells by osmosis (high water potential in soil → lower water potential in root cells)."
+  },
+  {
+    "question": "Xylem tissue in plants is responsible for:",
+    "options": {
+      "A": "Transport of sugar solution (phloem sap)",
+      "B": "Upward transport of water and dissolved minerals",
+      "C": "Gaseous exchange",
+      "D": "Photosynthesis"
+    },
+    "answer": "B",
+    "explanation": "Xylem is the vascular tissue that transports water and dissolved mineral salts from roots to leaves."
+  },
+  {
+    "question": "Phloem tissue in plants is responsible for:",
+    "options": {
+      "A": "Water transport from roots to leaves",
+      "B": "Mechanical support",
+      "C": "Transport of sugars and organic compounds",
+      "D": "Gaseous exchange"
+    },
+    "answer": "C",
+    "explanation": "Phloem transports photosynthetic products (sugars) from leaves (source) to other parts of the plant (sink)."
+  },
+  {
+    "question": "Stomata are primarily used for:",
+    "options": {
+      "A": "Water absorption",
+      "B": "Gaseous exchange and transpiration",
+      "C": "Support and protection",
+      "D": "Mineral absorption"
+    },
+    "answer": "B",
+    "explanation": "Stomata are pores in leaves that allow CO₂ in for photosynthesis and O₂ and water vapor out, and are regulated by guard cells."
+  },
+  {
+    "question": "Which plant hormone promotes cell elongation and is involved in phototropism?",
+    "options": {
+      "A": "Cytokinin",
+      "B": "Gibberellin",
+      "C": "Abscisic acid",
+      "D": "Auxin"
+    },
+    "answer": "D",
+    "explanation": "Auxin (IAA) promotes elongation of stem cells and accumulates on the shaded side of a stem, causing the plant to bend toward light."
+  },
+  {
+    "question": "Which plant hormone promotes fruit ripening?",
+    "options": {
+      "A": "Ethylene",
+      "B": "Auxin",
+      "C": "Cytokinin",
+      "D": "Gibberellin"
+    },
+    "answer": "A",
+    "explanation": "Ethylene is a gaseous plant hormone that promotes fruit ripening, leaf abscission, and senescence."
+  },
+  {
+    "question": "What is the name of the process by which plants convert light energy into chemical energy?",
+    "options": {
+      "A": "Chemosynthesis",
+      "B": "Photosynthesis",
+      "C": "Cellular respiration",
+      "D": "Fermentation"
+    },
+    "answer": "B",
+    "explanation": "Photosynthesis is the process in which plants, algae, and some bacteria use light energy to convert CO₂ and H₂O into glucose and O₂."
+  },
+  {
+    "question": "The overall equation for photosynthesis is:",
+    "options": {
+      "A": "6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂",
+      "B": "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + energy",
+      "C": "6O₂ + 6H₂O → C₆H₁₂O₆ + CO₂",
+      "D": "C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂"
+    },
+    "answer": "A",
+    "explanation": "The equation 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂ summarizes photosynthesis."
+  },
+  {
+    "question": "Plasmids are:",
+    "options": {
+      "A": "Large chromosomal DNA molecules",
+      "B": "Small circular DNA molecules found mainly in bacteria",
+      "C": "RNA molecules used in translation",
+      "D": "Membrane-bound organelles"
+    },
+    "answer": "B",
+    "explanation": "Plasmids are small, circular, double-stranded DNA molecules found in bacteria that replicate independently of chromosomal DNA."
+  },
+  {
+    "question": "Which enzyme is used to cut DNA at specific sequences in recombinant DNA technology?",
+    "options": {
+      "A": "DNA polymerase",
+      "B": "Ligase",
+      "C": "Restriction endonuclease",
+      "D": "Helicase"
+    },
+    "answer": "C",
+    "explanation": "Restriction endonucleases (restriction enzymes) cut DNA at specific palindromic sequences, generating fragments for cloning."
+  },
+  {
+    "question": "PCR stands for:",
+    "options": {
+      "A": "Protein Chain Reaction",
+      "B": "Polymerase Chain Reaction",
+      "C": "Polynucleotide Cloning Reaction",
+      "D": "Primary Cell Replication"
+    },
+    "answer": "B",
+    "explanation": "PCR (Polymerase Chain Reaction) is a technique used to amplify specific DNA sequences in vitro."
+  },
+  {
+    "question": "Which scientist first described the double helix structure of DNA?",
+    "options": {
+      "A": "Gregor Mendel",
+      "B": "Charles Darwin",
+      "C": "James Watson and Francis Crick",
+      "D": "Louis Pasteur"
+    },
+    "answer": "C",
+    "explanation": "Watson and Crick, using X-ray diffraction data from Rosalind Franklin, proposed the double helix model of DNA in 1953."
+  },
+  {
+    "question": "What is the term for an organism with two different alleles for a particular gene?",
+    "options": {
+      "A": "Homozygous",
+      "B": "Hemizygous",
+      "C": "Heterozygous",
+      "D": "Polyploid"
+    },
+    "answer": "C",
+    "explanation": "A heterozygous organism carries two different alleles (e.g., Aa) for a gene at a given locus."
+  },
+  {
+    "question": "What is the term for an organism with two identical alleles for a particular gene?",
+    "options": {
+      "A": "Homozygous",
+      "B": "Hemizygous",
+      "C": "Heterozygous",
+      "D": "Diploid"
+    },
+    "answer": "A",
+    "explanation": "A homozygous organism carries two identical alleles (e.g., AA or aa) for a gene."
+  },
+  {
+    "question": "In a monohybrid cross between two heterozygotes (Aa × Aa), what is the expected phenotypic ratio?",
+    "options": {
+      "A": "1:1",
+      "B": "1:2:1",
+      "C": "3:1",
+      "D": "9:3:3:1"
+    },
+    "answer": "C",
+    "explanation": "A cross of Aa × Aa yields AA : Aa : aa = 1:2:1 genotypically, and dominant : recessive = 3:1 phenotypically."
+  },
+  {
+    "question": "Which type of immunity involves the production of antibodies by B cells?",
+    "options": {
+      "A": "Cell-mediated immunity",
+      "B": "Humoral (antibody-mediated) immunity",
+      "C": "Innate immunity",
+      "D": "Passive immunity"
+    },
+    "answer": "B",
+    "explanation": "Humoral immunity involves B lymphocytes that differentiate into plasma cells and produce specific antibodies."
+  },
+  {
+    "question": "Antibodies are produced by which cells?",
+    "options": {
+      "A": "T cells",
+      "B": "Red blood cells",
+      "C": "Plasma cells (activated B cells)",
+      "D": "Natural killer cells"
+    },
+    "answer": "C",
+    "explanation": "Plasma cells, derived from activated B lymphocytes, are the primary producers of antibodies."
+  },
+  {
+    "question": "Which of the following is an autoimmune disease?",
+    "options": {
+      "A": "Influenza",
+      "B": "Malaria",
+      "C": "Rheumatoid arthritis",
+      "D": "AIDS"
+    },
+    "answer": "C",
+    "explanation": "Rheumatoid arthritis is an autoimmune disease where the immune system attacks the synovial joints."
+  },
+  {
+    "question": "HIV attacks which type of immune cells?",
+    "options": {
+      "A": "B cells",
+      "B": "Red blood cells",
+      "C": "CD4+ T helper cells",
+      "D": "Neutrophils"
+    },
+    "answer": "C",
+    "explanation": "HIV (Human Immunodeficiency Virus) targets and destroys CD4+ T helper cells, progressively weakening the immune system."
+  },
+  {
+    "question": "What is the role of a vaccine?",
+    "options": {
+      "A": "Directly kill pathogens in the body",
+      "B": "Replace damaged immune cells",
+      "C": "Stimulate the immune system to develop memory against a specific pathogen",
+      "D": "Suppress the immune response"
+    },
+    "answer": "C",
+    "explanation": "Vaccines introduce antigens (weakened or dead pathogens or their parts) to stimulate the immune system to form memory cells without causing disease."
+  },
+  {
+    "question": "Which type of white blood cell is responsible for engulfing and digesting pathogens?",
+    "options": {
+      "A": "Lymphocyte",
+      "B": "Erythrocyte",
+      "C": "Phagocyte (neutrophil/macrophage)",
+      "D": "Thrombocyte"
+    },
+    "answer": "C",
+    "explanation": "Phagocytes (neutrophils and macrophages) engulf and destroy pathogens through phagocytosis."
+  },
+  {
+    "question": "Which molecule carries amino acids to the ribosome during translation?",
+    "options": {
+      "A": "mRNA",
+      "B": "rRNA",
+      "C": "tRNA",
+      "D": "snRNA"
+    },
+    "answer": "C",
+    "explanation": "Transfer RNA (tRNA) carries specific amino acids to the ribosome, matching anticodons to mRNA codons."
+  },
+  {
+    "question": "The site of ribosomal RNA (rRNA) assembly in the nucleus is the:",
+    "options": {
+      "A": "Nuclear pore",
+      "B": "Nucleolus",
+      "C": "Chromatin",
+      "D": "Nuclear envelope"
+    },
+    "answer": "B",
+    "explanation": "The nucleolus is the site within the nucleus where rRNA is synthesized and ribosomal subunits are assembled."
+  },
+  {
+    "question": "Which enzyme synthesizes RNA from a DNA template?",
+    "options": {
+      "A": "DNA polymerase",
+      "B": "RNA polymerase",
+      "C": "Ligase",
+      "D": "Helicase"
+    },
+    "answer": "B",
+    "explanation": "RNA polymerase binds to the promoter region of a gene and synthesizes a complementary RNA strand from the DNA template."
+  },
+  {
+    "question": "The sequence of amino acids in a protein is determined by:",
+    "options": {
+      "A": "The sequence of nucleotides in DNA/mRNA",
+      "B": "The pH of the cell",
+      "C": "The type of membrane lipids",
+      "D": "The amount of ATP available"
+    },
+    "answer": "A",
+    "explanation": "The nucleotide sequence in a gene (via mRNA codons) determines the order of amino acids in a polypeptide."
+  },
+  {
+    "question": "Which of the following is an example of a frameshift mutation?",
+    "options": {
+      "A": "Substitution of one nucleotide",
+      "B": "Insertion of one nucleotide",
+      "C": "No change in the reading frame",
+      "D": "Substitution that codes for the same amino acid"
+    },
+    "answer": "B",
+    "explanation": "Insertion (or deletion) of one nucleotide shifts the reading frame of all subsequent codons, usually producing a non-functional protein."
+  },
+  {
+    "question": "What is the term for the movement of alleles from one population to another?",
+    "options": {
+      "A": "Mutation",
+      "B": "Genetic drift",
+      "C": "Gene flow",
+      "D": "Natural selection"
+    },
+    "answer": "C",
+    "explanation": "Gene flow is the transfer of alleles between populations through migration, increasing or decreasing allele frequencies."
+  },
+  {
+    "question": "What is the bottleneck effect?",
+    "options": {
+      "A": "When a large population grows rapidly",
+      "B": "When a small group of individuals establish a new population",
+      "C": "When a population dramatically decreases, reducing genetic diversity",
+      "D": "When natural selection favors extreme phenotypes"
+    },
+    "answer": "C",
+    "explanation": "The bottleneck effect occurs when a catastrophic event drastically reduces population size, resulting in loss of genetic variation."
+  },
+  {
+    "question": "What is the founder effect?",
+    "options": {
+      "A": "When genetic drift occurs in a large population",
+      "B": "When a small group colonizes a new area, carrying only a fraction of the original population's alleles",
+      "C": "When natural selection eliminates deleterious alleles",
+      "D": "When mutation rates increase"
+    },
+    "answer": "B",
+    "explanation": "The founder effect occurs when a small group separates from a larger population to establish a new colony, often with reduced genetic diversity."
+  },
+  {
+    "question": "The theory of evolution by natural selection was jointly proposed by:",
+    "options": {
+      "A": "Darwin and Wallace",
+      "B": "Darwin and Mendel",
+      "C": "Wallace and Lamarck",
+      "D": "Darwin and Huxley"
+    },
+    "answer": "A",
+    "explanation": "Charles Darwin and Alfred Russel Wallace independently developed the theory of evolution by natural selection and jointly presented it in 1858."
+  },
+  {
+    "question": "Analogous structures are those that:",
+    "options": {
+      "A": "Share a common ancestor",
+      "B": "Perform similar functions but have different evolutionary origins",
+      "C": "Are found in the same species",
+      "D": "Have identical genetic sequences"
+    },
+    "answer": "B",
+    "explanation": "Analogous structures (e.g., wings of insects and birds) perform similar functions but evolved independently (convergent evolution)."
+  },
+  {
+    "question": "Homologous structures are those that:",
+    "options": {
+      "A": "Perform the same function in different organisms",
+      "B": "Share a common ancestral origin, even if their functions differ",
+      "C": "Are found only in vertebrates",
+      "D": "Are identical in appearance"
+    },
+    "answer": "B",
+    "explanation": "Homologous structures (e.g., the forelimbs of mammals) have the same basic anatomy inherited from a common ancestor, though they may now serve different functions."
+  },
+  {
+    "question": "Vestigial structures are best explained by:",
+    "options": {
+      "A": "Convergent evolution",
+      "B": "Genetic mutation",
+      "C": "Evolutionary history (descent with modification)",
+      "D": "Disruptive selection"
+    },
+    "answer": "C",
+    "explanation": "Vestigial structures (e.g., human appendix) are reduced remnants of structures that had a function in an ancestor, explained by evolutionary descent."
+  },
+  {
+    "question": "The molecular evidence supporting evolution includes:",
+    "options": {
+      "A": "Similarities in DNA and protein sequences among related species",
+      "B": "Differences in habitat among species",
+      "C": "The same phenotype in different populations",
+      "D": "Geographic isolation alone"
+    },
+    "answer": "A",
+    "explanation": "Closely related species share more similar DNA and protein sequences, providing molecular evidence for common ancestry."
+  },
+  {
+    "question": "Which of the following represents the correct definition of adaptive radiation?",
+    "options": {
+      "A": "Evolution of a single ancestral species into many different forms adapted to different environments",
+      "B": "Migration of organisms to new areas",
+      "C": "Convergent evolution of similar traits in unrelated species",
+      "D": "Reduction in diversity due to habitat loss"
+    },
+    "answer": "A",
+    "explanation": "Adaptive radiation is the rapid diversification of a single ancestral lineage into many species occupying different ecological niches, e.g., Darwin's finches."
+  },
+  {
+    "question": "What is coevolution?",
+    "options": {
+      "A": "Two species evolving independently in the same environment",
+      "B": "Reciprocal evolutionary change in interacting species",
+      "C": "One species going extinct while another thrives",
+      "D": "The evolution of body size over time"
+    },
+    "answer": "B",
+    "explanation": "Coevolution refers to the process whereby two or more species exert selective pressure on each other, each driving the other's evolution (e.g., flowers and pollinators)."
+  },
+  {
+    "question": "Which type of speciation occurs when populations are geographically separated?",
+    "options": {
+      "A": "Sympatric speciation",
+      "B": "Allopatric speciation",
+      "C": "Parapatric speciation",
+      "D": "Peripatric speciation"
+    },
+    "answer": "B",
+    "explanation": "Allopatric speciation occurs when a geographic barrier separates a population, preventing gene flow and allowing divergence."
+  },
+  {
+    "question": "Which of the following is NOT a property of enzymes?",
+    "options": {
+      "A": "They are biological catalysts",
+      "B": "They are consumed in chemical reactions",
+      "C": "They lower activation energy",
+      "D": "They are usually proteins"
+    },
+    "answer": "B",
+    "explanation": "Enzymes are not consumed in the reactions they catalyze; they are regenerated and can be reused."
+  },
+  {
+    "question": "The active site of an enzyme:",
+    "options": {
+      "A": "Is where substrates bind",
+      "B": "Is the entire enzyme surface",
+      "C": "Is made of lipids",
+      "D": "Changes permanently after each reaction"
+    },
+    "answer": "A",
+    "explanation": "The active site is the specific region of an enzyme where the substrate binds and the chemical reaction occurs."
+  },
+  {
+    "question": "Enzyme activity can be reduced by:",
+    "options": {
+      "A": "Optimal temperature and pH",
+      "B": "Increased substrate concentration",
+      "C": "High temperatures that denature the enzyme",
+      "D": "Presence of cofactors"
+    },
+    "answer": "C",
+    "explanation": "High temperatures disrupt hydrogen bonds and other interactions maintaining enzyme structure, leading to denaturation and loss of activity."
+  },
+  {
+    "question": "What is a competitive inhibitor?",
+    "options": {
+      "A": "A molecule that binds to the active site and blocks substrate entry",
+      "B": "A molecule that destroys the enzyme permanently",
+      "C": "A molecule that binds to the substrate",
+      "D": "A molecule that activates the enzyme"
+    },
+    "answer": "A",
+    "explanation": "Competitive inhibitors have a similar shape to the substrate and compete for binding at the active site, reducing enzyme activity."
+  },
+  {
+    "question": "An allosteric inhibitor affects enzyme activity by:",
+    "options": {
+      "A": "Competing for the active site",
+      "B": "Binding to a site other than the active site, changing the enzyme's shape",
+      "C": "Degrading the enzyme protein",
+      "D": "Increasing substrate concentration"
+    },
+    "answer": "B",
+    "explanation": "Allosteric inhibitors bind to a regulatory (allosteric) site, inducing a conformational change that reduces the enzyme's affinity for its substrate."
+  },
+  {
+    "question": "Proteins are made up of chains of:",
+    "options": {
+      "A": "Nucleotides",
+      "B": "Fatty acids",
+      "C": "Amino acids",
+      "D": "Monosaccharides"
+    },
+    "answer": "C",
+    "explanation": "Proteins are polymers of amino acids linked by peptide bonds."
+  },
+  {
+    "question": "The four levels of protein structure are:",
+    "options": {
+      "A": "Primary, secondary, tertiary, quaternary",
+      "B": "Primary, intermediate, tertiary, final",
+      "C": "Linear, folded, globular, fibrous",
+      "D": "Hydrogen, ionic, covalent, disulfide"
+    },
+    "answer": "A",
+    "explanation": "Proteins are organized into primary (amino acid sequence), secondary (alpha helices/beta sheets), tertiary (3D folding), and quaternary (multi-subunit) structures."
+  },
+  {
+    "question": "Which bonds are primarily responsible for maintaining the secondary structure of proteins?",
+    "options": {
+      "A": "Peptide bonds",
+      "B": "Disulfide bonds",
+      "C": "Hydrogen bonds",
+      "D": "Ionic bonds"
+    },
+    "answer": "C",
+    "explanation": "Hydrogen bonds between backbone amide and carbonyl groups stabilize alpha helices and beta-pleated sheets."
+  },
+  {
+    "question": "Carbohydrates are made up of:",
+    "options": {
+      "A": "Amino acids",
+      "B": "Fatty acids and glycerol",
+      "C": "Monosaccharides (simple sugars)",
+      "D": "Nucleotides"
+    },
+    "answer": "C",
+    "explanation": "Carbohydrates are polymers of monosaccharides (e.g., glucose, fructose) linked by glycosidic bonds."
+  },
+  {
+    "question": "The primary function of lipids in the cell membrane is:",
+    "options": {
+      "A": "To provide structural support and form the bilayer",
+      "B": "To catalyze chemical reactions",
+      "C": "To carry genetic information",
+      "D": "To transport oxygen"
+    },
+    "answer": "A",
+    "explanation": "Phospholipids form the bilayer of cell membranes, with hydrophilic heads facing water and hydrophobic tails forming the interior."
+  },
+  {
+    "question": "Nucleic acids are made up of:",
+    "options": {
+      "A": "Amino acids",
+      "B": "Monosaccharides",
+      "C": "Nucleotides",
+      "D": "Fatty acids"
+    },
+    "answer": "C",
+    "explanation": "Nucleic acids (DNA and RNA) are polymers of nucleotides, each consisting of a sugar, phosphate group, and nitrogenous base."
+  },
+  {
+    "question": "Which of the following is an example of a disaccharide?",
+    "options": {
+      "A": "Glucose",
+      "B": "Starch",
+      "C": "Sucrose",
+      "D": "Cellulose"
+    },
+    "answer": "C",
+    "explanation": "Sucrose (table sugar) is a disaccharide composed of glucose and fructose linked by a glycosidic bond."
+  },
+  {
+    "question": "Which of the following is a polysaccharide used for energy storage in animals?",
+    "options": {
+      "A": "Starch",
+      "B": "Cellulose",
+      "C": "Glycogen",
+      "D": "Sucrose"
+    },
+    "answer": "C",
+    "explanation": "Glycogen is the form of glucose storage in animals, primarily stored in the liver and muscles."
+  },
+  {
+    "question": "Cellulose differs from starch in that cellulose:",
+    "options": {
+      "A": "Is more easily digested by humans",
+      "B": "Has beta-glycosidic linkages between glucose units",
+      "C": "Contains fructose instead of glucose",
+      "D": "Is a lipid, not a carbohydrate"
+    },
+    "answer": "B",
+    "explanation": "Cellulose is made of glucose monomers linked by beta-1,4-glycosidic bonds, which humans cannot digest (no cellulase enzyme)."
+  },
+  {
+    "question": "The process of endocytosis involves:",
+    "options": {
+      "A": "Secretion of materials from the cell",
+      "B": "Uptake of materials into the cell via membrane folding",
+      "C": "Transport of ions against a gradient",
+      "D": "Diffusion of small molecules through the membrane"
+    },
+    "answer": "B",
+    "explanation": "Endocytosis is the process where the cell membrane engulfs material and forms an internal vesicle, bringing substances into the cell."
+  },
+  {
+    "question": "Which of the following is a purine base found in DNA?",
+    "options": {
+      "A": "Thymine",
+      "B": "Cytosine",
+      "C": "Adenine",
+      "D": "Uracil"
+    },
+    "answer": "C",
+    "explanation": "Purines (adenine and guanine) have a double-ring structure. Pyrimidines (thymine, cytosine, uracil) have single rings."
+  },
+  {
+    "question": "The anticodon is found on:",
+    "options": {
+      "A": "mRNA",
+      "B": "rRNA",
+      "C": "tRNA",
+      "D": "DNA"
+    },
+    "answer": "C",
+    "explanation": "The anticodon is a three-nucleotide sequence on tRNA that is complementary to a specific mRNA codon."
+  },
+  {
+    "question": "Which of the following is a posttranslational modification?",
+    "options": {
+      "A": "Splicing of pre-mRNA",
+      "B": "Addition of a 5' cap to mRNA",
+      "C": "Phosphorylation of a protein",
+      "D": "Polyadenylation of mRNA"
+    },
+    "answer": "C",
+    "explanation": "Post-translational modifications (e.g., phosphorylation, glycosylation) alter proteins after they are synthesized to regulate their activity."
+  },
+  {
+    "question": "Which type of RNA carries genetic information from DNA to the ribosome?",
+    "options": {
+      "A": "tRNA",
+      "B": "rRNA",
+      "C": "mRNA",
+      "D": "miRNA"
+    },
+    "answer": "C",
+    "explanation": "Messenger RNA (mRNA) carries the genetic information from DNA in the nucleus to the ribosome in the cytoplasm for translation."
+  },
+  {
+    "question": "The fluid mosaic model of the plasma membrane describes:",
+    "options": {
+      "A": "A rigid, fixed structure of lipids and proteins",
+      "B": "A dynamic bilayer with proteins that can move laterally",
+      "C": "A membrane composed entirely of proteins",
+      "D": "A structure with no lipid component"
+    },
+    "answer": "B",
+    "explanation": "The fluid mosaic model (Singer & Nicolson, 1972) describes the plasma membrane as a fluid phospholipid bilayer with mobile embedded proteins."
+  },
+  {
+    "question": "Apoptosis is the term for:",
+    "options": {
+      "A": "Uncontrolled cell division",
+      "B": "Programmed cell death",
+      "C": "Cell differentiation",
+      "D": "Cell growth"
+    },
+    "answer": "B",
+    "explanation": "Apoptosis is a regulated process of cell self-destruction important in development, immune function, and tissue homeostasis."
+  },
+  {
+    "question": "Cancer is characterized by:",
+    "options": {
+      "A": "Controlled cell death",
+      "B": "Uncontrolled cell division and growth",
+      "C": "Reduced metabolic rate",
+      "D": "Loss of mitochondria"
+    },
+    "answer": "B",
+    "explanation": "Cancer involves unregulated cell proliferation where cells ignore normal growth signals and may invade other tissues (metastasize)."
+  }
+]

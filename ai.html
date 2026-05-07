@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renance AI | FUTA Tutor</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{--bg:#07090f;--s1:#0d1017;--s2:#131720;--s3:#191f2b;--s4:#1e2535;--blue:#4f8ef7;--purple:#7c3aed;--green:#06d6a0;--amber:#f59e0b;--red:#ef4444;--text:#dde3f0;--muted:#5f6e8a;--border:rgba(255,255,255,0.06);--glow-b:rgba(79,142,247,0.18);--glow-p:rgba(124,58,237,0.15);--grad:linear-gradient(135deg,#4f8ef7,#7c3aed);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");opacity:.35;}
+#topbar{height:56px;flex-shrink:0;background:rgba(13,16,23,0.94);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:200;gap:12px;}
+.tb-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.tb-logo{width:34px;height:34px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:.95rem;box-shadow:0 0 16px var(--glow-b);flex-shrink:0;}
+.tb-name{font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;color:#fff;}
+.tb-sub{font-size:.6rem;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;}
+.tb-mid{display:flex;align-items:center;gap:5px;flex:1;justify-content:center;flex-wrap:wrap;}
+.spill{padding:4px 11px;border-radius:99px;font-size:.67rem;font-weight:700;background:var(--s2);border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:.16s;white-space:nowrap;}
+.spill:hover{color:var(--text);border-color:rgba(255,255,255,.12);}
+.spill.on{background:rgba(79,142,247,.12);color:var(--blue);border-color:rgba(79,142,247,.3);}
+.tb-right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.sdw{display:flex;align-items:center;gap:5px;font-size:.68rem;color:var(--green);font-weight:600;}
+.sd{width:5px;height:5px;border-radius:50%;background:var(--green);animation:sdp 2s infinite;}
+@keyframes sdp{0%,100%{box-shadow:0 0 0 0 rgba(6,214,160,.5)}50%{box-shadow:0 0 0 5px rgba(6,214,160,0)}}
+.tbico{width:32px;height:32px;border-radius:8px;background:var(--s2);border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:.16s;text-decoration:none;}
+.tbico:hover{color:var(--text);}
+#menuBtn{display:none;}
+#layout{display:flex;flex:1;overflow:hidden;}
+#sidebar{width:240px;flex-shrink:0;background:var(--s1);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;transition:transform .3s cubic-bezier(.4,0,.2,1);z-index:190;}
+.sbs{padding:16px 14px 8px;border-bottom:1px solid var(--border);}
+.sbl{font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.sbm{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:9px;color:var(--muted);font-size:.83rem;font-weight:500;cursor:pointer;transition:.16s;border:1px solid transparent;margin-bottom:2px;}
+.sbm:hover{background:var(--s2);color:var(--text);}
+.sbm.on{background:rgba(79,142,247,.1);color:var(--blue);border-color:rgba(79,142,247,.2);}
+.sbm i{width:15px;text-align:center;font-size:.8rem;}
+.sb-dot{margin-left:auto;width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);}
+#cbtAlert{margin:12px 14px;padding:12px;border-radius:10px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);display:none;animation:fu .3s ease;}
+.cat{font-size:.72rem;font-weight:700;color:var(--amber);margin-bottom:4px;display:flex;align-items:center;gap:5px;}
+.cas{font-size:.66rem;color:var(--muted);line-height:1.5;margin-bottom:8px;}
+.cab{width:100%;padding:7px;border-radius:7px;font-size:.72rem;font-weight:700;background:var(--amber);color:#000;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.cab:hover{filter:brightness(1.1);}
+.sbst{padding:14px;border-top:1px solid var(--border);margin-top:auto;}
+.sbsr{display:flex;gap:8px;margin-bottom:10px;}
+.sbsi{flex:1;background:var(--s2);border:1px solid var(--border);border-radius:9px;padding:8px;text-align:center;}
+.sbsv{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:#fff;}
+.sbsl2{font-size:.57rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:1px;}
+.sbbar{height:3px;background:var(--s3);border-radius:99px;overflow:hidden;}
+.sbfill{height:100%;background:var(--grad);border-radius:99px;width:0%;transition:width .5s;}
+.sblinks{padding:10px 14px;border-top:1px solid var(--border);display:flex;gap:10px;align-items:center;}
+.sblinks a{color:var(--muted);font-size:.75rem;text-decoration:none;transition:.15s;}
+.sblinks a:hover{color:var(--text);}
+.sblinks span{font-size:.6rem;color:var(--muted);font-weight:700;}
+#chatMain{flex:1;display:flex;flex-direction:column;overflow:hidden;}
+#chatWrap{flex:1;overflow-y:auto;padding:24px 28px;display:flex;flex-direction:column;gap:18px;scroll-behavior:smooth;}
+#welcome{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;animation:fu .5s ease both;}
+@keyframes fu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.worb{width:80px;height:80px;border-radius:22px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:20px;box-shadow:0 0 35px var(--glow-b),0 0 70px var(--glow-p);animation:fl 4s ease-in-out infinite;}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.wtit{font-family:'Syne',sans-serif;font-weight:800;font-size:1.75rem;color:#fff;margin-bottom:8px;}
+.wtit span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.wsub{font-size:.88rem;color:var(--muted);max-width:420px;line-height:1.6;margin-bottom:28px;}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-bottom:24px;}
+.chip{padding:7px 14px;border-radius:99px;font-size:.78rem;font-weight:500;background:var(--s2);border:1px solid var(--border);color:var(--text);cursor:pointer;transition:.18s;}
+.chip:hover{background:rgba(79,142,247,.1);border-color:var(--blue);color:var(--blue);transform:translateY(-2px);}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:520px;width:100%;}
+.fc{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:left;cursor:pointer;transition:.18s;}
+.fc:hover{border-color:rgba(79,142,247,.3);background:rgba(79,142,247,.05);transform:translateY(-2px);}
+.fci{font-size:1.1rem;margin-bottom:6px;}.fct{font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;color:var(--text);}
+.fcd{font-size:.62rem;color:var(--muted);margin-top:2px;line-height:1.4;}
+.msg{display:flex;gap:11px;max-width:80%;animation:fu .28s ease both;}
+.msg.user{align-self:flex-end;flex-direction:row-reverse;}
+.av{width:33px;height:33px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.85rem;}
+.av-ai{background:var(--grad);box-shadow:0 0 10px var(--glow-b);}
+.av-u{background:var(--s3);border:1px solid var(--border);}
+.bub{padding:11px 16px;border-radius:15px;line-height:1.7;font-size:.88rem;}
+.bub-ai{background:var(--s2);border:1px solid var(--border);border-top-left-radius:3px;}
+.bub-u{background:linear-gradient(135deg,#2563eb,var(--purple));color:#fff;border-top-right-radius:3px;}
+.bub strong{color:#fff;font-weight:700;}.bub em{color:#a5b4fc;}
+.bub code{background:rgba(0,0,0,.4);padding:1px 6px;border-radius:5px;font-family:'Fira Code','Consolas',monospace;font-size:.82em;color:#7dd3fc;}
+.bub pre{background:#060810;border:1px solid var(--border);border-radius:9px;padding:12px;overflow-x:auto;margin:8px 0;}
+.bub pre code{background:none;padding:0;color:#93c5fd;font-size:.8em;}
+.bub ul,.bub ol{padding-left:18px;margin:6px 0;}.bub li{margin-bottom:4px;}
+.bub h3{font-family:'Syne',sans-serif;font-size:.88rem;color:#fff;margin:10px 0 5px;}
+.bub hr{border:none;border-top:1px solid var(--border);margin:10px 0;}
+.typing{display:flex;gap:4px;align-items:center;padding:3px 0;}
+.typing span{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:bl 1.2s infinite;}
+.typing span:nth-child(2){animation-delay:.2s;}.typing span:nth-child(3){animation-delay:.4s;}
+@keyframes bl{0%,80%,100%{opacity:.2;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
+.qcard{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:16px;margin:6px 0;}
+.qcard-q{font-weight:600;color:#fff;margin-bottom:11px;font-size:.87rem;line-height:1.5;}
+.qopts{display:flex;flex-direction:column;gap:5px;}
+.qopt{padding:9px 13px;border-radius:8px;background:var(--s2);border:1px solid var(--border);cursor:pointer;font-size:.82rem;transition:.16s;text-align:left;color:var(--text);font-family:'DM Sans',sans-serif;}
+.qopt:hover:not(:disabled){background:rgba(79,142,247,.08);border-color:var(--blue);}
+.qopt.ok{background:rgba(6,214,160,.1)!important;border-color:var(--green)!important;color:var(--green)!important;}
+.qopt.no{background:rgba(239,68,68,.08)!important;border-color:var(--red)!important;color:var(--red)!important;}
+.qexp{margin-top:10px;font-size:.77rem;color:var(--muted);border-top:1px solid var(--border);padding-top:8px;line-height:1.5;}
+#errBanner{display:none;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:10px;padding:10px 16px;margin:8px 20px 0;font-size:.78rem;color:var(--red);}
+.err-link{color:var(--amber);text-decoration:underline;cursor:pointer;font-weight:700;margin-left:6px;}
+#inputZone{padding:12px 20px 16px;background:rgba(7,9,15,.75);backdrop-filter:blur(20px);border-top:1px solid var(--border);}
+.mrow{display:flex;gap:5px;margin-bottom:9px;flex-wrap:wrap;}
+.mtag{padding:3px 11px;border-radius:99px;font-size:.63rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:.16s;border:1px solid var(--border);color:var(--muted);background:none;font-family:'DM Sans',sans-serif;}
+.mtag.on-chat{background:rgba(79,142,247,.1);color:var(--blue);border-color:rgba(79,142,247,.3);}
+.mtag.on-quiz{background:rgba(245,158,11,.08);color:var(--amber);border-color:rgba(245,158,11,.25);}
+.mtag.on-explain{background:rgba(6,214,160,.08);color:var(--green);border-color:rgba(6,214,160,.25);}
+.mtag.on-formula{background:rgba(124,58,237,.1);color:#a78bfa;border-color:rgba(124,58,237,.3);}
+.mtag.on-solve{background:rgba(239,68,68,.08);color:var(--red);border-color:rgba(239,68,68,.25);}
+.mtag.on-cbt{background:rgba(245,158,11,.1);color:var(--amber);border-color:rgba(245,158,11,.3);}
+.ibox{background:var(--s2);border:1px solid var(--border);border-radius:14px;display:flex;align-items:flex-end;gap:8px;padding:10px 10px 10px 18px;transition:.22s;}
+.ibox:focus-within{border-color:rgba(79,142,247,.45);box-shadow:0 0 0 3px rgba(79,142,247,.07);}
+#inp{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.9rem;resize:none;max-height:130px;line-height:1.55;}
+#inp::placeholder{color:var(--muted);}
+.iacts{display:flex;gap:6px;align-items:center;}
+.iact{width:32px;height:32px;border-radius:8px;background:var(--s3);border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:.16s;}
+.iact:hover{color:var(--text);}
+.isend{width:42px;height:42px;border-radius:11px;background:var(--grad);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:.18s;box-shadow:0 4px 14px rgba(37,99,235,.28);}
+.isend:hover{transform:scale(1.06);}
+.isend:disabled{opacity:.35;cursor:not-allowed;transform:none;}
+.ihint{text-align:center;font-size:.6rem;color:var(--muted);margin-top:7px;opacity:.7;}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:185;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:var(--s4);border-radius:99px;}
+.toast{position:fixed;bottom:24px;right:20px;z-index:9998;background:var(--s2);border:1px solid var(--border);padding:10px 18px;border-radius:10px;font-size:.78rem;color:var(--text);box-shadow:0 8px 28px rgba(0,0,0,.4);animation:tsi .28s ease,tfa .35s ease 2.65s forwards;}
+@keyframes tsi{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes tfa{to{opacity:0;transform:translateY(8px)}}
+@media(max-width:768px){
+  #sidebar{position:fixed;top:56px;left:0;bottom:0;transform:translateX(-100%);}
+  #sidebar.open{transform:translateX(0);}
+  #overlay.show{display:block;}
+  #menuBtn{display:flex;}
+  .tb-mid{display:none;}
+  .msg{max-width:92%;}
+  .fgrid{grid-template-columns:1fr 1fr;}
+  .wtit{font-size:1.4rem;}
+  #chatWrap{padding:14px;}
+}
+</style>
+</head>
+<body>
+<div id="overlay"></div>
+
+<div id="topbar">
+  <a href="dashboard.html" class="tb-brand">
+    <div class="tb-logo">🧠</div>
+    <div><div class="tb-name">Renance AI</div><div class="tb-sub">FUTA Tutor</div></div>
+  </a>
+  <div class="tb-mid">
+    <div class="spill on" data-s="GENERAL" onclick="pickSub(this)">General</div>
+    <div class="spill" data-s="COS101" onclick="pickSub(this)">COS 101</div>
+    <div class="spill" data-s="GNS103" onclick="pickSub(this)">GNS 103</div>
+    <div class="spill" data-s="GST111" onclick="pickSub(this)">GST 111</div>
+    <div class="spill" data-s="MTH101" onclick="pickSub(this)">MTH 101</div>
+    <div class="spill" data-s="PHY101" onclick="pickSub(this)">PHY 101</div>
+    <div class="spill" data-s="STA111" onclick="pickSub(this)">STA 111</div>
+    <div class="spill" data-s="BIO101" onclick="pickSub(this)">BIO 101</div>
+    <div class="spill" data-s="CHE101" onclick="pickSub(this)">CHE 101</div>
+  </div>
+  <div class="tb-right">
+    <div class="sdw"><div class="sd"></div><span>AI Online</span></div>
+    <a href="dashboard.html" class="tbico" title="Dashboard"><i class="fa fa-home"></i></a>
+    <div class="tbico" onclick="clearChat()"><i class="fa fa-trash-alt"></i></div>
+    <div class="tbico" onclick="exportChat()"><i class="fa fa-download"></i></div>
+    <div class="tbico" id="menuBtn" onclick="toggleSb()"><i class="fa fa-bars"></i></div>
+  </div>
+</div>
+
+<div id="errBanner">
+  ⚠️ <strong>Proxy URL not set.</strong> Open <code>ai.html</code>, find <code>PROXY_URL</code> and paste your Cloudflare Worker URL.
+  <span class="err-link" onclick="showGuide()">See 5-min setup guide →</span>
+</div>
+
+<div id="layout">
+  <aside id="sidebar">
+    <div class="sbs">
+      <div class="sbl">Learning Mode</div>
+      <div class="sbm on" data-m="chat"    onclick="pickMode(this,'chat')">   <i class="fa fa-comments"></i>        Free Chat<div class="sb-dot"></div></div>
+      <div class="sbm"    data-m="quiz"    onclick="pickMode(this,'quiz')">   <i class="fa fa-question-circle"></i> Quiz Me</div>
+      <div class="sbm"    data-m="explain" onclick="pickMode(this,'explain')"><i class="fa fa-book-open"></i>       Deep Explain</div>
+      <div class="sbm"    data-m="formula" onclick="pickMode(this,'formula')"><i class="fa fa-superscript"></i>    Formulas</div>
+      <div class="sbm"    data-m="solve"   onclick="pickMode(this,'solve')">  <i class="fa fa-calculator"></i>     Step-by-Step</div>
+      <div class="sbm"    data-m="cbt"     onclick="pickMode(this,'cbt')">    <i class="fa fa-clipboard-check"></i> CBT Review</div>
+      <div class="sbm"                     onclick="newSession()">            <i class="fa fa-plus-circle"></i>    New Session</div>
+    </div>
+
+    <div id="cbtAlert">
+      <div class="cat"><i class="fa fa-exclamation-circle"></i> CBT Results Ready</div>
+      <div class="cas" id="cbtSub">Missed questions from your last exam.</div>
+      <button class="cab" onclick="reviewCBT()">🧠 Review With AI Now</button>
+    </div>
+
+    <div class="sbst">
+      <div class="sbl">Session</div>
+      <div class="sbsr">
+        <div class="sbsi"><div class="sbsv" id="stQ">0</div><div class="sbsl2">Asked</div></div>
+        <div class="sbsi"><div class="sbsv" id="stT">0</div><div class="sbsl2">Topics</div></div>
+        <div class="sbsi"><div class="sbsv" id="stS">—</div><div class="sbsl2">Quiz</div></div>
+      </div>
+      <div class="sbbar"><div class="sbfill" id="stBar"></div></div>
+    </div>
+    <div class="sblinks">
+      <span>Support:</span>
+      <a href="https://wa.me/2347046203544"><i class="fa-brands fa-whatsapp"></i> WA</a>
+      <a href="https://x.com/resolutefemi"><i class="fa-brands fa-x-twitter"></i> X</a>
+    </div>
+  </aside>
+
+  <div id="chatMain">
+    <div id="chatWrap">
+      <div id="welcome">
+        <div class="worb">🧠</div>
+        <div class="wtit">Hello, <span>FUTA Scholar!</span> 👋</div>
+        <div class="wsub">Your Claude AI-powered academic mentor. Ask anything across all your courses, get quizzes, step-by-step solutions, and post-CBT explanations.</div>
+        <div class="chips">
+          <div class="chip" onclick="qs('Explain laws of motion with examples')">⚡ Newton's Laws</div>
+          <div class="chip" onclick="qs('Solve step by step: 3x² + 5x - 2 = 0')">📐 Quadratic</div>
+          <div class="chip" onclick="qs('Give me a 4-option quiz on GNS103 signal words')">🎯 GNS103 Quiz</div>
+          <div class="chip" onclick="qs('Difference between skimming and scanning')">📖 Reading Skills</div>
+          <div class="chip" onclick="qs('All key PHY101 mechanics formulas')">🔬 PHY Formulas</div>
+          <div class="chip" onclick="qs('Binary number system explained COS101')">💻 Binary</div>
+          <div class="chip" onclick="qs('Time management tools GST111')">⏰ GST111</div>
+          <div class="chip" onclick="qs('Measures of central tendency STA111')">📊 Stats</div>
+        </div>
+        <div class="fgrid">
+          <div class="fc" onclick="setMQ('quiz','Give me a quiz on '+curSub)"><div class="fci">🎯</div><div class="fct">Smart Quiz</div><div class="fcd">MCQ with instant feedback</div></div>
+          <div class="fc" onclick="setMQ('solve','Solve quadratic equations step by step')"><div class="fci">🔢</div><div class="fct">Step-by-Step</div><div class="fcd">Full worked solutions</div></div>
+          <div class="fc" onclick="setMQ('cbt','Review my CBT mistakes')"><div class="fci">📋</div><div class="fct">CBT Review</div><div class="fcd">AI explains your errors</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="inputZone">
+      <div class="mrow">
+        <button class="mtag on-chat" data-m="chat"    onclick="tagM(this,'chat')">💬 Chat</button>
+        <button class="mtag"         data-m="quiz"    onclick="tagM(this,'quiz')">🎯 Quiz</button>
+        <button class="mtag"         data-m="explain" onclick="tagM(this,'explain')">📖 Explain</button>
+        <button class="mtag"         data-m="formula" onclick="tagM(this,'formula')">📐 Formula</button>
+        <button class="mtag"         data-m="solve"   onclick="tagM(this,'solve')">🔢 Solve</button>
+        <button class="mtag"         data-m="cbt"     onclick="tagM(this,'cbt')">📋 CBT</button>
+      </div>
+      <div class="ibox">
+        <textarea id="inp" rows="1" placeholder="Ask anything about your FUTA courses..."></textarea>
+        <div class="iacts">
+          <div class="iact" onclick="cycleSugg()" title="Suggestions"><i class="fa fa-lightbulb"></i></div>
+          <button class="isend" id="sendBtn" onclick="doSend()"><i class="fa fa-paper-plane"></i></button>
+        </div>
+      </div>
+      <div class="ihint">Engineered by <strong style="color:var(--blue)">Resolutefemi</strong> · Enter to send · Shift+Enter new line</div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+const PROXY_URL = "https://api.anthropic.com/v1/messages";
+
+
+const SMAP={GENERAL:"All 100-Level Courses",COS101:"Introduction to Computer Science (COS 101)",GNS103:"Information Literacy (GNS 103)",GST111:"Communication in English (GST 111)",MTH101:"Elementary Mathematics I (MTH 101)",PHY101:"General Physics I (PHY 101)",STA111:"Descriptive Statistics (STA 111)",BIO101:"General Biology I (BIO 101)",CHE101:"General Chemistry I (CHE 101)"};
+const MPROMPTS={
+  chat:"Answer helpfully and conversationally for a FUTA 100-level student. Be friendly but academically accurate.",
+  quiz:`Generate exactly ONE multiple-choice question on the topic. Use EXACTLY this format — nothing before or after:
+QUESTION: [question text]
+A) [option]
+B) [option]
+C) [option]
+D) [option]
+ANSWER: [single letter A/B/C/D only]
+EXPLANATION: [one clear sentence explaining why]`,
+  explain:"Give a structured academic explanation: 1) Simple definition  2) Key concepts with examples  3) Real-world application  4) Common student mistakes. Use **bold** for key terms.",
+  formula:"List all key formulas for this topic. Format each as: Formula → Variable definitions → Units → One worked example.",
+  solve:"Solve this problem step-by-step. Number every step clearly. State the method/theorem used. Show all working. Write the final answer in **bold**.",
+  cbt:"You are reviewing a FUTA student's CBT exam mistakes. For EACH missed question: (1) Explain clearly why the correct answer is right (2) Explain why the student's choice was wrong (3) Give a short memory trick or rule. Be detailed and encouraging."
+};
+
+let curSub="GENERAL",curMode="chat";
+let history=[],isLoading=false;
+let msgCount=0,topicsSet=new Set(),qzC=0,qzT=0;
+let pendingCBT=null;
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+  checkCBTStorage();
+});
+
+
+async function callClaude(userText){
+  const systemPrompt=
+    `You are Renance AI, a brilliant academic tutor for FUTA (Federal University of Technology, Akure) 100-level students.\n`+
+    `Subject focus: ${SMAP[curSub]}\nMode: ${curMode.toUpperCase()}\n`+
+    `${MPROMPTS[curMode]}\n\n`+
+    `Additional rules: Use **bold** for key terms. Numbered lists for steps. Bullet points for enumerations. \`backticks\` for formulas/code. End every explanation with one follow-up question to deepen understanding.`;
+
+  history.push({role:"user",content:userText});
+
+  const res=await fetch(PROXY_URL,{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "x-api-key": "",
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-calls": "true"
+    },
+    body:JSON.stringify({
+      model:"claude-haiku-4-5-20251001",
+      max_tokens:1000,
+      system:systemPrompt,
+      messages:history.slice(-12)
+    })
+  });
+
+  if(!res.ok){
+    const e=await res.json().catch(()=>({}));
+    throw new Error(e?.error?.message||e?.error||`API error ${res.status} — check your Cloudflare Worker setup.`);
+  }
+  const data=await res.json();
+  const reply=data.content?.map(b=>b.text||"").join("")||"No response received.";
+  history.push({role:"assistant",content:reply});
+  return reply;
+}
+
+
+function fmt(raw){
+  let t=raw
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+    .replace(/```(\w*)\n?([\s\S]*?)```/g,(_,l,c)=>`<pre><code>${c.trim()}</code></pre>`)
+    .replace(/`([^`]+)`/g,"<code>$1</code>")
+    .replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>")
+    .replace(/\*(.+?)\*/g,"<em>$1</em>")
+    .replace(/^#{1,3}\s+(.+)$/gm,"<h3>$1</h3>")
+    .replace(/^\d+\.\s(.+)$/gm,"<li>$1</li>")
+    .replace(/^[-•]\s(.+)$/gm,"<li>$1</li>")
+    .replace(/(<li>[\s\S]*?<\/li>\n?)+/g,m=>`<ul>${m}</ul>`)
+    .replace(/^---+$/gm,"<hr>")
+    .replace(/\n\n/g,"</p><p>").replace(/\n/g,"<br>");
+  return`<p>${t}</p>`;
+}
+
+
+function tryQuiz(text,bub){
+  const qM=text.match(/QUESTION:\s*(.+)/);
+  const opts=["A","B","C","D"].map(l=>{const m=text.match(new RegExp(l+"\\)\\s*(.+)"));return m?{l,t:m[1].trim()}:null;}).filter(Boolean);
+  const aM=text.match(/ANSWER:\s*([A-D])/i);
+  const eM=text.match(/EXPLANATION:\s*([\s\S]+)/);
+  if(!qM||opts.length<2||!aM)return false;
+  const correct=aM[1].toUpperCase();qzT++;let done=false;
+  const card=document.createElement("div");card.className="qcard";
+  card.innerHTML=`<div class="qcard-q">❓ ${qM[1].trim()}</div><div class="qopts"></div>`;
+  const ob=card.querySelector(".qopts");
+  opts.forEach(o=>{
+    const b=document.createElement("button");b.className="qopt";b.textContent=`${o.l}) ${o.t}`;
+    b.onclick=()=>{
+      if(done)return;done=true;
+      ob.querySelectorAll(".qopt").forEach(x=>{x.disabled=true;if(x.textContent.startsWith(correct+")"))x.classList.add("ok");});
+      if(o.l===correct){b.classList.add("ok");qzC++;toast("✅ Correct!");}
+      else{b.classList.add("no");toast("❌ Wrong — correct is "+correct);}
+      if(eM){const ep=document.createElement("div");ep.className="qexp";ep.textContent="💡 "+eM[1].trim();card.appendChild(ep);}
+      updateStats();
+    };ob.appendChild(b);
+  });
+  bub.innerHTML="";bub.appendChild(card);return true;
+}
+
+
+function addMsg(text,role){
+  const wrap=document.getElementById("chatWrap");
+  document.getElementById("welcome")?.remove();
+  const row=document.createElement("div");row.className=`msg ${role}`;
+  const isAI=role==="bot";
+  const av=document.createElement("div");av.className=`av ${isAI?"av-ai":"av-u"}`;av.textContent=isAI?"🧠":"👤";
+  const bub=document.createElement("div");bub.className=`bub ${isAI?"bub-ai":"bub-u"}`;
+  role==="user"?(row.appendChild(bub),row.appendChild(av)):(row.appendChild(av),row.appendChild(bub));
+  wrap.appendChild(row);
+  if(text==="__ld__")bub.innerHTML=`<div class="typing"><span></span><span></span><span></span></div>`;
+  else if(role==="user")bub.innerHTML=fmt(text);
+  else if(!tryQuiz(text,bub))bub.innerHTML=fmt(text);
+  wrap.scrollTop=wrap.scrollHeight;
+  return bub;
+}
+
+
+async function doSend(){
+  const t=document.getElementById("inp").value.trim();
+  if(!t||isLoading)return;
+  document.getElementById("inp").value="";
+  document.getElementById("inp").style.height="auto";
+  await doSendText(t);
+}
+async function doSendText(text){
+  if(isLoading)return;
+  addMsg(text,"user");
+  const lb=addMsg("__ld__","bot");
+  isLoading=true;document.getElementById("sendBtn").disabled=true;
+  msgCount++;topicsSet.add(text.split(" ").slice(0,3).join(" "));updateStats();
+  try{
+    const reply=await callClaude(text);
+    lb.innerHTML="";if(!tryQuiz(reply,lb))lb.innerHTML=fmt(reply);
+  }catch(e){
+    lb.innerHTML=`<span style="color:var(--red)">⚠️ ${e.message}</span><br><small style="color:var(--muted);font-size:.75rem">If this keeps happening, check your Cloudflare Worker is deployed and the PROXY_URL is correct.</small>`;
+    history.pop();
+    if(e.message.includes("Proxy URL"))document.getElementById("errBanner").style.display="block";
+  }
+  isLoading=false;document.getElementById("sendBtn").disabled=false;
+  document.getElementById("chatWrap").scrollTop=99999;
+}
+
+function qs(t){document.getElementById("inp").value=t;doSend();}
+function setMQ(m,t){setModeRaw(m);qs(t);}
+
+
+function pickSub(el){document.querySelectorAll(".spill").forEach(p=>p.classList.remove("on"));el.classList.add("on");curSub=el.dataset.s;toast("📚 "+SMAP[curSub]);}
+function pickMode(el,m){document.querySelectorAll(".sbm").forEach(b=>b.classList.remove("on"));el.classList.add("on");setModeRaw(m);}
+function setModeRaw(m){
+  curMode=m;
+  document.querySelectorAll(".mtag").forEach(t=>{["on-chat","on-quiz","on-explain","on-formula","on-solve","on-cbt"].forEach(c=>t.classList.remove(c));});
+  document.querySelector(`.mtag[data-m="${m}"]`)?.classList.add(`on-${m}`);
+}
+function tagM(el,m){
+  document.querySelectorAll(".mtag").forEach(t=>{["on-chat","on-quiz","on-explain","on-formula","on-solve","on-cbt"].forEach(c=>t.classList.remove(c));});
+  el.classList.add(`on-${m}`);curMode=m;
+  document.querySelectorAll(".sbm").forEach(b=>b.classList.toggle("on",b.dataset.m===m));
+}
+
+
+function checkCBTStorage(){
+  const raw=localStorage.getItem("renance_cbt_review");
+  if(!raw)return;
+  try{
+    pendingCBT=JSON.parse(raw);
+    document.getElementById("cbtAlert").style.display="block";
+    document.getElementById("cbtSub").textContent=`${pendingCBT.missed.length} missed in ${pendingCBT.course} — get AI explanations now.`;
+  }catch(e){}
+}
+function reviewCBT(){
+  if(!pendingCBT)return;
+  localStorage.removeItem("renance_cbt_review");
+  document.getElementById("cbtAlert").style.display="none";
+  setModeRaw("cbt");
+
+  const subEl=document.querySelector(`.spill[data-s="${pendingCBT.course}"]`);
+  if(subEl)pickSub(subEl);
+
+  const lines=pendingCBT.missed.map((q,i)=>
+    `Q${i+1}: ${q.question}\nStudent answered: ${q.studentAnswer||"Not answered"}\nCorrect answer: ${q.correctAnswer}${q.explanation?"\nHint available: "+q.explanation:""}`
+  ).join("\n\n");
+
+  doSendText(
+    `I just completed a CBT exam on ${pendingCBT.course} — ${SMAP[pendingCBT.course]||pendingCBT.course}.\n`+
+    `Final score: ${pendingCBT.correct}/${pendingCBT.total}\n\n`+
+    `Please review these ${pendingCBT.missed.length} question(s) I got WRONG and explain each one thoroughly:\n\n${lines}`
+  );
+}
+
+
+const SUGG=["Give me a 4-option quiz on GNS103 time management","Explain Newton's second law F=ma with a worked example","All key PHY101 kinematics formulas","Solve step by step: derivative of 3x³ + 2x² - 5x","Difference between hearing and listening in GST111","Binary to decimal conversion in COS101","Mean, median and mode with examples STA111","Morphemes and their types GST111","Quiz on MTH101 quadratic equations","Signal word functions in GNS103","Electron configuration and atomic structure CHE101","Cell organelles and their functions BIO101"];
+let si=0;
+function cycleSugg(){document.getElementById("inp").value=SUGG[si++%SUGG.length];document.getElementById("inp").focus();}
+
+
+function updateStats(){
+  document.getElementById("stQ").textContent=msgCount;
+  document.getElementById("stT").textContent=topicsSet.size;
+  document.getElementById("stS").textContent=qzT>0?Math.round(qzC/qzT*100)+"%":"—";
+  document.getElementById("stBar").style.width=Math.min(100,msgCount/20*100)+"%";
+}
+function newSession(){
+  history=[];msgCount=0;topicsSet.clear();qzC=0;qzT=0;updateStats();
+  document.getElementById("chatWrap").innerHTML=`<div id="welcome" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;animation:fu .5s ease both;"><div class="worb">🧠</div><div class="wtit">Session cleared!</div><div class="wsub" style="color:var(--muted)">Ask anything to start.</div></div>`;
+  if(window.innerWidth<=768)toggleSb(false);
+}
+function clearChat(){if(confirm("Clear this session?"))newSession();}
+function exportChat(){
+  let t="Renance AI Export\n"+new Date().toLocaleString()+"\n\n";
+  history.forEach(h=>{t+=`[${h.role.toUpperCase()}]\n${h.content}\n\n`;});
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([t],{type:"text/plain"}));
+  a.download=`renance-${Date.now()}.txt`;a.click();toast("💾 Exported!");
+}
+function toast(msg){document.querySelector(".toast")?.remove();const t=document.createElement("div");t.className="toast";t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),3000);}
+function showGuide(){
+  alert("5-MINUTE SETUP — Claude AI Proxy\n\n1. Go to https://workers.cloudflare.com\n   Sign up FREE (no credit card needed)\n\n2. Click 'Create Application' → 'Create Worker'\n   Delete the example code\n   Paste ALL of cloudflare-worker.js\n   Click 'Deploy'\n\n3. Settings → Variables & Secrets → Add:\n   Name:  CLAUDE_API_KEY\n   Value: sk-ant-api03-YOUR-KEY\n   ✓ Mark as Secret\n\n4. Copy your Worker URL\n   e.g. https://renance.yourname.workers.dev\n\n5. Open ai.html → find PROXY_URL → paste URL\n\nDone! Claude AI will work on any live server.");
+}
+function toggleSb(f){const s=document.getElementById("sidebar"),o=document.getElementById("overlay");const open=f!==undefined?f:!s.classList.contains("open");s.classList.toggle("open",open);o.classList.toggle("show",open);}
+document.getElementById("overlay").addEventListener("click",()=>toggleSb(false));
+const inp=document.getElementById("inp");
+inp.addEventListener("input",()=>{inp.style.height="auto";inp.style.height=Math.min(inp.scrollHeight,130)+"px";});
+inp.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();doSend();}});
+</script>
+</body>
+</html>
+
+
+

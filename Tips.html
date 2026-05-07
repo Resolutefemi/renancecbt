@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Tips | FUTA Practice Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --accent: #60a5fa;
+            --highlight: #f59e0b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 4rem 1.5rem; }
+
+        header { text-align: center; margin-bottom: 4rem; }
+        .badge { background: rgba(96, 165, 250, 0.1); color: var(--accent); padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+        h1 { font-size: 2.2rem; margin-top: 1rem; font-weight: 700; letter-spacing: -1px; }
+
+        .section { background: var(--card); padding: 2rem; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 2rem; }
+        h2 { font-size: 1.2rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 10px; color: var(--accent); }
+        
+        .method-box { border-left: 3px solid var(--highlight); background: rgba(245, 158, 11, 0.05); padding: 1.5rem; margin-top: 1rem; border-radius: 0 12px 12px 0; }
+        h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--highlight); }
+        
+        p { margin-bottom: 1rem; color: var(--text-muted); }
+        ul { margin-left: 1.5rem; color: var(--text-muted); margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+
+        .back-link { position: fixed; top: 20px; left: 20px; text-decoration: none; color: var(--text-muted); font-size: 0.9rem; display: flex; align-items: center; gap: 5px; z-index: 100; }
+        .back-link:hover { color: var(--accent); }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } h1 { font-size: 1.8rem; } }
+    </style>
+</head>
+<body>
+
+    <a href="dashboard.html" class="back-link"><i data-lucide="chevron-left" size="18"></i> Dashboard</a>
+
+    <div class="container">
+        <header>
+            <span class="badge">Study Smarter, Not Harder</span>
+            <h1>Academic Mastery Tips</h1>
+        </header>
+
+        <div class="section">
+            <h2><i data-lucide="book-open"></i> The Feynman Technique</h2>
+            <p>Named after physicist Richard Feynman, this is the best way to ensure you actually understand a concept instead of just memorizing it.</p>
+            <div class="method-box">
+                <h3>The 4 Steps:</h3>
+                <ul>
+                    <li><strong>Choose a Concept:</strong> Pick a topic (e.g., Newton's Second Law).</li>
+                    <li><strong>Teach it to a Child:</strong> Write an explanation as if you're teaching someone with no background in the subject. Use simple words.</li>
+                    <li><strong>Identify Gaps:</strong> When you get stuck or use complex jargon, go back to the source material to simplify that part.</li>
+                    <li><strong>Review & Simplify:</strong> Refine your explanation until it is brief and clear.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i data-lucide="trending-down"></i> The Forgetting Curve</h2>
+            <p>Humans forget 50% of new information within 24 hours unless it is reviewed. To combat this, use <strong>Spaced Repetition</strong>.</p>
+            
+            <div class="grid">
+                <div class="method-box" style="border-color: var(--accent);">
+                    <h3>Review Schedule:</h3>
+                    <ul>
+                        <li>1st Review: Same day</li>
+                        <li>2nd Review: After 24 hours</li>
+                        <li>3rd Review: After 1 week</li>
+                        <li>4th Review: After 1 month</li>
+                    </ul>
+                </div>
+                <div class="method-box" style="border-color: #22c55e;">
+                    <h3>Active Recall:</h3>
+                    <p>Instead of re-reading your notes, close the book and try to write down everything you remember from scratch. This strengthens brain connections.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i data-lucide="zap"></i> Rapid Learning Techniques</h2>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <h3>The Pomodoro Method</h3>
+                <p>Study for <strong>25 minutes</strong>, then take a <strong>5-minute break</strong>. After 4 cycles, take a long break (20 mins). This prevents brain fatigue during heavy FUTA courses.</p>
+            </div>
+
+            <div>
+                <h3>Eat The Frog</h3>
+                <p>Do your hardest subject first (usually MTH 101 or PHY 101) when your energy is highest. Once the "Frog" is eaten, the rest of the day feels easier.</p>
+            </div>
+        </div>
+
+        <p style="text-align: center; font-style: italic; margin-top: 3rem;">
+            "Education is not the learning of facts, but the training of the mind to think." — Albert Einstein
+        </p>
+         <div class="dev-footer">
+            
+            <div class="dev-name">RESOLUTE FEMI</div>
+            
+            <div class="social-links">
+                <a href="https://x.com/resolutefemi" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://facebook.com/resolutefemi" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://wa.me/2347046203544" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+         fetch(" https://florencia-prorefugee-unindustriously.ngrok-free.dev", {
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ matric: studentMatric })
+});
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,98 @@
+<script>
+function showResults() {
+    clearInterval(timerId);
+    let score = 0;
+    currentExamData.forEach((q, i) => {
+        if (userAnswers[i] === q.answer) score++;
+    });
+
+    alert(`GNS 103 Practice Complete!\nYour Score: ${score} / ${currentExamData.length}\n\nRenance AI will now explain your missed questions.`);
+
+    localStorage.removeItem('saved_gns_exam');
+
+    sendToAI("GNS103", currentExamData, userAnswers);
+}
+</script>
+
+<script>
+function showResults() {
+    clearInterval(timerId);
+    let score = 0;
+    currentExamData.forEach((q, i) => {
+        if (userAnswers[i] === q.answer) score++;
+    });
+
+    alert(`GST 111 Practice Complete!\nYour Score: ${score} / ${currentExamData.length}\n\nRenance AI will now explain your missed questions.`);
+
+    localStorage.removeItem('saved_gst_exam');
+
+    sendToAI("GST111", currentExamData, userAnswers);
+}
+</script>
+
+<script>
+function showResults() {
+    clearInterval(timerId);
+    let score = 0;
+    currentExamData.forEach((q, i) => {
+        if (userAnswers[i] === q.answer) score++;
+    });
+
+    alert(`COS 101 Practice Complete!\nYour Score: ${score} / ${currentExamData.length}\n\nRenance AI will now explain your missed questions.`);
+
+    localStorage.removeItem('saved_cos_exam');
+
+    sendToAI("COS101", currentExamData, userAnswers);
+}
+</script>
+
+<script>
+function showResults() {
+    clearInterval(timerId);
+    let score = 0;
+    currentExamData.forEach((q, i) => {
+        if (userAnswers[i] === q.answer) score++;
+    });
+
+    alert(`MTH 101 Practice Complete!\nYour Score: ${score} / ${currentExamData.length}\n\nRenance AI will now explain your missed questions.`);
+
+    localStorage.removeItem('saved_mth_exam');
+
+    sendToAI("MTH101", currentExamData, userAnswers);
+}
+</script>
+
+<script>
+function showResults() {
+    clearInterval(timerId);
+    let score = 0;
+    currentExamData.forEach((q, i) => {
+        if (userAnswers[i] === q.answer) score++;
+    });
+
+    alert(`PHY 101 Practice Complete!\nYour Score: ${score} / ${currentExamData.length}\n\nRenance AI will now explain your missed questions.`);
+
+    localStorage.removeItem('saved_phy_exam');
+
+    sendToAI("PHY101", currentExamData, userAnswers);
+}
+</script>
+
+<script>
+function showResults() {
+    clearInterval(timerId);
+    let score = 0;
+    currentExamData.forEach((q, i) => {
+        if (userAnswers[i] === q.answer) score++;
+    });
+
+    alert(`STA 111 Practice Complete!\nYour Score: ${score} / ${currentExamData.length}\n\nRenance AI will now explain your missed questions.`);
+
+    localStorage.removeItem('saved_sta_exam');
+
+    sendToAI("STA111", currentExamData, userAnswers);
+}
+</script>
+
+
+

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Chat | RENANCE FUTA CBT</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        
+        :root {
+            --bg-body: #f1f5f9;
+            --sidebar: #0f172a;
+            --card-bg: #ffffff;
+            --primary-accent: #2563eb;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --sidebar-border: rgba(255,255,255,0.08);
+            --glass-overlay: rgba(15, 23, 42, 0.7);
+            --chat-bg: #eef2f6;
+            --msg-mine: #2563eb;
+            --msg-theirs: #ffffff;
+        }
+        .dark-mode {
+            --bg-body: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --chat-bg: #0b1120;
+            --msg-theirs: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body { background-color: var(--bg-body); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; transition: 0.3s; }
+
+        
+        .sidebar { width: 280px; background-color: var(--sidebar); display: flex; flex-direction: column; border-right: 1px solid var(--sidebar-border); transition: transform 0.3s ease; z-index: 1000; }
+        .brand-header { padding: 24px; display: flex; align-items: center; justify-content: space-between; }
+        .brand-logo { display: flex; align-items: center; gap: 12px; color: #f8fafc; font-weight: 800; font-size: 1rem; }
+        .close-sidebar { display: none; background: none; border: none; color: #64748b; cursor: pointer; }
+        
+        .nav-menu { padding: 10px 20px; flex: 1; display: flex; flex-direction: column; gap: 6px; overflow-y: auto; }
+        .nav-item { display: flex; align-items: center; gap: 14px; padding: 14px 18px; color: #94a3b8; text-decoration: none; font-size: 0.95rem; font-weight: 500; border-radius: 12px; transition: all 0.2s ease; }
+        .nav-item:hover { background-color: rgba(255, 255, 255, 0.04); color: #f8fafc; }
+        .nav-item.active { background-color: rgba(37, 99, 235, 0.15); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.3); }
+
+        .user-card-container { padding: 20px; border-top: 1px solid var(--sidebar-border); }
+        .user-card { display: flex; align-items: center; justify-content: space-between; }
+        .user-info { display: flex; align-items: center; gap: 12px; }
+        .avatar { width: 42px; height: 42px; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.95rem; }
+        .user-details h4 { color: #f8fafc; font-size: 0.95rem; font-weight: 700; }
+        .user-details p { color: #64748b; font-size: 0.75rem; margin-top: 2px; }
+        .logout-btn { color: #ef4444; background: rgba(239, 68, 68, 0.1); border: none; border-radius: 10px; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; }
+        .logout-btn:hover { background: rgba(239, 68, 68, 0.2); transform: scale(1.05); }
+
+        
+        .main-content { flex: 1; display: flex; flex-direction: column; position: relative; background: var(--bg-body); }
+        
+        .top-header { padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); border-bottom: 1px solid var(--border-color); z-index: 10; flex-shrink: 0; }
+        .header-left { display: flex; align-items: center; gap: 16px; }
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text-main); }
+        .chat-title h2 { font-size: 1.1rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+        .chat-title p { font-size: 0.75rem; color: var(--success); font-weight: 600; display: flex; align-items: center; gap: 4px; margin-top: 2px; }
+        .chat-title p::before { content: ''; width: 8px; height: 8px; background: var(--success); border-radius: 50%; display: inline-block; animation: blink 2s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        
+        .theme-toggle { background: none; border: none; cursor: pointer; color: var(--text-main); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--bg-body); }
+
+        
+        .chat-container { flex: 1; display: flex; flex-direction: column; background: var(--chat-bg); background-image: radial-gradient(rgba(37,99,235,0.05) 1px, transparent 1px); background-size: 20px 20px; overflow: hidden; }
+        .chat-messages { flex: 1; padding: 30px 5%; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; scroll-behavior: smooth; }
+
+        .message { display: flex; gap: 12px; max-width: 75%; animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .msg-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #059669); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; }
+        .msg-content { display: flex; flex-direction: column; gap: 4px; }
+        .msg-header { display: flex; align-items: baseline; gap: 8px; }
+        .msg-author { font-size: 0.85rem; font-weight: 700; color: var(--text-main); }
+        .msg-time { font-size: 0.65rem; color: var(--text-muted); }
+        .msg-bubble { padding: 12px 16px; border-radius: 4px 16px 16px 16px; font-size: 0.95rem; line-height: 1.5; box-shadow: 0 2px 5px rgba(0,0,0,0.02); word-wrap: break-word; }
+        
+        .message.theirs .msg-bubble { background: var(--msg-theirs); color: var(--text-main); border: 1px solid var(--border-color); }
+        .message.mine { align-self: flex-end; flex-direction: row-reverse; }
+        .message.mine .msg-header { justify-content: flex-end; flex-direction: row-reverse; }
+        .message.mine .msg-bubble { background: var(--msg-mine); color: white; border-radius: 16px 4px 16px 16px; }
+
+        .system-msg { align-self: center; background: rgba(0,0,0,0.05); color: var(--text-muted); padding: 6px 16px; border-radius: 99px; font-size: 0.75rem; font-weight: 600; margin: 10px 0; }
+        
+        
+        .mention { color: #f59e0b; font-weight: 700; background: rgba(245, 158, 11, 0.15); padding: 0 4px; border-radius: 4px; }
+        .message.mine .mention { color: #fde047; background: rgba(255,255,255,0.2); } 
+
+        
+        .chat-img { max-width: 100%; border-radius: 8px; margin-bottom: 8px; max-height: 250px; object-fit: cover; border: 1px solid rgba(0,0,0,0.1); display: block; }
+        .chat-audio { height: 36px; border-radius: 99px; outline: none; margin-bottom: 8px; }
+        .chat-file-box { display: flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.1); padding: 10px 14px; border-radius: 8px; margin-bottom: 8px; color: inherit; text-decoration: none; }
+
+        
+        .input-wrapper-outer { background: var(--card-bg); border-top: 1px solid var(--border-color); display: flex; flex-direction: column; flex-shrink: 0; }
+        
+        .file-preview-bar { display: none; padding: 10px 5%; background: rgba(37,99,235,0.05); border-bottom: 1px solid var(--border-color); align-items: center; justify-content: space-between; font-size: 0.85rem; color: var(--primary-accent); font-weight: 600; }
+        .file-preview-bar .cancel-file { background: none; border: none; color: var(--danger); cursor: pointer; font-size: 1rem; }
+
+        .chat-input-area { padding: 15px 5%; display: flex; align-items: flex-end; gap: 10px; }
+        
+        .btn-action { background: none; border: none; color: var(--text-muted); font-size: 1.4rem; padding: 10px; cursor: pointer; transition: 0.2s; border-radius: 50%; }
+        .btn-action:hover { color: var(--primary-accent); background: var(--bg-body); }
+        .btn-action:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        
+        .recording-pulse { color: var(--danger) !important; animation: pulseRed 1.5s infinite; }
+        @keyframes pulseRed { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); } 70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); } 100% { transform: scale(1); } }
+
+        .input-wrapper { flex: 1; background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 20px; padding: 10px 16px; display: flex; align-items: center; transition: 0.2s; }
+        .input-wrapper:focus-within { border-color: var(--primary-accent); background: var(--card-bg); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+        
+        .chat-input { width: 100%; border: none; background: transparent; outline: none; font-size: 0.95rem; color: var(--text-main); resize: none; max-height: 120px; min-height: 24px; padding: 4px 0; font-family: 'Inter', sans-serif; }
+        .chat-input:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .btn-send { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #3b82f6); color: white; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; flex-shrink: 0; box-shadow: 0 4px 10px rgba(37,99,235,0.3); }
+        .btn-send:hover { transform: scale(1.05) rotate(-10deg); }
+        .btn-send:disabled { background: #94a3b8; box-shadow: none; cursor: not-allowed; transform: none; }
+
+        
+        .admin-lock-banner { display: none; background: #fee2e2; color: #b91c1c; text-align: center; padding: 12px; font-size: 0.85rem; font-weight: 700; border-top: 1px solid #fca5a5; }
+
+        
+        .modal-overlay { position: fixed; inset: 0; background: var(--glass-overlay); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 3000; }
+        .modal-box { background: var(--card-bg); border-radius: 24px; width: 100%; max-width: 400px; padding: 30px; box-shadow: 0 25px 50px rgba(0,0,0,0.2); text-align: center; }
+        .modal-icon { width: 64px; height: 64px; background: rgba(37,99,235,0.1); color: var(--primary-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+        .modal-box h2 { font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin-bottom: 8px; }
+        .modal-box p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5; }
+        .name-input { width: 100%; padding: 14px; border: 2px solid var(--border-color); border-radius: 12px; font-size: 1rem; text-align: center; font-weight: 600; outline: none; margin-bottom: 20px; background: var(--bg-body); color: var(--text-main); }
+        .btn-join { width: 100%; padding: 14px; background: var(--primary-accent); color: white; border: none; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: 0.2s; }
+
+        @media (max-width: 960px) {
+            .sidebar { position: fixed; height: 100vh; transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+            .close-sidebar { display: block; }
+            .mobile-toggle { display: block; }
+            .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); z-index: 999; backdrop-filter: blur(4px); }
+            .sidebar-overlay.show { display: block; }
+            .message { max-width: 90%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="modal-overlay" id="usernameModal" style="display: none;">
+        <div class="modal-box">
+            <div class="modal-icon"><i data-lucide="user-plus" size="32"></i></div>
+            <h2>Set Your Chat Name</h2>
+            <p>For your privacy, we don't use matric numbers here. Pick a display name to brainstorm with others!</p>
+            <input type="text" id="customNameInput" class="name-input" placeholder="e.g. FutaScholar" maxlength="15">
+            <button class="btn-join" onclick="saveUsername()">Join the Chat 🚀</button>
+        </div>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="brand-header">
+            <div class="brand-logo"><i data-lucide="graduation-cap" size="24"></i> RENANCE CBT</div>
+            <button class="close-sidebar" onclick="toggleSidebar()"><i data-lucide="x" size="24"></i></button>
+        </div>
+        <nav class="nav-menu">
+            <a href="dashboard.html" class="nav-item"><i data-lucide="layout-grid"></i> Dashboard</a>
+            <a href="leaderboard.html" class="nav-item"><i data-lucide="trophy"></i> Leaderboard</a>
+            <a href="chat.html" class="nav-item active"><i data-lucide="message-square"></i> Student Chat</a>
+            <a href="pdfs.html" class="nav-item"><i data-lucide="book"></i> PDFs</a>
+            <a href="gpa.html" class="nav-item"><i data-lucide="calculator"></i> GPA Calculator</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="header-left">
+                <button class="mobile-toggle" onclick="toggleSidebar()"><i data-lucide="menu"></i></button>
+                <div class="chat-title">
+                    <h2>FUTA Brainstorm Hub <i data-lucide="sparkles" size="18" style="color: #f59e0b;"></i></h2>
+                    <p id="chatStatus">Online - Realtime Chat</p>
+                </div>
+            </div>
+            <button class="theme-toggle" title="Toggle Theme" onclick="document.body.classList.toggle('dark-mode')"><i data-lucide="moon" size="20"></i></button>
+        </header>
+
+        <div class="chat-container">
+            <div class="chat-messages" id="chatBox">
+                <div class="system-msg">Welcome to the General Portal chat! Keep it respectful.</div>
+                </div>
+
+            <div class="input-wrapper-outer">
+                
+                <div class="admin-lock-banner" id="adminLockBanner">
+                    <i class="fa-solid fa-lock"></i> Chat is currently locked by Admin.
+                </div>
+
+                <input type="file" id="fileUpload" style="display: none;" onchange="handleFileSelection(event)">
+                
+                <div class="file-preview-bar" id="filePreviewBar">
+                    <div><i class="fa-solid fa-paperclip"></i> Attached: <span id="fileNameDisplay">document.pdf</span></div>
+                    <button class="cancel-file" onclick="cancelFile()"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <div class="chat-input-area">
+                    <button class="btn-action" id="attachBtn" onclick="document.getElementById('fileUpload').click()" title="Attach File">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    
+                    <div class="input-wrapper">
+                        <textarea id="messageInput" class="chat-input" placeholder="Type a message or use @ to tag..." rows="1" oninput="autoResize(this)" onkeypress="handleEnter(event)"></textarea>
+                    </div>
+
+                    <button class="btn-action" id="micBtn" onclick="toggleRecording()" title="Send Voice Note">
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
+                    
+                    <button class="btn-send" id="sendBtn" onclick="sendMessage()">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('sidebarOverlay').classList.toggle('show');
+        }
+
+
+
+        const supabaseUrl = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        let chatDisplayName = localStorage.getItem('futa_chat_name');
+        let selectedFile = null;
+        
+        window.onload = () => {
+            if (!chatDisplayName) {
+                document.getElementById('usernameModal').style.display = 'flex';
+            } else {
+                initChat();
+            }
+        };
+
+        function saveUsername() {
+            const input = document.getElementById('customNameInput').value.trim();
+            if (input.length < 3) { alert("Please enter a name with at least 3 characters!"); return; }
+            chatDisplayName = input;
+            localStorage.setItem('futa_chat_name', input);
+            document.getElementById('usernameModal').style.display = 'none';
+            
+            initChat();
+
+            supabase.from('messages').insert([
+                { author: 'System', text: `${chatDisplayName} joined the hub! 🚀`, is_system: true }
+            ]).then();
+        }
+
+        function initChat() { 
+            scrollToBottom(); 
+
+            supabase.channel('public:messages')
+                .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, payload => {
+                    const msg = payload.new;
+
+                    const dateObj = new Date(msg.created_at);
+                    const timeString = dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                    if (msg.is_system) {
+                        addSystemMessage(msg.text);
+                    } else if (msg.author !== chatDisplayName) {
+                        renderMessage(msg.author, msg.text, timeString, 'theirs', { url: msg.file_url, name: msg.file_name, isImage: msg.is_image, isAudio: msg.is_audio });
+                    }
+                }).subscribe();
+
+
+            supabase.channel('public:chat_settings')
+                .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'chat_settings' }, payload => {
+                    toggleAdminLock(payload.new.is_locked);
+                }).subscribe();
+
+            supabase.from('chat_settings').select('is_locked').eq('id', 1).single().then(({data}) => {
+                if (data) toggleAdminLock(data.is_locked);
+            });
+        }
+
+        function toggleAdminLock(isLocked) {
+            const input = document.getElementById('messageInput');
+            const attach = document.getElementById('attachBtn');
+            const mic = document.getElementById('micBtn');
+            const send = document.getElementById('sendBtn');
+            const banner = document.getElementById('adminLockBanner');
+            
+            if (isLocked) {
+                input.disabled = true; attach.disabled = true; mic.disabled = true; send.disabled = true;
+                input.placeholder = "Chat is locked by Admin.";
+                banner.style.display = 'block';
+                document.getElementById('chatStatus').innerText = "Locked 🔒";
+                document.getElementById('chatStatus').style.color = "var(--danger)";
+            } else {
+                input.disabled = false; attach.disabled = false; mic.disabled = false; send.disabled = false;
+                input.placeholder = "Type a message or use @ to tag...";
+                banner.style.display = 'none';
+                document.getElementById('chatStatus').innerText = "Online - Realtime Chat";
+                document.getElementById('chatStatus').style.color = "var(--success)";
+            }
+        }
+
+        function autoResize(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = textarea.scrollHeight + 'px';
+        }
+
+        function handleEnter(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        }
+
+        let mediaRecorder;
+        let audioChunks = [];
+        let isRecording = false;
+
+        async function toggleRecording() {
+            const micBtn = document.getElementById('micBtn');
+            
+            if (isRecording) {
+
+                mediaRecorder.stop();
+                isRecording = false;
+                micBtn.classList.remove('recording-pulse');
+            } else {
+
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    mediaRecorder = new MediaRecorder(stream);
+                    mediaRecorder.start();
+                    isRecording = true;
+                    micBtn.classList.add('recording-pulse');
+
+                    mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+                    
+                    mediaRecorder.onstop = () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                        audioChunks = [];
+
+                        selectedFile = new File([audioBlob], "voice_note.webm", { type: 'audio/webm' });
+                        document.getElementById('fileNameDisplay').innerText = "🎤 Voice Note Recorded";
+                        document.getElementById('filePreviewBar').style.display = 'flex';
+                    };
+                } catch (err) {
+                    alert("Microphone access denied. Please allow permissions.");
+                }
+            }
+        }
+
+        function handleFileSelection(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            if (file.size > 5 * 1024 * 1024) { alert("File is too large! Please select a file under 5MB."); event.target.value = ''; return; }
+
+            selectedFile = file;
+            document.getElementById('fileNameDisplay').innerText = file.name;
+            document.getElementById('filePreviewBar').style.display = 'flex';
+        }
+
+        function cancelFile() {
+            selectedFile = null;
+            document.getElementById('fileUpload').value = '';
+            document.getElementById('filePreviewBar').style.display = 'none';
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const text = input.value.trim();
+            if (!text && !selectedFile) return; 
+
+            const timeString = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            let fileUrl = null;
+            let fileName = null;
+            let isImage = false;
+            let isAudio = false;
+
+            let localFileData = null;
+
+            if (selectedFile) {
+                isImage = selectedFile.type.startsWith('image/');
+                isAudio = selectedFile.type.startsWith('audio/');
+                fileName = selectedFile.name;
+
+                localFileData = { url: URL.createObjectURL(selectedFile), name: fileName, isImage, isAudio };
+                renderMessage(chatDisplayName, text, timeString, 'mine', localFileData);
+
+                input.value = ''; input.style.height = 'auto'; cancelFile();
+
+                const fileExt = fileName.split('.').pop();
+                const safeName = `${Math.random().toString(36).substring(2)}.${fileExt}`;
+                const filePath = `uploads/${safeName}`;
+
+                const { data: uploadData, error: uploadError } = await supabase.storage.from('chat-media').upload(filePath, selectedFile);
+                
+                if (!uploadError) {
+                    const { data: publicData } = supabase.storage.from('chat-media').getPublicUrl(filePath);
+                    fileUrl = publicData.publicUrl;
+                } else {
+                    console.error("Upload error:", uploadError);
+                }
+            } else {
+                renderMessage(chatDisplayName, text, timeString, 'mine', null);
+                input.value = ''; input.style.height = 'auto';
+            }
+
+            await supabase.from('messages').insert([
+                { 
+                    author: chatDisplayName, 
+                    text: text, 
+                    file_url: fileUrl, 
+                    file_name: fileName, 
+                    is_image: isImage,
+                    is_audio: isAudio,
+                    is_system: false
+                }
+            ]);
+        }
+
+        function formatText(rawText) {
+            if (!rawText) return '';
+
+            return rawText.replace(/@(\w+)/g, '<span class="mention">@$1</span>');
+        }
+
+        function renderMessage(author, text, time, type, fileData = null) {
+            const chatBox = document.getElementById('chatBox');
+            const initials = author.substring(0, 2).toUpperCase();
+            
+            const colors = ['#f59e0b', '#10b981', '#8b5cf6', '#ef4444', '#06b6d4'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            const avatarStyle = type === 'mine' ? '' : `background: ${randomColor};`;
+
+            const formattedText = formatText(text);
+
+            let fileHtml = '';
+            if (fileData && fileData.url) {
+                if (fileData.isImage) {
+                    fileHtml = `<img src="${fileData.url}" alt="Shared Image" class="chat-img">`;
+                } else if (fileData.isAudio) {
+                    fileHtml = `<audio controls class="chat-audio"><source src="${fileData.url}" type="audio/webm">Your browser does not support the audio element.</audio>`;
+                } else {
+                    fileHtml = `<a href="${fileData.url}" target="_blank" class="chat-file-box"><i class="fa-solid fa-file-arrow-down"></i><span>${fileData.name}</span></a>`;
+                }
+            }
+
+            let textHtml = formattedText ? `<p style="margin-top: ${fileData ? '8px' : '0'};">${formattedText}</p>` : '';
+
+            const html = `
+                <div class="message ${type}">
+                    <div class="msg-avatar" style="${avatarStyle}">${initials}</div>
+                    <div class="msg-content">
+                        <div class="msg-header">
+                            <span class="msg-author">${type === 'mine' ? 'You' : author}</span>
+                            <span class="msg-time">${time}</span>
+                        </div>
+                        <div class="msg-bubble">
+                            ${fileHtml}
+                            ${textHtml}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            chatBox.insertAdjacentHTML('beforeend', html);
+            scrollToBottom();
+        }
+
+        function addSystemMessage(text) {
+            const chatBox = document.getElementById('chatBox');
+            chatBox.insertAdjacentHTML('beforeend', `<div class="system-msg">${text}</div>`);
+            scrollToBottom();
+        }
+
+        function scrollToBottom() {
+            const chatBox = document.getElementById('chatBox');
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
+
+
+

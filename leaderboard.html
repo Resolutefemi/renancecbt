@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard | RENANCE FUTA CBT</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        
+        :root {
+            --bg-body: #f1f5f9;
+            --sidebar: #0f172a;
+            --card-bg: #ffffff;
+            --primary-accent: #2563eb;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --sidebar-border: rgba(255,255,255,0.08);
+            --gold: #fbbf24;
+            --silver: #94a3b8;
+            --bronze: #b45309;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        
+        .sidebar {
+            width: 280px; background-color: var(--sidebar); display: flex; flex-direction: column;
+            border-right: 1px solid var(--sidebar-border); transition: transform 0.3s ease; z-index: 1000;
+        }
+        .brand-header { padding: 24px; display: flex; align-items: center; justify-content: space-between; }
+        .brand-logo { display: flex; align-items: center; gap: 12px; color: #f8fafc; font-weight: 800; font-size: 1rem; }
+        .brand-logo i { color: #f8fafc; }
+        .close-sidebar { display: none; background: none; border: none; color: #64748b; cursor: pointer; }
+        
+        .nav-menu { padding: 10px 20px; flex: 1; display: flex; flex-direction: column; gap: 6px; overflow-y: auto; }
+        .nav-item {
+            display: flex; align-items: center; gap: 14px; padding: 14px 18px; color: #94a3b8;
+            text-decoration: none; font-size: 0.95rem; font-weight: 500; border-radius: 12px; transition: all 0.2s ease;
+        }
+        .nav-item:hover { background-color: rgba(255, 255, 255, 0.04); color: #f8fafc; }
+        .nav-item.active { background-color: rgba(37, 99, 235, 0.15); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.3); }
+        .nav-item i { width: 20px; text-align: center; }
+
+        .user-card-container { padding: 20px; border-top: 1px solid var(--sidebar-border); }
+        .user-card { display: flex; align-items: center; justify-content: space-between; }
+        .user-info { display: flex; align-items: center; gap: 12px; }
+        .avatar {
+            width: 42px; height: 42px; background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.95rem;
+        }
+        .user-details h4 { color: #f8fafc; font-size: 0.95rem; font-weight: 700; }
+        .user-details p { color: #64748b; font-size: 0.75rem; margin-top: 2px; }
+        .logout-btn { color: #ef4444; background: rgba(239, 68, 68, 0.1); border: none; border-radius: 10px; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; }
+        .logout-btn:hover { background: rgba(239, 68, 68, 0.2); transform: scale(1.05); }
+
+        
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; position: relative; }
+        .top-header {
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: #ffffff; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 10;
+        }
+        .header-left { display: flex; align-items: center; gap: 16px; }
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text-main); }
+        .page-title { font-size: 1.2rem; font-weight: 800; color: var(--text-main); }
+        .theme-toggle { background: none; border: none; cursor: pointer; color: var(--text-main); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--bg-body); }
+
+        .content-container { padding: 40px 5%; width: 100%; max-width: 1000px; margin: 0 auto; }
+
+        
+        .lb-banner {
+            background: linear-gradient(135deg, #1e1b4b, #312e81); border-radius: 20px; padding: 24px 30px;
+            display: flex; align-items: center; gap: 20px; border: 1px solid #4f46e5; margin-bottom: 30px;
+        }
+        .lb-banner i { color: var(--gold); font-size: 2.5rem; flex-shrink: 0; }
+        .lb-text h2 { color: #ffffff; font-size: 1.2rem; font-weight: 800; margin-bottom: 6px; }
+        .lb-text p { color: #a5b4fc; font-size: 0.9rem; line-height: 1.5; }
+        .lb-text strong { color: #f8fafc; }
+
+        
+        .tabs {
+            display: flex; gap: 10px; margin-bottom: 40px; overflow-x: auto; padding-bottom: 10px;
+            scrollbar-width: none;
+        }
+        .tabs::-webkit-scrollbar { display: none; }
+        .tab-btn {
+            padding: 10px 20px; border-radius: 99px; background: var(--card-bg); border: 1px solid var(--border-color);
+            color: var(--text-muted); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: 0.2s; white-space: nowrap;
+        }
+        .tab-btn:hover { background: #f1f5f9; color: var(--text-main); }
+        .tab-btn.active { background: var(--primary-accent); color: white; border-color: var(--primary-accent); box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
+
+        
+        .podium-wrapper { display: flex; justify-content: center; align-items: flex-end; gap: 15px; margin-bottom: 60px; height: 260px; }
+        
+        .podium-step {
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px 16px 8px 8px;
+            display: flex; flex-direction: column; align-items: center; width: 140px; position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: transform 0.3s;
+        }
+        .podium-step:hover { transform: translateY(-5px); }
+        
+        .podium-avatar {
+            width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; font-weight: 800; color: white; position: absolute; top: -32px; border: 4px solid var(--bg-body);
+        }
+        .podium-medal { position: absolute; top: -45px; right: -10px; font-size: 1.8rem; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2)); }
+        
+        .podium-info { margin-top: 40px; padding: 10px; text-align: center; width: 100%; }
+        .podium-name { font-weight: 700; color: var(--text-main); font-size: 0.95rem; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+        .podium-dept { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 12px; }
+        .podium-score { font-size: 1.2rem; font-weight: 900; color: var(--primary-accent); background: rgba(37,99,235,0.1); padding: 4px 12px; border-radius: 8px; display: inline-block; }
+
+        
+        .step-2 { height: 180px; }
+        .step-2 .podium-avatar { background: linear-gradient(135deg, #94a3b8, #64748b); }
+        .step-2 .podium-score { color: var(--silver); background: rgba(148,163,184,0.15); }
+        
+        .step-1 { height: 230px; border-color: var(--gold); border-width: 2px; }
+        .step-1 .podium-avatar { background: linear-gradient(135deg, #fbbf24, #d97706); }
+        .step-1 .podium-score { color: var(--gold); background: rgba(251,191,36,0.15); }
+        
+        .step-3 { height: 150px; }
+        .step-3 .podium-avatar { background: linear-gradient(135deg, #d97706, #92400e); }
+        .step-3 .podium-score { color: var(--bronze); background: rgba(180,83,9,0.15); }
+
+        
+        .rank-list { background: var(--card-bg); border-radius: 20px; border: 1px solid var(--border-color); overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .rank-header { display: flex; padding: 16px 24px; background: rgba(0,0,0,0.02); border-bottom: 1px solid var(--border-color); font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        .rank-row { display: flex; align-items: center; padding: 16px 24px; border-bottom: 1px solid var(--border-color); transition: 0.2s; }
+        .rank-row:last-child { border-bottom: none; }
+        .rank-row:hover { background: #f8fafc; }
+        
+        .col-rank { width: 60px; font-weight: 800; color: var(--text-muted); font-size: 1rem; }
+        .col-student { flex: 1; display: flex; align-items: center; gap: 12px; }
+        .list-avatar { width: 36px; height: 36px; border-radius: 10px; background: var(--primary-accent); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; }
+        .student-details h4 { font-size: 0.95rem; font-weight: 600; color: var(--text-main); }
+        .student-details p { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+        
+        .col-score { width: 100px; text-align: right; font-weight: 800; color: var(--text-main); font-size: 1.1rem; }
+
+        
+        .loader { text-align: center; padding: 50px; color: var(--text-muted); display: none; }
+        .loader i { animation: spin 1s linear infinite; font-size: 2rem; color: var(--primary-accent); margin-bottom: 10px; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        
+        @media (max-width: 960px) {
+            .sidebar { position: fixed; height: 100vh; transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+            .close-sidebar { display: block; }
+            .mobile-toggle { display: block; }
+            .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); z-index: 999; backdrop-filter: blur(4px); }
+            .sidebar-overlay.show { display: block; }
+        }
+        @media (max-width: 600px) {
+            .podium-wrapper { gap: 5px; height: 200px; margin-bottom: 40px; }
+            .podium-step { width: 100px; }
+            .podium-avatar { width: 48px; height: 48px; font-size: 1rem; top: -24px; }
+            .podium-medal { font-size: 1.4rem; top: -35px; right: -5px; }
+            .step-2 { height: 140px; } .step-1 { height: 180px; } .step-3 { height: 120px; }
+            .podium-score { font-size: 1rem; padding: 4px 8px; }
+            .rank-header { display: none; } 
+            .col-rank { width: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="brand-header">
+            <div class="brand-logo">
+                <i data-lucide="graduation-cap" size="24"></i> RENANCE CBT
+            </div>
+            <button class="close-sidebar" onclick="toggleSidebar()"><i data-lucide="x" size="24"></i></button>
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="dashboard.html" class="nav-item"><i data-lucide="layout-grid"></i> Dashboard</a>
+            <a href="leaderboard.html" class="nav-item active"><i data-lucide="trophy"></i> Leaderboard</a>
+            <a href="chat.html" class="nav-item"><i data-lucide="message-square"></i> Student Chat</a>
+            <a href="pdfs.html" class="nav-item"><i data-lucide="book"></i> PDFs</a>
+            <a href="gpa.html" class="nav-item"><i data-lucide="calculator"></i> GPA Calculator</a>
+            <a href="ai.html" class="nav-item"><i data-lucide="bot"></i> Renance AI</a>
+        </nav>
+
+        <div class="user-card-container">
+            <div class="user-card">
+                <div class="user-info">
+                    <div class="avatar">AO</div>
+                    <div class="user-details">
+                        <h4>Ariyo</h4>
+                        <p>100 Level</p>
+                    </div>
+                </div>
+                <button class="logout-btn" title="Logout" onclick="location.href='login.html'">
+                    <i data-lucide="log-out" size="18"></i>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="header-left">
+                <button class="mobile-toggle" onclick="toggleSidebar()"><i data-lucide="menu"></i></button>
+                <div class="page-title">Global Leaderboard</div>
+            </div>
+            <button class="theme-toggle" onclick="document.body.classList.toggle('dark-mode')"><i data-lucide="moon" size="20"></i></button>
+        </header>
+
+        <div class="content-container">
+            
+            <div class="lb-banner">
+                <i class="fa-solid fa-trophy"></i>
+                <div class="lb-text">
+                    <h2>Random Mode Rankings</h2>
+                    <p>Only scores achieved through <strong>Random Mode</strong> (Mixed Courses) count towards this global leaderboard. The highest score out of 3 attempts per week is selected!</p>
+                </div>
+            </div>
+
+            <div class="tabs" id="timeFilters">
+                <button class="tab-btn" onclick="fetchLeaderboard('daily')">Daily</button>
+                <button class="tab-btn active" onclick="fetchLeaderboard('weekly')">Weekly</button>
+                <button class="tab-btn" onclick="fetchLeaderboard('monthly')">Monthly</button>
+                <button class="tab-btn" onclick="fetchLeaderboard('yearly')">Yearly</button>
+                <button class="tab-btn" onclick="fetchLeaderboard('overall')">Overall</button>
+            </div>
+
+            <div class="loader" id="loader">
+                <i class="fa-solid fa-circle-notch"></i>
+                <p>Fetching ranks from database...</p>
+            </div>
+
+            <div id="leaderboard-content">
+                <div class="podium-wrapper" id="podiumArea">
+                    </div>
+
+                <div class="rank-list">
+                    <div class="rank-header">
+                        <div class="col-rank">Rank</div>
+                        <div class="col-student">Student Detail</div>
+                        <div class="col-score">Score</div>
+                    </div>
+                    <div id="listArea">
+                        </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('sidebarOverlay').classList.toggle('show');
+        }
+
+
+
+        
+        
+
+        const tabs = document.querySelectorAll('.tab-btn');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+
+        async function fetchLeaderboard(period) {
+            document.getElementById('leaderboard-content').style.display = 'none';
+            document.getElementById('loader').style.display = 'block';
+
+            
+
+            setTimeout(() => {
+                const mockData = [
+                    { student_name: "Fatima K.", student_matric: "MEE/21/1234", score: 98 },
+                    { student_name: "Adeyemi O.", student_matric: "CSC/21/5678", score: 95 },
+                    { student_name: "Emeka B.", student_matric: "CVE/21/9012", score: 91 },
+                    { student_name: "Sola O.", student_matric: "EEE/21/3456", score: 88 },
+                    { student_name: "Chioma U.", student_matric: "STA/21/7890", score: 85 },
+                    { student_name: "Tolu M.", student_matric: "PHY/21/1122", score: 82 },
+                    { student_name: "Resolute Femi", student_matric: "SE/21/3344", score: 79 }
+                ];
+                renderLeaderboard(mockData);
+            }, 800);
+        }
+
+        function renderLeaderboard(data) {
+            const podiumArea = document.getElementById('podiumArea');
+            const listArea = document.getElementById('listArea');
+            
+            podiumArea.innerHTML = '';
+            listArea.innerHTML = '';
+
+            if (!data || data.length === 0) {
+                listArea.innerHTML = `<div style="padding:30px; text-align:center; color:var(--text-muted)">No scores found for this period yet. Be the first! 🚀</div>`;
+            } else {
+
+
+
+                
+                let podiumHTML = '';
+
+                if(data[1]) {
+                    let initials = data[1].student_name.substring(0,2).toUpperCase();
+                    podiumHTML += `
+                    <div class="podium-step step-2">
+                        <div class="podium-medal">🥈</div>
+                        <div class="podium-avatar">${initials}</div>
+                        <div class="podium-info">
+                            <div class="podium-name">${data[1].student_name}</div>
+                            <div class="podium-score">${data[1].score}%</div>
+                        </div>
+                    </div>`;
+                }
+
+                if(data[0]) {
+                    let initials = data[0].student_name.substring(0,2).toUpperCase();
+                    podiumHTML += `
+                    <div class="podium-step step-1">
+                        <div class="podium-medal">🥇</div>
+                        <div class="podium-avatar">${initials}</div>
+                        <div class="podium-info">
+                            <div class="podium-name">${data[0].student_name}</div>
+                            <div class="podium-score">${data[0].score}%</div>
+                        </div>
+                    </div>`;
+                }
+
+                if(data[2]) {
+                    let initials = data[2].student_name.substring(0,2).toUpperCase();
+                    podiumHTML += `
+                    <div class="podium-step step-3">
+                        <div class="podium-medal">🥉</div>
+                        <div class="podium-avatar">${initials}</div>
+                        <div class="podium-info">
+                            <div class="podium-name">${data[2].student_name}</div>
+                            <div class="podium-score">${data[2].score}%</div>
+                        </div>
+                    </div>`;
+                }
+                
+                podiumArea.innerHTML = podiumHTML;
+
+                for (let i = 3; i < data.length; i++) {
+                    let initials = data[i].student_name.substring(0,2).toUpperCase();
+                    listArea.innerHTML += `
+                    <div class="rank-row">
+                        <div class="col-rank">#${i + 1}</div>
+                        <div class="col-student">
+                            <div class="list-avatar">${initials}</div>
+                            <div class="student-details">
+                                <h4>${data[i].student_name}</h4>
+                                <p>${data[i].student_matric}</p>
+                            </div>
+                        </div>
+                        <div class="col-score">${data[i].score}%</div>
+                    </div>`;
+                }
+            }
+
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('leaderboard-content').style.display = 'block';
+        }
+
+        fetchLeaderboard('weekly');
+    </script>
+</body>
+</html>
+
+
+
+
+
