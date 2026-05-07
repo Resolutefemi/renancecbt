@@ -428,7 +428,32 @@ export class QuizEngine {
         if (modalTotal) modalTotal.innerText = total.toString();
         if (resultModal) resultModal.style.display = 'flex';
 
+        // Add Review with AI button if it doesn't exist
+        const actions = resultModal?.querySelector('.result-actions');
+        if (actions && !document.getElementById('ai-review-btn')) {
+            const btn = document.createElement('button');
+            btn.id = 'ai-review-btn';
+            btn.className = 'btn-action btn-share';
+            btn.style.background = 'linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%)';
+            btn.innerHTML = '<i class="fa-solid fa-robot"></i> Review with AI Tutor';
+            btn.onclick = () => this.reviewWithAI();
+            actions.insertBefore(btn, actions.firstChild);
+        }
+
         await this.saveTestScore(pct);
+    }
+
+    public reviewWithAI(): void {
+        const answers = this.state.currentExamData.map((_, i) => this.state.userAnswers[i]);
+        sendToAI(this.courseCode, this.state.currentExamData, answers);
+    }
+
+    public enterReviewMode(): void {
+        this.isReviewMode = true;
+        this.state.currentIndex = 0;
+        const modal = document.getElementById('quizResultModal');
+        if (modal) modal.style.display = 'none';
+        this.renderQuestion();
     }
 
     private async saveTestScore(pct: number): Promise<void> {
