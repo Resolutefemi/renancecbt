@@ -249,8 +249,241 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;b
   </div>
 </div>
 
-<script src="dist/ui-core.js"></script>
-<script src="dist/ai.js"></script>
+<script>
+
+const PROXY_URL = "https://api.anthropic.com/v1/messages";
+
+
+const SMAP={GENERAL:"All 100-Level Courses",COS101:"Introduction to Computer Science (COS 101)",GNS103:"Information Literacy (GNS 103)",GST111:"Communication in English (GST 111)",MTH101:"Elementary Mathematics I (MTH 101)",PHY101:"General Physics I (PHY 101)",STA111:"Descriptive Statistics (STA 111)",BIO101:"General Biology I (BIO 101)",CHE101:"General Chemistry I (CHE 101)"};
+const MPROMPTS={
+  chat:"Answer helpfully and conversationally for a FUTA 100-level student. Be friendly but academically accurate.",
+  quiz:`Generate exactly ONE multiple-choice question on the topic. Use EXACTLY this format — nothing before or after:
+QUESTION: [question text]
+A) [option]
+B) [option]
+C) [option]
+D) [option]
+ANSWER: [single letter A/B/C/D only]
+EXPLANATION: [one clear sentence explaining why]`,
+  explain:"Give a structured academic explanation: 1) Simple definition  2) Key concepts with examples  3) Real-world application  4) Common student mistakes. Use **bold** for key terms.",
+  formula:"List all key formulas for this topic. Format each as: Formula → Variable definitions → Units → One worked example.",
+  solve:"Solve this problem step-by-step. Number every step clearly. State the method/theorem used. Show all working. Write the final answer in **bold**.",
+  cbt:"You are reviewing a FUTA student's CBT exam mistakes. For EACH missed question: (1) Explain clearly why the correct answer is right (2) Explain why the student's choice was wrong (3) Give a short memory trick or rule. Be detailed and encouraging."
+};
+
+let curSub="GENERAL",curMode="chat";
+let history=[],isLoading=false;
+let msgCount=0,topicsSet=new Set(),qzC=0,qzT=0;
+let pendingCBT=null;
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+  checkCBTStorage();
+});
+
+
+async function callClaude(userText){
+  const systemPrompt=
+    `You are Renance AI, a brilliant academic tutor for FUTA (Federal University of Technology, Akure) 100-level students.\n`+
+    `Subject focus: ${SMAP[curSub]}\nMode: ${curMode.toUpperCase()}\n`+
+    `${MPROMPTS[curMode]}\n\n`+
+    `Additional rules: Use **bold** for key terms. Numbered lists for steps. Bullet points for enumerations. \`backticks\` for formulas/code. End every explanation with one follow-up question to deepen understanding.`;
+
+  history.push({role:"user",content:userText});
+
+  const res=await fetch(PROXY_URL,{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "x-api-key": "",
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-calls": "true"
+    },
+    body:JSON.stringify({
+      model:"claude-haiku-4-5-20251001",
+      max_tokens:1000,
+      system:systemPrompt,
+      messages:history.slice(-12)
+    })
+  });
+
+  if(!res.ok){
+    const e=await res.json().catch(()=>({}));
+    throw new Error(e?.error?.message||e?.error||`API error ${res.status} — check your Cloudflare Worker setup.`);
+  }
+  const data=await res.json();
+  const reply=data.content?.map(b=>b.text||"").join("")||"No response received.";
+  history.push({role:"assistant",content:reply});
+  return reply;
+}
+
+
+function fmt(raw){
+  let t=raw
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+    .replace(/```(\w*)\n?([\s\S]*?)```/g,(_,l,c)=>`<pre><code>${c.trim()}</code></pre>`)
+    .replace(/`([^`]+)`/g,"<code>$1</code>")
+    .replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>")
+    .replace(/\*(.+?)\*/g,"<em>$1</em>")
+    .replace(/^#{1,3}\s+(.+)$/gm,"<h3>$1</h3>")
+    .replace(/^\d+\.\s(.+)$/gm,"<li>$1</li>")
+    .replace(/^[-•]\s(.+)$/gm,"<li>$1</li>")
+    .replace(/(<li>[\s\S]*?<\/li>\n?)+/g,m=>`<ul>${m}</ul>`)
+    .replace(/^---+$/gm,"<hr>")
+    .replace(/\n\n/g,"</p><p>").replace(/\n/g,"<br>");
+  return`<p>${t}</p>`;
+}
+
+
+function tryQuiz(text,bub){
+  const qM=text.match(/QUESTION:\s*(.+)/);
+  const opts=["A","B","C","D"].map(l=>{const m=text.match(new RegExp(l+"\\)\\s*(.+)"));return m?{l,t:m[1].trim()}:null;}).filter(Boolean);
+  const aM=text.match(/ANSWER:\s*([A-D])/i);
+  const eM=text.match(/EXPLANATION:\s*([\s\S]+)/);
+  if(!qM||opts.length<2||!aM)return false;
+  const correct=aM[1].toUpperCase();qzT++;let done=false;
+  const card=document.createElement("div");card.className="qcard";
+  card.innerHTML=`<div class="qcard-q">❓ ${qM[1].trim()}</div><div class="qopts"></div>`;
+  const ob=card.querySelector(".qopts");
+  opts.forEach(o=>{
+    const b=document.createElement("button");b.className="qopt";b.textContent=`${o.l}) ${o.t}`;
+    b.onclick=()=>{
+      if(done)return;done=true;
+      ob.querySelectorAll(".qopt").forEach(x=>{x.disabled=true;if(x.textContent.startsWith(correct+")"))x.classList.add("ok");});
+      if(o.l===correct){b.classList.add("ok");qzC++;toast("✅ Correct!");}
+      else{b.classList.add("no");toast("❌ Wrong — correct is "+correct);}
+      if(eM){const ep=document.createElement("div");ep.className="qexp";ep.textContent="💡 "+eM[1].trim();card.appendChild(ep);}
+      updateStats();
+    };ob.appendChild(b);
+  });
+  bub.innerHTML="";bub.appendChild(card);return true;
+}
+
+
+function addMsg(text,role){
+  const wrap=document.getElementById("chatWrap");
+  document.getElementById("welcome")?.remove();
+  const row=document.createElement("div");row.className=`msg ${role}`;
+  const isAI=role==="bot";
+  const av=document.createElement("div");av.className=`av ${isAI?"av-ai":"av-u"}`;av.textContent=isAI?"🧠":"👤";
+  const bub=document.createElement("div");bub.className=`bub ${isAI?"bub-ai":"bub-u"}`;
+  role==="user"?(row.appendChild(bub),row.appendChild(av)):(row.appendChild(av),row.appendChild(bub));
+  wrap.appendChild(row);
+  if(text==="__ld__")bub.innerHTML=`<div class="typing"><span></span><span></span><span></span></div>`;
+  else if(role==="user")bub.innerHTML=fmt(text);
+  else if(!tryQuiz(text,bub))bub.innerHTML=fmt(text);
+  wrap.scrollTop=wrap.scrollHeight;
+  return bub;
+}
+
+
+async function doSend(){
+  const t=document.getElementById("inp").value.trim();
+  if(!t||isLoading)return;
+  document.getElementById("inp").value="";
+  document.getElementById("inp").style.height="auto";
+  await doSendText(t);
+}
+async function doSendText(text){
+  if(isLoading)return;
+  addMsg(text,"user");
+  const lb=addMsg("__ld__","bot");
+  isLoading=true;document.getElementById("sendBtn").disabled=true;
+  msgCount++;topicsSet.add(text.split(" ").slice(0,3).join(" "));updateStats();
+  try{
+    const reply=await callClaude(text);
+    lb.innerHTML="";if(!tryQuiz(reply,lb))lb.innerHTML=fmt(reply);
+  }catch(e){
+    lb.innerHTML=`<span style="color:var(--red)">⚠️ ${e.message}</span><br><small style="color:var(--muted);font-size:.75rem">If this keeps happening, check your Cloudflare Worker is deployed and the PROXY_URL is correct.</small>`;
+    history.pop();
+    if(e.message.includes("Proxy URL"))document.getElementById("errBanner").style.display="block";
+  }
+  isLoading=false;document.getElementById("sendBtn").disabled=false;
+  document.getElementById("chatWrap").scrollTop=99999;
+}
+
+function qs(t){document.getElementById("inp").value=t;doSend();}
+function setMQ(m,t){setModeRaw(m);qs(t);}
+
+
+function pickSub(el){document.querySelectorAll(".spill").forEach(p=>p.classList.remove("on"));el.classList.add("on");curSub=el.dataset.s;toast("📚 "+SMAP[curSub]);}
+function pickMode(el,m){document.querySelectorAll(".sbm").forEach(b=>b.classList.remove("on"));el.classList.add("on");setModeRaw(m);}
+function setModeRaw(m){
+  curMode=m;
+  document.querySelectorAll(".mtag").forEach(t=>{["on-chat","on-quiz","on-explain","on-formula","on-solve","on-cbt"].forEach(c=>t.classList.remove(c));});
+  document.querySelector(`.mtag[data-m="${m}"]`)?.classList.add(`on-${m}`);
+}
+function tagM(el,m){
+  document.querySelectorAll(".mtag").forEach(t=>{["on-chat","on-quiz","on-explain","on-formula","on-solve","on-cbt"].forEach(c=>t.classList.remove(c));});
+  el.classList.add(`on-${m}`);curMode=m;
+  document.querySelectorAll(".sbm").forEach(b=>b.classList.toggle("on",b.dataset.m===m));
+}
+
+
+function checkCBTStorage(){
+  const raw=localStorage.getItem("renance_cbt_review");
+  if(!raw)return;
+  try{
+    pendingCBT=JSON.parse(raw);
+    document.getElementById("cbtAlert").style.display="block";
+    document.getElementById("cbtSub").textContent=`${pendingCBT.missed.length} missed in ${pendingCBT.course} — get AI explanations now.`;
+  }catch(e){}
+}
+function reviewCBT(){
+  if(!pendingCBT)return;
+  localStorage.removeItem("renance_cbt_review");
+  document.getElementById("cbtAlert").style.display="none";
+  setModeRaw("cbt");
+
+  const subEl=document.querySelector(`.spill[data-s="${pendingCBT.course}"]`);
+  if(subEl)pickSub(subEl);
+
+  const lines=pendingCBT.missed.map((q,i)=>
+    `Q${i+1}: ${q.question}\nStudent answered: ${q.studentAnswer||"Not answered"}\nCorrect answer: ${q.correctAnswer}${q.explanation?"\nHint available: "+q.explanation:""}`
+  ).join("\n\n");
+
+  doSendText(
+    `I just completed a CBT exam on ${pendingCBT.course} — ${SMAP[pendingCBT.course]||pendingCBT.course}.\n`+
+    `Final score: ${pendingCBT.correct}/${pendingCBT.total}\n\n`+
+    `Please review these ${pendingCBT.missed.length} question(s) I got WRONG and explain each one thoroughly:\n\n${lines}`
+  );
+}
+
+
+const SUGG=["Give me a 4-option quiz on GNS103 time management","Explain Newton's second law F=ma with a worked example","All key PHY101 kinematics formulas","Solve step by step: derivative of 3x³ + 2x² - 5x","Difference between hearing and listening in GST111","Binary to decimal conversion in COS101","Mean, median and mode with examples STA111","Morphemes and their types GST111","Quiz on MTH101 quadratic equations","Signal word functions in GNS103","Electron configuration and atomic structure CHE101","Cell organelles and their functions BIO101"];
+let si=0;
+function cycleSugg(){document.getElementById("inp").value=SUGG[si++%SUGG.length];document.getElementById("inp").focus();}
+
+
+function updateStats(){
+  document.getElementById("stQ").textContent=msgCount;
+  document.getElementById("stT").textContent=topicsSet.size;
+  document.getElementById("stS").textContent=qzT>0?Math.round(qzC/qzT*100)+"%":"—";
+  document.getElementById("stBar").style.width=Math.min(100,msgCount/20*100)+"%";
+}
+function newSession(){
+  history=[];msgCount=0;topicsSet.clear();qzC=0;qzT=0;updateStats();
+  document.getElementById("chatWrap").innerHTML=`<div id="welcome" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;animation:fu .5s ease both;"><div class="worb">🧠</div><div class="wtit">Session cleared!</div><div class="wsub" style="color:var(--muted)">Ask anything to start.</div></div>`;
+  if(window.innerWidth<=768)toggleSb(false);
+}
+function clearChat(){if(confirm("Clear this session?"))newSession();}
+function exportChat(){
+  let t="Renance AI Export\n"+new Date().toLocaleString()+"\n\n";
+  history.forEach(h=>{t+=`[${h.role.toUpperCase()}]\n${h.content}\n\n`;});
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([t],{type:"text/plain"}));
+  a.download=`renance-${Date.now()}.txt`;a.click();toast("💾 Exported!");
+}
+function toast(msg){document.querySelector(".toast")?.remove();const t=document.createElement("div");t.className="toast";t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),3000);}
+function showGuide(){
+  alert("5-MINUTE SETUP — Claude AI Proxy\n\n1. Go to https://workers.cloudflare.com\n   Sign up FREE (no credit card needed)\n\n2. Click 'Create Application' → 'Create Worker'\n   Delete the example code\n   Paste ALL of cloudflare-worker.js\n   Click 'Deploy'\n\n3. Settings → Variables & Secrets → Add:\n   Name:  CLAUDE_API_KEY\n   Value: sk-ant-api03-YOUR-KEY\n   ✓ Mark as Secret\n\n4. Copy your Worker URL\n   e.g. https://renance.yourname.workers.dev\n\n5. Open ai.html → find PROXY_URL → paste URL\n\nDone! Claude AI will work on any live server.");
+}
+function toggleSb(f){const s=document.getElementById("sidebar"),o=document.getElementById("overlay");const open=f!==undefined?f:!s.classList.contains("open");s.classList.toggle("open",open);o.classList.toggle("show",open);}
+document.getElementById("overlay").addEventListener("click",()=>toggleSb(false));
+const inp=document.getElementById("inp");
+inp.addEventListener("input",()=>{inp.style.height="auto";inp.style.height=Math.min(inp.scrollHeight,130)+"px";});
+inp.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();doSend();}});
+</script>
 </body>
 </html>
 
