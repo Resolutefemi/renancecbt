@@ -22,27 +22,9 @@ let currentSemester: number = 2;
 
 export function setSemester(sem: number): void {
     currentSemester = sem;
-    const sem1Btn = document.getElementById('sem1Btn');
-    const sem2Btn = document.getElementById('sem2Btn');
-    const semesterTitle = document.getElementById('semesterTitle');
-    const courseSearch = document.getElementById('courseSearch') as HTMLInputElement;
-
-    if (sem1Btn) {
-        sem1Btn.classList.toggle('active', sem === 1);
-        sem1Btn.style.background = sem === 1 ? 'var(--primary-accent)' : 'transparent';
-        sem1Btn.style.color = sem === 1 ? 'white' : 'var(--text-muted)';
-    }
-    if (sem2Btn) {
-        sem2Btn.classList.toggle('active', sem === 2);
-        sem2Btn.style.background = sem === 2 ? 'var(--primary-accent)' : 'transparent';
-        sem2Btn.style.color = sem === 2 ? 'white' : 'var(--text-muted)';
-    }
-    
-    if (semesterTitle) {
-        semesterTitle.textContent = sem === 1 ? 'First Semester' : 'Second Semester';
-    }
-
-    renderCourses(courseSearch?.value || '');
+    document.getElementById('sem1Btn')?.classList.toggle('active', sem === 1);
+    document.getElementById('sem2Btn')?.classList.toggle('active', sem === 2);
+    renderCourses((document.getElementById('courseSearch') as HTMLInputElement)?.value || '');
 }
 
 export function filterCourses(): void {
@@ -70,29 +52,99 @@ export function renderCourses(filterText: string = ''): void {
     } else {
         filtered.forEach(course => {
             const card = document.createElement('div');
-            card.className = 'course-card';
+            card.className = 'course-card glass animate-slide';
+            card.onclick = () => {
+                if (course.isReady) {
+                    window.location.href = `${course.id.toLowerCase().replace(/\s+/g, '')}.html`;
+                }
+            };
+
             card.innerHTML = `
-                <div class="course-icon">
-                    <i data-lucide="${course.icon}"></i>
+                <div class="course-card-header">
+                    <div class="icon-box"><i class="fa-solid fa-${getIcon(course.icon)}"></i></div>
+                    ${course.isReady ? '' : '<span style="font-size: 0.6rem; background: var(--border); padding: 2px 6px; border-radius: 4px;">COMING SOON</span>'}
                 </div>
-                <div class="course-info">
-                    <span class="course-code">${course.id}</span>
-                    <h3 class="course-title">${course.title}</h3>
+                <div>
+                    <h3>${course.id}</h3>
+                    <p>${course.title}</p>
                 </div>
-                <a href="${course.id.toLowerCase().replace(' ', '')}.html" class="btn ${course.isReady ? 'primary' : 'secondary'}">
-                    ${course.isReady ? 'PRACTICE' : 'LOCKED'}
-                </a>
+                <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-weight: 700; font-size: 0.75rem; color: var(--accent);">${course.isReady ? 'START PRACTICE' : 'LOCKED'}</span>
+                    <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; color: var(--text-muted);"></i>
+                </div>
             `;
             grid.appendChild(card);
         });
-        // @ts-ignore
-        if (window.lucide) window.lucide.createIcons();
     }
+}
+
+function getIcon(lucideIcon: string): string {
+    const map: Record<string, string> = {
+        'bar-chart': 'chart-simple',
+        'briefcase': 'briefcase',
+        'cpu': 'microchip',
+        'dna': 'dna',
+        'code': 'code',
+        'compass': 'compass',
+        'library': 'book-open',
+        'clock': 'clock-rotate-left',
+        'calculator': 'calculator',
+        'atom': 'atom',
+        'zap': 'bolt',
+        'languages': 'language',
+        'beaker': 'flask',
+        'test-tube': 'vial'
+    };
+    return map[lucideIcon] || 'book';
+}
+
+async function loadUserStats(): Promise<void> {
+    const db = (window as any)._db;
+    if (!db) return;
+
+    try {
+        const { data: { user } } = await db.auth.getUser();
+        if (!user) return;
+
+        const { data: results } = await db.from('test_results').select('score').eq('student_id', user.id);
+        const { data: student } = await db.from('students').select('fullname').eq('id', user.id).single();
+
+        if (student) {
+            const welcomeText = document.getElementById('welcomeText');
+            if (welcomeText) welcomeText.textContent = `Welcome back, ${student.fullname.split(' ')[0]}`;
+        }
+
+        if (results && results.length > 0) {
+            const testsTaken = results.length;
+            const avgScore = Math.round(results.reduce((s: number, r: any) => s + Number(r.score), 0) / testsTaken);
+            
+            animateValue('testsTakenEl', 0, testsTaken, 1000);
+            animateValue('avgScoreEl', 0, avgScore, 1000, '%');
+        }
+    } catch (e) {
+        console.error('Stats load failed:', e);
+    }
+}
+
+function animateValue(id: string, start: number, end: number, duration: number, suffix: string = ''): void {
+    const obj = document.getElementById(id);
+    if (!obj) return;
+    let startTimestamp: number | null = null;
+    const step = (timestamp: number) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start) + suffix;
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
 }
 
 // Initial render
 document.addEventListener('DOMContentLoaded', () => {
     renderCourses();
+    loadUserStats();
     
     // Attach to window for HTML onclick attributes
     (window as any).setSemester = setSemester;
