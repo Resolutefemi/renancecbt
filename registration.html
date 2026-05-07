@@ -114,15 +114,15 @@
 <body>
 
     <div class="mobile-top-bar">
-        <i data-lucide="menu" onclick="toggleNav()"></i>
+        <i data-lucide="menu" id="btn-toggle-nav"></i>
         <span style="font-weight: 700;">MY PROFILE</span>
-        <i data-lucide="moon" onclick="toggleTheme()"></i>
+        <i data-lucide="moon" id="btn-toggle-theme"></i>
     </div>
 
     <nav id="sidebar">
         <div class="nav-header">
             <div class="logo-area"><i data-lucide="graduation-cap"></i><span>FUTA PORTAL</span></div>
-            <i data-lucide="x" class="nav-close" onclick="toggleNav()"></i>
+            <i data-lucide="x" class="nav-close" id="btn-close-nav"></i>
         </div>
         
         <div class="nav-menu-content">
@@ -140,9 +140,10 @@
                     <small style="color: #64748b; font-size: 0.7rem;">Verified</small>
                 </div>
             </div>
-            <i data-lucide="log-out" onclick="logout()" style="cursor: pointer; color: #ef4444;"></i>
+            <i data-lucide="log-out" id="btn-logout" style="cursor: pointer; color: #ef4444;"></i>
         </div>
     </nav>
+
 
     <main>
         <div class="profile-header">
@@ -154,10 +155,10 @@
         </div>
 
         <div class="info-card">
-            <button class="edit-btn" id="editBtn" onclick="toggleEdit()">
+            <button class="edit-btn" id="editBtn">
                 <i data-lucide="edit-3" size="16"></i> Edit Profile
             </button>
-            <button class="edit-btn save-btn" id="saveBtn" onclick="saveProfile()">
+            <button class="edit-btn save-btn" id="saveBtn">
                 <i data-lucide="save" size="16"></i> Save Changes
             </button>
 
