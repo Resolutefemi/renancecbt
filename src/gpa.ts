@@ -25,7 +25,7 @@ let semesters: Semester[] = [];
 /**
  * Toggle between light and dark themes
  */
-export function toggleTheme(): void {
+function toggleTheme(): void {
     const body = document.body;
     const btn = document.getElementById('themeBtn');
     const theme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
@@ -37,9 +37,11 @@ export function toggleTheme(): void {
 /**
  * Switch between Semester GPA and CGPA Tracker tabs
  */
-export function switchTab(tab: 'semester' | 'cgpa'): void {
-    document.querySelectorAll('.tab-btn').forEach((b, i) => {
-        b.classList.toggle('active', (i === 0 && tab === 'semester') || (i === 1 && tab === 'cgpa'));
+function switchTab(tab: 'semester' | 'cgpa'): void {
+    document.querySelectorAll('.tab-btn').forEach((b) => {
+        const isSem = b.id === 'btn-tab-semester';
+        const isCgpa = b.id === 'btn-tab-cgpa';
+        b.classList.toggle('active', (isSem && tab === 'semester') || (isCgpa && tab === 'cgpa'));
     });
     const tabSem = document.getElementById('tab-semester');
     const tabCgpa = document.getElementById('tab-cgpa');
@@ -91,7 +93,7 @@ function animateVal(el: HTMLElement | null, target: number, decimals: number = 2
 /**
  * Add a new course to the current semester
  */
-export function addCourse(): void {
+function addCourse(): void {
     const codeEl = document.getElementById('courseCode') as HTMLInputElement;
     const unitEl = document.getElementById('courseUnit') as HTMLInputElement;
     const gradeEl = document.getElementById('courseGrade') as HTMLSelectElement;
@@ -139,11 +141,19 @@ function render(): void {
             <td>${c.unit}</td>
             <td><span class="grade-badge ${gc}">${gn}</span></td>
             <td>${pts}</td>
-            <td class="no-print"><button class="delete-btn" onclick="removeCourse(${i})" title="Remove"><i class="fas fa-times"></i></button></td>
+            <td class="no-print"><button class="delete-btn btn-remove-course" data-index="${i}" title="Remove"><i class="fas fa-times"></i></button></td>
         </tr>`;
     });
 
     tbody.innerHTML = rows || `<tr id="emptyRow"><td colspan="6"><div class="empty-state"><i class="fas fa-book-open"></i><p>No courses added yet.</p></div></td></tr>`;
+
+    // Re-attach delete listeners
+    document.querySelectorAll('.btn-remove-course').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const index = parseInt((e.currentTarget as HTMLElement).getAttribute('data-index') || '0');
+            removeCourse(index);
+        });
+    });
 
     const gpa = tUnits > 0 ? tPoints / tUnits : 0;
     const clf = getClassification(gpa);
@@ -179,7 +189,7 @@ function render(): void {
 /**
  * Remove a course from the list
  */
-export function removeCourse(i: number): void {
+function removeCourse(i: number): void {
     courses.splice(i, 1);
     save();
     render();
@@ -189,7 +199,7 @@ export function removeCourse(i: number): void {
 /**
  * Reset all courses for the current semester
  */
-export function resetAll(): void {
+function resetAll(): void {
     if (confirm('Clear all courses this semester?')) {
         courses = [];
         save();
@@ -201,7 +211,7 @@ export function resetAll(): void {
 /**
  * Add a semester for CGPA calculation
  */
-export function addSemester(): void {
+function addSemester(): void {
     const nameEl = document.getElementById('semName') as HTMLInputElement;
     const gpaEl = document.getElementById('semGPA') as HTMLInputElement;
     const unitsEl = document.getElementById('semUnits') as HTMLInputElement;
@@ -259,8 +269,16 @@ function renderSemesters(): void {
                 <div class="semester-sub">${s.units} credit units &nbsp;·&nbsp; ${getClassification(s.gpa).label}</div>
             </div>
             <div class="semester-gpa-pill">${s.gpa.toFixed(2)}</div>
-            <button class="delete-btn no-print" onclick="removeSemester(${i})" title="Remove"><i class="fas fa-times"></i></button>
+            <button class="delete-btn no-print btn-remove-semester" data-index="${i}" title="Remove"><i class="fas fa-times"></i></button>
         </div>`).join('');
+
+    // Re-attach delete listeners
+    document.querySelectorAll('.btn-remove-semester').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const index = parseInt((e.currentTarget as HTMLElement).getAttribute('data-index') || '0');
+            removeSemester(index);
+        });
+    });
 
     const totalWP = semesters.reduce((a, s) => a + s.gpa * s.units, 0);
     const totalU = semesters.reduce((a, s) => a + s.units, 0);
@@ -278,7 +296,7 @@ function renderSemesters(): void {
 /**
  * Remove a semester from the list
  */
-export function removeSemester(i: number): void {
+function removeSemester(i: number): void {
     semesters.splice(i, 1);
     save();
     renderSemesters();
@@ -312,7 +330,7 @@ function buildShareText(): string {
 /**
  * Open the share modal
  */
-export function openShareModal(): void {
+function openShareModal(): void {
     if (courses.length === 0) {
         showToast('⚠️ Add courses first');
         return;
@@ -326,7 +344,7 @@ export function openShareModal(): void {
 /**
  * Close the share modal
  */
-export function closeModal(): void {
+function closeModal(): void {
     const shareModal = document.getElementById('shareModal');
     if (shareModal) shareModal.classList.remove('open');
 }
@@ -334,7 +352,7 @@ export function closeModal(): void {
 /**
  * Copy result to clipboard
  */
-export function copyResult(): void {
+function copyResult(): void {
     navigator.clipboard.writeText(buildShareText()).then(() => {
         showToast('📋 Copied to clipboard!');
         closeModal();
@@ -344,7 +362,7 @@ export function copyResult(): void {
 /**
  * Share result via WhatsApp
  */
-export function shareWhatsApp(): void {
+function shareWhatsApp(): void {
     window.open('https://wa.me/?text=' + encodeURIComponent(buildShareText()), '_blank');
     closeModal();
 }
@@ -361,13 +379,17 @@ function showToast(msg: string): void {
     }
 }
 
-/**
- * Load initial data
- */
-window.onload = () => {
+// Global initialization
+document.addEventListener('DOMContentLoaded', () => {
+    // Theme setup
     const t = localStorage.getItem('gpaTheme');
-    if (t === 'dark') toggleTheme();
+    if (t === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
+        const btn = document.getElementById('themeBtn');
+        if (btn) btn.innerHTML = '<i class="fas fa-sun"></i>';
+    }
     
+    // Load saved data
     const c = localStorage.getItem('savedCourses');
     if (c) {
         courses = JSON.parse(c);
@@ -380,23 +402,31 @@ window.onload = () => {
         renderSemesters();
     }
 
+    // Event Listeners
+    document.getElementById('themeBtn')?.addEventListener('click', toggleTheme);
+    document.getElementById('btn-tab-semester')?.addEventListener('click', () => switchTab('semester'));
+    document.getElementById('btn-tab-cgpa')?.addEventListener('click', () => switchTab('cgpa'));
+    document.getElementById('btn-add-course')?.addEventListener('click', addCourse);
+    document.getElementById('btn-add-semester')?.addEventListener('click', addSemester);
+    document.getElementById('btn-reset')?.addEventListener('click', resetAll);
+    document.getElementById('btn-print')?.addEventListener('click', () => window.print());
+    document.getElementById('btn-open-share')?.addEventListener('click', openShareModal);
+    document.getElementById('btn-copy-result')?.addEventListener('click', copyResult);
+    document.getElementById('btn-share-wa')?.addEventListener('click', shareWhatsApp);
+    document.getElementById('btn-close-modal')?.addEventListener('click', closeModal);
+    
+    // Enter key support
+    ['courseCode', 'courseUnit'].forEach(id => {
+        document.getElementById(id)?.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') addCourse();
+        });
+    });
+
     const shareModal = document.getElementById('shareModal');
     if (shareModal) {
         shareModal.addEventListener('click', (e) => {
             if (e.target === shareModal) closeModal();
         });
     }
+});
 
-    // Bind to window for HTML event handlers
-    (window as any).toggleTheme = toggleTheme;
-    (window as any).switchTab = switchTab;
-    (window as any).addCourse = addCourse;
-    (window as any).removeCourse = removeCourse;
-    (window as any).resetAll = resetAll;
-    (window as any).addSemester = addSemester;
-    (window as any).removeSemester = removeSemester;
-    (window as any).openShareModal = openShareModal;
-    (window as any).closeModal = closeModal;
-    (window as any).copyResult = copyResult;
-    (window as any).shareWhatsApp = shareWhatsApp;
-};
