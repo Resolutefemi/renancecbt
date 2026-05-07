@@ -14,17 +14,12 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --b: #000000;
-  --blue: #3b82f6;
-  --glow: #06b6d4;
-  --cyan: #22d3ee;
-  --ink: #ffffff;
-  --muted: #94a3b8;
-  --card: rgba(10, 10, 10, 0.8);
-  --border: rgba(255, 255, 255, 0.1);
+  --b:var(--bg-primary);--blue:var(--accent);--glow:var(--accent);--cyan:var(--secondary);
+  --ink:var(--text-main);--muted:var(--text-muted);
+  --card:var(--bg-glass);--border:var(--border);
 }
-html{height:100%;overflow-x:hidden;background:#000;}
-body{height:100%;font-family:'Cabinet Grotesk',sans-serif;color:var(--ink);overflow-x:hidden;cursor:default}
+html{height:100%;overflow-x:hidden}
+body{height:100%;background:var(--b);font-family:'Cabinet Grotesk',sans-serif;color:var(--ink);overflow-x:hidden;cursor:default}
 
 /* Performance Mode Styles */
 .perf-mode #c, .perf-mode .scan, .perf-mode .grain { display: none !important; }
