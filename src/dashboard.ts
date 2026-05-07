@@ -2,6 +2,59 @@
 import { Course } from './types';
 import { db } from './ui-core';
 
+// --- Global Styles Injection ---
+(function injectStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0a;
+            --bg-glass: rgba(15, 15, 15, 0.8);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --accent: #06b6d4;
+            --accent-glow: rgba(6, 182, 212, 0.1);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+        html, body {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+            font-family: 'Cabinet Grotesk', sans-serif;
+        }
+        .glass {
+            background: var(--bg-glass) !important;
+            border: 1px solid var(--border) !important;
+            backdrop-filter: blur(20px) !important;
+        }
+        .course-card {
+            background: rgba(15, 15, 15, 0.6) !important;
+            border: 1px solid var(--border) !important;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .course-card:hover {
+            border-color: var(--accent) !important;
+            background: rgba(6, 182, 212, 0.05) !important;
+            box-shadow: 0 0 40px rgba(6, 182, 212, 0.1) !important;
+        }
+        .stat-card {
+            border: 1px solid var(--border) !important;
+        }
+        h1, h2, h3 {
+            color: #ffffff !important;
+        }
+        .search-input {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border-color: var(--border) !important;
+            color: #fff !important;
+        }
+        .search-input:focus {
+            border-color: var(--accent) !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+        }
+    `;
+    document.head.appendChild(style);
+})();
+
 const courses: Course[] = [
     { id: 'STA 111', title: 'DESCRIPTIVE STATISTICS',            icon: 'bar-chart',  isReady: true, semester: 1 },
     { id: 'AMS 101', title: 'PRNCIPLES OF MANAGEMENT',            icon: 'briefcase',  isReady: true, semester: 1 },
