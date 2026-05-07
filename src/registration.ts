@@ -6,32 +6,6 @@
 
 import { db } from './ui-core';
 
-// --- Global Styles Injection ---
-(function injectStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-        :root {
-            --b: #000000;
-            --blue: #3b82f6;
-            --glow: #06b6d4;
-            --cyan: #22d3ee;
-            --ink: #ffffff;
-            --muted: #94a3b8;
-            --card: rgba(10, 10, 10, 0.8);
-            --border: rgba(255, 255, 255, 0.1);
-        }
-        html, body {
-            background-color: #000000 !important;
-            color: #ffffff !important;
-        }
-        .card {
-            background: var(--card) !important;
-            border: 1px solid var(--border) !important;
-        }
-    `;
-    document.head.appendChild(style);
-})();
-
 // --- Toast Utility ---
 function toast(m: string, t: string = '') {
     const el = document.getElementById('toast');
