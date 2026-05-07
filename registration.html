@@ -185,7 +185,80 @@
 
     <a href="https://wa.me/2347046203544" class="wa-float" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
-    <script src="dist/ui-core.js"></script>
-    <script src="dist/profile.js"></script>
+    <script>
+        function toggleNav() { document.getElementById('sidebar').classList.toggle('open'); }
+        
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        function loadData() {
+            // Updated to use the same keys as your dashboard (studentName, studentDept)
+            const name = localStorage.getItem('studentName') || "FUTA Student";
+            const dept = localStorage.getItem('studentDept') || "Department";
+            const matric = localStorage.getItem('studentMatric') || "CSC/25/0000";
+
+            // Update UI
+            document.getElementById('val_name').innerText = name;
+            document.getElementById('val_dept').innerText = dept;
+            document.getElementById('val_matric').innerText = matric;
+            document.getElementById('p_top_name').innerText = name;
+            document.getElementById('p_top_matric').innerText = "Matric: " + matric;
+            document.getElementById('navUserName').innerText = name.split(' ')[0];
+
+            // Initials
+            const initials = name.trim().split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+            document.getElementById('p_initials').innerText = initials || "??";
+            document.getElementById('navInitials').innerText = initials || "??";
+        }
+
+        function toggleEdit() {
+            document.querySelectorAll('.info-value').forEach(s => s.style.display = 'none');
+            document.querySelectorAll('.edit-input').forEach(i => i.style.display = 'block');
+            
+            document.getElementById('input_name').value = document.getElementById('val_name').innerText;
+            document.getElementById('input_dept').value = document.getElementById('val_dept').innerText;
+            document.getElementById('input_matric').value = document.getElementById('val_matric').innerText;
+
+            document.getElementById('editBtn').style.display = 'none';
+            document.getElementById('saveBtn').style.display = 'flex';
+        }
+
+        function saveProfile() {
+            const newName = document.getElementById('input_name').value;
+            const newDept = document.getElementById('input_dept').value;
+            const newMatric = document.getElementById('input_matric').value;
+
+            // Simple Validation
+            if(newName.length < 3) return alert("Please enter a valid name");
+
+            // Save to LocalStorage using the dashboard-compatible keys
+            localStorage.setItem('studentName', newName);
+            localStorage.setItem('studentDept', newDept);
+            localStorage.setItem('studentMatric', newMatric.toUpperCase());
+
+            // Exit edit mode
+            document.querySelectorAll('.info-value').forEach(s => s.style.display = 'block');
+            document.querySelectorAll('.edit-input').forEach(i => i.style.display = 'none');
+            document.getElementById('editBtn').style.display = 'flex';
+            document.getElementById('saveBtn').style.display = 'none';
+
+            loadData(); 
+            alert("Profile Synced Successfully!");
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'login.html';
+        }
+
+        window.onload = () => {
+            loadData();
+            if(localStorage.getItem('theme') === 'dark') document.body.classList.add('dark-mode');
+            lucide.createIcons();
+        };
+    </script>
 </body>
 </html>
