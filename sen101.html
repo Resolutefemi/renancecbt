@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,8 @@
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="env-loader.js"></script>
+1
 
     <style>
         :root {
@@ -198,7 +199,7 @@
 <main>
     <div id="loading-screen">
         <div class="spinner"></div>
-        <p style="color:var(--text-muted); font-weight:600;">Loading questions…</p>
+        <p style="color:var(--text-muted); font-weight:600;">Loading questionsâ€¦</p>
     </div>
 
     <div id="dashboard-wrap" style="display:none;">
@@ -282,7 +283,7 @@
 
 <div id="quizResultModal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
-        <span class="result-icon" id="resultIcon">🏆</span>
+        <span class="result-icon" id="resultIcon">ðŸ†</span>
         <h2 id="resultGreeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
 
         <div class="score-display">
@@ -290,7 +291,7 @@
             <div class="stats-mini">
                 <div class="sm"><div class="sv" id="modalCorrect">0</div><div class="sl">Correct</div></div>
                 <div class="sm"><div class="sv" id="modalTotal">0</div><div class="sl">Total</div></div>
-                <div class="sm"><div class="sv" id="modalAvg">—</div><div class="sl">Your Avg</div></div>
+                <div class="sm"><div class="sv" id="modalAvg">â€”</div><div class="sl">Your Avg</div></div>
             </div>
         </div>
 
@@ -313,8 +314,8 @@
 
 <script>
     
-    const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+    const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const COURSE_CODE  = 'SEN 101';
     const STORAGE_KEY  = 'saved_sen101_exam';
@@ -323,7 +324,7 @@
 
     const embeddedQuizData ={
   "course": "SEN 101",
-  "title": "Web Technologies – 600 MCQ",
+  "title": "Web Technologies â€“ 600 MCQ",
   "total": 600,
   "questions": [
     {
@@ -660,7 +661,7 @@
         "D": "Validation rule"
       },
       "answer": "C",
-      "explanation": "The method attribute of a <form> specifies the HTTP method used to send form data — either GET (appended to URL) or POST (sent in request body)."
+      "explanation": "The method attribute of a <form> specifies the HTTP method used to send form data â€” either GET (appended to URL) or POST (sent in request body)."
     },
     {
       "id": 29,
@@ -696,7 +697,7 @@
         "D": "Navigation links"
       },
       "answer": "B",
-      "explanation": "The <head> tag contains meta-information about the HTML document — such as the title, character set, CSS links, and JavaScript references — not visible content."
+      "explanation": "The <head> tag contains meta-information about the HTML document â€” such as the title, character set, CSS links, and JavaScript references â€” not visible content."
     },
     {
       "id": 32,
@@ -1308,7 +1309,7 @@
         "D": "padding"
       },
       "answer": "D",
-      "explanation": "The margin property sets space outside the element's border. It accepts 1–4 values (top, right, bottom, left) or keyword auto for centering."
+      "explanation": "The margin property sets space outside the element's border. It accepts 1â€“4 values (top, right, bottom, left) or keyword auto for centering."
     },
     {
       "id": 83,
@@ -1428,7 +1429,7 @@
         "D": "remove:true"
       },
       "answer": "B",
-      "explanation": "display: none removes the element from the layout completely — it takes up no space and is invisible, as if it were not in the document."
+      "explanation": "display: none removes the element from the layout completely â€” it takes up no space and is invisible, as if it were not in the document."
     },
     {
       "id": 93,
@@ -1500,7 +1501,7 @@
         "D": "grid"
       },
       "answer": "B",
-      "explanation": "display: block makes an element take up the full available width and start on a new line. Block elements include <div>, <p>, <h1>–<h6>."
+      "explanation": "display: block makes an element take up the full available width and start on a new line. Block elements include <div>, <p>, <h1>â€“<h6>."
     },
     {
       "id": 99,
@@ -1752,7 +1753,7 @@
         "D": "Background is hidden"
       },
       "answer": "B",
-      "explanation": "background-attachment: fixed keeps the background image fixed relative to the viewport — it does not scroll with the page content."
+      "explanation": "background-attachment: fixed keeps the background image fixed relative to the viewport â€” it does not scroll with the page content."
     },
     {
       "id": 120,
@@ -1992,7 +1993,7 @@
         "D": "Assignment"
       },
       "answer": "C",
-      "explanation": "The === operator checks strict equality — both value and type must match. '5' === 5 is false because one is a string and the other a number."
+      "explanation": "The === operator checks strict equality â€” both value and type must match. '5' === 5 is false because one is a string and the other a number."
     },
     {
       "id": 140,
@@ -2124,7 +2125,7 @@
         "D": "Checks if value is a string"
       },
       "answer": "B",
-      "explanation": "isNaN() returns true if the passed value is NaN or cannot be converted to a number. isNaN('abc') → true; isNaN(42) → false."
+      "explanation": "isNaN() returns true if the passed value is NaN or cannot be converted to a number. isNaN('abc') â†’ true; isNaN(42) â†’ false."
     },
     {
       "id": 151,
@@ -2316,7 +2317,7 @@
         "D": "Math.floor()"
       },
       "answer": "C",
-      "explanation": "Math.round() rounds a number to the nearest integer. Math.round(4.5) → 5; Math.round(4.4) → 4."
+      "explanation": "Math.round() rounds a number to the nearest integer. Math.round(4.5) â†’ 5; Math.round(4.4) â†’ 4."
     },
     {
       "id": 167,
@@ -2328,7 +2329,7 @@
         "D": "Math.floor()"
       },
       "answer": "D",
-      "explanation": "Math.floor() rounds a number down to the nearest integer. Math.floor(4.9) → 4; Math.floor(-1.1) → -2."
+      "explanation": "Math.floor() rounds a number down to the nearest integer. Math.floor(4.9) â†’ 4; Math.floor(-1.1) â†’ -2."
     },
     {
       "id": 168,
@@ -2388,7 +2389,7 @@
         "D": "toString()"
       },
       "answer": "A",
-      "explanation": "The join() method joins all elements of an array into a string, separated by the given delimiter. ['a','b','c'].join('-') → 'a-b-c'."
+      "explanation": "The join() method joins all elements of an array into a string, separated by the given delimiter. ['a','b','c'].join('-') â†’ 'a-b-c'."
     },
     {
       "id": 173,
@@ -2424,7 +2425,7 @@
         "D": "onload"
       },
       "answer": "D",
-      "explanation": "The window 'load' event fires after the entire page — including images, stylesheets, and scripts — has fully loaded."
+      "explanation": "The window 'load' event fires after the entire page â€” including images, stylesheets, and scripts â€” has fully loaded."
     },
     {
       "id": 176,
@@ -2508,7 +2509,7 @@
         "D": "onleave"
       },
       "answer": "B",
-      "explanation": "The 'blur' event fires when an element loses keyboard focus — typically used to validate input after the user leaves a field."
+      "explanation": "The 'blur' event fires when an element loses keyboard focus â€” typically used to validate input after the user leaves a field."
     },
     {
       "id": 183,
@@ -2520,7 +2521,7 @@
         "D": "onhover"
       },
       "answer": "C",
-      "explanation": "The 'focus' event fires when an element receives focus — for example, when a user clicks into an input field or tabs to it."
+      "explanation": "The 'focus' event fires when an element receives focus â€” for example, when a user clicks into an input field or tabs to it."
     },
     {
       "id": 184,
@@ -2652,7 +2653,7 @@
         "D": "Any character"
       },
       "answer": "B",
-      "explanation": "\\d is a regex shorthand character class matching any digit (0–9). \\D matches any non-digit."
+      "explanation": "\\d is a regex shorthand character class matching any digit (0â€“9). \\D matches any non-digit."
     },
     {
       "id": 195,
@@ -2760,7 +2761,7 @@
         "D": "separate()"
       },
       "answer": "C",
-      "explanation": "The split() method splits a string into an array using a delimiter. 'a,b,c'.split(',') → ['a', 'b', 'c']."
+      "explanation": "The split() method splits a string into an array using a delimiter. 'a,b,c'.split(',') â†’ ['a', 'b', 'c']."
     },
     {
       "id": 204,
@@ -2808,7 +2809,7 @@
         "D": "NOT"
       },
       "answer": "C",
-      "explanation": "The ! (logical NOT) operator negates a boolean value. !true → false; !false → true. !! converts any value to its boolean equivalent."
+      "explanation": "The ! (logical NOT) operator negates a boolean value. !true â†’ false; !false â†’ true. !! converts any value to its boolean equivalent."
     },
     {
       "id": 208,
@@ -2916,7 +2917,7 @@
         "D": "Nested"
       },
       "answer": "D",
-      "explanation": "XML elements must be properly nested — inner elements must be closed before their parent is closed. Example: <a><b><\\/b><\\/a> is correct; <a><b><\\/a><\\/b> is not."
+      "explanation": "XML elements must be properly nested â€” inner elements must be closed before their parent is closed. Example: <a><b><\\/b><\\/a> is correct; <a><b><\\/a><\\/b> is not."
     },
     {
       "id": 217,
@@ -3552,7 +3553,7 @@
         "D": "Restarts the script"
       },
       "answer": "C",
-      "explanation": "The DELETE statement removes records from a table. Without WHERE, it deletes all rows — use with caution."
+      "explanation": "The DELETE statement removes records from a table. Without WHERE, it deletes all rows â€” use with caution."
     },
     {
       "id": 270,
@@ -3660,7 +3661,7 @@
         "D": "str_split()"
       },
       "answer": "B",
-      "explanation": "explode($delimiter, $str) splits a string into an array using the given delimiter. Example: explode(',', 'a,b,c') → ['a','b','c']."
+      "explanation": "explode($delimiter, $str) splits a string into an array using the given delimiter. Example: explode(',', 'a,b,c') â†’ ['a','b','c']."
     },
     {
       "id": 279,
@@ -3732,7 +3733,7 @@
         "D": "$_SESSION"
       },
       "answer": "D",
-      "explanation": "$_SESSION is the PHP superglobal that stores session variables — data that persists across multiple pages for the same user."
+      "explanation": "$_SESSION is the PHP superglobal that stores session variables â€” data that persists across multiple pages for the same user."
     },
     {
       "id": 285,
@@ -3852,7 +3853,7 @@
         "D": "PHP Database Operations"
       },
       "answer": "B",
-      "explanation": "The ALTER TABLE statement modifies an existing table — adding, dropping, or modifying columns and constraints."
+      "explanation": "The ALTER TABLE statement modifies an existing table â€” adding, dropping, or modifying columns and constraints."
     },
     {
       "id": 295,
@@ -3936,7 +3937,7 @@
         "D": "Connection failures"
       },
       "answer": "C",
-      "explanation": "Prepared statements prevent SQL injection by separating SQL structure from user data — the database compiles the query once and executes it safely with bound parameters."
+      "explanation": "Prepared statements prevent SQL injection by separating SQL structure from user data â€” the database compiles the query once and executes it safely with bound parameters."
     },
     {
       "id": 302,
@@ -4416,7 +4417,7 @@
         "D": "Modifies the table structure"
       },
       "answer": "D",
-      "explanation": "ALTER TABLE modifies an existing table's structure — adding, dropping, or renaming columns, or adding/removing constraints."
+      "explanation": "ALTER TABLE modifies an existing table's structure â€” adding, dropping, or renaming columns, or adding/removing constraints."
     },
     {
       "id": 342,
@@ -4872,7 +4873,7 @@
         "D": "runQuery()"
       },
       "answer": "B",
-      "explanation": "The JDBC workflow: load driver → get Connection → create Statement → execute query → process ResultSet → close connection."
+      "explanation": "The JDBC workflow: load driver â†’ get Connection â†’ create Statement â†’ execute query â†’ process ResultSet â†’ close connection."
     },
     {
       "id": 380,
@@ -5148,7 +5149,7 @@
         "D": "Compile, link, run"
       },
       "answer": "A",
-      "explanation": "A JSP page lifecycle includes: translation (JSP → Servlet), compilation (Servlet → bytecode), loading, instantiation, init(), service() per request, and destroy()."
+      "explanation": "A JSP page lifecycle includes: translation (JSP â†’ Servlet), compilation (Servlet â†’ bytecode), loading, instantiation, init(), service() per request, and destroy()."
     },
     {
       "id": 403,
@@ -5580,14 +5581,14 @@
         "D": "Internal Port address"
       },
       "answer": "A",
-      "explanation": "IP address stands for Internet Protocol address — a unique numerical label assigned to each device connected to a network."
+      "explanation": "IP address stands for Internet Protocol address â€” a unique numerical label assigned to each device connected to a network."
     },
     {
       "id": 439,
       "question": "What is DNS?",
       "options": {
         "A": "Data Network System",
-        "B": "Domain Name System – translates domain to IP",
+        "B": "Domain Name System â€“ translates domain to IP",
         "C": "Dynamic Network Service",
         "D": "Digital Name Server"
       },
@@ -5636,7 +5637,7 @@
       "options": {
         "A": "A type of database",
         "B": "A CSS framework",
-        "C": "Asynchronous JavaScript and XML – updates pages without reload",
+        "C": "Asynchronous JavaScript and XML â€“ updates pages without reload",
         "D": "A JSP tag library"
       },
       "answer": "C",
@@ -5652,7 +5653,7 @@
         "D": "Resource Exchange Standard Transfer"
       },
       "answer": "B",
-      "explanation": "REST stands for Representational State Transfer — an architectural style for APIs using HTTP methods (GET, POST, PUT, DELETE) and stateless communication."
+      "explanation": "REST stands for Representational State Transfer â€” an architectural style for APIs using HTTP methods (GET, POST, PUT, DELETE) and stateless communication."
     },
     {
       "id": 445,
@@ -5892,7 +5893,7 @@
         "D": "A trigger"
       },
       "answer": "B",
-      "explanation": "A database index is a data structure that speeds up data retrieval on a column. It works like a book index — faster lookups at the cost of storage."
+      "explanation": "A database index is a data structure that speeds up data retrieval on a column. It works like a book index â€” faster lookups at the cost of storage."
     },
     {
       "id": 465,
@@ -5952,7 +5953,7 @@
         "D": "Copy, Read, Use, Delete"
       },
       "answer": "A",
-      "explanation": "CRUD stands for Create, Read, Update, Delete — the four basic operations for persistent data storage."
+      "explanation": "CRUD stands for Create, Read, Update, Delete â€” the four basic operations for persistent data storage."
     },
     {
       "id": 470,
@@ -6084,7 +6085,7 @@
         "D": "type='picker'"
       },
       "answer": "C",
-      "explanation": "Web performance metrics: LCP (Largest Contentful Paint), FID (First Input Delay), CLS (Cumulative Layout Shift) — Google's Core Web Vitals."
+      "explanation": "Web performance metrics: LCP (Largest Contentful Paint), FID (First Input Delay), CLS (Cumulative Layout Shift) â€” Google's Core Web Vitals."
     },
     {
       "id": 481,
@@ -6140,7 +6141,7 @@
       "options": {
         "A": "Secure Script Language",
         "B": "Standard Server Layer",
-        "C": "Secure Sockets Layer – encryption protocol",
+        "C": "Secure Sockets Layer â€“ encryption protocol",
         "D": "Server Side Language"
       },
       "answer": "C",
@@ -6312,7 +6313,7 @@
         "D": "An ID selector"
       },
       "answer": "B",
-      "explanation": "The Observer pattern notifies dependent objects (observers) automatically when the subject's state changes — foundation of reactive programming."
+      "explanation": "The Observer pattern notifies dependent objects (observers) automatically when the subject's state changes â€” foundation of reactive programming."
     },
     {
       "id": 500,
@@ -6384,7 +6385,7 @@
         "D": "&nbsp;"
       },
       "answer": "D",
-      "explanation": "&nbsp; is the HTML entity for a non-breaking space — a space that prevents line breaks between two words."
+      "explanation": "&nbsp; is the HTML entity for a non-breaking space â€” a space that prevents line breaks between two words."
     },
     {
       "id": 506,
@@ -6420,7 +6421,7 @@
         "D": "404"
       },
       "answer": "D",
-      "explanation": "HTTP status code 404 means 'Not Found' — the server could not find the requested resource at the specified URL."
+      "explanation": "HTTP status code 404 means 'Not Found' â€” the server could not find the requested resource at the specified URL."
     },
     {
       "id": 509,
@@ -6432,7 +6433,7 @@
         "D": "400"
       },
       "answer": "C",
-      "explanation": "HTTP status code 200 means 'OK' — the request was successful and the server returned the requested content."
+      "explanation": "HTTP status code 200 means 'OK' â€” the request was successful and the server returned the requested content."
     },
     {
       "id": 510,
@@ -6444,7 +6445,7 @@
         "D": "500"
       },
       "answer": "D",
-      "explanation": "HTTP status code 500 means 'Internal Server Error' — the server encountered an unexpected condition that prevented it from fulfilling the request."
+      "explanation": "HTTP status code 500 means 'Internal Server Error' â€” the server encountered an unexpected condition that prevented it from fulfilling the request."
     },
     {
       "id": 511,
@@ -6456,7 +6457,7 @@
         "D": "500"
       },
       "answer": "B",
-      "explanation": "HTTP status code 401 means 'Unauthorized' — the request requires authentication and the client has not provided valid credentials."
+      "explanation": "HTTP status code 401 means 'Unauthorized' â€” the request requires authentication and the client has not provided valid credentials."
     },
     {
       "id": 512,
@@ -6468,7 +6469,7 @@
         "D": "500"
       },
       "answer": "C",
-      "explanation": "HTTP status code 403 means 'Forbidden' — the server understood the request but refuses to authorize it, even with valid credentials."
+      "explanation": "HTTP status code 403 means 'Forbidden' â€” the server understood the request but refuses to authorize it, even with valid credentials."
     },
     {
       "id": 513,
@@ -6480,7 +6481,7 @@
         "D": "307"
       },
       "answer": "C",
-      "explanation": "HTTP status code 301 means 'Moved Permanently' — the resource has been permanently relocated to a new URL (given in the Location header)."
+      "explanation": "HTTP status code 301 means 'Moved Permanently' â€” the resource has been permanently relocated to a new URL (given in the Location header)."
     },
     {
       "id": 514,
@@ -6588,7 +6589,7 @@
         "D": "Minimum font size"
       },
       "answer": "B",
-      "explanation": "min-width in a media query means 'apply these styles when the viewport is at least this wide' — used for mobile-first responsive design."
+      "explanation": "min-width in a media query means 'apply these styles when the viewport is at least this wide' â€” used for mobile-first responsive design."
     },
     {
       "id": 523,
@@ -6624,7 +6625,7 @@
         "D": "Content Over Remote Server"
       },
       "answer": "A",
-      "explanation": "CORS stands for Cross-Origin Resource Sharing — a browser security mechanism that controls which origins can access resources from another origin."
+      "explanation": "CORS stands for Cross-Origin Resource Sharing â€” a browser security mechanism that controls which origins can access resources from another origin."
     },
     {
       "id": 526,
@@ -6643,7 +6644,7 @@
       "question": "What is CSRF?",
       "options": {
         "A": "CSS Resource Filter",
-        "B": "Cross-Site Request Forgery – tricking a user into making unintended requests",
+        "B": "Cross-Site Request Forgery â€“ tricking a user into making unintended requests",
         "C": "Client-Side Request Form",
         "D": "Content Security Response Filter"
       },
@@ -6780,7 +6781,7 @@
         "D": "<div>"
       },
       "answer": "D",
-      "explanation": "<div>, <p>, <h1>–<h6>, <ul>, <ol>, <li>, <section>, <header>, <footer> are block-level HTML elements."
+      "explanation": "<div>, <p>, <h1>â€“<h6>, <ul>, <ol>, <li>, <section>, <header>, <footer> are block-level HTML elements."
     },
     {
       "id": 539,
@@ -7032,7 +7033,7 @@
         "D": "Creating HTML structure"
       },
       "answer": "C",
-      "explanation": "JSON is primarily used for data interchange between a server and client — sending and receiving structured data in APIs and AJAX requests."
+      "explanation": "JSON is primarily used for data interchange between a server and client â€” sending and receiving structured data in APIs and AJAX requests."
     },
     {
       "id": 560,
@@ -7092,7 +7093,7 @@
         "D": "A JavaScript module bundler"
       },
       "answer": "D",
-      "explanation": "Idempotency means performing an operation multiple times has the same effect as doing it once — important for safe API retries."
+      "explanation": "Idempotency means performing an operation multiple times has the same effect as doing it once â€” important for safe API retries."
     },
     {
       "id": 565,
@@ -7284,7 +7285,7 @@
         "D": "px"
       },
       "answer": "D",
-      "explanation": "Container queries (CSS) apply styles based on the size of a parent container rather than the viewport — more modular than media queries."
+      "explanation": "Container queries (CSS) apply styles based on the size of a parent container rather than the viewport â€” more modular than media queries."
     },
     {
       "id": 581,
@@ -7512,7 +7513,7 @@
         "D": "Prevent SQL injection and improve performance"
       },
       "answer": "D",
-      "explanation": "Prepared statements prevent SQL injection by separating the SQL structure from the data — the database compiles the query template once, then executes it safely with supplied parameters."
+      "explanation": "Prepared statements prevent SQL injection by separating the SQL structure from the data â€” the database compiles the query template once, then executes it safely with supplied parameters."
     },
     {
       "id": 600,
@@ -7524,7 +7525,7 @@
         "D": "Using only server-side code"
       },
       "answer": "B",
-      "explanation": "Separation of concerns in web development means HTML defines structure, CSS handles presentation, and JavaScript controls behavior — keeping each technology focused on its role for maintainability."
+      "explanation": "Separation of concerns in web development means HTML defines structure, CSS handles presentation, and JavaScript controls behavior â€” keeping each technology focused on its role for maintainability."
     }
   ]
 }
@@ -7553,7 +7554,7 @@
             console.error("Error loading embedded questions:", err);
             document.getElementById('loading-screen').innerHTML = `
                 <div style="text-align:center;padding:2rem;">
-                    <div style="font-size:2.5rem;margin-bottom:1rem;">⚠️</div>
+                    <div style="font-size:2.5rem;margin-bottom:1rem;">âš ï¸</div>
                     <h3 style="color:var(--danger);">Could not load questions</h3>
                     <p style="color:var(--text-muted);max-width:380px;margin:0 auto 1.2rem;">
                         There is an issue with the embedded question data format.
@@ -7615,9 +7616,9 @@
         banner.innerHTML = `
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
                 <div>
-                    <div style="font-weight:700;font-size:0.95rem;">📌 Resume Saved Exam</div>
+                    <div style="font-weight:700;font-size:0.95rem;">ðŸ“Œ Resume Saved Exam</div>
                     <div style="font-size:0.82rem;color:var(--text-muted);margin-top:3px;">
-                        <strong>${label}</strong> &nbsp;·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;·&nbsp; ⏱ ${timeStr} left
+                        <strong>${label}</strong> &nbsp;Â·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;Â·&nbsp; â± ${timeStr} left
                     </div>
                 </div>
                 <div style="display:flex;gap:8px;flex-shrink:0;">
@@ -7654,7 +7655,7 @@
 
         const rand = document.createElement('div');
         rand.className = 'box box-random';
-        rand.innerHTML = `<div style="font-size:1.8rem;">🔀</div><h3>Random Mode</h3><p>${total} Questions</p>`;
+        rand.innerHTML = `<div style="font-size:1.8rem;">ðŸ”€</div><h3>Random Mode</h3><p>${total} Questions</p>`;
         rand.onclick = () => openSetup('random', 0);
         board.appendChild(rand);
 
@@ -7664,9 +7665,9 @@
             const card  = document.createElement('div');
             card.className = 'box';
             card.innerHTML = `
-                <div style="font-size:1.8rem;color:var(--primary);">🌐</div>
+                <div style="font-size:1.8rem;color:var(--primary);">ðŸŒ</div>
                 <h3>Part ${i}</h3>
-                <p>Q${start} – Q${end}</p>`;
+                <p>Q${start} â€“ Q${end}</p>`;
             card.onclick = () => openSetup('part', i);
             board.appendChild(card);
         }
@@ -7704,7 +7705,7 @@
         document.getElementById('setup-screen').style.display   = 'block';
         document.getElementById('setup-title').innerText = type === 'random'
             ? 'Randomised Practice'
-            : `SEN 101 — Part ${part}`;
+            : `SEN 101 â€” Part ${part}`;
         document.getElementById('random-settings').style.display = type === 'random' ? 'block' : 'none';
     }
 
@@ -7852,7 +7853,7 @@ document.addEventListener('keydown', (e) => {
             feedArea.appendChild(buildFeedback(
                 ok ? '#dcfce7' : '#fee2e2',
                 ok ? '#166534' : '#991b1b',
-                ok ? '✔ Correct!' : `✘ Incorrect. Answer: <strong>${q.answer}</strong>`,
+                ok ? 'âœ” Correct!' : `âœ˜ Incorrect. Answer: <strong>${q.answer}</strong>`,
                 q.explanation
             ));
         }
@@ -7860,7 +7861,7 @@ document.addEventListener('keydown', (e) => {
         if (isReviewMode && !hasAnswered) {
             feedArea.appendChild(buildFeedback(
                 '#fef9c3', '#854d0e',
-                `⚠ Not answered. Correct: <strong>${q.answer}</strong>`,
+                `âš  Not answered. Correct: <strong>${q.answer}</strong>`,
                 q.explanation
             ));
         }
@@ -7936,16 +7937,16 @@ document.addEventListener('keydown', (e) => {
         document.getElementById('modalReviewBtn').style.display = activeMode === 'practice' ? 'none' : 'flex';
 
         if (pct >= 70) {
-            document.getElementById('resultIcon').innerText     = '🏆';
-            document.getElementById('resultGreeting').innerText = 'Outstanding! 🌟';
+            document.getElementById('resultIcon').innerText     = 'ðŸ†';
+            document.getElementById('resultGreeting').innerText = 'Outstanding! ðŸŒŸ';
             document.getElementById('resultFeedback').innerText = 'Excellent work! Keep it up!';
             confetti({ particleCount: 160, spread: 70, origin: { y: 0.6 } });
         } else if (pct >= 50) {
-            document.getElementById('resultIcon').innerText     = '👍';
+            document.getElementById('resultIcon').innerText     = 'ðŸ‘';
             document.getElementById('resultGreeting').innerText = 'Good Job!';
-            document.getElementById('resultFeedback').innerText = 'Almost there — aim for 70%+!';
+            document.getElementById('resultFeedback').innerText = 'Almost there â€” aim for 70%+!';
         } else {
-            document.getElementById('resultIcon').innerText     = '💪';
+            document.getElementById('resultIcon').innerText     = 'ðŸ’ª';
             document.getElementById('resultGreeting').innerText = 'Keep Trying!';
             document.getElementById('resultFeedback').innerText = 'Review your notes and try again!';
         }
@@ -7956,7 +7957,7 @@ document.addEventListener('keydown', (e) => {
 
     async function saveTestScore(pct) {
         const el = document.getElementById('save-status');
-        el.innerText = '⏳ Saving...';
+        el.innerText = 'â³ Saving...';
         try {
             const { data: { user } } = await db.auth.getUser();
             if (!user) { el.innerText = ''; return; }
@@ -7973,9 +7974,9 @@ document.addEventListener('keydown', (e) => {
             const { error } = await db.from('test_results').insert([
                 { student_id: user.id, course_id: COURSE_CODE, score: pct }
             ]);
-            el.innerText = error ? '⚠️ Could not save (offline)' : '✅ Score saved!';
+            el.innerText = error ? 'âš ï¸ Could not save (offline)' : 'âœ… Score saved!';
         } catch (e) {
-            el.innerText = '⚠️ Offline — score not saved';
+            el.innerText = 'âš ï¸ Offline â€” score not saved';
         }
     }
 
@@ -7992,10 +7993,10 @@ document.addEventListener('keydown', (e) => {
     async function shareQuizResult() {
         const score   = document.getElementById('finalScoreText').innerText;
         const section = examSelectionType === 'random' ? 'a random mix' : `Part ${partNum}`;
-        const text    = `I just scored ${score}% on ${COURSE_CODE} (${section})! 🚀\n\nRenance CBT is the ultimate FUTA PQ practice portal. Challenge yourself now! 📚🔥\nhttps://renancecbt1.vercel.app`;
+        const text    = `I just scored ${score}% on ${COURSE_CODE} (${section})! ðŸš€\n\nRenance CBT is the ultimate FUTA PQ practice portal. Challenge yourself now! ðŸ“šðŸ”¥\nhttps://renancecbt1.vercel.app`;
         try {
             if (navigator.share) await navigator.share({ title: `My ${COURSE_CODE} Score`, text, url: 'https://renancecbt1.vercel.app' });
-            else { await navigator.clipboard.writeText(text); alert('Score copied to clipboard! 📋'); }
+            else { await navigator.clipboard.writeText(text); alert('Score copied to clipboard! ðŸ“‹'); }
         } catch (_) {}
     }
 
@@ -8004,6 +8005,7 @@ document.addEventListener('keydown', (e) => {
 </script>
 </body>
 </html>
+
 
 
 

@@ -1,13 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RENANCE — Join the Portal</title>
+<title>RENANCE â€” Join the Portal</title>
 <link rel="shortcut icon" href="logo.png" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabinet+Grotesk:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="env-loader.js"></script>
+1
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -177,7 +178,7 @@ input:focus,select:focus{border-color:rgba(59,130,246,.5);background:rgba(17,27,
   
   <div class="hero">
     <div class="hero-grid"></div>
-    <div class="badge">✦ FUTA Official CBT Portal</div>
+    <div class="badge">âœ¦ FUTA Official CBT Portal</div>
     <div class="eyebrow"><div class="dot"></div><span class="eye-txt">Now Accepting Students</span></div>
     <h1 class="ht">
       <div class="ln"><span>ACE</span></div>
@@ -233,7 +234,7 @@ input:focus,select:focus{border-color:rgba(59,130,246,.5);background:rgba(17,27,
         <div class="f">
           <label class="fl">Phone Number</label>
           <div class="pr">
-            <div class="cw"><select id="code"><option value="+234">+234 🇳🇬</option><option value="+233">+233 🇬🇭</option><option value="+1">+1 🇺🇸</option><option value="+44">+44 🇬🇧</option></select></div>
+            <div class="cw"><select id="code"><option value="+234">+234 ðŸ‡³ðŸ‡¬</option><option value="+233">+233 ðŸ‡¬ðŸ‡­</option><option value="+1">+1 ðŸ‡ºðŸ‡¸</option><option value="+44">+44 ðŸ‡¬ðŸ‡§</option></select></div>
             <div class="iw" style="flex:1"><i class="fa-solid fa-mobile-screen-button ic" style="left:10px"></i><input type="tel" id="phone" placeholder="08012345678" style="padding-left:32px"></div>
           </div>
           <div class="err" id="e-phone">Enter a valid number</div>
@@ -271,15 +272,15 @@ input:focus,select:focus{border-color:rgba(59,130,246,.5);background:rgba(17,27,
         </button>
       </form>
 
-      <div class="lr">Already have an account? <a href="login.html">Sign in →</a></div>
+      <div class="lr">Already have an account? <a href="login.html">Sign in â†’</a></div>
     </div>
   </div>
 </div>
 
 <script>
 
-const SUPABASE_URL='https://ubxsywaxdvkhiqepcvmq.supabase.co';
-const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
 if(!window._sb)window._sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 const db=window._sb;
 
@@ -451,7 +452,7 @@ document.getElementById('dept').addEventListener('change',()=>se('dept',false));
 document.getElementById('sf').addEventListener('submit',async function(e){
   e.preventDefault();if(!validate())return;
   const btn=document.getElementById('sub'),tx=document.getElementById('btxt');
-  btn.disabled=true;tx.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i>  CREATING…';
+  btn.disabled=true;tx.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i>  CREATINGâ€¦';
   const fn=document.getElementById('fullname').value.trim();
   const em=document.getElementById('email').value.trim();
   const pw=document.getElementById('password').value;
@@ -464,16 +465,17 @@ document.getElementById('sf').addEventListener('submit',async function(e){
     if(ae)throw ae;
     const uid=au.user?.id;
     if(uid){const{error:de2}=await db.from('students').insert([{id:uid,fullname:fn,email:em,faculty:fa,department:de,phone:ph}]);if(de2)throw de2}
-    toast('🎉 Account created! Redirecting…','ok');
+    toast('ðŸŽ‰ Account created! Redirectingâ€¦','ok');
     setTimeout(()=>window.location.href='login.html',2000);
   }catch(err){
-    console.error(err);toast('❌ '+(err.message||'Something went wrong'),'bad');
+    console.error(err);toast('âŒ '+(err.message||'Something went wrong'),'bad');
     btn.disabled=false;tx.innerHTML='<i class="fa-solid fa-arrow-right-to-bracket"></i> CREATE ACCOUNT';
   }
 });
 </script>
 </body>
 </html>
+
 
 
 

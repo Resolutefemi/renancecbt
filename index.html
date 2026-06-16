@@ -1,13 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RENANCE — Create Account</title>
+<title>RENANCE â€” Create Account</title>
 <link rel="shortcut icon" href="logo.png" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="env-loader.js"></script>
+1
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -23,7 +24,7 @@
 html{height:100%}
 body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden}
 
-/* ── BACKGROUND — single crisp bg.svg, no blur ─────── */
+/* â”€â”€ BACKGROUND â€” single crisp bg.svg, no blur â”€â”€â”€â”€â”€â”€â”€ */
 .bg-static{
   position:fixed;inset:0;z-index:0;
   background-image:url('bg.svg');
@@ -45,14 +46,14 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 .scan{position:fixed;inset:0;z-index:2;pointer-events:none;
   background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,.012) 3px,rgba(255,255,255,.012) 4px)}
 
-/* ── LAYOUT ─────────────────────────────────────────── */
+/* â”€â”€ LAYOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .layout{
   position:relative;z-index:10;
   display:flex;justify-content:center;align-items:center;
   min-height:100vh;padding:24px 16px;
 }
 
-/* ── GLASS CARD ─────────────────────────────────────── */
+/* â”€â”€ GLASS CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .card{
   width:100%;max-width:460px;
   background: var(--glass-bg);
@@ -70,7 +71,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 }
 @keyframes cardIn{from{opacity:0;transform:translateY(32px) scale(.97)}to{opacity:1;transform:none}}
 
-/* ── HEADER ─────────────────────────────────────────── */
+/* â”€â”€ HEADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .card-header{text-align:center;margin-bottom:28px}
 .gem-wrap{
   display:inline-flex;align-items:center;justify-content:center;
@@ -90,17 +91,17 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 .card-header h1{font-size:1.85rem;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:6px}
 .card-header p{font-size:0.9rem;color:var(--text-glass-muted)}
 
-/* ── STEP INDICATOR ──────────────────────────────────── */
+/* â”€â”€ STEP INDICATOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .step-indicator { display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; }
 .step-dot { width: 30px; height: 4px; background: rgba(255,255,255,0.15); border-radius: 4px; transition: background 0.4s; }
 .step-dot.active { background: #60a5fa; box-shadow: 0 0 8px rgba(96,165,250,0.5); }
 
-/* ── FORM SLIDING TRACK ───────────────────────────────── */
+/* â”€â”€ FORM SLIDING TRACK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .form-window { overflow: hidden; width: 100%; position: relative; }
 .form-track { display: flex; width: 200%; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
 .step-pane { width: 50%; padding: 0 4px; flex-shrink: 0; }
 
-/* ── FIELDS ──────────────────────────────────────────── */
+/* â”€â”€ FIELDS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .field{margin-bottom:20px}
 .field label{display:block;font-size:0.86rem;font-weight:600;color:rgba(255,255,255,0.9);margin-bottom:8px}
 .field-wrap{position:relative;display:flex;align-items:center}
@@ -133,7 +134,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 .pw-toggle{position:absolute;right:14px;color:rgba(255,255,255,0.45);cursor:pointer;padding:8px;transition:color .2s;z-index:2}
 .pw-toggle:hover{color:#fff}
 
-/* ── PHONE NUMBER STYLING ────────────────────────────── */
+/* â”€â”€ PHONE NUMBER STYLING â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .pr{display:flex;gap:10px}
 .cw{flex-shrink:0;position:relative}
 .cw select{
@@ -158,7 +159,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
   color:#fff;
 }
 
-/* ── SELECT / DROPDOWNS ───────────────────────────────── */
+/* â”€â”€ SELECT / DROPDOWNS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .sw{position:relative;display:flex;align-items:center}
 .sw select{
   width:100%;height:52px;
@@ -188,14 +189,14 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 }
 .sw:focus-within .field-icon{color:rgba(255,255,255,0.9)}
 
-/* ── STRENGTH INDICATOR ──────────────────────────────── */
+/* â”€â”€ STRENGTH INDICATOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .str{display:flex;gap:4px;margin-top:8px}
 .sg{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,0.06);transition:background 0.4s,box-shadow 0.4s}
 
-/* ── ERRORS ──────────────────────────────────────────── */
+/* â”€â”€ ERRORS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .err{font-size:0.8rem;color:#fca5a5;margin-top:6px;display:none;}
 
-/* ── BUTTONS ─────────────────────────────────────────── */
+/* â”€â”€ BUTTONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .btn-row { display: flex; gap: 10px; margin-top: 24px; z-index: 10; position: relative; }
 .btn-primary{
   flex:1;height:52px;border:none;border-radius:14px;
@@ -227,7 +228,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 }
 .btn-secondary:active{transform:scale(0.97)}
 
-/* ── FOOTER LINK ─────────────────────────────────────── */
+/* â”€â”€ FOOTER LINK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .lr{text-align:center;margin-top:24px;font-size:0.88rem;color:var(--text-glass-muted)}
 .lr a{color:#93c5fd;font-weight:700;text-decoration:none;transition:color .2s}
 .lr a:hover{color:#fff}
@@ -235,7 +236,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 .card-divider{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);text-align:center}
 .card-divider p{font-size:0.72rem;font-weight:700;color:rgba(255,255,255,0.45);letter-spacing:1px;text-transform:uppercase}
 
-/* ── TOAST ───────────────────────────────────────────── */
+/* â”€â”€ TOAST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #toast{
   position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);
   background:rgba(17,24,39,0.96);border:1px solid rgba(255,255,255,.1);
@@ -248,7 +249,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 #toast.ok{border-color:rgba(16,185,129,.4);color:#34d399}
 #toast.bad{border-color:rgba(239,68,68,.4);color:#f87171}
 
-/* ── RESPONSIVE ─────────────────────────────────────── */
+/* â”€â”€ RESPONSIVE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media(max-width:600px){
   .layout{padding:16px 12px}
   .card{padding:30px 20px 26px;border-radius:22px;max-width:100%}
@@ -339,7 +340,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
               <div class="pr">
                 <div class="cw">
                   <select id="code" tabindex="-1">
-                    <option value="+234">+234 🇳🇬</option>
+                    <option value="+234">+234 ðŸ‡³ðŸ‡¬</option>
                   </select>
                 </div>
                 <div class="field-wrap" style="flex:1">
@@ -409,8 +410,8 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 </div>
 
 <script>
-const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
 if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 const db = window._sb;
 
@@ -605,12 +606,12 @@ document.getElementById('sf').addEventListener('submit', async function(e){
       btn.style.background = '#10b981';
       btn.style.boxShadow = '0 0 30px rgba(16,185,129,0.5)';
       
-      toast('🎉 Account created! Redirecting to login...', 'ok');
+      toast('ðŸŽ‰ Account created! Redirecting to login...', 'ok');
       setTimeout(() => window.location.href = 'login.html', 2000);
       
     } catch (err) {
       console.error(err);
-      toast('❌ ' + (err.message || 'Something went wrong. Please try again.'), 'bad');
+      toast('âŒ ' + (err.message || 'Something went wrong. Please try again.'), 'bad');
       btn.disabled = false;
       btxt.innerHTML = '<i class="fa-solid fa-user-plus"></i> REGISTER';
     }
@@ -637,3 +638,4 @@ document.getElementById('password').addEventListener('input',function(){
 </script>
 </body>
 </html>
+

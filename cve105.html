@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="env-loader.js"></script>
+1
 
     <style>
         :root {
@@ -287,9 +288,9 @@
     </div>
 
     <div id="setup-screen" style="display:none;">
-        <div style="font-size:2.5rem; margin-bottom:0.5rem;">✏️</div>
+        <div style="font-size:2.5rem; margin-bottom:0.5rem;">âœï¸</div>
         <h2 id="setup-title" style="margin-bottom:0.5rem; color:var(--primary); font-size:1.35rem;"></h2>
-        <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:1.5rem;">Fill-in-the-gap format — type your answers</p>
+        <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:1.5rem;">Fill-in-the-gap format â€” type your answers</p>
 
         <div class="setup-group">
             <label>Select Mode:</label>
@@ -349,7 +350,7 @@
             <div class="gap-label"><i class="fa-solid fa-keyboard"></i> &nbsp;Your Answer</div>
             <div class="gap-input-wrap">
                 <span class="gap-input-icon"><i class="fa-solid fa-pen-nib"></i></span>
-                <input type="text" id="gap-input" class="gap-input" placeholder="Type your answer here…" autocomplete="off" autocorrect="off" spellcheck="false">
+                <input type="text" id="gap-input" class="gap-input" placeholder="Type your answer hereâ€¦" autocomplete="off" autocorrect="off" spellcheck="false">
             </div>
             <button class="check-btn" id="check-btn" onclick="checkAnswer()">
                 <i class="fa-solid fa-check-double"></i> Check Answer
@@ -370,7 +371,7 @@
 
 <div id="quizResultModal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
-        <span class="result-icon" id="resultIcon">🏆</span>
+        <span class="result-icon" id="resultIcon">ðŸ†</span>
         <h2 id="resultGreeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
 
         <div class="score-display">
@@ -378,7 +379,7 @@
             <div class="stats-mini">
                 <div class="sm"><div class="sv" id="modalCorrect">0</div><div class="sl">Correct</div></div>
                 <div class="sm"><div class="sv" id="modalTotal">0</div><div class="sl">Total</div></div>
-                <div class="sm"><div class="sv" id="modalAvg">—</div><div class="sl">Your Avg</div></div>
+                <div class="sm"><div class="sv" id="modalAvg">â€”</div><div class="sl">Your Avg</div></div>
             </div>
         </div>
 
@@ -401,8 +402,8 @@
 
 <script>
     
-    const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+    const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const COURSE_CODE = 'CVE 105';
 
@@ -432,8 +433,8 @@
   {"id": 22, "question": "Who takes matter apart to determine its building blocks?", "answers": ["Chemist", "chemist", "The chemist", "CHEMIST"]},
   {"id": 23, "question": "Who wants to know what holds the building blocks of matter together?", "answers": ["Physicist", "physicist", "The physicist", "PHYSICIST"]},
   {"id": 24, "question": "What doesn't weigh anything and can be measured only while being transformed, released, or absorbed?", "answers": ["Energy", "energy", "ENERGY"]},
-  {"id": 25, "question": "Who expressed the relationship between matter and energy with the formula E=mc² in 1905?", "answers": ["Albert Einstein", "albert einstein", "Einstein", "einstein"]},
-  {"id": 26, "question": "What does the 'c' stand for in Einstein's formula E=mc²?", "answers": ["Speed of light", "speed of light", "SPEED OF LIGHT"]},
+  {"id": 25, "question": "Who expressed the relationship between matter and energy with the formula E=mcÂ² in 1905?", "answers": ["Albert Einstein", "albert einstein", "Einstein", "einstein"]},
+  {"id": 26, "question": "What does the 'c' stand for in Einstein's formula E=mcÂ²?", "answers": ["Speed of light", "speed of light", "SPEED OF LIGHT"]},
   {"id": 27, "question": "What type of science is focused more on yielding knowledge that might assist the development of products and processes in the market-place?", "answers": ["Strategic science", "strategic science", "STRATEGIC SCIENCE"]},
   {"id": 28, "question": "What is an effort to reconstruct the past to discover what people thought and did?", "answers": ["History", "history", "HISTORY"]},
   {"id": 29, "question": "What are firsthand accounts of people who lived through events called?", "answers": ["Primary sources", "primary sources", "PRIMARY SOURCES"]},
@@ -527,7 +528,7 @@
   {"id": 117, "question": "What is an object made by a human being with archaeological interest called?", "answers": ["Artefact", "artefact", "Artifact", "artifact"]},
   {"id": 118, "question": "What is the study of life in prehistoric times using fossil evidence called?", "answers": ["Palaeontology", "palaeontology", "Paleontology", "paleontology"]},
   {"id": 119, "question": "What is the theoretical process by which all species develop from earlier forms of life called?", "answers": ["Evolution", "evolution", "EVOLUTION"]},
-  {"id": 120, "question": "Which prehistoric human skulls were first found in 1856 near Düsseldorf, Germany?", "answers": ["Neanderthals", "neanderthals", "NEANDERTHALS", "Neandertals"]},
+  {"id": 120, "question": "Which prehistoric human skulls were first found in 1856 near DÃ¼sseldorf, Germany?", "answers": ["Neanderthals", "neanderthals", "NEANDERTHALS", "Neandertals"]},
   {"id": 121, "question": "What term refers to a primate with a two-legged gait, relatively small face and teeth, and large brain?", "answers": ["Hominine", "hominine", "HOMININE", "hominines"]},
   {"id": 122, "question": "What is the geological time frame known collectively as the Precambrian era?", "answers": ["Proterozoic, Archaean, and Priscoan eons", "proterozoic, archaean, and priscoan", "Proterozoic, Archaean, and Hadean"]},
   {"id": 123, "question": "What anatomical feature seems to have been one of the earliest major hominine characteristics to evolve?", "answers": ["Bipedalism", "bipedalism", "BIPEDALISM", "two-legged walking"]},
@@ -560,7 +561,7 @@
   {"id": 150, "question": "What type of pollution comes from sources that cannot be precisely identified, such as agricultural runoff?", "answers": ["Non-point pollution", "non-point pollution", "NON-POINT POLLUTION"]},
   {"id": 151, "question": "According to the text, how many people worldwide die each year from drinking contaminated water?", "answers": ["10 million", "10 million", "ten million", "10,000,000"]},
   {"id": 152, "question": "What severe form of soil erosion is greatly accelerated by human activities like deforestation and overgrazing?", "answers": ["Gully formation", "gully formation", "GULLY FORMATION"]},
-      {"id": 153, "question": "In what year did Albert Einstein express the relationship between matter and energy with the formula E=mc²?", "answers": ["1905", "1905", "nineteen oh five"]},
+      {"id": 153, "question": "In what year did Albert Einstein express the relationship between matter and energy with the formula E=mcÂ²?", "answers": ["1905", "1905", "nineteen oh five"]},
   {"id": 154, "question": "In its most basic form, what is science driven by?", "answers": ["Curiosity and speculation", "curiosity and speculation", "CURIOSITY AND SPECULATION"]},
   {"id": 155, "question": "What has the goal of creating and improving artefacts and systems to satisfy human wants or aspirations?", "answers": ["Technology", "technology", "TECHNOLOGY"]},
   {"id": 156, "question": "Whereas the output from technology is a patent, what is the typical output from science?", "answers": ["Published paper", "published paper", "PUBLISHED PAPER", "A published paper"]},
@@ -730,7 +731,7 @@
   {"id": 320, "question": "According to the text, philosophy is first of all a deepening of what?", "answers": ["One's own self", "one's own self", "ones own self"]},
   {"id": 321, "question": "The business of the philosopher of science is to take a critical look at what is claimed to be what?", "answers": ["Fact", "fact", "FACT"]},
   {"id": 322, "question": "Anything that is solid, liquid or gaseous is a form of what?", "answers": ["Matter", "matter", "MATTER"]},
-  {"id": 323, "question": "In Einstein's formula E=mc², what does the 'm' stand for?", "answers": ["Mass", "mass", "MASS"]},
+  {"id": 323, "question": "In Einstein's formula E=mcÂ², what does the 'm' stand for?", "answers": ["Mass", "mass", "MASS"]},
   {"id": 324, "question": "What is essentially comprised of science, engineering and technology?", "answers": ["Applied science", "applied science", "APPLIED SCIENCE"]},
   {"id": 325, "question": "What key action separates the scientific method from other ways of acquiring knowledge?", "answers": ["Forming a hypothesis and testing it", "forming a hypothesis and testing it", "Testing a hypothesis", "testing a hypothesis"]},
   {"id": 326, "question": "In which step of the scientific method do you often prepare a table or graph?", "answers": ["Data/Analysis", "data/analysis", "Data", "data", "Analysis", "analysis"]},
@@ -799,10 +800,10 @@
   {"id": 389, "question": "What gas constitutes 0.9 percent of the atmosphere of the Earth?", "answers": ["Argon", "argon", "ARGON"]},
   {"id": 390, "question": "What gas constitutes 0.03 percent of the atmosphere of the Earth? ", "answers": ["Carbon dioxide", "carbon dioxide", "CARBON DIOXIDE"]},
   {"id": 391, "question": "The water-vapour content of the air varies considerably depending on temperature and what?", "answers": ["Relative humidity", "relative humidity", "RELATIVE HUMIDITY"]},
-  {"id": 392, "question": "In the troposphere, the temperature decreases upwards at the rate of how many degrees Celsius per 1,000 m? ", "answers": ["5.5", "5.5°C", "5.5 degrees"]},
+  {"id": 392, "question": "In the troposphere, the temperature decreases upwards at the rate of how many degrees Celsius per 1,000 m? ", "answers": ["5.5", "5.5Â°C", "5.5 degrees"]},
   {"id": 393, "question": "Which layer of the atmosphere is located from 50 to 80 km and is characterized by a marked decrease in temperature?", "answers": ["Mesosphere", "mesosphere", "MESOSPHERE"]},
   {"id": 394, "question": "Ultraviolet radiation and X-rays ionize several layers of which part of the atmosphere above 80 km?", "answers": ["Ionosphere", "ionosphere", "IONOSPHERE"]},
-  {"id": 395, "question": "The ionosphere is also termed the thermosphere because temperatures there can rise to about how many degrees Celsius?", "answers": ["1,200", "1,200°C", "1200"]},
+  {"id": 395, "question": "The ionosphere is also termed the thermosphere because temperatures there can rise to about how many degrees Celsius?", "answers": ["1,200", "1,200Â°C", "1200"]},
   {"id": 396, "question": "The density of dry air at sea level is about what fraction of the density of water?", "answers": ["1/800", "1 over 800", "one eight hundredth"]},
   {"id": 397, "question": "One torr of atmospheric pressure equals how many mm of mercury?", "answers": ["1 mm", "1", "one millimeter"]},
   {"id": 398, "question": "The troposphere and most of the stratosphere can be explored directly by means of what instruments?", "answers": ["Sounding balloons", "sounding balloons", "SOUNDING BALLOONS"]},
@@ -826,7 +827,7 @@
   {"id": 416, "question": "The composition of the universe is divided into two entities, namely ___ and ___.", "answers": ["Matter and energy", "matter and energy", "MATTER AND ENERGY", "Energy and matter", "energy and matter"]},
   {"id": 417, "question": "What is the investigation into the general nature of scientific practice?", "answers": ["Philosophy of science", "philosophy of science", "PHILOSOPHY OF SCIENCE", "Philosophy of Science"]},
   {"id": 418, "question": "What is roughly speaking concerned with what can be considered as fact?", "answers": ["Science", "science", "SCIENCE"]},
-  {"id": 419, "question": "In 1905, Albert Einstein expressed the relationship between matter and energy with what formula?", "answers": ["E=mc²", "E=mc2", "e=mc2", "E = mc^2", "E=mc^2"]}
+  {"id": 419, "question": "In 1905, Albert Einstein expressed the relationship between matter and energy with what formula?", "answers": ["E=mcÂ²", "E=mc2", "e=mc2", "E = mc^2", "E=mc^2"]}
 ];
 
     
@@ -882,7 +883,7 @@
 
         const rand = document.createElement('div');
         rand.className = 'box box-random';
-        rand.innerHTML = `<div style="font-size:1.9rem;">🔀</div><h3>Random Mode</h3><p>${total} Questions</p>`;
+        rand.innerHTML = `<div style="font-size:1.9rem;">ðŸ”€</div><h3>Random Mode</h3><p>${total} Questions</p>`;
         rand.onclick = () => openSetup('random', 0);
         board.appendChild(rand);
 
@@ -892,9 +893,9 @@
             const card  = document.createElement('div');
             card.className = 'box';
             card.innerHTML = `
-                <div style="font-size:1.9rem; color:var(--primary);">📐</div>
+                <div style="font-size:1.9rem; color:var(--primary);">ðŸ“</div>
                 <h3>Part ${i}</h3>
-                <p>Q${start} – Q${end}</p>`;
+                <p>Q${start} â€“ Q${end}</p>`;
             card.onclick = () => openSetup('part', i);
             board.appendChild(card);
         }
@@ -1006,15 +1007,15 @@
                 if (correct) {
                     input.classList.add('correct');
                     feedArea.innerHTML = `<div class="feedback-msg" style="background:rgba(26,122,69,0.1); color:var(--success); border:1.5px solid rgba(26,122,69,0.25);">
-                        ✔ Correct! Well done.</div>`;
+                        âœ” Correct! Well done.</div>`;
                 } else {
                     input.classList.add('wrong');
                     feedArea.innerHTML = `<div class="feedback-msg" style="background:rgba(192,57,43,0.09); color:var(--danger); border:1.5px solid rgba(192,57,43,0.2);">
-                        ✘ Incorrect. Correct answer: <strong>${q.answers[0]}</strong></div>`;
+                        âœ˜ Incorrect. Correct answer: <strong>${q.answers[0]}</strong></div>`;
                 }
             } else if (isReviewMode) {
                 feedArea.innerHTML = `<div class="feedback-msg" style="background:#fef9c3; color:#854d0e; border:1px solid #fde047;">
-                    ⚠ Not answered. Correct: <strong>${q.answers[0]}</strong></div>`;
+                    âš  Not answered. Correct: <strong>${q.answers[0]}</strong></div>`;
             }
         } else {
             setTimeout(() => input.focus(), 50);
@@ -1102,16 +1103,16 @@
         document.getElementById('modalReviewBtn').style.display = activeMode === 'practice' ? 'none' : 'flex';
 
         if (pct >= 70) {
-            document.getElementById('resultIcon').innerText     = '🏆';
-            document.getElementById('resultGreeting').innerText = 'Outstanding! 🌟';
+            document.getElementById('resultIcon').innerText     = 'ðŸ†';
+            document.getElementById('resultGreeting').innerText = 'Outstanding! ðŸŒŸ';
             document.getElementById('resultFeedback').innerText = 'Excellent work! Keep it up!';
             confetti({ particleCount: 160, spread: 70, origin: { y: 0.6 } });
         } else if (pct >= 50) {
-            document.getElementById('resultIcon').innerText     = '👍';
+            document.getElementById('resultIcon').innerText     = 'ðŸ‘';
             document.getElementById('resultGreeting').innerText = 'Good Job!';
-            document.getElementById('resultFeedback').innerText = 'Almost there — aim for 70%+!';
+            document.getElementById('resultFeedback').innerText = 'Almost there â€” aim for 70%+!';
         } else {
-            document.getElementById('resultIcon').innerText     = '💪';
+            document.getElementById('resultIcon').innerText     = 'ðŸ’ª';
             document.getElementById('resultGreeting').innerText = 'Keep Trying!';
             document.getElementById('resultFeedback').innerText = 'Review your notes and try again!';
         }
@@ -1122,7 +1123,7 @@
     
     async function saveTestScore(pct) {
         const el = document.getElementById('save-status');
-        el.innerText = '⏳ Saving...';
+        el.innerText = 'â³ Saving...';
         try {
             const { data: { user } } = await db.auth.getUser();
             if (!user) { el.innerText = ''; return; }
@@ -1139,9 +1140,9 @@
             const { error } = await db.from('test_results').insert([
                 { student_id: user.id, course_id: COURSE_CODE, score: pct }
             ]);
-            el.innerText = error ? '⚠️ Could not save (offline)' : '✅ Score saved!';
+            el.innerText = error ? 'âš ï¸ Could not save (offline)' : 'âœ… Score saved!';
         } catch (e) {
-            el.innerText = '⚠️ Offline — score not saved';
+            el.innerText = 'âš ï¸ Offline â€” score not saved';
         }
     }
 
@@ -1158,15 +1159,16 @@
     async function shareQuizResult() {
         const score   = document.getElementById('finalScoreText').innerText;
         const section = examSelectionType === 'random' ? 'a random mix' : `Part ${partNum}`;
-        const text    = `I just scored ${score}% on ${COURSE_CODE} (${section})! 🚀\n\nChallenge yourself on the Renance CBT portal! 📚🔥\nhttps://renancecbt1.vercel.app`;
+        const text    = `I just scored ${score}% on ${COURSE_CODE} (${section})! ðŸš€\n\nChallenge yourself on the Renance CBT portal! ðŸ“šðŸ”¥\nhttps://renancecbt1.vercel.app`;
         try {
             if (navigator.share) await navigator.share({ title: `My ${COURSE_CODE} Score`, text, url: 'https://renancecbt1.vercel.app' });
-            else { await navigator.clipboard.writeText(text); alert('Score copied to clipboard! 📋'); }
+            else { await navigator.clipboard.writeText(text); alert('Score copied to clipboard! ðŸ“‹'); }
         } catch (_) {}
     }
 </script>
 </body>
 </html>
+
 
 
 

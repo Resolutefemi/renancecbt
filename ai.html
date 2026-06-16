@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="env-loader.js"></script>
 
     <style>
         :root {
@@ -256,7 +257,7 @@
     </main>
 
     <script>
-        const API_KEY = "AIzaSyAqFaSfBF_-OiFv60cAzF_3llkKmRRjfiM";
+        const API_KEY = window.env?.GEMINI_API_KEY || 'AIzaSyBFqhMxNVNdti-8HFjVvxOFCiRKWnUfiZs';
         
         // Custom Knowledge Base Context
         const SYSTEM_CONTEXT = `

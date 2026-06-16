@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="env-loader.js"></script>
+1
 
     <style>
         :root {
@@ -658,8 +659,8 @@
                 <div class="welcome-badge">
                     <i data-lucide="sparkles" size="10"></i> NEW UPDATE
                 </div>
-                <div class="welcome-title">Welcome to Renance CBT 🎓</div>
-                <div class="welcome-sub">Your all-in-one FUTA exam prep portal — now better than ever.</div>
+                <div class="welcome-title">Welcome to Renance CBT ðŸŽ“</div>
+                <div class="welcome-sub">Your all-in-one FUTA exam prep portal â€” now better than ever.</div>
             </div>
             <div class="welcome-body">
                 <div class="welcome-features">
@@ -778,7 +779,7 @@
                 </button>
                 <a href="registration.html" class="user-profile-card">
                     <div style="text-align:right;">
-                        <div id="displayUserName" style="font-weight:700;font-size:0.86rem;">Loading…</div>
+                        <div id="displayUserName" style="font-weight:700;font-size:0.86rem;">Loadingâ€¦</div>
                         <div id="displayUserDept" style="font-size:0.7rem;color:var(--text-muted);">Department</div>
                     </div>
                     <div class="mini-avatar" id="displayInitials" style="width:38px;height:38px;">??</div>
@@ -814,7 +815,7 @@
             <div class="search-wrapper">
                 <i data-lucide="search" size="16"></i>
                 <input type="text" id="courseSearch" class="search-input"
-                       placeholder="Search course code or title…"
+                       placeholder="Search course code or titleâ€¦"
                        oninput="filterCourses()">
             </div>
         </div>
@@ -831,7 +832,7 @@
     
     <div id="renanceProfileModal" class="modal-overlay" style="display:none;">
         <div class="modal-content">
-            <div style="font-size:2rem;margin-bottom:6px;">🎓</div>
+            <div style="font-size:2rem;margin-bottom:6px;">ðŸŽ“</div>
             <h2>Complete Your Profile</h2>
             <p class="modal-sub">Fill this in before accessing your exams.</p>
             <form id="profileUpdateForm" onsubmit="saveProfile(event)">
@@ -865,7 +866,7 @@
                     <label for="studentPhone">Phone Number</label>
                     <input type="tel" id="studentPhone" placeholder="e.g. 08012345678" required>
                 </div>
-                <button type="submit" id="saveProfileBtn">Save &amp; Continue 🚀</button>
+                <button type="submit" id="saveProfileBtn">Save &amp; Continue ðŸš€</button>
             </form>
             <p id="modalError" style="color:#ef4444;font-size:0.78rem;margin-top:10px;display:none;"></p>
         </div>
@@ -873,8 +874,8 @@
 
     <script>
         
-        const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
-        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+        const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+        const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
         if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         const db = window._sb;
 
@@ -897,9 +898,9 @@
         });
 
         
-        const SHARE_TEXT = `🚀 Ace Your FUTA Exams with Renance! 🎓\nLevel up your study game this semester! 📈\nSmash your grades with the ultimate preparation tool. 🛠️\n\nHere is what you get:\n⏱️ Timed CBT Practice: Beat exam anxiety with real simulations.\n📚 Course PDFs: Download essential materials to your device.\n🔥 500+ Past Questions: Tackle real FUTA plus plus & exam questions.\n🧮 GPA Calculators: Track your academic progress easily.\n🧠 Study Tips: Master techniques like Pomodoro & Feynman.\n\nStudy smarter, not harder! ✨ Visit the portal today. 🌐\n👉 renancecbt1.vercel.app\n📢 Share with friends so everyone excels!`;
+        const SHARE_TEXT = `ðŸš€ Ace Your FUTA Exams with Renance! ðŸŽ“\nLevel up your study game this semester! ðŸ“ˆ\nSmash your grades with the ultimate preparation tool. ðŸ› ï¸\n\nHere is what you get:\nâ±ï¸ Timed CBT Practice: Beat exam anxiety with real simulations.\nðŸ“š Course PDFs: Download essential materials to your device.\nðŸ”¥ 500+ Past Questions: Tackle real FUTA plus plus & exam questions.\nðŸ§® GPA Calculators: Track your academic progress easily.\nðŸ§  Study Tips: Master techniques like Pomodoro & Feynman.\n\nStudy smarter, not harder! âœ¨ Visit the portal today. ðŸŒ\nðŸ‘‰ renancecbt1.vercel.app\nðŸ“¢ Share with friends so everyone excels!`;
         const SHARE_URL   = 'https://renancecbt1.vercel.app';
-        const SHARE_TITLE = '🚀 Renance FUTA CBT Portal';
+        const SHARE_TITLE = 'ðŸš€ Renance FUTA CBT Portal';
 
         async function triggerShare() {
             if (navigator.share) {
@@ -908,7 +909,7 @@
             }
             try {
                 await navigator.clipboard.writeText(SHARE_TEXT + '\n\n' + SHARE_URL);
-                showToast('✅ Copied! Paste & share with your friends.');
+                showToast('âœ… Copied! Paste & share with your friends.');
             } catch { prompt('Copy this and share:', SHARE_TEXT + '\n\n' + SHARE_URL); }
         }
         function showToast(msg) {
@@ -936,7 +937,7 @@
             { id: 'CHE 103', title: 'EXPERIMENTAL CHEMISTRY I',          icon: 'test-tube',  isReady: true, semester: 1, study: false, practice: true  },
         ];
 
-        /* Semester 2 courses placeholder — add here when ready */
+        /* Semester 2 courses placeholder â€” add here when ready */
         const courses2 = [];
 
         let showingSemester1 = false;
@@ -1039,17 +1040,17 @@
                             <div class="card-footer-dual">
                                 <button class="dual-btn dual-btn-primary"
                                     onclick="event.stopPropagation();window.location.href='${practiceUrl}'">
-                                    ⚡ PRACTICE
+                                    âš¡ PRACTICE
                                 </button>
                                 <button class="dual-btn dual-btn-secondary"
                                     onclick="event.stopPropagation();window.location.href='${studyUrl}'">
-                                    📖 STUDY
+                                    ðŸ“– STUDY
                                 </button>
                             </div>
                         `;
                         card.onclick = () => { if (course.isReady) window.location.href = practiceUrl; };
                     } else if (studyOnly) {
-                        // Study only — single footer link styled like "START LEARNING"
+                        // Study only â€” single footer link styled like "START LEARNING"
                         card.innerHTML = `
                             <div class="icon-box" style="background:rgba(79,70,229,0.1);color:var(--study-btn);">
                                 <i data-lucide="${course.icon}" size="19"></i>
@@ -1081,7 +1082,7 @@
                         `;
                         card.onclick = () => {
                             if (course.isReady) window.location.href = practiceUrl;
-                            else alert('This course is coming soon! ⏳');
+                            else alert('This course is coming soon! â³');
                         };
                     }
 
@@ -1134,7 +1135,7 @@
                     </div>
                 </div>
                 <p style="font-size:0.76rem;color:rgba(255,255,255,0.8);line-height:1.55;position:relative;z-index:1;">
-                    🔥 500+ past questions &nbsp;·&nbsp; 📚 PDFs &nbsp;·&nbsp; 🧮 GPA calc &nbsp;·&nbsp; 🧠 Tips
+                    ðŸ”¥ 500+ past questions &nbsp;Â·&nbsp; ðŸ“š PDFs &nbsp;Â·&nbsp; ðŸ§® GPA calc &nbsp;Â·&nbsp; ðŸ§  Tips
                 </p>
                 <div class="card-footer" style="position:relative;z-index:1;">
                     <span>TAP TO SHARE</span>
@@ -1183,7 +1184,7 @@
             const department = document.getElementById('studentDept').value;
             const phone      = document.getElementById('studentPhone').value.trim();
             errorEl.style.display = 'none';
-            btn.disabled = true; btn.textContent = 'Saving…';
+            btn.disabled = true; btn.textContent = 'Savingâ€¦';
             try {
                 const { data: { user }, error: authErr } = await db.auth.getUser();
                 if (authErr || !user) throw new Error('Session expired. Please log in again.');
@@ -1194,7 +1195,7 @@
             } catch (err) {
                 errorEl.textContent = err.message || 'Something went wrong. Please try again.';
                 errorEl.style.display = 'block';
-                btn.disabled = false; btn.textContent = 'Save & Continue 🚀';
+                btn.disabled = false; btn.textContent = 'Save & Continue ðŸš€';
             }
         }
 
