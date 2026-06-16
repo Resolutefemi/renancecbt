@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1003,9 +1003,7 @@
             const grid = document.getElementById('courseGrid');
             grid.innerHTML = '';
 
-            const activeCourses = showingSemester1
-                ? courses.filter(c => c.semester === 1)
-                : courses;
+            const activeCourses = showingSemester1 ? courses : courses2;
 
             const filtered = activeCourses.filter(c =>
                 c.id.toLowerCase().includes(filterText.toLowerCase()) ||
@@ -1013,7 +1011,11 @@
             );
 
             if (filtered.length === 0) {
-                grid.innerHTML = `<p style="color:var(--text-muted);padding:16px;grid-column:1/-1;">No courses found for "${filterText}"</p>`;
+                if (!showingSemester1 && courses2.length === 0) {
+                    grid.innerHTML = `<p style="color:var(--text-muted);padding:16px;grid-column:1/-1;font-size:0.9rem;">No 2nd semester courses registered yet. Toggle "View 1st Semester" below to see practice modules.</p>`;
+                } else {
+                    grid.innerHTML = `<p style="color:var(--text-muted);padding:16px;grid-column:1/-1;">No courses found for "${filterText}"</p>`;
+                }
             } else {
                 filtered.forEach(course => {
                     const card = document.createElement('div');
