@@ -2,144 +2,244 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-    <title>GPA Calculator | Resolutefemi</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>GPA Calculator | RENANCE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="env-loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
-            --bg-body: #f0f2f8;
-            --bg-card: #ffffff;
-            --bg-card2: #f7f8fc;
-            --text-main: #1a1d2e;
-            --text-muted: #7b8099;
-            --border: #e2e5f0;
-            --brand-blue: #0984e3;
-            --brand-green: #27ae60;
-            --brand-red: #d63031;
-            --brand-orange: #e17055;
+            --bg-body: #f1f5f9;
+            --sidebar: #0f172a;
+            --card-bg: #ffffff;
+            --primary-accent: #2563eb;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
             --whatsapp-green: #25d366;
-            --table-head: #f0f2f8;
-            --shadow: 0 8px 32px rgba(9,132,227,0.08);
-            --shadow-card: 0 2px 12px rgba(0,0,0,0.06);
-            --glow: 0 0 24px rgba(9,132,227,0.18);
-        }
-        [data-theme="dark"] {
-            --bg-body: #0d1117;
-            --bg-card: #161b27;
-            --bg-card2: #1c2333;
-            --text-main: #e8eaf6;
-            --text-muted: #8892a4;
-            --border: #252d3f;
-            --table-head: #1c2333;
-            --shadow: 0 8px 32px rgba(0,0,0,0.4);
-            --shadow-card: 0 2px 12px rgba(0,0,0,0.3);
-            --glow: 0 0 32px rgba(9,132,227,0.25);
+            --glass: rgba(15, 23, 42, 0.97);
+            --share-gradient: linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #7c3aed 100%);
         }
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        .dark-mode {
+            --bg-body: #0f172a;
+            --sidebar: #020617;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --primary-accent: #60a5fa;
+            --glass: rgba(2, 6, 23, 0.97);
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
         body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg-body);
-            color: var(--text-main);
-            min-height: 100vh;
+            background-color: var(--bg-body);
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 16px 10px 40px;
-            transition: background 0.35s, color 0.35s;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: -180px; left: 50%;
-            transform: translateX(-50%);
-            width: 700px; height: 400px;
-            background: radial-gradient(ellipse, rgba(9,132,227,0.12) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* WHATSAPP FLOAT */
-        .whatsapp-float {
-            position: fixed; width: 52px; height: 52px;
-            bottom: 22px; right: 18px;
-            background: var(--whatsapp-green);
-            color: #fff; border-radius: 50%;
-            font-size: 26px; z-index: 1000;
-            display: flex; align-items: center; justify-content: center;
-            text-decoration: none; box-shadow: 0 4px 16px rgba(37,211,102,0.35);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .whatsapp-float:hover { transform: scale(1.12) rotate(6deg); color: white; box-shadow: 0 8px 24px rgba(37,211,102,0.45); }
-
-        /* MAIN CARD */
-        .calc-card {
-            width: 100%; max-width: 720px;
-            background: var(--bg-card);
-            border-radius: 22px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-            animation: fadeUp 0.5s ease both;
-        }
-        @keyframes fadeUp { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
-
-        /* TOP STRIPE */
-        .card-stripe {
-            height: 5px;
-            background: linear-gradient(90deg, var(--brand-blue), #74b9ff, var(--brand-green));
-        }
-
-        .card-inner { padding: 22px 20px 28px; }
-        @media(min-width:600px) { .card-inner { padding: 32px 36px 36px; } }
-
-        /* HEADER */
-        .header {
-            display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 24px; padding-bottom: 18px;
-            border-bottom: 1px solid var(--border);
-        }
-        .header-left h1 {
-            font-family: 'Syne', sans-serif; font-weight: 800;
-            font-size: 1.55rem; letter-spacing: -0.5px; line-height: 1.1;
+            min-height: 100vh;
             color: var(--text-main);
+            overflow-x: hidden;
         }
-        .header-left h1 span { color: var(--brand-blue); }
-        .header-left p { font-size: 0.68rem; letter-spacing: 2px; color: var(--brand-blue); font-weight: 600; margin-top: 3px; text-transform: uppercase; }
-        .header-right { display: flex; gap: 8px; align-items: center; }
 
-        .theme-toggle {
-            background: var(--bg-card2); border: 1px solid var(--border);
-            color: var(--text-muted); font-size: 1rem;
-            width: 38px; height: 38px; border-radius: 10px;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
-            transition: all 0.2s;
+        /* SIDEBAR NAV */
+        nav {
+            width: 260px; background: var(--glass);
+            backdrop-filter: blur(16px);
+            color: white; padding: 1.5rem;
+            display: flex; flex-direction: column;
+            position: fixed; left: 0; top: 0; height: 100vh;
+            z-index: 2000;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-right: 1px solid rgba(255,255,255,0.07);
+            overflow-y: auto; overflow-x: hidden;
         }
-        .theme-toggle:hover { color: var(--brand-blue); border-color: var(--brand-blue); }
+        .nav-header {
+            display: flex; align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem; flex-shrink: 0;
+        }
+        .logo-area {
+            display: flex; align-items: center; gap: 10px;
+            font-weight: 800; color: #f8fafc;
+            font-size: 0.9rem; letter-spacing: 0.5px; min-width: 0;
+        }
+        .logo-area span { line-height: 1.2; }
+        .nav-close { display: none; cursor: pointer; color: #94a3b8; padding: 4px; flex-shrink: 0; }
+        .nav-menu-content { flex-grow: 1; display: flex; flex-direction: column; min-width: 0; }
+        .nav-item {
+            display: flex; align-items: center; gap: 12px;
+            padding: 11px 13px; text-decoration: none; color: #94a3b8;
+            border-radius: 10px; margin-bottom: 3px;
+            transition: background 0.2s, color 0.2s;
+            font-weight: 500; font-size: 0.88rem;
+            white-space: nowrap; overflow: hidden;
+        }
+        .nav-item:hover { background: rgba(255,255,255,0.06); color: white; }
+        .nav-item.active {
+            background: linear-gradient(135deg, rgba(37,99,235,0.25), rgba(37,99,235,0.08));
+            color: #60a5fa; border: 1px solid rgba(96,165,250,0.2);
+        }
+        .nav-item i { flex-shrink: 0; }
+        .nav-built-by {
+            padding: 14px 10px 8px;
+            font-size: 0.7rem; color: #475569; text-align: center;
+        }
+        .nav-footer {
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            flex-shrink: 0; display: flex;
+            align-items: center; gap: 10px;
+            min-height: 58px;
+            padding-bottom: env(safe-area-inset-bottom, 8px);
+        }
+        .mini-profile {
+            display: flex; align-items: center; gap: 9px;
+            flex: 1; min-width: 0; overflow: hidden;
+        }
+        .mini-avatar {
+            width: 34px; height: 34px; min-width: 34px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 9px; display: flex; align-items: center;
+            justify-content: center; font-weight: 700;
+            font-size: 0.72rem; color: white; flex-shrink: 0;
+        }
+        .mini-info { min-width: 0; flex: 1; overflow: hidden; }
+        .mini-info p {
+            font-size: 0.8rem; font-weight: 600;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #f1f5f9;
+        }
+        .mini-info small { font-size: 0.65rem; color: #64748b; display: block; }
+        .logout-pill {
+            background: rgba(239,68,68,0.12);
+            border: 1px solid rgba(239,68,68,0.2);
+            color: #ef4444; padding: 8px; border-radius: 9px;
+            cursor: pointer; transition: background 0.2s;
+            flex-shrink: 0; display: flex;
+            align-items: center; justify-content: center;
+            min-width: 36px; min-height: 36px;
+        }
+        .logout-pill:hover { background: rgba(239,68,68,0.22); }
+
+        .nav-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.5); z-index: 1999;
+            backdrop-filter: blur(3px);
+        }
+        .nav-overlay.visible { display: block; }
+
+        /* MOBILE TOP BAR */
+        .mobile-top-bar {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: var(--sidebar);
+            color: white;
+            padding: 0 1.1rem;
+            height: 56px;
+            z-index: 1500;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            padding-top: env(safe-area-inset-top, 0);
+        }
+        .mobile-top-bar .mobile-brand {
+            display: flex; flex-direction: column;
+            align-items: center; line-height: 1.2;
+            user-select: none;
+        }
+        .mobile-top-bar .mobile-brand span:first-child {
+            font-weight: 800; font-size: 0.92rem; letter-spacing: 1.5px;
+        }
+        .mobile-top-bar .mobile-brand span:last-child {
+            font-size: 0.56rem; font-weight: 700; color: #60a5fa; letter-spacing: 0.8px;
+        }
+        .mobile-icon-btn {
+            background: rgba(255,255,255,0.08);
+            border: none; color: white;
+            width: 36px; height: 36px;
+            border-radius: 9px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: background 0.2s;
+            flex-shrink: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .mobile-icon-btn:hover { background: rgba(255,255,255,0.14); }
+        .mobile-right-actions { display: flex; align-items: center; gap: 7px; }
+
+        /* MAIN CONTENT AREA */
+        main {
+            flex-grow: 1; margin-left: 260px;
+            padding: 2.5rem 2.5rem 3rem;
+            width: 100%; display: flex; flex-direction: column; min-width: 0;
+        }
+
+        .header-top {
+            display: flex; justify-content: space-between;
+            align-items: center; margin-bottom: 2rem;
+            flex-wrap: wrap; gap: 1rem;
+        }
+        .header-actions { display: flex; align-items: center; gap: 10px; }
+        .user-profile-card {
+            display: flex; align-items: center; gap: 10px;
+            background: var(--card-bg); padding: 8px 14px;
+            border-radius: 11px; border: 1px solid var(--border-color);
+            text-decoration: none; color: inherit; transition: border-color 0.2s;
+        }
+        .user-profile-card:hover { border-color: var(--primary-accent); }
+        
+        .share-btn-header {
+            display: flex; align-items: center; gap: 7px;
+            background: var(--share-gradient); color: white;
+            padding: 9px 16px; border-radius: 11px; border: none;
+            font-weight: 700; font-size: 0.8rem; cursor: pointer;
+            letter-spacing: 0.3px; white-space: nowrap;
+            box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .share-btn-header:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.4); }
+        .theme-btn {
+            background: var(--card-bg); color: var(--text-main);
+            border: 1px solid var(--border-color); padding: 9px;
+            border-radius: 11px; cursor: pointer; transition: border-color 0.2s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .theme-btn:hover { border-color: var(--primary-accent); }
+
+        /* GPA CARDS */
+        .gpa-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            margin-bottom: 1.5rem;
+        }
 
         /* TABS */
         .tab-bar {
-            display: flex; gap: 4px;
-            background: var(--bg-card2); border: 1px solid var(--border);
-            border-radius: 12px; padding: 4px; margin-bottom: 22px;
+            display: flex; gap: 6px;
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 6px; margin-bottom: 1.5rem;
+            max-width: 400px;
         }
         .tab-btn {
-            flex: 1; padding: 9px 6px; border: none; background: none;
-            font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500;
-            color: var(--text-muted); border-radius: 9px; cursor: pointer;
-            transition: all 0.2s; white-space: nowrap;
+            flex: 1; padding: 9px 12px; border: none; background: none;
+            font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600;
+            color: var(--text-muted); border-radius: 8px; cursor: pointer;
+            transition: all 0.2s; text-align: center;
         }
         .tab-btn.active {
-            background: var(--bg-card); color: var(--brand-blue);
-            font-weight: 700; box-shadow: var(--shadow-card);
-            border: 1px solid var(--border);
+            background: var(--bg-body); color: var(--primary-accent);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
         }
         .tab-content { display: none; }
         .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
@@ -148,79 +248,108 @@
         /* INPUT AREA */
         .input-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px; margin-bottom: 14px;
+            grid-template-columns: 1fr;
+            gap: 12px; margin-bottom: 16px;
         }
-        @media(min-width:520px) { .input-grid { grid-template-columns: 2fr 1fr 1.8fr auto; } }
+        @media(min-width: 600px) {
+            .input-grid {
+                grid-template-columns: 2fr 1fr 1.8fr auto;
+            }
+        }
+        .input-group { display: flex; flex-direction: column; gap: 6px; }
+        .input-label { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
-        .input-group { display: flex; flex-direction: column; gap: 4px; }
-        .input-label { font-size: 0.68rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; padding-left: 2px; }
         input, select {
-            padding: 11px 13px; border-radius: 10px;
-            border: 1.5px solid var(--border);
-            background: var(--bg-card2); color: var(--text-main);
-            font-family: 'DM Sans', sans-serif; font-size: 0.92rem;
-            outline: none; transition: border 0.2s, box-shadow 0.2s;
+            height: 46px; padding: 0 14px; border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-body); color: var(--text-main);
+            font-family: 'Inter', sans-serif; font-size: 0.9rem;
+            outline: none; transition: border-color 0.2s, box-shadow 0.2s;
             width: 100%;
         }
-        input:focus, select:focus { border-color: var(--brand-blue); box-shadow: 0 0 0 3px rgba(9,132,227,0.1); }
-
-        .btn-add {
-            background: var(--brand-blue); color: white;
-            border: none; border-radius: 10px; padding: 11px 18px;
-            font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem;
-            cursor: pointer; white-space: nowrap; align-self: flex-end;
-            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-            box-shadow: 0 2px 8px rgba(9,132,227,0.3);
+        input:focus, select:focus {
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
-        .btn-add:hover { background: #0773c5; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(9,132,227,0.4); }
-        .btn-add:active { transform: scale(0.97); }
 
         /* GRADING INFO */
         .grade-info-bar {
-            background: linear-gradient(135deg, rgba(9,132,227,0.06), rgba(39,174,96,0.06));
-            border: 1px solid var(--border); border-radius: 10px;
-            padding: 8px 14px; margin-bottom: 18px;
-            font-size: 0.72rem; color: var(--text-muted);
+            background: rgba(37, 99, 235, 0.05);
+            border: 1px solid var(--border-color); border-radius: 10px;
+            padding: 8px 14px; margin-top: 14px;
+            font-size: 0.75rem; color: var(--text-muted);
             display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center;
         }
         .grade-pill {
             display: inline-flex; align-items: center; gap: 4px;
-            font-size: 0.7rem; font-weight: 600;
+            font-size: 0.72rem; font-weight: 600;
         }
-        .grade-pill span { background: var(--border); border-radius: 4px; padding: 2px 6px; }
+        .grade-pill span { background: var(--border-color); border-radius: 4px; padding: 2px 6px; }
+
+        /* INLINE EDITING CSS */
+        [contenteditable="true"] {
+            outline: none;
+            padding: 4px 8px;
+            border-radius: 6px;
+            background: rgba(37, 99, 235, 0.06);
+            border: 1px dashed rgba(37, 99, 235, 0.2);
+            display: inline-block;
+            min-width: 50px;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        [contenteditable="true"]:focus {
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid var(--primary-accent);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+        .edit-course-grade {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            height: 34px;
+            padding: 0 8px;
+            font-size: 0.82rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            cursor: pointer;
+            outline: none;
+            width: auto;
+        }
+        .edit-course-grade:focus {
+            border-color: var(--primary-accent);
+        }
 
         /* TABLE */
-        .table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 16px; }
-        table { width: 100%; border-collapse: collapse; min-width: 380px; }
-        thead { background: var(--table-head); }
+        .table-container { width: 100%; overflow-x: auto; border-radius: 12px; border: 1px solid var(--border-color); margin-bottom: 1.5rem; }
+        table { width: 100%; border-collapse: collapse; min-width: 450px; }
+        thead { background: var(--bg-body); }
         th {
-            color: var(--text-muted); padding: 11px 13px;
-            text-align: left; font-size: 0.68rem; text-transform: uppercase;
-            letter-spacing: 1px; font-weight: 700; border-bottom: 1px solid var(--border);
+            color: var(--text-muted); padding: 12px 16px;
+            text-align: left; font-size: 0.72rem; text-transform: uppercase;
+            letter-spacing: 0.5px; font-weight: 700; border-bottom: 1px solid var(--border-color);
         }
-        td { padding: 11px 13px; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+        td { padding: 12px 16px; border-bottom: 1px solid var(--border-color); font-size: 0.88rem; color: var(--text-main); vertical-align: middle;}
         tbody tr:last-child td { border-bottom: none; }
-        tbody tr { transition: background 0.15s; }
-        tbody tr:hover { background: var(--bg-card2); }
+        tbody tr { transition: background-color 0.15s; }
+        tbody tr:hover { background-color: var(--bg-body); }
 
         .grade-badge {
             display: inline-block; padding: 3px 10px;
             border-radius: 6px; font-size: 0.75rem; font-weight: 700;
         }
-        .grade-A { background: rgba(39,174,96,0.12); color: #27ae60; }
-        .grade-B { background: rgba(9,132,227,0.12); color: #0984e3; }
-        .grade-C { background: rgba(253,203,110,0.18); color: #d4a017; }
-        .grade-D { background: rgba(225,112,85,0.12); color: #e17055; }
-        .grade-E { background: rgba(214,48,49,0.1); color: #d63031; }
-        .grade-F { background: rgba(214,48,49,0.15); color: #c0392b; }
+        .grade-A { background: rgba(16, 185, 129, 0.12); color: #10b981; }
+        .grade-B { background: rgba(37, 99, 235, 0.12); color: #2563eb; }
+        .grade-C { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+        .grade-D { background: rgba(249, 115, 22, 0.12); color: #f97316; }
+        .grade-E { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+        .grade-F { background: rgba(239, 68, 68, 0.15); color: #dc2626; }
 
         .delete-btn {
             background: none; border: none; color: var(--text-muted);
             cursor: pointer; font-size: 1rem; padding: 4px 8px; border-radius: 6px;
             transition: color 0.2s, background 0.2s;
         }
-        .delete-btn:hover { color: var(--brand-red); background: rgba(214,48,49,0.08); }
+        .delete-btn:hover { color: #ef4444; background: rgba(239, 68, 68, 0.08); }
 
         .empty-state {
             text-align: center; padding: 32px 16px; color: var(--text-muted);
@@ -228,128 +357,147 @@
         .empty-state i { font-size: 2rem; margin-bottom: 10px; opacity: 0.3; display: block; }
         .empty-state p { font-size: 0.85rem; }
 
-        /* GPA DISPLAY */
-        .gpa-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
-        @media(min-width:520px) { .gpa-row { grid-template-columns: 1.4fr 1fr 1fr; } }
-
+        /* GPA BOXES */
+        .gpa-row { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+        @media(min-width: 550px) {
+            .gpa-row { grid-template-columns: 1.4fr 1fr 1fr; }
+        }
         .gpa-box {
-            border-radius: 14px; padding: 16px 14px;
+            border-radius: 16px; padding: 1.5rem;
             text-align: center; position: relative; overflow: hidden;
         }
         .gpa-box-main {
-            background: linear-gradient(135deg, var(--brand-blue) 0%, #0066c7 100%);
-            grid-column: span 2;
-            box-shadow: 0 4px 20px rgba(9,132,227,0.3);
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #7c3aed 100%);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.3);
+            color: white;
         }
-        @media(min-width:520px) { .gpa-box-main { grid-column: span 1; } }
-        .gpa-box-main::before {
-            content: ''; position: absolute; top: -20px; right: -20px;
-            width: 100px; height: 100px;
-            border-radius: 50%; background: rgba(255,255,255,0.06);
+        .gpa-box-main .gpa-val { color: #10b981; }
+        .gpa-box-secondary {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
         }
-        .gpa-box-secondary { background: var(--bg-card2); border: 1px solid var(--border); }
-
-        .gpa-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.75; }
+        .gpa-box-secondary .gpa-val { color: var(--primary-accent); }
+        .gpa-val {
+            font-size: 2.2rem; font-weight: 800; display: block; line-height: 1.2; margin: 6px 0;
+        }
+        .gpa-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
         .gpa-box-main .gpa-label { color: rgba(255,255,255,0.8); }
         .gpa-box-secondary .gpa-label { color: var(--text-muted); }
 
-        .gpa-val {
-            font-family: 'Syne', sans-serif; font-weight: 800;
-            font-size: 2.4rem; display: block; line-height: 1.1; margin: 4px 0;
-        }
-        .gpa-box-main .gpa-val { color: #55efc4; }
-        .gpa-box-secondary .gpa-val { color: var(--brand-blue); font-size: 1.6rem; }
-
         .class-badge {
             display: inline-block; padding: 4px 12px;
-            border-radius: 20px; font-size: 0.7rem; font-weight: 700;
+            border-radius: 20px; font-size: 0.72rem; font-weight: 700;
             letter-spacing: 0.5px; margin-top: 4px;
         }
-        .class-first { background: rgba(85,239,196,0.2); color: #00b894; }
-        .class-second-upper { background: rgba(116,185,255,0.2); color: #0984e3; }
-        .class-second-lower { background: rgba(253,203,110,0.2); color: #d4a017; }
-        .class-third { background: rgba(225,112,85,0.2); color: #e17055; }
-        .class-pass { background: rgba(200,214,229,0.3); color: #7b8099; }
-        .class-fail { background: rgba(214,48,49,0.15); color: #d63031; }
+        .class-first { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+        .class-second-upper { background: rgba(37, 99, 235, 0.2); color: #2563eb; }
+        .class-second-lower { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .class-third { background: rgba(249, 115, 22, 0.2); color: #f97316; }
+        .class-pass { background: rgba(148, 163, 184, 0.3); color: var(--text-muted); }
+        .class-fail { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
 
-        /* STATS ROW */
+        /* STATS */
         .stats-row {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 1.5rem;
         }
         .stat-box {
-            background: var(--bg-card2); border: 1px solid var(--border);
-            border-radius: 12px; padding: 12px 10px; text-align: center;
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 12px; text-align: center;
         }
-        .stat-label { font-size: 0.62rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-        .stat-val { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--text-main); }
+        .stat-label { font-size: 0.65rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .stat-val { font-weight: 800; font-size: 1.2rem; color: var(--text-main); }
 
-        /* CONTROLS */
-        .controls { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
-        @media(min-width:480px) { .controls { flex-direction: row; } }
-
+        /* BUTTONS CONTROLS */
+        .btn-row { display: flex; gap: 10px; margin-top: 1.5rem; flex-wrap: wrap; }
         .btn-action {
-            flex: 1; padding: 13px 16px; border: none; border-radius: 11px;
-            font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem;
+            flex: 1; min-width: 130px; height: 46px; border: none; border-radius: 10px;
+            font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.85rem;
             cursor: pointer; display: flex; align-items: center; justify-content: center;
             gap: 8px; transition: all 0.2s;
         }
-        .btn-share { background: var(--brand-green); color: white; box-shadow: 0 2px 8px rgba(39,174,96,0.25); }
-        .btn-share:hover { background: #219a52; transform: translateY(-1px); }
-        .btn-reset { background: var(--bg-card2); color: var(--brand-red); border: 1.5px solid rgba(214,48,49,0.25); }
-        .btn-reset:hover { background: rgba(214,48,49,0.08); }
-        .btn-print { background: var(--bg-card2); color: var(--text-muted); border: 1.5px solid var(--border); }
-        .btn-print:hover { color: var(--brand-blue); border-color: var(--brand-blue); background: rgba(9,132,227,0.05); }
+        .btn-add {
+            height: 46px; border: none; border-radius: 10px; background: var(--primary-accent);
+            color: white; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.88rem;
+            cursor: pointer; padding: 0 24px; transition: all 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(37,99,235,0.2);
+            align-self: flex-end;
+        }
+        .btn-add:hover { background: #1d4ed8; transform: translateY(-1px); }
+        .btn-share { background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: white; box-shadow: 0 4px 6px -1px rgba(16,185,129,0.2); }
+        .btn-share:hover { transform: translateY(-1px); }
+        .btn-print { background: var(--card-bg); color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn-print:hover { border-color: var(--primary-accent); color: var(--primary-accent); }
+        .btn-reset { background: rgba(239, 68, 68, 0.08); color: #ef4444; border: 1px dashed rgba(239, 68, 68, 0.3); }
+        .btn-reset:hover { background: rgba(239, 68, 68, 0.15); }
 
-        /* CGPA TAB */
-        .semester-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+        /* CGPA TRACKER */
+        .semester-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 1.5rem; }
         .semester-card {
-            background: var(--bg-card2); border: 1px solid var(--border);
-            border-radius: 12px; padding: 14px 16px;
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 14px 18px;
             display: flex; align-items: center; justify-content: space-between; gap: 10px;
         }
         .semester-info { flex: 1; }
-        .semester-name { font-weight: 600; font-size: 0.9rem; color: var(--text-main); }
-        .semester-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+        .semester-name { font-weight: 700; font-size: 0.92rem; color: var(--text-main); }
+        .semester-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
         .semester-gpa-pill {
-            font-family: 'Syne', sans-serif; font-weight: 800;
-            font-size: 1.2rem; color: var(--brand-blue);
-            background: rgba(9,132,227,0.1); border-radius: 8px;
+            font-weight: 800; font-size: 1.25rem; color: var(--primary-accent);
+            background: rgba(37, 99, 235, 0.08); border-radius: 8px;
             padding: 6px 14px;
         }
 
         .semester-input-row {
-            display: grid; grid-template-columns: 1fr 1fr 1fr auto;
-            gap: 8px; margin-bottom: 14px;
+            display: grid; grid-template-columns: 1fr;
+            gap: 12px; margin-bottom: 16px;
             align-items: flex-end;
         }
-        @media(max-width:500px) {
-            .semester-input-row { grid-template-columns: 1fr 1fr; }
+        @media(min-width: 500px) {
+            .semester-input-row { grid-template-columns: 1.8fr 1fr 1fr auto; }
         }
 
         .cgpa-result {
-            background: linear-gradient(135deg, #1a1d2e 0%, #2d3561 100%);
-            border-radius: 14px; padding: 20px; text-align: center;
-            margin-top: 6px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 16px; padding: 1.5rem; text-align: center;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
-        [data-theme="dark"] .cgpa-result { background: linear-gradient(135deg, #0d1117 0%, #1a2340 100%); }
-        .cgpa-result .cgpa-label { font-size: 0.65rem; letter-spacing: 2px; color: rgba(255,255,255,0.55); font-weight: 700; text-transform: uppercase; }
-        .cgpa-big { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 3rem; color: #55efc4; display: block; line-height: 1; margin: 6px 0 4px; }
+        .cgpa-result .cgpa-label { font-size: 0.7rem; letter-spacing: 1.5px; color: rgba(255,255,255,0.6); font-weight: 700; text-transform: uppercase; }
+        .cgpa-big { font-weight: 800; font-size: 3rem; color: #10b981; display: block; line-height: 1; margin: 8px 0; }
 
-        /* FOOTER */
-        .footer { text-align: center; margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border); }
-        .footer p { font-size: 0.78rem; color: var(--text-muted); }
-        .footer strong { color: var(--brand-blue); }
-        .socials { margin-top: 10px; display: flex; justify-content: center; gap: 6px; }
-        .socials a {
-            text-decoration: none; color: var(--text-muted);
-            width: 34px; height: 34px; border-radius: 9px;
-            background: var(--bg-card2); border: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.9rem; transition: all 0.2s;
+        /* WHATSAPP FLOAT */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 24px -8px rgba(37, 211, 102, 0.5);
+            z-index: 9999;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 24px;
         }
-        .socials a:hover { color: var(--brand-blue); border-color: var(--brand-blue); transform: translateY(-2px); }
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 20px 30px -10px rgba(37, 211, 102, 0.6);
+            color: white;
+        }
+        @keyframes softPulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            100% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+        }
+        .whatsapp-float {
+            animation: softPulse 2s infinite;
+        }
 
-        /* SHARE MODAL */
+        /* MODAL */
         .modal-overlay {
             position: fixed; inset: 0; z-index: 9999;
             background: rgba(0,0,0,0.5); backdrop-filter: blur(6px);
@@ -358,95 +506,171 @@
         }
         .modal-overlay.open { opacity: 1; pointer-events: all; }
         .modal {
-            background: var(--bg-card); border: 1px solid var(--border);
+            background: var(--card-bg); border: 1px solid var(--border-color);
             border-radius: 18px; padding: 28px 24px; max-width: 420px; width: 100%;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             transform: translateY(16px); transition: transform 0.25s;
+            color: var(--text-main);
         }
         .modal-overlay.open .modal { transform: translateY(0); }
-        .modal h3 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; margin-bottom: 4px; }
-        .modal p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 18px; }
+        .modal h3 { font-weight: 800; font-size: 1.15rem; margin-bottom: 4px; }
+        .modal p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 18px; }
         .share-preview {
-            background: var(--bg-card2); border: 1px solid var(--border);
-            border-radius: 12px; padding: 14px; font-family: 'DM Sans', sans-serif;
+            background: var(--bg-body); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 14px; font-family: monospace;
             font-size: 0.8rem; line-height: 1.6; color: var(--text-main);
             margin-bottom: 14px; white-space: pre-wrap;
         }
         .modal-btns { display: flex; gap: 8px; flex-wrap: wrap; }
         .modal-btn {
             flex: 1; min-width: 100px; padding: 11px; border: none; border-radius: 10px;
-            font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.8rem;
+            font-weight: 700; font-size: 0.8rem;
             cursor: pointer; transition: all 0.2s;
         }
-        .modal-copy { background: var(--brand-blue); color: white; }
-        .modal-copy:hover { background: #0773c5; }
-        .modal-wa { background: var(--whatsapp-green); color: white; }
+        .modal-copy { background: var(--primary-accent); color: white; }
+        .modal-copy:hover { background: #1d4ed8; }
+        .modal-wa { background: #25d366; color: white; }
         .modal-wa:hover { background: #1ebe5d; }
-        .modal-close { background: var(--bg-card2); color: var(--text-muted); border: 1px solid var(--border); }
-        .toast {
-            position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%) translateY(20px);
-            background: #1a1d2e; color: white; padding: 10px 20px;
-            border-radius: 30px; font-size: 0.8rem; font-weight: 600;
-            z-index: 99999; opacity: 0; transition: all 0.3s; pointer-events: none;
-            white-space: nowrap;
+        .modal-close { background: var(--bg-body); color: var(--text-muted); border: 1px solid var(--border-color); }
+        
+        #toast {
+            position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
+            background: rgba(17, 24, 39, 0.96); border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px); border-radius: 100px;
+            padding: 12px 26px; font-size: 0.82rem; font-weight: 600; color: #f9fafb;
+            opacity: 0; transition: opacity .3s, transform .3s; z-index: 9999;
+            white-space: nowrap; box-shadow: 0 10px 40px rgba(0,0,0,.4)
         }
-        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        #toast.ok { border-color: rgba(16, 185, 129, 0.4); color: #34d399; }
+        #toast.bad { border-color: rgba(239, 68, 68, 0.4); color: #f87171; }
+
+        @media (max-width: 1024px) {
+            main { margin-left: 0; padding: 5.5rem 1.2rem 2.5rem; }
+            .mobile-top-bar { display: flex; }
+            nav {
+                transform: translateX(-100%);
+            }
+            nav.open {
+                transform: translateX(0);
+            }
+            .nav-close { display: block; }
+        }
 
         @media print {
-            .no-print, .whatsapp-float, .modal-overlay, .toast { display: none !important; }
+            .no-print, .whatsapp-float, .modal-overlay, #toast { display: none !important; }
             body { padding: 0; background: white !important; }
-            .calc-card { box-shadow: none !important; border: none !important; max-width: 100%; border-radius: 0; }
-            .card-stripe { display: none; }
+            main { margin-left: 0 !important; padding: 0 !important; }
+            .gpa-card { box-shadow: none !important; border: none !important; max-width: 100%; border-radius: 0; }
         }
     </style>
 </head>
-<body data-theme="light">
+<body>
 
-<a href="https://wa.me/2347046203544" class="whatsapp-float no-print" target="_blank" title="Chat with Resolutefemi">
-    <i class="fab fa-whatsapp"></i>
-</a>
+    <a href="https://wa.me/2347046203544" class="whatsapp-float no-print" target="_blank" title="Chat with Resolutefemi">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-<div class="modal-overlay" id="shareModal">
-    <div class="modal">
-        <h3>📤 Share Result</h3>
-        <p>Your GPA result is ready to share</p>
-        <div class="share-preview" id="shareText"></div>
-        <div class="modal-btns">
-            <button class="modal-btn modal-copy" onclick="copyResult()"><i class="far fa-copy"></i> Copy</button>
-            <button class="modal-btn modal-wa" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i> WhatsApp</button>
-            <button class="modal-btn modal-close" onclick="closeModal()">Close</button>
+    <div class="modal-overlay" id="shareModal">
+        <div class="modal">
+            <h3>📤 Share Result</h3>
+            <p>Your GPA result is ready to share</p>
+            <div class="share-preview" id="shareText"></div>
+            <div class="modal-btns">
+                <button class="modal-btn modal-copy" onclick="copyResult()"><i class="far fa-copy"></i> Copy</button>
+                <button class="modal-btn modal-wa" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                <button class="modal-btn modal-close" onclick="closeModal()">Close</button>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="toast" id="toast"></div>
+    <div id="toast"></div>
 
-<div class="calc-card">
-    <div class="card-stripe"></div>
-    <div class="card-inner">
+    <!-- MOBILE TOP BAR -->
+    <div class="mobile-top-bar no-print">
+        <button class="mobile-icon-btn" onclick="toggleNav()" aria-label="Toggle menu">
+            <i data-lucide="menu"></i>
+        </button>
+        <div class="mobile-brand">
+            <span>RENANCE</span>
+            <span>FUTA CBT</span>
+        </div>
+        <div class="mobile-right-actions">
+            <button class="mobile-icon-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+                <i data-lucide="moon" id="mobileThemeIcon" size="18"></i>
+            </button>
+        </div>
+    </div>
 
-        <div class="header">
-            <div class="header-left">
-                <h1>GPA <span>Calculator</span></h1>
-                <p>⚡ FUTA Grading System · Resolutefemi</p>
+    <!-- SIDEBAR NAV -->
+    <nav id="sidebar" class="no-print">
+        <div class="nav-header">
+            <div class="logo-area">
+                <i data-lucide="graduation-cap" size="20"></i>
+                <span>RENANCE<br><span style="font-size:0.68rem;color:#60a5fa;letter-spacing:1px;">FUTA CBT</span></span>
             </div>
-            <div class="header-right no-print">
-                <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" title="Toggle theme">
-                    <i class="fas fa-moon"></i>
+            <button class="nav-close mobile-icon-btn" onclick="toggleNav()" aria-label="Close menu">
+                <i data-lucide="x" size="18"></i>
+            </button>
+        </div>
+        <div class="nav-menu-content">
+            <a href="dashboard.html"  class="nav-item"><i data-lucide="layout-dashboard" size="17"></i> <span>Dashboard</span></a>
+            <a href="pdf.html"        class="nav-item"><i data-lucide="book"             size="17"></i> <span>PDFs</span></a>
+            <a href="gpa.html"        class="nav-item active"><i data-lucide="calculator"       size="17"></i> <span>GPA Calculator</span></a>
+            <a href="ai.html"         class="nav-item"><i data-lucide="brain"            size="17"></i> <span>Renance AI</span></a>
+            <a href="Tips.html"       class="nav-item"><i data-lucide="lightbulb"        size="17"></i> <span>Study Tips</span></a>
+            <a href="about.html"      class="nav-item"><i data-lucide="info"             size="17"></i> <span>About Portal</span></a>
+            <a href="registration.html" class="nav-item"><i data-lucide="user"          size="17"></i> <span>My Profile</span></a>
+            <div class="nav-built-by">Built by <b style="color:#94a3b8;">Resolute Femi</b></div>
+        </div>
+        <div class="nav-footer">
+            <div class="mini-profile">
+                <div class="mini-avatar" id="navInitials">??</div>
+                <div class="mini-info">
+                    <p id="navUserName">Student</p>
+                    <small>100 Level</small>
+                </div>
+            </div>
+            <button class="logout-pill" onclick="logout()" title="Logout" aria-label="Logout">
+                <i data-lucide="log-out" size="16"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="nav-overlay no-print" id="navOverlay" onclick="toggleNav()"></div>
+
+    <!-- MAIN CONTAINER -->
+    <main>
+        <div class="header-top">
+            <div>
+                <h1 style="font-size:1.7rem;font-weight:800;letter-spacing:-0.5px;">GPA Calculator</h1>
+                <p style="color:var(--text-muted);font-size:0.86rem;margin-top:3px;">FUTA Grading System · Calculate & track your academic progress.</p>
+            </div>
+            <div class="header-actions no-print">
+                <button class="share-btn-header" onclick="openShareModal()">
+                    <i data-lucide="share-2" size="14"></i>
+                    Share Result
                 </button>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <i data-lucide="moon" id="desktopThemeIcon" size="17"></i>
+                </button>
+                <a href="registration.html" class="user-profile-card">
+                    <div style="text-align:right;">
+                        <div id="displayUserName" style="font-weight:700;font-size:0.86rem;">Student</div>
+                        <div id="displayUserDept" style="font-size:0.7rem;color:var(--text-muted);">Department</div>
+                    </div>
+                    <div class="mini-avatar" id="displayInitials" style="width:38px;height:38px;">??</div>
+                </a>
             </div>
         </div>
 
-        <!-- TABS -->
         <div class="tab-bar no-print">
-            <button class="tab-btn active" onclick="switchTab('semester')">📘 Semester GPA</button>
-            <button class="tab-btn" onclick="switchTab('cgpa')">📊 CGPA Tracker</button>
+            <button class="tab-btn active" id="tab-btn-semester" onclick="switchTab('semester')">📘 Semester GPA</button>
+            <button class="tab-btn" id="tab-btn-cgpa" onclick="switchTab('cgpa')">📊 CGPA Tracker</button>
         </div>
 
         <!-- SEMESTER TAB -->
         <div class="tab-content active" id="tab-semester">
-            <!-- Input -->
-            <div class="no-print">
+            <div class="gpa-card no-print">
                 <div class="input-grid">
                     <div class="input-group" style="grid-column:span 2;">
                         <label class="input-label">Course Code</label>
@@ -472,18 +696,20 @@
                     </div>
                 </div>
                 <div class="grade-info-bar">
-                    <span style="font-weight:600;color:var(--text-main);">FUTA Scale:</span>
-                    <span class="grade-pill"><span style="background:rgba(39,174,96,0.15);color:#27ae60;">A</span> 70-100</span>
-                    <span class="grade-pill"><span style="background:rgba(9,132,227,0.15);color:#0984e3;">B</span> 60-69</span>
-                    <span class="grade-pill"><span style="background:rgba(253,203,110,0.2);color:#d4a017;">C</span> 50-59</span>
-                    <span class="grade-pill"><span style="background:rgba(225,112,85,0.15);color:#e17055;">D</span> 45-49</span>
-                    <span class="grade-pill"><span style="background:rgba(214,48,49,0.12);color:#d63031;">E</span> 40-44</span>
-                    <span class="grade-pill"><span style="background:rgba(214,48,49,0.2);color:#c0392b;">F</span> 0-39</span>
+                    <span style="font-weight:700;color:var(--text-main);">FUTA Scale:</span>
+                    <span class="grade-pill"><span style="background:rgba(16, 185, 129, 0.15);color:#10b981;">A</span> 70-100 (5)</span>
+                    <span class="grade-pill"><span style="background:rgba(37, 99, 235, 0.15);color:#2563eb;">B</span> 60-69 (4)</span>
+                    <span class="grade-pill"><span style="background:rgba(245, 158, 11, 0.2);color:#f59e0b;">C</span> 50-59 (3)</span>
+                    <span class="grade-pill"><span style="background:rgba(249, 115, 22, 0.15);color:#f97316;">D</span> 45-49 (2)</span>
+                    <span class="grade-pill"><span style="background:rgba(239, 68, 68, 0.12);color:#ef4444;">E</span> 40-44 (1)</span>
+                    <span class="grade-pill"><span style="background:rgba(239, 68, 68, 0.2);color:#dc2626;">F</span> 0-39 (0)</span>
                 </div>
             </div>
 
-            <!-- Table -->
-            <div id="printSection">
+            <div class="gpa-card" id="printSection">
+                <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:14px;font-style:italic;" class="no-print">
+                    💡 <strong>Tip:</strong> Click and edit any course code, unit, or grade dropdown in the table below to update values instantly!
+                </p>
                 <div class="table-container">
                     <table id="gpaTable">
                         <thead>
@@ -509,7 +735,6 @@
                     </table>
                 </div>
 
-                <!-- GPA Boxes -->
                 <div class="gpa-row">
                     <div class="gpa-box gpa-box-main">
                         <div class="gpa-label">Semester GPA</div>
@@ -528,7 +753,6 @@
                     </div>
                 </div>
 
-                <!-- Stats -->
                 <div class="stats-row" id="statsRow" style="display:none;">
                     <div class="stat-box">
                         <div class="stat-label">Courses</div>
@@ -545,8 +769,7 @@
                 </div>
             </div>
 
-            <!-- Controls -->
-            <div class="controls no-print">
+            <div class="btn-row no-print">
                 <button class="btn-action btn-share" onclick="openShareModal()"><i class="fas fa-share-alt"></i> Share Result</button>
                 <button class="btn-action btn-print" onclick="window.print()"><i class="fas fa-print"></i> Print</button>
                 <button class="btn-action btn-reset" onclick="resetAll()"><i class="fas fa-trash-alt"></i> Reset</button>
@@ -555,7 +778,7 @@
 
         <!-- CGPA TAB -->
         <div class="tab-content" id="tab-cgpa">
-            <div class="no-print">
+            <div class="gpa-card no-print">
                 <div class="semester-input-row">
                     <div class="input-group">
                         <label class="input-label">Semester</label>
@@ -575,6 +798,10 @@
                 </div>
             </div>
 
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:14px;font-style:italic;" class="no-print">
+                💡 <strong>Tip:</strong> Click and edit Semester Name, GPA, or Units in the cards below to update your CGPA instantly!
+            </p>
+
             <div class="semester-list" id="semesterList">
                 <div class="empty-state" style="padding:24px 0;">
                     <i class="fas fa-chart-line"></i>
@@ -588,36 +815,96 @@
                 <div id="cgpaClass" class="class-badge class-pass" style="margin-top:6px;">—</div>
             </div>
         </div>
-
-        <div class="footer no-print">
-            <p>Developed by <strong>Resolutefemi</strong> &mdash; FUTA Grading System</p>
-            <div class="socials">
-                <a href="https://facebook.com/resolutefemi" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://x.com/resolutefemi" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://wa.me/2347046203544" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-
-    </div>
-</div>
+    </main>
 
 <script>
+    const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+    if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const db = window._sb;
+
     let courses = [];
     let semesters = [];
 
-    // THEME
+    // TOAST
+    function toast(m, t=''){
+      const el = document.getElementById('toast');
+      el.textContent = m;
+      el.className = 'show ' + t;
+      clearTimeout(el._);
+      el._ = setTimeout(() => el.className = '', 2800);
+    }
+
+    // THEME TOGGLE
     function toggleTheme() {
-        const body = document.body;
-        const btn = document.getElementById('themeBtn');
-        const theme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        body.setAttribute('data-theme', theme);
-        localStorage.setItem('gpaTheme', theme);
-        btn.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        updateIcons(isDark);
+    }
+    function updateIcons(isDark) {
+        const name = isDark ? 'sun' : 'moon';
+        document.getElementById('desktopThemeIcon').setAttribute('data-lucide', name);
+        document.getElementById('mobileThemeIcon').setAttribute('data-lucide', name);
+        if (window.lucide) lucide.createIcons();
+    }
+
+    // NAV TOGGLE
+    function toggleNav() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('navOverlay');
+        const isOpen  = sidebar.classList.toggle('open');
+        overlay.classList.toggle('visible', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    // USER UI SETTER
+    function setUserUI(name, dept) {
+        const initials = name
+            ? name.trim().split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase()
+            : '??';
+        const displayInit = document.getElementById('displayInitials');
+        const navInit = document.getElementById('navInitials');
+        if (displayInit) displayInit.textContent = initials;
+        if (navInit) navInit.textContent = initials;
+
+        const dispName = document.getElementById('displayUserName');
+        const navName = document.getElementById('navUserName');
+        const dispDept = document.getElementById('displayUserDept');
+
+        if (dispName) dispName.textContent = name || 'Student';
+        if (navName) navName.textContent = name || 'Student';
+        if (dispDept) dispDept.textContent = dept || 'Department';
+    }
+
+    // LOGOUT
+    function logout() {
+        db.auth.signOut().then(() => {
+            window.location.href = 'index.html';
+        });
+    }
+
+    // USER SESSION CHECK
+    async function checkUserProfile() {
+        try {
+            const { data: { user }, error: authErr } = await db.auth.getUser();
+            if (authErr || !user) { window.location.href = 'index.html'; return; }
+            const { data: student, error: fetchErr } = await db
+                .from('students')
+                .select('fullname, faculty, department')
+                .eq('id', user.id)
+                .single();
+            if (fetchErr || !student) return;
+            setUserUI(student.fullname, student.department);
+        } catch (err) {
+            console.error('Profile check:', err);
+        }
     }
 
     // TABS
     function switchTab(tab) {
-        document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', (i===0&&tab==='semester')||(i===1&&tab==='cgpa')));
+        document.getElementById('tab-btn-semester').classList.toggle('active', tab==='semester');
+        document.getElementById('tab-btn-cgpa').classList.toggle('active', tab==='cgpa');
         document.getElementById('tab-semester').classList.toggle('active', tab==='semester');
         document.getElementById('tab-cgpa').classList.toggle('active', tab==='cgpa');
     }
@@ -628,8 +915,6 @@
         localStorage.setItem('savedSemesters', JSON.stringify(semesters));
     }
     function loadFromLocal() {
-        const t = localStorage.getItem('gpaTheme');
-        if (t === 'dark') toggleTheme();
         const c = localStorage.getItem('savedCourses');
         if (c) { courses = JSON.parse(c); render(); }
         const s = localStorage.getItem('savedSemesters');
@@ -652,8 +937,9 @@
 
     // ANIMATED COUNTER
     function animateVal(el, target, decimals=2) {
+        if(!el) return;
         const start = parseFloat(el.innerText) || 0;
-        const dur = 500, fps = 60, steps = dur / (1000/fps);
+        const dur = 400, fps = 60, steps = dur / (1000/fps);
         let step = 0;
         const timer = setInterval(() => {
             step++;
@@ -670,12 +956,12 @@
         const unit = document.getElementById('courseUnit');
         const grade = document.getElementById('courseGrade');
         const u = parseInt(unit.value) || 0;
-        if (u <= 0 || u > 10) { showToast('⚠️ Enter valid credit units (1–10)'); return; }
+        if (u <= 0 || u > 10) { toast('⚠️ Enter valid credit units (1–10)', 'bad'); return; }
         courses.push({ code: (code.value || 'COURSE').toUpperCase().trim(), unit: u, gradeVal: parseInt(grade.value) });
         code.value = ''; unit.value = '';
         code.focus();
         save(); render();
-        showToast('✅ Course added');
+        toast('✅ Course added', 'ok');
     }
 
     function render() {
@@ -687,12 +973,21 @@
             tPoints += pts; tUnits += c.unit;
             const gn = gradeNames[c.gradeVal] || 'F';
             const gc = gradeClass[c.gradeVal] || 'grade-F';
-            rows += `<tr>
+            rows += `<tr data-index="${i}">
                 <td style="color:var(--text-muted);font-size:0.75rem;">${i+1}</td>
-                <td><strong>${c.code}</strong></td>
-                <td>${c.unit}</td>
-                <td><span class="grade-badge ${gc}">${gn}</span></td>
-                <td>${pts}</td>
+                <td><strong contenteditable="true" class="edit-course-code" data-index="${i}">${c.code}</strong></td>
+                <td><span contenteditable="true" class="edit-course-unit" data-index="${i}">${c.unit}</span></td>
+                <td>
+                    <select class="edit-course-grade" data-index="${i}">
+                        <option value="5" ${c.gradeVal === 5 ? 'selected' : ''}>A</option>
+                        <option value="4" ${c.gradeVal === 4 ? 'selected' : ''}>B</option>
+                        <option value="3" ${c.gradeVal === 3 ? 'selected' : ''}>C</option>
+                        <option value="2" ${c.gradeVal === 2 ? 'selected' : ''}>D</option>
+                        <option value="1" ${c.gradeVal === 1 ? 'selected' : ''}>E</option>
+                        <option value="0" ${c.gradeVal === 0 ? 'selected' : ''}>F</option>
+                    </select>
+                </td>
+                <td class="pts-column">${pts}</td>
                 <td class="no-print"><button class="delete-btn" onclick="removeCourse(${i})" title="Remove"><i class="fas fa-times"></i></button></td>
             </tr>`;
         });
@@ -716,17 +1011,81 @@
             const grades = courses.map(c => c.gradeVal);
             const best = Math.max(...grades), worst = Math.min(...grades);
             document.getElementById('statCourses').textContent = courses.length;
-            document.getElementById('statBest').textContent = gradeNames[best];
-            document.getElementById('statWorst').textContent = gradeNames[worst];
+            document.getElementById('statBest').textContent = gradeNames[best] || '—';
+            document.getElementById('statWorst').textContent = gradeNames[worst] || '—';
         } else {
             statsRow.style.display = 'none';
         }
     }
 
-    function removeCourse(i) { courses.splice(i,1); save(); render(); showToast('🗑️ Course removed'); }
+    // INSTANT INLINE RECALCULATE (without re-rendering row inputs to preserve cursor focus)
+    function recalculateGPAOnly() {
+        let tPoints = 0, tUnits = 0;
+        
+        courses.forEach((c, i) => {
+            const row = document.querySelector(`tr[data-index="${i}"]`);
+            const pts = c.unit * c.gradeVal;
+            tPoints += pts;
+            tUnits += c.unit;
+            if (row) {
+                const ptsCell = row.querySelector('.pts-column');
+                if (ptsCell) ptsCell.textContent = pts;
+            }
+        });
+
+        const gpa = tUnits > 0 ? tPoints / tUnits : 0;
+        const clf = getClassification(gpa);
+
+        document.getElementById('gpaScore').innerText = gpa.toFixed(2);
+        document.getElementById('totalUnits').innerText = tUnits;
+        document.getElementById('totalPoints').innerText = tPoints;
+
+        const cl = document.getElementById('classLabel');
+        cl.textContent = tUnits > 0 ? clf.label : '—';
+        cl.className = 'class-badge ' + (tUnits > 0 ? clf.cls : 'class-pass');
+
+        if (courses.length > 0) {
+            document.getElementById('statCourses').textContent = courses.length;
+            const grades = courses.map(c => c.gradeVal);
+            const best = Math.max(...grades), worst = Math.min(...grades);
+            document.getElementById('statBest').textContent = gradeNames[best] || '—';
+            document.getElementById('statWorst').textContent = gradeNames[worst] || '—';
+        }
+    }
+
+    // EVENT DELEGATION FOR TABLE INLINE EDITING
+    document.getElementById('courseBody').addEventListener('input', function(e) {
+        const target = e.target;
+        const index = parseInt(target.getAttribute('data-index'));
+        if (isNaN(index)) return;
+
+        if (target.classList.contains('edit-course-code')) {
+            courses[index].code = target.textContent.toUpperCase().trim();
+            save();
+        } else if (target.classList.contains('edit-course-unit')) {
+            const val = parseInt(target.textContent) || 0;
+            courses[index].unit = val;
+            save();
+            recalculateGPAOnly();
+        }
+    });
+
+    document.getElementById('courseBody').addEventListener('change', function(e) {
+        const target = e.target;
+        const index = parseInt(target.getAttribute('data-index'));
+        if (isNaN(index)) return;
+
+        if (target.classList.contains('edit-course-grade')) {
+            courses[index].gradeVal = parseInt(target.value);
+            save();
+            render(); // Re-render to update badges & stats properly
+        }
+    });
+
+    function removeCourse(i) { courses.splice(i,1); save(); render(); toast('🗑️ Course removed', 'ok'); }
     function resetAll() {
         if (confirm('Clear all courses this semester?')) {
-            courses = []; save(); render(); showToast('🔄 Reset complete');
+            courses = []; save(); render(); toast('🔄 Reset complete', 'ok');
         }
     }
 
@@ -737,11 +1096,11 @@
         const units = document.getElementById('semUnits');
         const g = parseFloat(gpa.value);
         const u = parseInt(units.value) || 0;
-        if (isNaN(g) || g < 0 || g > 5) { showToast('⚠️ Enter a valid GPA (0.00 – 5.00)'); return; }
-        if (u <= 0) { showToast('⚠️ Enter valid credit units'); return; }
+        if (isNaN(g) || g < 0 || g > 5) { toast('⚠️ Enter a valid GPA (0.00 – 5.00)', 'bad'); return; }
+        if (u <= 0) { toast('⚠️ Enter valid credit units', 'bad'); return; }
         semesters.push({ name: (name.value || `Semester ${semesters.length+1}`), gpa: g, units: u });
         name.value = ''; gpa.value = ''; units.value = '';
-        save(); renderSemesters(); showToast('✅ Semester added');
+        save(); renderSemesters(); toast('✅ Semester added', 'ok');
     }
 
     function renderSemesters() {
@@ -754,12 +1113,14 @@
             return;
         }
         list.innerHTML = semesters.map((s,i) => `
-            <div class="semester-card">
+            <div class="semester-card" data-index="${i}">
                 <div class="semester-info">
-                    <div class="semester-name">${s.name}</div>
-                    <div class="semester-sub">${s.units} credit units &nbsp;·&nbsp; ${getClassification(s.gpa).label}</div>
+                    <div class="semester-name" contenteditable="true" class="edit-sem-name" data-index="${i}">${s.name}</div>
+                    <div class="semester-sub">
+                        <span contenteditable="true" class="edit-sem-units" data-index="${i}">${s.units}</span> credit units &nbsp;·&nbsp; ${getClassification(s.gpa).label}
+                    </div>
                 </div>
-                <div class="semester-gpa-pill">${s.gpa.toFixed(2)}</div>
+                <div class="semester-gpa-pill" contenteditable="true" class="edit-sem-gpa" data-index="${i}">${s.gpa.toFixed(2)}</div>
                 <button class="delete-btn no-print" onclick="removeSemester(${i})" title="Remove"><i class="fas fa-times"></i></button>
             </div>`).join('');
 
@@ -773,9 +1134,40 @@
         cc.className = 'class-badge ' + clf.cls;
     }
 
-    function removeSemester(i) { semesters.splice(i,1); save(); renderSemesters(); }
+    function recalculateCGPAOnly() {
+        const totalWP = semesters.reduce((a,s) => a + s.gpa * s.units, 0);
+        const totalU = semesters.reduce((a,s) => a + s.units, 0);
+        const cgpa = totalU > 0 ? totalWP / totalU : 0;
+        const clf = getClassification(cgpa);
+        document.getElementById('cgpaScore').innerText = cgpa.toFixed(2);
+        const cc = document.getElementById('cgpaClass');
+        cc.textContent = clf.label;
+        cc.className = 'class-badge ' + clf.cls;
+    }
 
-    // SHARE
+    // EVENT DELEGATION FOR SEMESTER LIST INLINE EDITING
+    document.getElementById('semesterList').addEventListener('input', function(e) {
+        const target = e.target;
+        const index = parseInt(target.getAttribute('data-index'));
+        if (isNaN(index)) return;
+
+        if (target.classList.contains('edit-sem-name')) {
+            semesters[index].name = target.textContent.trim();
+            save();
+        } else if (target.classList.contains('edit-sem-units')) {
+            semesters[index].units = parseInt(target.textContent) || 0;
+            save();
+            recalculateCGPAOnly();
+        } else if (target.classList.contains('edit-sem-gpa')) {
+            semesters[index].gpa = parseFloat(target.textContent) || 0.0;
+            save();
+            recalculateCGPAOnly();
+        }
+    });
+
+    function removeSemester(i) { semesters.splice(i,1); save(); renderSemesters(); toast('🗑️ Semester removed', 'ok'); }
+
+    // SHARE RESULTS
     function buildShareText() {
         const gpa = document.getElementById('gpaScore').innerText;
         const clf = document.getElementById('classLabel').textContent;
@@ -791,32 +1183,31 @@
         return text;
     }
     function openShareModal() {
-        if (courses.length === 0) { showToast('⚠️ Add courses first'); return; }
+        if (courses.length === 0) { toast('⚠️ Add courses first', 'bad'); return; }
         document.getElementById('shareText').textContent = buildShareText();
         document.getElementById('shareModal').classList.add('open');
     }
     function closeModal() { document.getElementById('shareModal').classList.remove('open'); }
     function copyResult() {
-        navigator.clipboard.writeText(buildShareText()).then(() => { showToast('📋 Copied to clipboard!'); closeModal(); });
+        navigator.clipboard.writeText(buildShareText()).then(() => { toast('📋 Copied to clipboard!', 'ok'); closeModal(); });
     }
     function shareWhatsApp() {
         window.open('https://wa.me/?text=' + encodeURIComponent(buildShareText()), '_blank');
         closeModal();
     }
 
-    // TOAST
-    function showToast(msg) {
-        const t = document.getElementById('toast');
-        t.textContent = msg; t.classList.add('show');
-        setTimeout(() => t.classList.remove('show'), 2400);
-    }
-
-    // CLOSE MODAL ON OVERLAY CLICK
+    // CLOSE SHARE MODAL ON OVERLAY CLICK
     document.getElementById('shareModal').addEventListener('click', function(e) {
         if (e.target === this) closeModal();
     });
 
-    window.onload = loadFromLocal;
+    window.onload = () => {
+        loadFromLocal();
+        const isDark = localStorage.getItem('theme') === 'dark';
+        if (isDark) document.body.classList.add('dark-mode');
+        updateIcons(isDark);
+        checkUserProfile();
+    };
 </script>
 </body>
 </html>
