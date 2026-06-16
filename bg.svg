@@ -1,0 +1,227 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#020818"/>
+      <stop offset="35%" stop-color="#071230"/>
+      <stop offset="70%" stop-color="#0f1e4a"/>
+      <stop offset="100%" stop-color="#151a35"/>
+    </linearGradient>
+    <linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1f1a"/>
+      <stop offset="100%" stop-color="#040c08"/>
+    </linearGradient>
+    <linearGradient id="pillarGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0a1510"/>
+      <stop offset="25%" stop-color="#1a3020"/>
+      <stop offset="50%" stop-color="#223828"/>
+      <stop offset="75%" stop-color="#1a3020"/>
+      <stop offset="100%" stop-color="#0a1510"/>
+    </linearGradient>
+    <linearGradient id="archGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1c2e1e"/>
+      <stop offset="100%" stop-color="#0c1610"/>
+    </linearGradient>
+    <radialGradient id="coneGrad" cx="50%" cy="0%" r="100%" fx="50%" fy="0%">
+      <stop offset="0%" stop-color="#d4a017" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="groundLight" cx="50%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#c8900e" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#c8900e" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fffbe8" stop-opacity="1"/>
+      <stop offset="55%" stop-color="#fdf3c0" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur3" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="blur8" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <filter id="blur20" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+    <filter id="blur40" x="-150%" y="-150%" width="400%" height="400%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+    <filter id="textGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+
+  <!-- Nebula clouds -->
+  <ellipse cx="400" cy="200" rx="500" ry="180" fill="#1e3d8a" opacity="0.06" filter="url(#blur40)"/>
+  <ellipse cx="1500" cy="250" rx="400" ry="150" fill="#2e1e6e" opacity="0.07" filter="url(#blur40)"/>
+  <ellipse cx="960" cy="150" rx="600" ry="120" fill="#1a3060" opacity="0.05" filter="url(#blur40)"/>
+
+  <!-- Milky way band -->
+  <path d="M0,280 Q480,180 960,220 Q1440,260 1920,180" stroke="#ffffff" stroke-width="80" fill="none" opacity="0.018" filter="url(#blur20)"/>
+
+  <!-- Stars -->
+  <circle cx="85" cy="60" r="1.8" fill="#fff" opacity="0.9"/>
+  <circle cx="145" cy="130" r="1.2" fill="#fff" opacity="0.7"/>
+  <circle cx="230" cy="45" r="2.0" fill="#fffbe8" opacity="0.95"/>
+  <circle cx="310" cy="100" r="1.1" fill="#fff" opacity="0.6"/>
+  <circle cx="390" cy="35" r="1.6" fill="#fff" opacity="0.85"/>
+  <circle cx="470" cy="88" r="0.9" fill="#fff" opacity="0.6"/>
+  <circle cx="555" cy="52" r="1.4" fill="#fffbe8" opacity="0.8"/>
+  <circle cx="640" cy="118" r="1.0" fill="#fff" opacity="0.65"/>
+  <circle cx="720" cy="30" r="1.8" fill="#fff" opacity="0.85"/>
+  <circle cx="810" cy="75" r="1.3" fill="#fff" opacity="0.7"/>
+  <circle cx="890" cy="48" r="1.0" fill="#fffbe8" opacity="0.75"/>
+  <circle cx="980" cy="95" r="1.5" fill="#fff" opacity="0.8"/>
+  <circle cx="1060" cy="38" r="1.2" fill="#fff" opacity="0.7"/>
+  <circle cx="1150" cy="110" r="1.6" fill="#fffbe8" opacity="0.85"/>
+  <circle cx="1230" cy="58" r="1.0" fill="#fff" opacity="0.65"/>
+  <circle cx="1310" cy="28" r="1.8" fill="#fff" opacity="0.9"/>
+  <circle cx="1400" cy="90" r="1.1" fill="#fff" opacity="0.6"/>
+  <circle cx="1480" cy="45" r="1.4" fill="#fffbe8" opacity="0.8"/>
+  <circle cx="1570" cy="120" r="1.0" fill="#fff" opacity="0.7"/>
+  <circle cx="1650" cy="62" r="1.6" fill="#fff" opacity="0.8"/>
+  <circle cx="1740" cy="35" r="1.2" fill="#fffbe8" opacity="0.75"/>
+  <circle cx="1820" cy="95" r="1.5" fill="#fff" opacity="0.85"/>
+  <circle cx="1900" cy="50" r="1.0" fill="#fff" opacity="0.65"/>
+  <circle cx="50" cy="185" r="1.0" fill="#fff" opacity="0.5"/>
+  <circle cx="180" cy="210" r="0.9" fill="#fff" opacity="0.45"/>
+  <circle cx="340" cy="170" r="1.2" fill="#fffbe8" opacity="0.55"/>
+  <circle cx="520" cy="195" r="0.8" fill="#fff" opacity="0.4"/>
+  <circle cx="700" cy="165" r="1.1" fill="#fff" opacity="0.5"/>
+  <circle cx="870" cy="200" r="0.9" fill="#fffbe8" opacity="0.45"/>
+  <circle cx="1040" cy="175" r="1.0" fill="#fff" opacity="0.5"/>
+  <circle cx="1200" cy="195" r="0.8" fill="#fff" opacity="0.4"/>
+  <circle cx="1370" cy="170" r="1.2" fill="#fffbe8" opacity="0.55"/>
+  <circle cx="1540" cy="205" r="0.9" fill="#fff" opacity="0.45"/>
+  <circle cx="1700" cy="180" r="1.0" fill="#fff" opacity="0.5"/>
+  <circle cx="1870" cy="195" r="0.8" fill="#fff" opacity="0.4"/>
+  <!-- Sparkle stars -->
+  <path d="M960,55 L963,63 L971,66 L963,69 L960,77 L957,69 L949,66 L957,63Z" fill="#fffbe8" opacity="0.95"/>
+  <path d="M270,80 L272.5,86.5 L279,89 L272.5,91.5 L270,98 L267.5,91.5 L261,89 L267.5,86.5Z" fill="#fff" opacity="0.8"/>
+  <path d="M1680,72 L1682,77.5 L1687.5,79.5 L1682,81.5 L1680,87 L1678,81.5 L1672.5,79.5 L1678,77.5Z" fill="#fffbe8" opacity="0.85"/>
+  <path d="M520,36 L521.5,40.5 L526,42 L521.5,43.5 L520,48 L518.5,43.5 L514,42 L518.5,40.5Z" fill="#fff" opacity="0.75"/>
+
+  <!-- Moon halo -->
+  <circle cx="1480" cy="160" r="160" fill="#d4a017" opacity="0.05" filter="url(#blur40)"/>
+  <circle cx="1480" cy="160" r="90" fill="#fffbe8" opacity="0.08" filter="url(#blur20)"/>
+  <circle cx="1480" cy="160" r="50" fill="#fffdf0" opacity="0.1" filter="url(#blur8)"/>
+  <circle cx="1480" cy="160" r="55" fill="#fdf9e0"/>
+  <circle cx="1480" cy="160" r="55" fill="#fffbe8" opacity="0.4" filter="url(#blur3)"/>
+  <circle cx="1465" cy="150" r="10" fill="#ece8c0" opacity="0.35"/>
+  <circle cx="1490" cy="168" r="7" fill="#ece8c0" opacity="0.3"/>
+  <circle cx="1474" cy="176" r="4.5" fill="#ece8c0" opacity="0.25"/>
+
+  <!-- Distant mountain range -->
+  <path d="M0,720 L100,620 L220,660 L380,570 L560,625 L740,540 L920,595 L1100,520 L1280,575 L1450,530 L1620,580 L1780,545 L1920,590 L1920,900 L0,900Z" fill="#0a1c0c" opacity="0.65"/>
+  <path d="M0,760 L160,700 L340,725 L520,680 L720,710 L940,668 L1150,700 L1380,672 L1580,698 L1780,675 L1920,695 L1920,900 L0,900Z" fill="#0c2010" opacity="0.8"/>
+  <path d="M0,790 L200,760 L420,775 L640,748 L860,768 L1080,745 L1300,765 L1520,748 L1740,762 L1920,750 L1920,900 L0,900Z" fill="#0e2412" opacity="0.9"/>
+
+  <!-- Background tree line -->
+  <path d="M0,840 Q80,820 100,840 Q140,810 170,835 Q210,815 250,840 Q290,818 330,838 Q370,820 410,840 Q450,822 490,840 Q530,818 570,836 Q620,810 660,835 Q700,818 740,840 Q780,820 820,838 Q860,815 900,840 Q940,820 980,838 Q1020,818 1060,836 Q1100,815 1140,838 Q1180,820 1220,840 Q1260,818 1300,836 Q1340,820 1380,840 Q1420,818 1460,836 Q1500,815 1540,838 Q1580,820 1620,840 Q1660,818 1700,836 Q1740,820 1780,840 Q1820,818 1860,836 L1920,840 L1920,900 L0,900Z" fill="#071208"/>
+
+  <!-- Foreground ground plane -->
+  <rect x="0" y="900" width="1920" height="180" fill="#081510"/>
+  <!-- Path / road -->
+  <path d="M700,1080 L820,900 L1100,900 L1220,1080Z" fill="#0a1a10" opacity="0.6"/>
+  <path d="M750,1080 L850,900 L1070,900 L1170,1080Z" fill="#0c1e14" opacity="0.5"/>
+
+  <!-- Ground light cone -->
+  <ellipse cx="960" cy="900" rx="500" ry="80" fill="#d4a017" opacity="0.04" filter="url(#blur20)"/>
+
+  <!-- Left main gate pillar -->
+  <rect x="500" y="550" width="140" height="530" fill="url(#pillarGrad)"/>
+  <rect x="484" y="535" width="172" height="22" rx="3" fill="#162a18"/>
+  <rect x="472" y="517" width="196" height="20" rx="3" fill="#1a3020"/>
+  <rect x="460" y="498" width="220" height="22" rx="3" fill="#0e1a10"/>
+  <rect x="505" y="608" width="130" height="8" fill="#1e3822" opacity="0.9"/>
+  <rect x="505" y="650" width="130" height="8" fill="#1e3822" opacity="0.9"/>
+  <rect x="505" y="694" width="130" height="8" fill="#1e3822" opacity="0.9"/>
+  <rect x="505" y="738" width="130" height="8" fill="#1e3822" opacity="0.9"/>
+  <rect x="505" y="782" width="130" height="8" fill="#1e3822" opacity="0.8"/>
+  <rect x="562" y="558" width="14" height="420" rx="7" fill="#d4a017" opacity="0.3" filter="url(#blur3)"/>
+  <rect x="568" y="558" width="4" height="420" rx="2" fill="#ffd700" opacity="0.5"/>
+
+  <!-- Right main gate pillar -->
+  <rect x="1280" y="550" width="140" height="530" fill="url(#pillarGrad)"/>
+  <rect x="1264" y="535" width="172" height="22" rx="3" fill="#162a18"/>
+  <rect x="1252" y="517" width="196" height="20" rx="3" fill="#1a3020"/>
+  <rect x="1240" y="498" width="220" height="22" rx="3" fill="#0e1a10"/>
+  <rect x="1285" y="608" width="130" height="8" fill="#1e3822" opacity="0.9"/>
+  <rect x="1285" y="650" width="130" height="8" fill="#1e3822" opacity="0.9"/>
+  <rect x="1285" y="694" width="130" height="8" fill="#1e3822" opacity="0.9"/>
+  <rect x="1285" y="738" width="130" height="8" fill="#1e3822" opacity="0.9"/>
+  <rect x="1285" y="782" width="130" height="8" fill="#1e3822" opacity="0.8"/>
+  <rect x="1344" y="558" width="14" height="420" rx="7" fill="#d4a017" opacity="0.3" filter="url(#blur3)"/>
+  <rect x="1350" y="558" width="4" height="420" rx="2" fill="#ffd700" opacity="0.5"/>
+
+  <!-- Gate arch spanning pillars -->
+  <path d="M500,590 L640,555 L960,538 L1280,555 L1420,590 L1420,625 L1280,588 L960,572 L640,588 L500,625Z" fill="url(#archGrad)"/>
+  <path d="M500,625 L640,588 L960,572 L1280,588 L1420,625 L1420,635 L1280,598 L960,582 L640,598 L500,635Z" fill="#050e07" opacity="0.7"/>
+  <path d="M508,592 L960,540 L1412,592" stroke="#283e2a" stroke-width="3" fill="none"/>
+  <path d="M520,600 L960,552 L1400,600" stroke="#d4a017" stroke-width="1.5" fill="none" opacity="0.55"/>
+  <path d="M535,608 L960,562 L1385,608" stroke="#d4a017" stroke-width="0.8" fill="none" opacity="0.35"/>
+
+  <!-- Gate crown / top platform -->
+  <rect x="880" y="460" width="160" height="82" rx="6" fill="#162a18"/>
+  <rect x="866" y="448" width="188" height="16" rx="3" fill="#0e1a10"/>
+  <rect x="852" y="432" width="216" height="18" rx="3" fill="#1a3020"/>
+  <rect x="838" y="416" width="244" height="18" rx="3" fill="#0e1a10"/>
+  <rect x="838" y="416" width="244" height="3" rx="1" fill="#d4a017" opacity="0.5"/>
+  <rect x="838" y="431" width="244" height="1.5" rx="0.75" fill="#d4a017" opacity="0.3"/>
+
+  <!-- Emblem on crown -->
+  <circle cx="960" cy="498" r="36" fill="#0c1610" stroke="#d4a017" stroke-width="2.5"/>
+  <circle cx="960" cy="498" r="28" fill="none" stroke="#d4a017" stroke-width="1.2" opacity="0.7"/>
+  <circle cx="960" cy="498" r="20" fill="none" stroke="#d4a017" stroke-width="0.8" opacity="0.5"/>
+  <path d="M960,480 L964.5,492 L978,492 L967,500 L971,512 L960,504 L949,512 L953,500 L942,492 L955.5,492Z" fill="#d4a017" opacity="0.9"/>
+
+  <!-- FUTA name plate on arch — CORRECTED TEXT -->
+  <rect x="762" y="568" width="396" height="54" rx="5" fill="#0c1810" stroke="#d4a017" stroke-width="1.5" opacity="0.97"/>
+  <rect x="768" y="574" width="384" height="42" rx="3" fill="none" stroke="#d4a017" stroke-width="0.6" opacity="0.4"/>
+  <!-- FUTA in bold gold text -->
+  <text x="840" y="602" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#d4a017" letter-spacing="6" filter="url(#textGlow)">FUTA</text>
+  <!-- Separator dot -->
+  <circle cx="939" cy="597" r="2.5" fill="#d4a017" opacity="0.6"/>
+  <!-- Subtitle text -->
+  <text x="950" y="602" font-family="Georgia, serif" font-size="11" font-weight="400" fill="#d4a017" opacity="0.75" letter-spacing="1">Federal University of Technology, Akure</text>
+
+  <!-- Gate lanterns -->
+  <circle cx="569" cy="522" r="50" fill="#ffd700" opacity="0.06" filter="url(#blur20)"/>
+  <circle cx="569" cy="522" r="28" fill="#ffd700" opacity="0.08" filter="url(#blur8)"/>
+  <rect x="550" y="500" width="38" height="46" rx="4" fill="#162218" stroke="#d4a017" stroke-width="1.2"/>
+  <rect x="554" y="504" width="30" height="38" rx="2" fill="#1e3220"/>
+  <circle cx="569" cy="523" r="10" fill="#fffbe8" opacity="0.9"/>
+  <circle cx="569" cy="523" r="7" fill="#ffd700"/>
+  <circle cx="569" cy="523" r="18" fill="#ffd700" opacity="0.15" filter="url(#blur3)"/>
+  <rect x="566" y="490" width="6" height="12" rx="3" fill="#d4a017" opacity="0.7"/>
+  <rect x="544" y="496" width="50" height="6" rx="2" fill="#d4a017" opacity="0.6"/>
+
+  <circle cx="1351" cy="522" r="50" fill="#ffd700" opacity="0.06" filter="url(#blur20)"/>
+  <circle cx="1351" cy="522" r="28" fill="#ffd700" opacity="0.08" filter="url(#blur8)"/>
+  <rect x="1332" y="500" width="38" height="46" rx="4" fill="#162218" stroke="#d4a017" stroke-width="1.2"/>
+  <rect x="1336" y="504" width="30" height="38" rx="2" fill="#1e3220"/>
+  <circle cx="1351" cy="523" r="10" fill="#fffbe8" opacity="0.9"/>
+  <circle cx="1351" cy="523" r="7" fill="#ffd700"/>
+  <circle cx="1351" cy="523" r="18" fill="#ffd700" opacity="0.15" filter="url(#blur3)"/>
+  <rect x="1348" y="490" width="6" height="12" rx="3" fill="#d4a017" opacity="0.7"/>
+  <rect x="1326" y="496" width="50" height="6" rx="2" fill="#d4a017" opacity="0.6"/>
+
+  <!-- Ground -->
+  <rect x="0" y="960" width="1920" height="120" fill="url(#groundGrad)"/>
+  <line x1="0" y1="980" x2="1920" y2="980" stroke="#1a2e1c" stroke-width="1" opacity="0.4"/>
+
+  <!-- Foreground foliage -->
+  <path d="M0,990 Q80,945 160,965 Q240,948 320,972 Q400,955 480,978 L480,1080 L0,1080Z" fill="#091508"/>
+  <path d="M0,1010 Q60,992 120,1003 Q180,990 240,1006 Q300,993 360,1008 L360,1080 L0,1080Z" fill="#0b1c0a"/>
+  <path d="M1440,978 Q1520,955 1600,970 Q1680,950 1760,968 Q1840,952 1920,970 L1920,1080 L1440,1080Z" fill="#091508"/>
+  <path d="M1560,1008 Q1640,993 1720,1005 Q1800,990 1880,1006 L1920,1010 L1920,1080 L1560,1080Z" fill="#0b1c0a"/>
+
+  <!-- Vignette -->
+  <rect x="0" y="0" width="400" height="1080" fill="#000" opacity="0.22"/>
+  <rect x="1520" y="0" width="400" height="1080" fill="#000" opacity="0.22"/>
+  <rect x="0" y="0" width="1920" height="160" fill="#000" opacity="0.15"/>
+</svg>

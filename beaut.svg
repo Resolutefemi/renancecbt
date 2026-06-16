@@ -1,0 +1,279 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#010510"/>
+      <stop offset="40%" stop-color="#020b20"/>
+      <stop offset="100%" stop-color="#030d18"/>
+    </linearGradient>
+    <linearGradient id="horizonGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a2a5e" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0a2a5e" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="gridFloor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a3d6b" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#0a3d6b" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="centerBloom" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a6aff" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#0a2a6e" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nodeGlow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4f9eff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#4f9eff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="goldGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd700" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow4">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+    <filter id="glow12">
+      <feGaussianBlur stdDeviation="12" result="b"/>
+      <feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+    <filter id="glow30">
+      <feGaussianBlur stdDeviation="30" result="b"/>
+      <feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+    <filter id="blur50" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="50"/>
+    </filter>
+    <filter id="blur25" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+    <filter id="blur10" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+    <filter id="textGlowBlue">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+    <filter id="textGlowGold">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+    <clipPath id="sceneClip">
+      <rect width="1920" height="1080"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#sceneClip)">
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+
+  <!-- Atmosphere glow bands -->
+  <ellipse cx="960" cy="580" rx="900" ry="300" fill="#0a2a5e" opacity="0.12" filter="url(#blur50)"/>
+  <ellipse cx="960" cy="620" rx="600" ry="180" fill="#1040a0" opacity="0.08" filter="url(#blur50)"/>
+  <rect x="0" y="480" width="1920" height="200" fill="url(#horizonGlow)" opacity="0.5"/>
+
+  <!-- Center bloom -->
+  <ellipse cx="960" cy="540" rx="700" ry="400" fill="url(#centerBloom)"/>
+
+  <!-- Stars -->
+  <circle cx="60" cy="40" r="1.2" fill="#aad4ff" opacity="0.7"/>
+  <circle cx="180" cy="90" r="0.8" fill="#fff" opacity="0.5"/>
+  <circle cx="290" cy="55" r="1.5" fill="#fff" opacity="0.8"/>
+  <circle cx="400" cy="30" r="1.0" fill="#aad4ff" opacity="0.6"/>
+  <circle cx="530" cy="70" r="0.9" fill="#fff" opacity="0.55"/>
+  <circle cx="650" cy="25" r="1.3" fill="#fff" opacity="0.75"/>
+  <circle cx="750" cy="80" r="0.7" fill="#aad4ff" opacity="0.5"/>
+  <circle cx="900" cy="45" r="1.1" fill="#fff" opacity="0.65"/>
+  <circle cx="1050" cy="30" r="1.4" fill="#fff" opacity="0.8"/>
+  <circle cx="1180" cy="65" r="0.9" fill="#aad4ff" opacity="0.6"/>
+  <circle cx="1320" cy="40" r="1.2" fill="#fff" opacity="0.7"/>
+  <circle cx="1450" cy="75" r="0.8" fill="#fff" opacity="0.5"/>
+  <circle cx="1580" cy="35" r="1.5" fill="#aad4ff" opacity="0.85"/>
+  <circle cx="1700" cy="55" r="1.0" fill="#fff" opacity="0.65"/>
+  <circle cx="1830" cy="30" r="1.3" fill="#fff" opacity="0.75"/>
+  <circle cx="120" cy="160" r="0.9" fill="#fff" opacity="0.45"/>
+  <circle cx="330" cy="140" r="1.1" fill="#fff" opacity="0.55"/>
+  <circle cx="540" cy="165" r="0.7" fill="#aad4ff" opacity="0.4"/>
+  <circle cx="760" cy="145" r="1.0" fill="#fff" opacity="0.5"/>
+  <circle cx="980" cy="170" r="0.8" fill="#fff" opacity="0.45"/>
+  <circle cx="1200" cy="150" r="1.2" fill="#aad4ff" opacity="0.6"/>
+  <circle cx="1420" cy="165" r="0.9" fill="#fff" opacity="0.5"/>
+  <circle cx="1640" cy="140" r="1.1" fill="#fff" opacity="0.55"/>
+  <circle cx="1860" cy="160" r="0.7" fill="#aad4ff" opacity="0.4"/>
+  <!-- 4-point sparkles -->
+  <path d="M350,110 L352,116 L358,118 L352,120 L350,126 L348,120 L342,118 L348,116Z" fill="#aad4ff" opacity="0.8"/>
+  <path d="M1560,90 L1562,96 L1568,98 L1562,100 L1560,106 L1558,100 L1552,98 L1558,96Z" fill="#fff" opacity="0.75"/>
+  <path d="M820,55 L821.5,59.5 L826,61 L821.5,62.5 L820,67 L818.5,62.5 L814,61 L818.5,59.5Z" fill="#aad4ff" opacity="0.9"/>
+
+  <!-- Perspective grid floor -->
+  <!-- Horizontal lines converging to horizon -->
+  <line x1="0" y1="680" x2="1920" y2="680" stroke="#1a5aaa" stroke-width="0.6" opacity="0.3"/>
+  <line x1="0" y1="720" x2="1920" y2="720" stroke="#1a5aaa" stroke-width="0.5" opacity="0.25"/>
+  <line x1="0" y1="770" x2="1920" y2="770" stroke="#1a5aaa" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="830" x2="1920" y2="830" stroke="#1a5aaa" stroke-width="0.4" opacity="0.18"/>
+  <line x1="0" y1="900" x2="1920" y2="900" stroke="#1a5aaa" stroke-width="0.4" opacity="0.15"/>
+  <line x1="0" y1="980" x2="1920" y2="980" stroke="#1a5aaa" stroke-width="0.3" opacity="0.12"/>
+  <!-- Vanishing vertical lines -->
+  <line x1="960" y1="600" x2="0" y2="1080" stroke="#1a5aaa" stroke-width="0.5" opacity="0.2"/>
+  <line x1="960" y1="600" x2="240" y2="1080" stroke="#1a5aaa" stroke-width="0.5" opacity="0.2"/>
+  <line x1="960" y1="600" x2="480" y2="1080" stroke="#1a5aaa" stroke-width="0.5" opacity="0.2"/>
+  <line x1="960" y1="600" x2="720" y2="1080" stroke="#1a5aaa" stroke-width="0.5" opacity="0.2"/>
+  <line x1="960" y1="600" x2="960" y2="1080" stroke="#1a5aaa" stroke-width="0.6" opacity="0.25"/>
+  <line x1="960" y1="600" x2="1200" y2="1080" stroke="#1a5aaa" stroke-width="0.5" opacity="0.2"/>
+  <line x1="960" y1="600" x2="1440" y2="1080" stroke="#1a5aaa" stroke-width="0.5" opacity="0.2"/>
+  <line x1="960" y1="600" x2="1680" y2="1080" stroke="#1a5aaa" stroke-width="0.5" opacity="0.2"/>
+  <line x1="960" y1="600" x2="1920" y2="1080" stroke="#1a5aaa" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Horizon glow line -->
+  <rect x="0" y="595" width="1920" height="2" fill="#2a80ff" opacity="0.25" filter="url(#blur10)"/>
+  <rect x="0" y="596" width="1920" height="1" fill="#4af0ff" opacity="0.5"/>
+
+  <!-- Network connection lines -->
+  <!-- Left cluster to center -->
+  <line x1="250" y1="350" x2="960" y2="540" stroke="#1e6aff" stroke-width="1.2" opacity="0.35"/>
+  <line x1="380" y1="280" x2="960" y2="540" stroke="#1e6aff" stroke-width="0.8" opacity="0.25"/>
+  <line x1="160" y1="450" x2="960" y2="540" stroke="#1e6aff" stroke-width="0.8" opacity="0.2"/>
+  <line x1="520" y1="240" x2="960" y2="540" stroke="#2a80ff" stroke-width="1.0" opacity="0.3"/>
+  <line x1="420" y1="420" x2="960" y2="540" stroke="#1e6aff" stroke-width="0.6" opacity="0.2"/>
+  <!-- Right cluster to center -->
+  <line x1="1670" y1="350" x2="960" y2="540" stroke="#1e6aff" stroke-width="1.2" opacity="0.35"/>
+  <line x1="1540" y1="280" x2="960" y2="540" stroke="#1e6aff" stroke-width="0.8" opacity="0.25"/>
+  <line x1="1760" y1="450" x2="960" y2="540" stroke="#1e6aff" stroke-width="0.8" opacity="0.2"/>
+  <line x1="1400" y1="240" x2="960" y2="540" stroke="#2a80ff" stroke-width="1.0" opacity="0.3"/>
+  <line x1="1500" y1="420" x2="960" y2="540" stroke="#1e6aff" stroke-width="0.6" opacity="0.2"/>
+  <!-- Top connections -->
+  <line x1="700" y1="200" x2="960" y2="540" stroke="#2a80ff" stroke-width="0.8" opacity="0.25"/>
+  <line x1="960" y1="150" x2="960" y2="540" stroke="#2a80ff" stroke-width="1.0" opacity="0.3"/>
+  <line x1="1220" y1="200" x2="960" y2="540" stroke="#2a80ff" stroke-width="0.8" opacity="0.25"/>
+  <!-- Cross connections between outer nodes -->
+  <line x1="250" y1="350" x2="520" y2="240" stroke="#1e6aff" stroke-width="0.6" opacity="0.15"/>
+  <line x1="380" y1="280" x2="700" y2="200" stroke="#1e6aff" stroke-width="0.6" opacity="0.15"/>
+  <line x1="1540" y1="280" x2="1220" y2="200" stroke="#1e6aff" stroke-width="0.6" opacity="0.15"/>
+  <line x1="1670" y1="350" x2="1400" y2="240" stroke="#1e6aff" stroke-width="0.6" opacity="0.15"/>
+
+  <!-- Outer nodes — left -->
+  <circle cx="250" cy="350" r="40" fill="#1e6aff" opacity="0.04" filter="url(#blur10)"/>
+  <circle cx="250" cy="350" r="14" fill="#0a2060" stroke="#2a80ff" stroke-width="1.5" opacity="0.9"/>
+  <circle cx="250" cy="350" r="7" fill="#4a9fff" opacity="0.9"/>
+  <circle cx="250" cy="350" r="3" fill="#fff" opacity="0.9"/>
+
+  <circle cx="380" cy="280" r="30" fill="#1e6aff" opacity="0.04" filter="url(#blur10)"/>
+  <circle cx="380" cy="280" r="11" fill="#0a2060" stroke="#2a80ff" stroke-width="1.2" opacity="0.9"/>
+  <circle cx="380" cy="280" r="5.5" fill="#4a9fff" opacity="0.9"/>
+  <circle cx="380" cy="280" r="2.5" fill="#fff" opacity="0.9"/>
+
+  <circle cx="160" cy="450" r="25" fill="#1e6aff" opacity="0.04" filter="url(#blur10)"/>
+  <circle cx="160" cy="450" r="9" fill="#0a2060" stroke="#2a80ff" stroke-width="1.0" opacity="0.9"/>
+  <circle cx="160" cy="450" r="4.5" fill="#4a9fff" opacity="0.9"/>
+  <circle cx="160" cy="450" r="2" fill="#fff" opacity="0.9"/>
+
+  <circle cx="520" cy="240" r="35" fill="#1e6aff" opacity="0.05" filter="url(#blur10)"/>
+  <circle cx="520" cy="240" r="12" fill="#0a2060" stroke="#2a80ff" stroke-width="1.3" opacity="0.9"/>
+  <circle cx="520" cy="240" r="6" fill="#4a9fff" opacity="0.9"/>
+  <circle cx="520" cy="240" r="2.5" fill="#fff" opacity="0.9"/>
+
+  <circle cx="420" cy="420" r="20" fill="#1e6aff" opacity="0.04" filter="url(#blur10)"/>
+  <circle cx="420" cy="420" r="8" fill="#0a2060" stroke="#2a80ff" stroke-width="1.0" opacity="0.9"/>
+  <circle cx="420" cy="420" r="4" fill="#4a9fff" opacity="0.9"/>
+  <circle cx="420" cy="420" r="1.8" fill="#fff" opacity="0.9"/>
+
+  <!-- Outer nodes — right (mirror) -->
+  <circle cx="1670" cy="350" r="40" fill="#1e6aff" opacity="0.04" filter="url(#blur10)"/>
+  <circle cx="1670" cy="350" r="14" fill="#0a2060" stroke="#2a80ff" stroke-width="1.5" opacity="0.9"/>
+  <circle cx="1670" cy="350" r="7" fill="#4a9fff" opacity="0.9"/>
+  <circle cx="1670" cy="350" r="3" fill="#fff" opacity="0.9"/>
+
+  <circle cx="1540" cy="280" r="30" fill="#1e6aff" opacity="0.04" filter="url(#blur10)"/>
+  <circle cx="1540" cy="280" r="11" fill="#0a2060" stroke="#2a80ff" stroke-width="1.2" opacity="0.9"/>
+  <circle cx="1540" cy="280" r="5.5" fill="#4a9fff" opacity="0.9"/>
+  <circle cx="1540" cy="280" r="2.5" fill="#fff" opacity="0.9"/>
+
+  <circle cx="1760" cy="450" r="25" fill="#1e6aff" opacity="0.04" filter="url(#blur10)"/>
+  <circle cx="1760" cy="450" r="9" fill="#0a2060" stroke="#2a80ff" stroke-width="1.0" opacity="0.9"/>
+  <circle cx="1760" cy="450" r="4.5" fill="#4a9fff" opacity="0.9"/>
+  <circle cx="1760" cy="450" r="2" fill="#fff" opacity="0.9"/>
+
+  <circle cx="1400" cy="240" r="35" fill="#1e6aff" opacity="0.05" filter="url(#blur10)"/>
+  <circle cx="1400" cy="240" r="12" fill="#0a2060" stroke="#2a80ff" stroke-width="1.3" opacity="0.9"/>
+  <circle cx="1400" cy="240" r="6" fill="#4a9fff" opacity="0.9"/>
+  <circle cx="1400" cy="240" r="2.5" fill="#fff" opacity="0.9"/>
+
+  <circle cx="1500" cy="420" r="20" fill="#1e6aff" opacity="0.04" filter="url(#blur10)"/>
+  <circle cx="1500" cy="420" r="8" fill="#0a2060" stroke="#2a80ff" stroke-width="1.0" opacity="0.9"/>
+  <circle cx="1500" cy="420" r="4" fill="#4a9fff" opacity="0.9"/>
+  <circle cx="1500" cy="420" r="1.8" fill="#fff" opacity="0.9"/>
+
+  <!-- Top nodes -->
+  <circle cx="700" cy="200" r="35" fill="#1e6aff" opacity="0.05" filter="url(#blur10)"/>
+  <circle cx="700" cy="200" r="12" fill="#0a2060" stroke="#2a80ff" stroke-width="1.3" opacity="0.9"/>
+  <circle cx="700" cy="200" r="6" fill="#4a9fff" opacity="0.9"/>
+  <circle cx="700" cy="200" r="2.5" fill="#fff" opacity="0.9"/>
+
+  <circle cx="960" cy="150" r="30" fill="#1e6aff" opacity="0.06" filter="url(#blur10)"/>
+  <circle cx="960" cy="150" r="11" fill="#0a2060" stroke="#2a80ff" stroke-width="1.2" opacity="0.9"/>
+  <circle cx="960" cy="150" r="5.5" fill="#ffd700" opacity="0.9"/>
+  <circle cx="960" cy="150" r="2.5" fill="#fff" opacity="0.9"/>
+
+  <circle cx="1220" cy="200" r="35" fill="#1e6aff" opacity="0.05" filter="url(#blur10)"/>
+  <circle cx="1220" cy="200" r="12" fill="#0a2060" stroke="#2a80ff" stroke-width="1.3" opacity="0.9"/>
+  <circle cx="1220" cy="200" r="6" fill="#4a9fff" opacity="0.9"/>
+  <circle cx="1220" cy="200" r="2.5" fill="#fff" opacity="0.9"/>
+
+  <!-- Central hub node -->
+  <circle cx="960" cy="540" r="120" fill="#1e6aff" opacity="0.04" filter="url(#blur50)"/>
+  <circle cx="960" cy="540" r="70" fill="#1040c0" opacity="0.07" filter="url(#blur25)"/>
+  <circle cx="960" cy="540" r="45" fill="#0a1840" stroke="#2a80ff" stroke-width="2" opacity="0.85"/>
+  <circle cx="960" cy="540" r="34" fill="none" stroke="#4a9fff" stroke-width="1" opacity="0.5"/>
+  <circle cx="960" cy="540" r="24" fill="#0c2060" stroke="#ffd700" stroke-width="1.5" opacity="0.9"/>
+  <circle cx="960" cy="540" r="14" fill="#ffd700" opacity="0.25" filter="url(#blur10)"/>
+  <circle cx="960" cy="540" r="10" fill="#ffd700" opacity="0.9"/>
+  <circle cx="960" cy="540" r="5" fill="#fff" opacity="0.95"/>
+  <!-- Hub ring spokes -->
+  <line x1="960" y1="495" x2="960" y2="509" stroke="#4a9fff" stroke-width="1" opacity="0.6"/>
+  <line x1="960" y1="571" x2="960" y2="585" stroke="#4a9fff" stroke-width="1" opacity="0.6"/>
+  <line x1="915" y1="540" x2="929" y2="540" stroke="#4a9fff" stroke-width="1" opacity="0.6"/>
+  <line x1="991" y1="540" x2="1005" y2="540" stroke="#4a9fff" stroke-width="1" opacity="0.6"/>
+  <line x1="928" y1="508" x2="937" y2="517" stroke="#4a9fff" stroke-width="1" opacity="0.5"/>
+  <line x1="983" y1="563" x2="992" y2="572" stroke="#4a9fff" stroke-width="1" opacity="0.5"/>
+  <line x1="928" y1="572" x2="937" y2="563" stroke="#4a9fff" stroke-width="1" opacity="0.5"/>
+  <line x1="983" y1="517" x2="992" y2="508" stroke="#4a9fff" stroke-width="1" opacity="0.5"/>
+
+  <!-- Main title: RENANCE -->
+  <!-- Outer glow layer -->
+  <text x="960" y="420" font-family="'Georgia', 'Times New Roman', serif" font-size="110" font-weight="700" text-anchor="middle" fill="#2a80ff" opacity="0.25" filter="url(#blur25)">RENANCE</text>
+  <!-- Mid glow -->
+  <text x="960" y="420" font-family="'Georgia', 'Times New Roman', serif" font-size="110" font-weight="700" text-anchor="middle" fill="#4a9fff" opacity="0.4" filter="url(#blur10)">RENANCE</text>
+  <!-- Main gold text -->
+  <text x="960" y="420" font-family="'Georgia', 'Times New Roman', serif" font-size="110" font-weight="700" text-anchor="middle" letter-spacing="12" fill="#ffd700" filter="url(#textGlowGold)">RENANCE</text>
+
+  <!-- Decorative lines flanking title -->
+  <line x1="150" y1="375" x2="660" y2="375" stroke="#2a80ff" stroke-width="1" opacity="0.4"/>
+  <line x1="150" y1="380" x2="660" y2="380" stroke="#ffd700" stroke-width="0.5" opacity="0.3"/>
+  <line x1="1260" y1="375" x2="1770" y2="375" stroke="#2a80ff" stroke-width="1" opacity="0.4"/>
+  <line x1="1260" y1="380" x2="1770" y2="380" stroke="#ffd700" stroke-width="0.5" opacity="0.3"/>
+  <!-- Diamond accents on lines -->
+  <path d="M150,377.5 L158,375 L166,377.5 L158,380Z" fill="#ffd700" opacity="0.7"/>
+  <path d="M1770,377.5 L1762,375 L1754,377.5 L1762,380Z" fill="#ffd700" opacity="0.7"/>
+
+  <!-- Subtitle: ECOSYSTEM -->
+  <!-- Glow -->
+  <text x="960" y="475" font-family="'Georgia', 'Times New Roman', serif" font-size="42" font-weight="400" text-anchor="middle" fill="#4a9fff" opacity="0.35" filter="url(#blur10)">ECOSYSTEM</text>
+  <!-- Main -->
+  <text x="960" y="475" font-family="'Georgia', 'Times New Roman', serif" font-size="42" font-weight="400" text-anchor="middle" letter-spacing="18" fill="#a0d4ff" filter="url(#textGlowBlue)" opacity="0.95">ECOSYSTEM</text>
+
+  <!-- Thin separator line below subtitle -->
+  <line x1="680" y1="492" x2="1240" y2="492" stroke="#2a80ff" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- Tagline below hub -->
+  <text x="960" y="660" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="400" text-anchor="middle" letter-spacing="5" fill="#4a9fff" opacity="0.65">CONNECTED · INTELLIGENT · EMPOWERED</text>
+
+  <!-- Bottom bar decoration -->
+  <rect x="0" y="1050" width="1920" height="30" fill="#020b20"/>
+  <line x1="0" y1="1050" x2="1920" y2="1050" stroke="#2a80ff" stroke-width="1" opacity="0.5"/>
+  <line x1="0" y1="1051" x2="1920" y2="1051" stroke="#4af0ff" stroke-width="0.5" opacity="0.4"/>
+  <text x="960" y="1070" font-family="'Georgia', serif" font-size="11" font-weight="400" text-anchor="middle" letter-spacing="4" fill="#2a80ff" opacity="0.6">FEDERAL UNIVERSITY OF TECHNOLOGY, AKURE — RENANCE CBT PLATFORM</text>
+
+  <!-- Vignette -->
+  <rect x="0" y="0" width="350" height="1080" fill="#000" opacity="0.28"/>
+  <rect x="1570" y="0" width="350" height="1080" fill="#000" opacity="0.28"/>
+  <rect x="0" y="0" width="1920" height="100" fill="#000" opacity="0.2"/>
+  <rect x="0" y="900" width="1920" height="180" fill="#000" opacity="0.15"/>
+  </g>
+</svg>
