@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="env-loader.js"></script>
+1
 
     <style>
         
@@ -160,7 +161,7 @@
             <h2>Set Your Chat Name</h2>
             <p>For your privacy, we don't use matric numbers here. Pick a display name to brainstorm with others!</p>
             <input type="text" id="customNameInput" class="name-input" placeholder="e.g. FutaScholar" maxlength="15">
-            <button class="btn-join" onclick="saveUsername()">Join the Chat 🚀</button>
+            <button class="btn-join" onclick="saveUsername()">Join the Chat ðŸš€</button>
         </div>
     </div>
 
@@ -266,7 +267,7 @@
             initChat();
 
             supabase.from('messages').insert([
-                { author: 'System', text: `${chatDisplayName} joined the hub! 🚀`, is_system: true }
+                { author: 'System', text: `${chatDisplayName} joined the hub! ðŸš€`, is_system: true }
             ]).then();
         }
 
@@ -309,7 +310,7 @@
                 input.disabled = true; attach.disabled = true; mic.disabled = true; send.disabled = true;
                 input.placeholder = "Chat is locked by Admin.";
                 banner.style.display = 'block';
-                document.getElementById('chatStatus').innerText = "Locked 🔒";
+                document.getElementById('chatStatus').innerText = "Locked ðŸ”’";
                 document.getElementById('chatStatus').style.color = "var(--danger)";
             } else {
                 input.disabled = false; attach.disabled = false; mic.disabled = false; send.disabled = false;
@@ -360,7 +361,7 @@
                         audioChunks = [];
 
                         selectedFile = new File([audioBlob], "voice_note.webm", { type: 'audio/webm' });
-                        document.getElementById('fileNameDisplay').innerText = "🎤 Voice Note Recorded";
+                        document.getElementById('fileNameDisplay').innerText = "ðŸŽ¤ Voice Note Recorded";
                         document.getElementById('filePreviewBar').style.display = 'flex';
                     };
                 } catch (err) {
@@ -501,6 +502,7 @@
     </script>
 </body>
 </html>
+
 
 
 

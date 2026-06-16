@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,8 @@
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="env-loader.js"></script>
+1
 
     <style>
         :root {
@@ -253,7 +254,7 @@
 
 <div id="quizResultModal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
-        <span class="result-icon" id="resultIcon">🏆</span>
+        <span class="result-icon" id="resultIcon">ðŸ†</span>
         <h2 id="resultGreeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
 
         <div class="score-display">
@@ -261,7 +262,7 @@
             <div class="stats-mini">
                 <div class="sm"><div class="sv" id="modalCorrect">0</div><div class="sl">Correct</div></div>
                 <div class="sm"><div class="sv" id="modalTotal">0</div><div class="sl">Total</div></div>
-                <div class="sm"><div class="sv" id="modalAvg">—</div><div class="sl">Your Avg</div></div>
+                <div class="sm"><div class="sv" id="modalAvg">â€”</div><div class="sl">Your Avg</div></div>
             </div>
         </div>
 
@@ -284,8 +285,8 @@
 
 <script>
     
-    const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+    const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const COURSE_CODE = 'GNS 103';
 
@@ -377,9 +378,9 @@
   {"id": 74, "question": "One of the following is not a service performed in academic libraries", "options": {"A": "User education", "B": "Reprographic service", "C": "Bindery service", "D": "None of the above"}, "answer": "D"},
   {"id": 75, "question": "_______ is an example of a miniature storage medium", "options": {"A": "CD-ROM", "B": "Compact disk", "C": "Memory card", "D": "None of the above"}, "answer": "C"},
   {"id": 76, "question": "ISSN refers to _______", "options": {"A": "International Standard Serial Number", "B": "International Standard Subject Number", "C": "International Subject Serial Number", "D": "International Standard Sequence Number"}, "answer": "A"},
-  {"id": 77, "question": "Nigeria who’s who is an example of a _______", "options": {"A": "Background reference source", "B": "Fact/ready reference source", "C": "Biographical reference source", "D": "Geographical reference source"}, "answer": "C"},
+  {"id": 77, "question": "Nigeria whoâ€™s who is an example of a _______", "options": {"A": "Background reference source", "B": "Fact/ready reference source", "C": "Biographical reference source", "D": "Geographical reference source"}, "answer": "C"},
   {"id": 78, "question": "_______ is a routine task performed in the acquisitions unit", "options": {"A": "Accessioning", "B": "Labelling", "C": "Cataloguing", "D": "Filing"}, "answer": "A"},
-  {"id": 79, "question": "A library set up according to owner’s subject interest is _______", "options": {"A": "Personal library", "B": "Private library", "C": "Special library", "D": "Virtual library"}, "answer": "B"},
+  {"id": 79, "question": "A library set up according to ownerâ€™s subject interest is _______", "options": {"A": "Personal library", "B": "Private library", "C": "Special library", "D": "Virtual library"}, "answer": "B"},
   {"id": 80, "question": "Providing information on where to get specific information materials is part of the function of _______ unit", "options": {"A": "Reference", "B": "Circulation", "C": "Current awareness", "D": "Reprographic"}, "answer": "A"},
   {"id": 81, "question": "_______ is one of the problems encountered during the use of serials", "options": {"A": "Change of technological development", "B": "Authorship verification", "C": "A and B", "D": "None of the above"}, "answer": "D"},
   {"id": 82, "question": "Another name for information literacy is _______", "options": {"A": "Library literacy", "B": "Media literacy", "C": "Computer literacy", "D": "All of the above"}, "answer": "D"},
@@ -402,9 +403,9 @@
   {"id": 99, "question": "ISSN means", "options": {"A": "International Secondary School Number", "B": "International School of Science Number", "C": "International Standard Serial Number", "D": "International School of Science Number"}, "answer": "C"},
   {"id": 100, "question": "The _______ is actively involved in inter-library lending schemes in a country", "options": {"A": "State governments", "B": "Library of congress", "C": "National Library", "D": "American library"}, "answer": "C"},
   
-  {"id": 101, "question": "Readers’ Services Division comprises the following units except?", "options": {"A": "General unit", "B": "Circulation unit", "C": "Reference unit", "D": "Porters/Security Unit"}, "answer": "A"},
-  {"id": 102, "question": "__________________ is the unit where users are registered.", "options": {"A": "Circulation unit", "B": "Porters’ unit", "C": "Security unit", "D": "Reference unit"}, "answer": "A"},
-  {"id": 103, "question": "_____________ unit is responsible for maintaining security in the library.", "options": {"A": "Multimedia unit", "B": "Serial unit", "C": "Cataloguing and classification unit", "D": "Porters’ unit"}, "answer": "D"},
+  {"id": 101, "question": "Readersâ€™ Services Division comprises the following units except?", "options": {"A": "General unit", "B": "Circulation unit", "C": "Reference unit", "D": "Porters/Security Unit"}, "answer": "A"},
+  {"id": 102, "question": "__________________ is the unit where users are registered.", "options": {"A": "Circulation unit", "B": "Portersâ€™ unit", "C": "Security unit", "D": "Reference unit"}, "answer": "A"},
+  {"id": 103, "question": "_____________ unit is responsible for maintaining security in the library.", "options": {"A": "Multimedia unit", "B": "Serial unit", "C": "Cataloguing and classification unit", "D": "Portersâ€™ unit"}, "answer": "D"},
   {"id": 104, "question": "____________ is the major method of acquiring resources in the Library.", "options": {"A": "Gift/donations", "B": "Inter-library loan", "C": "Purchase", "D": "All of the above"}, "answer": "D"},
   {"id": 105, "question": "Library resources in print format are those information carries that exist on paper?", "options": {"A": "Yes", "B": "No", "C": "Yes or no", "D": "None of the above"}, "answer": "A"},
   {"id": 106, "question": "___________ takes place when a library ______ some of its materials for the ones it lacks with another library that would have need for them.", "options": {"A": "Library Exchange / systems", "B": "Permanent /arrangement", "C": "Library exchange/ exchanges", "D": "Borrowing/Exchange"}, "answer": "C"},
@@ -417,7 +418,7 @@
   {"id": 113, "question": "Miniature mobile storage media are flash drives, memory cards, USB and smart cards.", "options": {"A": "Yes", "B": "No", "C": "Yes and No", "D": "Yes or No"}, "answer": "A"},
   {"id": 114, "question": "The reference unit is a place in the library where the following materials except one are organised for consultation.", "options": {"A": "Dictionary", "B": "Annuals", "C": "Journals", "D": "Encyclopedia"}, "answer": "C"},
   {"id": 115, "question": "_____________ treat specific subjects like agriculture, medicine etc.", "options": {"A": "General Encyclopedia", "B": "Subject encyclopedia", "C": "Encyclopedia Americana", "D": "Dictionaries"}, "answer": "B"},
-  {"id": 116, "question": "Word entries are arranged alphabetically in the following materials except……..", "options": {"A": "Reference sources", "B": "Dictionaries", "C": "Directories", "D": "None of the above"}, "answer": "D"},
+  {"id": 116, "question": "Word entries are arranged alphabetically in the following materials exceptâ€¦â€¦..", "options": {"A": "Reference sources", "B": "Dictionaries", "C": "Directories", "D": "None of the above"}, "answer": "D"},
   {"id": 117, "question": "These sources provide basic data and statistics on topics such as education, health, sports, personalities or professions and are usually published annually.", "options": {"A": "Almanacs and yearbooks", "B": "Handbooks, manuals and guides", "C": "Literature search reference sources", "D": "Abstracts"}, "answer": "A"},
   {"id": 118, "question": "_______________ is a list of the books of a specific author, publisher or on a specific subject.", "options": {"A": "Periodical index", "B": "Bibliography", "C": "Citation index", "D": "Book index"}, "answer": "B"},
   {"id": 119, "question": "Geographical sources are also known as cartographic sources.", "options": {"A": "Yes", "B": "No", "C": "Yes or No", "D": "Yes and No"}, "answer": "A"},
@@ -439,7 +440,7 @@
   {"id": 135, "question": "The type of library that serves undergraduates and graduate students, researchers and faculty is called _____.", "options": {"A": "Document center", "B": "Academic library", "C": "National library", "D": "Archives"}, "answer": "B"},
   {"id": 136, "question": "The unique 10 or 13 digit identification number assigned to editions of books by the publisher is?", "options": {"A": "Accession number", "B": "ISBN", "C": "ISSN", "D": "Call number"}, "answer": "B"},
   {"id": 137, "question": "In school libraries, which of the following group of resources is quite common?", "options": {"A": "Audiovisual resources and textbooks", "B": "Thesis and dissertation", "C": "Memos and documents", "D": "FAO publications and dictionaries"}, "answer": "A"},
-  {"id": 138, "question": "The age, qualifications and experience of Mohammadu Buhari could best be found in?", "options": {"A": "Who’s Who", "B": "Directory", "C": "Gazetteer", "D": "Who was Who"}, "answer": "A"},
+  {"id": 138, "question": "The age, qualifications and experience of Mohammadu Buhari could best be found in?", "options": {"A": "Whoâ€™s Who", "B": "Directory", "C": "Gazetteer", "D": "Who was Who"}, "answer": "A"},
   {"id": 139, "question": "Encyclopedia Britannica and Encyclopedia Americana are examples of?", "options": {"A": "Subject encyclopaedia", "B": "Special encyclopaedia", "C": "Juvenile encyclopaedia", "D": "General encyclopaedia"}, "answer": "D"},
   {"id": 140, "question": "Which of these options is odd?", "options": {"A": "Atlas", "B": "Map", "C": "Gazetteer", "D": "Manual"}, "answer": "D"},
   {"id": 141, "question": "Oxford English dictionary is a _______________.", "options": {"A": "General dictionary", "B": "Special dictionary", "C": "Dual purpose dictionary", "D": "Lexicon"}, "answer": "A"},
@@ -453,7 +454,7 @@
   {"id": 149, "question": "Opening and closing hours of the University Library, FUTA are ______________ and ____________.", "options": {"A": "9.00am and 10.00pm", "B": "8.00am and 10.00pm", "C": "8.00am and 4.00pm", "D": "8.00am and 5.00pm"}, "answer": "B"},
   {"id": 150, "question": "An information resource intended for consultation only and not thorough reading is called?", "options": {"A": "Novel", "B": "Reference material", "C": "Serial material", "D": "Reserved material"}, "answer": "B"},
   {"id": 151, "question": "The Federal University of Technology Library Akure was established in 1982 but was not officially opened until?", "options": {"A": "1982", "B": "1983", "C": "1984", "D": "1985"}, "answer": "B"},
-  {"id": 152, "question": "The copyright page of a book contains the following information except?", "options": {"A": "Author’s Name", "B": "Imprint", "C": "Printer’s Name", "D": "Printer’s Intention"}, "answer": "D"},
+  {"id": 152, "question": "The copyright page of a book contains the following information except?", "options": {"A": "Authorâ€™s Name", "B": "Imprint", "C": "Printerâ€™s Name", "D": "Printerâ€™s Intention"}, "answer": "D"},
   {"id": 153, "question": "Periodicals are identified by a number referred to as?", "options": {"A": "ISSN", "B": "ISBN", "C": "ISSM", "D": "DDC"}, "answer": "A"},
   {"id": 154, "question": "A typical example of an index is?", "options": {"A": "Serial collection", "B": "Book title", "C": "Library Catalogue", "D": "Glossary"}, "answer": "C"},
   {"id": 155, "question": "The following are the features of books except?", "options": {"A": "Chapter", "B": "Edition", "C": "Volume number", "D": "Preface"}, "answer": "C"},
@@ -465,17 +466,17 @@
   {"id": 161, "question": "A running number carried by each library book indicating when it was acquired is called?", "options": {"A": "ISBN", "B": "Call number", "C": "Volume and issue number", "D": "Accession Number"}, "answer": "D"},
   {"id": 162, "question": "A bulletin issued periodically to a group of defined individuals of a society or organization is known as?", "options": {"A": "Newspaper", "B": "Newsletter", "C": "News item", "D": "Journals"}, "answer": "B"},
   {"id": 163, "question": "A distinguishing factor of a Journal is its?", "options": {"A": "Volume and issue numbers", "B": "Volume and serial numbers", "C": "Volume and book numbers", "D": "Volume, serial and book numbers"}, "answer": "A"},
-  {"id": 164, "question": "Personal Digital Assistant can be used to organize one’s?", "options": {"A": "Company appointments", "B": "Business/personal schedules and addresses", "C": "Institution’s information", "D": "Students’ overall information"}, "answer": "B"},
+  {"id": 164, "question": "Personal Digital Assistant can be used to organize oneâ€™s?", "options": {"A": "Company appointments", "B": "Business/personal schedules and addresses", "C": "Institutionâ€™s information", "D": "Studentsâ€™ overall information"}, "answer": "B"},
   {"id": 165, "question": "Current Awareness Services include all the following except?", "options": {"A": "Selective Dissemination of Information", "B": "Publication of Current Contents", "C": "New Arrivals Lists", "D": "Translation Services"}, "answer": "D"},
   {"id": 166, "question": "Which one of the following is an odd-man-out?", "options": {"A": "Basic background references sources", "B": "Fact or ready reference sources", "C": "Literature search tools", "D": "Geomorphological references sources"}, "answer": "D"},
   {"id": 167, "question": "The name of the Federal University of Technology, Akure Library is?", "options": {"A": "FUTA Library", "B": "The Library", "C": "Albert Ilemobade Library", "D": "None of the above"}, "answer": "C"},
   {"id": 168, "question": "To evaluate a website, factors to be considered include all but?", "options": {"A": "Time of download", "B": "Authority", "C": "Currency", "D": "Organization affiliation"}, "answer": "C"},
   {"id": 169, "question": "With advancing technologies, OPAC, MARC and others, library users can be ______ in the world.", "options": {"A": "No one", "B": "Any one", "C": "FUTA Students", "D": "Local"}, "answer": "B"},
   {"id": 170, "question": "When classifying a book, one can get information about the purpose and scope from its?", "options": {"A": "Dedication", "B": "Preface", "C": "Acknowledgement", "D": "Title page"}, "answer": "B"},
-  {"id": 171, "question": "Classification schemes include the following except?", "options": {"A": "Library of Congress", "B": "Dewey decimal Classification", "C": "Bloom’s Taxonomy Classification", "D": "Universal Decimal Classification"}, "answer": "C"},
-  {"id": 172, "question": "Libraries found in primary and secondary schools are classified as?", "options": {"A": "Academic Libraries", "B": "School Libraries", "C": "Schools’ Libraries", "D": "Private Libraries"}, "answer": "B"},
-  {"id": 173, "question": "Registration of library users take place in a Unit of the library called?", "options": {"A": "Reference Unit", "B": "Porter’s Unit", "C": "Cataloguing Unit", "D": "Circulation Unit"}, "answer": "D"},
-  {"id": 174, "question": "The Porters’ Unit among other things?", "options": {"A": "See to security of materials", "B": "Check people entering/leaving", "C": "Maintain order", "D": "All of the above"}, "answer": "D"},
+  {"id": 171, "question": "Classification schemes include the following except?", "options": {"A": "Library of Congress", "B": "Dewey decimal Classification", "C": "Bloomâ€™s Taxonomy Classification", "D": "Universal Decimal Classification"}, "answer": "C"},
+  {"id": 172, "question": "Libraries found in primary and secondary schools are classified as?", "options": {"A": "Academic Libraries", "B": "School Libraries", "C": "Schoolsâ€™ Libraries", "D": "Private Libraries"}, "answer": "B"},
+  {"id": 173, "question": "Registration of library users take place in a Unit of the library called?", "options": {"A": "Reference Unit", "B": "Porterâ€™s Unit", "C": "Cataloguing Unit", "D": "Circulation Unit"}, "answer": "D"},
+  {"id": 174, "question": "The Portersâ€™ Unit among other things?", "options": {"A": "See to security of materials", "B": "Check people entering/leaving", "C": "Maintain order", "D": "All of the above"}, "answer": "D"},
   {"id": 175, "question": "One of the ways of acquiring information in the library is?", "options": {"A": "Seeking for information", "B": "Bequest", "C": "Passing information round", "D": "Borrowing"}, "answer": "B"},
   {"id": 176, "question": "Collation in a typical catalogue card entry gives information such as?", "options": {"A": "Books length", "B": "Notation about maps", "C": "Pagination", "D": "All of the above"}, "answer": "D"},
   {"id": 177, "question": "Libraries found in the Central Bank of Nigeria are?", "options": {"A": "Academic Libraries", "B": "School Libraries", "C": "Special Libraries", "D": "Company Libraries"}, "answer": "C"},
@@ -487,7 +488,7 @@
   {"id": 183, "question": "Gazetteer can be located at which of these sections of the library?", "options": {"A": "Serials Unit", "B": "General reading Room", "C": "Reference Unit", "D": "Government Documents"}, "answer": "D"},
   {"id": 184, "question": "The National Library of Nigeria was established in?", "options": {"A": "1925", "B": "1960", "C": "1964", "D": "1971"}, "answer": "D"},
   {"id": 185, "question": "ISBN means?", "options": {"A": "International Standard Bibliographic Number", "B": "International Standard Book Number", "C": "International Serial Book Number", "D": "International Standard Book Notation"}, "answer": "B"},
-  {"id": 186, "question": "………………… is the type of library responsible for collection of legal deposit in Nigeria.", "options": {"A": "Special library", "B": "Public library", "C": "National library", "D": "Government library"}, "answer": "C"},
+  {"id": 186, "question": "â€¦â€¦â€¦â€¦â€¦â€¦â€¦ is the type of library responsible for collection of legal deposit in Nigeria.", "options": {"A": "Special library", "B": "Public library", "C": "National library", "D": "Government library"}, "answer": "C"},
   {"id": 187, "question": "Publications that give brief and concise information about the content of scientific journals is known as?", "options": {"A": "Bibliographies", "B": "Abstracts", "C": "Handbooks", "D": "indexes"}, "answer": "B"},
   {"id": 188, "question": "Publication of any format issue in successive parts having chronological designation is known as?", "options": {"A": "References", "B": "Serials", "C": "Transactions", "D": "Journals"}, "answer": "B"},
   {"id": 189, "question": "An Act of parliament is an example of?", "options": {"A": "Reference material", "B": "Monographs", "C": "Government publications", "D": "Serial publication"}, "answer": "C"},
@@ -511,37 +512,37 @@
   {"id": 207, "question": "One of these services is not rendered by the university library Federal University of Technology Akure?", "options": {"A": "Compilation of bibliography", "B": "Current awareness services", "C": "Services to physically challenged", "D": "User education"}, "answer": "C"},
   {"id": 208, "question": "ISI web of knowledge is published by?", "options": {"A": "Spinger", "B": "Thomson Reuters", "C": "Elsevier", "D": "Emerald Insight"}, "answer": "B"},
   {"id": 209, "question": "Theses and dissertations are ______________ sources of information.", "options": {"A": "Secondary", "B": "Tertiary", "C": "Primary", "D": "b and c"}, "answer": "C"},
-  {"id": 210, "question": "‘Fair use’ in copyrighted works is?", "options": {"A": "To allow researcher to make use of part of work for academic purpose only", "B": "Allow researchers to copy the whole work for academic purposes only", "C": "a and b", "D": "To allow the work be used for any purpose without authorization"}, "answer": "A"},
+  {"id": 210, "question": "â€˜Fair useâ€™ in copyrighted works is?", "options": {"A": "To allow researcher to make use of part of work for academic purpose only", "B": "Allow researchers to copy the whole work for academic purposes only", "C": "a and b", "D": "To allow the work be used for any purpose without authorization"}, "answer": "A"},
   {"id": 211, "question": "The acronym OPAC means?", "options": {"A": "Online Public Awareness Card", "B": "Online Public Awareness Catalogue", "C": "Online Private Access Catalogue", "D": "Online Public Access Catalogue"}, "answer": "D"},
   {"id": 212, "question": "The university library of FUTA has been renamed to?", "options": {"A": "Francis Idibiye Library", "B": "Albert Ilemobade Library", "C": "Peter Kolawole Library", "D": "None of the above"}, "answer": "B"},
-  {"id": 213, "question": "The female cloakroom of the university library entry is at?", "options": {"A": "Left hand side", "B": "Right hand side", "C": "At the Centre", "D": "Back of the porter’s lodge"}, "answer": "A"},
+  {"id": 213, "question": "The female cloakroom of the university library entry is at?", "options": {"A": "Left hand side", "B": "Right hand side", "C": "At the Centre", "D": "Back of the porterâ€™s lodge"}, "answer": "A"},
   {"id": 214, "question": "All these are allowed in the library except?", "options": {"A": "Borrowing of books", "B": "Access to internet services", "C": "Renewal of lost card", "D": "Group discussion among readers"}, "answer": "D"},
   {"id": 215, "question": "All these are forms of damage to library books except?", "options": {"A": "Mutilation", "B": "Binding of library books", "C": "Tearing of library books", "D": "Defacing of library books"}, "answer": "B"},
   {"id": 216, "question": "All these are characteristics of serials except?", "options": {"A": "They have ISSN", "B": "They are often acquired through subscription", "C": "The content in each volume differs from another", "D": "They are not published successfully"}, "answer": "D"},
   {"id": 217, "question": "Advantages of using electronic serials include these except?", "options": {"A": "E-serials are easy to read and revise", "B": "They can be easily manipulated", "C": "They cannot be accessed within library", "D": "They can be accessed by many users at the same time"}, "answer": "C"},
   {"id": 218, "question": "The type of library catalogue is?", "options": {"A": "Title catalogue", "B": "Author catalogue", "C": "Subject catalogue", "D": "Divided catalogue"}, "answer": "D"},
   {"id": 219, "question": "The classification scheme used in FUTA library is?", "options": {"A": "Universal decimal scheme", "B": "Dewey decimal scheme", "C": "Library of congress scheme", "D": "International library scheme"}, "answer": "C"},
-  {"id": 220, "question": "The acronym “http” means?", "options": {"A": "Hypertext transfer protocol", "B": "Hypertext transmission protocol", "C": "Hypertext tutor protocol", "D": "Hypertext transfer procedure"}, "answer": "A"},
+  {"id": 220, "question": "The acronym â€œhttpâ€ means?", "options": {"A": "Hypertext transfer protocol", "B": "Hypertext transmission protocol", "C": "Hypertext tutor protocol", "D": "Hypertext transfer procedure"}, "answer": "A"},
   {"id": 221, "question": "All these are search engines except?", "options": {"A": "Hyper", "B": "Hotbot", "C": "Google", "D": "Excite"}, "answer": "A"},
   {"id": 222, "question": "All these are browsers except?", "options": {"A": "Mozilla", "B": "Fire fox", "C": "Opera mini", "D": "Exposure"}, "answer": "D"},
   {"id": 223, "question": "The acquisition of knowledge using electronic technologies and internet-based courseware is called?", "options": {"A": "E-Learning", "B": "Group learning", "C": "Distance learning", "D": "Project learning"}, "answer": "A"},
-  {"id": 224, "question": "In library of congress classification scheme ‘R’ represents?", "options": {"A": "Religion", "B": "Medicine", "C": "Social Science", "D": "Fine arts"}, "answer": "B"},
-  {"id": 225, "question": "A number like 86-013575 on a catalogue card represents?", "options": {"A": "Call mark", "B": "No tuition number", "C": "Accession number", "D": "Author’s number"}, "answer": "C"},
+  {"id": 224, "question": "In library of congress classification scheme â€˜Râ€™ represents?", "options": {"A": "Religion", "B": "Medicine", "C": "Social Science", "D": "Fine arts"}, "answer": "B"},
+  {"id": 225, "question": "A number like 86-013575 on a catalogue card represents?", "options": {"A": "Call mark", "B": "No tuition number", "C": "Accession number", "D": "Authorâ€™s number"}, "answer": "C"},
   {"id": 226, "question": "The library type that has collection for all categories of users is?", "options": {"A": "Private library", "B": "Public library", "C": "School library", "D": "Academic library"}, "answer": "B"},
   {"id": 227, "question": "A library without wall is called?", "options": {"A": "Virtual library", "B": "School library", "C": "Public library", "D": "Private library"}, "answer": "A"},
   {"id": 228, "question": "Factors to be considered when evaluating internet materials include these except?", "options": {"A": "Credibility", "B": "Objectivity", "C": "Price", "D": "Support"}, "answer": "C"},
-  {"id": 229, "question": "“WWW” represents in ICT?", "options": {"A": "Wide world web", "B": "Web world wide", "C": "World web wide", "D": "World wide web"}, "answer": "D"},
+  {"id": 229, "question": "â€œWWWâ€ represents in ICT?", "options": {"A": "Wide world web", "B": "Web world wide", "C": "World web wide", "D": "World wide web"}, "answer": "D"},
   {"id": 230, "question": "The supplementary information that may be useful to a reader is?", "options": {"A": "Appendices", "B": "Conclusion", "C": "Table of contents", "D": "Title page"}, "answer": "A"},
   {"id": 231, "question": "A reader can use the university library only if he/she has?", "options": {"A": "Formally registered in the library", "B": "Formally given admission", "C": "Formally matriculated", "D": "Formally introduced"}, "answer": "A"},
   {"id": 232, "question": "A good report should have one of the following?", "options": {"A": "References", "B": "Referees", "C": "Dust jacket", "D": "Monograph"}, "answer": "A"},
-  {"id": 233, "question": "When citing for scholarly publications one of the following is not required?", "options": {"A": "Place of publication", "B": "Bibliography", "C": "Publisher’s name", "D": "Author’s name"}, "answer": "B"},
+  {"id": 233, "question": "When citing for scholarly publications one of the following is not required?", "options": {"A": "Place of publication", "B": "Bibliography", "C": "Publisherâ€™s name", "D": "Authorâ€™s name"}, "answer": "B"},
   {"id": 234, "question": "A type of geographical reference source is?", "options": {"A": "Gazetteer", "B": "Manual", "C": "Index", "D": "Gazette"}, "answer": "A"},
   {"id": 235, "question": "Which is not a type of library catalogue?", "options": {"A": "Card catalogue", "B": "Classified catalogue", "C": "Divided catalogue", "D": "Union catalogue"}, "answer": "A"},
   {"id": 236, "question": "Example of an internet service?", "options": {"A": "E-mail", "B": "Mailing list", "C": "File transfer protocol", "D": "All of the above"}, "answer": "D"},
   {"id": 237, "question": "One of the following is a service performed in the library?", "options": {"A": "Current awareness service", "B": "Bibliography service", "C": "Document delivery", "D": "None of the above"}, "answer": "D"},
   {"id": 238, "question": "Internet telephony allows voice calls using?", "options": {"A": "Laptop", "B": "Phone", "C": "Desktop computer", "D": "All of the above"}, "answer": "D"},
   {"id": 239, "question": "Web log is another name for?", "options": {"A": "Newsgroup", "B": "E-mail", "C": "Internet protocol", "D": "Blog"}, "answer": "D"},
-  {"id": 240, "question": "One of the following is not a function of a library catalogue?", "options": {"A": "It identifies the work of editors only", "B": "It gives index to the library collection", "C": "It shows the library’s holding", "D": "It describes the materials in the library"}, "answer": "A"},
+  {"id": 240, "question": "One of the following is not a function of a library catalogue?", "options": {"A": "It identifies the work of editors only", "B": "It gives index to the library collection", "C": "It shows the libraryâ€™s holding", "D": "It describes the materials in the library"}, "answer": "A"},
   {"id": 241, "question": "A collection of maps is called?", "options": {"A": "Gazetteer", "B": "Atlas", "C": "Gazette", "D": "None of the above"}, "answer": "B"},
   {"id": 242, "question": "All are types of audio-visual materials EXCEPT?", "options": {"A": "Realia", "B": "Microfilm", "C": "Slide", "D": "Furniture"}, "answer": "D"},
   {"id": 243, "question": "One of the greatest offences in the library is?", "options": {"A": "Reading", "B": "Eating", "C": "Writing", "D": "Studying"}, "answer": "B"},
@@ -626,10 +627,10 @@
   {"id": 319, "question": "To evaluate a website, factors to be considered include all EXCEPT:", "options": {"A": "Time of download", "B": "Authority", "C": "Currency", "D": "Name of organization affiliated"}, "answer": "A"},
   {"id": 320, "question": "With technologies like OPAC and MARC, library users can be ______ in the world:", "options": {"A": "No one", "B": "Any one", "C": "FUTA Students", "D": "Local"}, "answer": "B"},
   {"id": 321, "question": "When classifying a book, purpose and scope information is found in the:", "options": {"A": "Dedication", "B": "Preface", "C": "Acknowledgement", "D": "Title page"}, "answer": "B"},
-  {"id": 322, "question": "Classification schemes include the following EXCEPT:", "options": {"A": "Library of Congress", "B": "Dewey Decimal Classification", "C": "Bloom’s Taxonomy Classification", "D": "Universal Decimal Classification"}, "answer": "C"},
-  {"id": 323, "question": "Libraries found in primary and secondary schools are classified as:", "options": {"A": "Academic Libraries", "B": "School Libraries", "C": "Schools’ Libraries", "D": "Private Libraries"}, "answer": "B"},
-  {"id": 324, "question": "Registration of library users takes place in which unit?", "options": {"A": "Reference Unit", "B": "Porter’s Unit", "C": "Cataloguing Unit", "D": "Circulation Unit"}, "answer": "D"},
-  {"id": 325, "question": "The Porters’ Unit is responsible for:", "options": {"A": "Security of library materials", "B": "Checking people as they enter/exit", "C": "Maintaining order", "D": "All of the above"}, "answer": "D"},
+  {"id": 322, "question": "Classification schemes include the following EXCEPT:", "options": {"A": "Library of Congress", "B": "Dewey Decimal Classification", "C": "Bloomâ€™s Taxonomy Classification", "D": "Universal Decimal Classification"}, "answer": "C"},
+  {"id": 323, "question": "Libraries found in primary and secondary schools are classified as:", "options": {"A": "Academic Libraries", "B": "School Libraries", "C": "Schoolsâ€™ Libraries", "D": "Private Libraries"}, "answer": "B"},
+  {"id": 324, "question": "Registration of library users takes place in which unit?", "options": {"A": "Reference Unit", "B": "Porterâ€™s Unit", "C": "Cataloguing Unit", "D": "Circulation Unit"}, "answer": "D"},
+  {"id": 325, "question": "The Portersâ€™ Unit is responsible for:", "options": {"A": "Security of library materials", "B": "Checking people as they enter/exit", "C": "Maintaining order", "D": "All of the above"}, "answer": "D"},
   {"id": 326, "question": "One of the ways of acquiring information in the library is:", "options": {"A": "Seeking for information", "B": "Bequest", "C": "Passing information round", "D": "Borrowing"}, "answer": "B"},
   {"id": 327, "question": "Collation in a catalogue card entry provides information such as:", "options": {"A": "Book's length", "B": "Notation about maps", "C": "Pagination", "D": "All of the above"}, "answer": "D"},
   {"id": 328, "question": "Libraries found in the Central Bank of Nigeria are:", "options": {"A": "Academic Libraries", "B": "School Libraries", "C": "Special Libraries", "D": "Company Libraries"}, "answer": "C"},
@@ -680,7 +681,7 @@
   {"id": 372, "question": "Ondo State Library Board is an example of a:", "options": {"A": "Archives", "B": "State library", "C": "National library", "D": "Public Library"}, "answer": "D"},
   {"id": 373, "question": "The unique 10 or 13 digit identification number assigned to editions of books is:", "options": {"A": "Accession number", "B": "ISBN", "C": "ISSN", "D": "Call number"}, "answer": "B"},
   {"id": 374, "question": "Which group of resources is common in school libraries?", "options": {"A": "AV resources and textbooks", "B": "Theses", "C": "Memos", "D": "Dictionaries"}, "answer": "A"},
-  {"id": 375, "question": "Information on the age and qualifications of a public figure is best found in:", "options": {"A": "Who’s Who", "B": "Directory", "C": "Gazetteer", "D": "Who was Who"}, "answer": "A"},
+  {"id": 375, "question": "Information on the age and qualifications of a public figure is best found in:", "options": {"A": "Whoâ€™s Who", "B": "Directory", "C": "Gazetteer", "D": "Who was Who"}, "answer": "A"},
   {"id": 376, "question": "Which of these options is odd?", "options": {"A": "Atlas", "B": "Map", "C": "Gazetteer", "D": "Manual"}, "answer": "D"},
   {"id": 377, "question": "Oxford English dictionary is a:", "options": {"A": "General dictionary", "B": "Special dictionary", "C": "Dual purpose dictionary", "D": "Lexicon"}, "answer": "A"},
   {"id": 378, "question": "Which of these resources is NOT available in the Multimedia Unit?", "options": {"A": "Microform", "B": "Video", "C": "Cassette", "D": "Gazette"}, "answer": "D"},
@@ -854,7 +855,7 @@
 {"id": 547, "question": "A basic reference collection is made up of all EXCEPT:", "options": {"A": "Dictionaries", "B": "Encyclopaedias", "C": "Textbooks", "D": "Gazetteers"}, "answer": "C"},
 {"id": 548, "question": "The age, qualifications and experience of a public figure could best be found in:", "options": {"A": "Who's Who", "B": "Directory", "C": "Gazetteer", "D": "Who was Who"}, "answer": "A"},
 {"id": 549, "question": "Encyclopedia Britannica and Encyclopedia Americana are examples of:", "options": {"A": "Subject encyclopaedia", "B": "Special encyclopaedia", "C": "Juvenile encyclopaedia", "D": "General encyclopaedia"}, "answer": "D"},
-{"id": 550, "question": "Which is the odd one out — Atlas, Map, Gazetteer, Manual?", "options": {"A": "Atlas", "B": "Map", "C": "Gazetteer", "D": "Manual"}, "answer": "D"},
+{"id": 550, "question": "Which is the odd one out â€” Atlas, Map, Gazetteer, Manual?", "options": {"A": "Atlas", "B": "Map", "C": "Gazetteer", "D": "Manual"}, "answer": "D"},
 {"id": 551, "question": "Oxford English Dictionary is a:", "options": {"A": "General dictionary", "B": "Special dictionary", "C": "Dual purpose dictionary", "D": "Lexicon"}, "answer": "A"},
 {"id": 552, "question": "The following are subject dictionaries EXCEPT:", "options": {"A": "Dictionary of geology", "B": "Longman Contemporary English Dictionary", "C": "Dictionary of Agronomy", "D": "Dictionary of African Culture"}, "answer": "B"},
 {"id": 553, "question": "Publications giving brief and concise information about the content of scientific journals are:", "options": {"A": "Bibliographies", "B": "Abstracts", "C": "Handbooks", "D": "Indexes"}, "answer": "B"},
@@ -1127,7 +1128,7 @@
 
         const rand = document.createElement('div');
         rand.className = 'box box-random';
-        rand.innerHTML = `<div style="font-size:1.8rem;">🔀</div><h3>Random Mode</h3><p>${total} Questions</p>`;
+        rand.innerHTML = `<div style="font-size:1.8rem;">ðŸ”€</div><h3>Random Mode</h3><p>${total} Questions</p>`;
         rand.onclick = () => openSetup('random', 0);
         board.appendChild(rand);
 
@@ -1137,9 +1138,9 @@
             const card  = document.createElement('div');
             card.className = 'box';
             card.innerHTML = `
-                <div style="font-size:1.8rem; color:var(--primary);">📖</div>
+                <div style="font-size:1.8rem; color:var(--primary);">ðŸ“–</div>
                 <h3>Part ${i}</h3>
-                <p>Q${start} – Q${end}</p>`;
+                <p>Q${start} â€“ Q${end}</p>`;
             card.onclick = () => openSetup('part', i);
             board.appendChild(card);
         }
@@ -1150,7 +1151,7 @@
         partNum = part;
         document.getElementById('dashboard-wrap').style.display = 'none';
         document.getElementById('setup-screen').style.display = 'block';
-        document.getElementById('setup-title').innerText = type === 'random' ? 'Randomised Practice' : `GNS 103 — Part ${part}`;
+        document.getElementById('setup-title').innerText = type === 'random' ? 'Randomised Practice' : `GNS 103 â€” Part ${part}`;
         document.getElementById('random-settings').style.display = type === 'random' ? 'block' : 'none';
     }
 
@@ -1274,15 +1275,15 @@
             if (hasAnswered) {
                 const ok = userAns === q.answer;
                 feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'}; color:${ok?'#166534':'#991b1b'}">
-                    ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}${expHtml}</div>`;
+                    ${ok ? 'âœ” Correct!' : 'âœ˜ Incorrect. Answer: <strong>' + q.answer + '</strong>'}${expHtml}</div>`;
             } else {
                 feedArea.innerHTML = `<div class="feedback-msg" style="background:#fef9c3; color:#854d0e; border:1px solid #fde047;">
-                    ⚠ Not answered. Correct: <strong>${q.answer}</strong>${expHtml}</div>`;
+                    âš  Not answered. Correct: <strong>${q.answer}</strong>${expHtml}</div>`;
             }
         } else if (activeMode === 'practice' && hasAnswered) {
             const ok = userAns === q.answer;
             feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'}; color:${ok?'#166534':'#991b1b'}">
-                ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}${expHtml}</div>`;
+                ${ok ? 'âœ” Correct!' : 'âœ˜ Incorrect. Answer: <strong>' + q.answer + '</strong>'}${expHtml}</div>`;
         }
 
         const isLast = currentIndex === currentExamData.length - 1;
@@ -1342,16 +1343,16 @@
         document.getElementById('modalReviewBtn').style.display = activeMode === 'practice' ? 'none' : 'flex';
 
         if (pct >= 70) {
-            document.getElementById('resultIcon').innerText     = '🏆';
-            document.getElementById('resultGreeting').innerText = 'Outstanding! 🌟';
+            document.getElementById('resultIcon').innerText     = 'ðŸ†';
+            document.getElementById('resultGreeting').innerText = 'Outstanding! ðŸŒŸ';
             document.getElementById('resultFeedback').innerText = 'Excellent work! Keep it up!';
             confetti({ particleCount: 160, spread: 70, origin: { y: 0.6 } });
         } else if (pct >= 50) {
-            document.getElementById('resultIcon').innerText     = '👍';
+            document.getElementById('resultIcon').innerText     = 'ðŸ‘';
             document.getElementById('resultGreeting').innerText = 'Good Job!';
-            document.getElementById('resultFeedback').innerText = 'Almost there — aim for 70%+!';
+            document.getElementById('resultFeedback').innerText = 'Almost there â€” aim for 70%+!';
         } else {
-            document.getElementById('resultIcon').innerText     = '💪';
+            document.getElementById('resultIcon').innerText     = 'ðŸ’ª';
             document.getElementById('resultGreeting').innerText = 'Keep Trying!';
             document.getElementById('resultFeedback').innerText = 'Review your notes and try again!';
         }
@@ -1362,7 +1363,7 @@
 
     async function saveTestScore(pct) {
         const el = document.getElementById('save-status');
-        el.innerText = '⏳ Saving...';
+        el.innerText = 'â³ Saving...';
         try {
             const { data: { user } } = await db.auth.getUser();
             if (!user) { el.innerText = ''; return; }
@@ -1379,9 +1380,9 @@
             const { error } = await db.from('test_results').insert([
                 { student_id: user.id, course_id: COURSE_CODE, score: pct }
             ]);
-            el.innerText = error ? '⚠️ Could not save (offline)' : '✅ Score saved!';
+            el.innerText = error ? 'âš ï¸ Could not save (offline)' : 'âœ… Score saved!';
         } catch (e) {
-            el.innerText = '⚠️ Offline — score not saved';
+            el.innerText = 'âš ï¸ Offline â€” score not saved';
         }
     }
 
@@ -1421,15 +1422,16 @@ document.addEventListener('keydown', (e) => {
     async function shareQuizResult() {
         const score = document.getElementById('finalScoreText').innerText;
         const section = examSelectionType === 'random' ? 'a random mix' : `Part ${partNum}`;
-        const text = `I just scored ${score}% on ${COURSE_CODE} (${section})! 🚀\n\nChallenge yourself on the Renance CBT portal! 📚🔥\nhttps://renancecbt1.vercel.app`;
+        const text = `I just scored ${score}% on ${COURSE_CODE} (${section})! ðŸš€\n\nChallenge yourself on the Renance CBT portal! ðŸ“šðŸ”¥\nhttps://renancecbt1.vercel.app`;
         try {
             if (navigator.share) await navigator.share({ title: `My ${COURSE_CODE} Score`, text, url: 'https://renancecbt1.vercel.app' });
-            else { await navigator.clipboard.writeText(text); alert('Score copied to clipboard! 📋'); }
+            else { await navigator.clipboard.writeText(text); alert('Score copied to clipboard! ðŸ“‹'); }
         } catch (_) {}
     }
 </script>
 </body>
 </html>
+
 
 
 

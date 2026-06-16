@@ -1,13 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RENANCE — Create Account</title>
+<title>RENANCE â€” Create Account</title>
 <link rel="shortcut icon" href="logo.png" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="env-loader.js"></script>
+1
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -21,9 +22,9 @@
 html,body{height:100%}
 body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden}
 
-/* ═══════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    SELF-CONTAINED BACKGROUND SYSTEM
-═══════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .bg-base{
   position:fixed;inset:0;z-index:0;
   background:
@@ -85,7 +86,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 .scan{position:fixed;inset:0;z-index:6;pointer-events:none;
   background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,.008) 3px,rgba(255,255,255,.008) 4px)}
 
-/* ═══════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 .layout{
   position:relative;z-index:10;
@@ -274,7 +275,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
         <div class="step-bar active" id="bar1"></div>
         <div class="step-bar" id="bar2"></div>
       </div>
-      <div class="step-label" id="stepLabel">Step 1 of 2 — Account Details</div>
+      <div class="step-label" id="stepLabel">Step 1 of 2 â€” Account Details</div>
     </div>
 
     <div class="error-box" id="errorBox"></div>
@@ -327,7 +328,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
               <label>Phone Number</label>
               <div class="phone-row">
                 <div class="phone-code field-wrap">
-                  <input type="text" value="+234 🇳🇬" readonly>
+                  <input type="text" value="+234 ðŸ‡³ðŸ‡¬" readonly>
                 </div>
                 <div class="phone-num field-wrap">
                   <input type="tel" id="phone" placeholder="08012345678" autocomplete="tel">
@@ -387,8 +388,8 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 </div>
 
 <script>
-const SUPABASE_URL='https://ubxsywaxdvkhiqepcvmq.supabase.co';
-const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
 if(!window._sb)window._sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 const db=window._sb;
 
@@ -409,11 +410,11 @@ document.getElementById('nextBtn').addEventListener('click',()=>{
   if(!fn){se('name',1);ok=false}else{se('name',0)}
   if(!re.test(em)){se('email',1);ok=false}else{se('email',0)}
   if(pw.length<8){se('pw',1);ok=false}else{se('pw',0)}
-  if(ok){track.style.transform='translateX(-50%)';bar1.classList.remove('active');bar2.classList.add('active');stepLabel.textContent='Step 2 of 2 — Personal Details'}
+  if(ok){track.style.transform='translateX(-50%)';bar1.classList.remove('active');bar2.classList.add('active');stepLabel.textContent='Step 2 of 2 â€” Personal Details'}
 });
 
 document.getElementById('backBtn').addEventListener('click',()=>{
-  track.style.transform='translateX(0)';bar2.classList.remove('active');bar1.classList.add('active');stepLabel.textContent='Step 1 of 2 — Account Details';
+  track.style.transform='translateX(0)';bar2.classList.remove('active');bar1.classList.add('active');stepLabel.textContent='Step 1 of 2 â€” Account Details';
 });
 
 document.getElementById('togPw').addEventListener('click',function(){
@@ -470,10 +471,10 @@ document.getElementById('sf').addEventListener('submit',async function(e){
       if(uid){const{error:dbError}=await db.from('students').insert([{id:uid,fullname:fn,email:em,faculty:fa,department:de,phone:ph}]);if(dbError)throw dbError}
       btn.innerHTML='<i class="fa-solid fa-check"></i><span>Success!</span>';
       btn.style.background='linear-gradient(135deg,#059669,#10b981)';
-      toast('🎉 Account created! Redirecting to login...','ok');
+      toast('ðŸŽ‰ Account created! Redirecting to login...','ok');
       setTimeout(()=>window.location.href='login.html',2000);
     }catch(err){
-      showError('❌ '+(err.message||'Something went wrong. Please try again.'));
+      showError('âŒ '+(err.message||'Something went wrong. Please try again.'));
       btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-user-plus"></i><span>Create Account</span>';
     }
   }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,8 @@
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="env-loader.js"></script>
+1
 
     <style>
         :root {
@@ -190,7 +191,7 @@
 <main>
     <div id="loading-screen">
         <div class="spinner"></div>
-        <p style="color:var(--text-muted); font-weight:600;">Initializing portal…</p>
+        <p style="color:var(--text-muted); font-weight:600;">Initializing portalâ€¦</p>
     </div>
 
     <div id="dashboard-wrap" style="display:none;">
@@ -267,14 +268,14 @@
 
 <div id="quizResultModal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
-        <span class="result-icon" id="resultIcon">🏆</span>
+        <span class="result-icon" id="resultIcon">ðŸ†</span>
         <h2 id="resultGreeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
         <div class="score-display">
             <div class="score-big"><span id="finalScoreText">0</span>%</div>
             <div class="stats-mini">
                 <div class="sm"><div class="sv" id="modalCorrect">0</div><div class="sl">Correct</div></div>
                 <div class="sm"><div class="sv" id="modalTotal">0</div><div class="sl">Total</div></div>
-                <div class="sm"><div class="sv" id="modalAvg">—</div><div class="sl">Your Avg</div></div>
+                <div class="sm"><div class="sv" id="modalAvg">â€”</div><div class="sl">Your Avg</div></div>
             </div>
         </div>
         <p id="resultFeedback" style="font-size:0.9rem; color:var(--text-muted); margin:0;"></p>
@@ -298,7 +299,7 @@
     const RAW_DATA = {
        
   "course": "SEN 101",
-  "title": "Web Technologies – 600 MCQ",
+  "title": "Web Technologies â€“ 600 MCQ",
   "total": 600,
   "questions": [
     {
@@ -635,7 +636,7 @@
         "D": "Validation rule"
       },
       "answer": "C",
-      "explanation": "The method attribute of a <form> specifies the HTTP method used to send form data — either GET (appended to URL) or POST (sent in request body)."
+      "explanation": "The method attribute of a <form> specifies the HTTP method used to send form data â€” either GET (appended to URL) or POST (sent in request body)."
     },
     {
       "id": 29,
@@ -671,7 +672,7 @@
         "D": "Navigation links"
       },
       "answer": "B",
-      "explanation": "The <head> tag contains meta-information about the HTML document — such as the title, character set, CSS links, and JavaScript references — not visible content."
+      "explanation": "The <head> tag contains meta-information about the HTML document â€” such as the title, character set, CSS links, and JavaScript references â€” not visible content."
     },
     {
       "id": 32,
@@ -1307,7 +1308,7 @@
         "D": "text-position"
       },
       "answer": "A",
-      "explanation": "The CSS box model consists of content, padding, border, and margin — from innermost to outermost — defining the space an element occupies."
+      "explanation": "The CSS box model consists of content, padding, border, and margin â€” from innermost to outermost â€” defining the space an element occupies."
     },
     {
       "id": 85,
@@ -3235,7 +3236,7 @@
         "D": "Local machine"
       },
       "answer": "C",
-      "explanation": "PHP variables start with a $ sign (e.g., $name). They are dynamically typed — no need to declare a type before use."
+      "explanation": "PHP variables start with a $ sign (e.g., $name). They are dynamically typed â€” no need to declare a type before use."
     },
     {
       "id": 254,
@@ -3427,7 +3428,7 @@
         "D": "Restarts the script"
       },
       "answer": "C",
-      "explanation": "The DELETE statement removes records from a table. Without WHERE, it deletes all rows — use with caution."
+      "explanation": "The DELETE statement removes records from a table. Without WHERE, it deletes all rows â€” use with caution."
     },
     {
       "id": 270,
@@ -3727,7 +3728,7 @@
         "D": "PHP Database Operations"
       },
       "answer": "B",
-      "explanation": "The ALTER TABLE statement modifies an existing table — adding, dropping, or modifying columns and constraints."
+      "explanation": "The ALTER TABLE statement modifies an existing table â€” adding, dropping, or modifying columns and constraints."
     },
     {
       "id": 295,
@@ -3883,7 +3884,7 @@
         "D": "get_date()"
       },
       "answer": "C",
-      "explanation": "The COALESCE() function returns the first non-NULL value from a list of expressions — a more flexible alternative to IFNULL()."
+      "explanation": "The COALESCE() function returns the first non-NULL value from a list of expressions â€” a more flexible alternative to IFNULL()."
     },
     {
       "id": 308,
@@ -4207,7 +4208,7 @@
         "D": "MANDATORY"
       },
       "answer": "B",
-      "explanation": "PHP interfaces define a contract — a set of methods a class must implement. A class can implement multiple interfaces."
+      "explanation": "PHP interfaces define a contract â€” a set of methods a class must implement. A class can implement multiple interfaces."
     },
     {
       "id": 335,
@@ -4375,7 +4376,7 @@
         "D": "preg_email()"
       },
       "answer": "C",
-      "explanation": "MySQL's LOAD DATA INFILE imports data from a text/CSV file directly into a table — much faster than individual INSERT statements."
+      "explanation": "MySQL's LOAD DATA INFILE imports data from a text/CSV file directly into a table â€” much faster than individual INSERT statements."
     },
     {
       "id": 349,
@@ -4519,7 +4520,7 @@
         "D": "__construct()"
       },
       "answer": "D",
-      "explanation": "PHP 8's match expression is like switch but stricter — it uses strict comparison, has no fall-through, and must be exhaustive."
+      "explanation": "PHP 8's match expression is like switch but stricter â€” it uses strict comparison, has no fall-through, and must be exhaustive."
     },
     {
       "id": 361,
@@ -4711,7 +4712,7 @@
         "D": "Closes the connection"
       },
       "answer": "B",
-      "explanation": "The Servlet lifecycle: instantiation → init() → service() (handles requests via doGet/doPost) → destroy() when removed from service."
+      "explanation": "The Servlet lifecycle: instantiation â†’ init() â†’ service() (handles requests via doGet/doPost) â†’ destroy() when removed from service."
     },
     {
       "id": 377,
@@ -4747,7 +4748,7 @@
         "D": "runQuery()"
       },
       "answer": "B",
-      "explanation": "The JDBC workflow: load driver → get Connection → create Statement → execute query → process ResultSet → close connection."
+      "explanation": "The JDBC workflow: load driver â†’ get Connection â†’ create Statement â†’ execute query â†’ process ResultSet â†’ close connection."
     },
     {
       "id": 380,
@@ -5119,7 +5120,7 @@
         "D": "out.addCookie()"
       },
       "answer": "C",
-      "explanation": "The N+1 query problem occurs when one query fetches N records, then N additional queries fetch related data for each — solved with JOIN FETCH."
+      "explanation": "The N+1 query problem occurs when one query fetches N records, then N additional queries fetch related data for each â€” solved with JOIN FETCH."
     },
     {
       "id": 411,
@@ -5191,7 +5192,7 @@
         "D": "<c:forEach>"
       },
       "answer": "D",
-      "explanation": "Listeners in Java EE respond to lifecycle events of ServletContext, HttpSession, and ServletRequest — e.g., session creation/destruction."
+      "explanation": "Listeners in Java EE respond to lifecycle events of ServletContext, HttpSession, and ServletRequest â€” e.g., session creation/destruction."
     },
     {
       "id": 417,
@@ -5462,7 +5463,7 @@
       "question": "What is DNS?",
       "options": {
         "A": "Data Network System",
-        "B": "Domain Name System – translates domain to IP",
+        "B": "Domain Name System â€“ translates domain to IP",
         "C": "Dynamic Network Service",
         "D": "Digital Name Server"
       },
@@ -5511,7 +5512,7 @@
       "options": {
         "A": "A type of database",
         "B": "A CSS framework",
-        "C": "Asynchronous JavaScript and XML – updates pages without reload",
+        "C": "Asynchronous JavaScript and XML â€“ updates pages without reload",
         "D": "A JSP tag library"
       },
       "answer": "C",
@@ -5791,7 +5792,7 @@
         "D": "Atomic Consistency Index Definition"
       },
       "answer": "A",
-      "explanation": "The browser rendering process: parse HTML → build DOM → parse CSS → build CSSOM → combine into Render Tree → layout → paint."
+      "explanation": "The browser rendering process: parse HTML â†’ build DOM â†’ parse CSS â†’ build CSSOM â†’ combine into Render Tree â†’ layout â†’ paint."
     },
     {
       "id": 467,
@@ -5959,7 +5960,7 @@
         "D": "type='picker'"
       },
       "answer": "C",
-      "explanation": "Web performance metrics: LCP (Largest Contentful Paint), FID (First Input Delay), CLS (Cumulative Layout Shift) — Google's Core Web Vitals."
+      "explanation": "Web performance metrics: LCP (Largest Contentful Paint), FID (First Input Delay), CLS (Cumulative Layout Shift) â€” Google's Core Web Vitals."
     },
     {
       "id": 481,
@@ -6015,7 +6016,7 @@
       "options": {
         "A": "Secure Script Language",
         "B": "Standard Server Layer",
-        "C": "Secure Sockets Layer – encryption protocol",
+        "C": "Secure Sockets Layer â€“ encryption protocol",
         "D": "Server Side Language"
       },
       "answer": "C",
@@ -6127,7 +6128,7 @@
         "D": "<script href='app.js'>"
       },
       "answer": "C",
-      "explanation": "The CSS specificity hierarchy (highest to lowest): inline styles → ID selectors → class/attribute/pseudo-class → element/pseudo-element."
+      "explanation": "The CSS specificity hierarchy (highest to lowest): inline styles â†’ ID selectors â†’ class/attribute/pseudo-class â†’ element/pseudo-element."
     },
     {
       "id": 495,
@@ -6187,7 +6188,7 @@
         "D": "An ID selector"
       },
       "answer": "B",
-      "explanation": "The Observer pattern notifies dependent objects (observers) automatically when the subject's state changes — foundation of reactive programming."
+      "explanation": "The Observer pattern notifies dependent objects (observers) automatically when the subject's state changes â€” foundation of reactive programming."
     },
     {
       "id": 500,
@@ -6247,7 +6248,7 @@
         "D": "&great;"
       },
       "answer": "C",
-      "explanation": "SOLID principles: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion — guidelines for OOP design."
+      "explanation": "SOLID principles: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion â€” guidelines for OOP design."
     },
     {
       "id": 505,
@@ -6295,7 +6296,7 @@
         "D": "404"
       },
       "answer": "D",
-      "explanation": "TDD (Test-Driven Development) involves writing failing tests first, then writing code to pass them, then refactoring. Red → Green → Refactor."
+      "explanation": "TDD (Test-Driven Development) involves writing failing tests first, then writing code to pass them, then refactoring. Red â†’ Green â†’ Refactor."
     },
     {
       "id": 509,
@@ -6518,7 +6519,7 @@
       "question": "What is CSRF?",
       "options": {
         "A": "CSS Resource Filter",
-        "B": "Cross-Site Request Forgery – tricking a user into making unintended requests",
+        "B": "Cross-Site Request Forgery â€“ tricking a user into making unintended requests",
         "C": "Client-Side Request Form",
         "D": "Content Security Response Filter"
       },
@@ -6967,7 +6968,7 @@
         "D": "A JavaScript module bundler"
       },
       "answer": "D",
-      "explanation": "Idempotency means performing an operation multiple times has the same effect as doing it once — important for safe API retries."
+      "explanation": "Idempotency means performing an operation multiple times has the same effect as doing it once â€” important for safe API retries."
     },
     {
       "id": 565,
@@ -7099,7 +7100,7 @@
         "D": "Sets page description"
       },
       "answer": "C",
-      "explanation": "The Critical Rendering Path is the sequence of steps to render the initial view: HTML parsing → DOM → CSSOM → Render Tree → Layout → Paint."
+      "explanation": "The Critical Rendering Path is the sequence of steps to render the initial view: HTML parsing â†’ DOM â†’ CSSOM â†’ Render Tree â†’ Layout â†’ Paint."
     },
     {
       "id": 576,
@@ -7159,7 +7160,7 @@
         "D": "px"
       },
       "answer": "D",
-      "explanation": "Container queries (CSS) apply styles based on the size of a parent container rather than the viewport — more modular than media queries."
+      "explanation": "Container queries (CSS) apply styles based on the size of a parent container rather than the viewport â€” more modular than media queries."
     },
     {
       "id": 581,
@@ -7243,7 +7244,7 @@
         "D": "A CSS preprocessor"
       },
       "answer": "C",
-      "explanation": "Web Components consist of Custom Elements, Shadow DOM, and HTML Templates — a set of standards for reusable, encapsulated UI components."
+      "explanation": "Web Components consist of Custom Elements, Shadow DOM, and HTML Templates â€” a set of standards for reusable, encapsulated UI components."
     },
     {
       "id": 588,
@@ -7387,7 +7388,7 @@
         "D": "Prevent SQL injection and improve performance"
       },
       "answer": "D",
-      "explanation": "Prepared statements prevent SQL injection by separating the SQL structure from the data — the database compiles the query template once, then executes it safely with supplied parameters."
+      "explanation": "Prepared statements prevent SQL injection by separating the SQL structure from the data â€” the database compiles the query template once, then executes it safely with supplied parameters."
     },
     {
       "id": 600,
@@ -7399,12 +7400,12 @@
         "D": "Using only server-side code"
       },
       "answer": "B",
-      "explanation": "Separation of concerns in web development means HTML defines structure, CSS handles presentation, and JavaScript controls behavior — keeping each technology focused on its role for maintainability."
+      "explanation": "Separation of concerns in web development means HTML defines structure, CSS handles presentation, and JavaScript controls behavior â€” keeping each technology focused on its role for maintainability."
     }]
 };
 
-    const SUPABASE_URL = 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+    const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const COURSE_CODE  = 'SEN 101';
     const STORAGE_KEY  = 'saved_sen101_exam';
@@ -7435,7 +7436,7 @@
         } catch (err) {
             document.getElementById('loading-screen').innerHTML = `
                 <div style="text-align:center;padding:2rem;">
-                    <div style="font-size:2.5rem;margin-bottom:1rem;">⚠️</div>
+                    <div style="font-size:2.5rem;margin-bottom:1rem;">âš ï¸</div>
                     <h3 style="color:var(--danger);">Error initializing questions</h3>
                     <p style="color:var(--text-muted);">${err.message}</p>
                 </div>`;
@@ -7461,6 +7462,7 @@
 </script>
 </body>
 </html>
+
 
 
 
