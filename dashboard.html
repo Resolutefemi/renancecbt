@@ -920,25 +920,44 @@
 
         
         const courses = [
-            { id: 'STA 111', title: 'DESCRIPTIVE STATISTICS',            icon: 'bar-chart',  isReady: true },
-            { id: 'AMS 101', title: 'PRNCIPLES OF MANAGEMENT',            icon: 'briefcase',  isReady: true },
-            { id: 'COS 101', title: 'INTRODUCTION TO COMPUTER',          icon: 'cpu',        isReady: true },
-            { id: 'BIO 101', title: 'GENERAL BIOLOGY I',                 icon: 'dna',        isReady: true },
-            { id: 'SEN 101', title: 'SOFTWARE EXPERIMENTAL LAB I',       icon: 'code',       isReady: true },
-            { id: 'MEE 101', title: 'ENGINEERING DRAWING I',             icon: 'compass',    isReady: true },
-            { id: 'GNS 103', title: 'INFORMATION LITERACY',              icon: 'library',    isReady: true },
-            { id: 'CVE 105', title: 'HISTORY AND PHILOSOPHY OF SCIENCE', icon: 'clock',      isReady: true },
-            { id: 'MTH 101', title: 'ELEMENTARY MATHEMATICS I',          icon: 'calculator', isReady: true },
-            { id: 'PHY 101', title: 'GENERAL PHYSICS I',                 icon: 'atom',       isReady: true },
-            { id: 'PHY 103', title: 'GENERAL PHYSICS III',               icon: 'zap',        isReady: true },
-            { id: 'GST 111', title: 'COMMUNICATION IN ENGLISH',          icon: 'languages',  isReady: true },
-            { id: 'CHE 101', title: 'GENERAL CHEMISTRY I',               icon: 'beaker',     isReady: true },
-            { id: 'CHE 103', title: 'EXPERIMENTAL CHEMISTRY I',          icon: 'test-tube',  isReady: true },
+            { id: 'STA 111', title: 'DESCRIPTIVE STATISTICS',            icon: 'bar-chart',  isReady: true, semester: 1, study: true,  practice: true  },
+            { id: 'AMS 101', title: 'PRINCIPLES OF MANAGEMENT',          icon: 'briefcase',  isReady: true, semester: 1, study: false, practice: true  },
+            { id: 'COS 101', title: 'INTRODUCTION TO COMPUTER',          icon: 'cpu',        isReady: true, semester: 1, study: false, practice: true  },
+            { id: 'BIO 101', title: 'GENERAL BIOLOGY I',                 icon: 'dna',        isReady: true, semester: 1, study: true,  practice: true  },
+            { id: 'SEN 101', title: 'SOFTWARE EXPERIMENTAL LAB I',       icon: 'code',       isReady: true, semester: 1, study: false, practice: true  },
+            { id: 'MEE 101', title: 'ENGINEERING DRAWING I',             icon: 'compass',    isReady: true, semester: 1, study: true,  practice: false },
+            { id: 'GNS 103', title: 'INFORMATION LITERACY',              icon: 'library',    isReady: true, semester: 1, study: false, practice: true  },
+            { id: 'CVE 105', title: 'HISTORY AND PHILOSOPHY OF SCIENCE', icon: 'clock',      isReady: true, semester: 1, study: false, practice: true  },
+            { id: 'MTH 101', title: 'ELEMENTARY MATHEMATICS I',          icon: 'calculator', isReady: true, semester: 1, study: false,  practice: true  },
+            { id: 'PHY 101', title: 'GENERAL PHYSICS I',                 icon: 'atom',       isReady: true, semester: 1, study: false,  practice: true  },
+            { id: 'PHY 103', title: 'GENERAL PHYSICS III',               icon: 'zap',        isReady: true, semester: 1, study: false, practice: true  },
+            { id: 'GST 111', title: 'COMMUNICATION IN ENGLISH',          icon: 'languages',  isReady: true, semester: 1, study: false, practice: true  },
+            { id: 'CHE 101', title: 'GENERAL CHEMISTRY I',               icon: 'beaker',     isReady: true, semester: 1, study: false,  practice: true  },
+            { id: 'CHE 103', title: 'EXPERIMENTAL CHEMISTRY I',          icon: 'test-tube',  isReady: true, semester: 1, study: false, practice: true  },
         ];
 
+        /* Semester 2 courses placeholder — add here when ready */
+        const courses2 = [];
+
+        let showingSemester1 = false;
+
         function getCourseFooterText(course) {
-            if (course.id === 'MEE 101') return 'START LEARNING';
-            return course.isReady ? 'PRACTICE' : 'COMING SOON';
+            if (!course.isReady) return 'COMING SOON';
+            if (course.study && !course.practice) return 'START LEARNING';
+            return 'PRACTICE';
+        }
+
+        function getCourseUrl(course) {
+            return course.id.toLowerCase().replace(/\s+/g, '') + '.html';
+        }
+
+        function getStudyUrl(course) {
+            return course.id.toLowerCase().replace(/\s+/g, '') + 's.html';
+        }
+
+        function toggleSemester1() {
+            showingSemester1 = !showingSemester1;
+            renderCourses(document.getElementById('courseSearch').value);
         }
 
         
@@ -983,7 +1002,11 @@
             const grid = document.getElementById('courseGrid');
             grid.innerHTML = '';
 
-            const filtered = courses.filter(c =>
+            const activeCourses = showingSemester1
+                ? courses.filter(c => c.semester === 1)
+                : courses;
+
+            const filtered = activeCourses.filter(c =>
                 c.id.toLowerCase().includes(filterText.toLowerCase()) ||
                 c.title.toLowerCase().includes(filterText.toLowerCase())
             );
@@ -996,7 +1019,15 @@
                     card.className = 'course-card';
                     if (!course.isReady) card.style.opacity = '0.55';
 
-                    if (course.id === 'STA 111') {
+                    const slug = course.id.toLowerCase().replace(/\s+/g, '');
+                    const practiceUrl = slug + '.html';
+                    const studyUrl    = slug + 's.html';
+
+                    const hasBoth   = course.study && course.practice;
+                    const studyOnly = course.study && !course.practice;
+
+                    if (hasBoth) {
+                        // Dual buttons: Study + Practice
                         card.innerHTML = `
                             <div class="icon-box">
                                 <i data-lucide="${course.icon}" size="19"></i>
@@ -1007,17 +1038,34 @@
                             </div>
                             <div class="card-footer-dual">
                                 <button class="dual-btn dual-btn-primary"
-                                    onclick="event.stopPropagation();window.location.href='sta111.html'">
+                                    onclick="event.stopPropagation();window.location.href='${practiceUrl}'">
                                     ⚡ PRACTICE
                                 </button>
                                 <button class="dual-btn dual-btn-secondary"
-                                    onclick="event.stopPropagation();window.location.href='sta111cheat.html'">
+                                    onclick="event.stopPropagation();window.location.href='${studyUrl}'">
                                     📖 STUDY
                                 </button>
                             </div>
                         `;
-                        card.onclick = () => window.location.href = 'sta111.html';
+                        card.onclick = () => { if (course.isReady) window.location.href = practiceUrl; };
+                    } else if (studyOnly) {
+                        // Study only — single footer link styled like "START LEARNING"
+                        card.innerHTML = `
+                            <div class="icon-box" style="background:rgba(79,70,229,0.1);color:var(--study-btn);">
+                                <i data-lucide="${course.icon}" size="19"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size:0.95rem;font-weight:700;">${course.id}</h3>
+                                <p style="font-size:0.7rem;color:var(--text-muted);font-weight:500;margin-top:3px;">${course.title}</p>
+                            </div>
+                            <div class="card-footer" style="color:var(--study-btn);border-top-color:var(--border-color);">
+                                <span>START LEARNING</span>
+                                <i data-lucide="chevron-right" size="14"></i>
+                            </div>
+                        `;
+                        card.onclick = () => { if (course.isReady) window.location.href = studyUrl; };
                     } else {
+                        // Practice only (default)
                         card.innerHTML = `
                             <div class="icon-box">
                                 <i data-lucide="${course.isReady ? course.icon : 'lock'}" size="19"></i>
@@ -1032,7 +1080,7 @@
                             </div>
                         `;
                         card.onclick = () => {
-                            if (course.isReady) window.location.href = course.id.toLowerCase().replace(/\s+/g,'') + '.html';
+                            if (course.isReady) window.location.href = practiceUrl;
                             else alert('This course is coming soon! ⏳');
                         };
                     }
@@ -1041,11 +1089,36 @@
                 });
             }
 
+            // Append semester toggle card at end
+            appendSemesterCard(grid);
             appendShareCard(grid);
             lucide.createIcons();
         }
+        function appendSemesterCard(grid) {
+            const card = document.createElement('div');
+            card.className = 'course-card semester-toggle-card';
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', 'Toggle 1st Semester Courses');
+            card.innerHTML = `
+                <div style="display:flex;align-items:center;gap:11px;position:relative;z-index:1;">
+                    <div class="icon-box" style="background:rgba(37,99,235,0.15);color:var(--primary-accent)">
+                        <i data-lucide="${showingSemester1 ? 'eye-off' : 'eye'}" size="19"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size:0.95rem;font-weight:700;">1st Semester Courses</h3>
+                        <p style="font-size:0.7rem;color:var(--text-muted);font-weight:500;margin-top:3px;">${showingSemester1 ? 'Click to hide' : 'Click to view all'}</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span>${showingSemester1 ? 'HIDE SEMESTER 1' : 'VIEW 1ST SEMESTER'}</span>
+                    <i data-lucide="${showingSemester1 ? 'chevron-up' : 'chevron-down'}" size="14"></i>
+                </div>
+            `;
+            card.onclick = toggleSemester1;
+            grid.appendChild(card);
+        }
 
-        function appendShareCard(grid) {
+                function appendShareCard(grid) {
             const card = document.createElement('div');
             card.className = 'course-card share-grid-card';
             card.setAttribute('role', 'button');

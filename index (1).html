@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RENANCE — Create Account</title>
+<link rel="shortcut icon" href="logo.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#2563eb;--blue-dark:#1d4ed8;
+  --glass-bg:rgba(255,255,255,0.08);
+  --glass-border:rgba(255,255,255,0.18);
+  --glass-input:rgba(255,255,255,0.10);
+  --glass-input-focus:rgba(255,255,255,0.18);
+  --text-muted:rgba(255,255,255,0.70);
+}
+html,body{height:100%}
+body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden}
+
+/* ═══════════════════════════════════════════════
+   SELF-CONTAINED BACKGROUND SYSTEM
+═══════════════════════════════════════════════ */
+.bg-base{
+  position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(29,78,216,0.28) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(37,99,235,0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 100% 80% at 50% 50%, rgba(15,23,60,1) 0%, rgba(3,7,25,1) 100%);
+}
+.bg-aurora{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.aurora-beam{
+  position:absolute;border-radius:50%;
+  filter:blur(80px);opacity:0;
+  animation:auroraFloat 12s ease-in-out infinite;
+}
+.aurora-beam:nth-child(1){width:600px;height:300px;background:radial-gradient(ellipse,rgba(37,99,235,0.45) 0%,transparent 70%);top:-80px;left:-100px;animation-duration:14s;animation-delay:0s}
+.aurora-beam:nth-child(2){width:500px;height:250px;background:radial-gradient(ellipse,rgba(59,130,246,0.35) 0%,transparent 70%);top:10%;right:-80px;animation-duration:16s;animation-delay:-5s}
+.aurora-beam:nth-child(3){width:700px;height:200px;background:radial-gradient(ellipse,rgba(29,78,216,0.30) 0%,transparent 70%);bottom:10%;left:10%;animation-duration:18s;animation-delay:-9s}
+.aurora-beam:nth-child(4){width:400px;height:400px;background:radial-gradient(ellipse,rgba(96,165,250,0.18) 0%,transparent 70%);bottom:-100px;right:5%;animation-duration:20s;animation-delay:-3s}
+@keyframes auroraFloat{
+  0%{opacity:0;transform:scale(0.9) translateY(20px)}
+  20%{opacity:1}50%{opacity:0.7;transform:scale(1.05) translateY(-15px)}
+  80%{opacity:1}100%{opacity:0;transform:scale(0.9) translateY(20px)}
+}
+.bg-orbs{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.orb{
+  position:absolute;border-radius:50%;
+  background:radial-gradient(circle,rgba(59,130,246,0.6) 0%,rgba(29,78,216,0.3) 40%,transparent 70%);
+  animation:orbDrift linear infinite;
+}
+.orb:nth-child(1){width:6px;height:6px;top:15%;left:10%;animation-duration:25s;opacity:0.8}
+.orb:nth-child(2){width:4px;height:4px;top:35%;left:85%;animation-duration:30s;animation-delay:-8s;opacity:0.6}
+.orb:nth-child(3){width:8px;height:8px;top:60%;left:25%;animation-duration:22s;animation-delay:-14s;opacity:0.7}
+.orb:nth-child(4){width:5px;height:5px;top:80%;left:70%;animation-duration:28s;animation-delay:-4s;opacity:0.65}
+.orb:nth-child(5){width:3px;height:3px;top:45%;left:55%;animation-duration:35s;animation-delay:-20s;opacity:0.5}
+.orb:nth-child(6){width:7px;height:7px;top:25%;left:40%;animation-duration:26s;animation-delay:-11s;opacity:0.75}
+.orb:nth-child(7){width:2px;height:2px;top:20%;left:30%;animation-duration:40s;animation-delay:-2s;opacity:0.9;background:rgba(255,255,255,0.9)}
+.orb:nth-child(8){width:2px;height:2px;top:55%;left:80%;animation-duration:38s;animation-delay:-15s;opacity:0.85;background:rgba(255,255,255,0.85)}
+.orb:nth-child(9){width:2px;height:2px;top:75%;left:45%;animation-duration:42s;animation-delay:-7s;opacity:0.8;background:rgba(200,220,255,0.8)}
+@keyframes orbDrift{
+  0%{transform:translateY(0px) translateX(0px)}25%{transform:translateY(-30px) translateX(15px)}
+  50%{transform:translateY(-10px) translateX(-20px)}75%{transform:translateY(-40px) translateX(10px)}
+  100%{transform:translateY(0px) translateX(0px)}
+}
+.bg-grid{
+  position:fixed;inset:0;z-index:3;pointer-events:none;
+  background-image:linear-gradient(rgba(37,99,235,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.07) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);
+}
+.bg-grain{
+  position:fixed;inset:0;z-index:4;pointer-events:none;opacity:0.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+}
+.bg-vignette{
+  position:fixed;inset:0;z-index:5;pointer-events:none;
+  background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 40%,rgba(2,5,20,0.7) 100%);
+}
+.scan{position:fixed;inset:0;z-index:6;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,.008) 3px,rgba(255,255,255,.008) 4px)}
+
+/* ═══════════════════════════════════════════════ */
+
+.layout{
+  position:relative;z-index:10;
+  display:flex;justify-content:center;align-items:flex-start;
+  min-height:100vh;padding:24px 16px 40px;
+}
+.card{
+  width:100%;max-width:500px;margin:auto;
+  background:var(--glass-bg);
+  border:1px solid var(--glass-border);
+  border-radius:28px;padding:36px 36px 32px;
+  box-shadow:0 40px 100px rgba(0,0,0,0.55),0 0 0 1px rgba(255,255,255,0.06),inset 0 1px 0 rgba(255,255,255,0.15),0 0 80px rgba(37,99,235,0.12);
+  backdrop-filter:blur(32px) saturate(1.5);
+  -webkit-backdrop-filter:blur(32px) saturate(1.5);
+  animation:cardIn 0.8s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes cardIn{from{opacity:0;transform:translateY(36px) scale(.96)}to{opacity:1;transform:none}}
+
+.card-header{text-align:center;margin-bottom:28px}
+.gem-wrap{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:68px;height:68px;
+  background:linear-gradient(135deg,rgba(37,99,235,0.9),rgba(29,78,216,0.9));
+  border-radius:20px;margin-bottom:14px;
+  box-shadow:0 8px 32px rgba(37,99,235,0.55),inset 0 1px 0 rgba(255,255,255,0.25),0 0 0 1px rgba(37,99,235,0.4);
+  position:relative;overflow:hidden;
+}
+.gem-wrap::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.2) 0%,transparent 60%)}
+.futa-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(37,99,235,0.15);border:1px solid rgba(59,130,246,0.35);
+  border-radius:100px;padding:4px 12px;font-size:0.68rem;font-weight:700;
+  letter-spacing:1px;color:rgba(255,255,255,0.85);text-transform:uppercase;
+  margin-bottom:10px;box-shadow:0 0 20px rgba(37,99,235,0.2);
+}
+.card-header h1{font-size:1.75rem;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:4px}
+.card-header p{font-size:0.9rem;color:var(--text-muted)}
+
+.steps{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:24px}
+.step-bar{height:4px;width:56px;border-radius:4px;background:rgba(255,255,255,0.12);transition:background 0.4s,box-shadow 0.4s}
+.step-bar.active{background:#3b82f6;box-shadow:0 0 12px rgba(59,130,246,0.6)}
+.step-label{font-size:0.7rem;font-weight:600;color:rgba(255,255,255,0.45);letter-spacing:0.5px;text-transform:uppercase;margin-top:4px;text-align:center}
+
+.form-window{overflow:hidden;width:100%;position:relative}
+.form-track{display:flex;width:200%;transition:transform 0.45s cubic-bezier(.16,1,.3,1)}
+.step-pane{width:50%;flex-shrink:0;padding:0 2px}
+
+.field{margin-bottom:16px}
+.field label{display:block;font-size:0.84rem;font-weight:600;color:rgba(255,255,255,0.9);margin-bottom:6px}
+.field-wrap{position:relative;display:flex;align-items:center}
+.field-icon{position:absolute;left:14px;color:rgba(255,255,255,0.35);pointer-events:none;font-size:0.9rem;transition:color 0.2s}
+.field:focus-within .field-icon{color:#60a5fa}
+.field input,.field select{
+  width:100%;height:48px;
+  background:var(--glass-input);
+  border:1px solid rgba(255,255,255,0.14);
+  border-radius:14px;padding:0 14px 0 42px;
+  font-size:0.92rem;font-family:'Inter',sans-serif;color:#fff;
+  outline:none;transition:border-color 0.25s,box-shadow 0.25s,background 0.25s;
+  -webkit-appearance:none;appearance:none;
+}
+.field select{cursor:pointer;padding-right:36px}
+.field select option{background:#0f1e4a;color:#fff}
+.field input:focus,.field select:focus{
+  background:var(--glass-input-focus);
+  border-color:rgba(59,130,246,0.6);
+  box-shadow:0 0 0 3px rgba(37,99,235,0.18),0 0 20px rgba(37,99,235,0.15);
+}
+.field input::placeholder{color:rgba(255,255,255,0.28)}
+.field .err{font-size:0.72rem;color:#fca5a5;margin-top:4px;padding-left:2px;display:none}
+.field input:-webkit-autofill,
+.field input:-webkit-autofill:focus{
+  -webkit-box-shadow:0 0 0 1000px rgba(15,30,80,0.85) inset !important;
+  -webkit-text-fill-color:#fff !important;
+  border-color:rgba(59,130,246,0.4) !important;
+}
+.pw-toggle{position:absolute;right:14px;color:rgba(255,255,255,0.35);cursor:pointer;padding:8px;transition:color .2s;z-index:2}
+.pw-toggle:hover{color:#60a5fa}
+.select-wrap::after{
+  content:'\f107';font-family:'Font Awesome 6 Free';font-weight:900;
+  position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  color:rgba(255,255,255,0.4);font-size:0.75rem;pointer-events:none;
+}
+.pw-strength{display:flex;gap:4px;margin-top:6px}
+.pw-bar{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,0.12);transition:background .35s}
+.phone-row{display:flex;gap:8px}
+.phone-code{flex-shrink:0;width:90px}
+.phone-code input{padding-left:10px;font-size:0.8rem;cursor:default;background:rgba(255,255,255,0.06)!important;color:rgba(255,255,255,0.6)!important}
+.phone-num input{padding-left:14px}
+
+.btn-row{display:flex;gap:10px;margin-top:20px}
+.btn-primary{
+  flex:1;height:50px;border:none;border-radius:14px;
+  background:linear-gradient(135deg,#1d4ed8,#2563eb);
+  color:#fff;font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 6px 24px rgba(37,99,235,0.5),inset 0 1px 0 rgba(255,255,255,0.2);
+  position:relative;overflow:hidden;
+  transition:transform .15s,box-shadow .2s,background .2s;
+}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.1) 0%,transparent 60%);pointer-events:none}
+.btn-primary:hover{background:linear-gradient(135deg,#1e40af,#1d4ed8);box-shadow:0 12px 36px rgba(37,99,235,0.6);transform:translateY(-2px)}
+.btn-primary:active{transform:scale(0.97)}
+.btn-primary:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.btn-back{
+  flex:0 0 50px;height:50px;
+  border:1px solid rgba(255,255,255,0.15);border-radius:14px;
+  background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.7);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:border-color .2s,color .2s,background .2s;
+}
+.btn-back:hover{border-color:rgba(59,130,246,0.5);color:#60a5fa;background:rgba(37,99,235,0.12)}
+
+.card-footer-text{text-align:center;margin-top:20px;font-size:0.88rem;color:var(--text-muted)}
+.card-footer-text a{color:#60a5fa;font-weight:700;text-decoration:none;transition:color .2s}
+.card-footer-text a:hover{color:#fff}
+.card-divider{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);text-align:center}
+.card-divider p{font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.3);letter-spacing:1.5px;text-transform:uppercase}
+
+.error-box{
+  background:rgba(220,38,38,0.15);border:1px solid rgba(239,68,68,0.35);border-radius:12px;
+  padding:12px 14px;margin-bottom:16px;font-size:0.83rem;color:#fca5a5;display:none;
+}
+
+#toast{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:rgba(10,15,40,0.96);border:1px solid rgba(37,99,235,0.3);
+  backdrop-filter:blur(20px);border-radius:100px;
+  padding:12px 26px;font-size:0.82rem;font-weight:600;color:#f9fafb;
+  opacity:0;transition:opacity .3s,transform .3s;z-index:9999;
+  white-space:nowrap;box-shadow:0 10px 40px rgba(0,0,0,.5)
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast.ok{border-color:rgba(16,185,129,.4);color:#34d399}
+#toast.bad{border-color:rgba(239,68,68,.4);color:#f87171}
+
+@media(max-width:600px){
+  .layout{padding:16px 12px 32px}
+  .card{padding:28px 20px 24px;border-radius:22px}
+  .card-header h1{font-size:1.5rem}
+  .gem-wrap{width:56px;height:56px;border-radius:15px}
+  .field input,.field select{font-size:16px!important;height:46px}
+  .btn-primary{height:48px;font-size:0.9rem}
+  .step-bar{width:44px}
+}
+@media(max-width:380px){.card{padding:22px 14px 20px}.card-header h1{font-size:1.3rem}.step-bar{width:36px}}
+</style>
+</head>
+<body>
+
+<!-- Self-contained background layers -->
+<div class="bg-base"></div>
+<div class="bg-aurora">
+  <div class="aurora-beam"></div>
+  <div class="aurora-beam"></div>
+  <div class="aurora-beam"></div>
+  <div class="aurora-beam"></div>
+</div>
+<div class="bg-orbs">
+  <div class="orb"></div><div class="orb"></div><div class="orb"></div>
+  <div class="orb"></div><div class="orb"></div><div class="orb"></div>
+  <div class="orb"></div><div class="orb"></div><div class="orb"></div>
+</div>
+<div class="bg-grid"></div>
+<div class="bg-grain"></div>
+<div class="bg-vignette"></div>
+<div class="scan"></div>
+<div id="toast"></div>
+
+<div class="layout">
+  <div class="card" id="card">
+    <div class="card-header">
+      <div class="gem-wrap">
+        <i class="fa-solid fa-graduation-cap" style="font-size:1.6rem;color:#fff;position:relative;z-index:1"></i>
+      </div>
+      <div class="futa-badge">
+        <i class="fa-solid fa-location-dot" style="font-size:0.6rem"></i>
+        Federal University of Tech, Akure
+      </div>
+      <h1>Create Account</h1>
+      <p>Join the FUTA CBT Platform</p>
+    </div>
+
+    <div>
+      <div class="steps">
+        <div class="step-bar active" id="bar1"></div>
+        <div class="step-bar" id="bar2"></div>
+      </div>
+      <div class="step-label" id="stepLabel">Step 1 of 2 — Account Details</div>
+    </div>
+
+    <div class="error-box" id="errorBox"></div>
+
+    <form id="sf" novalidate>
+      <div class="form-window">
+        <div class="form-track" id="formTrack">
+
+          <!-- STEP 1 -->
+          <div class="step-pane">
+            <div class="field">
+              <label>Full Name</label>
+              <div class="field-wrap">
+                <i class="fa-solid fa-user field-icon"></i>
+                <input type="text" id="fullname" placeholder="Osarekpame Williams" required autocomplete="name">
+              </div>
+              <div class="err" id="e-name">Please enter your full name</div>
+            </div>
+            <div class="field">
+              <label>Email Address</label>
+              <div class="field-wrap">
+                <i class="fa-solid fa-envelope field-icon"></i>
+                <input type="email" id="email" placeholder="student@gmail.com" required autocomplete="email">
+              </div>
+              <div class="err" id="e-email">Enter a valid email address</div>
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <div class="field-wrap">
+                <i class="fa-solid fa-lock field-icon"></i>
+                <input type="password" id="password" placeholder="Min 8 characters" required autocomplete="new-password">
+                <i class="fa-solid fa-eye pw-toggle" id="togPw"></i>
+              </div>
+              <div class="pw-strength">
+                <div class="pw-bar" id="s1"></div><div class="pw-bar" id="s2"></div>
+                <div class="pw-bar" id="s3"></div><div class="pw-bar" id="s4"></div>
+              </div>
+              <div class="err" id="e-pw">Minimum 8 characters required</div>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn-primary" id="nextBtn">
+                <span>Next Step</span><i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="step-pane">
+            <div class="field">
+              <label>Phone Number</label>
+              <div class="phone-row">
+                <div class="phone-code field-wrap">
+                  <input type="text" value="+234 🇳🇬" readonly>
+                </div>
+                <div class="phone-num field-wrap">
+                  <input type="tel" id="phone" placeholder="08012345678" autocomplete="tel">
+                </div>
+              </div>
+              <div class="err" id="e-phone">Enter a valid phone number</div>
+            </div>
+            <div class="field">
+              <label>Faculty / School</label>
+              <div class="field-wrap select-wrap">
+                <i class="fa-solid fa-building-columns field-icon"></i>
+                <select id="faculty" required>
+                  <option value="" disabled selected>Select your faculty</option>
+                  <option value="SOC">School of Computing (SOC)</option>
+                  <option value="SLIT">School of Logistics &amp; Innovation Tech (SLIT)</option>
+                  <option value="SPS">School of Physical Sciences (SPS)</option>
+                  <option value="SESE">School of Electrical Systems Eng (SESE)</option>
+                  <option value="SIMME">School of Infrastructure &amp; Mfg (SIMME)</option>
+                  <option value="SET">School of Environmental Tech (SET)</option>
+                  <option value="SAAT">School of Agric &amp; Agric Tech (SAAT)</option>
+                  <option value="SEMS">School of Earth &amp; Mineral Sci (SEMS)</option>
+                  <option value="SLS">School of Life Sciences (SLS)</option>
+                  <option value="CHS">College of Health Sciences (CHS)</option>
+                  <option value="GNS">General Studies (GNS)</option>
+                </select>
+              </div>
+              <div class="err" id="e-fac">Please select your faculty</div>
+            </div>
+            <div class="field">
+              <label>Department</label>
+              <div class="field-wrap select-wrap">
+                <i class="fa-solid fa-graduation-cap field-icon"></i>
+                <select id="dept" required>
+                  <option value="" disabled selected>Select faculty first</option>
+                </select>
+              </div>
+              <div class="err" id="e-dept">Please select your department</div>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn-back" id="backBtn" title="Go back">
+                <i class="fa-solid fa-arrow-left"></i>
+              </button>
+              <button type="submit" class="btn-primary" id="subBtn">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Create Account</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </form>
+
+    <div class="card-footer-text">Already have an account? <a href="login.html">Sign In</a></div>
+    <div class="card-divider"><p>Federal University of Technology, Akure</p></div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL='https://ubxsywaxdvkhiqepcvmq.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+if(!window._sb)window._sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const db=window._sb;
+
+function toast(m,t=''){const el=document.getElementById('toast');el.textContent=m;el.className='show '+t;clearTimeout(el._);el._=setTimeout(()=>el.className='',4000)}
+function se(id,show){const el=document.getElementById('e-'+id);if(el)el.style.display=show?'block':'none'}
+function showError(msg){const box=document.getElementById('errorBox');box.textContent=msg;box.style.display='block';setTimeout(()=>box.style.display='none',5000)}
+
+const track=document.getElementById('formTrack');
+const bar1=document.getElementById('bar1'),bar2=document.getElementById('bar2');
+const stepLabel=document.getElementById('stepLabel');
+
+document.getElementById('nextBtn').addEventListener('click',()=>{
+  let ok=true;
+  const fn=document.getElementById('fullname').value.trim();
+  const em=document.getElementById('email').value.trim();
+  const pw=document.getElementById('password').value;
+  const re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!fn){se('name',1);ok=false}else{se('name',0)}
+  if(!re.test(em)){se('email',1);ok=false}else{se('email',0)}
+  if(pw.length<8){se('pw',1);ok=false}else{se('pw',0)}
+  if(ok){track.style.transform='translateX(-50%)';bar1.classList.remove('active');bar2.classList.add('active');stepLabel.textContent='Step 2 of 2 — Personal Details'}
+});
+
+document.getElementById('backBtn').addEventListener('click',()=>{
+  track.style.transform='translateX(0)';bar2.classList.remove('active');bar1.classList.add('active');stepLabel.textContent='Step 1 of 2 — Account Details';
+});
+
+document.getElementById('togPw').addEventListener('click',function(){
+  const p=document.getElementById('password'),t=p.type==='text';
+  p.type=t?'password':'text';this.classList.toggle('fa-eye',t);this.classList.toggle('fa-eye-slash',!t);
+});
+
+document.getElementById('password').addEventListener('input',function(){
+  const v=this.value;let s=0;
+  if(v.length>=8)s++;if(/[A-Z]/.test(v))s++;if(/[0-9]/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;
+  const colors=['#ef4444','#f59e0b','#22c55e','#60a5fa'];
+  [1,2,3,4].forEach(i=>{document.getElementById('s'+i).style.background=i<=s?colors[s-1]:'rgba(255,255,255,0.12)'});
+});
+
+const depts={
+  SOC:['Software Engineering (SEN)','Computer Science (CSC)','Cybersecurity (CYS)','Data Science (DSC)','Information Systems (IFS)','Information Technology (IFT)'],
+  SLIT:['Financial Technology (FinTech)','Business Information Technology (BIT)','Entrepreneurship Management Technology (EMT)','Logistics and Transport Technology (LTT)','Maritime Technology and Logistics (MTL)','Project Management Technology (PMT)','Securities and Investment Management Technology (SIMT)','Supply Chain Management (SCM)'],
+  SPS:['Educational Technology (EDT)','Library and Information Science (LIS)','Physics (PHY)','Mathematics (MTH)','Chemistry (CHE)','Statistics (STA)'],
+  SESE:['Computer Engineering (CPE)','Electrical and Electronics Engineering (EEE)','Information and Communication Engineering (ICE)','Mechatronics Engineering (MCE)','Biomedical Engineering (BME)'],
+  SIMME:['Mechanical Engineering (MEE)','Civil and Environmental Engineering (CVE)','Agricultural Engineering (AGE)','Chemical Engineering (CHE)','Industrial and Production Engineering (IPE)','Metallurgical and Materials Engineering (MME)','Mining Engineering (MNE)'],
+  SET:['Architecture (ARC)','Building (BDG)','Environmental Management (EVM)','Estate Management (ESM)','Industrial Design (IDD)','Quantity Surveying (QSV)','Surveying and Geoinformatics (SVG)','Urban and Regional Planning (URP)'],
+  SAAT:['Agricultural and Resource Economics (ARE)','Agricultural Extension and Communication Technology (AEC)','Animal Production and Health (APH)','Crop, Soil and Pest Management (CSP)','Ecotourism and Wildlife Management (EWM)','Fisheries and Aquaculture Technology (FAT)','Food Science and Technology (FST)','Forestry and Wood Technology (FWT)','Nutrition and Dietetics (NUD)'],
+  SEMS:['Applied Geology (AGY)','Applied Geophysics (AGP)','Marine Science and Technology (MST)','Meteorology and Climate Science (MET)','Remote Sensing and Geoscience Information Systems (RSG)'],
+  SLS:['Biochemistry (BCH)','Biology (BIO)','Biotechnology (BTH)','Microbiology (MCB)'],
+  CHS:['Medicine and Surgery (MBBS)','Nursing Science (NSC)','Human Anatomy (ANA)','Physiology (PHS)','Medical Laboratory Science (MLS)','Public Health (PUH)'],
+  GNS:['General Studies (GNS)']
+};
+
+document.getElementById('faculty').addEventListener('change',function(){
+  const s=document.getElementById('dept');
+  s.innerHTML='<option value="" disabled selected>Select department</option>';
+  (depts[this.value]||[]).forEach(d=>{const o=document.createElement('option');o.value=d;o.textContent=d;s.appendChild(o)});
+  se('fac',false);
+});
+
+document.getElementById('sf').addEventListener('submit',async function(e){
+  e.preventDefault();let ok=true;
+  const fn=document.getElementById('fullname').value.trim();
+  const em=document.getElementById('email').value.trim();
+  const pw=document.getElementById('password').value;
+  const ph='+234'+document.getElementById('phone').value.trim();
+  const fa=document.getElementById('faculty').value;
+  const de=document.getElementById('dept').value;
+  if(document.getElementById('phone').value.trim().length<7){se('phone',1);ok=false}else{se('phone',0)}
+  if(!fa){se('fac',1);ok=false}else{se('fac',0)}
+  if(!de){se('dept',1);ok=false}else{se('dept',0)}
+  if(ok){
+    const btn=document.getElementById('subBtn');
+    btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i><span>Creating...</span>';
+    try{
+      const{data:authData,error:authError}=await db.auth.signUp({email:em,password:pw});
+      if(authError)throw authError;
+      const uid=authData.user?.id;
+      if(uid){const{error:dbError}=await db.from('students').insert([{id:uid,fullname:fn,email:em,faculty:fa,department:de,phone:ph}]);if(dbError)throw dbError}
+      btn.innerHTML='<i class="fa-solid fa-check"></i><span>Success!</span>';
+      btn.style.background='linear-gradient(135deg,#059669,#10b981)';
+      toast('🎉 Account created! Redirecting to login...','ok');
+      setTimeout(()=>window.location.href='login.html',2000);
+    }catch(err){
+      showError('❌ '+(err.message||'Something went wrong. Please try again.'));
+      btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-user-plus"></i><span>Create Account</span>';
+    }
+  }
+});
+</script>
+</body>
+</html>
