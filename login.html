@@ -1,14 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RENANCE â€” Sign In</title>
+<title>RENANCE — Sign In</title>
 <link rel="shortcut icon" href="logo.png" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="env-loader.js"></script>
-1
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -24,17 +24,17 @@
 html{height:100%}
 body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden}
 
-/* â”€â”€ BACKGROUND â€” single crisp bg.svg, no blur â”€â”€â”€â”€â”€â”€â”€ */
+/* ── BACKGROUND — single crisp bg.svg, no blur ─────── */
 .bg-static{
   position:fixed;inset:0;z-index:0;
   background-image:url('bg.svg');
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
-  /* NO filter/blur here â€” keeps SVG sharp */
+  /* NO filter/blur here — keeps SVG sharp */
 }
 
-/* Dark gradient overlay â€” no backdrop-filter so bg stays crisp */
+/* Dark gradient overlay — no backdrop-filter so bg stays crisp */
 .page-overlay{
   position:fixed;inset:0;z-index:1;
   background:linear-gradient(135deg,
@@ -48,14 +48,14 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 .scan{position:fixed;inset:0;z-index:2;pointer-events:none;
   background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,.012) 3px,rgba(255,255,255,.012) 4px)}
 
-/* â”€â”€ LAYOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── LAYOUT ────────────────────────────────────────── */
 .layout{
   position:relative;z-index:10;
   display:flex;justify-content:center;align-items:center;
   min-height:100vh;padding:24px 16px;
 }
 
-/* â”€â”€ GLASS CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── GLASS CARD ────────────────────────────────────── */
 .card{
   width:100%;max-width:460px;
   background: var(--glass-bg);
@@ -66,14 +66,14 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
     0 32px 80px rgba(0,0,0,0.45),
     0 0 0 1px rgba(255,255,255,0.08),
     inset 0 1px 0 rgba(255,255,255,0.18);
-  /* backdrop-filter only blurs behind the card itself â€” bg outside stays sharp */
+  /* backdrop-filter only blurs behind the card itself — bg outside stays sharp */
   backdrop-filter:blur(28px) saturate(1.4);
   -webkit-backdrop-filter:blur(28px) saturate(1.4);
   animation:cardIn 0.7s cubic-bezier(.16,1,.3,1) both;
 }
 @keyframes cardIn{from{opacity:0;transform:translateY(32px) scale(.97)}to{opacity:1;transform:none}}
 
-/* â”€â”€ HEADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── HEADER ────────────────────────────────────────── */
 .card-header{text-align:center;margin-bottom:32px}
 .gem-wrap{
   display:inline-flex;align-items:center;justify-content:center;
@@ -93,7 +93,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 .card-header h1{font-size:1.85rem;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:6px}
 .card-header p{font-size:0.9rem;color:var(--text-glass-muted)}
 
-/* â”€â”€ FIELDS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── FIELDS ─────────────────────────────────────────── */
 .field{margin-bottom:20px}
 .field label{display:block;font-size:0.86rem;font-weight:600;color:rgba(255,255,255,0.9);margin-bottom:8px}
 .field-wrap{position:relative;display:flex;align-items:center}
@@ -125,14 +125,14 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 .pw-toggle{position:absolute;right:14px;color:rgba(255,255,255,0.45);cursor:pointer;padding:8px;transition:color .2s;z-index:2}
 .pw-toggle:hover{color:#fff}
 
-/* â”€â”€ REMEMBER / FORGOT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── REMEMBER / FORGOT ────────────────────────────── */
 .row-between{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
 .remember-wrap{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.86rem;color:var(--text-glass-muted);font-weight:500}
 .remember-wrap input[type=checkbox]{width:17px;height:17px;accent-color:#60a5fa;cursor:pointer;border-radius:4px;}
 .forgot-link{font-size:0.86rem;color:#93c5fd;font-weight:600;text-decoration:none;transition:color .2s}
 .forgot-link:hover{color:#fff}
 
-/* â”€â”€ ERROR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── ERROR ─────────────────────────────────────────── */
 .error-box{
   background:rgba(220,38,38,0.18);border:1px solid rgba(239,68,68,0.4);border-radius:12px;
   padding:12px 14px;margin-bottom:18px;
@@ -140,7 +140,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
   backdrop-filter:blur(8px);
 }
 
-/* â”€â”€ BUTTON â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── BUTTON ────────────────────────────────────────── */
 .btn-primary{
   width:100%;height:52px;border:none;border-radius:14px;
   background:linear-gradient(135deg,rgba(29,78,216,0.9),rgba(37,99,235,0.9));
@@ -158,7 +158,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 .btn-primary:active{transform:scale(0.97)}
 .btn-primary:disabled{opacity:.6;cursor:not-allowed;transform:none}
 
-/* â”€â”€ FOOTER TEXT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── FOOTER TEXT ────────────────────────────────── */
 .card-footer-text{text-align:center;margin-top:24px;font-size:0.88rem;color:var(--text-glass-muted)}
 .card-footer-text a{color:#93c5fd;font-weight:700;text-decoration:none;transition:color .2s}
 .card-footer-text a:hover{color:#fff}
@@ -166,7 +166,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 .card-divider{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);text-align:center}
 .card-divider p{font-size:0.72rem;font-weight:700;color:rgba(255,255,255,0.45);letter-spacing:1px;text-transform:uppercase}
 
-/* â”€â”€ TOAST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── TOAST ─────────────────────────────────────────── */
 #toast{
   position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);
   background:rgba(17,24,39,0.96);border:1px solid rgba(255,255,255,.1);
@@ -179,7 +179,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 #toast.ok{border-color:rgba(16,185,129,.4);color:#34d399}
 #toast.bad{border-color:rgba(239,68,68,.4);color:#f87171}
 
-/* â”€â”€ MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── MODAL ─────────────────────────────────────────── */
 .modal-overlay{
   position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);
   z-index:9000;display:none;align-items:center;justify-content:center;padding:20px
@@ -211,7 +211,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 #reset-feedback.ok{background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);color:#34d399}
 #reset-feedback.bad{background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#f87171}
 
-/* â”€â”€ RESPONSIVE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── RESPONSIVE ────────────────────────────────────── */
 @media(max-width:600px){
   .layout{padding:16px 12px}
   .card{padding:30px 20px 26px;border-radius:22px}
@@ -267,7 +267,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
         <label>Password</label>
         <div class="field-wrap">
           <i class="fa-solid fa-lock field-icon"></i>
-          <input type="password" id="password" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required autocomplete="current-password">
+          <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
           <i class="fa-solid fa-eye pw-toggle" id="togPw"></i>
         </div>
       </div>
@@ -325,7 +325,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 </div>
 
 <script>
-/* â”€â”€ Supabase â”€â”€ */
+/* ── Supabase ── */
 const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
 const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
 if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -368,17 +368,17 @@ document.getElementById('sendResetBtn').addEventListener('click',async function(
   const fb=document.getElementById('reset-feedback');
   const txt=document.getElementById('resetBtnText');
   if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    fb.textContent='âŒ Please enter a valid email address.';
+    fb.textContent='❌ Please enter a valid email address.';
     fb.className='bad'; fb.style.display='block'; return;
   }
-  this.disabled=true; txt.textContent='Sendingâ€¦';
+  this.disabled=true; txt.textContent='Sending…';
   try{
     const{error}=await db.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+'/reset-password.html'});
     if(error)throw error;
-    fb.textContent='âœ… Reset link sent! Check your inbox.';
+    fb.textContent='✅ Reset link sent! Check your inbox.';
     fb.className='ok'; fb.style.display='block';
   }catch(err){
-    fb.textContent='âŒ '+(err.message||'Failed to send reset link.');
+    fb.textContent='❌ '+(err.message||'Failed to send reset link.');
     fb.className='bad'; fb.style.display='block';
   }finally{
     this.disabled=false; txt.textContent='Send Reset Link';
@@ -395,7 +395,7 @@ document.getElementById('loginForm').addEventListener('submit',async function(e)
 
   const btn=document.getElementById('loginBtn');
   btn.disabled=true;
-  btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i><span>Signing inâ€¦</span>';
+  btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i><span>Signing in…</span>';
 
   try{
     const{data:authData,error:authError}=await db.auth.signInWithPassword({email,password});
@@ -411,8 +411,8 @@ document.getElementById('loginForm').addEventListener('submit',async function(e)
   }catch(err){
     let msg='Something went wrong. Please try again.';
     if(err.message?.toLowerCase().includes('invalid')||err.message?.toLowerCase().includes('credentials'))
-      msg='âŒ Incorrect email or password.';
-    else if(err.message) msg='âŒ '+err.message;
+      msg='❌ Incorrect email or password.';
+    else if(err.message) msg='❌ '+err.message;
     showError(msg);
     btn.disabled=false;
     btn.innerHTML='<i class="fa-solid fa-arrow-right-to-bracket"></i><span>Sign In</span>';

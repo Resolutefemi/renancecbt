@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEN 102 CBT Portal</title>
+    <title>FCYS 110 CBT Portal</title>
     <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -12,24 +12,24 @@
     <script src="../cbt-ai-bridge.js"></script>
 
     <style>
-        :root {
-            --primary: #4f46e5;
-            --bg: #f5f3ff;
+                :root {
+            --primary: #b91c1c;
+            --bg: #fef2f2;
             --card-bg: #ffffff;
-            --text: #1e1b4b;
-            --text-muted: #4f46e5;
+            --text: #7f1d1d;
+            --text-muted: #b91c1c;
             --success: #10b981;
             --danger: #ef4444;
             --accent: #f59e0b;
-            --border: rgba(79,70,229,0.15);
-            --share-gradient: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 55%, #818cf8 100%);
+            --border: rgba(185,28,28,0.15);
+            --share-gradient: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 55%, #f87171 100%);
         }
         .dark-mode {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text: #f1f5f9;
-            --text-muted: #94a3b8;
-            --border: rgba(255,255,255,0.07);
+            --bg: #450a0a;
+            --card-bg: #7f1d1d;
+            --text: #fef2f2;
+            --text-muted: #f87171;
+            --border: rgba(252,165,165,0.12);
         }
 
         * { box-sizing: border-box; }
@@ -154,7 +154,7 @@
     <div style="display:flex; align-items:center; gap:12px;">
         <a href="../dashboard.html" style="color:var(--text); text-decoration:none; font-size:1.1rem; display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--border);"><i class="fa-solid fa-arrow-left"></i></a>
         <div class="nav-brand">
-            <div><i class="fa-solid fa-code"></i> SEN 102 Practice Portal</div>
+            <div><i class="fa-solid fa-gavel"></i> FCYS 110 Practice Portal</div>
             <div style="font-size:0.8rem; font-weight:600; color:var(--text-muted); letter-spacing:0.3px;">by Resolute Femi</div>
         </div>
     </div>
@@ -286,8 +286,8 @@
     const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
     const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    const COURSE_CODE = 'SEN 102';
-    const STORAGE_KEY = 'saved_sen102_exam';
+    const COURSE_CODE = 'FCYS 110';
+    const STORAGE_KEY = 'saved_fcys110_exam';
 
     async function sendHeartbeat() {
         try {
@@ -300,27 +300,127 @@
     setInterval(sendHeartbeat, 2 * 60 * 1000);
 
     const MASTER_POOL = [
-        { "id": 1, "question": "Which OOP concept refers to wrapping data and code into a single unit?", "options": ["Encapsulation", "Inheritance", "Polymorphism", "Abstraction"], "answer": "Encapsulation", "explanation": "Encapsulation is the mechanism that binds together code and the data it manipulates, keeping both safe from outside interference." },
-        { "id": 2, "question": "In object-oriented programming, the process of defining a new class based on an existing class is called ________.", "options": ["Inheritance", "Polymorphism", "Abstraction", "Interface"], "answer": "Inheritance", "explanation": "Inheritance allows a child class to inherit fields and methods from a parent class, promoting code reusability." },
-        { "id": 3, "question": "What is polymorphism?", "options": ["The ability of different classes to respond to the same message in different ways", "Hiding the complexity of a system from the user", "Wrapping fields and methods in a single unit", "Creating multiple instances of a class"], "answer": "The ability of different classes to respond to the same message in different ways", "explanation": "Polymorphism means 'many forms' and allows objects of different classes to be treated as objects of a common superclass." },
-        { "id": 4, "question": "Which of the following is used to achieve complete abstraction in Java?", "options": ["Interface", "Abstract Class", "Concrete Class", "Constructor"], "answer": "Interface", "explanation": "A Java interface specifies only method signatures and constants, achieving 100% abstraction before Java 8 default methods." },
-        { "id": 5, "question": "A constructor is a special method used to ________.", "options": ["Initialize an object", "Destroy an object", "Call private methods", "Inherit from a parent class"], "answer": "Initialize an object", "explanation": "Constructors are called automatically when a new instance of a class (an object) is created to initialize its state." },
-        { "id": 6, "question": "Which data structure operates on a Last-In, First-Out (LIFO) basis?", "options": ["Stack", "Queue", "Linked List", "Binary Tree"], "answer": "Stack", "explanation": "A stack is a linear data structure in which elements are added and removed only from the top (LIFO)." },
-        { "id": 7, "question": "What is the time complexity of searching in a balanced binary search tree (BST) in the average case?", "options": ["O(log n)", "O(n)", "O(n log n)", "O(1)"], "answer": "O(log n)", "explanation": "Searching a balanced BST reduces the search space by half at each step, resulting in a logarithmic time complexity." },
-        { "id": 8, "question": "In Git, which command is used to save changes to the local repository history?", "options": ["git commit", "git push", "git add", "git save"], "answer": "git commit", "explanation": "The git commit command saves a snapshot of the staging area changes to the local repository history." },
-        { "id": 9, "question": "What does the git pull command do?", "options": ["Fetches changes from a remote repository and merges them into the current branch", "Uploads local changes to a remote repository", "Saves changes to the local staging area", "Creates a new branch on the local repository"], "answer": "Fetches changes from a remote repository and merges them into the current branch", "explanation": "git pull is a combination of git fetch followed by git merge, updating the local branch from its remote counterpart." },
-        { "id": 10, "question": "Which of the following is a key advantage of using version control systems?", "options": ["Tracking changes and collaborating with other developers", "Increasing execution speed of compiled programs", "Automatically fixing compiler bugs", "Designing database schemas"], "answer": "Tracking changes and collaborating with other developers", "explanation": "Version control systems (like Git) record modifications to files over time and allow teams to work concurrently on the same codebase." },
-        { "id": 11, "question": "In Java/C++, what is the purpose of the super / base keyword?", "options": ["To refer to the parent class members or constructors", "To declare a global static variable", "To prevent a class from being inherited", "To instantiate a subclass object"], "answer": "To refer to the parent class members or constructors", "explanation": "The super (Java) or base (C#) keyword is used to access parent class constructors, methods, and variables." },
-        { "id": 12, "question": "Which data structure represents a First-In, First-Out (FIFO) queue?", "options": ["Queue", "Stack", "Heap", "Graph"], "answer": "Queue", "explanation": "A queue is a linear collection where the first element added is the first one to be removed (FIFO)." },
-        { "id": 13, "question": "What is a syntax error?", "options": ["An error in the program's code structure that prevents compilation", "An error during program execution causing a crash", "An incorrect output produced by correct code", "A database connection failure"], "answer": "An error in the program's code structure that prevents compilation", "explanation": "Syntax errors occur when code violates the grammar rules of the programming language, caught during compilation or parsing." },
-        { "id": 14, "question": "Which sorting algorithm has a worst-case time complexity of O(n^2) but is very simple to implement?", "options": ["Bubble sort", "Merge sort", "Quick sort", "Heap sort"], "answer": "Bubble sort", "explanation": "Bubble sort repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order, taking O(n^2) time." },
-        { "id": 15, "question": "An instance of a class is called an ________.", "options": ["Object", "Method", "Variable", "Interface"], "answer": "Object", "explanation": "An object is a concrete instance of a class template with its own state and behavior." },
-        { "id": 16, "question": "In programming, a function that calls itself is known as a ________ function.", "options": ["Recursive", "Nested", "Callback", "Inline"], "answer": "Recursive", "explanation": "Recursion is a programming technique where a function calls itself directly or indirectly to solve a smaller instance of the same problem." },
-        { "id": 17, "question": "What is the index of the first element in a standard array in languages like C++, Java, and Python?", "options": ["0", "1", "-1", "Any number"], "answer": "0", "explanation": "Standard arrays in these languages use zero-based indexing, where the first element is at index 0." },
-        { "id": 18, "question": "Which access modifier makes a class member accessible only within the same class?", "options": ["private", "public", "protected", "default"], "answer": "private", "explanation": "The private modifier restricts access to the member to the defining class itself, aiding encapsulation." },
-        { "id": 19, "question": "What is the main purpose of unit testing?", "options": ["To verify that individual components of software work correctly in isolation", "To test the entire system's performance under load", "To check if the database is configured properly", "To review code layout styles"], "answer": "To verify that individual components of software work correctly in isolation", "explanation": "Unit testing verifies that the smallest testable parts (units) of an application work as intended under various conditions." },
-        { "id": 20, "question": "Which Git command is used to display the commit history of a repository?", "options": ["git log", "git status", "git diff", "git branch"], "answer": "git log", "explanation": "The git log command shows the commit history list for the repository in reverse chronological order." }
-    ];
+        {
+                "id": 1,
+                "question": "What is the legal term for unauthorized access to a computer system or network?",
+                "options": [
+                        "Hacking / Computer Trespass",
+                        "Phishing",
+                        "Defamation",
+                        "Software Piracy"
+                ],
+                "answer": "Hacking / Computer Trespass",
+                "explanation": "Computer trespass or hacking refers to accessing computers, files, or networks without authorization, which is a criminal offense."
+        },
+        {
+                "id": 2,
+                "question": "Which type of online contract is formed when a user agrees to terms by clicking a button (e.g. 'I Agree')?",
+                "options": [
+                        "Clickwrap agreement",
+                        "Shrinkwrap agreement",
+                        "Browsewrap agreement",
+                        "Verbal agreement"
+                ],
+                "answer": "Clickwrap agreement",
+                "explanation": "A clickwrap agreement is an online contract where users consent to terms by clicking a box or button labeled 'I agree' or 'Ok'."
+        },
+        {
+                "id": 3,
+                "question": "What type of cybercrime involves holding a victim's data hostage using encryption until payment is made?",
+                "options": [
+                        "Ransomware",
+                        "Trojan horse",
+                        "Spyware",
+                        "Adware"
+                ],
+                "answer": "Ransomware",
+                "explanation": "Ransomware encrypts user systems or files and demands a cryptocurrency payout (ransom) in exchange for the decryption key."
+        },
+        {
+                "id": 4,
+                "question": "What is a 'shrinkwrap agreement'?",
+                "options": [
+                        "An agreement wrapped in packaging with physical software products",
+                        "An agreement signed digitally using a tablet",
+                        "A contract between internet service providers",
+                        "A privacy policy stated on a webpage footer"
+                ],
+                "answer": "An agreement wrapped in packaging with physical software products",
+                "explanation": "Shrinkwrap agreements are licensing contracts enclosed with physical software products, where breaking the shrinkwrap plastic constitutes agreement."
+        },
+        {
+                "id": 5,
+                "question": "Which law in Nigeria addresses cybercrimes and prescribes penalties for cyberthreats?",
+                "options": [
+                        "Cybercrimes Prohibition Prevention Act",
+                        "Lagos State Criminal Code",
+                        "Nigeria Data Protection Regulation",
+                        "Company and Allied Matters Act"
+                ],
+                "answer": "Cybercrimes Prohibition Prevention Act",
+                "explanation": "The Cybercrimes (Prohibition, Prevention, etc.) Act of 2015 provides a legal and regulatory framework for prosecuting computer crimes in Nigeria."
+        },
+        {
+                "id": 6,
+                "question": "What is the term for creating a replica of a legitimate website to steal user credentials?",
+                "options": [
+                        "Phishing",
+                        "SQL Injection",
+                        "Man-in-the-Middle",
+                        "Trojan horse"
+                ],
+                "answer": "Phishing",
+                "explanation": "Phishing involves crafting fraudulent emails or replica websites to trick users into submitting sensitive credentials or financial detail."
+        },
+        {
+                "id": 7,
+                "question": "What is the legal term for a digital signature that identifies and authenticates a contractor?",
+                "options": [
+                        "Electronic signature",
+                        "Watermark",
+                        "Passkey",
+                        "Hex signature"
+                ],
+                "answer": "Electronic signature",
+                "explanation": "An electronic signature (or e-signature) is a digital code attached to an electronic document to verify the identity of the signer."
+        },
+        {
+                "id": 8,
+                "question": "What type of attack floods a server with traffic to make it unavailable to legitimate users?",
+                "options": [
+                        "DDoS (Distributed Denial of Service)",
+                        "Phishing",
+                        "Spyware infection",
+                        "Cross-site scripting"
+                ],
+                "answer": "DDoS (Distributed Denial of Service)",
+                "explanation": "DDoS attacks saturate system resources using traffic from numerous hijacked machines, blocking service access for legitimate clients."
+        },
+        {
+                "id": 9,
+                "question": "What is the term for the international treaty aimed at harmonizing national computer crime laws?",
+                "options": [
+                        "Budapest Convention on Cybercrime",
+                        "Geneva Convention",
+                        "Paris Agreement",
+                        "Kyoto Protocol"
+                ],
+                "answer": "Budapest Convention on Cybercrime",
+                "explanation": "The Budapest Convention is the first international treaty addressing computer crimes by harmonizing laws and facilitating cooperation."
+        },
+        {
+                "id": 10,
+                "question": "In contract law, what is the term for the exchange of value between parties to make a contract legally binding?",
+                "options": [
+                        "Consideration",
+                        "Proposal",
+                        "Acceptance",
+                        "Sanction"
+                ],
+                "answer": "Consideration",
+                "explanation": "Consideration is a fundamental element in contract law, referring to the mutual exchange of value (goods, services, money) between signees."
+        }
+];
 
     let currentExamData = [];
     let userAnswers     = {};
