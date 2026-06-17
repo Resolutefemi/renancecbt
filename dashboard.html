@@ -756,6 +756,7 @@
         </div>
         <div class="nav-menu-content">
             <a href="#"              class="nav-item active"><i data-lucide="layout-dashboard" size="17"></i> <span>Dashboard</span></a>
+            <a href="leaderboard.html" class="nav-item"><i data-lucide="trophy"           size="17"></i> <span>Leaderboard</span></a>
             <a href="pdf.html"       class="nav-item"><i data-lucide="book"             size="17"></i> <span>PDFs</span></a>
             <a href="gpa.html"       class="nav-item"><i data-lucide="calculator"       size="17"></i> <span>GPA Calculator</span></a>
             <a href="ai.html"        class="nav-item"><i data-lucide="brain"            size="17"></i> <span>Renance AI</span></a>
@@ -823,20 +824,61 @@
             </div>
         </div>
 
-        
-        <div class="section-header">
-            <h2 style="font-size:1rem;font-weight:700;display:flex;align-items:center;gap:8px;">
-                <i data-lucide="book-open" size="17"></i> Available Courses
-            </h2>
-            <div class="search-wrapper">
-                <i data-lucide="search" size="16"></i>
-                <input type="text" id="courseSearch" class="search-input"
-                       placeholder="Search course code or title..."
-                       oninput="filterCourses()">
+        <div class="dashboard-layout" style="display: flex; gap: 30px; margin-top: 30px; flex-wrap: wrap; align-items: flex-start; width: 100%;">
+            <!-- Left Column: Courses -->
+            <div class="courses-column" style="flex: 2; min-width: 300px; display: flex; flex-direction: column; gap: 20px;">
+                <div class="section-header" style="margin-bottom: 0;">
+                    <h2 style="font-size:1rem;font-weight:700;display:flex;align-items:center;gap:8px;">
+                        <i data-lucide="book-open" size="17"></i> Available Courses
+                    </h2>
+                    <div class="search-wrapper">
+                        <i data-lucide="search" size="16"></i>
+                        <input type="text" id="courseSearch" class="search-input"
+                               placeholder="Search course code or title..."
+                               oninput="filterCourses()">
+                    </div>
+                </div>
+                <div class="course-grid" id="courseGrid" style="margin-top: 0; margin-bottom: 0;"></div>
+            </div>
+
+            <!-- Right Column: Dashboard Leaderboard & Department Filter -->
+            <div class="leaderboard-column" style="flex: 1; min-width: 300px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); display: flex; flex-direction: column; gap: 20px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+                    <h3 style="font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: 8px; color: var(--text-main);">
+                        <i data-lucide="trophy" style="color: var(--gold);"></i> Global Leaderboard
+                    </h3>
+                    <a href="leaderboard.html" style="font-size: 0.85rem; color: var(--primary-accent); text-decoration: none; font-weight: 650;">View Full</a>
+                </div>
+
+                <!-- Department Selector -->
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <label for="leaderboardDeptSelect" style="font-size: 0.65rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Filter by Department</label>
+                    <select id="leaderboardDeptSelect" onchange="fetchDashboardLeaderboard()" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid var(--border-color); background: transparent; color: var(--text-main); font-size: 0.85rem; font-weight: 500; outline: none; cursor: pointer;">
+                        <option value="ALL">All Departments</option>
+                        <option value="Computer Science (CSC)">Computer Science (CSC)</option>
+                        <option value="Software Engineering (SEN)">Software Engineering (SEN)</option>
+                        <option value="Computer Engineering (CPE)">Computer Engineering (CPE)</option>
+                        <option value="Information Technology (IFT)">Information Technology (IFT)</option>
+                        <option value="Cybersecurity (CYS)">Cybersecurity (CYS)</option>
+                        <option value="Biology (BIO)">Biology (BIO)</option>
+                        <option value="Biotechnology (BTH)">Biotechnology (BTH)</option>
+                        <option value="Statistics (STA)">Statistics (STA)</option>
+                        <option value="Physiology (PHS)">Physiology (PHS)</option>
+                        <option value="Project Research and Management Technology (PRMT)">Project Research and Management Technology (PRMT)</option>
+                    </select>
+                </div>
+
+                <!-- Leaderboard entries list -->
+                <div id="dashLeaderboardLoader" style="text-align: center; padding: 20px; color: var(--text-muted);">
+                    <i class="fa-solid fa-circle-notch fa-spin" style="color: var(--primary-accent); font-size: 1.5rem; margin-bottom: 8px;"></i>
+                    <p style="font-size: 0.8rem;">Loading ranks...</p>
+                </div>
+                
+                <div id="dashLeaderboardList" style="display: none; flex-direction: column; gap: 10px;">
+                    <!-- Rows injected here -->
+                </div>
             </div>
         </div>
-
-        <div class="course-grid" id="courseGrid"></div>
 
         <div class="page-footer">
             &copy; 2026 RENANCE CBT. Built with
@@ -1289,9 +1331,156 @@
             }
         }
 
+        async function getAllStudents() {
+            let allStudents = [];
+            let from = 0;
+            let to = 999;
+            let done = false;
+            while (!done) {
+                const { data, error } = await db
+                    .from('students')
+                    .select('id, fullname, department, tests_taken, avg_score')
+                    .range(from, to);
+                if (error) throw error;
+                if (data && data.length > 0) {
+                    allStudents = allStudents.concat(data);
+                    if (data.length < 1000) done = true;
+                    else { from += 1000; to += 1000; }
+                } else {
+                    done = true;
+                }
+            }
+            return allStudents;
+        }
+
+        async function fetchDashboardLeaderboard() {
+            const listEl = document.getElementById('dashLeaderboardList');
+            const loaderEl = document.getElementById('dashLeaderboardLoader');
+            if (listEl) listEl.style.display = 'none';
+            if (loaderEl) loaderEl.style.display = 'block';
+
+            try {
+                const students = await getAllStudents();
+
+                // Get current user id
+                let currentUserId = null;
+                try {
+                    const { data: { user } } = await db.auth.getUser();
+                    if (user) currentUserId = user.id;
+                } catch (e) {}
+
+                // Load local results for current user to merge
+                let localTests = 0;
+                let localAvg = 0;
+                if (currentUserId) {
+                    try {
+                        const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+                        const userResults = localResults.filter(r => r.student_id === currentUserId);
+                        localTests = userResults.length;
+                        localAvg = localTests > 0
+                            ? Math.round(userResults.reduce((sum, r) => sum + r.score, 0) / localTests)
+                            : 0;
+                    } catch (e) {}
+                }
+
+                // Process student lists and merge current user's local stats
+                let processedStudents = students.map(s => {
+                    let tests = Number(s.tests_taken || 0);
+                    let score = Number(s.avg_score || 0);
+                    if (currentUserId && s.id === currentUserId) {
+                        tests = Math.max(tests, localTests);
+                        score = Math.max(score, localAvg);
+                    }
+                    return {
+                        id: s.id,
+                        fullname: s.fullname || 'Anonymous Student',
+                        department: s.department || 'N/A',
+                        tests_taken: tests,
+                        avg_score: score
+                    };
+                });
+
+                // Populate department dropdown dynamically
+                const deptSelect = document.getElementById('leaderboardDeptSelect');
+                const selectedDept = deptSelect ? deptSelect.value : 'ALL';
+                if (deptSelect) {
+                    const uniqueDepts = [...new Set(processedStudents.map(s => s.department).filter(Boolean))].sort();
+                    if (deptSelect.options.length <= 1 || uniqueDepts.length !== (deptSelect.options.length - 1)) {
+                        deptSelect.innerHTML = '<option value="ALL">All Departments</option>';
+                        uniqueDepts.forEach(d => {
+                            const o = document.createElement('option');
+                            o.value = d;
+                            o.textContent = d;
+                            deptSelect.appendChild(o);
+                        });
+                        if (uniqueDepts.includes(selectedDept)) {
+                            deptSelect.value = selectedDept;
+                        } else {
+                            deptSelect.value = 'ALL';
+                        }
+                    }
+                }
+
+                const finalSelectedDept = deptSelect ? deptSelect.value : 'ALL';
+                if (finalSelectedDept !== 'ALL') {
+                    processedStudents = processedStudents.filter(s => s.department === finalSelectedDept);
+                }
+
+                // Sort students
+                processedStudents.sort((a, b) => {
+                    if (b.avg_score !== a.avg_score) {
+                        return b.avg_score - a.avg_score;
+                    }
+                    return b.tests_taken - a.tests_taken;
+                });
+
+                if (listEl) {
+                    listEl.innerHTML = '';
+                    if (processedStudents.length === 0) {
+                        listEl.innerHTML = `<p style="font-size: 0.8rem; text-align: center; color: var(--text-muted); padding: 15px;">No students found.</p>`;
+                    } else {
+                        // Display top 10
+                        const top10 = processedStudents.slice(0, 10);
+                        top10.forEach((student, index) => {
+                            const initials = student.fullname.substring(0, 2).toUpperCase();
+                            const isCurrentUser = currentUserId && student.id === currentUserId;
+                            const highlightStyle = isCurrentUser ? 'background: rgba(37,99,235,0.06); border-radius: 12px; margin: 0 -8px; padding: 8px;' : '';
+                            
+                            let rankDisp = `#${index + 1}`;
+                            if (index === 0) rankDisp = '🥇';
+                            else if (index === 1) rankDisp = '🥈';
+                            else if (index === 2) rankDisp = '🥉';
+
+                            const rowHtml = `
+                                <div class="dash-leaderboard-row" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border-color); ${highlightStyle}">
+                                    <div style="display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1;">
+                                        <div style="width: 24px; font-weight: 800; font-size: 0.85rem; color: var(--text-muted); text-align: center; flex-shrink: 0;">${rankDisp}</div>
+                                        <div style="width: 30px; height: 30px; border-radius: 8px; background: ${index === 0 ? 'var(--gold)' : (index === 1 ? 'var(--silver)' : (index === 2 ? '#b45309' : 'var(--primary-accent)'))}; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; flex-shrink: 0;">${initials}</div>
+                                        <div style="min-width: 0; flex: 1;">
+                                            <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px;">${student.fullname}</p>
+                                            <p style="font-size: 0.68rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${student.department} | ${student.tests_taken} test(s)</p>
+                                        </div>
+                                    </div>
+                                    <div style="font-weight: 800; font-size: 0.9rem; color: var(--text-main); margin-left: 8px; flex-shrink: 0;">${student.avg_score}%</div>
+                                </div>
+                            `;
+                            listEl.insertAdjacentHTML('beforeend', rowHtml);
+                        });
+                    }
+                }
+            } catch (err) {
+                console.error('Error fetching dashboard leaderboard:', err);
+                if (listEl) {
+                    listEl.innerHTML = `<p style="font-size: 0.8rem; text-align: center; color: var(--text-muted); padding: 15px;">Failed to load leaderboard.</p>`;
+                }
+            } finally {
+                if (loaderEl) loaderEl.style.display = 'none';
+                if (listEl) listEl.style.display = 'flex';
+            }
+        }
+
         function logout() { db.auth.signOut().then(() => { window.location.href = 'index.html'; }); }
 
-        
         document.addEventListener('DOMContentLoaded', () => {
             renderCourses();
             const isDark = localStorage.getItem('theme') === 'dark';
@@ -1299,6 +1488,7 @@
             updateIcons(isDark);
             checkUserProfile();
             loadUserStats();
+            fetchDashboardLeaderboard();
         });
     </script>
 </body>

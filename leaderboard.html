@@ -207,10 +207,12 @@
         <nav class="nav-menu">
             <a href="dashboard.html" class="nav-item"><i data-lucide="layout-grid"></i> Dashboard</a>
             <a href="leaderboard.html" class="nav-item active"><i data-lucide="trophy"></i> Leaderboard</a>
-            <a href="chat.html" class="nav-item"><i data-lucide="message-square"></i> Student Chat</a>
-            <a href="pdfs.html" class="nav-item"><i data-lucide="book"></i> PDFs</a>
+            <a href="pdf.html" class="nav-item"><i data-lucide="book"></i> PDFs</a>
             <a href="gpa.html" class="nav-item"><i data-lucide="calculator"></i> GPA Calculator</a>
             <a href="ai.html" class="nav-item"><i data-lucide="bot"></i> Renance AI</a>
+            <a href="Tips.html" class="nav-item"><i data-lucide="lightbulb"></i> Study Tips</a>
+            <a href="about.html" class="nav-item"><i data-lucide="info"></i> About Portal</a>
+            <a href="registration.html" class="nav-item"><i data-lucide="user"></i> My Profile</a>
         </nav>
 
         <div class="user-card-container">
@@ -260,12 +262,30 @@
                 </div>
             </div>
 
-            <div class="tabs" id="timeFilters">
-                <button class="tab-btn" onclick="fetchLeaderboard('daily')">Daily</button>
-                <button class="tab-btn active" onclick="fetchLeaderboard('weekly')">Weekly</button>
-                <button class="tab-btn" onclick="fetchLeaderboard('monthly')">Monthly</button>
-                <button class="tab-btn" onclick="fetchLeaderboard('yearly')">Yearly</button>
-                <button class="tab-btn" onclick="fetchLeaderboard('overall')">Overall</button>
+            <div style="display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 40px; width: 100%;">
+                <div class="tabs" id="timeFilters" style="margin-bottom: 0;">
+                    <button class="tab-btn" onclick="fetchLeaderboard('daily')">Daily</button>
+                    <button class="tab-btn active" onclick="fetchLeaderboard('weekly')">Weekly</button>
+                    <button class="tab-btn" onclick="fetchLeaderboard('monthly')">Monthly</button>
+                    <button class="tab-btn" onclick="fetchLeaderboard('yearly')">Yearly</button>
+                    <button class="tab-btn" onclick="fetchLeaderboard('overall')">Overall</button>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <label for="deptFilter" style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Department:</label>
+                    <select id="deptFilter" onchange="fetchLeaderboard()" style="padding: 10px 15px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-main); font-size: 0.85rem; font-weight: 600; outline: none; cursor: pointer;">
+                        <option value="ALL">All Departments</option>
+                        <option value="Computer Science (CSC)">Computer Science (CSC)</option>
+                        <option value="Software Engineering (SEN)">Software Engineering (SEN)</option>
+                        <option value="Computer Engineering (CPE)">Computer Engineering (CPE)</option>
+                        <option value="Information Technology (IFT)">Information Technology (IFT)</option>
+                        <option value="Cybersecurity (CYS)">Cybersecurity (CYS)</option>
+                        <option value="Biology (BIO)">Biology (BIO)</option>
+                        <option value="Biotechnology (BTH)">Biotechnology (BTH)</option>
+                        <option value="Statistics (STA)">Statistics (STA)</option>
+                        <option value="Physiology (PHS)">Physiology (PHS)</option>
+                        <option value="Project Research and Management Technology (PRMT)">Project Research and Management Technology (PRMT)</option>
+                    </select>
+                </div>
             </div>
 
             <div class="loader" id="loader">
@@ -343,6 +363,7 @@
             db.auth.signOut().then(() => { window.location.href = 'index.html'; });
         }
 
+        let currentPeriod = 'weekly';
         const tabs = document.querySelectorAll('.tab-btn');
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
@@ -360,7 +381,7 @@
             while (!done) {
                 const { data, error } = await db
                     .from('students')
-                    .select('fullname, department, matric, tests_taken, avg_score')
+                    .select('id, fullname, department, matric, tests_taken, avg_score')
                     .range(from, to);
                     
                 if (error) {
@@ -383,23 +404,89 @@
         }
 
         async function fetchLeaderboard(period) {
+            if (period) currentPeriod = period;
             document.getElementById('leaderboard-content').style.display = 'none';
             document.getElementById('loader').style.display = 'block';
 
             try {
                 const students = await getAllStudents();
 
+                // Get current user id
+                let currentUserId = null;
+                try {
+                    const { data: { user } } = await db.auth.getUser();
+                    if (user) currentUserId = user.id;
+                } catch (e) {}
+
+                // Load local results for current user to merge
+                let localTests = 0;
+                let localAvg = 0;
+                if (currentUserId) {
+                    try {
+                        const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+                        const userResults = localResults.filter(r => r.student_id === currentUserId);
+                        localTests = userResults.length;
+                        localAvg = localTests > 0
+                            ? Math.round(userResults.reduce((sum, r) => sum + r.score, 0) / localTests)
+                            : 0;
+                    } catch (e) {}
+                }
+
+                // Process student lists and merge current user's local stats
+                let processedStudents = students.map(s => {
+                    let tests = Number(s.tests_taken || 0);
+                    let score = Number(s.avg_score || 0);
+                    if (currentUserId && s.id === currentUserId) {
+                        tests = Math.max(tests, localTests);
+                        score = Math.max(score, localAvg);
+                    }
+                    return {
+                        id: s.id,
+                        fullname: s.fullname,
+                        department: s.department,
+                        tests_taken: tests,
+                        avg_score: score
+                    };
+                });
+
                 // Compute portal-wide stats
-                const totalStudents = students.length;
-                const totalTests = students.reduce((sum, s) => sum + (s.tests_taken || 0), 0);
+                const totalStudents = processedStudents.length;
+                const totalTests = processedStudents.reduce((sum, s) => sum + (s.tests_taken || 0), 0);
 
                 document.getElementById('portalStudents').textContent = totalStudents;
                 document.getElementById('portalTests').textContent = totalTests;
 
+                // Populate department filter dynamically
+                const deptFilter = document.getElementById('deptFilter');
+                const selectedDept = deptFilter ? deptFilter.value : 'ALL';
+                if (deptFilter) {
+                    const uniqueDepts = [...new Set(processedStudents.map(s => s.department).filter(Boolean))].sort();
+                    if (deptFilter.options.length <= 1 || uniqueDepts.length !== (deptFilter.options.length - 1)) {
+                        deptFilter.innerHTML = '<option value="ALL">All Departments</option>';
+                        uniqueDepts.forEach(d => {
+                            const o = document.createElement('option');
+                            o.value = d;
+                            o.textContent = d;
+                            deptFilter.appendChild(o);
+                        });
+                        if (uniqueDepts.includes(selectedDept)) {
+                            deptFilter.value = selectedDept;
+                        } else {
+                            deptFilter.value = 'ALL';
+                        }
+                    }
+                }
+
+                const finalSelectedDept = deptFilter ? deptFilter.value : 'ALL';
+                let filteredStudents = processedStudents;
+                if (finalSelectedDept !== 'ALL') {
+                    filteredStudents = processedStudents.filter(s => s.department === finalSelectedDept);
+                }
+
                 // Sort students by:
                 // 1. avg_score descending (highest score first)
                 // 2. tests_taken descending (most tests first)
-                const sortedData = [...students].sort((a, b) => {
+                const sortedData = [...filteredStudents].sort((a, b) => {
                     const aAvg = Number(a.avg_score || 0);
                     const bAvg = Number(b.avg_score || 0);
                     if (bAvg !== aAvg) {
@@ -413,7 +500,7 @@
                 // Format data
                 const leaderboardData = sortedData.map(s => ({
                     student_name: s.fullname || 'Anonymous Student',
-                    student_matric: s.matric || s.department || 'N/A',
+                    student_dept: s.department || 'N/A',
                     score: Number(s.avg_score || 0),
                     tests_taken: Number(s.tests_taken || 0)
                 }));
@@ -448,6 +535,7 @@
                         <div class="podium-avatar">${initials}</div>
                         <div class="podium-info">
                             <div class="podium-name" title="${data[1].student_name}">${data[1].student_name}</div>
+                            <div class="podium-dept">${data[1].student_dept}</div>
                             <div class="podium-score">${data[1].score}%</div>
                             <div style="font-size:0.7rem;color:var(--text-muted);margin-top:4px;font-weight:600;">${data[1].tests_taken} test(s)</div>
                         </div>
@@ -462,6 +550,7 @@
                         <div class="podium-avatar">${initials}</div>
                         <div class="podium-info">
                             <div class="podium-name" title="${data[0].student_name}">${data[0].student_name}</div>
+                            <div class="podium-dept">${data[0].student_dept}</div>
                             <div class="podium-score">${data[0].score}%</div>
                             <div style="font-size:0.7rem;color:var(--text-muted);margin-top:4px;font-weight:600;">${data[0].tests_taken} test(s)</div>
                         </div>
@@ -476,6 +565,7 @@
                         <div class="podium-avatar">${initials}</div>
                         <div class="podium-info">
                             <div class="podium-name" title="${data[2].student_name}">${data[2].student_name}</div>
+                            <div class="podium-dept">${data[2].student_dept}</div>
                             <div class="podium-score">${data[2].score}%</div>
                             <div style="font-size:0.7rem;color:var(--text-muted);margin-top:4px;font-weight:600;">${data[2].tests_taken} test(s)</div>
                         </div>
@@ -493,7 +583,7 @@
                             <div class="list-avatar">${initials}</div>
                             <div class="student-details">
                                 <h4>${data[i].student_name}</h4>
-                                <p>${data[i].student_matric} | <span style="font-weight:600;">${data[i].tests_taken} test(s) taken</span></p>
+                                <p>${data[i].student_dept} | <span style="font-weight:600;">${data[i].tests_taken} test(s) taken</span></p>
                             </div>
                         </div>
                         <div class="col-score">${data[i].score}%</div>
