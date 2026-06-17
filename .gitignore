@@ -3,3 +3,5 @@ dist/
 .DS_Store
 *.log
 .env
+*.clone2.html
+*.clone.html

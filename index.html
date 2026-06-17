@@ -1,14 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RENANCE â€” Create Account</title>
+<title>RENANCE — Create Account</title>
 <link rel="shortcut icon" href="logo.png" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="env-loader.js"></script>
-1
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -606,12 +606,12 @@ document.getElementById('sf').addEventListener('submit', async function(e){
       btn.style.background = '#10b981';
       btn.style.boxShadow = '0 0 30px rgba(16,185,129,0.5)';
       
-      toast('ðŸŽ‰ Account created! Redirecting to login...', 'ok');
+      toast('🎉 Account created! Redirecting to login...', 'ok');
       setTimeout(() => window.location.href = 'login.html', 2000);
       
     } catch (err) {
       console.error(err);
-      toast('âŒ ' + (err.message || 'Something went wrong. Please try again.'), 'bad');
+      toast('❌ ' + (err.message || 'Something went wrong. Please try again.'), 'bad');
       btn.disabled = false;
       btxt.innerHTML = '<i class="fa-solid fa-user-plus"></i> REGISTER';
     }

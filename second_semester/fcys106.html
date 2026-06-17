@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEN 104 CBT Portal</title>
+    <title>FCYS 106 CBT Portal</title>
     <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -12,24 +12,24 @@
     <script src="../cbt-ai-bridge.js"></script>
 
     <style>
-        :root {
-            --primary: #7c3aed;
-            --bg: #faf5ff;
+                :root {
+            --primary: #0891b2;
+            --bg: #ecfeff;
             --card-bg: #ffffff;
-            --text: #2e1065;
-            --text-muted: #7c3aed;
+            --text: #164e63;
+            --text-muted: #0891b2;
             --success: #10b981;
             --danger: #ef4444;
             --accent: #f59e0b;
-            --border: rgba(124,58,237,0.15);
-            --share-gradient: linear-gradient(135deg, #2e1065 0%, #7c3aed 55%, #a78bfa 100%);
+            --border: rgba(8,145,178,0.15);
+            --share-gradient: linear-gradient(135deg, #164e63 0%, #0891b2 55%, #22d3ee 100%);
         }
         .dark-mode {
-            --bg: #1e1b4b;
-            --card-bg: #2e1065;
-            --text: #faf5ff;
-            --text-muted: #c084fc;
-            --border: rgba(192,132,252,0.12);
+            --bg: #082f49;
+            --card-bg: #0c4a6e;
+            --text: #ecfeff;
+            --text-muted: #38bdf8;
+            --border: rgba(255,255,255,0.07);
         }
 
         * { box-sizing: border-box; }
@@ -49,7 +49,7 @@
             display: none; background: var(--card-bg);
             border: 1.5px solid var(--success); border-radius: 14px;
             padding: 1rem 1.2rem; margin-bottom: 1.2rem;
-            box-shadow: 0 2px 10px rgba(124,58,237,0.1);
+            box-shadow: 0 2px 10px rgba(79,70,229,0.1);
         }
 
         .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.8rem; margin-bottom: 1.5rem; }
@@ -65,10 +65,10 @@
             border: 1.5px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-        .box:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(124,58,237,0.12); }
+        .box:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(79,70,229,0.12); }
         .box h3 { margin: 10px 0 4px; font-size: 1rem; line-height: 1.4; }
         .box p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
-        .box-random { background: linear-gradient(135deg, #7c3aed, #a78bfa) !important; color: white !important; border: none !important; }
+        .box-random { background: linear-gradient(135deg, #4f46e5, #818cf8) !important; color: white !important; border: none !important; }
         .box-random p { color: rgba(255,255,255,0.8) !important; }
 
         #setup-screen { text-align: center; background: var(--card-bg); padding: 3rem 2rem; border-radius: 16px; border: 1.5px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
@@ -76,7 +76,7 @@
         .setup-group label { font-weight: 600; font-size: 0.88rem; color: var(--text); display: block; margin-bottom: 7px; }
         .setup-input { width: 100%; padding: 11px 14px; border: 2px solid #ddd6fe; border-radius: 9px; font-size: 0.95rem; background: var(--bg); color: var(--text); outline: none; transition: border-color 0.2s; }
         .setup-input:focus { border-color: var(--primary); }
-        .checkbox-group { display: flex; flex-direction: column; gap: 12px; margin-top: 1rem; background: rgba(124,58,237,0.02); padding: 14px; border-radius: 10px; border: 1px solid #ddd6fe; }
+        .checkbox-group { display: flex; flex-direction: column; gap: 12px; margin-top: 1rem; background: rgba(79,70,229,0.02); padding: 14px; border-radius: 10px; border: 1px solid #ddd6fe; }
         .custom-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; color: var(--text); font-weight: 500; user-select: none; }
         .custom-checkbox input { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; }
 
@@ -125,7 +125,7 @@
         }
         .result-icon { font-size: 3.6rem; margin-bottom: 8px; display: block; animation: float 3s ease-in-out infinite; }
         @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .score-display { background: rgba(124,58,237,0.06); border: 2px dashed rgba(124,58,237,0.25); border-radius: 18px; padding: 18px; margin: 18px 0; }
+        .score-display { background: rgba(79,70,229,0.06); border: 2px dashed rgba(79,70,229,0.25); border-radius: 18px; padding: 18px; margin: 18px 0; }
         .score-big { font-size: 3.5rem; font-weight: 900; color: var(--primary); line-height: 1; }
         .stats-mini { display: flex; justify-content: center; gap: 24px; margin: 10px 0 4px; }
         .stats-mini .sm { text-align: center; }
@@ -135,8 +135,8 @@
         .result-actions { display: flex; flex-direction: column; gap: 11px; }
         .btn-action { width: 100%; padding: 13px; border: none; border-radius: 12px; font-size: 0.97rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s; display: flex; align-items: center; justify-content: center; gap: 9px; }
         .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
-        .btn-share  { background: var(--share-gradient); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3); }
-        .btn-review { background: rgba(124,58,237,0.08); color: var(--primary); border: 1.5px solid rgba(124,58,237,0.2); }
+        .btn-share  { background: var(--share-gradient); color: white; box-shadow: 0 4px 16px rgba(79,70,229,0.3); }
+        .btn-review { background: rgba(79,70,229,0.08); color: var(--primary); border: 1.5px solid rgba(79,70,229,0.2); }
         .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
 
         @media (max-width: 600px) {
@@ -154,7 +154,7 @@
     <div style="display:flex; align-items:center; gap:12px;">
         <a href="../dashboard.html" style="color:var(--text); text-decoration:none; font-size:1.1rem; display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--border);"><i class="fa-solid fa-arrow-left"></i></a>
         <div class="nav-brand">
-            <div><i class="fa-solid fa-terminal"></i> SEN 104 Practice Portal</div>
+            <div><i class="fa-solid fa-file-shield"></i> FCYS 106 Practice Portal</div>
             <div style="font-size:0.8rem; font-weight:600; color:var(--text-muted); letter-spacing:0.3px;">by Resolute Femi</div>
         </div>
     </div>
@@ -266,7 +266,7 @@
         <p id="save-status"></p>
 
         <div class="result-actions">
-            <button class="btn-action" id="explainBtn" onclick="askRenanceAI()" style="background: linear-gradient(135deg, #7c3aed, #6d28d9); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
+            <button class="btn-action" id="explainBtn" onclick="askRenanceAI()" style="background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; box-shadow: 0 4px 16px rgba(79,70,229,0.3);">
                 <i class="fa-solid fa-robot"></i> Explain Missed Questions
             </button>
             <button class="btn-action btn-share" onclick="shareQuizResult()">
@@ -286,8 +286,8 @@
     const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
     const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    const COURSE_CODE = 'SEN 104';
-    const STORAGE_KEY = 'saved_sen104_exam';
+    const COURSE_CODE = 'FCYS 106';
+    const STORAGE_KEY = 'saved_fcys106_exam';
 
     async function sendHeartbeat() {
         try {
@@ -300,27 +300,127 @@
     setInterval(sendHeartbeat, 2 * 60 * 1000);
 
     const MASTER_POOL = [
-        { "id": 1, "question": "Which SDLC model is characterized by a linear, sequential flow of phases?", "options": ["Waterfall model", "Spiral model", "Agile model", "Iterative model"], "answer": "Waterfall model", "explanation": "The Waterfall model is a classic sequential SDLC model where progress flows downwards like a waterfall through defined stages." },
-        { "id": 2, "question": "What does the 'S' in SOLID design principles stand for?", "options": ["Single Responsibility Principle", "State Segregation Principle", "Static Class Principle", "Sequential Dependency Principle"], "answer": "Single Responsibility Principle", "explanation": "The Single Responsibility Principle states that a class should have one, and only one, reason to change." },
-        { "id": 3, "question": "In software design, high ________ and low ________ are desirable.", "options": ["Cohesion, coupling", "Coupling, cohesion", "Redundancy, coupling", "Abstraction, complexity"], "answer": "Cohesion, coupling", "explanation": "Good software design aims for high cohesion (related code grouped together) and low coupling (minimal dependencies between modules)." },
-        { "id": 4, "question": "Which UML diagram is used to show the static structure of a system including classes, attributes, and relationships?", "options": ["Class diagram", "Use case diagram", "Sequence diagram", "Statechart diagram"], "answer": "Class diagram", "explanation": "A class diagram is the primary static structure diagram in UML, describing system classes, attributes, and relationships." },
-        { "id": 5, "question": "What is the primary purpose of requirements engineering?", "options": ["To define and document what the software should do", "To write clean and optimized source code", "To design UI wireframes and mockups", "To configure cloud deployment databases"], "answer": "To define and document what the software should do", "explanation": "Requirements engineering focuses on discovering, analyzing, specifying, and verifying the services that a system must provide." },
-        { "id": 6, "question": "Which type of testing focuses on testing individual software modules or components?", "options": ["Unit testing", "Integration testing", "System testing", "Acceptance testing"], "answer": "Unit testing", "explanation": "Unit testing is the testing of individual code units, such as methods, functions, or classes, in isolation." },
-        { "id": 7, "question": "What is black-box testing?", "options": ["Testing software functionality without knowing its internal code structure", "Testing only the security systems of an application", "Testing code structure, paths, and logic flows directly", "Testing hardware components of a system"], "answer": "Testing software functionality without knowing its internal code structure", "explanation": "Black-box testing focuses purely on inputs and outputs without examining the internal code implementation details." },
-        { "id": 8, "question": "In Scrum, who is responsible for representing the interests of the stakeholders and managing the product backlog?", "options": ["Product Owner", "Scrum Master", "Development Team", "Project Manager"], "answer": "Product Owner", "explanation": "The Product Owner is responsible for maximizing product value and managing the Product Backlog prioritized requirements." },
-        { "id": 9, "question": "What is a Sprint in Scrum?", "options": ["A time-boxed iteration during which a specific set of work is completed", "A daily meeting to discuss progress and blockers", "A retrospective meeting at the end of a project release", "A code-refactoring phase"], "answer": "A time-boxed iteration during which a specific set of work is completed", "explanation": "A Sprint is a short, consistent timebox (usually 1-4 weeks) during which the Scrum team completes a planned set of product increment work." },
-        { "id": 10, "question": "Which design pattern ensures that a class has only one instance and provides a global point of access to it?", "options": ["Singleton pattern", "Factory pattern", "Observer pattern", "Strategy pattern"], "answer": "Singleton pattern", "explanation": "The Singleton pattern restricts the instantiation of a class to one single object, providing global access to that instance." },
-        { "id": 11, "question": "Software maintenance that involves fixing bugs and errors discovered after release is called ________ maintenance.", "options": ["Corrective", "Adaptive", "Perfective", "Preventative"], "answer": "Corrective", "explanation": "Corrective maintenance corrects faults and issues identified after the software is deployed." },
-        { "id": 12, "question": "What does UML stand for?", "options": ["Unified Modeling Language", "Universal Markup Language", "Unified Module Loader", "Unique Machine Location"], "answer": "Unified Modeling Language", "explanation": "UML stands for Unified Modeling Language, which is a standardized general-purpose modeling language in software engineering." },
-        { "id": 13, "question": "The degree of interdependence between software modules is known as ________.", "options": ["Coupling", "Cohesion", "Abstraction", "Encapsulation"], "answer": "Coupling", "explanation": "Coupling is a measure of how closely connected or dependent two or more software modules are on each other." },
-        { "id": 14, "question": "Which design pattern defines a one-to-many dependency so that when one object changes state, all its dependents are notified?", "options": ["Observer pattern", "Decorator pattern", "Facade pattern", "Singleton pattern"], "answer": "Observer pattern", "explanation": "The Observer pattern enables an object (subject) to publish changes to other listening objects (observers) dynamically." },
-        { "id": 15, "question": "What is the main goal of software verification?", "options": ["Ensuring that the software is built according to specifications", "Ensuring that the software meets actual customer needs", "Deploying the software to cloud platforms", "Generating test-coverage code metrics"], "answer": "Ensuring that the software is built according to specifications", "explanation": "Verification asks: 'Are we building the product right?' i.e., conforming to specified requirements." },
-        { "id": 16, "question": "What is white-box testing?", "options": ["Testing based on an analysis of the internal structure of the software component", "Testing the software without accessing its source code", "User interface layout testing", "Automated performance testing under load"], "answer": "Testing based on an analysis of the internal structure of the software component", "explanation": "White-box testing (or structural testing) involves inspecting paths, loops, statements, and logic inside the source code." },
-        { "id": 17, "question": "Which document outlines the complete behavioral requirements of a system before development begins?", "options": ["Software Requirements Specification (SRS)", "System Design Document (SDD)", "Project Charter Document (PCD)", "User Acceptance Testing Plan (UAT)"], "answer": "Software Requirements Specification (SRS)", "explanation": "An SRS is a comprehensive description of the software system requirements, listing functional and non-functional goals." },
-        { "id": 18, "question": "What is refactoring?", "options": ["Restructuring existing code without changing its external behavior to improve quality", "Re-writing the entire application in a different programming language", "Adding new features requested by stakeholders", "Compiling source code to executable binaries"], "answer": "Restructuring existing code without changing its external behavior to improve quality", "explanation": "Refactoring improves code readability, reduces complexity, and eases maintenance without changing what the program actually does." },
-        { "id": 19, "question": "The Agile Manifesto values ________ over processes and tools.", "options": ["Individuals and interactions", "Comprehensive documentation", "Contract negotiation", "Following a structured plan"], "answer": "Individuals and interactions", "explanation": "A core value of Agile is: 'Individuals and interactions over processes and tools,' prioritizing team collaboration." },
-        { "id": 20, "question": "Which UML diagram depicts the interactions between objects in a sequential order?", "options": ["Sequence diagram", "Class diagram", "Activity diagram", "Component diagram"], "answer": "Sequence diagram", "explanation": "A Sequence diagram is an interaction diagram that shows how objects operate with one another and in what chronological sequence." }
-    ];
+        {
+                "id": 1,
+                "question": "What is the primary purpose of an Information Security Policy?",
+                "options": [
+                        "To define an organization's security goals and rules",
+                        "To configure firewalls",
+                        "To calculate employee salaries",
+                        "To write assembly code"
+                ],
+                "answer": "To define an organization's security goals and rules",
+                "explanation": "A security policy defines the administrative directives, goals, rules, and expectations for protecting an organization's assets."
+        },
+        {
+                "id": 2,
+                "question": "Which regulation governs data privacy and protection for individuals within the European Union?",
+                "options": [
+                        "GDPR",
+                        "HIPAA",
+                        "PCI-DSS",
+                        "SOX"
+                ],
+                "answer": "GDPR",
+                "explanation": "GDPR (General Data Protection Regulation) is a regulation in EU law on data protection and privacy for all individuals within the EU."
+        },
+        {
+                "id": 3,
+                "question": "What does CIA triad stand for in security policy?",
+                "options": [
+                        "Confidentiality, Integrity, Availability",
+                        "Central Intelligence Agency",
+                        "Computer Integrity Audit",
+                        "Control Index Access"
+                ],
+                "answer": "Confidentiality, Integrity, Availability",
+                "explanation": "The CIA Triad constitutes the core pillars of cybersecurity: Confidentiality (encryption), Integrity (hashes), and Availability (uptime)."
+        },
+        {
+                "id": 4,
+                "question": "Which type of security control represents written guidelines, standards, and policies?",
+                "options": [
+                        "Administrative control",
+                        "Technical control",
+                        "Physical control",
+                        "Corrective control"
+                ],
+                "answer": "Administrative control",
+                "explanation": "Administrative (or managerial) controls are policies, procedures, and guidelines defined by management to enforce security behaviors."
+        },
+        {
+                "id": 5,
+                "question": "What is the term for a legally binding contract that restricts parties from sharing confidential information?",
+                "options": [
+                        "Non-Disclosure Agreement (NDA)",
+                        "Service Level Agreement (SLA)",
+                        "User License Agreement (ULA)",
+                        "Memorandum of Understanding (MOU)"
+                ],
+                "answer": "Non-Disclosure Agreement (NDA)",
+                "explanation": "An NDA is a legal contract between parties ensuring that confidential information disclosed remains protected and is not shared with outsiders."
+        },
+        {
+                "id": 6,
+                "question": "What is the primary focus of the NIST Cybersecurity Framework?",
+                "options": [
+                        "To provide guidelines for managing and reducing cybersecurity risk",
+                        "To regulate cellular networks",
+                        "To audit financial reports",
+                        "To design cryptography chips"
+                ],
+                "answer": "To provide guidelines for managing and reducing cybersecurity risk",
+                "explanation": "The NIST CSF provides a set of standards, guidelines, and practices to help organizations manage and reduce cybersecurity risks."
+        },
+        {
+                "id": 7,
+                "question": "What is the legal doctrine that holds employers responsible for the actions of their employees?",
+                "options": [
+                        "Vicarious liability",
+                        "Due diligence",
+                        "Absolute liability",
+                        "Sovereign immunity"
+                ],
+                "answer": "Vicarious liability",
+                "explanation": "Vicarious liability holds an employer or supervisor responsible for acts of negligence committed by employees in the course of employment."
+        },
+        {
+                "id": 8,
+                "question": "What is the term for a formal document that describes the security controls of a system?",
+                "options": [
+                        "System Security Plan (SSP)",
+                        "Business Impact Analysis (BIA)",
+                        "Incident Response Plan (IRP)",
+                        "Disaster Recovery Plan (DRP)"
+                ],
+                "answer": "System Security Plan (SSP)",
+                "explanation": "An SSP (System Security Plan) is a formal document describing system boundaries, operational environments, and active security controls."
+        },
+        {
+                "id": 9,
+                "question": "Which policy defines what actions users are allowed or not allowed to perform on organization assets?",
+                "options": [
+                        "Acceptable Use Policy (AUP)",
+                        "Password Policy",
+                        "Backup Policy",
+                        "Access Control Policy"
+                ],
+                "answer": "Acceptable Use Policy (AUP)",
+                "explanation": "An Acceptable Use Policy (AUP) specifies rules for how employees and users may utilize enterprise hardware, networks, and internet resources."
+        },
+        {
+                "id": 10,
+                "question": "What is the legal term for a failure to take proper care in doing something, resulting in damage or injury?",
+                "options": [
+                        "Negligence",
+                        "Breach",
+                        "Tort",
+                        "Fraud"
+                ],
+                "answer": "Negligence",
+                "explanation": "Negligence is the legal term describing a failure to exercise the standard of care that a reasonably prudent person would under similar conditions."
+        }
+];
 
     let currentExamData = [];
     let userAnswers     = {};
@@ -513,7 +613,6 @@
         if (n >= 0 && n < currentExamData.length) { currentIndex = n; renderQuestion(); }
     }
 
-    // Save State
     function saveState() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify({
             currentExamData, userAnswers, currentIndex,
@@ -621,7 +720,7 @@
         currentIndex = 0;
         document.getElementById('timer').innerText         = 'REVIEW';
         document.getElementById('timer').style.background = '#ddd6fe';
-        document.getElementById('timer').style.color      = '#7c3aed';
+        document.getElementById('timer').style.color      = '#4f46e5';
         renderQuestion();
     }
 
@@ -718,7 +817,6 @@
         document.getElementById('resume-btn').style.display    = 'none';
     }
 
-    // Check Resume
     function checkResume() {
         const saved = localStorage.getItem(STORAGE_KEY);
         if (!saved) { document.getElementById('resume-btn').style.display = 'none'; return; }
