@@ -953,8 +953,15 @@
             { id: 'CHE 103', title: 'EXPERIMENTAL CHEMISTRY I',          icon: 'test-tube',  isReady: true, semester: 1, study: false, practice: true  },
         ];
 
-        /* Semester 2 courses placeholder â€” add here when ready */
-        const courses2 = [];
+        /* Semester 2 courses */
+        const courses2 = [
+            { id: 'BIO 102', title: 'GENERAL BIOLOGY II',                 icon: 'dna',        isReady: true, semester: 2, study: false, practice: true  },
+            { id: 'SEN 102', title: 'SOFTWARE EXPERIMENTAL LAB II',       icon: 'code',       isReady: true, semester: 2, study: false, practice: true  },
+            { id: 'SEN 104', title: 'INTRODUCTION TO SOFTWARE ENGINEERING', icon: 'terminal',   isReady: true, semester: 2, study: false, practice: true  },
+            { id: 'MTH 102', title: 'ELEMENTARY MATHEMATICS II',          icon: 'calculator', isReady: true, semester: 2, study: false, practice: true  },
+            { id: 'PHY 102', title: 'GENERAL PHYSICS II',                 icon: 'atom',       isReady: true, semester: 2, study: false, practice: true  },
+            { id: 'MEE 102', title: 'ENGINEERING DRAWING II',             icon: 'compass',    isReady: true, semester: 2, study: false, practice: true  }
+        ];
 
         let showingSemester1 = false;
 
@@ -1040,9 +1047,8 @@
                     card.className = 'course-card';
                     if (!course.isReady) card.style.opacity = '0.55';
 
-                    const slug = course.id.toLowerCase().replace(/\s+/g, '');
-                    const practiceUrl = slug + '.html';
-                    const studyUrl    = slug + 's.html';
+                    const practiceUrl = getCourseUrl(course);
+                    const studyUrl    = getStudyUrl(course);
 
                     const hasBoth   = course.study && course.practice;
                     const studyOnly = course.study && !course.practice;
