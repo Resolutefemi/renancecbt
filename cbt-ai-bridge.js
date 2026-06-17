@@ -36,5 +36,6 @@ function sendToAI(courseCode, examQuestions, userAnswers) {
 
   localStorage.setItem("renance_cbt_review", JSON.stringify(payload));
 
-  window.location.href = "ai.html";
+  const prefix = (window.location.pathname.includes('/first_semester/') || window.location.pathname.includes('/second_semester/')) ? '../' : '';
+  window.location.href = prefix + "ai.html";
 }

@@ -693,6 +693,22 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- WhatsApp Channel Banner -->
+                <a href="https://whatsapp.com/channel/0029VbCoLOTG8l56Tu5JAR3H" target="_blank" style="text-decoration:none; display:block; margin-bottom:18px; transform: translateZ(0);">
+                    <div style="background:linear-gradient(135deg, rgba(37,211,102,0.1), rgba(18,140,126,0.1)); border:1.5px dashed rgba(37,211,102,0.4); border-radius:14px; padding:12px 14px; display:flex; align-items:center; gap:12px; transition:transform 0.2s;">
+                        <div style="width:38px; height:38px; min-width:38px; border-radius:10px; background:#25D366; color:white; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 4px 10px rgba(37,211,102,0.3); flex-shrink: 0;">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div style="text-align: left;">
+                            <strong style="display:block; font-size:0.8rem; color:var(--text-main); font-weight:700;">Join our WhatsApp Channel 🔔</strong>
+                            <p style="font-size:0.68rem; color:var(--text-muted); line-height:1.4; margin-top:2px;">
+                                Updates & tutorials: Tech, Hacking, Programming, Coding & funny memes! 😂
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
                 <div class="welcome-actions">
                     <button class="welcome-cta" onclick="closeWelcome()">
                         <i data-lucide="rocket" size="14"></i>
@@ -949,11 +965,13 @@
         }
 
         function getCourseUrl(course) {
-            return course.id.toLowerCase().replace(/\s+/g, '') + '.html';
+            const folder = course.semester === 1 ? 'first_semester/' : 'second_semester/';
+            return folder + course.id.toLowerCase().replace(/\s+/g, '') + '.html';
         }
 
         function getStudyUrl(course) {
-            return course.id.toLowerCase().replace(/\s+/g, '') + 's.html';
+            const folder = course.semester === 1 ? 'first_semester/' : 'second_semester/';
+            return folder + course.id.toLowerCase().replace(/\s+/g, '') + 's.html';
         }
 
         function toggleSemester1() {
