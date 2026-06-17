@@ -8,6 +8,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <script src="env-loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
             --bg: #0f172a;
@@ -45,6 +47,44 @@
         .back-link { position: fixed; top: 20px; left: 20px; text-decoration: none; color: var(--text-muted); font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
         .back-link:hover { color: var(--accent); }
 
+        /* Star selector */
+        .rating-stars { display: flex; gap: 8px; font-size: 1.5rem; margin-bottom: 1rem; cursor: pointer; }
+        .rating-stars i { color: var(--border); transition: color 0.15s; }
+        .rating-stars i.active { color: #fbbf24; }
+
+        /* Review submission form input */
+        .review-textarea {
+            width: 100%; height: 100px; padding: 12px; border-radius: 12px;
+            border: 1px solid var(--border); background: var(--bg); color: var(--text-main);
+            font-size: 0.95rem; resize: none; outline: none; margin-bottom: 1.2rem;
+            transition: border-color 0.2s;
+        }
+        .review-textarea:focus { border-color: var(--accent); }
+
+        .submit-btn {
+            background: var(--accent); color: var(--bg); border: none; padding: 10px 24px;
+            border-radius: 12px; font-weight: 700; font-size: 0.9rem; cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .submit-btn:hover { background: #93c5fd; transform: translateY(-1px); }
+        .submit-btn:active { transform: translateY(0); }
+        .submit-btn:disabled { background: var(--border); color: var(--text-muted); cursor: not-allowed; }
+
+        /* Review Item Card */
+        .review-card {
+            border-bottom: 1px solid var(--border); padding: 1.5rem 0; display: flex; gap: 15px;
+        }
+        .review-card:last-child { border-bottom: none; }
+        .review-avatar {
+            width: 40px; height: 40px; border-radius: 10px; background: var(--accent);
+            color: var(--bg); font-weight: 700; font-size: 0.9rem; display: flex;
+            align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .review-info h4 { font-size: 0.95rem; font-weight: 600; color: var(--text-main); margin-bottom: 2px; }
+        .review-info p { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px; text-align: left; }
+        .review-text { color: var(--text-main) !important; font-size: 0.9rem !important; margin-bottom: 0 !important; text-align: left !important; }
+        .review-stars { display: flex; gap: 4px; font-size: 0.8rem; color: #fbbf24; margin-bottom: 6px; }
+
         @media (max-width: 600px) { h1 { font-size: 1.8rem; } .container { padding-top: 5rem; } }
     </style>
 </head>
@@ -72,6 +112,42 @@
             </p>
         </div>
 
+        <!-- Reviews list section -->
+        <div class="section">
+            <h2><i data-lucide="message-square"></i> Student Reviews</h2>
+            <div id="reviewsList" style="margin-bottom: 1rem;">
+                <!-- Approved reviews injected here -->
+                <div id="reviewsLoader" style="text-align: center; padding: 20px; color: var(--text-muted);">
+                    <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 1.5rem; color: var(--accent); margin-bottom: 8px;"></i>
+                    <p style="font-size: 0.8rem;">Loading reviews...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review submission section -->
+        <div class="section">
+            <h2><i data-lucide="star"></i> Share Your Experience</h2>
+            <p style="margin-bottom: 1.5rem; text-align: left;">Let us know how the Renance FUTA CBT Portal has helped you prepare for your exams! Your review will be displayed on this wall once approved by the administrator.</p>
+            
+            <div id="submitSuccessMessage" style="display:none; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 12px; padding: 15px; color: #4ade80; font-size: 0.88rem; margin-bottom: 1.5rem; text-align: center;">
+                🎉 Thank you! Your review has been submitted for moderation and will appear once approved.
+            </div>
+
+            <form id="reviewForm" onsubmit="submitReview(event)">
+                <div class="rating-stars" id="ratingStars">
+                    <i class="fa-solid fa-star active" data-value="1"></i>
+                    <i class="fa-solid fa-star active" data-value="2"></i>
+                    <i class="fa-solid fa-star active" data-value="3"></i>
+                    <i class="fa-solid fa-star active" data-value="4"></i>
+                    <i class="fa-solid fa-star active" data-value="5"></i>
+                </div>
+                <textarea id="reviewComment" class="review-textarea" placeholder="Write your review here... How did it help you? What did you like?" required></textarea>
+                <button type="submit" id="submitReviewBtn" class="submit-btn">
+                    <i data-lucide="send" size="16"></i> Submit Review
+                </button>
+            </form>
+        </div>
+
         <div class="dev-footer">
             <div class="dev-name">RESOLUTE FEMI</div>
             
@@ -84,8 +160,154 @@
     </div>
 
     <script>
-       
-        lucide.createIcons();
+        const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+        const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+        if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        const db = window._sb;
+
+        let selectedRating = 5;
+        let currentUser = null;
+        let studentProfile = null;
+
+        // Interactive star selection
+        const stars = document.querySelectorAll('#ratingStars i');
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const value = parseInt(star.getAttribute('data-value'));
+                selectedRating = value;
+                stars.forEach((s, idx) => {
+                    if (idx < value) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Load profile and reviews
+        async function initReviews() {
+            try {
+                // Get auth user
+                const { data: { user }, error: authErr } = await db.auth.getUser();
+                if (user) {
+                    currentUser = user;
+                    // Get student profile details
+                    const { data: profile } = await db.from('students').select('fullname, department').eq('id', user.id).single();
+                    if (profile) studentProfile = profile;
+                }
+            } catch(e) { console.error('Auth fetch failed:', e); }
+
+            loadApprovedReviews();
+        }
+
+        async function loadApprovedReviews() {
+            const listEl = document.getElementById('reviewsList');
+            const loaderEl = document.getElementById('reviewsLoader');
+
+            try {
+                const response = await fetch('/api/reviews');
+                if (!response.ok) {
+                    const errData = await response.json();
+                    throw new Error(errData.error || 'Failed to fetch reviews');
+                }
+                const reviews = await response.json();
+
+                if (listEl) {
+                    listEl.innerHTML = '';
+                    if (!reviews || reviews.length === 0) {
+                        listEl.innerHTML = '<p style="text-align:center; padding:20px; color:var(--text-muted); font-size:0.9rem;">No reviews yet. Be the first to share how the portal helped you! 🚀</p>';
+                    } else {
+                        reviews.forEach(rev => {
+                            const initials = rev.student_name ? rev.student_name.substring(0, 2).toUpperCase() : 'ST';
+                            let starHtml = '';
+                            for (let i = 1; i <= 5; i++) {
+                                starHtml += `<i class="${i <= rev.rating ? 'fa-solid' : 'fa-regular'} fa-star"></i>`;
+                            }
+
+                            const cardHtml = `
+                                <div class="review-card">
+                                    <div class="review-avatar">${initials}</div>
+                                    <div class="review-info">
+                                        <h4>${rev.student_name}</h4>
+                                        <p>${rev.student_dept || 'Student'}</p>
+                                        <div class="review-stars">${starHtml}</div>
+                                        <p class="review-text">${rev.comment}</p>
+                                    </div>
+                                </div>
+                            `;
+                            listEl.insertAdjacentHTML('beforeend', cardHtml);
+                        });
+                    }
+                }
+            } catch (err) {
+                console.error('Error loading reviews:', err);
+                if (listEl) {
+                    listEl.innerHTML = `<p style="text-align:center; padding:20px; color:var(--text-muted); font-size:0.9rem;">Failed to load reviews. Please refresh the page.</p>`;
+                }
+            } finally {
+                if (loaderEl) loaderEl.style.display = 'none';
+            }
+        }
+
+        async function submitReview(e) {
+            e.preventDefault();
+            const comment = document.getElementById('reviewComment').value.trim();
+            const btn = document.getElementById('submitReviewBtn');
+            if (!comment) return;
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Submitting...';
+
+            try {
+                if (!currentUser) {
+                    alert('You must be logged in to submit a review! Please access this page from your student dashboard.');
+                    btn.disabled = false;
+                    btn.innerHTML = '<i data-lucide="send" size="16"></i> Submit Review';
+                    lucide.createIcons();
+                    return;
+                }
+
+                const studentName = studentProfile?.fullname || localStorage.getItem('studentName') || 'Anonymous Student';
+                const studentDept = studentProfile?.department || localStorage.getItem('studentDept') || 'FUTA Student';
+
+                const response = await fetch('/api/reviews', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        student_id: currentUser.id,
+                        student_name: studentName,
+                        student_dept: studentDept,
+                        rating: selectedRating,
+                        comment: comment
+                    })
+                });
+
+                if (!response.ok) {
+                    const errData = await response.json();
+                    throw new Error(errData.error || 'Failed to submit review');
+                }
+
+                // Show success
+                document.getElementById('reviewForm').reset();
+                document.getElementById('submitSuccessMessage').style.display = 'block';
+                // Reset stars to 5
+                stars.forEach(s => s.classList.add('active'));
+                selectedRating = 5;
+            } catch (err) {
+                console.error('Submit review error:', err);
+                alert(err.message || 'Failed to submit review. Please try again.');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i data-lucide="send" size="16"></i> Submit Review';
+                lucide.createIcons();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initReviews();
+            lucide.createIcons();
+        });
     </script>
 </body>
 </html>

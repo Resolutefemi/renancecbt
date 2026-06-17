@@ -6,6 +6,9 @@
   "scripts": {
     "build": "echo 'Static build complete'"
   },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  },
   "devDependencies": {
     "typescript": "^5.0.0"
   }
