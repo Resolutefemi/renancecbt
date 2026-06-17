@@ -1226,6 +1226,8 @@
                 if (authErr || !user) throw new Error('Session expired. Please log in again.');
                 const { error: upErr } = await db.from('students').update({ fullname, faculty, department, phone }).eq('id', user.id);
                 if (upErr) throw upErr;
+                localStorage.setItem('studentName', fullname);
+                localStorage.setItem('studentDept', department);
                 setUserUI(fullname, department);
                 hideModal();
             } catch (err) {
