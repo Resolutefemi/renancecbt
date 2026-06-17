@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="env-loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
         
@@ -25,7 +27,18 @@
             --bronze: #b45309;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        .dark-mode {
+            --bg-body: #0f172a;
+            --sidebar: #020617;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --primary-accent: #60a5fa;
+            --sidebar-border: rgba(255,255,255,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
 
         body {
             background-color: var(--bg-body);
@@ -203,13 +216,13 @@
         <div class="user-card-container">
             <div class="user-card">
                 <div class="user-info">
-                    <div class="avatar">AO</div>
+                    <div class="avatar" id="sidebarAvatar">??</div>
                     <div class="user-details">
-                        <h4>Ariyo</h4>
-                        <p>100 Level</p>
+                        <h4 id="sidebarName">Student</h4>
+                        <p id="sidebarDept">Department</p>
                     </div>
                 </div>
-                <button class="logout-btn" title="Logout" onclick="location.href='login.html'">
+                <button class="logout-btn" title="Logout" onclick="logout()">
                     <i data-lucide="log-out" size="18"></i>
                 </button>
             </div>
@@ -222,16 +235,28 @@
                 <button class="mobile-toggle" onclick="toggleSidebar()"><i data-lucide="menu"></i></button>
                 <div class="page-title">Global Leaderboard</div>
             </div>
-            <button class="theme-toggle" onclick="document.body.classList.toggle('dark-mode')"><i data-lucide="moon" size="20"></i></button>
+            <button class="theme-toggle" id="themeToggleBtn" onclick="toggleTheme()"><i data-lucide="moon" size="20"></i></button>
         </header>
 
         <div class="content-container">
             
-            <div class="lb-banner">
-                <i class="fa-solid fa-trophy"></i>
-                <div class="lb-text">
-                    <h2>Random Mode Rankings</h2>
-                    <p>Only scores achieved through <strong>Random Mode</strong> (Mixed Courses) count towards this global leaderboard. The highest score out of 3 attempts per week is selected!</p>
+            <div class="lb-banner" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div style="display: flex; align-items: center; gap: 20px; flex: 1; min-width: 250px;">
+                    <i class="fa-solid fa-trophy" style="font-size: 2.5rem; color: #fbbf24; flex-shrink: 0;"></i>
+                    <div class="lb-text">
+                        <h2>Global Leaderboard</h2>
+                        <p>Rankings are calculated dynamically based on tests taken and best average score achieved by each student.</p>
+                    </div>
+                </div>
+                <div class="portal-stats" style="display: flex; gap: 20px; color: white; background: rgba(255,255,255,0.05); padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); align-items: center;">
+                    <div style="text-align: center;">
+                        <span style="display: block; font-size: 1.3rem; font-weight: 800; color: #fbbf24;" id="portalStudents">0</span>
+                        <span style="font-size: 0.65rem; color: #a5b4fc; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Students</span>
+                    </div>
+                    <div style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 20px; text-align: center;">
+                        <span style="display: block; font-size: 1.3rem; font-weight: 800; color: #60a5fa;" id="portalTests">0</span>
+                        <span style="font-size: 0.65rem; color: #a5b4fc; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Tests Taken</span>
+                    </div>
                 </div>
             </div>
 
@@ -269,15 +294,54 @@
     <script>
         lucide.createIcons();
 
+        const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+        const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+        if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        const db = window._sb;
+
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('open');
             document.getElementById('sidebarOverlay').classList.toggle('show');
         }
 
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeIcon(isDark);
+        }
 
+        function updateThemeIcon(isDark) {
+            const el = document.getElementById('themeToggleBtn');
+            if (el) {
+                el.innerHTML = `<i data-lucide="${isDark ? 'sun' : 'moon'}" size="20"></i>`;
+                lucide.createIcons();
+            }
+        }
 
-        
-        
+        async function checkUserProfile() {
+            try {
+                const { data: { user }, error: authErr } = await db.auth.getUser();
+                if (authErr || !user) { window.location.href = 'login.html'; return; }
+                const { data: student, error: fetchErr } = await db
+                    .from('students')
+                    .select('fullname, department')
+                    .eq('id', user.id)
+                    .single();
+                if (student) {
+                    const initials = student.fullname
+                        ? student.fullname.trim().split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase()
+                        : '??';
+                    document.getElementById('sidebarAvatar').textContent = initials;
+                    document.getElementById('sidebarName').textContent = student.fullname || 'Student';
+                    document.getElementById('sidebarDept').textContent = student.department || '100 Level';
+                }
+            } catch (err) { console.error('Profile check:', err); }
+        }
+
+        function logout() {
+            db.auth.signOut().then(() => { window.location.href = 'index.html'; });
+        }
 
         const tabs = document.querySelectorAll('.tab-btn');
         tabs.forEach(tab => {
@@ -287,24 +351,81 @@
             });
         });
 
+        async function getAllStudents() {
+            let allStudents = [];
+            let from = 0;
+            let to = 999;
+            let done = false;
+            
+            while (!done) {
+                const { data, error } = await db
+                    .from('students')
+                    .select('fullname, department, matric, tests_taken, avg_score')
+                    .range(from, to);
+                    
+                if (error) {
+                    throw error;
+                }
+                
+                if (data && data.length > 0) {
+                    allStudents = allStudents.concat(data);
+                    if (data.length < 1000) {
+                        done = true;
+                    } else {
+                        from += 1000;
+                        to += 1000;
+                    }
+                } else {
+                    done = true;
+                }
+            }
+            return allStudents;
+        }
+
         async function fetchLeaderboard(period) {
             document.getElementById('leaderboard-content').style.display = 'none';
             document.getElementById('loader').style.display = 'block';
 
-            
+            try {
+                const students = await getAllStudents();
 
-            setTimeout(() => {
-                const mockData = [
-                    { student_name: "Fatima K.", student_matric: "MEE/21/1234", score: 98 },
-                    { student_name: "Adeyemi O.", student_matric: "CSC/21/5678", score: 95 },
-                    { student_name: "Emeka B.", student_matric: "CVE/21/9012", score: 91 },
-                    { student_name: "Sola O.", student_matric: "EEE/21/3456", score: 88 },
-                    { student_name: "Chioma U.", student_matric: "STA/21/7890", score: 85 },
-                    { student_name: "Tolu M.", student_matric: "PHY/21/1122", score: 82 },
-                    { student_name: "Resolute Femi", student_matric: "SE/21/3344", score: 79 }
-                ];
-                renderLeaderboard(mockData);
-            }, 800);
+                // Compute portal-wide stats
+                const totalStudents = students.length;
+                const totalTests = students.reduce((sum, s) => sum + (s.tests_taken || 0), 0);
+
+                document.getElementById('portalStudents').textContent = totalStudents;
+                document.getElementById('portalTests').textContent = totalTests;
+
+                // Sort students by:
+                // 1. avg_score descending (highest score first)
+                // 2. tests_taken descending (most tests first)
+                const sortedData = [...students].sort((a, b) => {
+                    const aAvg = Number(a.avg_score || 0);
+                    const bAvg = Number(b.avg_score || 0);
+                    if (bAvg !== aAvg) {
+                        return bAvg - aAvg;
+                    }
+                    const aTests = Number(a.tests_taken || 0);
+                    const bTests = Number(b.tests_taken || 0);
+                    return bTests - aTests;
+                });
+
+                // Format data
+                const leaderboardData = sortedData.map(s => ({
+                    student_name: s.fullname || 'Anonymous Student',
+                    student_matric: s.matric || s.department || 'N/A',
+                    score: Number(s.avg_score || 0),
+                    tests_taken: Number(s.tests_taken || 0)
+                }));
+
+                renderLeaderboard(leaderboardData);
+            } catch (err) {
+                console.error('Leaderboard error:', err);
+                const listArea = document.getElementById('listArea');
+                listArea.innerHTML = `<div style="padding:30px; text-align:center; color:var(--text-muted)">Failed to fetch leaderboard data. Please try again.</div>`;
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('leaderboard-content').style.display = 'block';
+            }
         }
 
         function renderLeaderboard(data) {
@@ -315,49 +436,48 @@
             listArea.innerHTML = '';
 
             if (!data || data.length === 0) {
-                listArea.innerHTML = `<div style="padding:30px; text-align:center; color:var(--text-muted)">No scores found for this period yet. Be the first! 🚀</div>`;
+                listArea.innerHTML = `<div style="padding:30px; text-align:center; color:var(--text-muted)">No scores found yet. Be the first! 🚀</div>`;
             } else {
-
-
-
-                
                 let podiumHTML = '';
 
-                if(data[1]) {
+                if (data[1]) {
                     let initials = data[1].student_name.substring(0,2).toUpperCase();
                     podiumHTML += `
                     <div class="podium-step step-2">
                         <div class="podium-medal">🥈</div>
                         <div class="podium-avatar">${initials}</div>
                         <div class="podium-info">
-                            <div class="podium-name">${data[1].student_name}</div>
+                            <div class="podium-name" title="${data[1].student_name}">${data[1].student_name}</div>
                             <div class="podium-score">${data[1].score}%</div>
+                            <div style="font-size:0.7rem;color:var(--text-muted);margin-top:4px;font-weight:600;">${data[1].tests_taken} test(s)</div>
                         </div>
                     </div>`;
                 }
 
-                if(data[0]) {
+                if (data[0]) {
                     let initials = data[0].student_name.substring(0,2).toUpperCase();
                     podiumHTML += `
                     <div class="podium-step step-1">
                         <div class="podium-medal">🥇</div>
                         <div class="podium-avatar">${initials}</div>
                         <div class="podium-info">
-                            <div class="podium-name">${data[0].student_name}</div>
+                            <div class="podium-name" title="${data[0].student_name}">${data[0].student_name}</div>
                             <div class="podium-score">${data[0].score}%</div>
+                            <div style="font-size:0.7rem;color:var(--text-muted);margin-top:4px;font-weight:600;">${data[0].tests_taken} test(s)</div>
                         </div>
                     </div>`;
                 }
 
-                if(data[2]) {
+                if (data[2]) {
                     let initials = data[2].student_name.substring(0,2).toUpperCase();
                     podiumHTML += `
                     <div class="podium-step step-3">
                         <div class="podium-medal">🥉</div>
                         <div class="podium-avatar">${initials}</div>
                         <div class="podium-info">
-                            <div class="podium-name">${data[2].student_name}</div>
+                            <div class="podium-name" title="${data[2].student_name}">${data[2].student_name}</div>
                             <div class="podium-score">${data[2].score}%</div>
+                            <div style="font-size:0.7rem;color:var(--text-muted);margin-top:4px;font-weight:600;">${data[2].tests_taken} test(s)</div>
                         </div>
                     </div>`;
                 }
@@ -373,7 +493,7 @@
                             <div class="list-avatar">${initials}</div>
                             <div class="student-details">
                                 <h4>${data[i].student_name}</h4>
-                                <p>${data[i].student_matric}</p>
+                                <p>${data[i].student_matric} | <span style="font-weight:600;">${data[i].tests_taken} test(s) taken</span></p>
                             </div>
                         </div>
                         <div class="col-score">${data[i].score}%</div>
@@ -385,12 +505,13 @@
             document.getElementById('leaderboard-content').style.display = 'block';
         }
 
-        fetchLeaderboard('weekly');
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = localStorage.getItem('theme') === 'dark';
+            if (isDark) document.body.classList.add('dark-mode');
+            updateThemeIcon(isDark);
+            checkUserProfile();
+            fetchLeaderboard('weekly');
+        });
     </script>
 </body>
-</html>
-
-
-
-
 

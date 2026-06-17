@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="env-loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
     <style>
         :root {
@@ -186,6 +188,11 @@
     <a href="https://wa.me/2347046203544" class="wa-float" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
     <script>
+        const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+        const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+        if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        const db = window._sb;
+
         function toggleNav() { document.getElementById('sidebar').classList.toggle('open'); }
         
         function toggleTheme() {
@@ -195,7 +202,6 @@
         }
 
         function loadData() {
-            // Updated to use the same keys as your dashboard (studentName, studentDept)
             const name = localStorage.getItem('studentName') || "FUTA Student";
             const dept = localStorage.getItem('studentDept') || "Department";
             const matric = localStorage.getItem('studentMatric') || "CSC/25/0000";
@@ -214,6 +220,20 @@
             document.getElementById('navInitials').innerText = initials || "??";
         }
 
+        async function syncFromDatabase() {
+            try {
+                const { data: { user }, error: authErr } = await db.auth.getUser();
+                if (authErr || !user) return;
+                const { data: student } = await db.from('students').select('*').eq('id', user.id).single();
+                if (student) {
+                    localStorage.setItem('studentName', student.fullname || '');
+                    localStorage.setItem('studentDept', student.department || '');
+                    localStorage.setItem('studentMatric', student.matric || '');
+                    loadData();
+                }
+            } catch (e) { console.error('Database load failed:', e); }
+        }
+
         function toggleEdit() {
             document.querySelectorAll('.info-value').forEach(s => s.style.display = 'none');
             document.querySelectorAll('.edit-input').forEach(i => i.style.display = 'block');
@@ -226,10 +246,10 @@
             document.getElementById('saveBtn').style.display = 'flex';
         }
 
-        function saveProfile() {
-            const newName = document.getElementById('input_name').value;
-            const newDept = document.getElementById('input_dept').value;
-            const newMatric = document.getElementById('input_matric').value;
+        async function saveProfile() {
+            const newName = document.getElementById('input_name').value.trim();
+            const newDept = document.getElementById('input_dept').value.trim();
+            const newMatric = document.getElementById('input_matric').value.trim();
 
             // Simple Validation
             if(newName.length < 3) return alert("Please enter a valid name");
@@ -246,16 +266,37 @@
             document.getElementById('saveBtn').style.display = 'none';
 
             loadData(); 
-            alert("Profile Synced Successfully!");
+
+            // Sync to Supabase
+            try {
+                const { data: { user } } = await db.auth.getUser();
+                if (user) {
+                    const { error } = await db.from('students').update({
+                        fullname: newName,
+                        department: newDept,
+                        matric: newMatric.toUpperCase()
+                    }).eq('id', user.id);
+                    if (error) throw error;
+                    alert("Profile Synced Successfully! 🎉");
+                } else {
+                    alert("Profile saved locally.");
+                }
+            } catch (e) {
+                console.error('Database sync failed:', e);
+                alert("Profile saved locally, but database sync failed.");
+            }
         }
 
         function logout() {
-            localStorage.clear();
-            window.location.href = 'login.html';
+            db.auth.signOut().then(() => {
+                localStorage.clear();
+                window.location.href = 'login.html';
+            });
         }
 
         window.onload = () => {
             loadData();
+            syncFromDatabase();
             if(localStorage.getItem('theme') === 'dark') document.body.classList.add('dark-mode');
             lucide.createIcons();
         };
