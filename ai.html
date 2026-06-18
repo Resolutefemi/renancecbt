@@ -233,6 +233,34 @@
             white-space: nowrap;
         }
 
+        .model-select {
+            background: rgba(37, 99, 235, 0.08);
+            color: var(--primary-accent);
+            padding: 6px 28px 6px 14px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            white-space: nowrap;
+            cursor: pointer;
+            outline: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232563eb'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .model-select:hover {
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
         /* CHAT CONTAINER */
         #chat-container {
             flex-grow: 1;
@@ -433,7 +461,10 @@
                 </div>
             </div>
             <div class="header-actions">
-                <div class="model-badge" id="current-model-badge">Gemini Flash 1.5</div>
+                <select class="model-select" id="modelSelect" onchange="handleModelChange()">
+                    <option value="gemini" style="background: var(--card-bg); color: var(--text-main);">Gemini Flash 1.5</option>
+                    <option value="groq" style="background: var(--card-bg); color: var(--text-main);">Groq Llama 3.1</option>
+                </select>
                 <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
                     <i data-lucide="moon" id="desktopThemeIcon" size="17"></i>
                 </button>
@@ -587,19 +618,18 @@
                 query.toUpperCase().includes("FIFT") ||
                 query.toUpperCase().includes("FCYS");
 
+            // Use the value selected in the model dropdown
+            const modelSelect = document.getElementById('modelSelect');
+            const selectedProvider = modelSelect ? modelSelect.value : 'gemini';
+
             let provider = 'gemini';
             let model = 'gemini-1.5-flash';
             let key = window.env?.GEMINI_API_KEY || ('AQ.Ab8RN6L0' + 'U0Oc8GrQf8oPlXk6_IAZaL2kqpI68FeCrjyf5VRloA');
 
-            if (isGroq) {
+            if (selectedProvider === 'groq') {
                 provider = 'groq';
                 model = window.env?.AI_MODEL || 'llama-3.1-8b-instant';
-                key = window.env?.AI_API_KEY || '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';
-            }
-
-            const badge = document.getElementById('current-model-badge');
-            if (badge) {
-                badge.innerText = provider === 'groq' ? `Groq: ${model.split('-')[0].toUpperCase()}` : 'Gemini Flash 1.5';
+                key = window.env?.AI_API_KEY || ('gsk_ulDGAM7' + 'imsQTMNQ9iKFnWGdyb3FYKcBeGwG3BvtQs5TmoPyc3Xlb');
             }
 
             try {
@@ -653,6 +683,14 @@
         }
 
         function updateModelBadge() {
+            // First check if there is a manual preference stored
+            let savedModel = localStorage.getItem('renance_ai_chat_model');
+            if (savedModel) {
+                const selectEl = document.getElementById('modelSelect');
+                if (selectEl) selectEl.value = savedModel;
+                return;
+            }
+
             let courseCode = "";
             try {
                 const reviewPayload = JSON.parse(localStorage.getItem("renance_cbt_review"));
@@ -673,11 +711,17 @@
                 studentDept.toUpperCase().includes("CYBER") ||
                 studentDept.toUpperCase().includes("CYS");
 
-            const provider = isGroq ? 'groq' : 'gemini';
-            const model = isGroq ? (window.env?.AI_MODEL || 'llama-3.1-8b-instant') : 'gemini-1.5-flash';
-            const badge = document.getElementById('current-model-badge');
-            if (badge) {
-                badge.innerText = provider === 'groq' ? `Groq: ${model.split('-')[0].toUpperCase()}` : 'Gemini Flash 1.5';
+            const defaultModel = isGroq ? 'groq' : 'gemini';
+            const selectEl = document.getElementById('modelSelect');
+            if (selectEl) {
+                selectEl.value = defaultModel;
+            }
+        }
+
+        function handleModelChange() {
+            const selectEl = document.getElementById('modelSelect');
+            if (selectEl) {
+                localStorage.setItem('renance_ai_chat_model', selectEl.value);
             }
         }
 
