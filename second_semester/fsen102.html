@@ -146,6 +146,22 @@
             .score-big { font-size: 2.8rem; }
             .stats-bar { grid-template-columns: repeat(2, 1fr); }
         }
+        .theory-input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.96rem;
+            font-family: inherit;
+            background: var(--card-bg);
+            color: var(--text);
+            outline: none;
+            resize: vertical;
+            transition: border-color 0.2s;
+        }
+        .theory-input:focus {
+            border-color: var(--primary);
+        }
     </style>
 </head>
 <body>
@@ -234,6 +250,33 @@
         <div class="question-card">
             <h3 id="question-text"></h3>
             <div id="options-box"></div>
+            
+            <!-- Theory Response Interface -->
+            <div id="theory-box" style="display:none; margin-top:1.2rem;">
+                <textarea id="theory-input" class="theory-input" rows="4" placeholder="Type your answer here..." oninput="saveTheoryTyping()"></textarea>
+                <button class="btn" id="theory-submit-btn" style="margin-top:10px;" onclick="submitTheoryAnswer()">Submit Answer</button>
+            </div>
+            
+            <!-- Theory Self-Grading and AI Guide -->
+            <div id="theory-grading-box" style="display:none; margin-top:1.2rem; border-top:1.5px dashed var(--border); padding-top:1rem;">
+                <h4 style="margin-top:0; color:var(--primary);">Model Answer:</h4>
+                <p id="theory-model-answer" style="font-style:italic; line-height:1.6; background:rgba(79,70,229,0.04); padding:10px; border-radius:8px;"></p>
+                
+                <div style="margin-top:1.2rem;">
+                    <h5 style="margin:0 0 8px 0;">Grading Panel:</h5>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                        <button class="btn" style="background:var(--danger); padding:6px 12px; font-size:0.85rem;" onclick="gradeTheoryAnswer(0)">❌ Incorrect (0%)</button>
+                        <button class="btn" style="background:var(--accent); padding:6px 12px; font-size:0.85rem;" onclick="gradeTheoryAnswer(50)">⚠️ Partial (50%)</button>
+                        <button class="btn" style="background:var(--success); padding:6px 12px; font-size:0.85rem;" onclick="gradeTheoryAnswer(100)">✅ Correct (100%)</button>
+                        <button class="btn" id="ai-grade-btn" style="background:linear-gradient(135deg, #4f46e5, #818cf8); padding:6px 12px; font-size:0.85rem;" onclick="gradeWithGeminiAI()">🤖 Auto-Grade (AI)</button>
+                    </div>
+                </div>
+                
+                <div id="ai-feedback-response" style="margin-top: 1rem; display: none; padding: 12px; background: rgba(16,185,129,0.05); border-left: 4px solid var(--success); border-radius: 4px;">
+                    <p id="ai-feedback-text" style="font-size: 0.9rem; line-height: 1.6; margin: 0;"></p>
+                </div>
+            </div>
+
             <div id="feedback-area"></div>
         </div>
 
@@ -319,7 +362,9 @@
         { "id": 17, "question": "What is the index of the first element in a standard array in languages like C++, Java, and Python?", "options": ["0", "1", "-1", "Any number"], "answer": "0", "explanation": "Standard arrays in these languages use zero-based indexing, where the first element is at index 0." },
         { "id": 18, "question": "Which access modifier makes a class member accessible only within the same class?", "options": ["private", "public", "protected", "default"], "answer": "private", "explanation": "The private modifier restricts access to the member to the defining class itself, aiding encapsulation." },
         { "id": 19, "question": "What is the main purpose of unit testing?", "options": ["To verify that individual components of software work correctly in isolation", "To test the entire system's performance under load", "To check if the database is configured properly", "To review code layout styles"], "answer": "To verify that individual components of software work correctly in isolation", "explanation": "Unit testing verifies that the smallest testable parts (units) of an application work as intended under various conditions." },
-        { "id": 20, "question": "Which Git command is used to display the commit history of a repository?", "options": ["git log", "git status", "git diff", "git branch"], "answer": "git log", "explanation": "The git log command shows the commit history list for the repository in reverse chronological order." }
+        { "id": 20, "question": "Which Git command is used to display the commit history of a repository?", "options": ["git log", "git status", "git diff", "git branch"], "answer": "git log", "explanation": "The git log command shows the commit history list for the repository in reverse chronological order." },
+        { "id": 21, "isTheory": true, "question": "Explain the difference between verification and validation in software engineering.", "answer": "Verification checks if the software conforms to specifications ('Are we building the product right?'). Validation checks if the software meets user requirements and solves the real problem ('Are we building the right product?').", "explanation": "Verification ensures specs are met. Validation ensures the real-world problem is solved." },
+        { "id": 22, "isTheory": true, "question": "What is the primary goal of the Agile software development model?", "answer": "To deliver working software frequently through iterative development, encouraging collaboration and flexibility to adapt to changing requirements.", "explanation": "Agile focuses on speed, collaboration, adaptability, and frequent delivery of working increments." }
     ];
 
     let currentExamData = [];
@@ -442,64 +487,119 @@
         document.getElementById('cur-idx').innerText       = currentIndex + 1;
         document.getElementById('question-text').innerText = q.question;
 
-        const optBox   = document.getElementById('options-box');
-        const feedArea = document.getElementById('feedback-area');
+        const optBox        = document.getElementById('options-box');
+        const theoryBox     = document.getElementById('theory-box');
+        const gradingBox    = document.getElementById('theory-grading-box');
+        const feedArea      = document.getElementById('feedback-area');
+        const aiFeedback    = document.getElementById('ai-feedback-response');
+        
+        // Reset dynamic elements
         optBox.innerHTML  = '';
         feedArea.innerHTML = '';
+        theoryBox.style.display = 'none';
+        gradingBox.style.display = 'none';
+        aiFeedback.style.display = 'none';
+        document.getElementById('theory-input').value = '';
+        document.getElementById('theory-input').disabled = false;
+        document.getElementById('theory-submit-btn').style.display = 'inline-block';
 
-        q.options.forEach((val, idx) => {
-            const label = labels[idx] || (idx + 1);
-            const btn   = document.createElement('button');
-            btn.className = 'option-btn';
-            btn.innerHTML = `<strong>${label}.</strong> ${val}`;
-
-            if (isReviewMode || (activeMode === 'practice' && hasAnswered)) {
-                if (val === q.answer)    btn.classList.add('correct');
-                else if (userAns === val) btn.classList.add('wrong');
-                btn.disabled = true;
-            } else if (activeMode === 'exam' && hasAnswered && userAns === val) {
-                btn.classList.add('selected');
-            }
-
-            btn.onclick = () => {
-                if (isReviewMode) return;
-                if (activeMode === 'practice' && hasAnswered) return;
-                userAnswers[currentIndex] = val;
-                saveState();
-                renderQuestion();
-
-                if (activeMode === 'practice') {
-                    const isLast = currentIndex === currentExamData.length - 1;
-                    if (!isLast) {
-                        setTimeout(() => { currentIndex++; renderQuestion(); }, 1200);
-                    } else {
-                        setTimeout(() => showResults(true), 1200);
+        if (q.isTheory) {
+            // Show theory workspace
+            theoryBox.style.display = 'block';
+            
+            if (hasAnswered) {
+                const ansObj = userAns || { response: "", score: 0, graded: false };
+                document.getElementById('theory-input').value = ansObj.response || "";
+                
+                // Practice Mode or Review Mode: Show Model Answer & Grading
+                if (isReviewMode || activeMode === 'practice') {
+                    document.getElementById('theory-input').disabled = true;
+                    document.getElementById('theory-submit-btn').style.display = 'none';
+                    document.getElementById('theory-model-answer').innerText = q.answer;
+                    gradingBox.style.display = 'block';
+                    
+                    if (ansObj.graded) {
+                        feedArea.innerHTML = `
+                            <div class="feedback-msg" style="background:${ansObj.score >= 70 ? '#dcfce7' : ansObj.score >= 40 ? '#fef9c3' : '#fee2e2'};
+                                                             color:${ansObj.score >= 70 ? '#10b981' : ansObj.score >= 40 ? '#854d0e' : '#b91c1c'};">
+                                📊 Graded: <strong>${ansObj.score}%</strong>
+                            </div>
+                            ${q.explanation ? `<div class="explanation-box"><strong>Explanation:</strong> ${q.explanation}</div>` : ''}
+                        `;
                     }
                 }
-            };
-            optBox.appendChild(btn);
-        });
+            } else {
+                // Not answered yet
+                if (isReviewMode) {
+                    document.getElementById('theory-input').disabled = true;
+                    document.getElementById('theory-submit-btn').style.display = 'none';
+                    document.getElementById('theory-model-answer').innerText = q.answer;
+                    gradingBox.style.display = 'block';
+                    feedArea.innerHTML = `
+                        <div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
+                            ⚠ Answer was not submitted. Correct answer model is shown above.
+                        </div>
+                    `;
+                }
+            }
+        } else {
+            // MCQ rendering logic
+            optBox.style.display = 'block';
+            
+            q.options.forEach((val, idx) => {
+                const label = labels[idx] || (idx + 1);
+                const btn   = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `<strong>${label}.</strong> ${val}`;
 
-        const expHtml = q.explanation
-            ? `<div class="explanation-box"><strong>Explanation:</strong> ${q.explanation}</div>`
-            : '';
+                if (isReviewMode || (activeMode === 'practice' && hasAnswered)) {
+                    if (val === q.answer)    btn.classList.add('correct');
+                    else if (userAns === val) btn.classList.add('wrong');
+                    btn.disabled = true;
+                } else if (activeMode === 'exam' && hasAnswered && userAns === val) {
+                    btn.classList.add('selected');
+                }
 
-        if (isReviewMode) {
-            if (hasAnswered) {
+                btn.onclick = () => {
+                    if (isReviewMode) return;
+                    if (activeMode === 'practice' && hasAnswered) return;
+                    userAnswers[currentIndex] = val;
+                    saveState();
+                    renderQuestion();
+
+                    if (activeMode === 'practice') {
+                        const isLast = currentIndex === currentExamData.length - 1;
+                        if (!isLast) {
+                            setTimeout(() => { currentIndex++; renderQuestion(); }, 1200);
+                        } else {
+                            setTimeout(() => showResults(true), 1200);
+                        }
+                    }
+                };
+                optBox.appendChild(btn);
+            });
+
+            const expHtml = q.explanation
+                ? `<div class="explanation-box"><strong>Explanation:</strong> ${q.explanation}</div>`
+                : '';
+
+            if (isReviewMode) {
+                if (hasAnswered) {
+                    const ok = userAns === q.answer;
+                    feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
+                        ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
+                    </div>${expHtml}`;
+                } else {
+                    feedArea.innerHTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
+                        ⚠ Not answered. Correct: <strong>${q.answer}</strong>
+                    </div>${expHtml}`;
+                }
+            } else if (activeMode === 'practice' && hasAnswered) {
                 const ok = userAns === q.answer;
                 feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
                     ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
                 </div>${expHtml}`;
-            } else {
-                feedArea.innerHTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
-                    ⚠ Not answered. Correct: <strong>${q.answer}</strong>
-                </div>${expHtml}`;
             }
-        } else if (activeMode === 'practice' && hasAnswered) {
-            const ok = userAns === q.answer;
-            feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
-                ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
-            </div>${expHtml}`;
         }
 
         const isLast = currentIndex === currentExamData.length - 1;
@@ -551,6 +651,165 @@
         renderQuestion();
     }
 
+    function saveTheoryTyping() {
+        const val = document.getElementById('theory-input').value;
+        userAnswers[currentIndex] = {
+            response: val,
+            graded: false,
+            score: 0
+        };
+        saveState();
+    }
+
+    function submitTheoryAnswer() {
+        const q = currentExamData[currentIndex];
+        const val = document.getElementById('theory-input').value.trim();
+        if (!val) {
+            alert("Please type your answer before submitting.");
+            return;
+        }
+        userAnswers[currentIndex] = {
+            response: val,
+            graded: false,
+            score: 0
+        };
+        saveState();
+        document.getElementById('theory-input').disabled = true;
+        document.getElementById('theory-submit-btn').style.display = 'none';
+        document.getElementById('theory-model-answer').innerText = q.answer;
+        document.getElementById('theory-grading-box').style.display = 'block';
+    }
+
+    function gradeTheoryAnswer(scorePct) {
+        if (!userAnswers.hasOwnProperty(currentIndex)) {
+            userAnswers[currentIndex] = { response: "", graded: true, score: scorePct };
+        } else {
+            userAnswers[currentIndex].graded = true;
+            userAnswers[currentIndex].score = scorePct;
+        }
+        saveState();
+        renderQuestion();
+
+        if (isReviewMode) {
+            let tempScore = 0;
+            currentExamData.forEach((q, i) => {
+                const student = userAnswers[i];
+                if (q.isTheory) {
+                    if (student && typeof student.score === 'number') tempScore += student.score / 100;
+                } else {
+                    if (student === q.answer) tempScore++;
+                }
+            });
+            const total = currentExamData.length;
+            const pct   = Math.round((tempScore / total) * 100);
+            document.getElementById('finalScoreText').innerText = pct;
+            document.getElementById('modalCorrect').innerText   = tempScore.toFixed(1);
+            saveTestScore(pct);
+        } else if (activeMode === 'practice') {
+            const isLast = currentIndex === currentExamData.length - 1;
+            if (!isLast) {
+                setTimeout(() => { currentIndex++; renderQuestion(); }, 1500);
+            } else {
+                setTimeout(() => showResults(true), 1500);
+            }
+        }
+    }
+
+    async function gradeWithGeminiAI() {
+        const q = currentExamData[currentIndex];
+        const userResponse = userAnswers[currentIndex] ? userAnswers[currentIndex].response : "";
+        if (!userResponse.trim()) {
+            alert("Please type your answer first.");
+            return;
+        }
+        
+        const aiBtn = document.getElementById('ai-grade-btn');
+        const aiFeedback = document.getElementById('ai-feedback-response');
+        const aiFeedbackText = document.getElementById('ai-feedback-text');
+        
+        aiBtn.disabled = true;
+        aiBtn.innerText = "⏳ Grading...";
+        
+        const provider = window.env?.AI_PROVIDER || 'gemini';
+        const model = window.env?.AI_MODEL || (provider === 'gemini' ? 'gemini-1.5-flash' : 'llama-3.1-8b-instant');
+        const key = window.env?.AI_API_KEY || window.env?.GEMINI_API_KEY || 'AQ.Ab8RN6L0U0Oc8GrQf8oPlXk6_IAZaL2kqpI68FeCrjyf5VRloA';
+        
+        const systemPrompt = `You are a strict, professional academic examiner grading a software engineering exam question.
+Grade the student's answer against the provided model answer.
+
+Question: "${q.question}"
+Model Answer: "${q.answer}"
+Student's Answer: "${userResponse}"
+
+Rate the response from 0 to 100% accuracy.
+Provide your response strictly in the following JSON format:
+{
+  "score": <0, 50, or 100 representing the grade matching our options>,
+  "feedback": "<A concise one-sentence explanation of what they got correct or missed>"
+}`;
+        
+        try {
+            let result = null;
+            if (provider === 'groq') {
+                if (!key) throw new Error("API Key is missing. Please configure your Groq key in Renance AI page first.");
+                
+                const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${key}`
+                    },
+                    body: JSON.stringify({
+                        model: model,
+                        messages: [
+                            { role: "system", content: systemPrompt }
+                        ],
+                        response_format: { type: "json_object" },
+                        temperature: 0.2
+                    })
+                });
+                
+                const resData = await response.json();
+                if (!response.ok) {
+                    throw new Error(resData.error?.message || `HTTP ${response.status}`);
+                }
+                result = JSON.parse(resData.choices[0].message.content.trim());
+            } else {
+                // Gemini
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: systemPrompt }] }],
+                        generationConfig: { responseMimeType: "application/json" }
+                    })
+                });
+
+                const resData = await response.json();
+                if (!response.ok) {
+                    throw new Error(resData.error?.message || `HTTP ${response.status}`);
+                }
+                const text = resData.candidates[0].content.parts[0].text;
+                result = JSON.parse(text.trim());
+            }
+            
+            if (result && typeof result.score === 'number') {
+                aiFeedbackText.innerHTML = `<strong>AI Grade:</strong> ${result.score}%<br><strong>AI Feedback:</strong> ${result.feedback}`;
+                aiFeedback.style.display = 'block';
+                
+                gradeTheoryAnswer(result.score);
+            } else {
+                throw new Error("Invalid API response structure");
+            }
+        } catch (e) {
+            console.error("AI Grading Error:", e);
+            alert(`Auto-grading failed: ${e.message || "Please self-grade using the buttons."}`);
+        } finally {
+            aiBtn.disabled = false;
+            aiBtn.innerText = "🤖 Auto-Grade (AI)";
+        }
+    }
+
     async function showResults(forced = false) {
         const answered = Object.keys(userAnswers).length;
         if (!forced && answered < currentExamData.length) {
@@ -561,14 +820,25 @@
         localStorage.removeItem(STORAGE_KEY);
 
         let score = 0;
-        currentExamData.forEach((q, i) => { if (userAnswers[i] === q.answer) score++; });
+        currentExamData.forEach((q, i) => {
+            const student = userAnswers[i];
+            if (q.isTheory) {
+                if (student && typeof student.score === 'number') {
+                    score += student.score / 100;
+                }
+            } else {
+                if (student === q.answer) score++;
+            }
+        });
         const total = currentExamData.length;
         const pct   = Math.round((score / total) * 100);
 
         document.getElementById('finalScoreText').innerText = pct;
-        document.getElementById('modalCorrect').innerText   = score;
+        document.getElementById('modalCorrect').innerText   = score.toFixed(1);
         document.getElementById('modalTotal').innerText     = total;
-        document.getElementById('modalReviewBtn').style.display = activeMode === 'practice' ? 'none' : 'flex';
+        
+        const hasTheory = currentExamData.some(q => q.isTheory);
+        document.getElementById('modalReviewBtn').style.display = (activeMode === 'practice' && !hasTheory) ? 'none' : 'flex';
 
         if (pct >= 70) {
             document.getElementById('resultIcon').innerText     = '🏆';
