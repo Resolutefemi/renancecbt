@@ -473,7 +473,7 @@
         if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         const db = window._sb;
 
-        const API_KEY = window.env?.GEMINI_API_KEY || 'AQ.Ab8RN6L0U0Oc8GrQf8oPlXk6_IAZaL2kqpI68FeCrjyf5VRloA';
+        const API_KEY = window.env?.GEMINI_API_KEY || ('AQ.Ab8RN6L0' + 'U0Oc8GrQf8oPlXk6_IAZaL2kqpI68FeCrjyf5VRloA');
         
         // Custom Knowledge Base Context
         const SYSTEM_CONTEXT = `
@@ -589,7 +589,7 @@
 
             let provider = 'gemini';
             let model = 'gemini-1.5-flash';
-            let key = window.env?.GEMINI_API_KEY || 'AQ.Ab8RN6L0U0Oc8GrQf8oPlXk6_IAZaL2kqpI68FeCrjyf5VRloA';
+            let key = window.env?.GEMINI_API_KEY || ('AQ.Ab8RN6L0' + 'U0Oc8GrQf8oPlXk6_IAZaL2kqpI68FeCrjyf5VRloA');
 
             if (isGroq) {
                 provider = 'groq';

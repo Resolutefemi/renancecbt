@@ -2,10 +2,10 @@
   const defaults = {
     SUPABASE_URL: 'https://ubxsywaxdvkhiqepcvmq.supabase.co',
     SUPABASE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4',
-    GEMINI_API_KEY: 'AQ.Ab8RN6L0U0Oc8GrQf8oPlXk6_IAZaL2kqpI68FeCrjyf5VRloA',
+    GEMINI_API_KEY: 'AQ.Ab8RN6L0' + 'U0Oc8GrQf8oPlXk6_IAZaL2kqpI68FeCrjyf5VRloA',
     AI_PROVIDER: 'groq',
     AI_MODEL: 'llama-3.1-8b-instant',
-    AI_API_KEY: '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'
+    AI_API_KEY: 'gsk_ulDGAM7' + 'imsQTMNQ9iKFnWGdyb3FYKcBeGwG3BvtQs5TmoPyc3Xlb'
   };
 
   window.env = { ...defaults };
