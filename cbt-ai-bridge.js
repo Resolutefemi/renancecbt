@@ -12,23 +12,11 @@ const COURSE_TOPICS = {
 };
 
 function getAIConfigForCourse(courseCode) {
-  const code = (courseCode || "").toUpperCase().trim();
-  // Groq AI should handle FSEN, FIFT and FCYS
-  const isGroqCourse = code.startsWith("FSEN") || code.startsWith("FIFT") || code.startsWith("FCYS");
-  
-  if (isGroqCourse) {
-    return {
-      provider: 'groq',
-      model: window.env?.AI_MODEL || 'llama-3.1-8b-instant',
-      key: window.env?.AI_API_KEY || ('gsk_ulDGAM7' + 'imsQTMNQ9iKFnWGdyb3FYKcBeGwG3BvtQs5TmoPyc3Xlb')
-    };
-  } else {
-    return {
-      provider: 'gemini',
-      model: 'gemini-1.5-flash',
-      key: window.env?.GEMINI_API_KEY || ('AQ.Ab8RN6L0' + 'U0Oc8GrQf8oPlXk6_IAZaL2kqpI68FeCrjyf5VRloA')
-    };
-  }
+  return {
+    provider: 'groq',
+    model: window.env?.AI_MODEL || 'llama-3.1-8b-instant',
+    key: window.env?.AI_API_KEY || ('gsk_ulDGAM7' + 'imsQTMNQ9iKFnWGdyb3FYKcBeGwG3BvtQs5TmoPyc3Xlb')
+  };
 }
 
 function sendToAI(courseCode, examQuestions, userAnswers) {
@@ -322,34 +310,21 @@ Respond strictly in 2-3 lines of text containing bullet points of the topics (e.
 
   try {
     let resultText = "";
-    if (config.provider === 'groq') {
-      const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${config.key}`
-        },
-        body: JSON.stringify({
-          model: config.model,
-          messages: [{ role: "system", content: systemPrompt }],
-          temperature: 0.3
-        })
-      });
-      const resData = await response.json();
-      if (!response.ok) throw new Error();
-      resultText = resData.choices[0].message.content;
-    } else {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${config.model}:generateContent?key=${config.key}`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: systemPrompt }] }]
-        })
-      });
-      const resData = await response.json();
-      if (!response.ok) throw new Error();
-      resultText = resData.candidates[0].content.parts[0].text;
-    }
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${config.key}`
+      },
+      body: JSON.stringify({
+        model: config.model,
+        messages: [{ role: "system", content: systemPrompt }],
+        temperature: 0.3
+      })
+    });
+    const resData = await response.json();
+    if (!response.ok) throw new Error();
+    resultText = resData.choices[0].message.content;
     textEl.innerHTML = formatText(resultText);
   } catch (err) {
     textEl.innerHTML = "Struggled with the following topics: " + missed.slice(0, 3).map(q => `"${q.substring(0, 40)}..."`).join(', ');
@@ -416,71 +391,35 @@ You must return your response strictly as a JSON object containing a "questions"
 }
 Return only the raw JSON. Do not include markdown formatting like \`\`\`json or explanation text outside the JSON.`;
 
-  // Try the primary provider first
   try {
-    return await executeAIRequest(config.provider, config.model, config.key, systemPrompt);
-  } catch (primaryErr) {
-    console.warn(`Primary provider (${config.provider}) failed. Trying fallback... Error:`, primaryErr);
-    
-    // Determine fallback provider configurations
-    const fallbackProvider = config.provider === 'groq' ? 'gemini' : 'groq';
-    const fallbackModel = fallbackProvider === 'gemini' 
-      ? 'gemini-1.5-flash' 
-      : (window.env?.AI_MODEL || 'llama-3.1-8b-instant');
-    const fallbackKey = fallbackProvider === 'gemini'
-      ? (window.env?.GEMINI_API_KEY || ('AQ.Ab8RN6L0' + 'U0Oc8GrQf8oPlXk6_IAZaL2kqpI68FeCrjyf5VRloA'))
-      : (window.env?.AI_API_KEY || ('gsk_ulDGAM7' + 'imsQTMNQ9iKFnWGdyb3FYKcBeGwG3BvtQs5TmoPyc3Xlb'));
-
-    try {
-      return await executeAIRequest(fallbackProvider, fallbackModel, fallbackKey, systemPrompt);
-    } catch (fallbackErr) {
-      console.error("Both primary and fallback AI providers failed:", fallbackErr);
-      throw new Error("AI services are temporarily busy. Please try again in a few seconds.");
-    }
+    return await executeAIRequest(config.model, config.key, systemPrompt);
+  } catch (err) {
+    console.error("AI question generation error:", err);
+    throw new Error("AI services are temporarily busy. Please try again in a few seconds.");
   }
 }
 
-async function executeAIRequest(provider, model, apiKey, systemPrompt) {
-  let content = "";
-  if (provider === 'groq') {
-    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model: model,
-        messages: [{ role: "system", content: systemPrompt }],
-        response_format: { type: "json_object" },
-        temperature: 0.7
-      })
-    });
-    
-    const resData = await response.json();
-    if (!response.ok) {
-      throw new Error(resData.error?.message || `HTTP ${response.status}`);
-    }
-    content = resData.choices[0].message.content;
-  } else {
-    // Gemini
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: systemPrompt }] }],
-        generationConfig: {
-          responseMimeType: "application/json"
-        }
-      })
-    });
-    
-    const resData = await response.json();
-    if (!response.ok) {
-      throw new Error(resData.error?.message || `HTTP ${response.status}`);
-    }
-    content = resData.candidates[0].content.parts[0].text;
+async function executeAIRequest(model, apiKey, systemPrompt) {
+  const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({
+      model: model,
+      messages: [{ role: "system", content: systemPrompt }],
+      response_format: { type: "json_object" },
+      temperature: 0.7
+    })
+  });
+  
+  const resData = await response.json();
+  if (!response.ok) {
+    throw new Error(resData.error?.message || `HTTP ${response.status}`);
   }
+  
+  let content = resData.choices[0].message.content;
   
   // Clean markdown formatting if present
   let cleanedContent = content.trim();

@@ -1498,6 +1498,7 @@
             checkUserProfile();
             loadUserStats();
             fetchDashboardLeaderboard();
+            if (window.lucide) lucide.createIcons();
         });
     </script>
 
@@ -1527,13 +1528,13 @@
         <!-- Input -->
         <div style="padding: 10px 15px; border-top: 1px solid var(--border-color); background: var(--card-bg); display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
             <input type="text" id="widget-input" placeholder="Ask Renance AI..." onkeydown="if(event.key==='Enter')sendWidgetMessage()" style="flex: 1; border: 1px solid var(--border-color); padding: 10px 14px; border-radius: 20px; font-size: 0.88rem; outline: none; background: var(--bg-body); color: var(--text-main);" />
-            <button onclick="sendWidgetMessage()" style="background: var(--primary-accent); color: white; border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s;"><i class="fa-solid fa-paper-plane" style="font-size: 0.85rem; color: white;"></i></button>
+            <button onclick="sendWidgetMessage()" style="background: var(--primary-accent); color: white; border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s;"><i data-lucide="send" style="width: 16px; height: 16px; color: white;"></i></button>
         </div>
     </div>
 
     <!-- Floating Action Button for Widget -->
     <button id="widget-trigger" onclick="toggleWidget()" style="position: fixed; bottom: 30px; right: 110px; width: 60px; height: 60px; background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: white; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 24px -8px rgba(124, 58, 237, 0.5); z-index: 9999; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-size: 22px;">
-        <i class="fa-solid fa-brain" style="color: white;"></i>
+        <i data-lucide="brain" style="width: 26px; height: 26px; color: white;"></i>
     </button>
 
     <style>
@@ -1632,15 +1633,9 @@
                 const code = studentDept.toUpperCase();
                 const isGroqDept = code.includes('SOFTWARE') || code.includes('SEN') || code.includes('NETWORKING') || code.includes('IFT') || code.includes('CYBER') || code.includes('CYS');
                 
-                let provider = 'gemini';
-                let model = 'gemini-1.5-flash';
-                let key = window.env?.GEMINI_API_KEY || ('AQ.Ab8RN6L0' + 'U0Oc8GrQf8oPlXk6_IAZaL2kqpI68FeCrjyf5VRloA');
-                
-                if (isGroqDept) {
-                    provider = 'groq';
-                    model = window.env?.AI_MODEL || 'llama-3.1-8b-instant';
-                    key = window.env?.AI_API_KEY || ('gsk_ulDGAM7' + 'imsQTMNQ9iKFnWGdyb3FYKcBeGwG3BvtQs5TmoPyc3Xlb');
-                }
+                let provider = 'groq';
+                let model = window.env?.AI_MODEL || 'llama-3.1-8b-instant';
+                let key = window.env?.AI_API_KEY || ('gsk_ulDGAM7' + 'imsQTMNQ9iKFnWGdyb3FYKcBeGwG3BvtQs5TmoPyc3Xlb');
                 
                 const systemContext = `You are Renance AI, a brilliant and friendly academic tutor for FUTA students.
 CONTEXT: You specialize in 100-level courses (MTH101, PHY101, GNS103, CSC101) and second semester courses (FSEN, FIFT, FCYS, CSC, CHE, BIO, MTH, PHY).
