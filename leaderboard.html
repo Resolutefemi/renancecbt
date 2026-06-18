@@ -377,34 +377,18 @@
         });
 
         async function getAllStudents() {
-            let allStudents = [];
-            let from = 0;
-            let to = 999;
-            let done = false;
-            
-            while (!done) {
-                const { data, error } = await db
-                    .from('students')
-                    .select('id, fullname, department, matric, tests_taken, avg_score')
-                    .range(from, to);
-                    
-                if (error) {
-                    throw error;
-                }
+            // Fetch top 100 students sorted by avg_score desc, tests_taken desc
+            const { data, error } = await db
+                .from('students')
+                .select('id, fullname, department, matric, tests_taken, avg_score')
+                .order('avg_score', { ascending: false })
+                .order('tests_taken', { ascending: false })
+                .limit(100);
                 
-                if (data && data.length > 0) {
-                    allStudents = allStudents.concat(data);
-                    if (data.length < 1000) {
-                        done = true;
-                    } else {
-                        from += 1000;
-                        to += 1000;
-                    }
-                } else {
-                    done = true;
-                }
+            if (error) {
+                throw error;
             }
-            return allStudents;
+            return data || [];
         }
 
         async function fetchLeaderboard(period) {
@@ -413,13 +397,29 @@
             document.getElementById('loader').style.display = 'block';
 
             try {
-                const students = await getAllStudents();
+                let students = await getAllStudents();
 
                 // Get current user id
                 let currentUserId = null;
+                let currentUserProfile = null;
                 try {
                     const { data: { user } } = await db.auth.getUser();
-                    if (user) currentUserId = user.id;
+                    if (user) {
+                        currentUserId = user.id;
+                        // Check if current user is already in the fetched students list
+                        const userInList = students.some(s => s.id === currentUserId);
+                        if (!userInList) {
+                            // Fetch current user profile separately to include/merge them
+                            const { data: profile } = await db
+                                .from('students')
+                                .select('id, fullname, department, matric, tests_taken, avg_score')
+                                .eq('id', currentUserId)
+                                .single();
+                            if (profile) {
+                                currentUserProfile = profile;
+                            }
+                        }
+                    }
                 } catch (e) {}
 
                 // Load local results for current user to merge
@@ -434,6 +434,11 @@
                             ? Math.round(userResults.reduce((sum, r) => sum + r.score, 0) / localTests)
                             : 0;
                     } catch (e) {}
+                }
+
+                // If user is not in top 100, append their row so their stats get merged and they can see themselves
+                if (currentUserProfile) {
+                    students.push(currentUserProfile);
                 }
 
                 // Process student lists and merge current user's local stats

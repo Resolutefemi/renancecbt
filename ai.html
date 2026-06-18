@@ -516,6 +516,7 @@
         const chatBox = document.getElementById('chat-container');
         const userInput = document.getElementById('userInput');
         const sendBtn = document.getElementById('sendBtn');
+        let chatHistory = [];
 
         // THEME TOGGLE
         function toggleTheme() {
@@ -625,6 +626,8 @@
                 let responseText = "";
                 if (!key) throw new Error("Groq API Key is missing in window.env.");
                 
+                chatHistory.push({ role: "user", content: query });
+                
                 const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: 'POST',
                     headers: {
@@ -635,7 +638,7 @@
                         model: model,
                         messages: [
                             { role: "system", content: SYSTEM_CONTEXT },
-                            { role: "user", content: query }
+                            ...chatHistory.slice(-10)
                         ],
                         temperature: 0.7
                     })
@@ -646,9 +649,11 @@
                     throw new Error(resData.error?.message || `HTTP ${response.status}`);
                 }
                 responseText = resData.choices[0].message.content;
+                chatHistory.push({ role: "assistant", content: responseText });
                 
                 loadingElement.innerHTML = formatText(responseText);
             } catch (error) {
+                chatHistory.pop(); // Remove failed user query
                 loadingElement.innerHTML = `<span style="color:var(--danger); font-weight:600;"><i class="fa-solid fa-triangle-exclamation"></i> Link Failed:</span><br>${error.message || "Please check your network and API key settings."}`;
                 console.error(error);
             }

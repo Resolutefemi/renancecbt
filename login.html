@@ -402,6 +402,7 @@ document.getElementById('loginForm').addEventListener('submit',async function(e)
     if(authError)throw authError;
     localStorage.setItem('isLoggedIn','true');
     localStorage.setItem('student_email',email);
+    localStorage.setItem('renance_last_activity', Date.now().toString());
     if(remember)localStorage.setItem('renance_remember',email);
     else localStorage.removeItem('renance_remember');
     btn.innerHTML='<i class="fa-solid fa-check"></i><span>Success!</span>';

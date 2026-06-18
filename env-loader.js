@@ -72,6 +72,17 @@
       }
       return client._originalFrom.apply(this, arguments);
     };
+
+    if (client.auth && client.auth.signOut) {
+      const originalSignOut = client.auth.signOut;
+      client.auth.signOut = async function() {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('renance_remember');
+        localStorage.removeItem('renance_last_activity');
+        return originalSignOut.apply(client.auth, arguments);
+      };
+    }
+
     activeClient = client;
     return client;
   }
@@ -399,4 +410,76 @@
       document.body.insertAdjacentHTML('beforeend', modalHtml);
     }
   });
+
+  // Handle Session Persistence & Inactivity Timeout (7 days)
+  async function initAuthSession() {
+    const isLoginPage = window.location.pathname.endsWith('login.html');
+    const isRegisterPage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index%20(1).html');
+    
+    // Check if Supabase client is initialized on window
+    const supabaseUrl = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+    const supabaseKey = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+    
+    let client = window._sb;
+    if (!client && typeof supabase !== 'undefined') {
+      window._sb = supabase.createClient(supabaseUrl, supabaseKey);
+      client = window._sb;
+    }
+    
+    if (!client) {
+      setTimeout(initAuthSession, 100);
+      return;
+    }
+
+    try {
+      const { data: { session } } = await client.auth.getSession();
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+      const rememberMe = !!localStorage.getItem('renance_remember');
+      const lastActivity = Number(localStorage.getItem('renance_last_activity') || '0');
+      const now = Date.now();
+      
+      const sessionExpired = lastActivity > 0 && (now - lastActivity > 7 * 24 * 60 * 60 * 1000); // 7 days in ms
+
+      if (session && isLoggedIn) {
+        if (!rememberMe) {
+          if (isLoginPage || isRegisterPage) {
+            await client.auth.signOut();
+            localStorage.removeItem('isLoggedIn');
+          } else {
+            localStorage.setItem('renance_last_activity', now.toString());
+          }
+        } else {
+          if (sessionExpired) {
+            await client.auth.signOut();
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('renance_remember');
+            localStorage.removeItem('renance_last_activity');
+            if (!isLoginPage && !isRegisterPage) {
+              const prefix = (window.location.pathname.includes('/first_semester/') || window.location.pathname.includes('/second_semester/')) ? '../' : '';
+              window.location.href = prefix + 'login.html';
+            }
+          } else {
+            localStorage.setItem('renance_last_activity', now.toString());
+            if (isLoginPage || isRegisterPage) {
+              window.location.href = 'dashboard.html';
+            }
+          }
+        }
+      } else {
+        if (!isLoginPage && !isRegisterPage) {
+          const prefix = (window.location.pathname.includes('/first_semester/') || window.location.pathname.includes('/second_semester/')) ? '../' : '';
+          window.location.href = prefix + 'login.html';
+        }
+      }
+    } catch (e) {
+      console.error("Auth session check failed:", e);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAuthSession);
+  } else {
+    initAuthSession();
+  }
 })();
+
