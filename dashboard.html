@@ -1036,6 +1036,9 @@
         }
 
         function getStudyUrl(course) {
+            if (course.id === 'FSEN 104') {
+                return 'fsen104.pdf';
+            }
             const folder = course.semester === 1 ? 'first_semester/' : 'second_semester/';
             return folder + course.id.toLowerCase().replace(/\s+/g, '') + 's.html';
         }
