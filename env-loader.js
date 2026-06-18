@@ -2,7 +2,7 @@
   const defaults = {
     SUPABASE_URL: 'https://ubxsywaxdvkhiqepcvmq.supabase.co',
     SUPABASE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4',
-    GEMINI_API_KEY: 'AIzaSyBFqhMxNVNdti-8HFjVvxOFCiRKWnUfiZs'
+    GEMINI_API_KEY: 'AQ.Ab8RN6L0U0Oc8GrQf8oPlXk6_IAZaL2kqpI68FeCrjyf5VRloA'
   };
 
   window.env = { ...defaults };
@@ -281,7 +281,11 @@
         if (listEl) {
           listEl.innerHTML = '';
           leaderboardData.forEach((student, index) => {
-            const initials = student.fullname.substring(0, 2).toUpperCase();
+            const initials = (() => {
+              if (!student.fullname) return '??';
+              const parts = student.fullname.trim().split(/\s+/).filter(Boolean);
+              return parts.length >= 2 ? (parts[0][0] + parts[1][0]).toUpperCase() : parts[0].substring(0, 2).toUpperCase();
+            })();
             
             let rankDisp = `#${index + 1}`;
             if (index === 0) rankDisp = '🥇';

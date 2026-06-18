@@ -434,6 +434,9 @@
             </div>
             <div class="header-actions">
                 <div class="model-badge">Gemini Flash 1.5</div>
+                <button class="theme-btn" onclick="promptApiKey()" title="Configure API Key" style="display: flex; align-items: center; justify-content: center; margin-right: 5px;">
+                    <i data-lucide="key" size="17"></i>
+                </button>
                 <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
                     <i data-lucide="moon" id="desktopThemeIcon" size="17"></i>
                 </button>
@@ -474,7 +477,7 @@
         if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         const db = window._sb;
 
-        const API_KEY = window.env?.GEMINI_API_KEY || 'AIzaSyBFqhMxNVNdti-8HFjVvxOFCiRKWnUfiZs';
+        const API_KEY = localStorage.getItem('GEMINI_API_KEY') || window.env?.GEMINI_API_KEY || 'AIzaSyBFqhMxNVNdti-8HFjVvxOFCiRKWnUfiZs';
         
         // Custom Knowledge Base Context
         const SYSTEM_CONTEXT = `
@@ -500,6 +503,23 @@
             document.getElementById('desktopThemeIcon').setAttribute('data-lucide', name);
             document.getElementById('mobileThemeIcon').setAttribute('data-lucide', name);
             if (window.lucide) lucide.createIcons();
+        }
+
+        function promptApiKey() {
+            const currentKey = localStorage.getItem('GEMINI_API_KEY') || '';
+            const key = prompt("Enter your Gemini API Key:", currentKey);
+            if (key !== null) {
+                const trimmed = key.trim();
+                if (trimmed) {
+                    localStorage.setItem('GEMINI_API_KEY', trimmed);
+                    alert("Gemini API Key saved successfully! The AI will now use your key.");
+                    window.location.reload();
+                } else {
+                    localStorage.removeItem('GEMINI_API_KEY');
+                    alert("Custom API Key cleared. Falling back to default settings.");
+                    window.location.reload();
+                }
+            }
         }
 
         // NAV TOGGLE

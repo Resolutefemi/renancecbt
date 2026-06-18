@@ -219,7 +219,11 @@
                         listEl.innerHTML = '<p style="text-align:center; padding:20px; color:var(--text-muted); font-size:0.9rem;">No reviews yet. Be the first to share how the portal helped you! 🚀</p>';
                     } else {
                         reviews.forEach(rev => {
-                            const initials = rev.student_name ? rev.student_name.substring(0, 2).toUpperCase() : 'ST';
+                            const initials = (() => {
+                                if (!rev.student_name) return 'ST';
+                                const parts = rev.student_name.trim().split(/\s+/).filter(Boolean);
+                                return parts.length >= 2 ? (parts[0][0] + parts[1][0]).toUpperCase() : parts[0].substring(0, 2).toUpperCase();
+                            })();
                             let starHtml = '';
                             for (let i = 1; i <= 5; i++) {
                                 starHtml += `<i class="${i <= rev.rating ? 'fa-solid' : 'fa-regular'} fa-star"></i>`;

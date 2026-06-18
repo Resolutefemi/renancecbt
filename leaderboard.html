@@ -319,6 +319,12 @@
         if (!window._sb) window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         const db = window._sb;
 
+        function getInitials(name) {
+            if (!name) return '??';
+            const parts = name.trim().split(/\s+/).filter(Boolean);
+            return parts.length >= 2 ? (parts[0][0] + parts[1][0]).toUpperCase() : parts[0].substring(0, 2).toUpperCase();
+        }
+
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('open');
             document.getElementById('sidebarOverlay').classList.toggle('show');
@@ -349,9 +355,7 @@
                     .eq('id', user.id)
                     .single();
                 if (student) {
-                    const initials = student.fullname
-                        ? student.fullname.trim().split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase()
-                        : '??';
+                    const initials = getInitials(student.fullname);
                     document.getElementById('sidebarAvatar').textContent = initials;
                     document.getElementById('sidebarName').textContent = student.fullname || 'Student';
                     document.getElementById('sidebarDept').textContent = student.department || '100 Level';
@@ -528,7 +532,7 @@
                 let podiumHTML = '';
 
                 if (data[1]) {
-                    let initials = data[1].student_name.substring(0,2).toUpperCase();
+                    let initials = getInitials(data[1].student_name);
                     podiumHTML += `
                     <div class="podium-step step-2">
                         <div class="podium-medal">🥈</div>
@@ -543,7 +547,7 @@
                 }
 
                 if (data[0]) {
-                    let initials = data[0].student_name.substring(0,2).toUpperCase();
+                    let initials = getInitials(data[0].student_name);
                     podiumHTML += `
                     <div class="podium-step step-1">
                         <div class="podium-medal">🥇</div>
@@ -558,7 +562,7 @@
                 }
 
                 if (data[2]) {
-                    let initials = data[2].student_name.substring(0,2).toUpperCase();
+                    let initials = getInitials(data[2].student_name);
                     podiumHTML += `
                     <div class="podium-step step-3">
                         <div class="podium-medal">🥉</div>
@@ -575,7 +579,7 @@
                 podiumArea.innerHTML = podiumHTML;
 
                 for (let i = 3; i < data.length; i++) {
-                    let initials = data[i].student_name.substring(0,2).toUpperCase();
+                    let initials = getInitials(data[i].student_name);
                     listArea.innerHTML += `
                     <div class="rank-row">
                         <div class="col-rank">#${i + 1}</div>

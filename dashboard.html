@@ -995,17 +995,19 @@
             { id: 'CHE 103', title: 'EXPERIMENTAL CHEMISTRY I',          icon: 'test-tube',  isReady: true, semester: 1, study: false, practice: true  },
         ];
 
-        /* Semester 2 courses */
         const courses2 = [
+            { id: 'CSC 102', title: 'INTRODUCTION TO COMPUTER PROGRAMMING', icon: 'cpu',        isReady: true, semester: 2, study: false, practice: true  },
+            { id: 'CHE 102', title: 'GENERAL CHEMISTRY II',                 icon: 'beaker',     isReady: true, semester: 2, study: false, practice: true  },
+
             { id: 'BIO 102',  title: 'GENERAL BIOLOGY II',                 icon: 'dna',        isReady: true, semester: 2, study: false, practice: true  },
-            { id: 'FSEN 102', title: 'SOFTWARE EXPERIMENTAL LAB II',       icon: 'code',       isReady: true, semester: 2, study: false, practice: true  },
-            { id: 'FSEN 104', title: 'SOFTWARE FEASIBILITY STUDY',         icon: 'terminal',   isReady: true, semester: 2, study: false, practice: true  },
+            { id: 'FSEN 102', title: 'SOFTWARE EXPERIMENTAL LAB II',       icon: 'code',       isReady: true, semester: 2, study: true, practice: true  },
+            { id: 'FSEN 104', title: 'SOFTWARE FEASIBILITY STUDY',         icon: 'terminal',   isReady: true, semester: 2, study: true, practice: true  },
             { id: 'MTH 102',  title: 'ELEMENTARY MATHEMATICS II',          icon: 'calculator', isReady: true, semester: 2, study: false, practice: true  },
             { id: 'PHY 102',  title: 'GENERAL PHYSICS II',                 icon: 'atom',       isReady: true, semester: 2, study: false, practice: true  },
             { id: 'MEE 102',  title: 'ENGINEERING DRAWING II',             icon: 'compass',    isReady: false, semester: 2, study: false, practice: true  },
             { id: 'GST 112',  title: 'NIGERIAN PEOPLE AND CULTURE',        icon: 'globe',      isReady: true, semester: 2, study: false, practice: true  },
-            { id: 'FSEN 106', title: 'SOFTWARE REQUIREMENTS FUNDAMENTALS', icon: 'clipboard-list', isReady: true, semester: 2, study: false, practice: true  },
-            { id: 'FGNS 102', title: 'INTEGRATED READING AND WRITING SKILLS', icon: 'book-open', isReady: true, semester: 2, study: false, practice: true  },
+            { id: 'FSEN 106', title: 'SOFTWARE REQUIREMENTS FUNDAMENTALS', icon: 'clipboard-list', isReady: true, semester: 2, study: true, practice: true  },
+            { id: 'FGNS 102', title: 'INTEGRATED READING AND WRITING SKILLS', icon: 'book-open', isReady: true, semester: 2, study: true, practice: true  },
             { id: 'FIFT 102', title: 'FUNDAMENTALS OF NETWORKING',         icon: 'network',    isReady: true, semester: 2, study: false, practice: true  },
             { id: 'FIFT 104', title: 'SOCIAL MEDIA AND GLOBAL COMPUTING',  icon: 'share-2',    isReady: true, semester: 2, study: false, practice: true  },
             { id: 'FIFT 106', title: 'CONCEPT OF INFO MANAGEMENT',         icon: 'database',   isReady: true, semester: 2, study: false, practice: true  },
@@ -1442,7 +1444,11 @@
                         // Display top 10
                         const top10 = processedStudents.slice(0, 10);
                         top10.forEach((student, index) => {
-                            const initials = student.fullname.substring(0, 2).toUpperCase();
+                            const initials = (() => {
+                                if (!student.fullname) return '??';
+                                const parts = student.fullname.trim().split(/\s+/).filter(Boolean);
+                                return parts.length >= 2 ? (parts[0][0] + parts[1][0]).toUpperCase() : parts[0].substring(0, 2).toUpperCase();
+                            })();
                             const isCurrentUser = currentUserId && student.id === currentUserId;
                             const highlightStyle = isCurrentUser ? 'background: rgba(37,99,235,0.06); border-radius: 12px; margin: 0 -8px; padding: 8px;' : '';
                             
