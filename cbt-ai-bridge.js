@@ -1,3 +1,16 @@
+const COURSE_TOPICS = {
+  'FSEN 102': '8086 Assembly Language and 8086 Architecture',
+  'FSEN 104': 'Software Feasibility Study',
+  'FSEN 106': 'Software Requirements Fundamentals',
+  'FIFT 102': 'Fundamentals of Networking',
+  'FIFT 104': 'Social Media and Global Computing',
+  'FIFT 106': 'Concept of Info Management',
+  'FCYS 102': 'Introduction to Windows and Linux OS',
+  'FCYS 104': 'Maths for Cyber Security',
+  'FCYS 106': 'Security Policy and Legal Environments',
+  'FCYS 110': 'Computer Crime and Online Contract'
+};
+
 function getAIConfigForCourse(courseCode) {
   const code = (courseCode || "").toUpperCase().trim();
   // Groq AI should handle FSEN, FIFT and FCYS
@@ -343,13 +356,173 @@ Respond strictly in 2-3 lines of text containing bullet points of the topics (e.
   }
 }
 
+// AI Question Generator logic
+async function generateAIQuestions(topic, quantity, section) {
+  const courseCode = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
+  const config = getAIConfigForCourse(courseCode);
+  const batchSize = 10;
+  const numBatches = Math.ceil(quantity / batchSize);
+  const promises = [];
+  
+  for (let i = 0; i < numBatches; i++) {
+    const batchCount = Math.min(batchSize, quantity - (i * batchSize));
+    const startIndex = (i * batchSize) + 1;
+    promises.push(fetchQuestionsBatch(config, topic, batchCount, startIndex, section));
+  }
+  
+  const results = await Promise.all(promises);
+  let allQuestions = [];
+  results.forEach(batch => {
+    if (batch && Array.isArray(batch)) {
+      allQuestions = allQuestions.concat(batch);
+    }
+  });
+  
+  allQuestions.forEach((q, idx) => {
+    q.id = idx + 1;
+  });
+  
+  return allQuestions;
+}
+
+async function fetchQuestionsBatch(config, topic, batchCount, startIndex, section) {
+  const isTheory = section === 'theory';
+  const systemPrompt = `You are a professional academic examiner specializing in "${topic}".
+Generate exactly ${batchCount} unique exam-standard questions.
+Topic: ${topic}
+Type: ${isTheory ? 'Theory (written explanation answer)' : 'Objective (Multiple Choice with 4 options)'}.
+
+You must return your response strictly as a JSON object containing a "questions" key with the list of questions:
+{
+  "questions": [
+    ${isTheory ? `
+    {
+      "id": <integer starting from ${startIndex}>,
+      "isTheory": true,
+      "question": "Question text here",
+      "answer": "Model answer here",
+      "explanation": "Brief explanation of key concepts here"
+    }
+    ` : `
+    {
+      "id": <integer starting from ${startIndex}>,
+      "question": "Question text here",
+      "options": ["Option A", "Option B", "Option C", "Option D"],
+      "answer": "Option A", // Must exactly match one of the options above
+      "explanation": "Brief explanation of why it is correct"
+    }
+    `}
+  ]
+}`;
+
+  const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${config.key}`
+    },
+    body: JSON.stringify({
+      model: config.model,
+      messages: [
+        { role: "system", content: systemPrompt }
+      ],
+      response_format: { type: "json_object" },
+      temperature: 0.7
+    })
+  });
+  
+  const resData = await response.json();
+  if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
+  
+  const parsed = JSON.parse(resData.choices[0].message.content.trim());
+  return parsed.questions || [];
+}
+
+function showAILoadingOverlay(qCount) {
+  let overlay = document.getElementById('ai-loading-overlay');
+  if (!overlay) {
+    const html = `
+      <div id="ai-loading-overlay" style="position: fixed; inset: 0; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); z-index: 1000000; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; font-family: 'Inter', sans-serif;">
+          <div style="position: relative; margin-bottom: 25px;">
+              <i class="fa-solid fa-brain" style="font-size: 4rem; color: #7c3aed; animation: pulse 1.8s infinite ease-in-out;"></i>
+              <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 5.5rem; color: #4f46e5; position: absolute; top: -12px; left: -12px; opacity: 0.8;"></i>
+          </div>
+          <h2 style="font-weight: 800; font-size: 1.5rem; margin: 0 0 10px 0; letter-spacing: -0.5px; background: linear-gradient(135deg, #a78bfa, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Renance AI Synthesis</h2>
+          <p id="ai-loading-status" style="font-size: 0.92rem; color: #94a3b8; text-align: center; max-width: 300px; line-height: 1.5; margin: 0;">Generating custom quiz questions...</p>
+          
+          <style>
+              @keyframes pulse {
+                  0%, 100% { transform: scale(1); opacity: 0.9; filter: drop-shadow(0 0 5px rgba(124, 58, 237, 0.4)); }
+                  50% { transform: scale(1.15); opacity: 1; filter: drop-shadow(0 0 15px rgba(124, 58, 237, 0.8)); }
+              }
+          </style>
+      </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', html);
+    overlay = document.getElementById('ai-loading-overlay');
+  } else {
+    overlay.style.display = 'flex';
+  }
+  
+  const courseCode = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
+  const topic = COURSE_TOPICS[courseCode] || courseCode;
+  document.getElementById('ai-loading-status').innerHTML = `Generating <strong>${qCount}</strong> custom exam questions on <strong>${topic}</strong> using Groq AI...`;
+}
+
+function hideAILoadingOverlay() {
+  const overlay = document.getElementById('ai-loading-overlay');
+  if (overlay) {
+    overlay.style.display = 'none';
+  }
+}
+
+function injectQuestionSourceSelect() {
+  const setupScreen = document.getElementById('setup-screen');
+  if (!setupScreen) return;
+  
+  if (document.getElementById('ai-source-group')) return;
+  
+  const firstGroup = setupScreen.querySelector('.setup-group');
+  if (!firstGroup) return;
+  
+  const sourceGroup = document.createElement('div');
+  sourceGroup.className = 'setup-group';
+  sourceGroup.id = 'ai-source-group';
+  sourceGroup.innerHTML = `
+      <label>Question Source:</label>
+      <select id="question-source" class="setup-input" onchange="toggleQuestionSource()">
+          <option value="preset">Default Preset Questions</option>
+          <option value="ai">Generate with Renance AI (Groq) 🤖</option>
+      </select>
+  `;
+  
+  setupScreen.insertBefore(sourceGroup, firstGroup);
+  
+  window.toggleQuestionSource = function() {
+    const source = document.getElementById('question-source').value;
+    if (source === 'ai') {
+      if (!document.getElementById('ai-gen-note')) {
+        const note = document.createElement('p');
+        note.id = 'ai-gen-note';
+        note.style.cssText = 'font-size: 0.78rem; color: #7c3aed; margin-top: 5px; font-weight: 600;';
+        const courseCode = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
+        const topic = COURSE_TOPICS[courseCode] || courseCode;
+        note.innerHTML = `✨ Renance AI will dynamically create custom questions on <strong>${topic}</strong>!`;
+        sourceGroup.appendChild(note);
+      }
+    } else {
+      const note = document.getElementById('ai-gen-note');
+      if (note) note.remove();
+    }
+  };
+}
+
 // Objective/Theory tabs setup
 function setupSectionTabs() {
   const dashWrap = document.getElementById('dashboard-wrap');
   const dash = document.getElementById('dashboard');
   if (!dashWrap || !dash || typeof MASTER_POOL === 'undefined') return;
   
-  // Create tabs container if it doesn't exist yet
   if (document.querySelector('.section-tabs')) return;
   
   const tabs = document.createElement('div');
@@ -459,6 +632,52 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       originalBuild.apply(this, arguments);
     };
+  }
+  
+  // Wrap startExam
+  if (typeof startExam === 'function') {
+    const originalStartExam = window.startExam;
+    window.startExam = async function() {
+      const sourceSelect = document.getElementById('question-source');
+      const source = sourceSelect ? sourceSelect.value : 'preset';
+      
+      if (source === 'ai') {
+        const qCount = parseInt(document.getElementById('q-count').value) || 10;
+        showAILoadingOverlay(qCount);
+        
+        try {
+          const courseCode = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
+          const topic = COURSE_TOPICS[courseCode] || courseCode;
+          const section = window.activeSection || 'objective';
+          
+          const generated = await generateAIQuestions(topic, qCount, section);
+          if (!generated || generated.length === 0) {
+            throw new Error("No questions were returned by the AI.");
+          }
+          
+          MASTER_POOL.length = 0;
+          MASTER_POOL.push(...generated);
+          
+          sourceSelect.value = 'preset';
+          hideAILoadingOverlay();
+          
+          originalStartExam.apply(this, arguments);
+          sourceSelect.value = 'ai';
+        } catch (err) {
+          hideAILoadingOverlay();
+          alert(`AI Question Generation failed: ${err.message || 'Please check your connection and Groq API key.'}`);
+        }
+      } else {
+        originalStartExam.apply(this, arguments);
+      }
+    };
+  }
+  
+  // Inject source selector for F prefix courses (except FGNS)
+  const courseCode = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : '';
+  const isFPrefix = courseCode.toUpperCase().startsWith("F") && !courseCode.toUpperCase().startsWith("FGNS");
+  if (isFPrefix) {
+    injectQuestionSourceSelect();
   }
   
   // Inject tabs for courses
