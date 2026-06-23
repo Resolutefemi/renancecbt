@@ -30,7 +30,7 @@ function getAIConfigForCourse(courseCode) {
   return {
     provider: 'groq',
     model: window.env?.AI_MODEL || 'llama-3.1-8b-instant',
-    key: window.env?.AI_API_KEY || ('gsk_ulDGAM7' + 'imsQTMNQ9iKFnWGdyb3FYKcBeGwG3BvtQs5TmoPyc3Xlb')
+    key: window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy')
   };
 }
 

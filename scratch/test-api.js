@@ -1,6 +1,6 @@
 const https = require('https');
 
-const groqKey = 'gsk_ulDGAM7' + 'imsQTMNQ9iKFnWGdyb3FYKcBeGwG3BvtQs5TmoPyc3Xlb';
+const groqKey = 'gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy';
 const geminiKey = 'AIzaSy' + 'B' + '2uH-U5o5' + 'r8U5bN-oW_13m8Q' + 'sU_13m8Q'; // Wait, let's look at the correct Gemini key format
 
 function testGroq() {

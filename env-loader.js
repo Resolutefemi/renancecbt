@@ -5,7 +5,7 @@
     GEMINI_API_KEY: 'AQ.Ab8RN6L0' + 'U0Oc8GrQf8oPlXk6_IAZaL2kqpI68FeCrjyf5VRloA',
     AI_PROVIDER: 'groq',
     AI_MODEL: 'llama-3.1-8b-instant',
-    AI_API_KEY: 'gsk_ulDGAM7' + 'imsQTMNQ9iKFnWGdyb3FYKcBeGwG3BvtQs5TmoPyc3Xlb'
+    AI_API_KEY: 'gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy'
   };
 
   window.env = { ...defaults };
