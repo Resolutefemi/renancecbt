@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -295,80 +295,78 @@
         } catch (e) { }
     }
     sendHeartbeat();
-    setInterval(sendHeartbeat, 2 * 60 * 1000);
-
-    
-    const MASTER_POOL = [
-        /* ==========================================================================
-           PASTE YOUR OTHER AI-GENERATED QUESTIONS JSON BELOW THIS LINE.
-           EACH QUESTION OBJECT MUST FOLLOW THIS EXACT STRUCTURE:
-           { "id": 1, "topic": "Topic Name", "question": "Question Text", "options": ["Opt1", "Opt2", "Opt3", "Opt4"], "answer": "Correct Option Text", "explanation": "Explain here" }
-           ========================================================================== */
-        {
-        "id": 1,
-        "topic": "Computer Fundamentals",
-        "question": "The basic or major operation performed by a computer is",
-        "options": [
-            "Arithmetic operation",
-            "Logical operation",
-            "Storage and retrieval",
-            "All of the above"
-        ],
-        "answer": "All of the above",
-        "explanation": "Computers perform arithmetic, logical, and storage operations."
-    },
-    {
-        "id": 2,
-        "topic": "Hardware and Memory",
-        "question": "The two major types of computer chips are",
-        "options": [
-            "Internal and external memory chips",
-            "Primary memory and microprocessor chips",
-            "Primary and Secondary memory chips",
-            "Silicon and integrated circuits"
-        ],
-        "answer": "Primary memory and microprocessor chips",
-        "explanation": "Computer chips are primarily memory and processor chips."
-    },
-    {
-        "id": 3,
-        "topic": "Software and Compilers",
-        "question": "What are the stages in the compilation process?",
-        "options": [
-            "Feasibility study, system design and testing",
-            "Implementation and documentation",
-            "Lexical Analysis, syntax analysis, and code generation",
-            "None of the above"
-        ],
-        "answer": "Lexical Analysis, syntax analysis, and code generation",
-        "explanation": "Lexical analysis, syntax analysis, and code generation are the core stages of compilation."
-    },
-    {
-        "id": 4,
-        "topic": "Data Representation",
-        "question": "A nibble equals what?",
-        "options": [
-            "1 bits",
-            "2 bits",
-            "4 bits",
-            "8 bits"
-        ],
-        "answer": "4 bits",
-        "explanation": "A nibble is a four-bit aggregation, or half an octet (byte)."
-    },
-    {
-        "id": 5,
-        "topic": "VB and VBA Programming",
-        "question": "In VBA, a group of variables that share a common name, where variables are referred to by using the name and an index number is called",
-        "options": [
-            "An Array",
-            "A sub",
-            "A Function",
-            "An Index"
-        ],
-        "answer": "An Array",
-        "explanation": "An array is a collection of variables of the same type that share a common name and are accessed using indices."
-    }
+{"id": 7, "topic": "IDE Components", "question": "In Visual BASIC, the code is entered in the ___", "options": ["design panel", "properties toolbox", "file menu", "coding panel"], "answer": "coding panel", "explanation": "The coding panel is the specific window in the IDE where code is written."},
+{"id": 8, "topic": "IDE Components", "question": "When running a Visual BASIC code, the output is displayed in the ___", "options": ["design panel", "properties toolbox", "file menu", "coding panel"], "answer": "design panel", "explanation": "During execution, the visual output is rendered on the form in the design panel."},
+{"id": 9, "topic": "IDE Shortcuts", "question": "To run a Visual BASIC program, we can press the ___ button on the keyboard.", "options": ["F1", "F3", "F5", "CTRL+F5"], "answer": "F5", "explanation": "The F5 key is the standard shortcut to start debugging and run the program."},
+{"id": 10, "topic": "Programming Paradigms", "question": "What is the full meaning of OOP?", "options": ["Object Only Programming", "Object Oriented Programming", "Optional Object Programming", "Open Operations Programming"], "answer": "Object Oriented Programming", "explanation": "OOP is a programming paradigm based on the concept of 'objects'."},
+{"id": 11, "topic": "Computer Fundamentals", "question": "The acronym GUI stands for", "options": ["Graphical User Interface", "Graphical Utility Interface", "Graphical Utility for Interaction", "Graphical User Interaction"], "answer": "Graphical User Interface", "explanation": "A GUI allows users to interact with devices through graphical icons."},
+{"id": 12, "topic": "IDE Components", "question": "What is the full meaning of IDE?", "options": ["Integrated Design Environment", "Integrated Development Environment", "Interior Development Environment", "Industrial Design Environment"], "answer": "Integrated Development Environment", "explanation": "An IDE provides comprehensive facilities for software development."},
+{"id": 13, "topic": "IDE Components", "question": "The Visual BASIC IDE has the following components, EXCEPT", "options": ["Start Menu", "Solution Explorer", "Toolbox", "Design Panel"], "answer": "Start Menu", "explanation": "The Start Menu is an OS component, not a part of the VB IDE."},
+{"id": 14, "topic": "Programming Languages", "question": "Visual BASIC is a ___ language.", "options": ["machine", "high-level", "low level", "mid-level"], "answer": "high-level", "explanation": "Visual Basic provides strong abstraction from machine code."},
+{"id": 15, "topic": "Visual Basic Fundamentals", "question": "In Visual BASIC, ___ are tied to the occurrence of events.", "options": ["actions", "options", "clicks", "inputs"], "answer": "actions", "explanation": "In event-driven programming, actions are executed in response to triggered events."},
+{"id": 16, "topic": "IDE Components", "question": "The following are major components of the Visual BASIC design panel, EXCEPT", "options": ["Coding Panel", "Form Panel", "Properties Window", "Menu Bar"], "answer": "Coding Panel", "explanation": "The Coding Panel is distinct from the design panel components."},
+{"id": 17, "topic": "IDE Components", "question": "Visual BASIC form controls can be found on the ___", "options": ["toolbar", "menu bar", "properties window", "design panel"], "answer": "toolbar", "explanation": "Form controls are selected from the Toolbox/toolbar."},
+{"id": 18, "topic": "IDE Components", "question": "The features of Visual BASIC tools can be changed in its ___", "options": ["property window", "features window", "characteristics window", "toolbar"], "answer": "property window", "explanation": "The Properties window is used to view and change design-time properties."},
+{"id": 19, "topic": "IDE Components", "question": "In Visual Basic, the project name always appears in the ___", "options": ["property window", "intermediate window", "code panel", "title bar"], "answer": "title bar", "explanation": "The title bar displays the name of the current project."},
+{"id": 20, "topic": "IDE Components", "question": "Which of the following cannot be found in the Visual Basic toolbar?", "options": ["Picture box", "Check box", "List box", "Compile button"], "answer": "Compile button", "explanation": "The Compile button is on the menu bar, while the others are form controls."},
+{"id": 21, "topic": "Visual Basic Fundamentals", "question": "In Visual Basic, each tool is referenced by its ___", "options": ["properties", "name", "number", "code"], "answer": "name", "explanation": "Objects are referenced in code by their unique 'Name' property."},
+{"id": 22, "topic": "Algorithm and Logic", "question": "An algorithm is ___", "options": ["a mathematical formula that solves a problem.", "a series of gimmicks in writing code.", "a logical sequence of steps that solve a problem.", "a tool that designs computer programs and draws the user interface."], "answer": "a logical sequence of steps that solve a problem.", "explanation": "An algorithm is a finite sequence of logical instructions to solve a problem."},
+{"id": 23, "topic": "Programming Constructs", "question": "Which of the following is NOT one of the three basic types of statement structures?", "options": ["Sequence", "Loop", "Decision/Branching", "Input/Output"], "answer": "Input/Output", "explanation": "The three fundamental control structures are Sequence, Selection, and Iteration."},
+{"id": 24, "topic": "Error Handling", "question": "Which one of the following is NOT one of the three main types of errors?", "options": ["Syntax error", "Logic error", "Declaration error", "Run-time error"], "answer": "Declaration error", "explanation": "The three main categories are Syntax, Logic, and Run-time errors."},
+{"id": 25, "topic": "Form Controls", "question": "Which are the standard prefixes for the text box and label controls respectively?", "options": ["tex and lbl", "tex and lab", "txt and lbl", "txb and lab"], "answer": "txt and lbl", "explanation": "Standard naming conventions use 'txt' for TextBoxes and 'lbl' for Labels."},
+{"id": 26, "topic": "Form Controls", "question": "Which property determines whether a control is displayed to the user?", "options": ["Hide", "Show", "Visible", "Enabled"], "answer": "Visible", "explanation": "The 'Visible' property determines if a control can be seen."},
+{"id": 27, "topic": "Variable Declaration", "question": "Which is the correct statement for defining a constant named PI in Visual Basic?", "options": ["String PI = 3.14159", "Const PI = 3.14159", "Cont PI = 3.14159", "None of the above"], "answer": "Const PI = 3.14159", "explanation": "Constants are declared using the 'Const' keyword."}
+][
+{"id": 1, "topic": "Visual Basic Fundamentals", "question": "Visual BASIC is an ___ language.", "options": ["abstract", "event driven", "obsolete", "open source"], "answer": "event driven", "explanation": "Visual Basic is an event-driven programming language where the flow of the program is determined by events."},
+{"id": 2, "topic": "IDE Components", "question": "In Visual BASIC, the code is entered in the ___", "options": ["design panel", "properties toolbox", "file menu", "coding panel"], "answer": "coding panel", "explanation": "The coding panel is the specific window in the IDE where the programmer writes the code."},
+{"id": 3, "topic": "IDE Components", "question": "When running a Visual BASIC code, the output is displayed in the ___", "options": ["design panel", "properties toolbox", "file menu", "coding panel"], "answer": "design panel", "explanation": "During execution, the visual output of the application is typically rendered on the form in the design panel."},
+{"id": 4, "topic": "IDE Shortcuts", "question": "To run a Visual BASIC program, we can press the ___ button on the keyboard.", "options": ["F1", "F3", "F5", "CTRL+F5"], "answer": "F5", "explanation": "In Visual Studio and Visual Basic, the F5 key is the standard shortcut to start debugging and run the program."},
+{"id": 5, "topic": "Programming Paradigms", "question": "What is the full meaning of OOP?", "options": ["Object Only Programming", "Object Oriented Programming", "Optional Object Programming", "Open Operations Programming"], "answer": "Object Oriented Programming", "explanation": "OOP is a programming paradigm based on the concept of 'objects'."},
+{"id": 6, "topic": "Computer Fundamentals", "question": "The acronym GUI stands for", "options": ["Graphical User Interface", "Graphical Utility Interface", "Graphical Utility for Interaction", "Graphical User Interaction"], "answer": "Graphical User Interface", "explanation": "A GUI allows users to interact with devices through graphical icons."},
+{"id": 7, "topic": "IDE Components", "question": "What is the full meaning of IDE?", "options": ["Integrated Design Environment", "Integrated Development Environment", "Interior Development Environment", "Industrial Design Environment"], "answer": "Integrated Development Environment", "explanation": "An IDE is a software application that provides facilities for software development."},
+{"id": 8, "topic": "IDE Components", "question": "The Visual BASIC IDE has the following components, EXCEPT", "options": ["Start Menu", "Solution Explorer", "Toolbox", "Design Panel"], "answer": "Start Menu", "explanation": "The Start Menu is a component of the Windows Operating System, not the VB IDE."},
+{"id": 9, "topic": "Programming Languages", "question": "Visual BASIC is a ___ language.", "options": ["machine", "high-level", "low level", "mid-level"], "answer": "high-level", "explanation": "Visual Basic is a high-level language because it provides strong abstraction from machine code."},
+{"id": 10, "topic": "Visual Basic Fundamentals", "question": "In Visual BASIC, ___ are tied to the occurrence of events.", "options": ["actions", "options", "clicks", "inputs"], "answer": "actions", "explanation": "In event-driven programming, specific actions are executed in response to triggered events."},
+{"id": 11, "topic": "IDE Components", "question": "The following are major components of the Visual BASIC design panel, EXCEPT", "options": ["Coding Panel", "Form Panel", "Properties Window", "Menu Bar"], "answer": "Coding Panel", "explanation": "The Coding Panel is distinct from the visual design panel components."},
+{"id": 12, "topic": "IDE Components", "question": "Visual BASIC form controls can be found on the ___", "options": ["toolbar", "menu bar", "properties window", "design panel"], "answer": "toolbar", "explanation": "Form controls are selected from the Toolbox/toolbar to be placed on the form."},
+{"id": 13, "topic": "IDE Components", "question": "The features of Visual BASIC tools can be changed in its ___", "options": ["property window", "features window", "characteristics window", "toolbar"], "answer": "property window", "explanation": "The Properties window is used to view and change design-time properties of objects."},
+{"id": 14, "topic": "IDE Components", "question": "In Visual Basic, the project name always appears in the ___", "options": ["property window", "intermediate window", "code panel", "title bar"], "answer": "title bar", "explanation": "The title bar at the top of the application window displays the name of the current project."},
+{"id": 15, "topic": "IDE Components", "question": "Which of the following cannot be found in the Visual Basic toolbar?", "options": ["Picture box", "Check box", "List box", "Compile button"], "answer": "Compile button", "explanation": "The Compile button is on the menu bar, while the others are form controls."},
+{"id": 16, "topic": "IDE Components", "question": "In Visual Studio 6, the property window is usually at the ___ of the window.", "options": ["right hand side", "left hand side", "bottom", "left corner"], "answer": "right hand side", "explanation": "By default, the Properties window is docked to the lower right-hand side of the IDE."},
+{"id": 17, "topic": "Visual Basic Fundamentals", "question": "In Visual Basic, each tool is referenced by its ___", "options": ["properties", "name", "number", "code"], "answer": "name", "explanation": "Objects and controls are referenced in the backend code by their unique 'Name' property."},
+{"id": 18, "topic": "Computer Fundamentals", "question": "A GUI", "options": ["uses buttons, menus and icons", "should be interactive", "stands for Graphical User Interface", "All of the above"], "answer": "All of the above", "explanation": "A GUI is an interactive interface utilizing visual elements."},
+{"id": 19, "topic": "Programming Languages", "question": "The acronym BASIC stands for", "options": ["Believable And Simple Instruction Code", "Beginners' All-purpose Symbolic Instruction Code", "Beginners' Available Simple Instruction Code", "Beginners' All-purpose Simple Instruction Code"], "answer": "Beginners' All-purpose Symbolic Instruction Code", "explanation": "BASIC stands for Beginners' All-purpose Symbolic Instruction Code."},
+{"id": 20, "topic": "Algorithm and Logic", "question": "An algorithm is ___", "options": ["a mathematical formula that solves a problem.", "a series of gimmicks in writing code.", "a logical sequence of steps that solve a problem.", "a tool that designs computer programs and draws the user interface."], "answer": "a logical sequence of steps that solve a problem.", "explanation": "An algorithm is a finite sequence of logical instructions to solve a problem."},
+{"id": 21, "topic": "Form Controls", "question": "What would be a good Visual Basic tool to accept the input of a person's first name?", "options": ["Command Button", "Label Box", "Text Box", "Check Box"], "answer": "Text Box", "explanation": "A Text Box is the standard control used to accept alphanumeric typed input."},
+{"id": 22, "topic": "Programming Constructs", "question": "Which of the following is NOT one of the three basic types of statement structures?", "options": ["Sequence", "Loop", "Decision/Branching", "Input/Output"], "answer": "Input/Output", "explanation": "The three fundamental control structures are Sequence, Selection, and Iteration."},
+{"id": 23, "topic": "Error Handling", "question": "Which one of the following is NOT one of the three main types of errors?", "options": ["Syntax error", "Logic error", "Declaration error", "Run-time error"], "answer": "Declaration error", "explanation": "The three main categories are Syntax, Logic, and Run-time errors."},
+{"id": 24, "topic": "IDE Components", "question": "Visual Studio provides which feature:", "options": ["debugging", "application deployment", "syntax checking", "All of the above"], "answer": "All of the above", "explanation": "Visual Studio includes tools for syntax checking, debugging, and deployment."},
+{"id": 25, "topic": "Form Controls", "question": "Which are the standard prefixes for the text box and label controls respectively?", "options": ["tex and lbl", "tex and lab", "txt and lbl", "txb and lab"], "answer": "txt and lbl", "explanation": "Standard naming conventions use 'txt' for TextBoxes and 'lbl' for Labels."},
+{"id": 26, "topic": "IDE Components", "question": "Which task is accomplished in the Code editor?", "options": ["Adding forms to the project", "Adding controls to the form", "Adding event procedures to the form", "All of the above"], "answer": "Adding event procedures to the form", "explanation": "The Code Editor is used specifically for writing event procedures and logic."},
+{"id": 27, "topic": "Form Controls", "question": "Which is NOT true about forms and controls in Visual Basic?", "options": ["They are pre-built", "They are graphical objects", "New versions of the classes must be created with each project", "Buttons can be created with the drag and drop method"], "answer": "New versions of the classes must be created with each project", "explanation": "Forms and controls are reusable classes; you don't recreate the classes themselves for each project."},
+{"id": 28, "topic": "Form Controls", "question": "Which property determines whether a control is displayed to the user?", "options": ["Hide", "Show", "Visible", "Enabled"], "answer": "Visible", "explanation": "The 'Visible' property determines if a control can be seen on the interface."},
+{"id": 29, "topic": "Visual Basic Fundamentals", "question": "In event-driven programming an event is generated by:", "options": ["the system", "a user's action", "the program itself", "All of the above"], "answer": "All of the above", "explanation": "Events can be triggered by users, the system, or the program code itself."},
+{"id": 30, "topic": "Visual Basic Fundamentals", "question": "Which is NOT a common control event in Visual Basic?", "options": ["Click", "DoubleClick", "SingleClick", "MouseMove"], "answer": "SingleClick", "explanation": "The standard event for a click is simply called 'Click'."},
+{"id": 31, "topic": "Data Types", "question": "Which is not an integer data type?", "options": ["String", "Byte", "Short", "Long"], "answer": "String", "explanation": "Byte, Short, and Long are numeric types, while String represents text."},
+{"id": 32, "topic": "Data Types", "question": "Which is a numeric data type?", "options": ["Floating point", "Integer", "String", "Both A. and B."], "answer": "Both A. and B.", "explanation": "Floating point and Integer are both representations of numeric data."},
+{"id": 33, "topic": "Variable Declaration", "question": "Which is a valid statement for declaring a variable?", "options": ["Const Sum As Integer", "Const mySum as Integer", "Dim mySum as Integer", "All of the above"], "answer": "Dim mySum as Integer", "explanation": "'Dim' is the correct keyword for declaring variables."},
+{"id": 34, "topic": "Programming Constructs", "question": "The End If statement is required:", "options": ["in all If ... Then statements", "in all If ... Then blocks with Else", "in Single Line statements", "All of the above"], "answer": "in all If ... Then blocks with Else", "explanation": "An 'End If' statement is required to close multi-line (block) If...Then structures."},
+{"id": 35, "topic": "Programming Constructs", "question": "Do... Loop is an iterative statement because it:", "options": ["selects a block of statements to run", "runs the same block of statements repeatedly", "selects a block of statements and runs it repeatedly", "runs the same block of statements twice"], "answer": "runs the same block of statements repeatedly", "explanation": "Iterative statements execute a block of code repeatedly based on a condition."},
+{"id": 36, "topic": "Error Handling", "question": "Which is NOT a type of error programmers look for?", "options": ["Logic errors", "Runtime errors", "Superficial errors", "Syntax errors"], "answer": "Superficial errors", "explanation": "The recognized types are Syntax, Runtime, and Logic errors; 'Superficial' is not one."},
+{"id": 37, "topic": "Error Handling", "question": "Which action will give a runtime error?", "options": ["Dividing by zero", "Assigning the string \"Hello, world\" to an integer variable", "Both A. and B. above", "None of the above."], "answer": "Both A. and B. above", "explanation": "Both dividing by zero and type-mismatch assignments trigger runtime exceptions."},
+{"id": 38, "topic": "Array", "question": "Which of the following will return the number of elements in the array Scores?", "options": ["Scores.Dimension", "Scores.Length", "Scores.Size", "Scores.Number"], "answer": "Scores.Length", "explanation": "The '.Length' property returns the total number of elements in an array."},
+{"id": 39, "topic": "Form Controls", "question": "The color of a button is:", "options": ["one of its properties", "one of its methods", "defined in the project", "not updateable"], "answer": "one of its properties", "explanation": "Visual attributes like colors are properties of the control object."},
+{"id": 40, "topic": "Form Controls", "question": "In Visual Basic, the name of a Label box can be changed in the:", "options": ["property window", "code editor", "Both A. and B. above", "None of the above"], "answer": "property window", "explanation": "The 'Name' property can only be modified at design-time in the Property Window."},
+{"id": 41, "topic": "Form Controls", "question": "To design a form to add two numbers in Visual Basic, the following are important except", "options": ["Label", "Textbox", "Button", "Checkbox"], "answer": "Checkbox", "explanation": "Checkboxes are not required for a simple addition calculator."},
+{"id": 42, "topic": "Variable Declaration", "question": "The following variable declarations are correct EXCEPT", "options": ["Dim number1 As Single", "Dim Sum As Single", "Both A. and B. above", "None of the above"], "answer": "None of the above", "explanation": "Both declarations are correct, so there is no exception here."},
+{"id": 43, "topic": "Error Handling", "question": "The process of checking for and correcting errors in a program code is called", "options": ["sniffing", "debugging", "disinfecting", "inspecting"], "answer": "debugging", "explanation": "Debugging is the process of locating and removing errors from programs."},
+{"id": 44, "topic": "Variable Declaration", "question": "The ___ keyword is used in Visual Basic for variable declaration.", "options": ["Dim", "Var", "Set", "None of the above"], "answer": "Dim", "explanation": "'Dim' is used to declare and allocate storage space for variables."},
+{"id": 45, "topic": "IDE Components", "question": "Visual Basic applications are drawn in the", "options": ["project explorer", "form window", "toolbox", "properties window"], "answer": "form window", "explanation": "The graphical interface is assembled on the Form Window."},
+{"id": 46, "topic": "IDE Components", "question": "The ___ window shows where the form will be displayed relative to the monitor", "options": ["form", "properties", "form layout", "monitor"], "answer": "form layout", "explanation": "The Form Layout window allows positioning of the form on the screen."},
+{"id": 47, "topic": "IDE Components", "question": "The ___ window displays all forms and modules making up your application.", "options": ["project", "properties", "form layout", "form"], "answer": "project", "explanation": "The Project Explorer displays the hierarchical structure of the application."},
+{"id": 48, "topic": "Visual Basic Fundamentals", "question": "In Visual Basic, the Option Explicit statement", "options": ["allows some variable to be left undeclared", "forces us to declare all variables", "automatically declares all variables used in the program", "All of the above"], "answer": "forces us to declare all variables", "explanation": "'Option Explicit' forces the explicit declaration of all variables."},
+{"id": 49, "topic": "Variable Declaration", "question": "Which is the correct statement for defining a constant named PI in Visual Basic?", "options": ["String PI = 3.14159", "Const PI = 3.14159", "Cont PI = 3.14159", "None of the above"], "answer": "Const PI = 3.14159", "explanation": "Constants are declared using the 'Const' keyword."}
+]
     ];
 
     
