@@ -5,3 +5,4 @@ dist/
 .env
 *.clone2.html
 *.clone.html
+admin_page/

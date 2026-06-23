@@ -8,7 +8,22 @@ const COURSE_TOPICS = {
   'FCYS 102': 'Introduction to Windows and Linux OS',
   'FCYS 104': 'Maths for Cyber Security',
   'FCYS 106': 'Security Policy and Legal Environments',
-  'FCYS 110': 'Computer Crime and Online Contract'
+  'FCYS 110': 'Computer Crime and Online Contract',
+  'CSC 102': 'Introduction to Computer Programming',
+  'CHE 102': 'General Chemistry II',
+  'BIO 102': 'General Biology II',
+  'MTH 102': 'Elementary Mathematics II',
+  'PHY 102': 'General Physics II',
+  'MEE 102': 'Engineering Drawing II',
+  'GST 112': 'Nigerian People and Culture',
+  'FGNS 102': 'Integrated Reading and Writing Skills',
+  'AMS 102': 'Basic Mathematics',
+  'AMS 104': 'Principles of Project Management',
+  'BIT 112': 'Fundamentals of Business Info Storage and Retrieval',
+  'BIT 122': 'E-Commerce and E-Business',
+  'FENT 124': 'Basic Financial Literacy',
+  'FMEE 102': 'Engineering Workshop Practice',
+  'FBIT 126': 'Introduction to Business'
 };
 
 function getAIConfigForCourse(courseCode) {
@@ -145,8 +160,10 @@ async function getAIExplanation(qIndex) {
     ? (userAns ? (userAns.response || userAns) : 'Not answered')
     : (userAns || 'Not answered');
 
+  const cleanCode = courseCode.replace(/\s+/g, ' ').trim().toUpperCase();
+  const topic = COURSE_TOPICS[cleanCode] || COURSE_TOPICS[courseCode] || '';
   const systemPrompt = `You are Renance AI, a brilliant academic tutor for FUTA students.
-Explain the following question for a student studying ${courseCode}.
+Explain the following question for a student studying ${courseCode}${topic ? ` (${topic})` : ''}.
 ${isTheory ? `
 Question: "${q.question}"
 Model Answer: "${q.answer}"

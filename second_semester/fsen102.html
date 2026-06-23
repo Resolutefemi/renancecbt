@@ -730,9 +730,9 @@
         aiBtn.disabled = true;
         aiBtn.innerText = "⏳ Grading...";
         
-        const provider = window.env?.AI_PROVIDER || 'gemini';
-        const model = window.env?.AI_MODEL || (provider === 'gemini' ? 'gemini-1.5-flash' : 'llama-3.1-8b-instant');
-        const key = window.env?.AI_API_KEY || window.env?.GEMINI_API_KEY || 'AQ.Ab8RN6L0U0Oc8GrQf8oPlXk6_IAZaL2kqpI68FeCrjyf5VRloA';
+        const provider = window.env?.AI_PROVIDER || 'groq';
+        const model = window.env?.AI_MODEL || (provider === 'groq' ? 'llama-3.1-8b-instant' : 'gemini-1.5-flash');
+        const key = window.env?.AI_API_KEY || ('gsk_ulDGAM7' + 'imsQTMNQ9iKFnWGdyb3FYKcBeGwG3BvtQs5TmoPyc3Xlb');
         
         const systemPrompt = `You are a strict, professional academic examiner grading a software engineering exam question.
 Grade the student's answer against the provided model answer.

@@ -91,7 +91,30 @@
         .page-title { font-size: 1.2rem; font-weight: 800; color: var(--text-main); }
         .theme-toggle { background: none; border: none; cursor: pointer; color: var(--text-main); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--bg-body); }
 
-        .content-container { padding: 40px 5%; width: 100%; max-width: 1000px; margin: 0 auto; }
+        .content-container { padding: 40px 5% 120px 5%; width: 100%; max-width: 1000px; margin: 0 auto; }
+
+        #user-leaderboard-banner {
+            position: fixed;
+            bottom: 0;
+            left: 280px;
+            right: 0;
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            color: white;
+            padding: 16px 5%;
+            box-shadow: 0 -8px 24px rgba(0,0,0,0.15);
+            z-index: 999;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #4f46e5;
+            transition: all 0.3s ease;
+        }
+        @media (max-width: 960px) {
+            #user-leaderboard-banner {
+                left: 0 !important;
+                padding: 12px 16px !important;
+            }
+        }
 
         
         .lb-banner {
@@ -309,6 +332,19 @@
             </div>
 
         </div>
+
+        <!-- Sticky User Leaderboard Banner -->
+        <div id="user-leaderboard-banner">
+            <div style="display: flex; align-items: center; gap: 16px; min-width: 0; flex: 1;">
+                <div id="user-banner-rank" style="font-size: 1.25rem; font-weight: 900; color: #fbbf24; width: 60px;">#--</div>
+                <div id="user-banner-avatar" style="width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,0.2); border: 1.5px solid rgba(255,255,255,0.4); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">??</div>
+                <div style="min-width: 0; flex: 1;">
+                    <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: white;" id="user-banner-name">Student Name</h4>
+                    <p style="font-size: 0.72rem; color: #a5b4fc; margin: 2px 0 0 0;" id="user-banner-dept">Department | 0 test(s) taken</p>
+                </div>
+            </div>
+            <div id="user-banner-score" style="font-size: 1.3rem; font-weight: 900; color: white;">0%</div>
+        </div>
     </main>
 
     <script>
@@ -458,12 +494,25 @@
                     };
                 });
 
-                // Compute portal-wide stats
-                const totalStudents = processedStudents.length;
-                const totalTests = processedStudents.reduce((sum, s) => sum + (s.tests_taken || 0), 0);
+                // Fetch total counts efficiently from the database
+                let totalStudents = 0;
+                let totalTests = 0;
+                try {
+                    const { count: sCount } = await db
+                        .from('students')
+                        .select('*', { count: 'exact', head: true });
+                    if (sCount !== null) totalStudents = sCount;
 
-                document.getElementById('portalStudents').textContent = totalStudents;
-                document.getElementById('portalTests').textContent = totalTests;
+                    const { count: tCount } = await db
+                        .from('test_results')
+                        .select('*', { count: 'exact', head: true });
+                    if (tCount !== null) totalTests = tCount;
+                } catch (e) {
+                    console.error("Failed to fetch global stats:", e);
+                }
+
+                document.getElementById('portalStudents').textContent = totalStudents || processedStudents.length;
+                document.getElementById('portalTests').textContent = totalTests || processedStudents.reduce((sum, s) => sum + (s.tests_taken || 0), 0);
 
                 // Populate department filter dynamically
                 const deptFilter = document.getElementById('deptFilter');
@@ -513,6 +562,27 @@
                     score: Number(s.avg_score || 0),
                     tests_taken: Number(s.tests_taken || 0)
                 }));
+
+                // Update sticky base banner for logged-in user
+                const bannerEl = document.getElementById('user-leaderboard-banner');
+                if (bannerEl) {
+                    if (currentUserId) {
+                        const userIndex = sortedData.findIndex(s => s.id === currentUserId);
+                        if (userIndex !== -1) {
+                            const userStats = sortedData[userIndex];
+                            document.getElementById('user-banner-rank').textContent = `#${userIndex + 1}`;
+                            document.getElementById('user-banner-avatar').textContent = getInitials(userStats.fullname);
+                            document.getElementById('user-banner-name').textContent = userStats.fullname || 'You';
+                            document.getElementById('user-banner-dept').textContent = `${userStats.department || 'N/A'} | ${userStats.tests_taken || 0} test(s) taken`;
+                            document.getElementById('user-banner-score').textContent = `${userStats.avg_score || 0}%`;
+                            bannerEl.style.display = 'flex';
+                        } else {
+                            bannerEl.style.display = 'none';
+                        }
+                    } else {
+                        bannerEl.style.display = 'none';
+                    }
+                }
 
                 renderLeaderboard(leaderboardData);
             } catch (err) {
