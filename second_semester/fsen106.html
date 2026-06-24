@@ -4717,7 +4717,7 @@
         dash.innerHTML = '';
 
         const totalQ = MASTER_POOL.length;
-        const partSize = 10;
+        const partSize = 50;
         const numParts = Math.ceil(totalQ / partSize);
 
         const randomBox = document.createElement('div');
@@ -4780,8 +4780,8 @@
             const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
             pool = shuffleArray(pool).slice(0, qty);
         } else {
-            const start = (partNum - 1) * 10;
-            pool = pool.slice(start, start + 10);
+            const start = (partNum - 1) * 50;
+            pool = pool.slice(start, start + 50);
         }
 
         if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);

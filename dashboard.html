@@ -1100,6 +1100,13 @@
         
         function filterCourses() { renderCourses(document.getElementById('courseSearch').value); }
 
+        // Save dashboard scroll position before navigating to a course, so the
+        // course page's "back" button can return the user to the same spot.
+        function goToCourse(url) {
+            sessionStorage.setItem('dashboardScrollY', String(window.scrollY));
+            window.location.href = url;
+        }
+
         function renderCourses(filterText = '') {
             const grid = document.getElementById('courseGrid');
             grid.innerHTML = '';
@@ -1141,16 +1148,16 @@
                             </div>
                             <div class="card-footer-dual">
                                 <button class="dual-btn dual-btn-primary"
-                                    onclick="event.stopPropagation();window.location.href='${practiceUrl}'">
+                                    onclick="event.stopPropagation();goToCourse('${practiceUrl}')">
                                     ⚡ PRACTICE
                                 </button>
                                 <button class="dual-btn dual-btn-secondary"
-                                    onclick="event.stopPropagation();window.location.href='${studyUrl}'">
+                                    onclick="event.stopPropagation();goToCourse('${studyUrl}')">
                                     📖 STUDY
                                 </button>
                             </div>
                         `;
-                        card.onclick = () => { if (course.isReady) window.location.href = practiceUrl; };
+                        card.onclick = () => { if (course.isReady) goToCourse(practiceUrl); };
                     } else if (studyOnly) {
                         // Study only — single footer link styled like "START LEARNING"
                         card.innerHTML = `
@@ -1166,7 +1173,7 @@
                                 <i data-lucide="chevron-right" size="14"></i>
                             </div>
                         `;
-                        card.onclick = () => { if (course.isReady) window.location.href = studyUrl; };
+                        card.onclick = () => { if (course.isReady) goToCourse(studyUrl); };
                     } else {
                         // Practice only (default)
                         card.innerHTML = `
@@ -1183,7 +1190,7 @@
                             </div>
                         `;
                         card.onclick = () => {
-                            if (course.isReady) window.location.href = practiceUrl;
+                            if (course.isReady) goToCourse(practiceUrl);
                             else alert('This course is coming soon! ⏳');
                         };
                     }
@@ -1518,6 +1525,12 @@
             loadUserStats();
             fetchDashboardLeaderboard();
             if (window.lucide) lucide.createIcons();
+            // Restore scroll position saved by course pages
+            const savedScroll = sessionStorage.getItem('dashboardScrollY');
+            if (savedScroll) {
+                setTimeout(() => window.scrollTo(0, parseInt(savedScroll, 10)), 100);
+                sessionStorage.removeItem('dashboardScrollY');
+            }
         });
     </script>
 
