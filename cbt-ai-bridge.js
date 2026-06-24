@@ -10,6 +10,7 @@ const COURSE_TOPICS = {
   'FCYS 106': 'Security Policy and Legal Environments',
   'FCYS 110': 'Computer Crime and Online Contract',
   'CSC 102': 'Introduction to Computer Programming',
+  'DTS 104': 'Introduction to Data Analysis',
   'CHE 102': 'General Chemistry II',
   'BIO 102': 'General Biology II',
   'MTH 102': 'Elementary Mathematics II',

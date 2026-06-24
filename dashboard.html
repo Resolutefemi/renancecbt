@@ -1003,7 +1003,7 @@
         const courses2 = [
             { id: 'CSC 102', title: 'INTRODUCTION TO COMPUTER PROGRAMMING', icon: 'cpu',        isReady: true, semester: 2, study: false, practice: true  },
             { id: 'CHE 102', title: 'GENERAL CHEMISTRY II',                 icon: 'beaker',     isReady: true, semester: 2, study: false, practice: true  },
-            { id: 'DTS 104', title: 'Introduction to Data Analysis',        icon: 'bar-chart',     isReady: true, semester: 2, study: false, practice: true  },
+            { id: 'DTS 104', title: 'Introduction to Data Analysis',        icon: 'bar-chart',     isReady: true, semester: 2, study: true, practice: true  },
 
             { id: 'BIO 102',  title: 'GENERAL BIOLOGY II',                 icon: 'dna',        isReady: true, semester: 2, study: false, practice: true  },
             { id: 'FSEN 102', title: 'SOFTWARE EXPERIMENTAL LAB II',       icon: 'code',       isReady: true, semester: 2, study: true, practice: true  },
@@ -1046,6 +1046,12 @@
         function getStudyUrl(course) {
             if (course.id === 'FSEN 104') {
                 return 'fsen104.pdf';
+            }
+            if (course.id === 'FSEN 106') {
+                return 'fsen106.pdf';
+            }
+            if (course.id === 'DTS 104') {
+                return 'dts104.pdf';
             }
             const folder = course.semester === 1 ? 'first_semester/' : 'second_semester/';
             return folder + course.id.toLowerCase().replace(/\s+/g, '') + 's.html';
