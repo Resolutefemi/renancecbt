@@ -4827,7 +4827,7 @@
         optBox.innerHTML  = '';
         feedArea.innerHTML = '';
 
-        q.options.forEach((val, idx) => {
+        if (q.options && q.options.length) q.options.forEach((val, idx) => {
             const label = labels[idx] || (idx + 1);
             const btn   = document.createElement('button');
             btn.className = 'option-btn';
@@ -4877,7 +4877,7 @@
                     ⚠ Not answered. Correct: <strong>${q.answer}</strong>
                 </div>${expHtml}`;
             }
-        } else if (activeMode === 'practice' && hasAnswered) {
+        } else if (activeMode === 'practice' && hasAnswered && !q.isTheory) {
             const ok = userAns === q.answer;
             feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
                 ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
