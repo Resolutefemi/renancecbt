@@ -159,11 +159,8 @@
         </div>
     </div>
     <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-        <button class="btn" style="background:var(--accent); display:none; padding:7px 14px; font-size:0.85rem;" id="resume-btn" onclick="resumeExam()">
-            <i class="fa-solid fa-rotate-right"></i> Resume
-        </button>
-        <button class="btn" style="background:#64748b; padding:7px 14px;" onclick="document.body.classList.toggle('dark-mode')">
-            <i class="fa-solid fa-moon"></i>
+        <button class="btn" style="background:var(--primary); padding:7px 14px; font-size:0.85rem;" onclick="document.getElementById('course-leaderboard').scrollIntoView({behavior:'smooth'})">
+            <i class="fa-solid fa-trophy"></i> Leaderboard
         </button>
     </div>
 </nav>
@@ -2446,6 +2443,122 @@ Provide your response strictly in the following JSON format:
             }
         }
 
+
+        // ═════════════════════════════════════════════════════════════════
+        // PER-COURSE LEADERBOARD
+        // ═════════════════════════════════════════════════════════════════
+        async function loadCourseLeaderboard() {
+            const lbContent = document.getElementById('lb-content');
+            const lbStatus = document.getElementById('lb-status');
+            const lbCourseName = document.getElementById('lb-course-name');
+            if (lbCourseName) lbCourseName.innerText = COURSE_CODE;
+            if (!lbContent) return;
+
+            try {
+                // Fetch all test_results for this course
+                const { data: results, error: rErr } = await db
+                    .from('test_results')
+                    .select('student_id, score')
+                    .eq('course_id', COURSE_CODE);
+
+                if (rErr) throw rErr;
+                if (!results || results.length === 0) {
+                    lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
+                    lbStatus.innerText = '0 attempts';
+                    return;
+                }
+
+                // Aggregate by student: avg score + count
+                const byStudent = {};
+                results.forEach(r => {
+                    if (!byStudent[r.student_id]) {
+                        byStudent[r.student_id] = { total: 0, count: 0 };
+                    }
+                    byStudent[r.student_id].total += Number(r.score);
+                    byStudent[r.student_id].count += 1;
+                });
+
+                // Fetch student profiles
+                const studentIds = Object.keys(byStudent);
+                const { data: students, error: sErr } = await db
+                    .from('students')
+                    .select('id, fullname, department, matric')
+                    .in('id', studentIds);
+
+                // Build leaderboard rows
+                const rows = studentIds.map(sid => {
+                    const agg = byStudent[sid];
+                    const avg = Math.round(agg.total / agg.count);
+                    const student = students ? students.find(s => s.id === sid) : null;
+                    return {
+                        fullname: student ? student.fullname : 'Anonymous',
+                        department: student ? (student.department || '—') : '—',
+                        matric: student ? (student.matric || '—') : '—',
+                        avg: avg,
+                        tests: agg.count
+                    };
+                });
+
+                // Sort by avg score desc, then by tests desc
+                rows.sort((a, b) => b.avg - a.avg || b.tests - a.tests);
+
+                // Get current user id for highlighting
+                let currentUserId = null;
+                try {
+                    const { data: { user } } = await db.auth.getUser();
+                    if (user) currentUserId = user.id;
+                } catch (e) {}
+
+                // Render top 20
+                const medals = ['🥇', '🥈', '🥉'];
+                const topRows = rows.slice(0, 20);
+                let html = '<table style="width:100%; border-collapse:collapse; font-size:0.88rem;">';
+                html += '<thead><tr style="border-bottom:2px solid var(--border);">';
+                html += '<th style="text-align:left; padding:8px; color:var(--text-muted); font-size:0.78rem;">#</th>';
+                html += '<th style="text-align:left; padding:8px; color:var(--text-muted); font-size:0.78rem;">Name</th>';
+                html += '<th style="text-align:left; padding:8px; color:var(--text-muted); font-size:0.78rem; display:none;" class="lb-dept-col">Dept</th>';
+                html += '<th style="text-align:center; padding:8px; color:var(--text-muted); font-size:0.78rem;">Tests</th>';
+                html += '<th style="text-align:right; padding:8px; color:var(--text-muted); font-size:0.78rem;">Avg Score</th>';
+                html += '</tr></thead><tbody>';
+                topRows.forEach((row, i) => {
+                    const rank = i + 1;
+                    const medal = medals[i] || '';
+                    const highlight = row.id === currentUserId ? 'background:rgba(124,58,237,0.08);' : '';
+                    html += `<tr style="border-bottom:1px solid var(--border); ${highlight}">`;
+                    html += `<td style="padding:8px; font-weight:700;">${medal || rank}</td>`;
+                    html += `<td style="padding:8px;">${row.fullname}<br><span style="font-size:0.72rem; color:var(--text-muted);">${row.matric}</span></td>`;
+                    html += `<td style="padding:8px; display:none;" class="lb-dept-col">${row.department}</td>`;
+                    html += `<td style="padding:8px; text-align:center;">${row.tests}</td>`;
+                    html += `<td style="padding:8px; text-align:right; font-weight:700; color:${row.avg >= 70 ? '#10b981' : row.avg >= 40 ? '#f59e0b' : '#ef4444'};">${row.avg}%</td>`;
+                    html += '</tr>';
+                });
+                html += '</tbody></table>';
+
+                // If current user is not in top 20, show their rank below
+                if (currentUserId) {
+                    const userRowIdx = rows.findIndex(r => r.id === currentUserId);
+                    if (userRowIdx >= 20) {
+                        const userRow = rows[userRowIdx];
+                        html += `<div style="margin-top:10px; padding:10px; background:rgba(124,58,237,0.08); border-radius:8px; display:flex; justify-content:space-between; font-size:0.85rem;">
+                            <span><strong>Your Rank: #${userRowIdx + 1}</strong> — ${userRow.fullname}</span>
+                            <span><strong style="color:${userRow.avg >= 70 ? '#10b981' : userRow.avg >= 40 ? '#f59e0b' : '#ef4444'};">${userRow.avg}%</strong> (${userRow.tests} tests)</span>
+                        </div>`;
+                    }
+                }
+
+                lbContent.innerHTML = html;
+                lbStatus.innerText = `${rows.length} students · ${results.length} attempts`;
+            } catch (e) {
+                console.error('Leaderboard error:', e);
+                lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
+                lbStatus.innerText = 'Error';
+            }
+        }
+
+        // Load leaderboard after page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(loadCourseLeaderboard, 500);
+        });
 </script>
 </body>
 </html>
