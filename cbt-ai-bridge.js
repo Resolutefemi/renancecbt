@@ -6,7 +6,6 @@ const COURSE_TOPICS = {
   'FSEN 102': 'Software Experimental Lab II',
   'FSEN 104': 'Software Feasibility Study',
   'FSEN 106': 'Software Requirements Fundamentals',
-  'MTH 102': 'Elementary Mathematics II',
   'PHY 102': 'General Physics II',
   'GST 112': 'Nigerian People and Culture',
   'FGNS 102': 'Integrated Reading and Writing Skills',
