@@ -299,27 +299,3883 @@
     sendHeartbeat();
     setInterval(sendHeartbeat, 2 * 60 * 1000);
 
-    const MASTER_POOL = [
-        { "id": 1, "question": "Which of the following is the basic unit of heredity?", "options": ["Gene", "Chromosome", "DNA", "RNA"], "answer": "Gene", "explanation": "A gene is the basic physical and functional unit of heredity made up of DNA." },
-        { "id": 2, "question": "What is the process by which organisms with favorable traits are more likely to reproduce?", "options": ["Natural selection", "Genetic drift", "Artificial selection", "Gene flow"], "answer": "Natural selection", "explanation": "Natural selection is the differential survival and reproduction of individuals due to differences in phenotype." },
-        { "id": 3, "question": "The physical appearance of an organism as determined by its genetic makeup is called its ________.", "options": ["Phenotype", "Genotype", "Allele", "Locus"], "answer": "Phenotype", "explanation": "Phenotype refers to the observable physical properties of an organism, whereas genotype refers to its genetic makeup." },
-        { "id": 4, "question": "A cross between two individuals that are heterozygous for one gene is called a ________ cross.", "options": ["Monohybrid", "Dihybrid", "Testcross", "Backcross"], "answer": "Monohybrid", "explanation": "A monohybrid cross is a genetic cross between parents that differ in only one trait." },
-        { "id": 5, "question": "Which organelle is responsible for cellular respiration in both plants and animals?", "options": ["Mitochondria", "Chloroplast", "Nucleus", "Ribosome"], "answer": "Mitochondria", "explanation": "Mitochondria are the powerhouses of the cell where ATP is produced via cellular respiration." },
-        { "id": 6, "question": "What is the primary pigment used by plants to absorb light during photosynthesis?", "options": ["Chlorophyll", "Carotenoid", "Phycobilin", "Xanthophyll"], "answer": "Chlorophyll", "explanation": "Chlorophyll is the green pigment in chloroplasts that absorbs light energy for photosynthesis." },
-        { "id": 7, "question": "Double fertilization is a characteristic feature of which group of plants?", "options": ["Angiosperms", "Gymnosperms", "Bryophytes", "Pteridophytes"], "answer": "Angiosperms", "explanation": "Double fertilization is a complex fertilization mechanism unique to flowering plants (angiosperms)." },
-        { "id": 8, "question": "In genetics, an organism with two identical alleles for a character is said to be ________.", "options": ["Homozygous", "Heterozygous", "Hemizygous", "Dioecious"], "answer": "Homozygous", "explanation": "Homozygous means having identical alleles for a single gene (e.g., AA or aa)." },
-        { "id": 9, "question": "The movement of water through a selectively permeable membrane from a region of higher water potential to a region of lower water potential is called ________.", "options": ["Osmosis", "Diffusion", "Active transport", "Facilitated diffusion"], "answer": "Osmosis", "explanation": "Osmosis is the specific movement of water molecules across a selectively permeable membrane." },
-        { "id": 10, "question": "Which plant hormone is primarily responsible for fruit ripening?", "options": ["Ethylene", "Auxin", "Gibberellin", "Cytokinin"], "answer": "Ethylene", "explanation": "Ethylene is a gaseous plant hormone that promotes fruit ripening and leaf abscission." },
-        { "id": 11, "question": "Which of the following is a nitrogenous waste product excreted by mammals?", "options": ["Urea", "Uric acid", "Ammonia", "Creatinine"], "answer": "Urea", "explanation": "Mammals excrete nitrogenous waste primarily in the form of urea, which is soluble and relatively non-toxic." },
-        { "id": 12, "question": "What is the functional unit of the human kidney?", "options": ["Nephron", "Neuron", "Alveolus", "Glomerulus"], "answer": "Nephron", "explanation": "The nephron is the microscopic structural and functional unit of the kidney." },
-        { "id": 13, "question": "The relationship between two organisms where both benefit is known as ________.", "options": ["Mutualism", "Commensalism", "Parasitism", "Competition"], "answer": "Mutualism", "explanation": "Mutualism is an ecological interaction where both species benefit from the relationship." },
-        { "id": 14, "question": "In an ecosystem, organisms that consume producers are classified as ________.", "options": ["Primary consumers", "Secondary consumers", "Tertiary consumers", "Decomposers"], "answer": "Primary consumers", "explanation": "Primary consumers are herbivores that eat primary producers (plants)." },
-        { "id": 15, "question": "Which of the following carries oxygen-rich blood from the lungs to the heart?", "options": ["Pulmonary vein", "Pulmonary artery", "Aorta", "Vena cava"], "answer": "Pulmonary vein", "explanation": "The pulmonary veins carry oxygenated blood from the lungs to the left atrium of the heart." },
-        { "id": 16, "question": "The process of copying a gene's DNA sequence into a sequence of RNA is called ________.", "options": ["Transcription", "Translation", "Replication", "Translocation"], "answer": "Transcription", "explanation": "Transcription is the first step of gene expression, where DNA is transcribed into mRNA." },
-        { "id": 17, "question": "How many chromosomes are found in a normal human somatic cell?", "options": ["46", "23", "48", "44"], "answer": "46", "explanation": "Normal human somatic cells contain 46 chromosomes (23 pairs)." },
-        { "id": 18, "question": "Which biological macromolecule stores genetic information?", "options": ["DNA", "RNA", "Protein", "Lipid"], "answer": "DNA", "explanation": "Deoxyribonucleic acid (DNA) is the primary molecule that stores genetic instructions in cells." },
-        { "id": 19, "question": "What is the primary site of nutrient absorption in the human digestive system?", "options": ["Small intestine", "Stomach", "Large intestine", "Esophagus"], "answer": "Small intestine", "explanation": "The small intestine has villi and microvilli which maximize surface area for nutrient absorption." },
-        { "id": 20, "question": "The concept of inheritance of acquired characteristics was proposed by ________.", "options": ["Jean-Baptiste Lamarck", "Charles Darwin", "Gregor Mendel", "Alfred Russel Wallace"], "answer": "Jean-Baptiste Lamarck", "explanation": "Lamarck proposed that traits acquired during an organism's lifetime could be inherited by its offspring." }
+        const MASTER_POOL = [
+        {
+                "id": 1,
+                "question": "Which of the following is a characteristic feature of Echinodermata?",
+                "options": [
+                        "Bilateral symmetry",
+                        "Radial symmetry",
+                        "Exoskeleton made of chitin",
+                        "Closed circulatory system"
+                ],
+                "answer": "Radial symmetry",
+                "explanation": "The correct answer is: Radial symmetry."
+        },
+        {
+                "id": 2,
+                "question": "What type of skeleton do echinoderms possess?",
+                "options": [
+                        "Exoskeleton",
+                        "Internal calcareous endoskeleton",
+                        "Hydrostatic skeleton",
+                        "Cartilaginous skeleton"
+                ],
+                "answer": "Internal calcareous endoskeleton",
+                "explanation": "The correct answer is: Internal calcareous endoskeleton."
+        },
+        {
+                "id": 3,
+                "question": "Which structure is primarily used for locomotion in echinoderms?",
+                "options": [
+                        "Tube feet",
+                        "Tentacles",
+                        "Mantle",
+                        "Radula"
+                ],
+                "answer": "Tube feet",
+                "explanation": "The correct answer is: Tube feet."
+        },
+        {
+                "id": 4,
+                "question": "Which class of echinoderms is known for its ability to regenerate lost limbs?",
+                "options": [
+                        "Asteroidea",
+                        "Ophiuroidea",
+                        "Echinoidea",
+                        "Holothuroidea"
+                ],
+                "answer": "Asteroidea",
+                "explanation": "The correct answer is: Asteroidea."
+        },
+        {
+                "id": 5,
+                "question": "In which type of environment are most echinoderms found?",
+                "options": [
+                        "Freshwater",
+                        "Terrestrial",
+                        "Marine",
+                        "Brackish water"
+                ],
+                "answer": "Marine",
+                "explanation": "The correct answer is: Marine."
+        },
+        {
+                "id": 6,
+                "question": "Which echinoderm class includes sea urchins and sand dollars?",
+                "options": [
+                        "Asteroidea",
+                        "Crinoidea",
+                        "Echinoidea",
+                        "Holothuroidea"
+                ],
+                "answer": "Echinoidea",
+                "explanation": "The correct answer is: Echinoidea."
+        },
+        {
+                "id": 7,
+                "question": "The water vascular system in echinoderms is primarily involved in:",
+                "options": [
+                        "Digestion",
+                        "Circulation",
+                        "Locomotion",
+                        "Respiration"
+                ],
+                "answer": "Locomotion",
+                "explanation": "The correct answer is: Locomotion."
+        },
+        {
+                "id": 8,
+                "question": "What is the primary function of the madreporite in echinoderms?",
+                "options": [
+                        "Feeding",
+                        "Gas exchange",
+                        "Water entry into the water vascular system",
+                        "Sensory reception"
+                ],
+                "answer": "Water entry into the water vascular system",
+                "explanation": "The correct answer is: Water entry into the water vascular system."
+        },
+        {
+                "id": 9,
+                "question": "Which class of echinoderms is characterized by having a central disc and multiple flexible arms?",
+                "options": [
+                        "Asteroidea",
+                        "Ophiuroidea",
+                        "Echinoidea",
+                        "Holothuroidea"
+                ],
+                "answer": "Ophiuroidea",
+                "explanation": "The correct answer is: Ophiuroidea."
+        },
+        {
+                "id": 10,
+                "question": "Which of the following structures is NOT found in echinoderms?",
+                "options": [
+                        "Tube feet",
+                        "Radula",
+                        "Madreporite",
+                        "Pedicellariae"
+                ],
+                "answer": "Radula",
+                "explanation": "The correct answer is: Radula."
+        },
+        {
+                "id": 11,
+                "question": "How do most echinoderms reproduce?",
+                "options": [
+                        "Asexually",
+                        "Internally",
+                        "Externally",
+                        "By budding"
+                ],
+                "answer": "Externally",
+                "explanation": "The correct answer is: Externally."
+        },
+        {
+                "id": 12,
+                "question": "Which echinoderm class includes sea cucumbers?",
+                "options": [
+                        "Asteroidea",
+                        "Echinoidea",
+                        "Holothuroidea",
+                        "Crinoidea"
+                ],
+                "answer": "Holothuroidea",
+                "explanation": "The correct answer is: Holothuroidea."
+        },
+        {
+                "id": 13,
+                "question": "In echinoderms, what is the role of pedicellariae?",
+                "options": [
+                        "Defense and cleaning of the surface",
+                        "Feeding",
+                        "Locomotion",
+                        "Sensory perception"
+                ],
+                "answer": "Defense and cleaning of the surface",
+                "explanation": "The correct answer is: Defense and cleaning of the surface."
+        },
+        {
+                "id": 14,
+                "question": "Which of the following is a distinguishing feature of the class Ophiuroidea?",
+                "options": [
+                        "Central disc with radiating arms",
+                        "Large, hard shell",
+                        "Long, flexible tentacles",
+                        "Calcareous plates"
+                ],
+                "answer": "Central disc with radiating arms",
+                "explanation": "The correct answer is: Central disc with radiating arms."
+        },
+        {
+                "id": 15,
+                "question": "What type of symmetry do echinoderm larvae typically exhibit?",
+                "options": [
+                        "Radial symmetry",
+                        "Bilateral symmetry",
+                        "Asymmetry",
+                        "Pentamerous symmetry"
+                ],
+                "answer": "Bilateral symmetry",
+                "explanation": "The correct answer is: Bilateral symmetry."
+        },
+        {
+                "id": 16,
+                "question": "Which structure in echinoderms functions in respiration and gas exchange?",
+                "options": [
+                        "Tube feet",
+                        "Madreporite",
+                        "Dermal branchiae",
+                        "Radula"
+                ],
+                "answer": "Dermal branchiae",
+                "explanation": "The correct answer is: Dermal branchiae."
+        },
+        {
+                "id": 17,
+                "question": "Which class of echinoderms is characterized by feather-like arms used for filter feeding?",
+                "options": [
+                        "Asteroidea",
+                        "Crinoidea",
+                        "Echinoidea",
+                        "Holothuroidea"
+                ],
+                "answer": "Crinoidea",
+                "explanation": "The correct answer is: Crinoidea."
+        },
+        {
+                "id": 18,
+                "question": "Echinoderms have a unique feature in their anatomy called:",
+                "options": [
+                        "Metamerism",
+                        "Coelom",
+                        "Water vascular system",
+                        "Exoskeleton"
+                ],
+                "answer": "Water vascular system",
+                "explanation": "The correct answer is: Water vascular system."
+        },
+        {
+                "id": 19,
+                "question": "The primary function of tube feet in echinoderms is:",
+                "options": [
+                        "Feeding",
+                        "Respiration",
+                        "Locomotion and grasping",
+                        "Sensory perception"
+                ],
+                "answer": "Locomotion and grasping",
+                "explanation": "The correct answer is: Locomotion and grasping."
+        },
+        {
+                "id": 20,
+                "question": "Which echinoderm class is known for its ability to rapidly regenerate lost arms and body parts?",
+                "options": [
+                        "Crinoidea",
+                        "Ophiuroidea",
+                        "Asteroidea",
+                        "Holothuroidea"
+                ],
+                "answer": "Ophiuroidea",
+                "explanation": "The correct answer is: Ophiuroidea."
+        },
+        {
+                "id": 21,
+                "question": "Which of the following echinoderm classes includes the sea lilies and feather stars?",
+                "options": [
+                        "Holothuroidea",
+                        "Crinoidea",
+                        "Echinoidea",
+                        "Asteroidea"
+                ],
+                "answer": "Crinoidea",
+                "explanation": "The correct answer is: Crinoidea."
+        },
+        {
+                "id": 22,
+                "question": "Echinoderms possess a unique feature in their body plan called:",
+                "options": [
+                        "Radula",
+                        "Tube feet",
+                        "Pentamerous symmetry",
+                        "Exoskeleton"
+                ],
+                "answer": "Pentamerous symmetry",
+                "explanation": "The correct answer is: Pentamerous symmetry."
+        },
+        {
+                "id": 23,
+                "question": "The digestive system of echinoderms is primarily located in the:",
+                "options": [
+                        "Central disc",
+                        "Arms",
+                        "Water vascular system",
+                        "Body cavity"
+                ],
+                "answer": "Central disc",
+                "explanation": "The correct answer is: Central disc."
+        },
+        {
+                "id": 24,
+                "question": "Which echinoderm class includes the basket stars and brittle stars?",
+                "options": [
+                        "Asteroidea",
+                        "Ophiuroidea",
+                        "Echinoidea",
+                        "Holothuroidea"
+                ],
+                "answer": "Ophiuroidea",
+                "explanation": "The correct answer is: Ophiuroidea."
+        },
+        {
+                "id": 25,
+                "question": "In echinoderms, the madreporite is located on the:",
+                "options": [
+                        "Central disc",
+                        "Arm",
+                        "Aboral surface",
+                        "Oral surface"
+                ],
+                "answer": "Aboral surface",
+                "explanation": "The correct answer is: Aboral surface."
+        },
+        {
+                "id": 26,
+                "question": "Which echinoderm class is known for having a soft, elongated body with reduced or absent calcareous plates?",
+                "options": [
+                        "Crinoidea",
+                        "Holothuroidea",
+                        "Echinoidea",
+                        "Asteroidea"
+                ],
+                "answer": "Holothuroidea",
+                "explanation": "The correct answer is: Holothuroidea."
+        },
+        {
+                "id": 27,
+                "question": "What is the primary function of the echinoderm's ampullae?",
+                "options": [
+                        "Circulation",
+                        "Respiration",
+                        "Locomotion",
+                        "Feeding"
+                ],
+                "answer": "Locomotion",
+                "explanation": "The correct answer is: Locomotion."
+        },
+        {
+                "id": 28,
+                "question": "Which class of echinoderms has a tough, leathery skin and an elongated body shape?",
+                "options": [
+                        "Asteroidea",
+                        "Echinoidea",
+                        "Holothuroidea",
+                        "Crinoidea"
+                ],
+                "answer": "Holothuroidea",
+                "explanation": "The correct answer is: Holothuroidea."
+        },
+        {
+                "id": 29,
+                "question": "Echinoderms' ability to regenerate lost body parts is mainly due to their:",
+                "options": [
+                        "Simple nervous system",
+                        "Regenerative capabilities",
+                        "Calcareous endoskeleton",
+                        "Water vascular system"
+                ],
+                "answer": "Regenerative capabilities",
+                "explanation": "The correct answer is: Regenerative capabilities."
+        },
+        {
+                "id": 30,
+                "question": "The primary role of the water vascular system in echinoderms is:",
+                "options": [
+                        "Digestion",
+                        "Circulation",
+                        "Locomotion and feeding",
+                        "Reproduction\nQuestions on Characteristics of Mollusca"
+                ],
+                "answer": "Locomotion and feeding",
+                "explanation": "The correct answer is: Locomotion and feeding."
+        },
+        {
+                "id": 31,
+                "question": "What is a common feature of mollusca?",
+                "options": [
+                        "Radial symmetry",
+                        "Segmentation",
+                        "Bilateral symmetry",
+                        "Exoskeleton"
+                ],
+                "answer": "Bilateral symmetry",
+                "explanation": "The correct answer is: Bilateral symmetry."
+        },
+        {
+                "id": 32,
+                "question": "Which of the following structures is unique to mollusks?",
+                "options": [
+                        "Water vascular system",
+                        "Tube feet",
+                        "Radula",
+                        "Madreporite"
+                ],
+                "answer": "Radula",
+                "explanation": "The correct answer is: Radula."
+        },
+        {
+                "id": 33,
+                "question": "The body of a mollusk is typically divided into how many main regions?",
+                "options": [
+                        "Two",
+                        "Three",
+                        "Four",
+                        "Five"
+                ],
+                "answer": "Three",
+                "explanation": "The correct answer is: Three."
+        },
+        {
+                "id": 34,
+                "question": "Which class of mollusks includes snails and slugs?",
+                "options": [
+                        "Bivalvia",
+                        "Cephalopoda",
+                        "Gastropoda",
+                        "Polyplacophora"
+                ],
+                "answer": "Gastropoda",
+                "explanation": "The correct answer is: Gastropoda."
+        },
+        {
+                "id": 35,
+                "question": "Which structure in mollusks secretes the shell?",
+                "options": [
+                        "Mantle",
+                        "Radula",
+                        "Foot",
+                        "Visceral mass"
+                ],
+                "answer": "Mantle",
+                "explanation": "The correct answer is: Mantle."
+        },
+        {
+                "id": 36,
+                "question": "Which class of mollusks is characterized by having two shells hinged together?",
+                "options": [
+                        "Gastropoda",
+                        "Bivalvia",
+                        "Cephalopoda",
+                        "Scaphopoda"
+                ],
+                "answer": "Bivalvia",
+                "explanation": "The correct answer is: Bivalvia."
+        },
+        {
+                "id": 37,
+                "question": "Which mollusks are known for their complex eyes and high intelligence?",
+                "options": [
+                        "Bivalves",
+                        "Gastropods",
+                        "Cephalopods",
+                        "Chitons"
+                ],
+                "answer": "Cephalopods",
+                "explanation": "The correct answer is: Cephalopods."
+        },
+        {
+                "id": 38,
+                "question": "What is the primary function of the radula in mollusks?",
+                "options": [
+                        "Locomotion",
+                        "Feeding",
+                        "Respiration",
+                        "Reproduction"
+                ],
+                "answer": "Feeding",
+                "explanation": "The correct answer is: Feeding."
+        },
+        {
+                "id": 39,
+                "question": "Which class of mollusks is known for its eight overlapping dorsal plates?",
+                "options": [
+                        "Gastropoda",
+                        "Bivalvia",
+                        "Polyplacophora",
+                        "Cephalopoda"
+                ],
+                "answer": "Polyplacophora",
+                "explanation": "The correct answer is: Polyplacophora."
+        },
+        {
+                "id": 40,
+                "question": "In which mollusk class would you find the common clam?",
+                "options": [
+                        "Gastropoda",
+                        "Bivalvia",
+                        "Cephalopoda",
+                        "Scaphopoda"
+                ],
+                "answer": "Bivalvia",
+                "explanation": "The correct answer is: Bivalvia."
+        },
+        {
+                "id": 41,
+                "question": "Which mollusk structure is responsible for movement in most species?",
+                "options": [
+                        "Mantle",
+                        "Foot",
+                        "Shell",
+                        "Radula"
+                ],
+                "answer": "Mantle",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 42,
+                "question": "Which mollusk class includes squid and octopuses?",
+                "options": [
+                        "Gastropoda",
+                        "Bivalvia",
+                        "Cephalopoda",
+                        "Polyplacophora"
+                ],
+                "answer": "Cephalopoda",
+                "explanation": "The correct answer is: Cephalopoda."
+        },
+        {
+                "id": 43,
+                "question": "What type of circulatory system do most mollusks have?",
+                "options": [
+                        "Closed",
+                        "Open",
+                        "Hydrostatic",
+                        "None"
+                ],
+                "answer": "Open",
+                "explanation": "The correct answer is: Open."
+        },
+        {
+                "id": 44,
+                "question": "Which of the following is NOT a characteristic of mollusks?",
+                "options": [
+                        "Mantle",
+                        "Tube feet",
+                        "Radula",
+                        "Visceral mass"
+                ],
+                "answer": "Tube feet",
+                "explanation": "The correct answer is: Tube feet."
+        },
+        {
+                "id": 45,
+                "question": "What is the primary role of the gills in aquatic mollusks?",
+                "options": [
+                        "Feeding",
+                        "Respiration",
+                        "Locomotion",
+                        "Reproduction"
+                ],
+                "answer": "Respiration",
+                "explanation": "The correct answer is: Respiration."
+        },
+        {
+                "id": 46,
+                "question": "Which class of mollusks is characterized by having a foot modified into arms or tentacles?",
+                "options": [
+                        "Bivalvia",
+                        "Gastropoda",
+                        "Cephalopoda",
+                        "Polyplacophora"
+                ],
+                "answer": "Cephalopoda",
+                "explanation": "The correct answer is: Cephalopoda."
+        },
+        {
+                "id": 47,
+                "question": "In which class of mollusks do we find species that can produce pearls?",
+                "options": [
+                        "Gastropoda",
+                        "Bivalvia",
+                        "Cephalopoda",
+                        "Scaphopoda"
+                ],
+                "answer": "Bivalvia",
+                "explanation": "The correct answer is: Bivalvia."
+        },
+        {
+                "id": 48,
+                "question": "Which structure helps bivalves to filter food from water?",
+                "options": [
+                        "Radula",
+                        "Foot",
+                        "Gills",
+                        "Mantle"
+                ],
+                "answer": "Gills",
+                "explanation": "The correct answer is: Gills."
+        },
+        {
+                "id": 49,
+                "question": "Which class of mollusks includes tusk shells?",
+                "options": [
+                        "Gastropoda",
+                        "Bivalvia",
+                        "Cephalopoda",
+                        "Scaphopoda"
+                ],
+                "answer": "Scaphopoda",
+                "explanation": "The correct answer is: Scaphopoda."
+        },
+        {
+                "id": 50,
+                "question": "What is the primary function of the mantle cavity in terrestrial mollusks?",
+                "options": [
+                        "Respiration",
+                        "Excretion",
+                        "Protection of the organs",
+                        "Respiration and excretion"
+                ],
+                "answer": "Respiration",
+                "explanation": "The correct answer is: Respiration."
+        },
+        {
+                "id": 51,
+                "question": "Which of the following mollusk classes has a radula adapted for scraping algae off surfaces?",
+                "options": [
+                        "Bivalvia",
+                        "Gastropoda",
+                        "Cephalopoda",
+                        "Polyplacophora"
+                ],
+                "answer": "Bivalvia",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 52,
+                "question": "In which mollusk class are species with external shells usually found?",
+                "options": [
+                        "Bivalvia",
+                        "Gastropoda",
+                        "Cephalopoda",
+                        "Scaphopoda"
+                ],
+                "answer": "Bivalvia",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 53,
+                "question": "Which of the following mollusks is known for its ability to squirt ink as a defense mechanism?",
+                "options": [
+                        "Clam",
+                        "Snail",
+                        "Octopus",
+                        "Chiton"
+                ],
+                "answer": "Clam",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 54,
+                "question": "What type of reproductive strategy is common in many mollusks?",
+                "options": [
+                        "Asexual",
+                        "Sexual with separate sexes",
+                        "Hermaphroditic",
+                        "Budding"
+                ],
+                "answer": "Asexual",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 55,
+                "question": "Which mollusk class includes species with a conical shell and a foot for burrowing?",
+                "options": [
+                        "Gastropoda",
+                        "Bivalvia",
+                        "Scaphopoda",
+                        "Polyplacophora"
+                ],
+                "answer": "Gastropoda",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 56,
+                "question": "Which structure in mollusks is used for respiration in terrestrial species?",
+                "options": [
+                        "Gills",
+                        "Lungs",
+                        "Radula",
+                        "Mantle cavity"
+                ],
+                "answer": "Gills",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 57,
+                "question": "Which mollusk class is known for its high mobility and complex nervous system?",
+                "options": [
+                        "Bivalvia",
+                        "Gastropoda",
+                        "Cephalopoda",
+                        "Polyplacophora"
+                ],
+                "answer": "Bivalvia",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 58,
+                "question": "Which class of mollusks has a shell divided into multiple overlapping plates?",
+                "options": [
+                        "Bivalvia",
+                        "Gastropoda",
+                        "Polyplacophora",
+                        "Cephalopoda"
+                ],
+                "answer": "Bivalvia",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 59,
+                "question": "Which class of mollusks primarily uses a muscular foot for locomotion and attachment?",
+                "options": [
+                        "Cephalopoda",
+                        "Gastropoda",
+                        "Bivalvia",
+                        "Polyplacophora"
+                ],
+                "answer": "Cephalopoda",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 60,
+                "question": "Which mollusk structure is mainly used for protection and support?",
+                "options": [
+                        "Foot",
+                        "Mantle",
+                        "Radula",
+                        "Gills\nQuestions on Ecology of Echinodermata"
+                ],
+                "answer": "Foot",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 61,
+                "question": "What type of habitat do most echinoderms inhabit?",
+                "options": [
+                        "Freshwater lakes",
+                        "Terrestrial forests",
+                        "Marine environments",
+                        "Desert sands"
+                ],
+                "answer": "Freshwater lakes",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 62,
+                "question": "Which of the following is a primary role of sea stars in marine ecosystems?",
+                "options": [
+                        "Pollinators",
+                        "Herbivores",
+                        "Predators of bivalves",
+                        "Decomposers"
+                ],
+                "answer": "Pollinators",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 63,
+                "question": "How do sea urchins affect kelp forests?",
+                "options": [
+                        "By promoting kelp growth",
+                        "By controlling kelp populations through grazing",
+                        "By sheltering juvenile fish",
+                        "By increasing sedimentation"
+                ],
+                "answer": "By promoting kelp growth",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 64,
+                "question": "Which echinoderm is known for its role in bioturbation of sandy substrates?",
+                "options": [
+                        "Sea cucumber",
+                        "Sea urchin",
+                        "Brittle star",
+                        "Sea star"
+                ],
+                "answer": "Sea cucumber",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 65,
+                "question": "What type of feeding strategy do basket stars use?",
+                "options": [
+                        "Filter feeding",
+                        "Herbivory",
+                        "Carnivory",
+                        "Detritivory"
+                ],
+                "answer": "Filter feeding",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 66,
+                "question": "Which echinoderm group plays a significant role in coral reef ecosystems by consuming algae?",
+                "options": [
+                        "Sea stars",
+                        "Sea cucumbers",
+                        "Sea urchins",
+                        "Brittle stars"
+                ],
+                "answer": "Sea stars",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 67,
+                "question": "How do echinoderms contribute to the recycling of nutrients in marine environments?",
+                "options": [
+                        "By consuming plankton",
+                        "By breaking down detritus and organic matter",
+                        "By increasing water temperature",
+                        "By producing oxygen"
+                ],
+                "answer": "By consuming plankton",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 68,
+                "question": "Which echinoderm is known for its ability to regenerate lost body parts?",
+                "options": [
+                        "Sea cucumber",
+                        "Sea star",
+                        "Brittle star",
+                        "Sea urchin"
+                ],
+                "answer": "Sea cucumber",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 69,
+                "question": "What is the ecological impact of invasive species of sea stars in some marine environments?",
+                "options": [
+                        "Enhancing biodiversity",
+                        "Outcompeting native species and causing declines",
+                        "Increasing water clarity",
+                        "Creating new habitats"
+                ],
+                "answer": "Enhancing biodiversity",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 70,
+                "question": "Which echinoderm group primarily feeds on detritus and organic debris in the sediment?",
+                "options": [
+                        "Sea stars",
+                        "Sea urchins",
+                        "Sea cucumbers",
+                        "Brittle stars"
+                ],
+                "answer": "Sea stars",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 71,
+                "question": "What is the primary diet of most sea urchins?",
+                "options": [
+                        "Plankton",
+                        "Algae",
+                        "Small fish",
+                        "Bivalves"
+                ],
+                "answer": "Plankton",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 72,
+                "question": "How do sea cucumbers benefit coral reef ecosystems?",
+                "options": [
+                        "By producing symbiotic algae",
+                        "By breaking down coral polyps",
+                        "By recycling nutrients through their feeding activities",
+                        "By providing shelter for reef fish"
+                ],
+                "answer": "By producing symbiotic algae",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 73,
+                "question": "What role do brittle stars play in marine ecosystems?",
+                "options": [
+                        "Filter feeding on plankton",
+                        "Grazing on algae",
+                        "Scavenging and detritivory",
+                        "Predation on mollusks"
+                ],
+                "answer": "Filter feeding on plankton",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 74,
+                "question": "Which echinoderm is known for its ability to form large aggregations in some marine environments?",
+                "options": [
+                        "Sea urchin",
+                        "Sea star",
+                        "Sea cucumber",
+                        "Brittle star"
+                ],
+                "answer": "Sea urchin",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 75,
+                "question": "How do echinoderms generally contribute to the structure of marine benthic communities?",
+                "options": [
+                        "By competing with fish for resources",
+                        "By altering sediment structure and creating microhabitats",
+                        "By increasing water flow",
+                        "By promoting coral growth"
+                ],
+                "answer": "By competing with fish for resources",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 76,
+                "question": "Which echinoderm is known for its tube feet, which help in locomotion and feeding?",
+                "options": [
+                        "Sea cucumber",
+                        "Brittle star",
+                        "Sea star",
+                        "Sea urchin"
+                ],
+                "answer": "Sea cucumber",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 77,
+                "question": "In what way do sea stars contribute to controlling the population of bivalves?",
+                "options": [
+                        "By preying on them",
+                        "By providing shelter for them",
+                        "By competing with them for food",
+                        "By increasing their reproductive rate"
+                ],
+                "answer": "By preying on them",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 78,
+                "question": "Which echinoderm group is most commonly found in deep-sea environments?",
+                "options": [
+                        "Sea urchins",
+                        "Sea cucumbers",
+                        "Sea stars",
+                        "Brittle stars"
+                ],
+                "answer": "Sea urchins",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 79,
+                "question": "What is a common defense mechanism of sea cucumbers?",
+                "options": [
+                        "Camouflage",
+                        "Ejecting internal organs to distract predators",
+                        "Spiny exoskeleton",
+                        "Rapid movement"
+                ],
+                "answer": "Camouflage",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 80,
+                "question": "Which echinoderm is known for its ability to regenerate lost arms?",
+                "options": [
+                        "Sea cucumber",
+                        "Sea star",
+                        "Brittle star",
+                        "Sea urchin"
+                ],
+                "answer": "Sea cucumber",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 81,
+                "question": "How do sea urchins affect the health of kelp forests when their populations are not controlled?",
+                "options": [
+                        "By promoting kelp growth",
+                        "By overgrazing and causing kelp forest decline",
+                        "By increasing the diversity of algae",
+                        "By providing shelter for marine organisms"
+                ],
+                "answer": "By promoting kelp growth",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 82,
+                "question": "Which echinoderm has a hard, calcareous endoskeleton and often lives in intertidal zones?",
+                "options": [
+                        "Sea cucumber",
+                        "Sea star",
+                        "Sea urchin",
+                        "Brittle star"
+                ],
+                "answer": "Sea cucumber",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 83,
+                "question": "What ecological role do sea stars play in reef ecosystems?",
+                "options": [
+                        "Maintaining the balance of coral populations",
+                        "Regulating the abundance of prey species",
+                        "Enhancing nutrient levels",
+                        "Dispersing coral larvae"
+                ],
+                "answer": "Maintaining the balance of coral populations",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 84,
+                "question": "Which echinoderm species are often used as indicators of the health of marine environments?",
+                "options": [
+                        "Sea stars",
+                        "Sea cucumbers",
+                        "Sea urchins",
+                        "Brittle stars"
+                ],
+                "answer": "Sea stars",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 85,
+                "question": "How do sea cucumbers contribute to sediment health in marine environments?",
+                "options": [
+                        "By filtering water",
+                        "By burrowing and aerating the sediment",
+                        "By consuming algae",
+                        "By producing organic matter"
+                ],
+                "answer": "By filtering water",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 86,
+                "question": "What is a major threat to echinoderm populations in some coastal areas?",
+                "options": [
+                        "Ocean warming and acidification",
+                        "Overfishing of commercial fish",
+                        "Pollution from agricultural runoff",
+                        "Invasive plant species"
+                ],
+                "answer": "Ocean warming and acidification",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 87,
+                "question": "Which echinoderm is known for its ability to exhibit a range of colors and patterns, often used for camouflage?",
+                "options": [
+                        "Sea cucumber",
+                        "Sea urchin",
+                        "Brittle star",
+                        "Sea star"
+                ],
+                "answer": "Sea cucumber",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 88,
+                "question": "What ecological function do sea stars serve in relation to coral reefs?",
+                "options": [
+                        "Cleaning algae from coral surfaces",
+                        "Preying on reef-damaging organisms",
+                        "Providing shelter for small fish",
+                        "Enhancing coral growth"
+                ],
+                "answer": "Cleaning algae from coral surfaces",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 89,
+                "question": "Which echinoderm group is known for having a diverse range of feeding habits, from scavenging to predation?",
+                "options": [
+                        "Sea stars",
+                        "Sea cucumbers",
+                        "Sea urchins",
+                        "Brittle stars"
+                ],
+                "answer": "Sea stars",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 90,
+                "question": "What role do sea cucumbers play in nutrient cycling within their habitats?",
+                "options": [
+                        "By capturing plankton",
+                        "By breaking down organic material and recycling nutrients",
+                        "By enhancing sediment stability",
+                        "By providing shelter for marine life\nQuestions on Ecology of Mollusca"
+                ],
+                "answer": "By capturing plankton",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 91,
+                "question": "Which habitat is most commonly occupied by marine mollusks?",
+                "options": [
+                        "Freshwater lakes",
+                        "Terrestrial forests",
+                        "Coral reefs and ocean floors",
+                        "Desert sands"
+                ],
+                "answer": "Freshwater lakes",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 92,
+                "question": "Which ecological role do bivalves primarily play in their environment?",
+                "options": [
+                        "Predators",
+                        "Herbivores",
+                        "Filter feeders",
+                        "Decomposers"
+                ],
+                "answer": "Predators",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 93,
+                "question": "What type of environment do freshwater mollusks typically inhabit?",
+                "options": [
+                        "Oceans",
+                        "Rivers and lakes",
+                        "Mountains",
+                        "Desert"
+                ],
+                "answer": "Oceans",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 94,
+                "question": "How do terrestrial gastropods generally obtain moisture?",
+                "options": [
+                        "From rainfall and dew",
+                        "From ocean water",
+                        "Through their diet",
+                        "From underground springs"
+                ],
+                "answer": "From rainfall and dew",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 95,
+                "question": "Which mollusk class includes species that are important indicators of water quality in freshwater systems?",
+                "options": [
+                        "Gastropoda",
+                        "Bivalvia",
+                        "Cephalopoda",
+                        "Polyplacophora"
+                ],
+                "answer": "Gastropoda",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 96,
+                "question": "Which of the following mollusks is known for its role in controlling algae growth on coral reefs?",
+                "options": [
+                        "Clams",
+                        "Abalones",
+                        "Oysters",
+                        "Nautilus"
+                ],
+                "answer": "Clams",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 97,
+                "question": "Which ecological role do some cephalopods, like octopuses, play in their environment?",
+                "options": [
+                        "Decomposers",
+                        "Herbivores",
+                        "Predators",
+                        "Filter feeders"
+                ],
+                "answer": "Decomposers",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 98,
+                "question": "What adaptation helps mollusks survive in rocky intertidal zones?",
+                "options": [
+                        "Strong shells and ability to cling to surfaces",
+                        "Ability to float",
+                        "Gills for terrestrial respiration",
+                        "Complex eyes"
+                ],
+                "answer": "Strong shells and ability to cling to surfaces",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 99,
+                "question": "In what way do mollusks contribute to nutrient cycling in aquatic ecosystems?",
+                "options": [
+                        "By breaking down plant material",
+                        "Through filter feeding and excretion",
+                        "By producing oxygen",
+                        "By capturing sunlight"
+                ],
+                "answer": "By breaking down plant material",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 100,
+                "question": "Which habitat do marine gastropods commonly occupy?",
+                "options": [
+                        "Coral reefs and tidal pools",
+                        "Desert sands",
+                        "Freshwater lakes",
+                        "Forest floors"
+                ],
+                "answer": "Coral reefs and tidal pools",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 101,
+                "question": "Which mollusks are often found in symbiotic relationships with other marine organisms?",
+                "options": [
+                        "Bivalves",
+                        "Gastropods",
+                        "Cephalopods",
+                        "Clams and oysters"
+                ],
+                "answer": "Bivalves",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 102,
+                "question": "How do some freshwater mollusks contribute to their ecosystems?",
+                "options": [
+                        "By producing toxins",
+                        "By acting as prey for other animals",
+                        "By altering soil composition",
+                        "By increasing water temperature"
+                ],
+                "answer": "By producing toxins",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 103,
+                "question": "Which of the following mollusk groups is commonly used in aquaculture?",
+                "options": [
+                        "Cephalopods",
+                        "Bivalves",
+                        "Gastropods",
+                        "Polyplacophora"
+                ],
+                "answer": "Cephalopods",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 104,
+                "question": "What is a significant ecological threat to freshwater mollusks?",
+                "options": [
+                        "Ocean acidification",
+                        "Habitat destruction and pollution",
+                        "Overfishing",
+                        "Climate change"
+                ],
+                "answer": "Ocean acidification",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 105,
+                "question": "How do land snails typically affect their terrestrial environments?",
+                "options": [
+                        "By dispersing seeds",
+                        "By consuming plant matter and decomposing organic material",
+                        "By altering water flow",
+                        "By increasing soil acidity"
+                ],
+                "answer": "By dispersing seeds",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 106,
+                "question": "Which ecological role do marine bivalves such as mussels and oysters play in estuarine environments?",
+                "options": [
+                        "Habitat engineers by forming reefs",
+                        "Soil aerators",
+                        "Predators of small fish",
+                        "Plant pollinators"
+                ],
+                "answer": "Habitat engineers by forming reefs",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 107,
+                "question": "What is a common behaviour of intertidal gastropods that helps them avoid desiccation?",
+                "options": [
+                        "Climbing underwater plants",
+                        "Secreting mucous and retreating into their shells",
+                        "Migrating to deeper waters",
+                        "Forming groups for protection"
+                ],
+                "answer": "Climbing underwater plants",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 108,
+                "question": "Which mollusks are known for their role in the food web of coral reef ecosystems?",
+                "options": [
+                        "Oysters",
+                        "Squid",
+                        "Snails and slugs",
+                        "Sea stars"
+                ],
+                "answer": "Oysters",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 109,
+                "question": "What is a key ecological function of bivalves in estuarine environments?",
+                "options": [
+                        "Filtering and cleaning water",
+                        "Creating oxygen",
+                        "Stabilizing sediment",
+                        "Providing shelter for fish"
+                ],
+                "answer": "Filtering and cleaning water",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 110,
+                "question": "How do some mollusks contribute to the health of coral reefs?",
+                "options": [
+                        "By eating algae and preventing algal overgrowth",
+                        "By creating coral polyps",
+                        "By increasing the water temperature",
+                        "By providing food for corals"
+                ],
+                "answer": "By eating algae and preventing algal overgrowth",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 111,
+                "question": "Which habitat supports a diversity of gastropod species, including both herbivores and carnivores?",
+                "options": [
+                        "Freshwater rivers",
+                        "Oceanic trenches",
+                        "Rocky shores and tide pools",
+                        "Tropical rainforests"
+                ],
+                "answer": "Freshwater rivers",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 112,
+                "question": "What role do land snails play in decomposing organic matter?",
+                "options": [
+                        "They consume decomposing plant material and fungi",
+                        "They build soil structures",
+                        "They enhance water filtration",
+                        "They compete with insects for resources"
+                ],
+                "answer": "They consume decomposing plant material and fungi",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 113,
+                "question": "In which environments do filter-feeding bivalves typically thrive?",
+                "options": [
+                        "Fast-moving rivers",
+                        "Calm, nutrient-rich waters",
+                        "High-altitude lakes",
+                        "Desert oases"
+                ],
+                "answer": "Fast-moving rivers",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 114,
+                "question": "Which adaptation helps terrestrial mollusks to avoid desiccation during dry periods?",
+                "options": [
+                        "Ability to burrow underground",
+                        "Large body size",
+                        "External shell",
+                        "High mobility"
+                ],
+                "answer": "Ability to burrow underground",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 115,
+                "question": "What ecological benefit do marine gastropods provide in coral reef systems?",
+                "options": [
+                        "Rebuilding coral structures",
+                        "Controlling algal populations",
+                        "Providing shelter for other organisms",
+                        "Increasing water clarity"
+                ],
+                "answer": "Rebuilding coral structures",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 116,
+                "question": "Which class of mollusks is known for its role in nutrient recycling in marine environments?",
+                "options": [
+                        "Bivalvia",
+                        "Cephalopoda",
+                        "Gastropoda",
+                        "Bivalvia and Gastropoda"
+                ],
+                "answer": "Bivalvia",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 117,
+                "question": "Which mollusk group is often studied for its role in marine food webs?",
+                "options": [
+                        "Bivalves",
+                        "Cephalopods",
+                        "Gastropods",
+                        "Polyplacophorans"
+                ],
+                "answer": "Bivalves",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 118,
+                "question": "How do mollusks contribute to the formation of natural habitats in marine environments?",
+                "options": [
+                        "By creating sedimentary structures",
+                        "By forming beds and reefs that provide shelter",
+                        "By regulating water temperature",
+                        "By generating currents"
+                ],
+                "answer": "By creating sedimentary structures",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 119,
+                "question": "Which mollusk group is particularly important in the aquaculture industry for their role in shellfish farming?",
+                "options": [
+                        "Gastropoda",
+                        "Bivalvia",
+                        "Cephalopoda",
+                        "Polyplacophora"
+                ],
+                "answer": "Gastropoda",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 120,
+                "question": "What ecological threat affects both freshwater and marine mollusks due to pollution?",
+                "options": [
+                        "Ocean acidification",
+                        "Heavy metal contamination",
+                        "Overfishing",
+                        "Habitat destruction\nQuestions on Similarities and Differences between Mollusca and Echinodermata"
+                ],
+                "answer": "Ocean acidification",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 121,
+                "question": "Which of the following characteristics is common to both Mollusca and Echinodermata?",
+                "options": [
+                        "Bilateral symmetry",
+                        "Radial symmetry",
+                        "Exoskeleton",
+                        "Segmented bodies"
+                ],
+                "answer": "Bilateral symmetry",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 122,
+                "question": "What is a major difference between Mollusca and Echinodermata in terms of body symmetry?",
+                "options": [
+                        "Mollusca exhibit radial symmetry, while Echinodermata exhibit bilateral symmetry.",
+                        "Both groups exhibit bilateral symmetry.",
+                        "Mollusca exhibit bilateral symmetry, while Echinodermata exhibit radial symmetry .",
+                        "Both groups exhibit radial symmetry."
+                ],
+                "answer": "Mollusca exhibit radial symmetry, while Echinodermata exhibit bilateral symmetry.",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 123,
+                "question": "Which of the following structures is found in Mollusca but not in Echinodermata?",
+                "options": [
+                        "Mantle",
+                        "Tube feet",
+                        "Water vascular system",
+                        "Calcareous endoskeleton"
+                ],
+                "answer": "Mantle",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 124,
+                "question": "How do Echinodermata and Mollusca differ in their feeding mechanisms?",
+                "options": [
+                        "Both groups are filter feeders.",
+                        "Mollusca use a radula for feeding, while Echinodermata use tube feet or hydraulic systems\n.",
+                        "Both groups use tube feet for feeding.",
+                        "Echinodermata use a radula for feeding."
+                ],
+                "answer": "Both groups are filter feeders.",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 125,
+                "question": "Which of the following is a common habitat for both Mollusca and Echinodermata?",
+                "options": [
+                        "Freshwater lakes",
+                        "Terrestrial forests",
+                        "Marine environments",
+                        "Deserts"
+                ],
+                "answer": "Freshwater lakes",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 126,
+                "question": "What feature distinguishes the respiratory systems of Mollusca and Echinodermata?",
+                "options": [
+                        "Echinodermata have gills, while Mollusca use a mantle cavity .",
+                        "Both groups use a mantle cavity for respiration.",
+                        "Mollusca have a water vascular system for respiration.",
+                        "Echinodermata use a radula for respiration."
+                ],
+                "answer": "Echinodermata have gills, while Mollusca use a mantle cavity .",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 127,
+                "question": "Which group has a hard calcareous endoskeleton?",
+                "options": [
+                        "Mollusca",
+                        "Echinodermata",
+                        "Both groups",
+                        "Neither group"
+                ],
+                "answer": "Mollusca",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 128,
+                "question": "How do Mollusca and Echinodermata differ in their methods of locomotion?",
+                "options": [
+                        "Mollusca use cilia, while Echinodermata use tube feet.",
+                        "Both groups use tube feet.",
+                        "Mollusca use a muscular foot, while Echinodermata use tube feet or hydraulic systems .",
+                        "Both groups use a muscular foot."
+                ],
+                "answer": "Mollusca use cilia, while Echinodermata use tube feet.",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 129,
+                "question": "Which group is characterized by the presence of a water vascular system?",
+                "options": [
+                        "Mollusca",
+                        "Echinodermata",
+                        "Both groups",
+                        "Neither group"
+                ],
+                "answer": "Mollusca",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 130,
+                "question": "Which structure is unique to Mollusca and involved in excretion?",
+                "options": [
+                        "Nephridia",
+                        "Water vascular system",
+                        "Tube feet",
+                        "Radula"
+                ],
+                "answer": "Nephridia",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 131,
+                "question": "Which of the following describes the symmetry of adult Echinodermata and Mollusca?",
+                "options": [
+                        "Echinodermata exhibit bilateral symmetry as adults, while Mollusca exhibit radial\nsymmetry.",
+                        "Both groups exhibit radial symmetry as adults.",
+                        "Echinodermata exhibit radial symmetry, while Mollusca exhibit bilateral symmetry .",
+                        "Both groups exhibit bilateral symmetry."
+                ],
+                "answer": "Echinodermata exhibit bilateral symmetry as adults, while Mollusca exhibit radial\nsymmetry.",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 132,
+                "question": "Which mollusk feature is primarily used for respiration and protection?",
+                "options": [
+                        "Mantle",
+                        "Tube feet",
+                        "Radula",
+                        "Endoskeleton"
+                ],
+                "answer": "Mantle",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 133,
+                "question": "In terms of embryonic development, which group shows deuterostome development?",
+                "options": [
+                        "Mollusca",
+                        "Echinodermata",
+                        "Both groups",
+                        "Neither group"
+                ],
+                "answer": "Mollusca",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 134,
+                "question": "What is a major difference in the digestive systems of Mollusca and Echinodermata?",
+                "options": [
+                        "Mollusca have a complete digestive system, while Echinodermata have an incomplete\ndigestive system.",
+                        "Both groups have a complete digestive system.",
+                        "Echinodermata have a complete digestive system, while Mollusca have an incomplete\ndigestive system.",
+                        "Both groups have an incomplete digestive system."
+                ],
+                "answer": "Mollusca have a complete digestive system, while Echinodermata have an incomplete\ndigestive system.",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 135,
+                "question": "Which class of Mollusca is known for having a shell made of calcium carbonate?",
+                "options": [
+                        "Cephalopoda",
+                        "Gastropoda",
+                        "Bivalvia",
+                        "Polyplacophora"
+                ],
+                "answer": "Cephalopoda",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 136,
+                "question": "Which structure is used by Echinodermata for locomotion and capturing prey?",
+                "options": [
+                        "Radula",
+                        "Tube feet",
+                        "Mantle",
+                        "Nephridia"
+                ],
+                "answer": "Radula",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 137,
+                "question": "What feature is unique to Echinodermata and aids in respiration and locomotion?",
+                "options": [
+                        "Radula",
+                        "Water vascular system",
+                        "Mantle",
+                        "Shell"
+                ],
+                "answer": "Radula",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 138,
+                "question": "Which group has the ability to regenerate lost body parts, such as arms or tentacles?",
+                "options": [
+                        "Mollusca",
+                        "Echinodermata",
+                        "Both groups",
+                        "Neither group"
+                ],
+                "answer": "Mollusca",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 139,
+                "question": "What is a major difference in the reproductive strategies of Mollusca and Echinodermata?",
+                "options": [
+                        "Echinodermata reproduce exclusively sexually, while Mollusca reproduce both sexually\nand asexually.",
+                        "Mollusca reproduce exclusively sexually, while Echinodermata reproduce both sexually\nand asexually.",
+                        "Both groups reproduce sexually and asexually.",
+                        "Both groups reproduce exclusively sexually."
+                ],
+                "answer": "Echinodermata reproduce exclusively sexually, while Mollusca reproduce both sexually\nand asexually.",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 140,
+                "question": "Which mollusk class includes species such as octopuses and squids?",
+                "options": [
+                        "Bivalvia",
+                        "Gastropoda",
+                        "Polyplacophora",
+                        "Cephalopoda"
+                ],
+                "answer": "Bivalvia",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 141,
+                "question": "What is a common feature of both Mollusca and Echinodermata in terms of their exoskeleton or skeleton?",
+                "options": [
+                        "Both have a hard external shell.",
+                        "Both have an internal skeleton.",
+                        "Both have a calcareous endoskeleton.",
+                        "Mollusca have an external shell, while Echinodermata have a calcareous endoskeleton ."
+                ],
+                "answer": "Both have a hard external shell.",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 142,
+                "question": "Which of the following describes the symmetry of juvenile Echinodermata compared to adult Mollusca?",
+                "options": [
+                        "Both juvenile Echinodermata and adult Mollusca exhibit bilateral symmetry.",
+                        "Both juvenile Echinodermata and adult Mollusca exhibit radial symmetry.",
+                        "Juvenile Echinodermata exhibit bilateral symmetry, while adult Mollusca exhibit radial\nsymmetry.",
+                        "Juvenile Echinodermata exhibit bilateral symmetry, while adult Mollusca exhibit bilateral\nsymmetry ."
+                ],
+                "answer": "Both juvenile Echinodermata and adult Mollusca exhibit bilateral symmetry.",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 143,
+                "question": "Which group includes organisms with a mantle cavity used for respiration and excretion?",
+                "options": [
+                        "Echinodermata",
+                        "Mollusca",
+                        "Both groups",
+                        "Neither group"
+                ],
+                "answer": "Echinodermata",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 144,
+                "question": "Which feature is found in both Echinodermata and Mollusca but used differently in each group?",
+                "options": [
+                        "Tube feet",
+                        "Radula",
+                        "Water vascular system",
+                        "Calcareous plates or shells"
+                ],
+                "answer": "Tube feet",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 145,
+                "question": "What type of nervous system is found in Mollusca compared to Echinodermata?",
+                "options": [
+                        "Mollusca have a complex nervous system, while Echinodermata have a simple nerve net .",
+                        "Echinodermata have a complex nervous system, while Mollusca have a simple nerve net.",
+                        "Both groups have complex nervous systems.",
+                        "Both groups have simple nerve nets."
+                ],
+                "answer": "Mollusca have a complex nervous system, while Echinodermata have a simple nerve net .",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 146,
+                "question": "Platyhelminthesarebestdescribedas",
+                "options": [
+                        "flatworms,triploblastic,acoelomateanimals",
+                        "flatworms,diploblastic,acoelomates",
+                        "flatworms,triploblastic,coelomates",
+                        "flatworms,triploblastic,pseudocoelomatesanimals"
+                ],
+                "answer": "flatworms,triploblastic,acoelomateanimals",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 147,
+                "question": "Animportantcharacterwhichplatyhelminthessharewiththeacnidariansis",
+                "options": [
+                        "diploblasticcondition",
+                        "singlecavitycommunicatingwiththeexterior",
+                        "threegermlayersandnocoelom",
+                        "Presenceofcomplicatedreproductivesystem"
+                ],
+                "answer": "diploblasticcondition",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 148,
+                "question": "Freelivingplatyhelminthesformsbelongtotheclass",
+                "options": [
+                        "Cestoda",
+                        "Trematoda",
+                        "Turbellaria",
+                        "Nematoda"
+                ],
+                "answer": "Cestoda",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 149,
+                "question": "Inhelminthes,flamecellsarecomponentoftheir",
+                "options": [
+                        "reproductivesystem",
+                        "excretorysystem",
+                        "nervoussystem",
+                        "respiratorysystem\nFasciolahepatica"
+                ],
+                "answer": "reproductivesystem",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 150,
+                "question": "Fasciolahepaticaisanendoparasitethatlivesinthe",
+                "options": [
+                        "liverofsheep",
+                        "bloodofsheep",
+                        "spleenofsheep",
+                        "Intestineofsheep"
+                ],
+                "answer": "liverofsheep",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 151,
+                "question": "Theintermediatehostinthelifecycleof Taeniasaginatais",
+                "options": [
+                        "Pig",
+                        "Goat",
+                        "Dog",
+                        "Cattle\nTaeniasolium"
+                ],
+                "answer": "Pig",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 152,
+                "question": "Taeniasoliumlacksalimentarycanalbecause",
+                "options": [
+                        "itdoesnotrequireanyfood",
+                        "itlivesintheintestine",
+                        "ithassaprozoicmodeoffeeding",
+                        "Noneoftheabove"
+                ],
+                "answer": "itdoesnotrequireanyfood",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 153,
+                "question": "Whichofthefollowingiscalled‘Bloodfluke’ofman?",
+                "options": [
+                        "Taenia",
+                        "Paragonium",
+                        "Fasciola",
+                        "Schistoma"
+                ],
+                "answer": "Taenia",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 154,
+                "question": "Rhabditesarepresentinthecellsofepidermisin",
+                "options": [
+                        "Cestoda",
+                        "Trematoda",
+                        "Turbellaria",
+                        "Noneofthese"
+                ],
+                "answer": "Cestoda",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 155,
+                "question": "Ciliahelpinlocomotionoversolidsurfacesin",
+                "options": [
+                        "MiracidiumlarvaofFasciola",
+                        "Planaria",
+                        "Hydra",
+                        "Turbellaria"
+                ],
+                "answer": "MiracidiumlarvaofFasciola",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 156,
+                "question": "Whichofthefollowingswimbyciliaryaction?",
+                "options": [
+                        "AdultFasciola",
+                        "Miracidiumredia,andcercariaofFasciola",
+                        "MiracidiumlarvaofFasciola",
+                        "RedialarvaofFasciola"
+                ],
+                "answer": "AdultFasciola",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 157,
+                "question": "Inthelifecycleof Liverflukethesheepgetinfectionwhentheyingest",
+                "options": [
+                        "encystedcereriae",
+                        "miracodia",
+                        "sporocysts",
+                        "rediae"
+                ],
+                "answer": "encystedcereriae",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 158,
+                "question": "Awelldevelopednervoussystemandsenseorgansarepresentinmembersoftheclass",
+                "options": [
+                        "Turbellaria",
+                        "Cestoda",
+                        "Trematoda",
+                        "Noneofthese"
+                ],
+                "answer": "Turbellaria",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 159,
+                "question": "Miracidiumisalarvalstageinthedevelopmentof",
+                "options": [
+                        "Taeniasolium",
+                        "Fasciolahepatica",
+                        "Ascaris",
+                        "Echinococcus"
+                ],
+                "answer": "Taeniasolium",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 160,
+                "question": "Theintermediatehostof Fasciolais",
+                "options": [
+                        "Limnaeatruncatula",
+                        "Pilaglobosa",
+                        "Lamellidens",
+                        "Helix\nAnswers:\n1-a\n2-b\n3-c\n4-b\n5-a\n6-d\n7-c\n8-d\n9-c\n10-d\n11-c\n12-a\n13-a\n14-b\n15-a\nArthropoda"
+                ],
+                "answer": "Limnaeatruncatula",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 161,
+                "question": "Metamericallysegmented,bilaterallysymmetricalanimalsbearingjointedappendages.\nThesearecharacteristicof",
+                "options": [
+                        "Helminthes",
+                        "Annelida",
+                        "Mollusca",
+                        "Arthropoda"
+                ],
+                "answer": "Helminthes",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 162,
+                "question": "Pronouncedcephalisationisacharacteristic",
+                "options": [
+                        "Echinoderms",
+                        "Annelida",
+                        "Mollusca",
+                        "Arthropoda"
+                ],
+                "answer": "Echinoderms",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 163,
+                "question": "Hemocoelicbodycavityisacharacteristicof",
+                "options": [
+                        "Ascaris",
+                        "Leech",
+                        "Cockroach",
+                        "Snails"
+                ],
+                "answer": "Ascaris",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 164,
+                "question": "Divisionofthebodyintohead,thoraxandabdomenisacharacteristicof",
+                "options": [
+                        "Insecta",
+                        "InsectaandArchnida",
+                        "InsectaandCrustacea",
+                        "InsectaandMyriapoda"
+                ],
+                "answer": "Insecta",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 165,
+                "question": "Mostprimitivearthropodsbelongtotheclass",
+                "options": [
+                        "Archnida",
+                        "Insecta",
+                        "Onychophora",
+                        "Myriapoda"
+                ],
+                "answer": "Archnida",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 166,
+                "question": "Lungbooksaretherespiratoryorgansof",
+                "options": [
+                        "Insects",
+                        "Crustaceans",
+                        "Archnids",
+                        "Peripatus"
+                ],
+                "answer": "Insects",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 167,
+                "question": "Theorgansoftasteincockroacharepresentin",
+                "options": [
+                        "epipharynxonly",
+                        "hypopharynx",
+                        "pharynx",
+                        "palpsandepipharynx"
+                ],
+                "answer": "epipharynxonly",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 168,
+                "question": "Thedistalpartsof Malpighiantubulesin Cockroach",
+                "options": [
+                        "openintohaemolymph",
+                        "openintocoelomiccavity",
+                        "floatfreelyinhaemolymph",
+                        "areattachedtoalimentarycanal"
+                ],
+                "answer": "openintohaemolymph",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 169,
+                "question": "Thenitrogenouswasteincockroachismainlyexcretedas",
+                "options": [
+                        "Urea",
+                        "Uricacid",
+                        "Ammonia",
+                        "Ureaanduricacid"
+                ],
+                "answer": "Urea",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 170,
+                "question": "Acommonfeaturebetweencockroachandearthwormis",
+                "options": [
+                        "nephridia",
+                        "ommatidia",
+                        "cocconformation",
+                        "ventralnervecord"
+                ],
+                "answer": "nephridia",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 171,
+                "question": "Themaleandfemalecockroachcanbedistinguishedbytheir",
+                "options": [
+                        "size",
+                        "wings",
+                        "analstyles",
+                        "colour"
+                ],
+                "answer": "size",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 172,
+                "question": "Trueandcompletemetamorphosisisfoundin",
+                "options": [
+                        "Silverfish",
+                        "grasshopper",
+                        "cockroach",
+                        "mothandmosquito"
+                ],
+                "answer": "Silverfish",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 173,
+                "question": "Thecommunicationinbeesbyspecialbodymovements(dances)wasdiscoveredby",
+                "options": [
+                        "T.H.Morgan",
+                        "KarlVonFrisch",
+                        "RobertKoch",
+                        "I.Pavlov"
+                ],
+                "answer": "T.H.Morgan",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 174,
+                "question": "Aphotosensitivepartofinsectommatidiumis",
+                "options": [
+                        "crystallineconnes",
+                        "pigmentcells",
+                        "rhabdome",
+                        "sensoryneuron"
+                ],
+                "answer": "crystallineconnes",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 175,
+                "question": "Themouthpartsofhouseflyareof",
+                "options": [
+                        "piercingandsuckingtype",
+                        "bitingandchewingtype",
+                        "suckingandspongingtype",
+                        "biting,suckingandlappingtype\nAnswers:\n1-d\n2-d\n3-c\n4-a\n5-c\n6-c\n7-d\n8-c\n9-b\n10-d\n11-c\n12-d\n13-b\n14-c\n15-cArthropoda"
+                ],
+                "answer": "piercingandsuckingtype",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 176,
+                "question": "Metamericallysegmented,bilaterallysymmetricalanimalsbearingjointedappendages.\nThesearecharacteristicof",
+                "options": [
+                        "Helminthes",
+                        "Annelida",
+                        "Mollusca",
+                        "Arthropoda"
+                ],
+                "answer": "Helminthes",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 177,
+                "question": "Pronouncedcephalisationisacharacteristic",
+                "options": [
+                        "Echinoderms",
+                        "Annelida",
+                        "Mollusca",
+                        "Arthropoda"
+                ],
+                "answer": "Echinoderms",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 178,
+                "question": "Hemocoelicbodycavityisacharacteristicof",
+                "options": [
+                        "Ascaris",
+                        "Leech",
+                        "Cockroach",
+                        "Snails"
+                ],
+                "answer": "Ascaris",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 179,
+                "question": "Divisionofthebodyintohead,thoraxandabdomenisacharacteristicof",
+                "options": [
+                        "Insecta",
+                        "InsectaandArchnida",
+                        "InsectaandCrustacea",
+                        "InsectaandMyriapoda"
+                ],
+                "answer": "Insecta",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 180,
+                "question": "Mostprimitivearthropodsbelongtotheclass",
+                "options": [
+                        "Archnida",
+                        "Insecta",
+                        "Onychophora",
+                        "Myriapoda"
+                ],
+                "answer": "Archnida",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 181,
+                "question": "Lungbooksaretherespiratoryorgansof",
+                "options": [
+                        "Insects",
+                        "Crustaceans",
+                        "Archnids",
+                        "Peripatus"
+                ],
+                "answer": "Insects",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 182,
+                "question": "Theorgansoftasteincockroacharepresentin",
+                "options": [
+                        "epipharynxonly",
+                        "hypopharynx",
+                        "pharynx",
+                        "palpsandepipharynx"
+                ],
+                "answer": "epipharynxonly",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 183,
+                "question": "Thedistalpartsof Malpighiantubulesin Cockroach",
+                "options": [
+                        "openintohaemolymph",
+                        "openintocoelomiccavity",
+                        "floatfreelyinhaemolymph",
+                        "areattachedtoalimentarycanal"
+                ],
+                "answer": "openintohaemolymph",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 184,
+                "question": "Thenitrogenouswasteincockroachismainlyexcretedas",
+                "options": [
+                        "Urea",
+                        "Uricacid",
+                        "Ammonia",
+                        "Ureaanduricacid"
+                ],
+                "answer": "Urea",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 185,
+                "question": "Acommonfeaturebetweencockroachandearthwormis",
+                "options": [
+                        "nephridia",
+                        "ommatidia",
+                        "cocconformation",
+                        "ventralnervecord"
+                ],
+                "answer": "nephridia",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 186,
+                "question": "Themaleandfemalecockroachcanbedistinguishedbytheir",
+                "options": [
+                        "size",
+                        "wings",
+                        "analstyles",
+                        "colour"
+                ],
+                "answer": "size",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 187,
+                "question": "Trueandcompletemetamorphosisisfoundin",
+                "options": [
+                        "Silverfish",
+                        "grasshopper",
+                        "cockroach",
+                        "mothandmosquito"
+                ],
+                "answer": "Silverfish",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 188,
+                "question": "Thecommunicationinbeesbyspecialbodymovements(dances)wasdiscoveredby",
+                "options": [
+                        "T.H.Morgan",
+                        "KarlVonFrisch",
+                        "RobertKoch",
+                        "I.Pavlov"
+                ],
+                "answer": "T.H.Morgan",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 189,
+                "question": "Aphotosensitivepartofinsectommatidiumis",
+                "options": [
+                        "crystallineconnes",
+                        "pigmentcells",
+                        "rhabdome",
+                        "sensoryneuron"
+                ],
+                "answer": "crystallineconnes",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 190,
+                "question": "Themouthpartsofhouseflyareof",
+                "options": [
+                        "piercingandsuckingtype",
+                        "bitingandchewingtype",
+                        "suckingandspongingtype",
+                        "biting,suckingandlappingtype\nAnswers:\n1-d\n2-d\n3-c\n4-a\n5-c\n6-c\n7-d\n8-c\n9-b\n10-d\n11-c\n12-d\n13-b\n14-c\n15-c\nPhylumAnnelida"
+                ],
+                "answer": "piercingandsuckingtype",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 191,
+                "question": "Annelidsshowadvancementoverthenematodeinhaving",
+                "options": [
+                        "Metamericsegmentation",
+                        "Truecoelom",
+                        "Closedcirculatoryststem",
+                        "alloftheabove"
+                ],
+                "answer": "Metamericsegmentation",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 192,
+                "question": "Anticoagulantsecretedbyleechis",
+                "options": [
+                        "Heparin",
+                        "Hirudin",
+                        "Haematin",
+                        "Hamoglobin"
+                ],
+                "answer": "Heparin",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 193,
+                "question": "Leechbelongstotheclass",
+                "options": [
+                        "Oligochaeta",
+                        "Hirudinea",
+                        "Polycheta",
+                        "Chaetopoda"
+                ],
+                "answer": "Oligochaeta",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 194,
+                "question": "Totalmarineannelidsbelongtotheclass",
+                "options": [
+                        "Oligochaeta",
+                        "Hirudinea",
+                        "Polycheta",
+                        "Chaetopoda"
+                ],
+                "answer": "Oligochaeta",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 195,
+                "question": "Themodeofrespirationinearthwormis",
+                "options": [
+                        "cutaneous",
+                        "gills",
+                        "Pulmonary",
+                        "Subcutaneous"
+                ],
+                "answer": "cutaneous",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 196,
+                "question": "Theexcretoryunitsof Annelidsare",
+                "options": [
+                        "uriniferoustubules",
+                        "flamecells",
+                        "Nephiridia",
+                        "Nephrostomes"
+                ],
+                "answer": "uriniferoustubules",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 197,
+                "question": "Thefirstbodysegmentofearthwormis",
+                "options": [
+                        "Peristome",
+                        "Peristomium",
+                        "Protostomium",
+                        "Protostome"
+                ],
+                "answer": "Peristome",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 198,
+                "question": "Thenephridiaofearthwormwithoutnephrostomesare",
+                "options": [
+                        "Integumentary",
+                        "Pharyngeal",
+                        "septal",
+                        "bothaandc"
+                ],
+                "answer": "Integumentary",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 199,
+                "question": "Themodeoffeedingin Leechis",
+                "options": [
+                        "Herbivorous",
+                        "Carnivorous",
+                        "Omnivorous",
+                        "Sanguinivous"
+                ],
+                "answer": "Herbivorous",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 200,
+                "question": "Whichoneisknownas Nature’sploughman",
+                "options": [
+                        "Nereis",
+                        "Cattleleech",
+                        "Earhworm",
+                        "Polygordius"
+                ],
+                "answer": "Nereis",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 201,
+                "question": "Inearthwormfertilizationoccursin",
+                "options": [
+                        "oviduct",
+                        "water",
+                        "coon",
+                        "Ootheca"
+                ],
+                "answer": "oviduct",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 202,
+                "question": "Chromophilcellsinearthwormareconcernedwiththesecretionof",
+                "options": [
+                        "Amylase",
+                        "Protease",
+                        "Lipases",
+                        "Coccon"
+                ],
+                "answer": "Amylase",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 203,
+                "question": "Nereisiscommonlycalled",
+                "options": [
+                        "Earhworm",
+                        "Calmworm",
+                        "Ringworm",
+                        "Roundworm"
+                ],
+                "answer": "Earhworm",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 204,
+                "question": "Roleoftyphlosoleintheintestineofearthwormis",
+                "options": [
+                        "toincreaseabsorptivesurface",
+                        "tocontrolflowofblood",
+                        "toproducedigestiveenzymes",
+                        "tokillbacteria"
+                ],
+                "answer": "toincreaseabsorptivesurface",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 205,
+                "question": "Hemoglobinisdissolvedinplasmain",
+                "options": [
+                        "Earthworm",
+                        "Ascaris",
+                        "Tapeworm",
+                        "Insects\nAnswers:\n1-d\n2-b\n3-b\n4-c\n5-a\n6-c\n7-b\n8-a\n9-d\n10-c\n11-a\n12-b\n13-b\n14-a\n15-a\n▼\nMultipleChoiceQuestionsonPhylumPorifera(Sponges)\nSponges\nSponges"
+                ],
+                "answer": "Earthworm",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 206,
+                "question": "Aspongecanbedistinguishedfromotheranimalsbythepresenceof",
+                "options": [
+                        "Hollowbody",
+                        "coelenteron",
+                        "choanocytes",
+                        "dermalpapillae"
+                ],
+                "answer": "Hollowbody",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 207,
+                "question": "Animalofphylum Poriferaarecharacterisedby",
+                "options": [
+                        "Diploblasticorganisation",
+                        "canalsystem",
+                        "coelom",
+                        "coelenteron"
+                ],
+                "answer": "Diploblasticorganisation",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 208,
+                "question": "Larvaofspongeisknownas",
+                "options": [
+                        "planulalarva",
+                        "trochophorelarva",
+                        "glochidiumlarva",
+                        "amphiblastulalarva"
+                ],
+                "answer": "planulalarva",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 209,
+                "question": "Gemmulesarehelpfulin",
+                "options": [
+                        "digestion",
+                        "sexualreproduction",
+                        "Secretionofspicules",
+                        "Survivalindrought"
+                ],
+                "answer": "digestion",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 210,
+                "question": "Mostofthespongesare",
+                "options": [
+                        "solitary",
+                        "colonial",
+                        "freshwaterforms",
+                        "coldwaterinhabitants"
+                ],
+                "answer": "solitary",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 211,
+                "question": "Choanocytesinspongesarepresent",
+                "options": [
+                        "ontheexternalbodysurface",
+                        "linethegastriccavity",
+                        "inthemesodermallayer",
+                        "locatedbetweentheouterandinnerlayers"
+                ],
+                "answer": "ontheexternalbodysurface",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 212,
+                "question": "Syconbelongtotheclass",
+                "options": [
+                        "Calcarea",
+                        "porifera",
+                        "Desmospongia",
+                        "Hexactinellida"
+                ],
+                "answer": "Calcarea",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 213,
+                "question": "Bathspongebelongstotheclass",
+                "options": [
+                        "porifera",
+                        "Desmospongia",
+                        "Hexactinellida",
+                        "Calcarea"
+                ],
+                "answer": "porifera",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 214,
+                "question": "Parazoaincludes",
+                "options": [
+                        "Cnidaria",
+                        "Acidaria",
+                        "Porifera",
+                        "Noneofthese"
+                ],
+                "answer": "Cnidaria",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 215,
+                "question": "Mostcommonmethodofreproductioninspongesis",
+                "options": [
+                        "binaryfission",
+                        "budding",
+                        "multiplefission",
+                        "sexualreproduction"
+                ],
+                "answer": "binaryfission",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 216,
+                "question": "Skeletonofspongesisproducedby",
+                "options": [
+                        "Pinacocytes",
+                        "thescocytes",
+                        "choanocytes",
+                        "sclerocytes"
+                ],
+                "answer": "Pinacocytes",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 217,
+                "question": "Theonlyfreshwaterspeciesofspongesis",
+                "options": [
+                        "Scypha",
+                        "Euspongia",
+                        "Spongilla",
+                        "Oscarella"
+                ],
+                "answer": "Scypha",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 218,
+                "question": "Venus’sflowerbasketisa",
+                "options": [
+                        "Seaanemoneresemblingaflowerbasket",
+                        "spongeresemblingaflowerbasket",
+                        "glassropesponge",
+                        "ornamentalmollusc"
+                ],
+                "answer": "Seaanemoneresemblingaflowerbasket",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 219,
+                "question": "Commonbathspongeis",
+                "options": [
+                        "Euplectella",
+                        "Spongilla",
+                        "Syon",
+                        "Euspongia"
+                ],
+                "answer": "Euplectella",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 220,
+                "question": "Digestioninspongesis",
+                "options": [
+                        "intracellular",
+                        "intercellular",
+                        "bothaandb",
+                        "extracellular\nAnswers:\n1-c\n2-b\n3-d\n4-d\n5-b\n6-b\n7-a\n8-b\n9-c\n10-b\n11-d\n12-c\n13-b\n14-d\n15-a\nMultipleChoiceQuestionsonPhylumCnidaria(Coelenterat"
+                ],
+                "answer": "intracellular",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 221,
+                "question": "Nematocystsarethespecializedcellsfoundinthemembersofthephylum",
+                "options": [
+                        "Cnidaria",
+                        "Porifea",
+                        "Annelida",
+                        "Mollusca"
+                ],
+                "answer": "Cnidaria",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 222,
+                "question": "Hydraisputunderthephylumcnidariabecauseithas",
+                "options": [
+                        "Cnidoblasts",
+                        "tentacles",
+                        "hypostome",
+                        "interstitialcells"
+                ],
+                "answer": "Cnidoblasts",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 223,
+                "question": "Thepoisonousfluidpresentinthenematocystsof Hydrais",
+                "options": [
+                        "toxin",
+                        "Hypnotoxin",
+                        "venom",
+                        "Haematin"
+                ],
+                "answer": "toxin",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 224,
+                "question": "Nematocystsaretheorgansof",
+                "options": [
+                        "sensation",
+                        "reproduction",
+                        "Defenceandoffence",
+                        "respiration"
+                ],
+                "answer": "sensation",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 225,
+                "question": "Hydrapreventsselffertilizationbybeing",
+                "options": [
+                        "Protogynous",
+                        "hermaphrodite",
+                        "protandrous",
+                        "monoecious"
+                ],
+                "answer": "Protogynous",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 226,
+                "question": "Theplanulalarvaisfoundinthelifehistoryof",
+                "options": [
+                        "Hydrozoan",
+                        "Anthozoan",
+                        "Scyphozoan",
+                        "Alloftheabove"
+                ],
+                "answer": "Hydrozoan",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 227,
+                "question": "Polymorphiccnidariansarethemembersoftheclass",
+                "options": [
+                        "Hydrozoa",
+                        "Scyphozoa",
+                        "Actinozoa",
+                        "Noneofthese\nGreatBarrierReef"
+                ],
+                "answer": "Hydrozoa",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 228,
+                "question": "Coralreefformingcoelenteratesbelongtotheclass",
+                "options": [
+                        "Hydrozoa",
+                        "Scyphozoa",
+                        "Actinozoa",
+                        "Alloftheabove"
+                ],
+                "answer": "Hydrozoa",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 229,
+                "question": "Amongcoelenteratesmedusoidindividualsareabsentinmembersoftheclass",
+                "options": [
+                        "Anthozoa",
+                        "Hydrozoa",
+                        "Scyphozoa",
+                        "Noneofthese"
+                ],
+                "answer": "Anthozoa",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 230,
+                "question": "Ephyraisthelarvalformof",
+                "options": [
+                        "Seaanemone",
+                        "Aurellia",
+                        "Obelia",
+                        "Hydra"
+                ],
+                "answer": "Seaanemone",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 231,
+                "question": "Sixseptaorsixmesenteriesarecharacteristicof",
+                "options": [
+                        "Aurelia",
+                        "Hydra",
+                        "Obelia",
+                        "Seaanemone\nSeaanemone"
+                ],
+                "answer": "Aurelia",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 232,
+                "question": "Seaanemoneis",
+                "options": [
+                        "diploblastic,radiallysymmetricalanimal",
+                        "diploblastic,bilaterallysymmetricalanimal",
+                        "triploblastic,radiallysymmetricalanimal",
+                        "triploblastic,bilaterallysymmetricalanimal"
+                ],
+                "answer": "diploblastic,radiallysymmetricalanimal",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 233,
+                "question": "Themostprimitiveinvertebratetopossessmusculo-epithelialcellsandnervecellsis",
+                "options": [
+                        "Sycon",
+                        "Spongilla",
+                        "Fasciola",
+                        "Hydra"
+                ],
+                "answer": "Sycon",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 234,
+                "question": "Thefirstinvertebratestodevelopatruenervoussystemare",
+                "options": [
+                        "flatworms",
+                        "sponges",
+                        "coelenterates",
+                        "annelids\nAnswers:\n1-a\n2-c\n3-a\n4-b\n5-c\n6-c\n7-d\n8-a\n9-c\n10-a\n11-b\n12-c\n13-a\n14-d\n15-c\nMultipleChoiceQuestionsonPhylumChordata\nChordata"
+                ],
+                "answer": "flatworms",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 235,
+                "question": "Whichofthefollowingstructuresispresentinallthechordates?",
+                "options": [
+                        "Cranium",
+                        "Notochord",
+                        "Spinalcord",
+                        "Vertebralcolumn"
+                ],
+                "answer": "Cranium",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 236,
+                "question": "Whichofthefollowingisacharacteristicchordatecharacter?",
+                "options": [
+                        "Autotomy",
+                        "Myotomy",
+                        "Pharyngotomy",
+                        "Dermatotomy"
+                ],
+                "answer": "Autotomy",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 237,
+                "question": "Thethreegermlayers,namelyectoderm,endodermandmesodermarefoundin",
+                "options": [
+                        "Allthechordatesonly",
+                        "Allthechordatesexcepttheprotochordates",
+                        "Allthechordatesandhigherinvertebrates",
+                        "Higherchordatesandhigherinvertebrates"
+                ],
+                "answer": "Allthechordatesonly",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 238,
+                "question": "Bilateralsymmetryisseeninthebodyorganisationof",
+                "options": [
+                        "Onlychordates",
+                        "Vertebratesonly",
+                        "Vertebrates,annelids,arthropods,andcnidarians",
+                        "annelids,arthropodsandvertebrates."
+                ],
+                "answer": "Onlychordates",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 239,
+                "question": "Pairedsegmentalnerveshavedorsalandventralrootsin",
+                "options": [
+                        "Annelids",
+                        "Arthropods",
+                        "Vertebrates",
+                        "Allofthese"
+                ],
+                "answer": "Annelids",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 240,
+                "question": "Whichofthefollowingorganismsneitherhavenotochordnorvertebralcolumnintheadult\nstage?",
+                "options": [
+                        "Cephalochordates",
+                        "Herdmania",
+                        "Petromyzon",
+                        "Bdellostoma"
+                ],
+                "answer": "Cephalochordates",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 241,
+                "question": "Theterm“head”invertebratemorphologyincludes",
+                "options": [
+                        "brainanditsprotectivecoverings",
+                        "brain,itsprotectivecoveringsandalsomajorsenseorgans",
+                        "brain,skull,senseorgansandalsojaws",
+                        "brain,skull,senseorgans,jawsandalsopharyngealskeleton"
+                ],
+                "answer": "brainanditsprotectivecoverings",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 242,
+                "question": "Inwhichofthefollowingtheheartisnotventralinposition?",
+                "options": [
+                        "Fish",
+                        "Frog",
+                        "Lamprey",
+                        "Crabs"
+                ],
+                "answer": "Fish",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 243,
+                "question": "Centrum,preandpost-zygapophysis,transverseprocessarepartsof",
+                "options": [
+                        "skulloffrog",
+                        "Vertebraeoffrog",
+                        "Sternumoffrog",
+                        "Pectoralgirdleoffrog"
+                ],
+                "answer": "skulloffrog",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 244,
+                "question": "Schizocoelicphylaare",
+                "options": [
+                        "Protozoa,Porifera,Cnidarians,andPlatyhelminthes",
+                        "Platyhelminthes,AschelminthesandAnnelida",
+                        "Annelida,Artropoda,andMollusca",
+                        "Arthropoda,MolluscandEchinodermata"
+                ],
+                "answer": "Protozoa,Porifera,Cnidarians,andPlatyhelminthes",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 245,
+                "question": "Whichofthefollowingisavertebrateorganism?",
+                "options": [
+                        "Cuttlefish",
+                        "Crayfish",
+                        "Globefish",
+                        "Devilfish"
+                ],
+                "answer": "Cuttlefish",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 246,
+                "question": "Inwhichofthefollowinganimalsnotochorddoesnotpersistthroughoutlife?",
+                "options": [
+                        "Amphioxus",
+                        "Tunicates",
+                        "Petromyzon",
+                        "Myxine"
+                ],
+                "answer": "Amphioxus",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 247,
+                "question": "Pharyngealgillslits",
+                "options": [
+                        "areuniquechordatecharacteristic",
+                        "arefoundinfishes,crabs,snails,aquaticinsects",
+                        "arefoundinhigherinvertebratesandvertebrates",
+                        "arenotfoundinprotochordates,butarepresentinvertebrates,atleastduringthe\nembryoniclife."
+                ],
+                "answer": "areuniquechordatecharacteristic",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 248,
+                "question": "Hepaticportalsystemispresentinall",
+                "options": [
+                        "amniotesonly",
+                        "anamniotesonly",
+                        "Amniotesandanamniotesonly",
+                        "amphibiansandmammals"
+                ],
+                "answer": "amniotesonly",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 249,
+                "question": "Inwhichoftheanimalstheheartdoesnothavetheleftandrightauricles?",
+                "options": [
+                        "Cartilaginousandbonyfishes",
+                        "Frogsandtoads",
+                        "Lizardsandsnakes",
+                        "Crocodilesandalligators\nAnswers:\n1-b\n2-c\n3-c\n4-d\n5-c\n6-b\n7-c\n8-d\n9-b\n10-c\n11-c\n12-b\n13-a\n14-c\n15a\nMultipleChoiceQuestionsonPhylumEchinodermata\nEchinodermata"
+                ],
+                "answer": "Cartilaginousandbonyfishes",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 250,
+                "question": "Whichofthefollowingsystemsisfoundinechinoderms?",
+                "options": [
+                        "Nervoussystem",
+                        "Excretorysystem",
+                        "Respiratorysystem",
+                        "Systemofinternalskeleton"
+                ],
+                "answer": "Nervoussystem",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 251,
+                "question": "Thelocomotoryorgansof Echinodermsarecalled",
+                "options": [
+                        "Parapodia",
+                        "Pseudopodia",
+                        "Tubefeet",
+                        "Setae"
+                ],
+                "answer": "Parapodia",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 252,
+                "question": "Theechinodermsarerelatedtochordatesbytheirsimilarityinthedevelopmentof",
+                "options": [
+                        "gut",
+                        "nervoussystem",
+                        "heart",
+                        "coelom"
+                ],
+                "answer": "gut",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 253,
+                "question": "Aristotle’slanternisacharacteristicfeatureof",
+                "options": [
+                        "starfishes",
+                        "seaurchins",
+                        "brittlestars",
+                        "Holothurians\nAristotle’slantern\nAristotle’slantern"
+                ],
+                "answer": "starfishes",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 254,
+                "question": "Auriculariaisthelarvaof",
+                "options": [
+                        "Echinoidea",
+                        "Asteriodea",
+                        "Ophiuroidea",
+                        "Holothuroidea"
+                ],
+                "answer": "Echinoidea",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 255,
+                "question": "Theterrestrialspeciesof Echinodermatais",
+                "options": [
+                        "Brittlestar",
+                        "Starfish",
+                        "sealilly",
+                        "Noneofthese\nLivingFossil"
+                ],
+                "answer": "Brittlestar",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 256,
+                "question": "Whichofthefollowingisalivingfossil?",
+                "options": [
+                        "Holothuria(Seacucmber)",
+                        "Antedon(Featherstar)",
+                        "Ophiothrix(Brittlestar)",
+                        "Echinus(Seaurchin)"
+                ],
+                "answer": "Holothuria(Seacucmber)",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 257,
+                "question": "Whichofthefollowingisnottrueofechinoderms?",
+                "options": [
+                        "Exclusivelymarinehabitat",
+                        "Schizocoeliccoelom",
+                        "Noexcretoryorgans",
+                        "Watervascularsystem"
+                ],
+                "answer": "Exclusivelymarinehabitat",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 258,
+                "question": "Bipinnarialarvaisfoundinthedevelopmentofa",
+                "options": [
+                        "Sea-lily",
+                        "Starfish",
+                        "Seacucumber",
+                        "Seastar"
+                ],
+                "answer": "Sea-lily",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 259,
+                "question": "Pedicellariaearemodified",
+                "options": [
+                        "tubefeet",
+                        "integumentarystructures",
+                        "Spines",
+                        "someotherstructures"
+                ],
+                "answer": "tubefeet",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 260,
+                "question": "Starfishesare",
+                "options": [
+                        "herbiborous",
+                        "Carnivorous",
+                        "filterfeeders",
+                        "Omnivorous"
+                ],
+                "answer": "herbiborous",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 261,
+                "question": "Thelarvathatoccursinthedevelopmentofseaurchinis",
+                "options": [
+                        "auricularia",
+                        "echinopluteus",
+                        "Bipinnaria",
+                        "pluteus"
+                ],
+                "answer": "auricularia",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 262,
+                "question": "Maindifferencebetweenstarfishesandbrittlestarsisinthe",
+                "options": [
+                        "numberofarms",
+                        "tubefeet",
+                        "structureoftheambulacralgroove",
+                        "pedicellariae"
+                ],
+                "answer": "numberofarms",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 263,
+                "question": "Sausageshapedbodyformisachacteristicof",
+                "options": [
+                        "Echinoidea",
+                        "Asteriodea",
+                        "Ophiuroidea",
+                        "Holothuroidea"
+                ],
+                "answer": "Echinoidea",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 264,
+                "question": "Madreporiteisassociatedwith",
+                "options": [
+                        "Haemalsystem",
+                        "Digestivesystem",
+                        "Ambulacralsystem",
+                        "ReproductiveSystem\nAnswers:\n1-d\n2-c\n3-d\n4-b\n5-d\n6-d\n7-b\n8-b\n9-b\n10-c\n11-b\n12-b\n13-c\n14-d\n15-a\nMultipleChoiceQuestionsonPhylumMollusca\nMollusca"
+                ],
+                "answer": "Haemalsystem",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 265,
+                "question": "Whichofthefollowingincludescoelomateunsegmentedorganisms?",
+                "options": [
+                        "Annelida",
+                        "Molusca",
+                        "Chordata",
+                        "Arthropoda"
+                ],
+                "answer": "Annelida",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 266,
+                "question": "Head.Footandvisceralmass-thiscombinationofcharactersisdiagnosticof",
+                "options": [
+                        "Echinoderms",
+                        "Arthropods",
+                        "Molluscs",
+                        "Annelida"
+                ],
+                "answer": "Echinoderms",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 267,
+                "question": "Internalshellispresentin",
+                "options": [
+                        "Pila",
+                        "Sepia",
+                        "Chiron",
+                        "Lamellidens"
+                ],
+                "answer": "Pila",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 268,
+                "question": "Identifythelarvawhichispresentonlyinmembersofgastropods",
+                "options": [
+                        "Trochophore",
+                        "Veliger",
+                        "Glochidium",
+                        "Muller’slarva"
+                ],
+                "answer": "Trochophore",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 269,
+                "question": "Osphradiumistotestthepurityofwaterin",
+                "options": [
+                        "Pila",
+                        "Starfish",
+                        "Housefly",
+                        "Earhworm"
+                ],
+                "answer": "Pila",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 270,
+                "question": "Therespiratoryorgansinafreshwatermusselare",
+                "options": [
+                        "booklungs",
+                        "pulmonarysacs",
+                        "gills",
+                        "respiratorysiphons"
+                ],
+                "answer": "booklungs",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 271,
+                "question": "Sepiaiscommonlyknownas",
+                "options": [
+                        "starfish",
+                        "jellyfish",
+                        "cuttlefish",
+                        "silverfish"
+                ],
+                "answer": "starfish",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 272,
+                "question": "Inkglandsasameansofescapefrompredatorsarepresentin",
+                "options": [
+                        "Pila(Gastropod",
+                        "Unio(Pelecypod",
+                        "Sepia(Cephalopod",
+                        "Dentalium(Scaphopod"
+                ],
+                "answer": "Pila(Gastropod",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 273,
+                "question": "Pearlsofcommercialvalueareproducedbywhichofthefollowinggenera",
+                "options": [
+                        "Pinctada",
+                        "Unio",
+                        "Anodonta",
+                        "Ostrea\n10.‘Pearlmotherlayer’is"
+                ],
+                "answer": "Pinctada",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 274,
+                "question": "Whichofthefollowingproducesashellofgreatornamentalvalue?",
+                "options": [
+                        "Pila",
+                        "Nautilus",
+                        "Unio",
+                        "Ostrea"
+                ],
+                "answer": "Pila",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 275,
+                "question": "Thelargest Invertebrateis",
+                "options": [
+                        "Octopus",
+                        "Loligo",
+                        "Sepia",
+                        "Architeuthis"
+                ],
+                "answer": "Octopus",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 276,
+                "question": "Shipwormis",
+                "options": [
+                        "anannelid",
+                        "anechinoderm",
+                        "amollusc",
+                        "alimblessamphibian"
+                ],
+                "answer": "anannelid",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 277,
+                "question": "Devilfishisthecommonnameof",
+                "options": [
+                        "Sepia",
+                        "Loligo",
+                        "Octopus",
+                        "Teredo"
+                ],
+                "answer": "Sepia",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 278,
+                "question": "Mostadvancedmolluscsbelongtotheclass",
+                "options": [
+                        "Cephalopoda",
+                        "Gastropoda",
+                        "Amphineura",
+                        "Monopacophora\nAnswers:\n1-b\n2-c\n3-b\n4-b\n5-a\n6-c\n7-c\n8-c\n9-a\n10-c\n11-b\n12-d\n13-c\n14-c\n15-d\nrResults:\n1 Typically,thefirststageinanimaldevelopmentafterzygoteformationisasolidballof\ncellscalledthe\nA) blastula\nB) morula\nC) gastrula\nD) planula\nFeedback:Thefirststageofdevelopmentaftercleavagebeginsisthemorula.\n2 OtherthanRadiata,eumetazoansare\nA) ablastic(havingnotissuelayers)\nB) triploblastic\nC) monoblastic\nD) diploblastic\nFeedback:OtherthanRadiata,eumetazoansaretriploblastic.\n3 Theeumetazoanphylumsometimescalled\"wheelanimals\"becauseoftheirfeeding\nmechanismis\nA) Porifera\nB) Rotifera\nC) Nematoda\nD) Anthozoa\nFeedback:CorrectanswerisRotifera\n4 Aclassofcnidariansthatlacksamedusastageis\nA) Hydrazoa\nB) Cubazoa\n.\nC) Anthozoa\nD) Scyphozoa\nFeedback:CorrectanswerAnthozoa\n5 Forexcretion,flatwormsuse\nA) nephridia\nB) flamecells\nC) osmosis\nD) regurgitation\nFeedback:Flatwormsuseflamecellsforexcretion.\n6 Thenervoussystemofmostflatwormscanbecorrectlydescribedas\nA) anervenet\nB) anerveladder\nC) anervechord\nD) anervering\nE) lacking\nAnsanerveladder\n7 Cnidariandigestionis\nA) internalandextracellular\nB) internalandintracellular\nC) internal,extracellularandintracellular\nD) externalandintracellular\nE) external,extracellularandintracellular\nAnsinternal,extracellularandintracellular\n8 Thelargestphylumofpseudocoelomatesis\nA) Cycliophora\nB) Platyhelminthes\nC) Cestoda\n.\nD) Nematoda\nE) Rotifera\nThisisthecorrectanswerisNematoda\n9 Cnidarianlarvaeareknownas\nA) planulae\nB) cercariae\nC) metacecariae\nD) polyps\nE) medusae\nAnsA)planulae\n10 Whichofthefollowingstatementsaboutnematocystsisincorrect?\nA) stingsfromnematocystsmaybefatal\nB) theosmoticpressureofanematocystmayexceed100atmospheres\nC) nematocyststurninsideoutwhenfired\nD) nematocystsareusedonlybycnidarians\nE) nematocystsmayoccuronbodiesofcnidariansaswellasontheirtentacles\nThisisthecorrectanswer.D\n11 Theparasitethatinfectspeoplewhoeatundercookedporkis\nA) Clonorchis\nB) Schistosoma\nC) Trichinella\nD) Caenorhabditis\nE) Dugesia\nThisisthecorrectanswer.C\n12 Whichofthefollowingischaracteristicofsponges?\nA) symmetry\nB) sexualreproduction\nC) tissues\nD) organs\nE) adultmobility\nThisisthecorrectanswer.B\n13 Inhumans,theinfectivestageoftheliverflukeisthe\nA) sporocyst\nB) redia\nC) miracidium\nD) metacercaria\nE) cercaria\nThisisthecorrectanswer.D\n14 Whichofthefollowingisnotacharacteristicfoundincnidarians?\nA) tissues\nB) symmetry\nC) sexualreproduction\nD) asexualreproduction\nE) organs\nThisisthecorrectanswer.E\n15 Whichoneofthefollowingcharacteristicsisfoundincnidarians?\nA) organs\nB) respiratorysystem\nC) bloodvessels\nD) specializedinternalcavity\nE) nervoussystem\nThisisthecorrectanswer.E\n16 Tapewormsattachtothedigestiveliningofthehostbymeansoftheir\nA) proglottids\nB) stylets\nC) osculum\nD) mastax\nE) scolex\nThisisthecorrectanswer.E\n17 Watertakeninthroughtheporesinspongesexitsthroughthe\nA) mesoglea\nB) spicules\nC) osculum\nD) gastrovascularcavity\nE) coelenteron\nThisisthecorrectanswer.C\n18 Theplanulaeof_______________developonlyintopolyps\nA) Hydrozoa\nB) Ctenophora\nC) Scyphozoa\nD) Cnidaria\nE) Anthozoa\nThisisthecorrectanswer.E\n19 Thescyphozoaarecalledjellyfishbecauseoftheir\nA) mesoderm\nB) mesoglea\nC) mesenchyme\nD) mesentery\nE) pectin\nThisisthecorrectanswer.B\n20 Whichofthefollowinghaveaone-waydigestivesystem?\nA) ctenophorans\nB) flukes\nC) tapeworms\nD) freelivingflatworms\nE) cnidarians\nThisisthecorrectanswer.A\n21 OftheEumetazoalistedbelow,the_______________aregenerallyconsideredthemost\nprimitive.\nA) Chordata\nB) Rotifera\nC) Onychophora\nD) Ctenophora\nE) Pogonophora\nThisisthecorrectanswer.D\n22 Thephylumofthesimplestanimaltohaveabloodfilledcirculatorysystemis\nA) Annelids\nB) Nemertea\nC) Arthropoda\nD) Mollusca\nE) Chordata\nThisisthecorrectanswer.B\n23 Whichofthefollowingphylawerediscoveredmostrecently?\nA) Cycliophora\nB) Cnidaria\nC) Porifera\nD) Nematoda\nE) Platyhelminthes\nThisisthecorrectanswer.A\n24 Thephylumofthesimplestanimalstopossessacompletedigestivesystemis\nA) Nemertea\nB) Rotifera\nC) Onycophora\nD) Ctenophora\nE) Annelida\nThisisthecorrectanswer.A\n25 Sexually,mostflatwormsare\nA) parthenogenic\nB) asexual\nC) hermaphroditic\nD) amorphous\nE) aphrodisiac\nThisisthecorrectanswer.C\n26 Animalswiththesimplesttissueleveloforganizationare:\nA) mesoblastic\nB) meroblastic\nC) monoblastic\nD) diploblastic\nE) triploblastic\nThisisthecorrectanswer.D\n27 Whichtermisincorrectlyidentified?\nA) planula--hollow,ciliatedballofcells\nB) proglottids--repeatingunitsofthebodyofatapeworm\nC) proboscis-alongmusculartubefoundinnemerteans\nD) flamecells--protonephridiafoundinflatworms\nE) mesentery--peritoneumthatformsadoublelayeroftissuesurroundingand\nanchoringthedigestivetractandassociatedorgans\nThisisthecorrectanswer.A\n28 Invertebratestheblastoporebecomestheanus,andduringcleavage,theregulatory\nsignalintheeggareevenlydistributedinthecells.Aninvertebratephylumsharingthese\ncharacteristicsisthe:\nA) Arthropoda\nB) Nematoda\nC) Annelida\nD) Mollusca\nE) Echinodermata\nThisisthecorrectanswer.E\n29 Thespongeshaveallofthefollowingcharacteristicsexcept:\nA) highlyspecializedcells\nB) simpletissues\nC) agel-likematrix\nD) cellrecognition\nE) complexmulticellularity\nThisisthecorrectanswer.B\n30 Theoutercoveringandnervoussystemsofeumetazoansdevelopfromthe:\nA) ectoderm\nB) endoderm\nC) mesoderm\nD) aandc\nE) a,b,andc\nThisisthecorrectanswer.A\n31 WhichoneofthefollowingisnotamemberofthephylumCnidaria?\nA) jellyfish\nB) combjelly\nC) hydra\nD) coral\nE) seaanemone\nThisisthecorrectanswer.B\n32 Cnidariansare:\nA) asymmetrical\nB) bilaterallysymmetrical\nC) radiallysymmetrical\nD) trisymmetrical\nE) noneoftheabove\nThisisthecorrectanswer.C\n33 Acnidocyteisaspecializedcellusedfor:\nA) sensinglight\nB) digestingfood\nC) capturingfood\nD) sensingmovement\nE) circulatingwater\nThisisthecorrectanswer.C\n34 Keyevolutionaryadvancesofthesolidwormsarebilateralsymmetryand:\nA) acoelom\nB) internalorgans\nC) aone-waydigestivetract\nD) abodycavity\nE) acirculatorysystem\nThisisthecorrectanswer.B\n35 Thefree-swimminglarvalstageofcnidariansistheplanulae.\nA) True\nB) False\nAnsa\n36 Thepresenceofcollarcellsinspongessuggestsanevolutionaryrelationshipbetween\nthespongesandciliates.\nA) True\nB) False\nAnsb\n37 SpongesbelongtothesubkingdomEumetazoa.\nA) True\nB) False\nAnsb\n38 Ajellyfishisanexampleofamedusabodyform.\nA) True\nB) False\nAnsa\n39 Nematodesareanimalswithabodycavitybetweentheendodermandthe\nmesoderm.\nA) True\nB) False\nAnsa\n40 Solidwormsarepseudocoelomates.\nA) True\nB) False\nAnsb.\nPROFTEMMY”17WISHYOUSUCCESSINYOURBIO102EXAM.GREATEST\nPRODUCER'S"
+                ],
+                "answer": "Cephalopoda",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 279,
+                "question": "Amoeba moves by:",
+                "options": [
+                        "Pseudopodia",
+                        "Cilia",
+                        "Flagella",
+                        "Contractile vacuole"
+                ],
+                "answer": "Pseudopodia",
+                "explanation": "The correct answer is: Pseudopodia."
+        },
+        {
+                "id": 280,
+                "question": "Paramecium moves using:",
+                "options": [
+                        "Pseudopodia",
+                        "Cilia",
+                        "Flagella",
+                        "Contractile vacuole"
+                ],
+                "answer": "Cilia",
+                "explanation": "The correct answer is: Cilia."
+        },
+        {
+                "id": 281,
+                "question": "Euglena moves using:",
+                "options": [
+                        "Pseudopodia",
+                        "Cilia",
+                        "Flagella",
+                        "Contractile vacuole"
+                ],
+                "answer": "Flagella",
+                "explanation": "The correct answer is: Flagella."
+        },
+        {
+                "id": 282,
+                "question": "Amoeba reproduces by:",
+                "options": [
+                        "Conjugation",
+                        "Binary fission",
+                        "Multiple fission",
+                        "Spore formation"
+                ],
+                "answer": "Binary fission",
+                "explanation": "The correct answer is: Binary fission."
+        },
+        {
+                "id": 283,
+                "question": "Paramecium reproduces asexually by:",
+                "options": [
+                        "Conjugation",
+                        "Binary fission",
+                        "Multiple fission",
+                        "Sporulation"
+                ],
+                "answer": "Binary fission",
+                "explanation": "The correct answer is: Binary fission."
+        },
+        {
+                "id": 284,
+                "question": "Paramecium reproduces sexually by:",
+                "options": [
+                        "Binary fission",
+                        "Budding",
+                        "Multiple fission",
+                        "Conjugation\n\n--- PAGE 2 ---"
+                ],
+                "answer": "Conjugation\n\n--- PAGE 2 ---",
+                "explanation": "The correct answer is: Conjugation\n\n--- PAGE 2 ---."
+        },
+        {
+                "id": 285,
+                "question": "Euglena nutrition is:",
+                "options": [
+                        "Autotrophic",
+                        "Heterotrophic",
+                        "Mixotrophic",
+                        "Saprophytic"
+                ],
+                "answer": "Autotrophic",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 286,
+                "question": "The infective stage of Plasmodium for humans is:",
+                "options": [
+                        "Sporozoite",
+                        "Merozoite",
+                        "Gametocyte",
+                        "Trophozoite"
+                ],
+                "answer": "Sporozoite",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 287,
+                "question": "The disease caused by Giardia lamblia is:",
+                "options": [
+                        "Giardiasis",
+                        "Amoebic dysentery",
+                        "Malaria",
+                        "Sleeping sickness"
+                ],
+                "answer": "Giardiasis",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 288,
+                "question": "The diagnostic stage of Giardia lamblia is:",
+                "options": [
+                        "Sporozoite",
+                        "Gametocyte",
+                        "Trophozoite & cyst",
+                        "Merozoite"
+                ],
+                "answer": "Sporozoite",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 289,
+                "question": "Entamoeba histolytica infective stage is:",
+                "options": [
+                        "Trophozoite",
+                        "Precyst",
+                        "Quadrinucleate cyst",
+                        "Uninucleate cyst"
+                ],
+                "answer": "Trophozoite",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 290,
+                "question": "Plasmodium asexual reproduction in humans is called:",
+                "options": [
+                        "Binary fission",
+                        "Conjugation",
+                        "Sexual reproduction",
+                        "Schizogony (multiple fission)\n\n--- PAGE 3 ---"
+                ],
+                "answer": "Binary fission",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 291,
+                "question": "Plasmodium sexual reproduction occurs in:",
+                "options": [
+                        "Human liver",
+                        "Human RBC",
+                        "Female Anopheles mosquito",
+                        "Human intestine"
+                ],
+                "answer": "Human liver",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 292,
+                "question": "Paramecium trichocyst function is:",
+                "options": [
+                        "Reproduction",
+                        "Defense & anchorage",
+                        "Locomotion",
+                        "Osmoregulation"
+                ],
+                "answer": "Reproduction",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 293,
+                "question": "Plasmodium falciparum ring stage is:",
+                "options": [
+                        "Early trophozoite in RBC",
+                        "Gametocyte in mosquito",
+                        "Sporozoite in liver",
+                        "Merozoite outside RBC"
+                ],
+                "answer": "Early trophozoite in RBC",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 294,
+                "question": "Trypanosoma brucei infective stage for humans is:",
+                "options": [
+                        "Amastigote",
+                        "Metacyclic trypomastigote",
+                        "Promastigote",
+                        "Epimastigote"
+                ],
+                "answer": "Amastigote",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 295,
+                "question": "Leishmania donovani infective stage for humans is:",
+                "options": [
+                        "Trophozoite",
+                        "Promastigote",
+                        "Sporozoite",
+                        "Merozoite"
+                ],
+                "answer": "Trophozoite",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 296,
+                "question": "Leishmania donovani diagnostic stage in human tissue is:",
+                "options": [
+                        "Promastigote",
+                        "Amastigote (Leishman—Donovan body)",
+                        "Sporozoite",
+                        "Trophozoite"
+                ],
+                "answer": "Promastigote",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 297,
+                "question": "Balantidium coli causes:",
+                "options": [
+                        "Amoebiasis\n\n--- PAGE 4 ---",
+                        "Balantidiasis",
+                        "Giardiasis",
+                        "Toxoplasmosis"
+                ],
+                "answer": "Amoebiasis\n\n--- PAGE 4 ---",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 298,
+                "question": "Naegleria fowleri causes:",
+                "options": [
+                        "Amoebiasis",
+                        "Primary Amoebic Meningoencephalitis (PAM)",
+                        "Balantidiasis",
+                        "Toxoplasmosis"
+                ],
+                "answer": "Amoebiasis",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 299,
+                "question": "Toxoplasma gondii definitive host is:",
+                "options": [
+                        "Humans",
+                        "Cats",
+                        "Rodents",
+                        "Dogs"
+                ],
+                "answer": "Humans",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 300,
+                "question": "Plasmodium vivax vector is:",
+                "options": [
+                        "Tsetse fly",
+                        "Anopheles mosquito",
+                        "Sandfly",
+                        "Reduviid bug"
+                ],
+                "answer": "Tsetse fly",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 301,
+                "question": "Trypanosoma cruzi vector is:",
+                "options": [
+                        "Tsetse fly",
+                        "Reduviid bug",
+                        "Sandfly",
+                        "Anopheles"
+                ],
+                "answer": "Tsetse fly",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 302,
+                "question": "Trypanosoma brucei vector is:",
+                "options": [
+                        "Tsetse fly",
+                        "Reduviid bug",
+                        "Sandfly",
+                        "Anopheles"
+                ],
+                "answer": "Tsetse fly",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 303,
+                "question": "Giardia lamblia excystation occurs in:",
+                "options": [
+                        "Large intestine",
+                        "Duodenum (small intestine)",
+                        "Stomach\n\n--- PAGE 5 ---",
+                        "Liver"
+                ],
+                "answer": "Large intestine",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 304,
+                "question": "Entamoeba histolytica chromatoid bodies are:",
+                "options": [
+                        "Lipid granules",
+                        "Glycogen mass",
+                        "Ribonucleoprotein (RNA + protein)",
+                        "Hemozoin pigment"
+                ],
+                "answer": "Lipid granules",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 305,
+                "question": "Giardia lamblia causes:",
+                "options": [
+                        "Bloody diarrhea",
+                        "Steatorrhea (fatty stools)",
+                        "CNS infection",
+                        "Heart disease"
+                ],
+                "answer": "Bloody diarrhea",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 306,
+                "question": "Trypanosoma brucei evades immunity via:",
+                "options": [
+                        "Sporozoite sequestration",
+                        "Antigenic variation (VSG coat)",
+                        "Intracellular hiding",
+                        "Encystment"
+                ],
+                "answer": "Sporozoite sequestration",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 307,
+                "question": "Plasmodium falciparum life cycle type:",
+                "options": [
+                        "Monogenetic",
+                        "Digenetic",
+                        "Polygenetic",
+                        "Trigenetic"
+                ],
+                "answer": "Monogenetic",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 308,
+                "question": "Entamoeba histolytica infective stage:",
+                "options": [
+                        "Trophozoite",
+                        "Precyst",
+                        "Quadrinucleate cyst",
+                        "Uninucleate cyst"
+                ],
+                "answer": "Trophozoite",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 309,
+                "question": "Balantidium coli largest protozoan:",
+                "options": [
+                        "Plasmodium falciparum",
+                        "Giardia lamblia",
+                        "Balantidium coli",
+                        "Entamoeba histolytica\n\n--- PAGE 6 ---"
+                ],
+                "answer": "Plasmodium falciparum",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 310,
+                "question": "Naegleria fowleri disease:",
+                "options": [
+                        "Amoebic dysentery",
+                        "PAM (brain-eating amoeba)",
+                        "Giardiasis",
+                        "Toxoplasmosis"
+                ],
+                "answer": "Amoebic dysentery",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 311,
+                "question": "Toxoplasma gondii disease:",
+                "options": [
+                        "Malaria",
+                        "Giardiasis",
+                        "Toxoplasmosis",
+                        "Balantidiasis"
+                ],
+                "answer": "Malaria",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 312,
+                "question": "Plasmodium falciparum merozoites rupture RBCs — causes:",
+                "options": [
+                        "Fever & chills",
+                        "Diarrhea",
+                        "Spleen enlargement",
+                        "Liver damage"
+                ],
+                "answer": "Fever & chills",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 313,
+                "question": "Leishmania donovani Kala-azar symptoms:",
+                "options": [
+                        "Hepatosplenomegaly",
+                        "Severe diarrhea",
+                        "Fever cycles",
+                        "RBC destruction"
+                ],
+                "answer": "Hepatosplenomegaly",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 314,
+                "question": "Giardia lamblia stool diagnosis:",
+                "options": [
+                        "Sporozoite",
+                        "Gametocyte",
+                        "Merozoite",
+                        "Trophozoite & cyst"
+                ],
+                "answer": "Sporozoite",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 315,
+                "question": "Plasmodium erythrocytic schizogony occurs in:",
+                "options": [
+                        "Liver",
+                        "RBC",
+                        "Spleen",
+                        "Intestine"
+                ],
+                "answer": "Liver",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 316,
+                "question": "Paramecium osmoregulation organelle:  --- PAGE 7 ---",
+                "options": [
+                        "Cilia",
+                        "Trichocysts",
+                        "Contractile vacuole",
+                        "Nucleus"
+                ],
+                "answer": "Cilia",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 317,
+                "question": "Euglena nutrition:",
+                "options": [
+                        "Autotrophic",
+                        "Heterotrophic",
+                        "Mixotrophic",
+                        "Saprophytic"
+                ],
+                "answer": "Autotrophic",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 318,
+                "question": "Entamoeba histolytica lab diagnostic stage:",
+                "options": [
+                        "Trophozoite & cyst",
+                        "Sporozoite",
+                        "Gametocyte",
+                        "Merozoite"
+                ],
+                "answer": "Trophozoite & cyst",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 319,
+                "question": "Plasmodium falciparum sexual stage occurs in:",
+                "options": [
+                        "Liver",
+                        "RBC",
+                        "Mosquito",
+                        "Intestine"
+                ],
+                "answer": "Liver",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 320,
+                "question": "Trypanosoma cruzi disease:",
+                "options": [
+                        "African sleeping sickness",
+                        "Chagas disease",
+                        "Kala-azar",
+                        "Giardiasis"
+                ],
+                "answer": "African sleeping sickness",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 321,
+                "question": "Plasmodium falciparum ring stage is:",
+                "options": [
+                        "Trophozoite in RBC",
+                        "Gametocyte in mosquito",
+                        "Sporozoite in liver",
+                        "Merozoite outside RBC"
+                ],
+                "answer": "Trophozoite in RBC",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 322,
+                "question": "Balantidium coli disease:",
+                "options": [
+                        "Amoebiasis",
+                        "Balantidiasis\n\n--- PAGE 8 ---",
+                        "Giardiasis",
+                        "Toxoplasmosis"
+                ],
+                "answer": "Amoebiasis",
+                "explanation": "Answer to be verified."
+        },
+        {
+                "id": 323,
+                "question": "Naegleria fowleri infective stage:",
+                "options": [
+                        "Cyst",
+                        "Trophozoite",
+                        "Flagellate",
+                        "Amastigote"
+                ],
+                "answer": "Cyst",
+                "explanation": "Answer to be verified."
+        }
     ];
 
     let currentExamData = [];
@@ -337,7 +4193,7 @@
         dash.innerHTML = '';
 
         const totalQ = MASTER_POOL.length;
-        const partSize = 10;
+        const partSize = 25;
         const numParts = Math.ceil(totalQ / partSize);
 
         const randomBox = document.createElement('div');
@@ -400,8 +4256,8 @@
             const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
             pool = shuffleArray(pool).slice(0, qty);
         } else {
-            const start = (partNum - 1) * 10;
-            pool = pool.slice(start, start + 10);
+            const start = (partNum - 1) * 25;
+            pool = pool.slice(start, start + 25);
         }
 
         if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);
@@ -446,7 +4302,7 @@
         optBox.innerHTML  = '';
         feedArea.innerHTML = '';
 
-        q.options.forEach((val, idx) => {
+        if (q.options && q.options.length) q.options.forEach((val, idx) => {
             const label = labels[idx] || (idx + 1);
             const btn   = document.createElement('button');
             btn.className = 'option-btn';
@@ -469,11 +4325,7 @@
 
                 if (activeMode === 'practice') {
                     const isLast = currentIndex === currentExamData.length - 1;
-                    if (!isLast) {
-                        setTimeout(() => { currentIndex++; renderQuestion(); }, 1200);
-                    } else {
-                        setTimeout(() => showResults(true), 1200);
-                    }
+                    if (isLast) { const sb = document.getElementById('submit-btn'); if (sb) sb.style.display = 'inline-flex'; }
                 }
             };
             optBox.appendChild(btn);
@@ -729,6 +4581,69 @@
     buildDashboard();
     loadStatsBar();
     checkResume();
+
+        // ═══ THEORY UI + GROQ AI GRADING (one question at a time) ═══
+        (function() {
+            const _orig = window.renderQuestion;
+            window.renderQuestion = function() {
+                _orig.apply(this, arguments);
+                const q = currentExamData && currentExamData[currentIndex];
+                if (q && q.isTheory) injectTheoryUI(q);
+            };
+        })();
+        function injectTheoryUI(q) {
+            const fa = document.getElementById('feedback-area');
+            if (!fa || fa.querySelector('.theory-ui')) return;
+            const ex = userAnswers[currentIndex];
+            const ha = ex && typeof ex === 'object' && 'response' in ex;
+            const html = `<div class="theory-ui" style="margin-top:1rem;padding:1rem;background:rgba(124,58,237,0.04);border-left:4px solid #7c3aed;border-radius:10px;">
+                <label style="font-weight:700;color:var(--primary);display:block;margin-bottom:6px;"><i class="fa-solid fa-pen-to-square"></i> Your Answer:</label>
+                <textarea id="theory-response" rows="6" style="width:100%;padding:10px;border:2px solid #ddd6fe;border-radius:8px;font-family:inherit;font-size:0.95rem;resize:vertical;${ha?'background:#f5f5f5;':''}" placeholder="Type your detailed answer here..." ${ha?'disabled':''}>${ha?(ex.response||'').replace(/</g,'&lt;'):''}</textarea>
+                ${ha?`<div style="margin-top:10px;padding:10px;background:#fff;border-radius:8px;border:1px solid var(--border);"><strong style="color:var(--primary);">Your Score:</strong> <span style="font-size:1.1rem;font-weight:800;color:${(ex.score||0)>=70?'#10b981':(ex.score||0)>=40?'#f59e0b':'#ef4444'};">${ex.score||0}%</span>${ex.aiFeedback?`<div style="margin-top:6px;font-size:0.88rem;color:var(--text-muted);"><strong>AI Feedback:</strong> ${ex.aiFeedback}</div>`:''}</div>`:`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;"><button class="btn" style="background:var(--danger);padding:7px 14px;font-size:0.85rem;" onclick="gradeTheoryAnswer(0)"><i class="fa-solid fa-xmark"></i> Incorrect (0%)</button><button class="btn" style="background:var(--accent);padding:7px 14px;font-size:0.85rem;" onclick="gradeTheoryAnswer(50)"><i class="fa-solid fa-circle-half-stroke"></i> Partial (50%)</button><button class="btn" style="background:var(--success);padding:7px 14px;font-size:0.85rem;" onclick="gradeTheoryAnswer(100)"><i class="fa-solid fa-check"></i> Correct (100%)</button><button class="btn" id="ai-grade-btn" style="background:linear-gradient(135deg,#4f46e5,#818cf8);padding:7px 14px;font-size:0.85rem;" onclick="gradeWithGroqAI()"><i class="fa-solid fa-robot"></i> Auto-Grade (AI)</button></div><div id="ai-feedback-response" style="display:none;margin-top:10px;padding:10px;background:#fff;border-radius:8px;border:1px solid var(--border);"><div id="ai-feedback-text" style="font-size:0.92rem;line-height:1.5;"></div></div>`}
+            </div>`;
+            fa.insertAdjacentHTML('beforeend', html);
+        }
+        function gradeTheoryAnswer(s) {
+            const t = document.getElementById('theory-response');
+            if (!t || !t.value.trim()) { alert("Please type your answer first."); return; }
+            userAnswers[currentIndex] = { response: t.value.trim(), score: s, aiFeedback: userAnswers[currentIndex] && userAnswers[currentIndex].aiFeedback };
+            saveState(); renderQuestion();
+        }
+        async function gradeWithGroqAI() {
+            const q = currentExamData[currentIndex];
+            const t = document.getElementById('theory-response');
+            if (!t || !t.value.trim()) { alert("Please type your answer first."); return; }
+            const ur = t.value.trim();
+            const btn = document.getElementById('ai-grade-btn');
+            const fb = document.getElementById('ai-feedback-response');
+            const ft = document.getElementById('ai-feedback-text');
+            btn.disabled = true; btn.innerText = "\u23F3 Grading...";
+            const prov = window.env?.AI_PROVIDER || 'groq';
+            const model = window.env?.AI_MODEL || 'llama-3.1-8b-instant';
+            const key = window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy');
+            const sp = `You are a strict academic examiner grading a ${COURSE_CODE} exam.\nQuestion: "${q.question}"\nModel Answer: "${q.answer}"\nStudent's Answer: "${ur}"\nRate 0-100%. Respond as JSON: {"score": <0-100>, "feedback": "<1-2 sentence explanation>"}`;
+            try {
+                let r = null;
+                if (prov === 'groq') {
+                    const resp = await fetch("https://api.groq.com/openai/v1/chat/completions", { method:'POST', headers:{'Content-Type':'application/json','Authorization':`Bearer ${key}`}, body: JSON.stringify({ model, messages:[{role:"system",content:sp}], response_format:{type:"json_object"}, temperature:0.2 }) });
+                    const d = await resp.json();
+                    if (!resp.ok) throw new Error(d.error?.message || `HTTP ${resp.status}`);
+                    r = JSON.parse(d.choices[0].message.content.trim());
+                } else {
+                    const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ contents:[{parts:[{text:sp}]}], generationConfig:{responseMimeType:"application/json"} }) });
+                    const d = await resp.json();
+                    if (!resp.ok) throw new Error(d.error?.message || `HTTP ${resp.status}`);
+                    r = JSON.parse(d.candidates[0].content.parts[0].text.trim());
+                }
+                if (r && typeof r.score === 'number') {
+                    ft.innerHTML = `<strong>AI Grade:</strong> ${r.score}%<br><strong>AI Feedback:</strong> ${r.feedback}`;
+                    fb.style.display = 'block';
+                    userAnswers[currentIndex] = { response: ur, score: r.score, aiFeedback: r.feedback };
+                    saveState(); setTimeout(() => renderQuestion(), 800);
+                } else throw new Error("Invalid response");
+            } catch (e) { console.error(e); alert(`Auto-grading failed: ${e.message}`); }
+            finally { btn.disabled = false; btn.innerText = "\uD83E\uDD16 Auto-Grade (AI)"; }
+        }
 </script>
 </body>
 </html>

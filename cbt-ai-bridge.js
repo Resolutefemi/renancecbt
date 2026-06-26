@@ -24,7 +24,9 @@ const COURSE_TOPICS = {
   'BIT 122': 'E-Commerce and E-Business',
   'FENT 124': 'Basic Financial Literacy',
   'FMEE 102': 'Engineering Workshop Practice',
-  'FBIT 126': 'Introduction to Business'
+  'FBIT 126': 'Introduction to Business',
+  'MTS 102': 'Elementary Mathematics II',
+  'BIO 104': 'Biology Practical II'
 };
 
 function getAIConfigForCourse(courseCode) {

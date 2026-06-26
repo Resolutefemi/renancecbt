@@ -560,7 +560,7 @@ document.addEventListener('keydown', (e) => {
                 <div>
                     <div style="font-weight:700;font-size:0.95rem;">ðŸ“Œ Resume Saved Exam</div>
                     <div style="font-size:0.82rem;color:var(--text-muted);margin-top:3px;">
-                        <strong>${label}</strong> &nbsp;Â·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;Â·&nbsp; â± ${timeStr} left
+                        <strong>${label}</strong> &nbsp;·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;·&nbsp; â± ${timeStr} left
                     </div>
                 </div>
                 <div style="display:flex;gap:8px;flex-shrink:0;">
@@ -713,7 +713,7 @@ document.addEventListener('keydown', (e) => {
         optBox.innerHTML  = '';
         feedArea.innerHTML = '';
 
-        q.options.forEach((val, idx) => {
+        if (q.options && q.options.length) q.options.forEach((val, idx) => {
             const label = labels[idx] || (idx + 1);
             const btn   = document.createElement('button');
             btn.className = 'option-btn';
@@ -745,7 +745,7 @@ document.addEventListener('keydown', (e) => {
             if (hasAnswered) {
                 const ok = userAns === q.answer;
                 feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">
-                    ${ok ? 'âœ” Correct!' : 'âœ˜ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
+                    ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
                 </div>${expHtml}`;
             } else {
                 feedArea.innerHTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
@@ -755,7 +755,7 @@ document.addEventListener('keydown', (e) => {
         } else if (activeMode === 'practice' && hasAnswered) {
             const ok = userAns === q.answer;
             feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">
-                ${ok ? 'âœ” Correct!' : 'âœ˜ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
+                ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
             </div>${expHtml}`;
         }
 
@@ -867,7 +867,7 @@ document.addEventListener('keydown', (e) => {
             const { error } = await db.from('test_results').insert([
                 { student_id: user.id, course_id: COURSE_CODE, score: pct }
             ]);
-            el.innerText = error ? 'âš ï¸ Could not save (offline)' : 'âœ… Score saved!';
+            el.innerText = error ? 'âš ï¸ Could not save (offline)' : '✅ Score saved!';
         } catch (e) {
             el.innerText = 'âš ï¸ Offline â€” score not saved';
         }
@@ -892,6 +892,54 @@ document.addEventListener('keydown', (e) => {
             else { await navigator.clipboard.writeText(text); alert('Score copied to clipboard! ðŸ“‹'); }
         } catch (_) {}
     }
+
+        // ═══ THEORY UI + GROQ AI GRADING ═══
+        (function() {
+            const _orig = window.renderQuestion;
+            window.renderQuestion = function() {
+                _orig.apply(this, arguments);
+                const q = currentExamData && currentExamData[currentIndex];
+                if (q && q.isTheory) injectTheoryUI(q);
+            };
+        })();
+        function injectTheoryUI(q) {
+            const fa = document.getElementById('feedback-area');
+            if (!fa || fa.querySelector('.theory-ui')) return;
+            const ex = userAnswers[currentIndex];
+            const ha = ex && typeof ex === 'object' && 'response' in ex;
+            const html = `<div class="theory-ui" style="margin-top:1rem;padding:1rem;background:rgba(124,58,237,0.04);border-left:4px solid #7c3aed;border-radius:10px;"><label style="font-weight:700;color:var(--primary);display:block;margin-bottom:6px;"><i class="fa-solid fa-pen-to-square"></i> Your Answer:</label><textarea id="theory-response" rows="6" style="width:100%;padding:10px;border:2px solid #ddd6fe;border-radius:8px;font-family:inherit;font-size:0.95rem;resize:vertical;" placeholder="Type your detailed answer here..."></textarea><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;"><button class="btn" style="background:var(--danger);padding:7px 14px;font-size:0.85rem;" onclick="gradeTheoryAnswer(0)"><i class="fa-solid fa-xmark"></i> Incorrect (0%)</button><button class="btn" style="background:var(--accent);padding:7px 14px;font-size:0.85rem;" onclick="gradeTheoryAnswer(50)"><i class="fa-solid fa-circle-half-stroke"></i> Partial (50%)</button><button class="btn" style="background:var(--success);padding:7px 14px;font-size:0.85rem;" onclick="gradeTheoryAnswer(100)"><i class="fa-solid fa-check"></i> Correct (100%)</button><button class="btn" id="ai-grade-btn" style="background:linear-gradient(135deg,#4f46e5,#818cf8);padding:7px 14px;font-size:0.85rem;" onclick="gradeWithGroqAI()"><i class="fa-solid fa-robot"></i> Auto-Grade (AI)</button></div><div id="ai-feedback-response" style="display:none;margin-top:10px;padding:10px;background:#fff;border-radius:8px;border:1px solid var(--border);"><div id="ai-feedback-text" style="font-size:0.92rem;line-height:1.5;"></div></div></div>`;
+            fa.insertAdjacentHTML('beforeend', html);
+        }
+        function gradeTheoryAnswer(s) {
+            const t = document.getElementById('theory-response');
+            if (!t || !t.value.trim()) { alert("Please type your answer first."); return; }
+            userAnswers[currentIndex] = { response: t.value.trim(), score: s };
+            saveState(); renderQuestion();
+        }
+        async function gradeWithGroqAI() {
+            const q = currentExamData[currentIndex];
+            const t = document.getElementById('theory-response');
+            if (!t || !t.value.trim()) { alert("Please type your answer first."); return; }
+            const ur = t.value.trim();
+            const btn = document.getElementById('ai-grade-btn');
+            btn.disabled = true; btn.innerText = "\u23F3 Grading...";
+            const key = window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy');
+            const model = window.env?.AI_MODEL || 'llama-3.1-8b-instant';
+            const sp = `You are a strict academic examiner grading a ${COURSE_CODE} exam.\nQuestion: "${q.question}"\nModel Answer: "${q.answer}"\nStudent's Answer: "${ur}"\nRate 0-100%. Respond as JSON: {"score": <0-100>, "feedback": "<1-2 sentence explanation>"}`;
+            try {
+                const resp = await fetch("https://api.groq.com/openai/v1/chat/completions", { method:'POST', headers:{'Content-Type':'application/json','Authorization':`Bearer ${key}`}, body: JSON.stringify({ model, messages:[{role:"system",content:sp}], response_format:{type:"json_object"}, temperature:0.2 }) });
+                const d = await resp.json();
+                if (!resp.ok) throw new Error(d.error?.message || `HTTP ${resp.status}`);
+                const r = JSON.parse(d.choices[0].message.content.trim());
+                if (r && typeof r.score === 'number') {
+                    document.getElementById('ai-feedback-text').innerHTML = `<strong>AI Grade:</strong> ${r.score}%<br><strong>AI Feedback:</strong> ${r.feedback}`;
+                    document.getElementById('ai-feedback-response').style.display = 'block';
+                    userAnswers[currentIndex] = { response: ur, score: r.score, aiFeedback: r.feedback };
+                    saveState(); setTimeout(() => renderQuestion(), 800);
+                }
+            } catch (e) { console.error(e); alert(`Auto-grading failed: ${e.message}`); }
+            finally { btn.disabled = false; btn.innerText = "\uD83E\uDD16 Auto-Grade (AI)"; }
+        }
 </script>
 </body>
 </html>

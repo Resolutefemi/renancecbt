@@ -299,32 +299,1411 @@
     sendHeartbeat();
     setInterval(sendHeartbeat, 2 * 60 * 1000);
 
-    const MASTER_POOL = [
-        /* ==========================================================================
-           PASTE YOUR OTHER AI-GENERATED QUESTIONS JSON BELOW THIS LINE.
-           EACH QUESTION OBJECT MUST FOLLOW THIS EXACT STRUCTURE:
-           { "id": 1, "topic": "Topic Name", "question": "Question Text", "options": ["Opt1", "Opt2", "Opt3", "Opt4"], "answer": "Correct Option Text", "explanation": "Explain here" }
-           ========================================================================== */
-        { "id": 1, "topic": "Electrostatics", "question": "What is the unit of electric charge?", "options": ["Coulomb", "Ampere", "Volt", "Ohm"], "answer": "Coulomb", "explanation": "The SI unit of electric charge is the Coulomb, named after Charles-Augustin de Coulomb." },
-        { "id": 2, "topic": "Electrostatics", "question": "Coulomb's Law states that the force between two point charges is inversely proportional to ________.", "options": ["The square of the distance between them", "The distance between them", "The product of the charges", "The permittivity of the medium"], "answer": "The square of the distance between them", "explanation": "F = k * (q1 * q2) / r^2, which shows the electrostatic force is inversely proportional to the square of the distance r." },
-        { "id": 3, "topic": "Electrostatics", "question": "The electric field inside a hollow charged spherical conductor is ________.", "options": ["Zero", "Maximum", "Infinite", "Dependent on the charge density"], "answer": "Zero", "explanation": "According to Gauss's Law, since there is no net charge enclosed inside a hollow conductor, the electric field inside is zero." },
-        { "id": 4, "topic": "Capacitance", "question": "What is the unit of capacitance?", "options": ["Farad", "Henry", "Tesla", "Weber"], "answer": "Farad", "explanation": "Capacitance (C = Q/V) is measured in Farads (F), named after Michael Faraday." },
-        { "id": 5, "topic": "Capacitance", "question": "If two capacitors of capacitances C1 and C2 are connected in parallel, the equivalent capacitance is ________.", "options": ["C1 + C2", "(C1 * C2)/(C1 + C2)", "1/C1 + 1/C2", "sqrt(C1 * C2)"], "answer": "C1 + C2", "explanation": "For parallel connection, capacitors add directly: C_eq = C1 + C2." },
-        { "id": 6, "topic": "Current Electricity", "question": "Ohm's Law relates which three quantities?", "options": ["Voltage, Current, and Resistance", "Force, Mass, and Acceleration", "Power, Work, and Energy", "Charge, Capacitance, and Potential"], "answer": "Voltage, Current, and Resistance", "explanation": "Ohm's Law states that V = I * R (Voltage = Current * Resistance)." },
-        { "id": 7, "topic": "Current Electricity", "question": "What is the unit of electrical resistance?", "options": ["Ohm", "Siemens", "Watt", "Joule"], "answer": "Ohm", "explanation": "Resistance is measured in Ohms (Ω), representing the ratio of voltage to current." },
-        { "id": 8, "topic": "Current Electricity", "question": "If three resistors of resistances 2 ohms, 3 ohms, and 6 ohms are connected in parallel, their equivalent resistance is ________.", "options": ["1 ohm", "11 ohms", "0.5 ohms", "2 ohms"], "answer": "1 ohm", "explanation": "1/R_eq = 1/2 + 1/3 + 1/6 = 3/6 + 2/6 + 1/6 = 6/6 = 1. Therefore, R_eq = 1 ohm." },
-        { "id": 9, "topic": "Electromagnetism", "question": "The magnetic force on a moving charge in a magnetic field is maximum when the angle between the velocity and the magnetic field is ________.", "options": ["90 degrees", "0 degrees", "180 degrees", "45 degrees"], "answer": "90 degrees", "explanation": "F = q * v * B * sin(θ). Force is maximized when sin(θ) = 1, which happens when θ = 90°." },
-        { "id": 10, "topic": "Electromagnetism", "question": "What is the unit of magnetic flux density (magnetic field strength)?", "options": ["Tesla", "Weber", "Gauss", "Ampere-turn"], "answer": "Tesla", "explanation": "The SI unit of magnetic flux density is the Tesla (T)." },
-        { "id": 11, "topic": "Electromagnetism", "question": "Lenz's law is a consequence of the law of conservation of ________.", "options": ["Energy", "Charge", "Momentum", "Mass"], "answer": "Energy", "explanation": "Lenz's law ensures conservation of energy; otherwise, induced currents would build up infinitely without input work." },
-        { "id": 12, "topic": "Current Electricity", "question": "The rate of flow of electric charge is called ________.", "options": ["Electric current", "Potential difference", "Electromotive force", "Resistance"], "answer": "Electric current", "explanation": "Current is defined as the amount of charge passing through a cross-section per unit time: I = dQ/dt." },
-        { "id": 13, "topic": "Current Electricity", "question": "Which instrument is used to measure electric current in a circuit?", "options": ["Ammeter", "Voltmeter", "Galvanometer", "Ohmmeter"], "answer": "Ammeter", "explanation": "An ammeter is connected in series with a circuit component to measure the current passing through it." },
-        { "id": 14, "topic": "Current Electricity", "question": "The material which allows electric current to flow through it easily is called a ________.", "options": ["Conductor", "Insulator", "Semiconductor", "Dielectric"], "answer": "Conductor", "explanation": "Conductors have free charge carriers (like free electrons in metals) that flow easily under an electric field." },
-        { "id": 15, "topic": "Current Electricity", "question": "What is the formula for the electrical power dissipated in a resistor?", "options": ["P = I^2 * R", "P = V * I^2", "P = I * R", "P = V^2 * R"], "answer": "P = I^2 * R", "explanation": "Power is P = V * I. Since V = I * R, substituting gives P = I^2 * R or P = V^2 / R." },
-        { "id": 16, "topic": "Electromagnetism", "question": "The direction of induced electromotive force (emf) is given by which law?", "options": ["Lenz's Law", "Faraday's Law", "Ampere's Law", "Gauss's Law"], "answer": "Lenz's Law", "explanation": "Lenz's law states that the induced current always flows in a direction that opposes the change in magnetic flux that created it." },
-        { "id": 17, "topic": "Electromagnetism", "question": "What type of field is created around a moving electric charge?", "options": ["Both electric and magnetic fields", "Only an electric field", "Only a magnetic field", "A gravitational field"], "answer": "Both electric and magnetic fields", "explanation": "A charge at rest creates an electric field. A moving charge creates an electric field and also produces a magnetic field." },
-        { "id": 18, "topic": "Capacitance", "question": "If a dielectric material is inserted between the plates of a capacitor, its capacitance ________.", "options": ["Increases", "Decreases", "Remains the same", "Becomes zero"], "answer": "Increases", "explanation": "A dielectric reduces the electric field between the plates, lowering the voltage and thus increasing capacitance (C = Q/V) by a factor of the dielectric constant K." },
-        { "id": 19, "topic": "Current Electricity", "question": "What is the unit of electromotive force (emf)?", "options": ["Volt", "Newton", "Joule", "Watt"], "answer": "Volt", "explanation": "Despite the name 'force,' emf is actually a potential difference (energy per unit charge) and is measured in Volts." },
-        { "id": 20, "topic": "Electromagnetism", "question": "The phenomenon of inducing an emf in a coil due to the change of current in a neighboring coil is called ________.", "options": ["Mutual induction", "Self induction", "Electromagnetic radiation", "Capacitive coupling"], "answer": "Mutual induction", "explanation": "Mutual induction is the coupling of two circuits via a shared magnetic field, where changing current in one induces a voltage in the other." }
+        const MASTER_POOL = [
+        {
+                "id": 1,
+                "question": "The force between two charges is 120 N. If the distance between the charges is doubled, the force will be",
+                "options": [
+                        "60 N",
+                        "30 N",
+                        "40 N",
+                        "15 N"
+                ],
+                "answer": "30 N",
+                "explanation": "The correct answer is B: 30 N."
+        },
+        {
+                "id": 2,
+                "question": "The electric field intensity at a point situated 4 meters from a point charge is 200 N/ C. If the distance is reduced to 2 meters, the field intensity will be",
+                "options": [
+                        "400 N/ C",
+                        "600 N/ C",
+                        "800 N/ C",
+                        "1200 N/ C"
+                ],
+                "answer": "800 N/ C",
+                "explanation": "The correct answer is C: 800 N/ C."
+        },
+        {
+                "id": 3,
+                "question": "The lines of force due to charged particles are",
+                "options": [
+                        "always straight",
+                        "always curved",
+                        "sometimes curved",
+                        "none of the above"
+                ],
+                "answer": "always curved",
+                "explanation": "The correct answer is B: always curved."
+        },
+        {
+                "id": 4,
+                "question": "The electric field at a point situated at a distance d from straight charged conductoris",
+                "options": [
+                        "proportional to d",
+                        "inversely proportional to d",
+                        "inversely proportional to d",
+                        "none of the above"
+                ],
+                "answer": "inversely proportional to d",
+                "explanation": "The correct answer is B: inversely proportional to d."
+        },
+        {
+                "id": 5,
+                "question": "The direction of electric field due +0 positive charge is .",
+                "options": [
+                        "away from the charge",
+                        "towards the charge",
+                        "both (a) and (6)",
+                        "none of the above"
+                ],
+                "answer": "away from the charge",
+                "explanation": "The correct answer is A: away from the charge."
+        },
+        {
+                "id": 6,
+                "question": "A field line and an equipotential surface are",
+                "options": [
+                        "always parallel",
+                        "always at 90°",
+                        "inclined at any angle 0",
+                        "none of the above"
+                ],
+                "answer": "always at 90°",
+                "explanation": "The correct answer is B: always at 90°."
+        },
+        {
+                "id": 7,
+                "question": "The ability of charged bodies to exert force on 6ne anotheris attributed to the existence of",
+                "options": [
+                        "electrons",
+                        "protons",
+                        "neutrons",
+                        "electric field"
+                ],
+                "answer": "electric field",
+                "explanation": "The correct answer is D: electric field."
+        },
+        {
+                "id": 8,
+                "question": "If the sheet of a bakelite is inserted between the plates of an aircapacitor, the capacitance will",
+                "options": [
+                        "decrease",
+                        "increase",
+                        "remains unchanged",
+                        "become zero"
+                ],
+                "answer": "increase",
+                "explanation": "The correct answer is B: increase."
+        },
+        {
+                "id": 9,
+                "question": "A capacitorstores 0.24 coulombs at 10 volts. Its capacitance is",
+                "options": [
+                        "0.024 F",
+                        "0.12 F",
+                        "0.6 F",
+                        "0.8 F"
+                ],
+                "answer": "0.024 F",
+                "explanation": "The correct answer is A: 0.024 F."
+        },
+        {
+                "id": 10,
+                "question": "Formaking a capacitor, it is betterto select a dielectric having",
+                "options": [
+                        "lowpermittivity",
+                        "high permittivity",
+                        "permittivity same as that of air",
+                        "permittivity slightly more than that of air"
+                ],
+                "answer": "high permittivity",
+                "explanation": "The correct answer is B: high permittivity."
+        },
+        {
+                "id": 11,
+                "question": "The units of capacitance are",
+                "options": [
+                        "volts/ coulomb",
+                        "coulombs/ volt",
+                        "ohms",
+                        "henry/ Wb"
+                ],
+                "answer": "coulombs/ volt",
+                "explanation": "The correct answer is B: coulombs/ volt."
+        },
+        {
+                "id": 12,
+                "question": "If three 10 uF capacitors are connected in parallel, the net cararitance is",
+                "options": [
+                        "20 uF",
+                        "30 uE",
+                        "40 uF",
+                        "50 uF"
+                ],
+                "answer": "30 uE",
+                "explanation": "The correct answer is B: 30 uE."
+        },
+        {
+                "id": 13,
+                "question": "A dielectric material must be",
+                "options": [
+                        "resistor",
+                        "insulator",
+                        "good conductor",
+                        "semi conductor"
+                ],
+                "answer": "insulator",
+                "explanation": "The correct answer is B: insulator."
+        },
+        {
+                "id": 14,
+                "question": "Which of the following is not a vector?",
+                "options": [
+                        "Linearmomentum",
+                        "Angularmomentum",
+                        "Electric field",
+                        "Electric potential"
+                ],
+                "answer": "Angularmomentum",
+                "explanation": "The correct answer is B: Angularmomentum."
+        },
+        {
+                "id": 15,
+                "question": "Two plates of a parallel plate capacitorafterbeing charged from a constant voltage source are separated apart by means of insulated handles, then the",
+                "options": [
+                        "Voltage across the plates increases",
+                        "voltage across the plates decreases",
+                        "charge on the capacitordecreases",
+                        "charge on the capacitorincreases"
+                ],
+                "answer": "voltage across the plates decreases",
+                "explanation": "The correct answer is B: voltage across the plates decreases."
+        },
+        {
+                "id": 16,
+                "question": "If A.C. voltage is applied to capacitive circuit, the alternating current can flowin the circuit because",
+                "options": [
+                        "varying voltage produces the charging and dicharging currents",
+                        "of high peak value",
+                        "charging current can flow",
+                        "discharge current can flow"
+                ],
+                "answer": "varying voltage produces the charging and dicharging currents",
+                "explanation": "The correct answer is A: varying voltage produces the charging and dicharging currents."
+        },
+        {
+                "id": 17,
+                "question": "The dissipation factorof a good dielectric is of the orderof",
+                "options": [
+                        "0.0002",
+                        "0.002",
+                        "0.02",
+                        "0.2"
+                ],
+                "answer": "0.0002",
+                "explanation": "The correct answer is A: 0.0002."
+        },
+        {
+                "id": 18,
+                "question": "\"The total electric flux through any closed surface surrounding charges is equal to the amount oflcharge enclosed\". The above statement is associated with",
+                "options": [
+                        "Coulomb's square law",
+                        "Gauss's law",
+                        "Maxwell's first law",
+                        "Maxwell's second law"
+                ],
+                "answer": "Gauss's law",
+                "explanation": "The correct answer is B: Gauss's law."
+        },
+        {
+                "id": 19,
+                "question": "Three capacitors each of the capacity C are given. The resultant capacity 2/ 3 C can be obtained by using them",
+                "options": [
+                        "all in series",
+                        "all in parallel",
+                        "two in parallel and third in series with this combination",
+                        "two in series and third in parallel across this combination"
+                ],
+                "answer": "two in parallel and third in series with this combination",
+                "explanation": "The correct answer is C: two in parallel and third in series with this combination."
+        },
+        {
+                "id": 20,
+                "question": "Forwhich of the following parametervariation, the capacitance of the capacitorremains unaffected ?",
+                "options": [
+                        "Distance between plates",
+                        "Area of the plates",
+                        "Nature of dielectric",
+                        "Thickness of the plates"
+                ],
+                "answer": "Thickness of the plates",
+                "explanation": "The correct answer is D: Thickness of the plates."
+        },
+        {
+                "id": 21,
+                "question": "Which of the following statement is true ?",
+                "options": [
+                        "The current in the discharging capacitorgrows linearly",
+                        "The current in the dicharging capacitorgrows exponentially",
+                        "The current in the discharging capacitordecays exponentially",
+                        "The current in the discharging capacitordecreases constantly"
+                ],
+                "answer": "The current in the dicharging capacitorgrows exponentially",
+                "explanation": "The correct answer is B: The current in the dicharging capacitorgrows exponentially."
+        },
+        {
+                "id": 22,
+                "question": "Which of the following expression is correct forelectric field strength ?",
+                "options": [
+                        "E = D/ E",
+                        "E = D2/ t",
+                        "E = jtD",
+                        "E= nD2"
+                ],
+                "answer": "E = D/ E",
+                "explanation": "The correct answer is A: E = D/ E."
+        },
+        {
+                "id": 23,
+                "question": "In a capacitorthe electric charge is stored in",
+                "options": [
+                        "metal plates",
+                        "dielectric",
+                        "both (a) and (6)",
+                        "none of the above"
+                ],
+                "answer": "dielectric",
+                "explanation": "The correct answer is B: dielectric."
+        },
+        {
+                "id": 24,
+                "question": "Which of the following materials has the highest value of dielectric constant?",
+                "options": [
+                        "Glass",
+                        "Vacuum",
+                        "Ceramics",
+                        "Oil"
+                ],
+                "answer": "Ceramics",
+                "explanation": "The correct answer is C: Ceramics."
+        },
+        {
+                "id": 25,
+                "question": "Which of the following capacitors will have the least variation ?",
+                "options": [
+                        "Papercapacitor",
+                        "Ceramic capacitor",
+                        "Silverplated mica capacitor",
+                        "None of the above"
+                ],
+                "answer": "Silverplated mica capacitor",
+                "explanation": "The correct answer is C: Silverplated mica capacitor."
+        },
+        {
+                "id": 26,
+                "question": "Which of the following statements is incorrect ?",
+                "options": [
+                        "The leakage resistance of ceramic capacitors is generally high",
+                        "The stored energy in a capacitordecreases with reduction in value of capacitance",
+                        "The stored energy in a capacitorincreases with applied voltage",
+                        "A wire cable has distributed capacitance between the conductors"
+                ],
+                "answer": "The stored energy in a capacitordecreases with reduction in value of capacitance",
+                "explanation": "The correct answer is B: The stored energy in a capacitordecreases with reduction in value of capacitance."
+        },
+        {
+                "id": 27,
+                "question": "Which of the following capacitors has relatively shortershelf life ?",
+                "options": [
+                        "Mica capacitor",
+                        "Electrolytic capacitor",
+                        "Ceramic capacitor",
+                        "Papercapacitor"
+                ],
+                "answer": "Electrolytic capacitor",
+                "explanation": "The correct answer is B: Electrolytic capacitor."
+        },
+        {
+                "id": 28,
+                "question": "In the case of a lossy capacitor, its series equivalent resistance value will be",
+                "options": [
+                        "small",
+                        "very small",
+                        "large",
+                        "zero"
+                ],
+                "answer": "large",
+                "explanation": "The correct answer is C: large."
+        },
+        {
+                "id": 29,
+                "question": "In a capacitive circuit",
+                "options": [
+                        "a steady value of applied voltage causes discharge",
+                        "an increase in applied voltage makes a capacitorcharge",
+                        "decrease in applied voltage makes a capacitorcharge",
+                        "none of the above"
+                ],
+                "answer": "an increase in applied voltage makes a capacitorcharge",
+                "explanation": "The correct answer is B: an increase in applied voltage makes a capacitorcharge."
+        },
+        {
+                "id": 30,
+                "question": "When a dielectric slab is introduced in a parallel plate capacitor, the potential difference between plates will",
+                "options": [
+                        "remain uncharged",
+                        "decrease",
+                        "increase",
+                        "become zero"
+                ],
+                "answer": "decrease",
+                "explanation": "The correct answer is B: decrease."
+        },
+        {
+                "id": 31,
+                "question": "Capacitance increases with",
+                "options": [
+                        "increase in plate area and decrease in distance between the plates",
+                        "increase in plate area and distance between the plates",
+                        "decrease in plate area and value of applied voltage",
+                        "reduction in plate area and distance between the plates"
+                ],
+                "answer": "increase in plate area and decrease in distance between the plates",
+                "explanation": "The correct answer is A: increase in plate area and decrease in distance between the plates."
+        },
+        {
+                "id": 32,
+                "question": "A capacitorconsists of",
+                "options": [
+                        "two insulators separated by a conductor",
+                        "two conductors separated by an insulator",
+                        "two insulators only",
+                        "two conductors only"
+                ],
+                "answer": "two conductors separated by an insulator",
+                "explanation": "The correct answer is B: two conductors separated by an insulator."
+        },
+        {
+                "id": 33,
+                "question": "A papercapacitoris usually available in the form of",
+                "options": [
+                        "tubes",
+                        "rolled foil",
+                        "disc",
+                        "meshed plates"
+                ],
+                "answer": "rolled foil",
+                "explanation": "The correct answer is B: rolled foil."
+        },
+        {
+                "id": 34,
+                "question": "Aircapacitors are generally available in the range",
+                "options": [
+                        "10 to 400 pF",
+                        "1 to 20 pF",
+                        "100 to 900 pF",
+                        "20 to 100 pF"
+                ],
+                "answer": "10 to 400 pF",
+                "explanation": "The correct answer is A: 10 to 400 pF."
+        },
+        {
+                "id": 35,
+                "question": "The unit of capacitance is",
+                "options": [
+                        "henry",
+                        "ohm",
+                        "farad",
+                        "farad/ m"
+                ],
+                "answer": "farad",
+                "explanation": "The correct answer is C: farad."
+        },
+        {
+                "id": 36,
+                "question": "A capacitorin a circuit became hot and ultimately exploded due to wrong connections, which type of capacitorit could be ?",
+                "options": [
+                        "Papercapacitor",
+                        "Ceramic capacitor",
+                        "Electrolytic capacitor",
+                        "Any-of the above"
+                ],
+                "answer": "Electrolytic capacitor",
+                "explanation": "The correct answer is C: Electrolytic capacitor."
+        },
+        {
+                "id": 37,
+                "question": "Energy stored in the electric field of a capacitor C when charged from a D.C source of voltage V is equal to joules",
+                "options": [
+                        "CV2",
+                        "C2V",
+                        "CV2",
+                        "CV"
+                ],
+                "answer": "CV2",
+                "explanation": "The correct answer is A: CV2."
+        },
+        {
+                "id": 38,
+                "question": "The relative permittivity of free space is given by",
+                "options": [
+                        "1",
+                        "10",
+                        "100",
+                        "1000"
+                ],
+                "answer": "1",
+                "explanation": "The correct answer is A: 1."
+        },
+        {
+                "id": 39,
+                "question": "Electric field intensity is a quantity",
+                "options": [
+                        "scalar",
+                        "vector",
+                        "both (a) and (6)",
+                        "none of the above"
+                ],
+                "answer": "vector",
+                "explanation": "The correct answer is B: vector."
+        },
+        {
+                "id": 40,
+                "question": "When 4 volts e.m.f. is applied across a 1 farad capacitor, it will store energy of",
+                "options": [
+                        "2 joules",
+                        "4 joules",
+                        "6 joules",
+                        "8 joules"
+                ],
+                "answer": "8 joules",
+                "explanation": "The correct answer is D: 8 joules."
+        },
+        {
+                "id": 41,
+                "question": "The capacitorpreferred forhigh frequency circuits is",
+                "options": [
+                        "aircapacitor",
+                        "mica capacitor",
+                        "electrolytic capacitor",
+                        "none of the above"
+                ],
+                "answer": "mica capacitor",
+                "explanation": "The correct answer is B: mica capacitor."
+        },
+        {
+                "id": 42,
+                "question": "The capacity of capacitorbank used in powerfactorcorrection is expressed in terms of",
+                "options": [
+                        "kW",
+                        "kVA",
+                        "kVAR",
+                        "volts"
+                ],
+                "answer": "kVAR",
+                "explanation": "The correct answer is C: kVAR."
+        },
+        {
+                "id": 43,
+                "question": "While testing a capacitorwith ohm meter, if the capacitorshows charging, but the final resistance reading is appreciably less than normal, it can be concluded that the capacitoris",
+                "options": [
+                        "short-circuited",
+                        "open circuited",
+                        "alright",
+                        "leaky"
+                ],
+                "answer": "leaky",
+                "explanation": "The correct answer is D: leaky."
+        },
+        {
+                "id": 44,
+                "question": "If a 6 uF capacitoris charged to 200 V, the charge in coulombs will be",
+                "options": [
+                        "800 uC",
+                        "900 uC",
+                        "1200 uC",
+                        "1600 uC"
+                ],
+                "answer": "1200 uC",
+                "explanation": "The correct answer is C: 1200 uC."
+        },
+        {
+                "id": 45,
+                "question": "Which capacitorwill be physically smallerforthe same ratings ?",
+                "options": [
+                        "Ceramic capacitor",
+                        "Papercapacitor",
+                        "Both will be of equal size",
+                        "None of the above"
+                ],
+                "answer": "Ceramic capacitor",
+                "explanation": "The correct answer is A: Ceramic capacitor."
+        },
+        {
+                "id": 46,
+                "question": "What is the value of capacitance that must be connected in parallel with 50 pF condenserto make an equivalent capacitance of 150 pF ?",
+                "options": [
+                        "50 pF",
+                        "100 pF",
+                        "150 pF",
+                        "200 pF"
+                ],
+                "answer": "100 pF",
+                "explanation": "The correct answer is B: 100 pF."
+        },
+        {
+                "id": 47,
+                "question": "A mica capacitorand a ceramic capacitorboth have the same physical dimensions. Which will have more value of capacitance ?",
+                "options": [
+                        "Ceramic capacitor",
+                        "Mica capacitor",
+                        "Both will have identical value of capacitance",
+                        "It depends on applied voltage"
+                ],
+                "answer": "Ceramic capacitor",
+                "explanation": "The correct answer is A: Ceramic capacitor."
+        },
+        {
+                "id": 48,
+                "question": "Which of the following material has least value of dielectric constant ?",
+                "options": [
+                        "Ceramics",
+                        "Oil",
+                        "Glass",
+                        "Paper"
+                ],
+                "answer": "Oil",
+                "explanation": "The correct answer is B: Oil."
+        },
+        {
+                "id": 49,
+                "question": "Which of the following capacitors will have the least value of breakdown voltage ?",
+                "options": [
+                        "Mica",
+                        "Paper",
+                        "Ceramic",
+                        "Electrolytic"
+                ],
+                "answer": "Electrolytic",
+                "explanation": "The correct answer is D: Electrolytic."
+        },
+        {
+                "id": 50,
+                "question": "The breakdown voltage forpapercapacitors is usually",
+                "options": [
+                        "20 to 60 volts",
+                        "200 to 1600 volts",
+                        "2000 to 3000 volts",
+                        "more than 10000 volts"
+                ],
+                "answer": "20 to 60 volts",
+                "explanation": "The correct answer is: 20 to 60 volts."
+        },
+        {
+                "id": 51,
+                "question": "Dielectric constant formica is nearly",
+                "options": [
+                        "200",
+                        "100",
+                        "3 to 8",
+                        "1 to 2"
+                ],
+                "answer": "3 to 8",
+                "explanation": "The correct answer is C: 3 to 8."
+        },
+        {
+                "id": 52,
+                "question": "The value of dielectric constant forvacuum is taken as",
+                "options": [
+                        "zero",
+                        "1",
+                        "4",
+                        "10"
+                ],
+                "answer": "1",
+                "explanation": "The correct answer is B: 1."
+        },
+        {
+                "id": 53,
+                "question": "Which of the following capacitors is marked forpolarity ?",
+                "options": [
+                        "Air",
+                        "Paper",
+                        "Mica",
+                        "Electrolytic"
+                ],
+                "answer": "Electrolytic",
+                "explanation": "The correct answer is D: Electrolytic."
+        },
+        {
+                "id": 54,
+                "question": "Which of the following capacitors can be used fortemperature compensation ?",
+                "options": [
+                        "Aircapacitor",
+                        "Ceramic capacitor",
+                        "Papercapacitor",
+                        "None of the above"
+                ],
+                "answer": "Ceramic capacitor",
+                "explanation": "The correct answer is B: Ceramic capacitor."
+        },
+        {
+                "id": 55,
+                "question": "Which of the following statements is incorrect ?",
+                "options": [
+                        "The thinnerthe dielectric, the more the capacitance and the lowerthe voltage breakdown rating fora capacitor.",
+                        "A six dot mica capacitorcolourcoded white, green, black, red and yellowhas the capacitance value of 500 pF",
+                        "Capacitors in series provide less capacitance but a highervoltage breakdown rating forthe combination",
+                        "A capacitorcan store charge because it has a dielectric between two conductors"
+                ],
+                "answer": "A six dot mica capacitorcolourcoded white, green, black, red and yellowhas the capacitance value of 500 pF",
+                "explanation": "The correct answer is B: A six dot mica capacitorcolourcoded white, green, black, red and yellowhas the capacitance value of 500 pF."
+        },
+        {
+                "id": 56,
+                "question": "Papercapacitors usually have a tolerance of",
+                "options": [
+                        "± 5%",
+                        "± 10%",
+                        "± 15%",
+                        "± 20%"
+                ],
+                "answer": "± 10%",
+                "explanation": "The correct answer is B: ± 10%."
+        },
+        {
+                "id": 57,
+                "question": "Forclosertolerances which of the following capacitors is usually preferred ?",
+                "options": [
+                        "Papercapacitor",
+                        "Mica capacitor",
+                        "Ceramic disc capacitor",
+                        "None of the above"
+                ],
+                "answer": "Mica capacitor",
+                "explanation": "The correct answer is B: Mica capacitor."
+        },
+        {
+                "id": 58,
+                "question": "The electrostatic force between two charges of one coulomb each and placed at a distance of 0.5 m will be",
+                "options": [
+                        "36 x 10fa",
+                        "36 x 107 N",
+                        "36 x 108 N",
+                        "36 x 109 N"
+                ],
+                "answer": "36 x 109 N",
+                "explanation": "The correct answer is D: 36 x 109 N."
+        },
+        {
+                "id": 59,
+                "question": "The units of volume charge density are",
+                "options": [
+                        "Coulomb/ meter",
+                        "Coulomb/ meter",
+                        "Coulomb/ meter",
+                        "Coulomb/ meter"
+                ],
+                "answer": "Coulomb/ meter",
+                "explanation": "The correct answer is C: Coulomb/ meter."
+        },
+        {
+                "id": 60,
+                "question": "\"The surface integral of the normal component of the electric displacement D overany closed surface equals the charge enclosed by the surface\". The above statement is associated with",
+                "options": [
+                        "Gauss's law",
+                        "Kirchhoff s law",
+                        "Faraday's law",
+                        "Lenz's law"
+                ],
+                "answer": "Gauss's law",
+                "explanation": "The correct answer is A: Gauss's law."
+        },
+        {
+                "id": 61,
+                "question": "The dielectric constant (relative permittivity) of glass is given by",
+                "options": [
+                        "0.1 to 0.4",
+                        "0.5 to 1.0",
+                        "2.0 to 4.0",
+                        "5 to 100"
+                ],
+                "answer": "5 to 100",
+                "explanation": "The correct answer is D: 5 to 100."
+        },
+        {
+                "id": 62,
+                "question": "capacitors are mainly used forradio frequency tuning.",
+                "options": [
+                        "Paper",
+                        "Air",
+                        "Mica",
+                        "Electrolytic"
+                ],
+                "answer": "Air",
+                "explanation": "The correct answer is B: Air."
+        },
+        {
+                "id": 63,
+                "question": "capacitors are used in transistorcircuits.",
+                "options": [
+                        "Ceramic",
+                        "Paper",
+                        "Air",
+                        "Electrolytic"
+                ],
+                "answer": "Ceramic",
+                "explanation": "The correct answer is A: Ceramic."
+        },
+        {
+                "id": 64,
+                "question": "capacitors are used foraudio frequency and radio frequency coupling and tuning.",
+                "options": [
+                        "Air",
+                        "Mica",
+                        "Plastic film",
+                        "Ceramic"
+                ],
+                "answer": "Mica",
+                "explanation": "The correct answer is B: Mica."
+        },
+        {
+                "id": 65,
+                "question": "The inverse of capacitance is called",
+                "options": [
+                        "reluctance",
+                        "conductance",
+                        "susceptance",
+                        "elastance"
+                ],
+                "answer": "elastance",
+                "explanation": "The correct answer is D: elastance."
+        },
+        {
+                "id": 66,
+                "question": "When the dielectric is homogeneous,the potential gradient is",
+                "options": [
+                        "uniform",
+                        "non-uniform",
+                        "zero",
+                        "any of the above"
+                ],
+                "answer": "uniform",
+                "explanation": "The correct answer is A: uniform."
+        },
+        {
+                "id": 67,
+                "question": "The potential gradient across the material of lowpermittivity is than across the material of high permittivity.",
+                "options": [
+                        "smaller",
+                        "greater",
+                        "both (a) and (b)",
+                        "none of the above"
+                ],
+                "answer": "greater",
+                "explanation": "The correct answer is B: greater."
+        },
+        {
+                "id": 68,
+                "question": "field is associated with the capacitor.",
+                "options": [
+                        "Electric",
+                        "Magnetic",
+                        "Both (a) and (b)",
+                        "None of the above"
+                ],
+                "answer": "Electric",
+                "explanation": "The correct answer is A: Electric."
+        },
+        {
+                "id": 69,
+                "question": "A capacitorhaving capacitance of 5 uF is charged to a potential difference of 10,000 V. The energy stored in the capacitoris",
+                "options": [
+                        "50 joules",
+                        "150 joules",
+                        "200 joules",
+                        "250 joules"
+                ],
+                "answer": "250 joules",
+                "explanation": "The correct answer is D: 250 joules."
+        },
+        {
+                "id": 70,
+                "question": "A single core cable used on 33000 V has conductordiameter 10 mm and the internal diameterof sheath 25 mm. The maximum electrostatic stress in the cable is",
+                "options": [
+                        "62 x 105 V/ m",
+                        "72 x 105 V/ m",
+                        "82 x 105 V/ m",
+                        "92 x 105 V/ m"
+                ],
+                "answer": "72 x 105 V/ m",
+                "explanation": "The correct answer is B: 72 x 105 V/ m."
+        },
+        {
+                "id": 71,
+                "question": "Two infinite parallel plates 10 mm apart have maintained between them a potential difference of 100 V. The acceleration of an electron placed between them is",
+                "options": [
+                        "0.56 x 1015 m/ s2",
+                        "1.5 x 1015 m/ s2",
+                        "1.6 x 1015 m/ s2",
+                        "1.76 x 1015 m/ s2"
+                ],
+                "answer": "1.76 x 1015 m/ s2",
+                "explanation": "The correct answer is D: 1.76 x 1015 m/ s2."
+        },
+        {
+                "id": 72,
+                "question": "The total deficiency orexcess of electrons in a body is known as",
+                "options": [
+                        "current",
+                        "voltage",
+                        "potential gradient",
+                        "charge"
+                ],
+                "answer": "charge",
+                "explanation": "The correct answer is D: charge."
+        },
+        {
+                "id": 73,
+                "question": "The relative permittivity has the following units",
+                "options": [
+                        "F/ m",
+                        "m/ F",
+                        "Wb/ m",
+                        "no units"
+                ],
+                "answer": "Wb/ m",
+                "explanation": "The correct answer is C: Wb/ m."
+        },
+        {
+                "id": 74,
+                "question": "The phenomenon of an uncharged body getting charged merely by the nearness of a charged body is known as",
+                "options": [
+                        "pholoelectric effect",
+                        "chemical effect",
+                        "magnetic effect",
+                        "induction"
+                ],
+                "answer": "induction",
+                "explanation": "The correct answer is D: induction."
+        },
+        {
+                "id": 75,
+                "question": "A unit tube of flux is known as tube",
+                "options": [
+                        "Newton",
+                        "Faraday",
+                        "Michale",
+                        "None of the above"
+                ],
+                "answer": "Faraday",
+                "explanation": "The correct answer is B: Faraday."
+        },
+        {
+                "id": 76,
+                "question": "The unit of electric instensity is",
+                "options": [
+                        "N/ C2",
+                        "Wb/ m2",
+                        "N/ C",
+                        "N2/ C"
+                ],
+                "answer": "N/ C2",
+                "explanation": "The correct answer is: N/ C2."
+        },
+        {
+                "id": 77,
+                "question": "The value of E within the field due to a point charge can be found with the help of",
+                "options": [
+                        "Faraday's laws",
+                        "Kirchhoff s laws",
+                        "Coulomb's laws",
+                        "none of the above"
+                ],
+                "answer": "Coulomb's laws",
+                "explanation": "The correct answer is C: Coulomb's laws."
+        },
+        {
+                "id": 78,
+                "question": "Electric intensity at any point in an electric field is equal to the at that point.",
+                "options": [
+                        "electric flux",
+                        "magnetic flux density",
+                        "potential gradient",
+                        "none of the above"
+                ],
+                "answer": "potential gradient",
+                "explanation": "The correct answer is C: potential gradient."
+        },
+        {
+                "id": 79,
+                "question": "Electric displacement is a quantity.",
+                "options": [
+                        "scalar",
+                        "vector",
+                        "both of the above",
+                        "none of the above"
+                ],
+                "answer": "vector",
+                "explanation": "The correct answer is B: vector."
+        },
+        {
+                "id": 80,
+                "question": "The unit of dielectric strength is given by",
+                "options": [
+                        "V/ m",
+                        "V2/ m",
+                        "m/ V",
+                        "m/ V2"
+                ],
+                "answer": "V/ m",
+                "explanation": "The correct answer is A: V/ m."
+        },
+        {
+                "id": 81,
+                "question": "Dielectric strength with increasing thickness",
+                "options": [
+                        "increases",
+                        "decreases",
+                        "remains unaltered",
+                        "none of the above"
+                ],
+                "answer": "decreases",
+                "explanation": "The correct answer is B: decreases."
+        },
+        {
+                "id": 82,
+                "question": "The property of a capacitorto store electricity is called its",
+                "options": [
+                        "capacitance",
+                        "charge",
+                        "energy",
+                        "none of the above"
+                ],
+                "answer": "capacitance",
+                "explanation": "The correct answer is A: capacitance."
+        },
+        {
+                "id": 83,
+                "question": "is that property of a capacitorwhich delays any change of voltage across it.",
+                "options": [
+                        "Inductance",
+                        "Capacitance",
+                        "Potential gradient",
+                        "None of the above"
+                ],
+                "answer": "Capacitance",
+                "explanation": "The correct answer is B: Capacitance."
+        },
+        {
+                "id": 84,
+                "question": "A capacitance of 100 fiF is connected in series with a resistance of 8000 £2. The time constant of the circuit is",
+                "options": [
+                        "0.2 s",
+                        "0.4 s",
+                        "0.6 s",
+                        "0.8 s"
+                ],
+                "answer": "0.8 s",
+                "explanation": "The correct answer is D: 0.8 s."
+        },
+        {
+                "id": 85,
+                "question": "In a cable capacitor, voltage gradient is maximum at the surface of the",
+                "options": [
+                        "earth",
+                        "conduction",
+                        "sheath",
+                        "insulator"
+                ],
+                "answer": "conduction",
+                "explanation": "The correct answer is B: conduction."
+        },
+        {
+                "id": 86,
+                "question": "The time constant of an R-C circuit is defined as the time during which capacitorcharging voltage actually rises to percent of its value.",
+                "options": [
+                        "37, initial",
+                        "62, initial",
+                        "62, final",
+                        "37, final"
+                ],
+                "answer": "62, final",
+                "explanation": "The correct answer is C: 62, final."
+        },
+        {
+                "id": 87,
+                "question": "The capacitance of a capacitoris influenced by",
+                "options": [
+                        "plate area",
+                        "plate separation",
+                        "nature of dielectric",
+                        "none of the above\n(e) all of the above"
+                ],
+                "answer": "plate area",
+                "explanation": "The correct answer is: plate area."
+        },
+        {
+                "id": 88,
+                "question": "A capacitorconsists of two",
+                "options": [
+                        "ceramic plates and one mica disc",
+                        "insulators separated by a dielectric",
+                        "silver-coated insulators",
+                        "conductors separated by an insulator"
+                ],
+                "answer": "conductors separated by an insulator",
+                "explanation": "The correct answer is D: conductors separated by an insulator."
+        },
+        {
+                "id": 89,
+                "question": "Permittivity is expressed in",
+                "options": [
+                        "Farad/ sq-m",
+                        "Farad/ meter",
+                        "Weber/ meter",
+                        "Weber/ sq-m"
+                ],
+                "answer": "Farad/ meter",
+                "explanation": "The correct answer is B: Farad/ meter."
+        },
+        {
+                "id": 90,
+                "question": "Dielectric strength of a material depends on",
+                "options": [
+                        "moisture content",
+                        "temperature",
+                        "thickness",
+                        "all of the above\n(e) none of the above"
+                ],
+                "answer": "all of the above\n(e) none of the above",
+                "explanation": "The correct answer is D: all of the above\n(e) none of the above."
+        },
+        {
+                "id": 91,
+                "question": "What will happen to an insulating medium if voltage more than the breakdown voltage is applied on it ?",
+                "options": [
+                        "It will become magnetic",
+                        "It will melt",
+                        "It will get punctured orcracked",
+                        "Its molecularstructure will get changed"
+                ],
+                "answer": "It will get punctured orcracked",
+                "explanation": "The correct answer is C: It will get punctured orcracked."
+        },
+        {
+                "id": 92,
+                "question": "Which medium has the least dielectric strength ?",
+                "options": [
+                        "Paraffin wax",
+                        "Quartz",
+                        "Glass",
+                        "Air"
+                ],
+                "answer": "Air",
+                "explanation": "The correct answer is D: Air."
+        },
+        {
+                "id": 93,
+                "question": "One volt is the same as",
+                "options": [
+                        "one joule/ coulomb",
+                        "one coulomb/ joule",
+                        "one coulomb",
+                        "one joule"
+                ],
+                "answer": "one joule/ coulomb",
+                "explanation": "The correct answer is A: one joule/ coulomb."
+        },
+        {
+                "id": 94,
+                "question": "The capacitance C is charged through a resistance R. The time constant of the charging circuit is given by",
+                "options": [
+                        "CIR",
+                        "1/ RC",
+                        "RC",
+                        "RIC"
+                ],
+                "answer": "RC",
+                "explanation": "The correct answer is C: RC."
+        },
+        {
+                "id": 95,
+                "question": "The bridge used forthe measurement of the value of the capacitance is",
+                "options": [
+                        "Wien's bridge",
+                        "Wheatstone bridge",
+                        "Schering bridge",
+                        "Hay's bridge"
+                ],
+                "answer": "Schering bridge",
+                "explanation": "The correct answer is C: Schering bridge."
+        },
+        {
+                "id": 96,
+                "question": "If an ohmmeterreading immediately goes practically to zero and stays there, capacitoris",
+                "options": [
+                        "charged",
+                        "short-circuited",
+                        "lossy",
+                        "satisfactory"
+                ],
+                "answer": "short-circuited",
+                "explanation": "The correct answer is B: short-circuited."
+        },
+        {
+                "id": 97,
+                "question": "Out of the following capacitors of identical rating which one will have the smallest dimensions ?",
+                "options": [
+                        "Aluminium foil capacitor",
+                        "Mica capacitor",
+                        "Ceramic capacitor",
+                        "Papercapacitor"
+                ],
+                "answer": "Ceramic capacitor",
+                "explanation": "The correct answer is C: Ceramic capacitor."
+        },
+        {
+                "id": 98,
+                "question": "Mica capacitors are characterised by all of the following except",
+                "options": [
+                        "stable operation",
+                        "accurate value",
+                        "lowleakage reactance",
+                        "lowlosses"
+                ],
+                "answer": "lowleakage reactance",
+                "explanation": "The correct answer is C: lowleakage reactance."
+        },
+        {
+                "id": 99,
+                "question": "A potential of 400 V is applied to a capacitor, the plates of which are 4 mm apart. The strength of electric field is",
+                "options": [
+                        "100 kV/ m",
+                        "10 kV/ m",
+                        "5 kV/ m",
+                        "2 kV/ m"
+                ],
+                "answer": "100 kV/ m",
+                "explanation": "The correct answer is A: 100 kV/ m."
+        },
+        {
+                "id": 100,
+                "question": "The ohmmeterreading fora short circuited capacitoris",
+                "options": [
+                        "infinity",
+                        "fewkilo ohms",
+                        "fewmegohms",
+                        "zero"
+                ],
+                "answer": "zero",
+                "explanation": "The correct answer is D: zero."
+        },
+        {
+                "id": 101,
+                "question": "Which of the following statements is correct ?",
+                "options": [
+                        "Mica capacitors are available in capacitance values of 5 to 20 uF",
+                        "Aircapapitors have a black band to indicate the outside foil",
+                        "Electrolytic capacitors must be connected in correct polarity",
+                        "Ceramic capacitors must be connected in correct polarity"
+                ],
+                "answer": "Electrolytic capacitors must be connected in correct polarity",
+                "explanation": "The correct answer is C: Electrolytic capacitors must be connected in correct polarity."
+        },
+        {
+                "id": 102,
+                "question": "An electrolytic capacitoris generally made to provide",
+                "options": [
+                        "lowcapacitance",
+                        "fixed capacitance",
+                        "variable capacitance",
+                        "large value of capacitance"
+                ],
+                "answer": "large value of capacitance",
+                "explanation": "The correct answer is D: large value of capacitance."
+        },
+        {
+                "id": 103,
+                "question": "In orderto remove static electricity from machinery",
+                "options": [
+                        "construct insulated cabins",
+                        "insulate the machinery",
+                        "ground the framework",
+                        "humidify the surroundings"
+                ],
+                "answer": "ground the framework",
+                "explanation": "The correct answer is C: ground the framework."
+        },
+        {
+                "id": 104,
+                "question": "If a third equal and similarcharge is placed between two equal and similarcharges, then this third charge will",
+                "options": [
+                        "move out of the field of influence of the two charges",
+                        "remain in stable equilibrium",
+                        "not be in equilibrium",
+                        "be in unstable equilibrium"
+                ],
+                "answer": "remain in stable equilibrium",
+                "explanation": "The correct answer is B: remain in stable equilibrium."
+        },
+        {
+                "id": 105,
+                "question": "A region around a stationary electric charge has",
+                "options": [
+                        "an electric field",
+                        "a magnetic field",
+                        "both (a) and (6)",
+                        "none of the above"
+                ],
+                "answer": "an electric field",
+                "explanation": "The correct answer is A: an electric field."
+        },
+        {
+                "id": 106,
+                "question": "The minimum value of potential gradient in a cable occurs in",
+                "options": [
+                        "insulation",
+                        "conductor",
+                        "outersheath",
+                        "uniformly all over"
+                ],
+                "answer": "insulation",
+                "explanation": "The correct answer is A: insulation."
+        },
+        {
+                "id": 107,
+                "question": "Dielectric strength of medium",
+                "options": [
+                        "increases with rise in temperature",
+                        "increases with moisture content",
+                        "is same forall insulating materials",
+                        "none of the above"
+                ],
+                "answer": "none of the above",
+                "explanation": "The correct answer is D: none of the above."
+        },
+        {
+                "id": 108,
+                "question": "Acharge which when placed in vacuum from an equal and similarcharge repels with a force of 9 x 10 N, is known as",
+                "options": [
+                        "milli-coulomb",
+                        "micro-coulomb",
+                        "pico-coulomb",
+                        "coulomb"
+                ],
+                "answer": "micro-coulomb",
+                "explanation": "The correct answer is B: micro-coulomb."
+        },
+        {
+                "id": 109,
+                "question": "Dielectric strength of a medium is usually expressed in",
+                "options": [
+                        "J / mm",
+                        "C/ m2",
+                        "kV/ mm",
+                        "N/ mm"
+                ],
+                "answer": "kV/ mm",
+                "explanation": "The correct answer is C: kV/ mm."
+        },
+        {
+                "id": 110,
+                "question": "A positive and a negative charge are initially 50 mm apart. When they are moved close togetherso that they are nowonly 10 mm apart, the force between them will be",
+                "options": [
+                        "5 times smallerthan before",
+                        "5 times greaterthan before",
+                        "10 times greaterthan before",
+                        "25 times largerthan before"
+                ],
+                "answer": "25 times largerthan before",
+                "explanation": "The correct answer is D: 25 times largerthan before."
+        },
+        {
+                "id": 111,
+                "question": "Which is the most superiordielectric out of the following ?",
+                "options": [
+                        "Air",
+                        "Glass",
+                        "Bakelite",
+                        "Paper"
+                ],
+                "answer": "Bakelite",
+                "explanation": "The correct answer is C: Bakelite."
+        },
+        {
+                "id": 112,
+                "question": "When a dielectric is placed in an electric field the field strength",
+                "options": [
+                        "decreases",
+                        "increases",
+                        "reduces to zero",
+                        "remain unchanged"
+                ],
+                "answer": "decreases",
+                "explanation": "The correct answer is A: decreases."
+        },
+        {
+                "id": 113,
+                "question": "To prevent the generation of static charges on rubberorflat leather",
+                "options": [
+                        "surface is moistened",
+                        "conductive dressing is done",
+                        "oil compound dressing is done",
+                        "talcum powderis sprayed on the surface"
+                ],
+                "answer": "conductive dressing is done",
+                "explanation": "The correct answer is B: conductive dressing is done."
+        },
+        {
+                "id": 114,
+                "question": "Which of the following capacitoris preferred in case of single phase motor?",
+                "options": [
+                        "Mica capacitor",
+                        "Papercapacitor",
+                        "Electrolytic capacitor",
+                        "Ceramic capacitor"
+                ],
+                "answer": "Electrolytic capacitor",
+                "explanation": "The correct answer is C: Electrolytic capacitor."
+        },
+        {
+                "id": 115,
+                "question": "A capacitance is a circuit component that opposes the change in circuit",
+                "options": [
+                        "current",
+                        "voltage",
+                        "impedance",
+                        "none of the above"
+                ],
+                "answer": "current",
+                "explanation": "The correct answer is A: current."
+        },
+        {
+                "id": 116,
+                "question": "A condensersuitable for D.C. only is",
+                "options": [
+                        "metallic plate variable gang condenser",
+                        "metallic papercapacitor",
+                        "oil impregrated papercondenser",
+                        "poled aluminium electrolytic condenser"
+                ],
+                "answer": "poled aluminium electrolytic condenser",
+                "explanation": "The correct answer is D: poled aluminium electrolytic condenser."
+        },
+        {
+                "id": 117,
+                "question": "In a capacitor, the electric charge is stored in",
+                "options": [
+                        "metal plates",
+                        "dielectric",
+                        "dielectric as well as metal plates",
+                        "none of the above"
+                ],
+                "answer": "dielectric",
+                "explanation": "The correct answer is B: dielectric."
+        }
     ];
 
     let currentExamData = [];
@@ -342,7 +1721,7 @@
         dash.innerHTML = '';
 
         const totalQ = MASTER_POOL.length;
-        const partSize = 10;
+        const partSize = 25;
         const numParts = Math.ceil(totalQ / partSize);
 
         const randomBox = document.createElement('div');
@@ -406,8 +1785,8 @@
             const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
             pool = shuffleArray(pool).slice(0, qty);
         } else {
-            const start = (partNum - 1) * 10;
-            pool = pool.slice(start, start + 10);
+            const start = (partNum - 1) * 25;
+            pool = pool.slice(start, start + 25);
         }
 
         if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);
@@ -453,7 +1832,7 @@
         optBox.innerHTML  = '';
         feedArea.innerHTML = '';
 
-        q.options.forEach((val, idx) => {
+        if (q.options && q.options.length) q.options.forEach((val, idx) => {
             const label = labels[idx] || (idx + 1);
             const btn   = document.createElement('button');
             btn.className = 'option-btn';
@@ -476,11 +1855,7 @@
 
                 if (activeMode === 'practice') {
                     const isLast = currentIndex === currentExamData.length - 1;
-                    if (!isLast) {
-                        setTimeout(() => { currentIndex++; renderQuestion(); }, 1200);
-                    } else {
-                        setTimeout(() => showResults(true), 1200);
-                    }
+                    if (isLast) { const sb = document.getElementById('submit-btn'); if (sb) sb.style.display = 'inline-flex'; }
                 }
             };
             optBox.appendChild(btn);
@@ -501,7 +1876,7 @@
                     ⚠ Not answered. Correct: <strong>${q.answer}</strong>
                 </div>${expHtml}`;
             }
-        } else if (activeMode === 'practice' && hasAnswered) {
+        } else if (activeMode === 'practice' && hasAnswered && !q.isTheory) {
             const ok = userAns === q.answer;
             feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
                 ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
@@ -737,6 +2112,69 @@
     buildDashboard();
     loadStatsBar();
     checkResume();
+
+        // ═══ THEORY UI + GROQ AI GRADING (one question at a time) ═══
+        (function() {
+            const _orig = window.renderQuestion;
+            window.renderQuestion = function() {
+                _orig.apply(this, arguments);
+                const q = currentExamData && currentExamData[currentIndex];
+                if (q && q.isTheory) injectTheoryUI(q);
+            };
+        })();
+        function injectTheoryUI(q) {
+            const fa = document.getElementById('feedback-area');
+            if (!fa || fa.querySelector('.theory-ui')) return;
+            const ex = userAnswers[currentIndex];
+            const ha = ex && typeof ex === 'object' && 'response' in ex;
+            const html = `<div class="theory-ui" style="margin-top:1rem;padding:1rem;background:rgba(124,58,237,0.04);border-left:4px solid #7c3aed;border-radius:10px;">
+                <label style="font-weight:700;color:var(--primary);display:block;margin-bottom:6px;"><i class="fa-solid fa-pen-to-square"></i> Your Answer:</label>
+                <textarea id="theory-response" rows="6" style="width:100%;padding:10px;border:2px solid #ddd6fe;border-radius:8px;font-family:inherit;font-size:0.95rem;resize:vertical;${ha?'background:#f5f5f5;':''}" placeholder="Type your detailed answer here..." ${ha?'disabled':''}>${ha?(ex.response||'').replace(/</g,'&lt;'):''}</textarea>
+                ${ha?`<div style="margin-top:10px;padding:10px;background:#fff;border-radius:8px;border:1px solid var(--border);"><strong style="color:var(--primary);">Your Score:</strong> <span style="font-size:1.1rem;font-weight:800;color:${(ex.score||0)>=70?'#10b981':(ex.score||0)>=40?'#f59e0b':'#ef4444'};">${ex.score||0}%</span>${ex.aiFeedback?`<div style="margin-top:6px;font-size:0.88rem;color:var(--text-muted);"><strong>AI Feedback:</strong> ${ex.aiFeedback}</div>`:''}</div>`:`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;"><button class="btn" style="background:var(--danger);padding:7px 14px;font-size:0.85rem;" onclick="gradeTheoryAnswer(0)"><i class="fa-solid fa-xmark"></i> Incorrect (0%)</button><button class="btn" style="background:var(--accent);padding:7px 14px;font-size:0.85rem;" onclick="gradeTheoryAnswer(50)"><i class="fa-solid fa-circle-half-stroke"></i> Partial (50%)</button><button class="btn" style="background:var(--success);padding:7px 14px;font-size:0.85rem;" onclick="gradeTheoryAnswer(100)"><i class="fa-solid fa-check"></i> Correct (100%)</button><button class="btn" id="ai-grade-btn" style="background:linear-gradient(135deg,#4f46e5,#818cf8);padding:7px 14px;font-size:0.85rem;" onclick="gradeWithGroqAI()"><i class="fa-solid fa-robot"></i> Auto-Grade (AI)</button></div><div id="ai-feedback-response" style="display:none;margin-top:10px;padding:10px;background:#fff;border-radius:8px;border:1px solid var(--border);"><div id="ai-feedback-text" style="font-size:0.92rem;line-height:1.5;"></div></div>`}
+            </div>`;
+            fa.insertAdjacentHTML('beforeend', html);
+        }
+        function gradeTheoryAnswer(s) {
+            const t = document.getElementById('theory-response');
+            if (!t || !t.value.trim()) { alert("Please type your answer first."); return; }
+            userAnswers[currentIndex] = { response: t.value.trim(), score: s, aiFeedback: userAnswers[currentIndex] && userAnswers[currentIndex].aiFeedback };
+            saveState(); renderQuestion();
+        }
+        async function gradeWithGroqAI() {
+            const q = currentExamData[currentIndex];
+            const t = document.getElementById('theory-response');
+            if (!t || !t.value.trim()) { alert("Please type your answer first."); return; }
+            const ur = t.value.trim();
+            const btn = document.getElementById('ai-grade-btn');
+            const fb = document.getElementById('ai-feedback-response');
+            const ft = document.getElementById('ai-feedback-text');
+            btn.disabled = true; btn.innerText = "\u23F3 Grading...";
+            const prov = window.env?.AI_PROVIDER || 'groq';
+            const model = window.env?.AI_MODEL || 'llama-3.1-8b-instant';
+            const key = window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy');
+            const sp = `You are a strict academic examiner grading a ${COURSE_CODE} exam.\nQuestion: "${q.question}"\nModel Answer: "${q.answer}"\nStudent's Answer: "${ur}"\nRate 0-100%. Respond as JSON: {"score": <0-100>, "feedback": "<1-2 sentence explanation>"}`;
+            try {
+                let r = null;
+                if (prov === 'groq') {
+                    const resp = await fetch("https://api.groq.com/openai/v1/chat/completions", { method:'POST', headers:{'Content-Type':'application/json','Authorization':`Bearer ${key}`}, body: JSON.stringify({ model, messages:[{role:"system",content:sp}], response_format:{type:"json_object"}, temperature:0.2 }) });
+                    const d = await resp.json();
+                    if (!resp.ok) throw new Error(d.error?.message || `HTTP ${resp.status}`);
+                    r = JSON.parse(d.choices[0].message.content.trim());
+                } else {
+                    const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ contents:[{parts:[{text:sp}]}], generationConfig:{responseMimeType:"application/json"} }) });
+                    const d = await resp.json();
+                    if (!resp.ok) throw new Error(d.error?.message || `HTTP ${resp.status}`);
+                    r = JSON.parse(d.candidates[0].content.parts[0].text.trim());
+                }
+                if (r && typeof r.score === 'number') {
+                    ft.innerHTML = `<strong>AI Grade:</strong> ${r.score}%<br><strong>AI Feedback:</strong> ${r.feedback}`;
+                    fb.style.display = 'block';
+                    userAnswers[currentIndex] = { response: ur, score: r.score, aiFeedback: r.feedback };
+                    saveState(); setTimeout(() => renderQuestion(), 800);
+                } else throw new Error("Invalid response");
+            } catch (e) { console.error(e); alert(`Auto-grading failed: ${e.message}`); }
+            finally { btn.disabled = false; btn.innerText = "\uD83E\uDD16 Auto-Grade (AI)"; }
+        }
 </script>
 </body>
 </html>

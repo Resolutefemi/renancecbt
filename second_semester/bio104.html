@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FCYS 106 CBT Portal</title>
+    <title>BIO 104 CBT Portal</title>
     <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -12,24 +12,24 @@
     <script src="../cbt-ai-bridge.js"></script>
 
     <style>
-                :root {
-            --primary: #0891b2;
-            --bg: #ecfeff;
+        :root {
+            --primary: #7c3aed;
+            --bg: #faf5ff;
             --card-bg: #ffffff;
-            --text: #164e63;
-            --text-muted: #0891b2;
+            --text: #2e1065;
+            --text-muted: #7c3aed;
             --success: #10b981;
             --danger: #ef4444;
             --accent: #f59e0b;
-            --border: rgba(8,145,178,0.15);
-            --share-gradient: linear-gradient(135deg, #164e63 0%, #0891b2 55%, #22d3ee 100%);
+            --border: rgba(124,58,237,0.15);
+            --share-gradient: linear-gradient(135deg, #2e1065 0%, #7c3aed 55%, #a78bfa 100%);
         }
         .dark-mode {
-            --bg: #082f49;
-            --card-bg: #0c4a6e;
-            --text: #ecfeff;
-            --text-muted: #38bdf8;
-            --border: rgba(255,255,255,0.07);
+            --bg: #1e1b4b;
+            --card-bg: #2e1065;
+            --text: #faf5ff;
+            --text-muted: #c084fc;
+            --border: rgba(192,132,252,0.12);
         }
 
         * { box-sizing: border-box; }
@@ -49,7 +49,7 @@
             display: none; background: var(--card-bg);
             border: 1.5px solid var(--success); border-radius: 14px;
             padding: 1rem 1.2rem; margin-bottom: 1.2rem;
-            box-shadow: 0 2px 10px rgba(79,70,229,0.1);
+            box-shadow: 0 2px 10px rgba(124,58,237,0.1);
         }
 
         .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.8rem; margin-bottom: 1.5rem; }
@@ -65,10 +65,10 @@
             border: 1.5px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-        .box:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(79,70,229,0.12); }
+        .box:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(124,58,237,0.12); }
         .box h3 { margin: 10px 0 4px; font-size: 1rem; line-height: 1.4; }
         .box p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
-        .box-random { background: linear-gradient(135deg, #4f46e5, #818cf8) !important; color: white !important; border: none !important; }
+        .box-random { background: linear-gradient(135deg, #7c3aed, #a78bfa) !important; color: white !important; border: none !important; }
         .box-random p { color: rgba(255,255,255,0.8) !important; }
 
         #setup-screen { text-align: center; background: var(--card-bg); padding: 3rem 2rem; border-radius: 16px; border: 1.5px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
@@ -76,7 +76,7 @@
         .setup-group label { font-weight: 600; font-size: 0.88rem; color: var(--text); display: block; margin-bottom: 7px; }
         .setup-input { width: 100%; padding: 11px 14px; border: 2px solid #ddd6fe; border-radius: 9px; font-size: 0.95rem; background: var(--bg); color: var(--text); outline: none; transition: border-color 0.2s; }
         .setup-input:focus { border-color: var(--primary); }
-        .checkbox-group { display: flex; flex-direction: column; gap: 12px; margin-top: 1rem; background: rgba(79,70,229,0.02); padding: 14px; border-radius: 10px; border: 1px solid #ddd6fe; }
+        .checkbox-group { display: flex; flex-direction: column; gap: 12px; margin-top: 1rem; background: rgba(124,58,237,0.02); padding: 14px; border-radius: 10px; border: 1px solid #ddd6fe; }
         .custom-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; color: var(--text); font-weight: 500; user-select: none; }
         .custom-checkbox input { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; }
 
@@ -125,7 +125,7 @@
         }
         .result-icon { font-size: 3.6rem; margin-bottom: 8px; display: block; animation: float 3s ease-in-out infinite; }
         @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .score-display { background: rgba(79,70,229,0.06); border: 2px dashed rgba(79,70,229,0.25); border-radius: 18px; padding: 18px; margin: 18px 0; }
+        .score-display { background: rgba(124,58,237,0.06); border: 2px dashed rgba(124,58,237,0.25); border-radius: 18px; padding: 18px; margin: 18px 0; }
         .score-big { font-size: 3.5rem; font-weight: 900; color: var(--primary); line-height: 1; }
         .stats-mini { display: flex; justify-content: center; gap: 24px; margin: 10px 0 4px; }
         .stats-mini .sm { text-align: center; }
@@ -135,8 +135,8 @@
         .result-actions { display: flex; flex-direction: column; gap: 11px; }
         .btn-action { width: 100%; padding: 13px; border: none; border-radius: 12px; font-size: 0.97rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s; display: flex; align-items: center; justify-content: center; gap: 9px; }
         .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
-        .btn-share  { background: var(--share-gradient); color: white; box-shadow: 0 4px 16px rgba(79,70,229,0.3); }
-        .btn-review { background: rgba(79,70,229,0.08); color: var(--primary); border: 1.5px solid rgba(79,70,229,0.2); }
+        .btn-share  { background: var(--share-gradient); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3); }
+        .btn-review { background: rgba(124,58,237,0.08); color: var(--primary); border: 1.5px solid rgba(124,58,237,0.2); }
         .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
 
         @media (max-width: 600px) {
@@ -154,7 +154,7 @@
     <div style="display:flex; align-items:center; gap:12px;">
         <a href="../dashboard.html" style="color:var(--text); text-decoration:none; font-size:1.1rem; display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--border);"><i class="fa-solid fa-arrow-left"></i></a>
         <div class="nav-brand">
-            <div><i class="fa-solid fa-file-shield"></i> FCYS 106 Practice Portal</div>
+            <div><i class="fa-solid fa-microscope"></i> BIO 104 Practice Portal</div>
             <div style="font-size:0.8rem; font-weight:600; color:var(--text-muted); letter-spacing:0.3px;">by Resolute Femi</div>
         </div>
     </div>
@@ -266,7 +266,7 @@
         <p id="save-status"></p>
 
         <div class="result-actions">
-            <button class="btn-action" id="explainBtn" onclick="askRenanceAI()" style="background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; box-shadow: 0 4px 16px rgba(79,70,229,0.3);">
+            <button class="btn-action" id="explainBtn" onclick="askRenanceAI()" style="background: linear-gradient(135deg, #7c3aed, #6d28d9); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
                 <i class="fa-solid fa-robot"></i> Explain Missed Questions
             </button>
             <button class="btn-action btn-share" onclick="shareQuizResult()">
@@ -286,8 +286,8 @@
     const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
     const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    const COURSE_CODE = 'FCYS 106';
-    const STORAGE_KEY = 'saved_fcys106_exam';
+    const COURSE_CODE = 'BIO 104';
+    const STORAGE_KEY = 'saved_bio104_exam';
 
     async function sendHeartbeat() {
         try {
@@ -299,128 +299,404 @@
     sendHeartbeat();
     setInterval(sendHeartbeat, 2 * 60 * 1000);
 
-    const MASTER_POOL = [
+            const MASTER_POOL = [
         {
                 "id": 1,
-                "question": "What is the primary purpose of an Information Security Policy?",
+                "question": "Theratbelongstowhichclass?",
                 "options": [
-                        "To define an organization's security goals and rules",
-                        "To configure firewalls",
-                        "To calculate employee salaries",
-                        "To write assembly code"
+                        "Mammalia",
+                        "Reptilia",
+                        "Amphibia",
+                        "Aves"
                 ],
-                "answer": "To define an organization's security goals and rules",
-                "explanation": "A security policy defines the administrative directives, goals, rules, and expectations for protecting an organization's assets."
+                "answer": "Mammalia",
+                "explanation": "The correct answer is: Mammalia."
         },
         {
                 "id": 2,
-                "question": "Which regulation governs data privacy and protection for individuals within the European Union?",
+                "question": "Whichorganinaratisprimarilyresponsiblefordetoxificationofharmfulsubstances?",
                 "options": [
-                        "GDPR",
-                        "HIPAA",
-                        "PCI-DSS",
-                        "SOX"
+                        "Heart",
+                        "Liver",
+                        "Kidney",
+                        "Spleen"
                 ],
-                "answer": "GDPR",
-                "explanation": "GDPR (General Data Protection Regulation) is a regulation in EU law on data protection and privacy for all individuals within the EU."
+                "answer": "Liver",
+                "explanation": "The correct answer is: Liver."
         },
         {
                 "id": 3,
-                "question": "What does CIA triad stand for in security policy?",
+                "question": "Whichofthefollowingistrueabouttherat’sdigestivesystem?",
                 "options": [
-                        "Confidentiality, Integrity, Availability",
-                        "Central Intelligence Agency",
-                        "Computer Integrity Audit",
-                        "Control Index Access"
+                        "Itlacksasmallintestine",
+                        "Thecaecumislargeandfunctionsincellulosedigestion",
+                        "Ithasasingle-chamberedstomachsimilartohumans",
+                        "Ithasgillsforrespiration"
                 ],
-                "answer": "Confidentiality, Integrity, Availability",
-                "explanation": "The CIA Triad constitutes the core pillars of cybersecurity: Confidentiality (encryption), Integrity (hashes), and Availability (uptime)."
+                "answer": "Thecaecumislargeandfunctionsincellulosedigestion",
+                "explanation": "The correct answer is: Thecaecumislargeandfunctionsincellulosedigestion."
         },
         {
                 "id": 4,
-                "question": "Which type of security control represents written guidelines, standards, and policies?",
+                "question": "Snakesbelongtowhichclass?",
                 "options": [
-                        "Administrative control",
-                        "Technical control",
-                        "Physical control",
-                        "Corrective control"
+                        "Mammalia",
+                        "Reptilia",
+                        "Amphibia",
+                        "Aves"
                 ],
-                "answer": "Administrative control",
-                "explanation": "Administrative (or managerial) controls are policies, procedures, and guidelines defined by management to enforce security behaviors."
+                "answer": "Reptilia",
+                "explanation": "The correct answer is: Reptilia."
         },
         {
                 "id": 5,
-                "question": "What is the term for a legally binding contract that restricts parties from sharing confidential information?",
+                "question": "Whichorganinsnakesisresponsibleforsensingheatinprey?",
                 "options": [
-                        "Non-Disclosure Agreement (NDA)",
-                        "Service Level Agreement (SLA)",
-                        "User License Agreement (ULA)",
-                        "Memorandum of Understanding (MOU)"
+                        "Eyes",
+                        "Pitorgans",
+                        "Lungs",
+                        "Liver"
                 ],
-                "answer": "Non-Disclosure Agreement (NDA)",
-                "explanation": "An NDA is a legal contract between parties ensuring that confidential information disclosed remains protected and is not shared with outsiders."
+                "answer": "Pitorgans",
+                "explanation": "The correct answer is: Pitorgans."
         },
         {
                 "id": 6,
-                "question": "What is the primary focus of the NIST Cybersecurity Framework?",
+                "question": "Whichstructureincrabshelpsinrespiration?",
                 "options": [
-                        "To provide guidelines for managing and reducing cybersecurity risk",
-                        "To regulate cellular networks",
-                        "To audit financial reports",
-                        "To design cryptography chips"
+                        "Trachea",
+                        "Booklungs",
+                        "Gills",
+                        "Spiracles"
                 ],
-                "answer": "To provide guidelines for managing and reducing cybersecurity risk",
-                "explanation": "The NIST CSF provides a set of standards, guidelines, and practices to help organizations manage and reduce cybersecurity risks."
+                "answer": "Gills",
+                "explanation": "The correct answer is: Gills."
         },
         {
                 "id": 7,
-                "question": "What is the legal doctrine that holds employers responsible for the actions of their employees?",
+                "question": "Millipedesbelongtowhichclass?",
                 "options": [
-                        "Vicarious liability",
-                        "Due diligence",
-                        "Absolute liability",
-                        "Sovereign immunity"
+                        "Chilopoda",
+                        "Diplopoda",
+                        "Insecta",
+                        "Arachnida"
                 ],
-                "answer": "Vicarious liability",
-                "explanation": "Vicarious liability holds an employer or supervisor responsible for acts of negligence committed by employees in the course of employment."
+                "answer": "Diplopoda",
+                "explanation": "The correct answer is: Diplopoda."
         },
         {
                 "id": 8,
-                "question": "What is the term for a formal document that describes the security controls of a system?",
+                "question": "Themaindefensemechanismofmillipedesis:",
                 "options": [
-                        "System Security Plan (SSP)",
-                        "Business Impact Analysis (BIA)",
-                        "Incident Response Plan (IRP)",
-                        "Disaster Recovery Plan (DRP)"
+                        "Biting",
+                        "Secretingtoxicfluids",
+                        "Jumping",
+                        "Camouflage"
                 ],
-                "answer": "System Security Plan (SSP)",
-                "explanation": "An SSP (System Security Plan) is a formal document describing system boundaries, operational environments, and active security controls."
+                "answer": "Secretingtoxicfluids",
+                "explanation": "The correct answer is: Secretingtoxicfluids."
         },
         {
                 "id": 9,
-                "question": "Which policy defines what actions users are allowed or not allowed to perform on organization assets?",
+                "question": "Howmanypairsoflegsaretypicallyfoundinasinglebodysegmentofamillipede?",
                 "options": [
-                        "Acceptable Use Policy (AUP)",
-                        "Password Policy",
-                        "Backup Policy",
-                        "Access Control Policy"
+                        "1pair",
+                        "2pairs",
+                        "3pairs",
+                        "4pairs"
                 ],
-                "answer": "Acceptable Use Policy (AUP)",
-                "explanation": "An Acceptable Use Policy (AUP) specifies rules for how employees and users may utilize enterprise hardware, networks, and internet resources."
+                "answer": "2pairs",
+                "explanation": "The correct answer is: 2pairs."
         },
         {
                 "id": 10,
-                "question": "What is the legal term for a failure to take proper care in doing something, resulting in damage or injury?",
+                "question": "Birdsbelongtowhichclass?",
                 "options": [
-                        "Negligence",
-                        "Breach",
-                        "Tort",
-                        "Fraud"
+                        "Mammalia",
+                        "Reptilia",
+                        "Aves",
+                        "Amphibia"
                 ],
-                "answer": "Negligence",
-                "explanation": "Negligence is the legal term describing a failure to exercise the standard of care that a reasonably prudent person would under similar conditions."
+                "answer": "Aves",
+                "explanation": "The correct answer is: Aves."
+        },
+        {
+                "id": 11,
+                "question": "Thehollowbonesinbirdsprimarilyaidin:",
+                "options": [
+                        "Digestion",
+                        "Flight",
+                        "Reproduction",
+                        "Thermoregulation"
+                ],
+                "answer": "Flight",
+                "explanation": "The correct answer is: Flight."
+        },
+        {
+                "id": 12,
+                "question": "Thefunctionofthegizzardinbirdsis:",
+                "options": [
+                        "Filteringblood",
+                        "Grindingfood",
+                        "Oxygenabsorption",
+                        "Eggproduction\n13. Flatwormsbelongtowhichphylum?"
+                ],
+                "answer": "Grindingfood",
+                "explanation": "The correct answer is: Grindingfood."
+        },
+        {
+                "id": 13,
+                "question": "Whichorganinflatwormsisusedforexcretion?",
+                "options": [
+                        "Flamecells",
+                        "Nephridia",
+                        "Malpighiantubules",
+                        "Gills"
+                ],
+                "answer": "Flamecells",
+                "explanation": "The correct answer is: Flamecells."
+        },
+        {
+                "id": 14,
+                "question": "Flatwormsaregenerally:",
+                "options": [
+                        "Coelomates",
+                        "Acoelomates",
+                        "Pseudocoelomates",
+                        "Diploblastic"
+                ],
+                "answer": "Acoelomates",
+                "explanation": "The correct answer is: Acoelomates."
+        },
+        {
+                "id": 15,
+                "question": "Roundwormsbelongtowhichphylum?",
+                "options": [
+                        "Annelida",
+                        "Nematoda",
+                        "Platyhelminthes",
+                        "Arthropoda\n17. Thebodycavityofroundwormsiscalled:"
+                ],
+                "answer": "Nematoda",
+                "explanation": "The correct answer is: Nematoda."
+        },
+        {
+                "id": 16,
+                "question": "Roundwormshaveacompletedigestivesystem,whichmeans:",
+                "options": [
+                        "Onlyamouthexists",
+                        "Onlyananusexists",
+                        "Bothmouthandanusarepresent",
+                        "Neithermouthnoranus"
+                ],
+                "answer": "Bothmouthandanusarepresent",
+                "explanation": "The correct answer is: Bothmouthandanusarepresent."
+        },
+        {
+                "id": 17,
+                "question": "Tilapiaisa:",
+                "options": [
+                        "Mammal",
+                        "Amphibian",
+                        "Fish",
+                        "Reptile"
+                ],
+                "answer": "Fish",
+                "explanation": "The correct answer is: Fish."
+        },
+        {
+                "id": 18,
+                "question": "Tilapiauseswhichorganforrespiration?",
+                "options": [
+                        "Lungs",
+                        "Gills",
+                        "Skin",
+                        "Spiracles"
+                ],
+                "answer": "Gills",
+                "explanation": "The correct answer is: Gills."
+        },
+        {
+                "id": 19,
+                "question": "Thelaterallinein Tilapiafunctionsin:",
+                "options": [
+                        "Breathing",
+                        "Detectingvibrationsandmovementinwater",
+                        "Swimmingspeed",
+                        "Digestion"
+                ],
+                "answer": "Detectingvibrationsandmovementinwater",
+                "explanation": "The correct answer is: Detectingvibrationsandmovementinwater."
+        },
+        {
+                "id": 20,
+                "question": "Dogfishisatypeof:",
+                "options": [
+                        "Bonyfish",
+                        "Cartilaginousfish",
+                        "Amphibian",
+                        "Reptile"
+                ],
+                "answer": "Cartilaginousfish",
+                "explanation": "The correct answer is: Cartilaginousfish."
+        },
+        {
+                "id": 21,
+                "question": "Dogfishlacks:",
+                "options": [
+                        "Fins",
+                        "Jaws",
+                        "Bones",
+                        "Gills"
+                ],
+                "answer": "Bones",
+                "explanation": "The correct answer is: Bones."
+        },
+        {
+                "id": 22,
+                "question": "Thefunctionofthespiralvalveindogfishis:",
+                "options": [
+                        "Respiration",
+                        "Increasingdigestivesurfacearea",
+                        "Reproduction",
+                        "Locomotion"
+                ],
+                "answer": "Increasingdigestivesurfacearea",
+                "explanation": "The correct answer is: Increasingdigestivesurfacearea."
+        },
+        {
+                "id": 23,
+                "question": "Amoebamovesusing:",
+                "options": [
+                        "Cilia",
+                        "Flagella",
+                        "Pseudopodia",
+                        "Fins"
+                ],
+                "answer": "Pseudopodia",
+                "explanation": "The correct answer is: Pseudopodia."
+        },
+        {
+                "id": 24,
+                "question": "Thestructurein Amoebaresponsibleforosmoregulationis:",
+                "options": [
+                        "Nucleus",
+                        "Foodvacuole",
+                        "Contractilevacuole",
+                        "Cytoplasm"
+                ],
+                "answer": "Contractilevacuole",
+                "explanation": "The correct answer is: Contractilevacuole."
+        },
+        {
+                "id": 25,
+                "question": "Amoebareproducesby:",
+                "options": [
+                        "Binaryfission",
+                        "Budding",
+                        "Sporeformation",
+                        "Fragmentation"
+                ],
+                "answer": "Binaryfission",
+                "explanation": "The correct answer is: Binaryfission."
+        },
+        {
+                "id": 26,
+                "question": "Trypanosomebelongstowhichphylum?",
+                "options": [
+                        "Sarcomastigophora",
+                        "Euglenophyta",
+                        "Ciliophora",
+                        "Amoebozoa"
+                ],
+                "answer": "Sarcomastigophora",
+                "explanation": "The correct answer is: Sarcomastigophora."
+        },
+        {
+                "id": 27,
+                "question": "Trypanosomeisknowntocause:",
+                "options": [
+                        "Malaria",
+                        "Sleepingsickness",
+                        "Amoebiasis",
+                        "Cholera"
+                ],
+                "answer": "Sleepingsickness",
+                "explanation": "The correct answer is: Sleepingsickness."
+        },
+        {
+                "id": 28,
+                "question": "Trypanosomesmoveusing:",
+                "options": [
+                        "Pseudopodia",
+                        "Cilia",
+                        "Flagella",
+                        "Undulatingmembraneonly"
+                ],
+                "answer": "Flagella",
+                "explanation": "The correct answer is: Flagella."
+        },
+        {
+                "id": 29,
+                "question": "Euglenais:",
+                "options": [
+                        "Animal-like",
+                        "Plant-like",
+                        "Bothplantandanimal-like",
+                        "Fungal-like"
+                ],
+                "answer": "Bothplantandanimal-like",
+                "explanation": "The correct answer is: Bothplantandanimal-like."
+        },
+        {
+                "id": 30,
+                "question": "Thelight-sensitiveorganin Euglenaiscalled:",
+                "options": [
+                        "Nucleus",
+                        "Eyespot",
+                        "Chloroplast",
+                        "Flagellum"
+                ],
+                "answer": "Eyespot",
+                "explanation": "The correct answer is: Eyespot."
+        },
+        {
+                "id": 31,
+                "question": "Euglenastoresfoodintheformof:",
+                "options": [
+                        "Glycogen",
+                        "Starch",
+                        "Lipids",
+                        "Protein"
+                ],
+                "answer": "Starch",
+                "explanation": "The correct answer is: Starch."
+        },
+        {
+                "id": 32,
+                "question": "Frogsbelongtowhichclass?",
+                "options": [
+                        "Mammalia",
+                        "Reptilia",
+                        "Amphibia",
+                        "Aves\n35..Frogsrespirethrough:"
+                ],
+                "answer": "Amphibia",
+                "explanation": "The correct answer is: Amphibia."
+        },
+        {
+                "id": 33,
+                "question": "In Paramecium,locomotionisachievedby\nA)Flagella\nB)Pseudopodia\nC)Cilia\n ✅ \nD)Tentacles\n80. Theexcretaofbirdsiscalled:",
+                "options": [
+                        "Urea",
+                        "Ammonia",
+                        "Uricacid",
+                        "Sweat\n81. Thebodyofasnakeiscoveredwith__________."
+                ],
+                "answer": "Uricacid",
+                "explanation": "The correct answer is: Uricacid."
         }
-];
+    ];
 
     let currentExamData = [];
     let userAnswers     = {};
@@ -437,7 +713,7 @@
         dash.innerHTML = '';
 
         const totalQ = MASTER_POOL.length;
-        const partSize = 10;
+        const partSize = 25;
         const numParts = Math.ceil(totalQ / partSize);
 
         const randomBox = document.createElement('div');
@@ -500,8 +776,8 @@
             const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
             pool = shuffleArray(pool).slice(0, qty);
         } else {
-            const start = (partNum - 1) * 10;
-            pool = pool.slice(start, start + 10);
+            const start = (partNum - 1) * 25;
+            pool = pool.slice(start, start + 25);
         }
 
         if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);
@@ -547,7 +823,7 @@
         optBox.innerHTML  = '';
         feedArea.innerHTML = '';
 
-        q.options.forEach((val, idx) => {
+        if (q.options && q.options.length) q.options.forEach((val, idx) => {
             const label = labels[idx] || (idx + 1);
             const btn   = document.createElement('button');
             btn.className = 'option-btn';
@@ -570,10 +846,10 @@
 
                 if (activeMode === 'practice') {
                     const isLast = currentIndex === currentExamData.length - 1;
-                    if (!isLast) {
-                        setTimeout(() => { currentIndex++; renderQuestion(); }, 1200);
-                    } else {
-                        setTimeout(() => showResults(true), 1200);
+                    // Auto-next removed: user must click "Next" manually.
+                    if (isLast) {
+                        const submitBtn = document.getElementById('submit-btn');
+                        if (submitBtn) submitBtn.style.display = 'inline-flex';
                     }
                 }
             };
@@ -595,7 +871,7 @@
                     ⚠ Not answered. Correct: <strong>${q.answer}</strong>
                 </div>${expHtml}`;
             }
-        } else if (activeMode === 'practice' && hasAnswered) {
+        } else if (activeMode === 'practice' && hasAnswered && !q.isTheory) {
             const ok = userAns === q.answer;
             feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
                 ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
@@ -613,6 +889,7 @@
         if (n >= 0 && n < currentExamData.length) { currentIndex = n; renderQuestion(); }
     }
 
+    // Save State
     function saveState() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify({
             currentExamData, userAnswers, currentIndex,
@@ -720,7 +997,7 @@
         currentIndex = 0;
         document.getElementById('timer').innerText         = 'REVIEW';
         document.getElementById('timer').style.background = '#ddd6fe';
-        document.getElementById('timer').style.color      = '#4f46e5';
+        document.getElementById('timer').style.color      = '#7c3aed';
         renderQuestion();
     }
 
@@ -817,6 +1094,7 @@
         document.getElementById('resume-btn').style.display    = 'none';
     }
 
+    // Check Resume
     function checkResume() {
         const saved = localStorage.getItem(STORAGE_KEY);
         if (!saved) { document.getElementById('resume-btn').style.display = 'none'; return; }
@@ -830,6 +1108,167 @@
     buildDashboard();
     loadStatsBar();
     checkResume();
+
+        // ═════════════════════════════════════════════════════════════════
+        // THEORY QUESTION UI + GROQ AI GRADING (one question at a time)
+        // ═════════════════════════════════════════════════════════════════
+        (function() {
+            const _originalRender = window.renderQuestion;
+            window.renderQuestion = function() {
+                _originalRender.apply(this, arguments);
+                const q = currentExamData && currentExamData[currentIndex];
+                if (q && q.isTheory) {
+                    injectTheoryUI(q);
+                }
+            };
+        })();
+
+        function injectTheoryUI(q) {
+            const feedArea = document.getElementById('feedback-area');
+            if (!feedArea) return;
+            if (feedArea.querySelector('.theory-ui')) return;
+
+            const existing = userAnswers[currentIndex];
+            const hasAnswered = existing && typeof existing === 'object' && 'response' in existing;
+
+            const html = `
+                <div class="theory-ui" style="margin-top:1rem; padding:1rem; background:rgba(124,58,237,0.04); border-left:4px solid #7c3aed; border-radius:10px;">
+                    <label style="font-weight:700; color:var(--primary); display:block; margin-bottom:6px;">
+                        <i class="fa-solid fa-pen-to-square"></i> Your Answer:
+                    </label>
+                    <textarea id="theory-response" rows="6" style="width:100%; padding:10px; border:2px solid #ddd6fe; border-radius:8px; font-family:inherit; font-size:0.95rem; resize:vertical; ${hasAnswered ? 'background:#f5f5f5;' : ''}"
+                        placeholder="Type your detailed answer here..." ${hasAnswered ? 'disabled' : ''}>${hasAnswered ? (existing.response || '').replace(/</g, '&lt;') : ''}</textarea>
+
+                    ${hasAnswered ? `
+                        <div style="margin-top:10px; padding:10px; background:#fff; border-radius:8px; border:1px solid var(--border);">
+                            <strong style="color:var(--primary);">Your Score:</strong>
+                            <span style="font-size:1.1rem; font-weight:800; color:${(existing.score||0) >= 70 ? '#10b981' : (existing.score||0) >= 40 ? '#f59e0b' : '#ef4444'};">${existing.score || 0}%</span>
+                            ${existing.aiFeedback ? `<div style="margin-top:6px; font-size:0.88rem; color:var(--text-muted);"><strong>AI Feedback:</strong> ${existing.aiFeedback}</div>` : ''}
+                        </div>
+                    ` : `
+                        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
+                            <button class="btn" style="background:var(--danger); padding:7px 14px; font-size:0.85rem;" onclick="gradeTheoryAnswer(0)">
+                                <i class="fa-solid fa-xmark"></i> Incorrect (0%)
+                            </button>
+                            <button class="btn" style="background:var(--accent); padding:7px 14px; font-size:0.85rem;" onclick="gradeTheoryAnswer(50)">
+                                <i class="fa-solid fa-circle-half-stroke"></i> Partial (50%)
+                            </button>
+                            <button class="btn" style="background:var(--success); padding:7px 14px; font-size:0.85rem;" onclick="gradeTheoryAnswer(100)">
+                                <i class="fa-solid fa-check"></i> Correct (100%)
+                            </button>
+                            <button class="btn" id="ai-grade-btn" style="background:linear-gradient(135deg, #4f46e5, #818cf8); padding:7px 14px; font-size:0.85rem;" onclick="gradeWithGroqAI()">
+                                <i class="fa-solid fa-robot"></i> Auto-Grade (AI)
+                            </button>
+                        </div>
+                        <div id="ai-feedback-response" style="display:none; margin-top:10px; padding:10px; background:#fff; border-radius:8px; border:1px solid var(--border);">
+                            <div id="ai-feedback-text" style="font-size:0.92rem; line-height:1.5;"></div>
+                        </div>
+                    `}
+                </div>
+            `;
+            feedArea.insertAdjacentHTML('beforeend', html);
+        }
+
+        function gradeTheoryAnswer(scorePct) {
+            const q = currentExamData[currentIndex];
+            const textarea = document.getElementById('theory-response');
+            if (!textarea) return;
+            const response = textarea.value.trim();
+            if (!response) { alert("Please type your answer first."); return; }
+            userAnswers[currentIndex] = {
+                response: response,
+                score: scorePct,
+                aiFeedback: userAnswers[currentIndex] && userAnswers[currentIndex].aiFeedback
+            };
+            saveState();
+            renderQuestion();
+        }
+
+        async function gradeWithGroqAI() {
+            const q = currentExamData[currentIndex];
+            const textarea = document.getElementById('theory-response');
+            if (!textarea) return;
+            const userResponse = textarea.value.trim();
+            if (!userResponse) { alert("Please type your answer first."); return; }
+
+            const aiBtn = document.getElementById('ai-grade-btn');
+            const aiFeedback = document.getElementById('ai-feedback-response');
+            const aiFeedbackText = document.getElementById('ai-feedback-text');
+            aiBtn.disabled = true;
+            aiBtn.innerText = "\u23F3 Grading...";
+
+            const provider = window.env?.AI_PROVIDER || 'groq';
+            const model = window.env?.AI_MODEL || 'llama-3.1-8b-instant';
+            const key = window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy');
+
+            const systemPrompt = `You are a strict, professional academic examiner grading a ${COURSE_CODE} exam question.
+Grade the student's answer against the provided model answer.
+
+Question: "${q.question}"
+Model Answer: "${q.answer}"
+Student's Answer: "${userResponse}"
+
+Rate the response from 0 to 100% accuracy.
+Provide your response strictly in the following JSON format:
+{
+  "score": <integer 0-100>,
+  "feedback": "<A concise 1-2 sentence explanation of what they got correct or missed>"
+}`;
+
+            try {
+                let result = null;
+                if (provider === 'groq') {
+                    if (!key) throw new Error("API Key is missing. Please configure your Groq key in Renance AI page first.");
+                    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+                        body: JSON.stringify({
+                            model: model,
+                            messages: [{ role: "system", content: systemPrompt }],
+                            response_format: { type: "json_object" },
+                            temperature: 0.2
+                        })
+                    });
+                    const resData = await response.json();
+                    if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
+                    result = JSON.parse(resData.choices[0].message.content.trim());
+                } else {
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: systemPrompt }] }],
+                            generationConfig: { responseMimeType: "application/json" }
+                        })
+                    });
+                    const resData = await response.json();
+                    if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
+                    const text = resData.candidates[0].content.parts[0].text;
+                    result = JSON.parse(text.trim());
+                }
+
+                if (result && typeof result.score === 'number') {
+                    aiFeedbackText.innerHTML = `<strong>AI Grade:</strong> ${result.score}%<br><strong>AI Feedback:</strong> ${result.feedback}`;
+                    aiFeedback.style.display = 'block';
+                    userAnswers[currentIndex] = {
+                        response: userResponse,
+                        score: result.score,
+                        aiFeedback: result.feedback
+                    };
+                    saveState();
+                    setTimeout(() => renderQuestion(), 800);
+                } else {
+                    throw new Error("Invalid API response structure");
+                }
+            } catch (e) {
+                console.error("AI Grading Error:", e);
+                alert(`Auto-grading failed: ${e.message || "Please self-grade using the buttons."}`);
+            } finally {
+                aiBtn.disabled = false;
+                aiBtn.innerText = "\uD83E\uDD16 Auto-Grade (AI)";
+            }
+        }
+
 </script>
 </body>
 </html>
