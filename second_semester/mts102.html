@@ -299,903 +299,916 @@
     sendHeartbeat();
     setInterval(sendHeartbeat, 2 * 60 * 1000);
 
-            const MASTER_POOL = [
+                const MASTER_POOL = [
         {
                 "id": 1,
                 "topic": "Limits",
-                "question": "Evaluate the limitlimx→−∞x2−5t−92×4+3×3",
+                "question": "Evaluate: lim<sub>x→0</sub> (sin x / x)",
                 "options": [
-                        "4",
-                        "0",
-                        "2",
-                        "1"
-                ],
-                "answer": "4",
-                "explanation": "The correct answer is A: 4."
-        },
-        {
-                "id": 2,
-                "topic": "Limits",
-                "question": "Evaluate the limitlimx→∞6e4x−e−2x8e4x−e2x+3e−x",
-                "options": [
-                        "35",
-                        "14",
-                        "34",
-                        "12"
-                ],
-                "answer": "34",
-                "explanation": "The correct answer is C: 3/4."
-        },
-        {
-                "id": 3,
-                "topic": "Limits",
-                "question": "Evaluate the limitlimh→02(−3+h)2−18h",
-                "options": [
-                        "6",
-                        "14",
-                        "12",
-                        "8"
-                ],
-                "answer": "12",
-                "explanation": "The correct answer is C: 12."
-        },
-        {
-                "id": 4,
-                "topic": "Limits",
-                "question": "Find the derivative f(x)=2×2−16x+35 by using first principle",
-                "options": [
-                        "x+16",
-                        "2x−8",
-                        "3x−5",
-                        "4x−16"
-                ],
-                "answer": "4x−16",
-                "explanation": "The correct answer is D: 4x−16."
-        },
-        {
-                "id": 5,
-                "topic": "Limits",
-                "question": "Find the derivative f(x)=2×2−16x+35 by using first principle",
-                "options": [
-                        "3x−5",
-                        "4x−16",
-                        "x+16",
-                        "2x−8"
-                ],
-                "answer": "4x−16",
-                "explanation": "The correct answer is B: 4x−16."
-        },
-        {
-                "id": 6,
-                "topic": "Limits",
-                "question": "Evaluate the limitlimt→4t−√(3+4)4−t",
-                "options": [
-                        "−58",
-                        "−38",
-                        "34",
-                        "−18"
-                ],
-                "answer": "−38",
-                "explanation": "The correct answer is B: -3/8."
-        },
-        {
-                "id": 7,
-                "topic": "Limits",
-                "question": "Differentiate y=3√(x2)(2x−x2) with respect to x",
-                "options": [
-                        "y=5×233+4×533",
-                        "y=5×233−4×533",
-                        "y=10×233−8×533",
-                        "y=10×233+8×533"
-                ],
-                "answer": "y=5×233−4×533",
-                "explanation": "The correct answer is B: y=5×233−4×533."
-        },
-        {
-                "id": 8,
-                "topic": "Limits",
-                "question": "Evaluate the limitlimt→4t−√(3+4)4−t",
-                "options": [
-                        "34",
-                        "−18",
-                        "−38",
-                        "−58"
-                ],
-                "answer": "−38",
-                "explanation": "The correct answer is C: -3/8."
-        },
-        {
-                "id": 9,
-                "topic": "Limits",
-                "question": "Given y(x)=x4−4×3+3×2−5x, evaluated4ydx4",
-                "options": [
-                        "22",
-                        "42",
-                        "30",
-                        "24"
-                ],
-                "answer": "24",
-                "explanation": "The correct answer is D: 24."
-        },
-        {
-                "id": 10,
-                "topic": "Limits",
-                "question": "Differentiate with respect to x:f(x)=(ax3+bx)",
-                "options": [
-                        "ax2+b",
-                        "3a−b",
-                        "3ax2+b",
-                        "3×2+1"
-                ],
-                "answer": "3ax2+b",
-                "explanation": "The correct answer is C: 3ax2+b."
-        },
-        {
-                "id": 11,
-                "topic": "Limits",
-                "question": "Evaluate the limitlimx→∞2×4−x2+8x−5×4+7",
-                "options": [
-                        "13",
-                        "34",
-                        "12",
-                        "23"
-                ],
-                "answer": "12",
-                "explanation": "The correct answer is C: 1/2."
-        },
-        {
-                "id": 12,
-                "topic": "Limits",
-                "question": "Differentiate y=3√(x2)(2x−x2) with respect to x",
-                "options": [
-                        "y=5×233−4×533",
-                        "y=5×233+4×533",
-                        "y=10×233−8×533",
-                        "y=10×233+8×533"
-                ],
-                "answer": "y=5×233+4×533",
-                "explanation": "The correct answer is B: y=5×233+4×533."
-        },
-        {
-                "id": 13,
-                "topic": "Limits",
-                "question": "Given2x5+x2−5t2, find dydx by using the first principle",
-                "options": [
-                        "6t2+10t−3",
-                        "c−t−2+8t−3",
-                        "t2+5t−3",
-                        "6t+7t−3"
-                ],
-                "answer": "6t2+10t−3",
-                "explanation": "The correct answer is A: 6t2+10t−3."
-        },
-        {
-                "id": 14,
-                "topic": "Limits",
-                "question": "Evaluate the limitlimh→02(−3+h)2−18h",
-                "options": [
-                        "8",
-                        "14",
-                        "12",
-                        "1 ..................................................................................................................................................... 1"
-                ],
-                "answer": "12",
-                "explanation": "The correct answer is C: 12 ............................................................................................................ 12."
-        },
-        {
-                "id": 1,
-                "topic": "Continuity",
-                "question": "Giveny(x)=x4−4×3+3×2−5x, evaluated4ydx4",
-                "options": [
-                        "24",
-                        "22",
-                        "42",
-                        "30"
-                ],
-                "answer": "24",
-                "explanation": "The correct answer is A: 24."
-        },
-        {
-                "id": 2,
-                "topic": "Continuity",
-                "question": "Given2x5+x2−5t22x5+x2−5t2, finddydx by using the first principle",
-                "options": [
-                        "6t+7t−3",
-                        "6t2+10t−3",
-                        "t2+5t−3",
-                        "c−t−2+8t−3"
-                ],
-                "answer": "6t2+10t−3",
-                "explanation": "The correct answer is B: 6t2+10t−3."
-        },
-        {
-                "id": 3,
-                "topic": "Continuity",
-                "question": "Differentiate with respect to x:f(x)=(ax3+bx)",
-                "options": [
-                        "ax2+b",
-                        "3×2+1",
-                        "3ax2+b",
-                        "3a−b"
-                ],
-                "answer": "ax2+b",
-                "explanation": "The correct answer is: ax2+b."
-        },
-        {
-                "id": 4,
-                "topic": "Continuity",
-                "question": "Evaluate the limitlimx→∞2×4−x2+8x−5×4+7",
-                "options": [
-                        "34",
-                        "23",
-                        "13",
-                        "12"
-                ],
-                "answer": "34",
-                "explanation": "The correct answer is: 34."
-        },
-        {
-                "id": 5,
-                "topic": "Continuity",
-                "question": "Evaluate the limitlimx→−∞x2−5t−92×4+3×3",
-                "options": [
-                        "4",
                         "0",
                         "1",
-                        "2"
+                        "∞",
+                        "Does not exist"
                 ],
-                "answer": "4",
-                "explanation": "The correct answer is: 4."
-        },
-        {
-                "id": 6,
-                "topic": "Continuity",
-                "question": "Integrate ∫(x3+3×2+2x+4)",
-                "options": [
-                        "x42−x3+x2+4x+c",
-                        "6×4−3×2+c",
-                        "x44+x3+x2+4x+c",
-                        "3×44+2×3+x+c"
-                ],
-                "answer": "x42−x3+x2+4x+c",
-                "explanation": "The correct answer is: x42−x3+x2+4x+c."
-        },
-        {
-                "id": 7,
-                "topic": "Continuity",
-                "question": "Given f(x) =(7×4−5×3) , evaluate df(x)dx",
-                "options": [
-                        "28×3−15×2",
-                        "2×3−15×2",
-                        "28×2−15×2",
-                        "7×4−5×3"
-                ],
-                "answer": "28×3−15×2",
-                "explanation": "The correct answer is A: A.28×3−15×2."
-        },
-        {
-                "id": 8,
-                "topic": "Continuity",
-                "question": "Evaluate ∫e4xdx",
-                "options": [
-                        "ex+c",
-                        "13ex+c",
-                        "14e4x+c",
-                        "3ex3+c"
-                ],
-                "answer": "ex+c",
-                "explanation": "The correct answer is: ex+c."
-        },
-        {
-                "id": 9,
-                "topic": "Continuity",
-                "question": "Find ∫sec3xtanxdx",
-                "options": [
-                        "cos3x2+c",
-                        "sin2x+c",
-                        "cos2x+c",
-                        "sec3x3+c"
-                ],
-                "answer": "cos3x2+c",
-                "explanation": "The correct answer is: cos3x2+c."
-        },
-        {
-                "id": 10,
-                "topic": "Continuity",
-                "question": "Find the volume of a sphere generated by a semicircley=√(r2−x2) revolving around the x-axis",
-                "options": [
-                        "4πr32",
-                        "4πr33",
-                        "−π−r32",
-                        "πr34"
-                ],
-                "answer": "4πr32",
-                "explanation": "The correct answer is: 4πr32."
-        },
-        {
-                "id": 11,
-                "topic": "Continuity",
-                "question": "Find the integral with respect to x ∫cosxsinxdx",
-                "options": [
-                        "cos2x2+c",
-                        "sinx",
-                        "sin2x2+c",
-                        "sin2x+c"
-                ],
-                "answer": "cos2x2+c",
-                "explanation": "The correct answer is: cos2x2+c."
-        },
-        {
-                "id": 12,
-                "topic": "Continuity",
-                "question": "Find the ∫tan3xsec3xdx",
-                "options": [
-                        "sec2x+1",
-                        "cot2x+1",
-                        "sec2x",
-                        "tan2x+1"
-                ],
-                "answer": "sec2x+1",
-                "explanation": "The correct answer is: sec2x+1."
-        },
-        {
-                "id": 13,
-                "topic": "Continuity",
-                "question": "Integrate with respect to x : ∫3−1x√7+x2dx",
-                "options": [
-                        "4−2√2",
-                        "2√2",
-                        "√2",
-                        "4√2"
-                ],
-                "answer": "4−2√2",
-                "explanation": "The correct answer is: 4−2√2."
-        },
-        {
-                "id": 14,
-                "topic": "Continuity",
-                "question": "Evaluate ∫3ex+5cos(x)−10sec2(x)dx",
-                "options": [
-                        "2ex−x−10tanx+c",
-                        "3e2+5sinx−10tanx+c",
-                        "3ex+cosx−10tanx+c",
-                        "3ex+5sinx−10secx+c"
-                ],
-                "answer": "2ex−x−10tanx+c",
-                "explanation": "The correct answer is: 2ex−x−10tanx+c."
-        },
-        {
-                "id": 1,
-                "topic": "Differentiation",
-                "question": "Evaluate∫x2e3xdx",
-                "options": [
-                        "e3x3(x2−2×3+29)+c",
-                        "ex3(x2+2×3−25)+c",
-                        "e2x3(x3−x4+29)+c",
-                        "−e3x3(x2+2×3−29)+c"
-                ],
-                "answer": "e3x3(x2−2×3+29)+c",
-                "explanation": "The correct answer is: e3x3(x2−2×3+29)+c."
+                "answer": "1",
+                "explanation": "This is the fundamental trigonometric limit: lim(x→0) sin(x)/x = 1."
         },
         {
                 "id": 2,
-                "topic": "Differentiation",
-                "question": "Evaluate∫x+1×2−3x+2dx",
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→0</sub> (1 − cos x) / x²",
                 "options": [
-                        "3ln(x−2)−2ln(x−1)+c",
-                        "3ln(x−2)+2ln(x+1)+c",
-                        "3ln(x+2)−2ln(x+1)+c",
-                        "−3ln(x−2)−2ln(x−1)+c"
-                ],
-                "answer": "3ln(x−2)−2ln(x−1)+c",
-                "explanation": "The correct answer is: 3ln(x−2)−2ln(x−1)+c."
-        },
-        {
-                "id": 3,
-                "topic": "Differentiation",
-                "question": "Integrate with respect to x : ∫2−1×2(x3+4)2dx",
-                "options": [
-                        "6",
-                        "12",
-                        "12",
-                        "512"
-                ],
-                "answer": "6",
-                "explanation": "The correct answer is: 6."
-        },
-        {
-                "id": 4,
-                "topic": "Differentiation",
-                "question": "Evaluate∫2−1y2+y−2dy",
-                "options": [
-                        "716",
-                        "316",
-                        "516",
-                        "1716"
-                ],
-                "answer": "716",
-                "explanation": "The correct answer is: 716."
-        },
-        {
-                "id": 5,
-                "topic": "Differentiation",
-                "question": "Evaluate∫(3x−2)6dx",
-                "options": [
-                        "(3x+2)72+c",
-                        "(3x−2)721+c",
-                        "(3x+2)721+c",
-                        "3(3x−2)72+c"
-                ],
-                "answer": "(3x+2)72+c",
-                "explanation": "The correct answer is: (3x+2)72+c."
-        },
-        {
-                "id": 6,
-                "topic": "Differentiation",
-                "question": "Evalute ∫x2(3−10×3)dx",
-                "options": [
-                        "115(3−20×3)5)+c",
-                        "110(1−10×2)5)+c",
-                        "1150(3−10×3)5)+c",
-                        "1100(3−2×3)5)+c"
-                ],
-                "answer": "115(3−20×3)5)+c",
-                "explanation": "The correct answer is: 115(3−20×3)5)+c."
-        },
-        {
-                "id": 7,
-                "topic": "Differentiation",
-                "question": "Find∫xcosax2dx with respect to x",
-                "options": [
-                        "12asinax2+c",
-                        "sec2x+1",
-                        "sin2x+c",
-                        "cos3x+c"
-                ],
-                "answer": "12asinax2+c",
-                "explanation": "The correct answer is: 12asinax2+c."
-        },
-        {
-                "id": 8,
-                "topic": "Differentiation",
-                "question": "Determine∫x2+1(x+2)3",
-                "options": [
-                        "ln(x+2)+4x+2−52(x+3)2+c",
-                        "ln(x−2)+4x−2−52(x+3)2+c",
-                        "ln(x+2)−4x+2−52(x+3)2+c",
-                        "−ln(x+2)−4x+2−52(x+3)2+c"
-                ],
-                "answer": "ln(x+2)+4x+2−52(x+3)2+c",
-                "explanation": "The correct answer is: ln(x+2)+4x+2−52(x+3)2+c."
-        },
-        {
-                "id": 9,
-                "topic": "Differentiation",
-                "question": "Integrate with respect to x : ∫41x+1√xdx",
-                "options": [
-                        "-20",
-                        "203",
-                        "320",
-                        "20"
-                ],
-                "answer": "-20",
-                "explanation": "The correct answer is: -20."
-        },
-        {
-                "id": 10,
-                "topic": "Differentiation",
-                "question": "Evaluate∫cos(6x+4)dx",
-                "options": [
-                        "sin(6x+4)6+c",
-                        "tan(6x+4)6+c",
-                        "cos(6x+4)6+c",
-                        "sec(6x+4)6+c"
-                ],
-                "answer": "sin(6x+4)6+c",
-                "explanation": "The correct answer is: sin(6x+4)6+c."
-        },
-        {
-                "id": 11,
-                "topic": "Differentiation",
-                "question": "Evaluate∫xe6xdx",
-                "options": [
-                        "x6e6x−1136e6x+c",
-                        "x3e6x+116e6x+c",
-                        "x6e6x+1136e6x+c",
-                        "−x6e6x+1136e6x+c"
-                ],
-                "answer": "x6e6x−1136e6x+c",
-                "explanation": "The correct answer is: x6e6x−1136e6x+c."
-        },
-        {
-                "id": 12,
-                "topic": "Differentiation",
-                "question": "Evaluate the limitlimx→−∞x2−5t−92×4+3×3",
-                "options": [
-                        "4",
                         "0",
-                        "2",
-                        "1"
+                        "1/2",
+                        "1",
+                        "∞"
                 ],
-                "answer": "4",
-                "explanation": "The correct answer is A: 4."
-        },
-        {
-                "id": 13,
-                "topic": "Differentiation",
-                "question": "Evaluate the limitlimx→∞6e4x−e−2x8e4x−e2x+3e−x",
-                "options": [
-                        "35",
-                        "14",
-                        "34",
-                        "12"
-                ],
-                "answer": "34",
-                "explanation": "The correct answer is C: 3/4."
-        },
-        {
-                "id": 14,
-                "topic": "Differentiation",
-                "question": "Evaluate the limitlimh→02(−3+h)2−18h",
-                "options": [
-                        "6",
-                        "14",
-                        "12",
-                        "8"
-                ],
-                "answer": "12",
-                "explanation": "The correct answer is C: 12."
-        },
-        {
-                "id": 1,
-                "topic": "Integration",
-                "question": "Find the derivative f(x)=2×2−16x+35 by using first principle",
-                "options": [
-                        "x+16",
-                        "2x−8",
-                        "3x−5",
-                        "4x−16"
-                ],
-                "answer": "4x−16",
-                "explanation": "The correct answer is D: 4x−16."
-        },
-        {
-                "id": 2,
-                "topic": "Integration",
-                "question": "Find the derivative f(x)=2×2−16x+35 by using first principle",
-                "options": [
-                        "3x−5",
-                        "4x−16",
-                        "x+16",
-                        "2x−8"
-                ],
-                "answer": "4x−16",
-                "explanation": "The correct answer is B: 4x−16."
+                "answer": "1/2",
+                "explanation": "Using L'Hôpital's rule or Taylor series: lim(x→0) (1−cos x)/x² = 1/2."
         },
         {
                 "id": 3,
-                "topic": "Integration",
-                "question": "Evaluate the limitlimt→4t−√(3+4)4−t",
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→0</sub> (tan x / x)",
                 "options": [
-                        "−58",
-                        "−38",
-                        "34",
-                        "−18"
-                ],
-                "answer": "−38",
-                "explanation": "The correct answer is B: -3/8."
-        },
-        {
-                "id": 4,
-                "topic": "Integration",
-                "question": "Differentiate y=3√(x2)(2x−x2) with respect to x",
-                "options": [
-                        "y=5×233+4×533",
-                        "y=5×233−4×533",
-                        "y=10×233−8×533",
-                        "y=10×233+8×533"
-                ],
-                "answer": "y=5×233−4×533",
-                "explanation": "The correct answer is B: y=5×233−4×533."
-        },
-        {
-                "id": 5,
-                "topic": "Integration",
-                "question": "Evaluate the limitlimt→4t−√(3+4)4−t",
-                "options": [
-                        "34",
-                        "−18",
-                        "−38",
-                        "−58"
-                ],
-                "answer": "−38",
-                "explanation": "The correct answer is C: -3/8."
-        },
-        {
-                "id": 6,
-                "topic": "Integration",
-                "question": "Given y(x)=x4−4×3+3×2−5x, evaluated4ydx4",
-                "options": [
-                        "22",
-                        "42",
-                        "30",
-                        "24"
-                ],
-                "answer": "24",
-                "explanation": "The correct answer is D: 24."
-        },
-        {
-                "id": 7,
-                "topic": "Integration",
-                "question": "Differentiate with respect to x:f(x)=(ax3+bx)",
-                "options": [
-                        "ax2+b",
-                        "3a−b",
-                        "3ax2+b",
-                        "3×2+1"
-                ],
-                "answer": "3ax2+b",
-                "explanation": "The correct answer is C: 3ax2+b."
-        },
-        {
-                "id": 8,
-                "topic": "Integration",
-                "question": "Evaluate the limitlimx→∞2×4−x2+8x−5×4+7",
-                "options": [
-                        "13",
-                        "34",
-                        "12",
-                        "23"
-                ],
-                "answer": "12",
-                "explanation": "The correct answer is C: 1/2."
-        },
-        {
-                "id": 9,
-                "topic": "Integration",
-                "question": "Differentiate y=3√(x2)(2x−x2) with respect to x",
-                "options": [
-                        "y=5×233−4×533",
-                        "y=5×233+4×533",
-                        "y=10×233−8×533",
-                        "y=10×233+8×533"
-                ],
-                "answer": "y=5×233+4×533",
-                "explanation": "The correct answer is B: y=5×233+4×533."
-        },
-        {
-                "id": 10,
-                "topic": "Integration",
-                "question": "Given2x5+x2−5t2, find dydx by using the first principle",
-                "options": [
-                        "6t2+10t−3",
-                        "c−t−2+8t−3",
-                        "t2+5t−3",
-                        "6t+7t−3"
-                ],
-                "answer": "6t2+10t−3",
-                "explanation": "The correct answer is A: 6t2+10t−3."
-        },
-        {
-                "id": 11,
-                "topic": "Integration",
-                "question": "Evaluate the limitlimh→02(−3+h)2−18h",
-                "options": [
-                        "8",
-                        "14",
-                        "12",
-                        "6"
-                ],
-                "answer": "12",
-                "explanation": "The correct answer is C: 12."
-        },
-        {
-                "id": 12,
-                "topic": "Integration",
-                "question": "Evaluate the limitlimx→∞6e4x−e−2x8e4x−e2x+3e−x",
-                "options": [
-                        "35",
-                        "34",
-                        "12",
-                        "14"
-                ],
-                "answer": "12",
-                "explanation": "The correct answer is C: 1/2."
-        },
-        {
-                "id": 13,
-                "topic": "Integration",
-                "question": "Giveny(x)=x4−4×3+3×2−5x, evaluated4ydx4",
-                "options": [
-                        "24",
-                        "22",
-                        "42",
-                        "30"
-                ],
-                "answer": "24",
-                "explanation": "The correct answer is A: 24."
-        },
-        {
-                "id": 14,
-                "topic": "Integration",
-                "question": "Given2x5+x2−5t22x5+x2−5t2, finddydx by using the first principle",
-                "options": [
-                        "6t+7t−3",
-                        "6t2+10t−3",
-                        "t2+5t−3",
-                        "c−t−2+8t−3"
-                ],
-                "answer": "6t2+10t−3",
-                "explanation": "The correct answer is B: 6t2+10t−3."
-        },
-        {
-                "id": 1,
-                "topic": "Sequences and Series",
-                "question": "Differentiate with respect to x:f(x)=(ax3+bx)",
-                "options": [
-                        "ax2+b",
-                        "3×2+1",
-                        "3ax2+b",
-                        "3a−b"
-                ],
-                "answer": "ax2+b",
-                "explanation": "The correct answer is: ax2+b."
-        },
-        {
-                "id": 2,
-                "topic": "Sequences and Series",
-                "question": "Evaluate the limitlimx→∞2×4−x2+8x−5×4+7",
-                "options": [
-                        "34",
-                        "23",
-                        "13",
-                        "12"
-                ],
-                "answer": "34",
-                "explanation": "The correct answer is: 34."
-        },
-        {
-                "id": 3,
-                "topic": "Sequences and Series",
-                "question": "Evaluate the limitlimx→−∞x2−5t−92×4+3×3",
-                "options": [
-                        "4",
                         "0",
                         "1",
-                        "2"
+                        "∞",
+                        "Does not exist"
                 ],
-                "answer": "4",
-                "explanation": "The correct answer is: 4."
+                "answer": "1",
+                "explanation": "lim(x→0) tan(x)/x = lim(x→0) [sin(x)/x · 1/cos(x)] = 1 · 1 = 1."
         },
         {
                 "id": 4,
-                "topic": "Sequences and Series",
-                "question": "Given 2×5+x2−5t2 , finddydxby using the first principle",
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→0</sub> (sin 3x / x)",
                 "options": [
-                        "6t2+10t−3",
-                        "t2+5t−3",
-                        "c−t−2+8t−3",
-                        "6t+7t−3"
+                        "0",
+                        "1",
+                        "3",
+                        "∞"
                 ],
-                "answer": "6t2+10t−3",
-                "explanation": "The correct answer is A: 6t2+10t−3."
+                "answer": "3",
+                "explanation": "lim(x→0) sin(3x)/x = 3 · lim(x→0) sin(3x)/(3x) = 3 · 1 = 3."
         },
         {
                 "id": 5,
-                "topic": "Sequences and Series",
-                "question": "Find the derivative f(x)=2×2−16x+35 by using first principle",
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→0</sub> (sin 3x / sin 5x)",
                 "options": [
-                        "x+16",
-                        "3x−5",
-                        "2x−8",
-                        "4x−16"
-                ],
-                "answer": "4x−16",
-                "explanation": "The correct answer is D: 4x−16."
-        },
-        {
-                "id": 6,
-                "topic": "Sequences and Series",
-                "question": "Given y(x)=x4−4×3+3×2−5x , evaluated4ydx4",
-                "options": [
-                        "30",
-                        "22",
-                        "42",
-                        "24"
-                ],
-                "answer": "24",
-                "explanation": "The correct answer is D: 24."
-        },
-        {
-                "id": 7,
-                "topic": "Sequences and Series",
-                "question": "Evaluate the limit limx→∞6e4x−e−2x8e4x−e2x+3e−x",
-                "options": [
-                        "34",
-                        "14",
-                        "12",
-                        "35"
-                ],
-                "answer": "34",
-                "explanation": "The correct answer is A: 3/4."
-        },
-        {
-                "id": 8,
-                "topic": "Sequences and Series",
-                "question": "Differentiate y=3√(x2)(2x−x2) with respect to x",
-                "options": [
-                        "y=5×233−4×533",
-                        "y=10×233+8×533",
-                        "y=5×233+4×533",
-                        "y=10×233−8×533"
-                ],
-                "answer": "y=5×233+4×533",
-                "explanation": "The correct answer is C: y=5×233+4×533."
-        },
-        {
-                "id": 9,
-                "topic": "Sequences and Series",
-                "question": "Evaluate the limit limh→02(−3+h)2−18h",
-                "options": [
-                        "12",
-                        "6",
-                        "14",
-                        "8"
-                ],
-                "answer": "12",
-                "explanation": "The correct answer is A: 12."
-        },
-        {
-                "id": 10,
-                "topic": "Sequences and Series",
-                "question": "Evaluate the limit limt→4t−√(3+4)4−t",
-                "options": [
-                        "−18",
-                        "−58",
-                        "−38",
-                        "34"
-                ],
-                "answer": "−58",
-                "explanation": "The correct answer is B: -5/8."
-        },
-        {
-                "id": 11,
-                "topic": "Sequences and Series",
-                "question": "Differentiate with respect to x: f(x)=(ax3+bx)",
-                "options": [
-                        "3a−b",
-                        "ax2+b",
-                        "3ax2+b",
-                        "3×2+1"
-                ],
-                "answer": "3ax2+b",
-                "explanation": "The correct answer is C: 3ax2+b."
-        },
-        {
-                "id": 12,
-                "topic": "Sequences and Series",
-                "question": "Evaluate the limit limx→−∞x2−5t−92×4+3×3",
-                "options": [
-                        "4",
+                        "3/5",
+                        "5/3",
                         "1",
-                        "2",
                         "0"
                 ],
+                "answer": "3/5",
+                "explanation": "lim(x→0) sin(3x)/sin(5x) = lim (3x·sin(3x)/(3x)) / (5x·sin(5x)/(5x)) = 3/5."
+        },
+        {
+                "id": 6,
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→∞</sub> (x² + 3x) / (2x² − 5)",
+                "options": [
+                        "0",
+                        "1/2",
+                        "1",
+                        "∞"
+                ],
+                "answer": "1/2",
+                "explanation": "Divide numerator and denominator by x²: lim = 1/2."
+        },
+        {
+                "id": 7,
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→∞</sub> (3x³ − x) / (x³ + 2x²)",
+                "options": [
+                        "0",
+                        "1",
+                        "3",
+                        "∞"
+                ],
+                "answer": "3",
+                "explanation": "Divide by x³: lim = 3/1 = 3."
+        },
+        {
+                "id": 8,
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→2</sub> (x² − 4) / (x − 2)",
+                "options": [
+                        "0",
+                        "2",
+                        "4",
+                        "∞"
+                ],
                 "answer": "4",
-                "explanation": "The correct answer is A: 4."
+                "explanation": "Factor: (x²−4)/(x−2) = (x+2) → 4 as x→2."
+        },
+        {
+                "id": 9,
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→3</sub> (x² − 9) / (x − 3)",
+                "options": [
+                        "0",
+                        "3",
+                        "6",
+                        "∞"
+                ],
+                "answer": "6",
+                "explanation": "Factor: (x²−9)/(x−3) = (x+3) → 6 as x→3."
+        },
+        {
+                "id": 10,
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→0</sub> (e<sup>x</sup> − 1) / x",
+                "options": [
+                        "0",
+                        "1",
+                        "e",
+                        "∞"
+                ],
+                "answer": "1",
+                "explanation": "This is the definition of the derivative of eˣ at x=0, which equals 1."
+        },
+        {
+                "id": 11,
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→0</sub> (ln(1 + x)) / x",
+                "options": [
+                        "0",
+                        "1",
+                        "e",
+                        "∞"
+                ],
+                "answer": "1",
+                "explanation": "This is the derivative of ln(1+x) at x=0, which equals 1."
+        },
+        {
+                "id": 12,
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→0</sub> x · sin(1/x)",
+                "options": [
+                        "0",
+                        "1",
+                        "∞",
+                        "Does not exist"
+                ],
+                "answer": "0",
+                "explanation": "By squeeze theorem: −|x| ≤ x·sin(1/x) ≤ |x|, and both bounds → 0."
         },
         {
                 "id": 13,
-                "topic": "Sequences and Series",
-                "question": "Evaluate the limit limx→∞2×4−x2+8x−5×4+7",
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→0</sub> sin(1/x)",
                 "options": [
-                        "13",
-                        "12",
-                        "34",
-                        "12"
+                        "0",
+                        "1",
+                        "∞",
+                        "Does not exist"
                 ],
-                "answer": "34",
-                "explanation": "The correct answer is C: 12."
+                "answer": "Does not exist",
+                "explanation": "sin(1/x) oscillates between −1 and 1 as x→0, so the limit does not exist."
+        },
+        {
+                "id": 14,
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→∞</sub> (1 + 1/x)<sup>x</sup>",
+                "options": [
+                        "1",
+                        "e",
+                        "∞",
+                        "0"
+                ],
+                "answer": "e",
+                "explanation": "This is the classic definition of Euler's number e ≈ 2.71828."
+        },
+        {
+                "id": 15,
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→0</sub> (1 + x)<sup>1/x</sup>",
+                "options": [
+                        "1",
+                        "e",
+                        "∞",
+                        "0"
+                ],
+                "answer": "e",
+                "explanation": "Substituting u = 1/x gives lim(u→∞) (1 + 1/u)ᵘ = e."
+        },
+        {
+                "id": 16,
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→1</sub> (x³ − 1) / (x − 1)",
+                "options": [
+                        "1",
+                        "2",
+                        "3",
+                        "∞"
+                ],
+                "answer": "3",
+                "explanation": "Factor x³−1 = (x−1)(x²+x+1), so limit = 1+1+1 = 3."
+        },
+        {
+                "id": 17,
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→0</sub> (√(1 + x) − 1) / x",
+                "options": [
+                        "0",
+                        "1/2",
+                        "1",
+                        "∞"
+                ],
+                "answer": "1/2",
+                "explanation": "Rationalize: multiply by (√(1+x)+1)/(√(1+x)+1) → 1/2."
+        },
+        {
+                "id": 18,
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→∞</sub> x / (x + 1)",
+                "options": [
+                        "0",
+                        "1/2",
+                        "1",
+                        "∞"
+                ],
+                "answer": "1",
+                "explanation": "Divide by x: lim = 1/(1+0) = 1."
+        },
+        {
+                "id": 19,
+                "topic": "Limits",
+                "question": "If lim<sub>x→a</sub> f(x) = L and lim<sub>x→a</sub> g(x) = M, then lim<sub>x→a</sub> [f(x) + g(x)] =",
+                "options": [
+                        "L · M",
+                        "L + M",
+                        "L − M",
+                        "L / M"
+                ],
+                "answer": "L + M",
+                "explanation": "Sum rule for limits: lim(f+g) = lim(f) + lim(g) = L + M."
+        },
+        {
+                "id": 20,
+                "topic": "Limits",
+                "question": "Evaluate: lim<sub>x→0</sub> (1 − cos x) / x",
+                "options": [
+                        "0",
+                        "1/2",
+                        "1",
+                        "∞"
+                ],
+                "answer": "0",
+                "explanation": "lim(1−cos x)/x = 0 since 1−cos x ≈ x²/2 for small x."
+        },
+        {
+                "id": 1,
+                "topic": "Continuity",
+                "question": "A function f(x) is continuous at x = a if:",
+                "options": [
+                        "f(a) exists",
+                        "lim(x→a) f(x) exists",
+                        "lim(x→a) f(x) = f(a)",
+                        "All of the above"
+                ],
+                "answer": "All of the above",
+                "explanation": "Continuity requires: f(a) defined, limit exists, and limit equals f(a)."
+        },
+        {
+                "id": 2,
+                "topic": "Continuity",
+                "question": "Which of the following is NOT continuous everywhere?",
+                "options": [
+                        "Polynomials",
+                        "sin(x)",
+                        "1/x",
+                        "eˣ"
+                ],
+                "answer": "1/x",
+                "explanation": "1/x is not continuous at x = 0 (undefined there)."
+        },
+        {
+                "id": 3,
+                "topic": "Continuity",
+                "question": "The function f(x) = |x| is:",
+                "options": [
+                        "Discontinuous at x = 0",
+                        "Continuous everywhere but not differentiable at x = 0",
+                        "Discontinuous everywhere",
+                        "Differentiable everywhere"
+                ],
+                "answer": "Continuous everywhere but not differentiable at x = 0",
+                "explanation": "|x| is continuous everywhere but has a sharp corner at x=0, so not differentiable there."
+        },
+        {
+                "id": 4,
+                "topic": "Continuity",
+                "question": "If f(x) = (x² − 1)/(x − 1) for x ≠ 1 and f(1) = 2, then f is:",
+                "options": [
+                        "Discontinuous at x = 1",
+                        "Continuous at x = 1",
+                        "Undefined at x = 1",
+                        "None of the above"
+                ],
+                "answer": "Continuous at x = 1",
+                "explanation": "lim(x→1) f(x) = lim(x→1) (x+1) = 2 = f(1), so f is continuous at x=1."
+        },
+        {
+                "id": 5,
+                "topic": "Continuity",
+                "question": "A removable discontinuity occurs when:",
+                "options": [
+                        "lim(x→a) f(x) does not exist",
+                        "lim(x→a) f(x) exists but ≠ f(a)",
+                        "f(a) is undefined or ≠ limit",
+                        "Both B and C"
+                ],
+                "answer": "Both B and C",
+                "explanation": "A removable discontinuity is when the limit exists but doesn't equal the function value (or f is undefined)."
+        },
+        {
+                "id": 6,
+                "topic": "Continuity",
+                "question": "The greatest integer function [x] (floor function) is discontinuous at:",
+                "options": [
+                        "Every integer",
+                        "Every non-integer",
+                        "x = 0 only",
+                        "Every irrational number"
+                ],
+                "answer": "Every integer",
+                "explanation": "The floor function [x] jumps at every integer, so it's discontinuous there."
+        },
+        {
+                "id": 7,
+                "topic": "Continuity",
+                "question": "If f and g are continuous at x = a, then f + g is:",
+                "options": [
+                        "Discontinuous at x = a",
+                        "Continuous at x = a",
+                        "Undefined at x = a",
+                        "None of the above"
+                ],
+                "answer": "Continuous at x = a",
+                "explanation": "The sum of continuous functions is continuous."
+        },
+        {
+                "id": 8,
+                "topic": "Continuity",
+                "question": "If f and g are continuous at x = a and g(a) ≠ 0, then f/g is:",
+                "options": [
+                        "Discontinuous at x = a",
+                        "Continuous at x = a",
+                        "Undefined at x = a",
+                        "None of the above"
+                ],
+                "answer": "Continuous at x = a",
+                "explanation": "The quotient of continuous functions is continuous where the denominator ≠ 0."
+        },
+        {
+                "id": 9,
+                "topic": "Continuity",
+                "question": "The function f(x) = sin(x)/x at x = 0 has:",
+                "options": [
+                        "A jump discontinuity",
+                        "An infinite discontinuity",
+                        "A removable discontinuity",
+                        "No discontinuity"
+                ],
+                "answer": "A removable discontinuity",
+                "explanation": "lim(x→0) sin(x)/x = 1 exists, but f(0) is undefined — removable by defining f(0) = 1."
+        },
+        {
+                "id": 10,
+                "topic": "Continuity",
+                "question": "An infinite discontinuity (vertical asymptote) occurs in f(x) = 1/x² at:",
+                "options": [
+                        "x = 0",
+                        "x = 1",
+                        "x = −1",
+                        "No discontinuity"
+                ],
+                "answer": "x = 0",
+                "explanation": "1/x² → ∞ as x → 0, so there's an infinite discontinuity at x = 0."
+        },
+        {
+                "id": 11,
+                "topic": "Continuity",
+                "question": "A composite function f(g(x)) is continuous at x = a if:",
+                "options": [
+                        "f is continuous at g(a) and g is continuous at a",
+                        "f is differentiable at g(a)",
+                        "g is differentiable at a",
+                        "Both f and g are differentiable"
+                ],
+                "answer": "f is continuous at g(a) and g is continuous at a",
+                "explanation": "Composition of continuous functions is continuous."
+        },
+        {
+                "id": 12,
+                "topic": "Continuity",
+                "question": "The Intermediate Value Theorem states that if f is continuous on [a, b] and k is between f(a) and f(b), then:",
+                "options": [
+                        "f(x) = k for exactly one x in [a, b]",
+                        "f(x) = k for at least one x in (a, b)",
+                        "f(x) = k for all x in [a, b]",
+                        "f(x) ≠ k for any x in [a, b]"
+                ],
+                "answer": "f(x) = k for at least one x in (a, b)",
+                "explanation": "IVT guarantees at least one c in (a,b) with f(c) = k."
+        },
+        {
+                "id": 13,
+                "topic": "Continuity",
+                "question": "If f(x) = x² for x ≤ 1 and f(x) = 2x − 1 for x > 1, then f is:",
+                "options": [
+                        "Discontinuous at x = 1",
+                        "Continuous at x = 1",
+                        "Undefined at x = 1",
+                        "None"
+                ],
+                "answer": "Continuous at x = 1",
+                "explanation": "Left limit = 1² = 1; right limit = 2(1)−1 = 1; f(1) = 1. All equal, so continuous."
+        },
+        {
+                "id": 14,
+                "topic": "Continuity",
+                "question": "A jump discontinuity occurs when:",
+                "options": [
+                        "Left and right limits exist but are unequal",
+                        "Left and right limits are equal",
+                        "The limit is infinite",
+                        "The function is undefined"
+                ],
+                "answer": "Left and right limits exist but are unequal",
+                "explanation": "A jump discontinuity has finite but unequal left and right limits."
+        },
+        {
+                "id": 15,
+                "topic": "Continuity",
+                "question": "Every differentiable function is:",
+                "options": [
+                        "Discontinuous",
+                        "Continuous",
+                        "Constant",
+                        "Polynomial"
+                ],
+                "answer": "Continuous",
+                "explanation": "Differentiability implies continuity (but not vice versa)."
+        },
+        {
+                "id": 1,
+                "topic": "Differentiation",
+                "question": "The derivative of f(x) = xⁿ is:",
+                "options": [
+                        "n·xⁿ",
+                        "n·xⁿ⁻¹",
+                        "xⁿ⁻¹",
+                        "n·xⁿ⁺¹"
+                ],
+                "answer": "n·xⁿ⁻¹",
+                "explanation": "Power rule: d/dx(xⁿ) = n·xⁿ⁻¹."
+        },
+        {
+                "id": 2,
+                "topic": "Differentiation",
+                "question": "The derivative of f(x) = sin(x) is:",
+                "options": [
+                        "cos(x)",
+                        "−cos(x)",
+                        "−sin(x)",
+                        "tan(x)"
+                ],
+                "answer": "cos(x)",
+                "explanation": "d/dx(sin x) = cos x."
+        },
+        {
+                "id": 3,
+                "topic": "Differentiation",
+                "question": "The derivative of f(x) = cos(x) is:",
+                "options": [
+                        "sin(x)",
+                        "−sin(x)",
+                        "−cos(x)",
+                        "tan(x)"
+                ],
+                "answer": "−sin(x)",
+                "explanation": "d/dx(cos x) = −sin x."
+        },
+        {
+                "id": 4,
+                "topic": "Differentiation",
+                "question": "The derivative of f(x) = eˣ is:",
+                "options": [
+                        "eˣ",
+                        "x·eˣ⁻¹",
+                        "1/eˣ",
+                        "ln(x)"
+                ],
+                "answer": "eˣ",
+                "explanation": "d/dx(eˣ) = eˣ — the exponential function is its own derivative."
+        },
+        {
+                "id": 5,
+                "topic": "Differentiation",
+                "question": "The derivative of f(x) = ln(x) is:",
+                "options": [
+                        "1/x",
+                        "x",
+                        "eˣ",
+                        "1"
+                ],
+                "answer": "1/x",
+                "explanation": "d/dx(ln x) = 1/x for x > 0."
+        },
+        {
+                "id": 6,
+                "topic": "Differentiation",
+                "question": "The derivative of f(x) = tan(x) is:",
+                "options": [
+                        "sec²(x)",
+                        "sec(x)·tan(x)",
+                        "−sec²(x)",
+                        "cot(x)"
+                ],
+                "answer": "sec²(x)",
+                "explanation": "d/dx(tan x) = sec² x."
+        },
+        {
+                "id": 7,
+                "topic": "Differentiation",
+                "question": "Using the product rule, d/dx[f(x)·g(x)] =",
+                "options": [
+                        "f'(x)·g'(x)",
+                        "f'(x)·g(x) + f(x)·g'(x)",
+                        "f(x)·g'(x) − f'(x)·g(x)",
+                        "f'(x) + g'(x)"
+                ],
+                "answer": "f'(x)·g(x) + f(x)·g'(x)",
+                "explanation": "Product rule: (fg)' = f'g + fg'."
+        },
+        {
+                "id": 8,
+                "topic": "Differentiation",
+                "question": "Using the quotient rule, d/dx[f(x)/g(x)] =",
+                "options": [
+                        "[f'(x)·g(x) − f(x)·g'(x)] / g(x)²",
+                        "[f(x)·g'(x) − f'(x)·g(x)] / g(x)²",
+                        "f'(x)/g'(x)",
+                        "[f'(x) + g'(x)] / g(x)²"
+                ],
+                "answer": "[f'(x)·g(x) − f(x)·g'(x)] / g(x)²",
+                "explanation": "Quotient rule: (f/g)' = (f'g − fg')/g²."
+        },
+        {
+                "id": 9,
+                "topic": "Differentiation",
+                "question": "Using the chain rule, d/dx[f(g(x))] =",
+                "options": [
+                        "f'(g(x))",
+                        "f'(g(x))·g'(x)",
+                        "f'(x)·g'(x)",
+                        "f(g'(x))"
+                ],
+                "answer": "f'(g(x))·g'(x)",
+                "explanation": "Chain rule: d/dx[f(g(x))] = f'(g(x)) · g'(x)."
+        },
+        {
+                "id": 10,
+                "topic": "Differentiation",
+                "question": "The derivative of f(x) = x²·sin(x) is:",
+                "options": [
+                        "2x·sin(x)",
+                        "2x·cos(x)",
+                        "2x·sin(x) + x²·cos(x)",
+                        "x²·cos(x) − 2x·sin(x)"
+                ],
+                "answer": "2x·sin(x) + x²·cos(x)",
+                "explanation": "Product rule: d/dx(x²·sin x) = 2x·sin x + x²·cos x."
+        },
+        {
+                "id": 11,
+                "topic": "Differentiation",
+                "question": "The derivative of f(x) = (x² + 1)⁵ is:",
+                "options": [
+                        "5(x² + 1)⁴",
+                        "10x(x² + 1)⁴",
+                        "5x(x² + 1)⁴",
+                        "10x"
+                ],
+                "answer": "10x(x² + 1)⁴",
+                "explanation": "Chain rule: 5(x²+1)⁴ · 2x = 10x(x²+1)⁴."
+        },
+        {
+                "id": 12,
+                "topic": "Differentiation",
+                "question": "The derivative of f(x) = sin(x²) is:",
+                "options": [
+                        "cos(x²)",
+                        "2x·cos(x²)",
+                        "−cos(x²)",
+                        "x·cos(x²)"
+                ],
+                "answer": "2x·cos(x²)",
+                "explanation": "Chain rule: cos(x²) · 2x = 2x·cos(x²)."
+        },
+        {
+                "id": 13,
+                "topic": "Differentiation",
+                "question": "The derivative of f(x) = e<sup>x²</sup> is:",
+                "options": [
+                        "eˣ²",
+                        "2x·eˣ²",
+                        "x·eˣ²",
+                        "2eˣ²"
+                ],
+                "answer": "2x·eˣ²",
+                "explanation": "Chain rule: eˣ² · 2x = 2x·eˣ²."
+        },
+        {
+                "id": 14,
+                "topic": "Differentiation",
+                "question": "The second derivative of f(x) = x³ is:",
+                "options": [
+                        "3x²",
+                        "6x",
+                        "6",
+                        "0"
+                ],
+                "answer": "6x",
+                "explanation": "f'(x) = 3x², f''(x) = 6x."
+        },
+        {
+                "id": 15,
+                "topic": "Differentiation",
+                "question": "If f(x) = x⁴ − 3x² + 5, then f'(x) =",
+                "options": [
+                        "4x³ − 6x",
+                        "4x³ − 3x",
+                        "x³ − 3x + 5",
+                        "4x³ − 6x + 5"
+                ],
+                "answer": "4x³ − 6x",
+                "explanation": "Power rule on each term: 4x³ − 6x + 0 = 4x³ − 6x."
+        },
+        {
+                "id": 16,
+                "topic": "Differentiation",
+                "question": "The derivative of f(x) = 1/x is:",
+                "options": [
+                        "1/x²",
+                        "−1/x²",
+                        "1/x",
+                        "−1/x"
+                ],
+                "answer": "−1/x²",
+                "explanation": "d/dx(1/x) = d/dx(x⁻¹) = −1·x⁻² = −1/x²."
+        },
+        {
+                "id": 17,
+                "topic": "Differentiation",
+                "question": "The derivative of f(x) = √x is:",
+                "options": [
+                        "1/(2√x)",
+                        "1/√x",
+                        "2√x",
+                        "1/(2x)"
+                ],
+                "answer": "1/(2√x)",
+                "explanation": "d/dx(√x) = d/dx(x^½) = ½x^(-½) = 1/(2√x)."
+        },
+        {
+                "id": 18,
+                "topic": "Differentiation",
+                "question": "Implicit differentiation: If x² + y² = 25, then dy/dx =",
+                "options": [
+                        "x/y",
+                        "−x/y",
+                        "y/x",
+                        "−y/x"
+                ],
+                "answer": "−x/y",
+                "explanation": "Differentiate both sides: 2x + 2y·(dy/dx) = 0 → dy/dx = −x/y."
+        },
+        {
+                "id": 19,
+                "topic": "Differentiation",
+                "question": "The derivative of f(x) = sec(x) is:",
+                "options": [
+                        "sec(x)·tan(x)",
+                        "sec²(x)",
+                        "−sec(x)·tan(x)",
+                        "csc(x)·cot(x)"
+                ],
+                "answer": "sec(x)·tan(x)",
+                "explanation": "d/dx(sec x) = sec x · tan x."
+        },
+        {
+                "id": 20,
+                "topic": "Differentiation",
+                "question": "If y = ln(x² + 1), then dy/dx =",
+                "options": [
+                        "1/(x² + 1)",
+                        "2x/(x² + 1)",
+                        "x/(x² + 1)",
+                        "2/(x² + 1)"
+                ],
+                "answer": "2x/(x² + 1)",
+                "explanation": "Chain rule: (1/(x²+1)) · 2x = 2x/(x²+1)."
+        },
+        {
+                "id": 1,
+                "topic": "Applications of Differential Calculus",
+                "question": "A function f is increasing on an interval if:",
+                "options": [
+                        "f'(x) > 0",
+                        "f'(x) < 0",
+                        "f'(x) = 0",
+                        "f''(x) > 0"
+                ],
+                "answer": "f'(x) > 0",
+                "explanation": "f is increasing where f'(x) > 0."
+        },
+        {
+                "id": 2,
+                "topic": "Applications of Differential Calculus",
+                "question": "A function f is decreasing on an interval if:",
+                "options": [
+                        "f'(x) > 0",
+                        "f'(x) < 0",
+                        "f'(x) = 0",
+                        "f''(x) < 0"
+                ],
+                "answer": "f'(x) < 0",
+                "explanation": "f is decreasing where f'(x) < 0."
+        },
+        {
+                "id": 3,
+                "topic": "Applications of Differential Calculus",
+                "question": "A critical point of f(x) occurs where:",
+                "options": [
+                        "f'(x) = 0 or f'(x) is undefined",
+                        "f(x) = 0",
+                        "f''(x) = 0",
+                        "f(x) is undefined"
+                ],
+                "answer": "f'(x) = 0 or f'(x) is undefined",
+                "explanation": "Critical points are where f'(x) = 0 or f'(x) doesn't exist."
+        },
+        {
+                "id": 4,
+                "topic": "Applications of Differential Calculus",
+                "question": "If f'(c) = 0 and f''(c) > 0, then f has:",
+                "options": [
+                        "A local maximum at x = c",
+                        "A local minimum at x = c",
+                        "An inflection point at x = c",
+                        "No extremum at x = c"
+                ],
+                "answer": "A local minimum at x = c",
+                "explanation": "Second derivative test: f''(c) > 0 → local minimum."
+        },
+        {
+                "id": 5,
+                "topic": "Applications of Differential Calculus",
+                "question": "If f'(c) = 0 and f''(c) < 0, then f has:",
+                "options": [
+                        "A local maximum at x = c",
+                        "A local minimum at x = c",
+                        "An inflection point at x = c",
+                        "No extremum at x = c"
+                ],
+                "answer": "A local maximum at x = c",
+                "explanation": "Second derivative test: f''(c) < 0 → local maximum."
+        },
+        {
+                "id": 6,
+                "topic": "Applications of Differential Calculus",
+                "question": "An inflection point occurs where:",
+                "options": [
+                        "f'(x) = 0",
+                        "f''(x) = 0 or is undefined (and concavity changes)",
+                        "f(x) = 0",
+                        "f''(x) > 0"
+                ],
+                "answer": "f''(x) = 0 or is undefined (and concavity changes)",
+                "explanation": "Inflection points are where concavity changes, typically where f''(x) = 0."
+        },
+        {
+                "id": 7,
+                "topic": "Applications of Differential Calculus",
+                "question": "The function f(x) = x³ − 3x has a local maximum at:",
+                "options": [
+                        "x = 0",
+                        "x = 1",
+                        "x = −1",
+                        "x = 2"
+                ],
+                "answer": "x = −1",
+                "explanation": "f'(x) = 3x² − 3 = 0 → x = ±1. f''(−1) = 6(−1) = −6 < 0 → local max at x = −1."
+        },
+        {
+                "id": 8,
+                "topic": "Applications of Differential Calculus",
+                "question": "The function f(x) = x³ − 3x has a local minimum at:",
+                "options": [
+                        "x = 0",
+                        "x = 1",
+                        "x = −1",
+                        "x = 2"
+                ],
+                "answer": "x = 1",
+                "explanation": "f'(x) = 3x² − 3 = 0 → x = ±1. f''(1) = 6(1) = 6 > 0 → local min at x = 1."
+        },
+        {
+                "id": 9,
+                "topic": "Applications of Differential Calculus",
+                "question": "If f(x) = x², then the equation of the tangent line at x = 3 is:",
+                "options": [
+                        "y = 6x − 9",
+                        "y = 6x + 9",
+                        "y = 3x − 9",
+                        "y = 2x − 3"
+                ],
+                "answer": "y = 6x − 9",
+                "explanation": "f(3) = 9, f'(3) = 6. Tangent: y − 9 = 6(x − 3) → y = 6x − 9."
+        },
+        {
+                "id": 10,
+                "topic": "Applications of Differential Calculus",
+                "question": "The maximum value of f(x) = −x² + 4x + 1 is:",
+                "options": [
+                        "1",
+                        "3",
+                        "5",
+                        "7"
+                ],
+                "answer": "5",
+                "explanation": "f'(x) = −2x + 4 = 0 → x = 2. f(2) = −4 + 8 + 1 = 5."
+        },
+        {
+                "id": 11,
+                "topic": "Applications of Differential Calculus",
+                "question": "If the position of a particle is s(t) = t³ − 6t² + 9t, the velocity is:",
+                "options": [
+                        "3t² − 12t + 9",
+                        "t² − 4t + 3",
+                        "3t² − 6t + 9",
+                        "t³ − 6t + 9"
+                ],
+                "answer": "3t² − 12t + 9",
+                "explanation": "Velocity v(t) = s'(t) = 3t² − 12t + 9."
+        },
+        {
+                "id": 12,
+                "topic": "Applications of Differential Calculus",
+                "question": "If s(t) = t³ − 6t² + 9t, the acceleration is:",
+                "options": [
+                        "6t − 12",
+                        "3t − 6",
+                        "6t² − 12t",
+                        "6t − 6"
+                ],
+                "answer": "6t − 12",
+                "explanation": "Acceleration a(t) = v'(t) = 6t − 12."
+        },
+        {
+                "id": 13,
+                "topic": "Applications of Differential Calculus",
+                "question": "The particle with s(t) = t³ − 6t² + 9t is at rest when t =",
+                "options": [
+                        "t = 1 and t = 3",
+                        "t = 2 only",
+                        "t = 0 only",
+                        "t = 1 and t = 2"
+                ],
+                "answer": "t = 1 and t = 3",
+                "explanation": "At rest when v(t) = 0: 3t² − 12t + 9 = 0 → 3(t−1)(t−3) = 0 → t = 1, 3."
+        },
+        {
+                "id": 14,
+                "topic": "Applications of Differential Calculus",
+                "question": "Related rates: A balloon is being inflated at 4 ft³/min. The rate of change of the radius when r = 1 ft is:",
+                "options": [
+                        "1/π ft/min",
+                        "4/π ft/min",
+                        "1/(4π) ft/min",
+                        "4π ft/min"
+                ],
+                "answer": "1/π ft/min",
+                "explanation": "V = (4/3)πr³, dV/dt = 4πr²·dr/dt. At r=1: 4 = 4π·dr/dt → dr/dt = 1/π ft/min."
+        },
+        {
+                "id": 15,
+                "topic": "Applications of Differential Calculus",
+                "question": "The function f(x) = x⁴ − 2x² has inflection points at:",
+                "options": [
+                        "x = 0 only",
+                        "x = ±1/√3",
+                        "x = ±1",
+                        "x = ±2"
+                ],
+                "answer": "x = ±1/√3",
+                "explanation": "f''(x) = 12x² − 4 = 0 → x² = 1/3 → x = ±1/√3."
         }
     ];
 
@@ -1214,7 +1227,7 @@
         dash.innerHTML = '';
 
         const totalQ = MASTER_POOL.length;
-        const partSize = 14;
+        const partSize = 18;
         const numParts = Math.ceil(totalQ / partSize);
 
         const randomBox = document.createElement('div');
@@ -1277,8 +1290,8 @@
             const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
             pool = shuffleArray(pool).slice(0, qty);
         } else {
-            const start = (partNum - 1) * 14;
-            pool = pool.slice(start, start + 14);
+            const start = (partNum - 1) * 18;
+            pool = pool.slice(start, start + 18);
         }
 
         if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);

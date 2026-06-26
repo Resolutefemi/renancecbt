@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIO 104 CBT Portal</title>
+    <title>CHE 104 CBT Portal</title>
     <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -154,7 +154,7 @@
     <div style="display:flex; align-items:center; gap:12px;">
         <a href="../dashboard.html" style="color:var(--text); text-decoration:none; font-size:1.1rem; display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--border);"><i class="fa-solid fa-arrow-left"></i></a>
         <div class="nav-brand">
-            <div><i class="fa-solid fa-microscope"></i> BIO 104 Practice Portal</div>
+            <div><i class="fa-solid fa-flask"></i> CHE 104 Practice Portal</div>
             <div style="font-size:0.8rem; font-weight:600; color:var(--text-muted); letter-spacing:0.3px;">by Resolute Femi</div>
         </div>
     </div>
@@ -286,8 +286,8 @@
     const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
     const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    const COURSE_CODE = 'BIO 104';
-    const STORAGE_KEY = 'saved_bio104_exam';
+    const COURSE_CODE = 'CHE 104';
+    const STORAGE_KEY = 'saved_che104_exam';
 
     async function sendHeartbeat() {
         try {
@@ -299,792 +299,1170 @@
     sendHeartbeat();
     setInterval(sendHeartbeat, 2 * 60 * 1000);
 
-                const MASTER_POOL = [
+            const MASTER_POOL = [
         {
                 "id": 1,
-                "question": "Theratbelongstowhichclass?",
+                "question": "Which of the following compounds has the highest boiling point?",
                 "options": [
-                        "Mammalia",
-                        "Reptilia",
-                        "Amphibia",
-                        "Aves"
+                        "Ethyl chloride (35°C)",
+                        "Acetone (56°C)",
+                        "Heptane (98°C)",
+                        "Hexane (69°C)"
                 ],
-                "answer": "Mammalia",
-                "explanation": "The correct answer is: Mammalia."
+                "answer": "Heptane (98°C)",
+                "explanation": "Longer carbon chain increases van der Waals forces, giving heptane the highest boiling\npoints"
         },
         {
                 "id": 2,
-                "question": "Whichorganinaratisprimarilyresponsiblefordetoxificationofharmfulsubstances?",
+                "question": "The boiling point of ethanol is approximately:",
                 "options": [
-                        "Heart",
-                        "Liver",
-                        "Kidney",
-                        "Spleen"
+                        "35°C",
+                        "56°C",
+                        "78°C",
+                        "98°C"
                 ],
-                "answer": "Liver",
-                "explanation": "The correct answer is: Liver."
+                "answer": "78°C",
+                "explanation": "Ethanol boils at about 78°C at standard pressure."
         },
         {
                 "id": 3,
-                "question": "Whichofthefollowingistrueabouttherat’sdigestivesystem?",
+                "question": "Which compound boils at 80°C?",
                 "options": [
-                        "Itlacksasmallintestine",
-                        "Thecaecumislargeandfunctionsincellulosedigestion",
-                        "Ithasasingle-chamberedstomachsimilartohumans",
-                        "Ithasgillsforrespiration"
+                        "Hexane",
+                        "Benzene",
+                        "Ethanol",
+                        "Acetone"
                 ],
-                "answer": "Thecaecumislargeandfunctionsincellulosedigestion",
-                "explanation": "The correct answer is: Thecaecumislargeandfunctionsincellulosedigestion."
+                "answer": "Benzene",
+                "explanation": "Benzene has a boiling point close to 80°C"
         },
         {
                 "id": 4,
-                "question": "Snakesbelongtowhichclass?",
+                "question": "The boiling point of ethane is around:",
                 "options": [
-                        "Mammalia",
-                        "Reptilia",
-                        "Amphibia",
-                        "Aves"
+                        "-89°C",
+                        "35°C",
+                        "56°C",
+                        "69°C"
                 ],
-                "answer": "Reptilia",
-                "explanation": "The correct answer is: Reptilia."
+                "answer": "-89°C",
+                "explanation": "Ethane is a simple alkane with very low boiling point."
         },
         {
                 "id": 5,
-                "question": "Whichorganinsnakesisresponsibleforsensingheatinprey?",
+                "question": "The importance of boiling points in organic chemistry includes:",
                 "options": [
-                        "Eyes",
-                        "Pitorgans",
-                        "Lungs",
-                        "Liver"
+                        "Identification of compounds",
+                        "Changing melting points",
+                        "Determining solubility in water",
+                        "Predicting color of substances"
                 ],
-                "answer": "Pitorgans",
-                "explanation": "The correct answer is: Pitorgans."
+                "answer": "Identification of compounds",
+                "explanation": "Boiling points are physical properties used to identify and check purity."
         },
         {
                 "id": 6,
-                "question": "Whichstructureincrabshelpsinrespiration?",
+                "question": "No organic compound boils exactly at 100°C because:",
                 "options": [
-                        "Trachea",
-                        "Booklungs",
-                        "Gills",
-                        "Spiracles"
+                        "They decompose at 100°C",
+                        "Water alone boils at 100°C under normal conditions",
+                        "Organic compounds are unstable",
+                        "All organic compounds are solids"
                 ],
-                "answer": "Gills",
-                "explanation": "The correct answer is: Gills."
+                "answer": "Water alone boils at 100°C under normal conditions",
+                "explanation": "100°C is the characteristic boiling point of water at 1 atm."
         },
         {
                 "id": 7,
-                "question": "Millipedesbelongtowhichclass?",
+                "question": "Boiling points can differ by location due to changes in:",
                 "options": [
-                        "Chilopoda",
-                        "Diplopoda",
-                        "Insecta",
-                        "Arachnida"
+                        "Temperature",
+                        "Altitude and pressure",
+                        "Density",
+                        "Purity"
                 ],
-                "answer": "Diplopoda",
-                "explanation": "The correct answer is: Diplopoda."
+                "answer": "Altitude and pressure",
+                "explanation": "Atmospheric pressure varies with altitude, affecting boiling points."
         },
         {
                 "id": 8,
-                "question": "Themaindefensemechanismofmillipedesis:",
+                "question": "Something boils when:",
                 "options": [
-                        "Biting",
-                        "Secretingtoxicfluids",
-                        "Jumping",
-                        "Camouflage"
+                        "Vapour pressure equals atmospheric pressure",
+                        "External pressure exceeds vapour pressure",
+                        "Density decreases",
+                        "Solubility increases"
                 ],
-                "answer": "Secretingtoxicfluids",
-                "explanation": "The correct answer is: Secretingtoxicfluids."
+                "answer": "Vapour pressure equals atmospheric pressure",
+                "explanation": "Boiling starts when vapour pressure = external pressure."
         },
         {
                 "id": 9,
-                "question": "Howmanypairsoflegsaretypicallyfoundinasinglebodysegmentofamillipede?",
+                "question": "Which of the following is correct?",
                 "options": [
-                        "1pair",
-                        "2pairs",
-                        "3pairs",
-                        "4pairs"
+                        "All hydrocarbons are organic compounds, but not all organic compounds are hydrocarbons",
+                        "All organic compounds are hydrocarbons",
+                        "Hydrocarbons contain oxygen",
+                        "Hydrocarbons are inorganic"
                 ],
-                "answer": "2pairs",
-                "explanation": "The correct answer is: 2pairs."
+                "answer": "All hydrocarbons are organic compounds, but not all organic compounds are hydrocarbons",
+                "explanation": "Hydrocarbons contain only C and H; organic compounds may contain other atoms."
         },
         {
                 "id": 10,
-                "question": "Birdsbelongtowhichclass?",
+                "question": "Atmospheric pressure is directly proportional to:",
                 "options": [
-                        "Mammalia",
-                        "Reptilia",
-                        "Aves",
-                        "Amphibia"
+                        "Density",
+                        "Boiling point",
+                        "Solubility",
+                        "Polarity"
                 ],
-                "answer": "Aves",
-                "explanation": "The correct answer is: Aves."
+                "answer": "Boiling point",
+                "explanation": "Higher atmospheric pressure raises boiling point."
         },
         {
                 "id": 11,
-                "question": "Thehollowbonesinbirdsprimarilyaidin:",
+                "question": "Alcohols generally boil ___ hydrocarbons of similar carbon number.",
                 "options": [
-                        "Digestion",
-                        "Flight",
-                        "Reproduction",
-                        "Thermoregulation"
+                        "Slower than",
+                        "Faster than",
+                        "Same as",
+                        "Less predictably than"
                 ],
-                "answer": "Flight",
-                "explanation": "The correct answer is: Flight."
+                "answer": "Faster than",
+                "explanation": "Hydrogen bonding makes alcohols have higher boiling points."
         },
         {
                 "id": 12,
-                "question": "Thefunctionofthegizzardinbirdsis:",
+                "question": "Miscible liquids can be separated by:",
                 "options": [
-                        "Filteringblood",
-                        "Grindingfood",
-                        "Oxygenabsorption",
-                        "Eggproduction\n13. Flatwormsbelongtowhichphylum?"
+                        "Steam distillation",
+                        "Vacuum distillation",
+                        "Filtration",
+                        "Chromatography"
                 ],
-                "answer": "Grindingfood",
-                "explanation": "The correct answer is: Grindingfood."
+                "answer": "Steam distillation",
+                "explanation": "Steam distillation separates miscible liquids based on boiling points."
         },
         {
                 "id": 13,
-                "question": "Whichorganinflatwormsisusedforexcretion?",
+                "question": "Pressure-sensitive liquids are separated by:",
                 "options": [
-                        "Flamecells",
-                        "Nephridia",
-                        "Malpighiantubules",
-                        "Gills"
+                        "Gravity filtration",
+                        "Pressure distillation",
+                        "Steam distillation",
+                        "Sublimation"
                 ],
-                "answer": "Flamecells",
-                "explanation": "The correct answer is: Flamecells."
+                "answer": "Pressure distillation",
+                "explanation": "Pressure distillation prevents decomposition by lowering boiling point."
         },
         {
                 "id": 14,
-                "question": "Flatwormsaregenerally:",
+                "question": "Two volatile liquids are best separated by:",
                 "options": [
-                        "Coelomates",
-                        "Acoelomates",
-                        "Pseudocoelomates",
-                        "Diploblastic"
+                        "Vacuum distillation",
+                        "Chromatography",
+                        "Filtration",
+                        "Melting point test"
                 ],
-                "answer": "Acoelomates",
-                "explanation": "The correct answer is: Acoelomates."
+                "answer": "Vacuum distillation",
+                "explanation": "Vacuum distillation reduces boiling points for separation."
         },
         {
                 "id": 15,
-                "question": "Roundwormsbelongtowhichphylum?",
+                "question": "A pycnometer is used to measure:",
                 "options": [
-                        "Annelida",
-                        "Nematoda",
-                        "Platyhelminthes",
-                        "Arthropoda\n17. Thebodycavityofroundwormsiscalled:"
+                        "Density of liquids",
+                        "Boiling point",
+                        "Solubility",
+                        "Temperature"
                 ],
-                "answer": "Nematoda",
-                "explanation": "The correct answer is: Nematoda."
+                "answer": "Density of liquids",
+                "explanation": "Pycnometers give precise liquid density."
         },
         {
                 "id": 16,
-                "question": "Roundwormshaveacompletedigestivesystem,whichmeans:",
+                "question": "The most accurate test for impurities in a compound is:",
                 "options": [
-                        "Onlyamouthexists",
-                        "Onlyananusexists",
-                        "Bothmouthandanusarepresent",
-                        "Neithermouthnoranus"
+                        "Boiling point test",
+                        "Melting point test",
+                        "Distillation",
+                        "Refractive index"
                 ],
-                "answer": "Bothmouthandanusarepresent",
-                "explanation": "The correct answer is: Bothmouthandanusarepresent."
+                "answer": "Melting point test",
+                "explanation": "Impurities lower and broaden melting point, making it a good purity test."
         },
         {
                 "id": 17,
-                "question": "Tilapiaisa:",
+                "question": "The melting point of pure water is:",
                 "options": [
-                        "Mammal",
-                        "Amphibian",
-                        "Fish",
-                        "Reptile"
+                        "0°C",
+                        "25°C",
+                        "32°C",
+                        "100°C"
                 ],
-                "answer": "Fish",
-                "explanation": "The correct answer is: Fish."
+                "answer": "0°C",
+                "explanation": "Water freezes and melts at 0°C at 1 atm."
         },
         {
                 "id": 18,
-                "question": "Tilapiauseswhichorganforrespiration?",
+                "question": "The strongest type of bond among the options is:",
                 "options": [
-                        "Lungs",
-                        "Gills",
-                        "Skin",
-                        "Spiracles"
+                        "Ionic bond",
+                        "Covalent bond",
+                        "Hydrogen bond",
+                        "Van der Waals"
                 ],
-                "answer": "Gills",
-                "explanation": "The correct answer is: Gills."
+                "answer": "Ionic bond",
+                "explanation": "Ionic bonds are stronger than covalent and intermolecular forces."
         },
         {
                 "id": 19,
-                "question": "Thelaterallinein Tilapiafunctionsin:",
+                "question": "Which of the following is a covalent molecule?",
                 "options": [
-                        "Breathing",
-                        "Detectingvibrationsandmovementinwater",
-                        "Swimmingspeed",
-                        "Digestion"
+                        "NaCl",
+                        "H2",
+                        "CaCl2",
+                        "KBr"
                 ],
-                "answer": "Detectingvibrationsandmovementinwater",
-                "explanation": "The correct answer is: Detectingvibrationsandmovementinwater."
+                "answer": "H2",
+                "explanation": "H2 is held by covalent bonds between two hydrogen atoms."
         },
         {
                 "id": 20,
-                "question": "Dogfishisatypeof:",
+                "question": "Gravity filtration is most suitable for:",
                 "options": [
-                        "Bonyfish",
-                        "Cartilaginousfish",
-                        "Amphibian",
-                        "Reptile"
+                        "Cold solution",
+                        "Warm/hot solution",
+                        "Volatile solution",
+                        "Solid only"
                 ],
-                "answer": "Cartilaginousfish",
-                "explanation": "The correct answer is: Cartilaginousfish."
+                "answer": "Warm/hot solution",
+                "explanation": "Hot solutions prevent crystallization during filtration."
         },
         {
                 "id": 21,
-                "question": "Dogfishlacks:",
+                "question": "Vacuum filtration is suitable for:",
                 "options": [
-                        "Fins",
-                        "Jaws",
-                        "Bones",
-                        "Gills"
+                        "Warm solution",
+                        "Cold solution",
+                        "Volatile liquid",
+                        "Miscible solution"
                 ],
-                "answer": "Bones",
-                "explanation": "The correct answer is: Bones."
+                "answer": "Cold solution",
+                "explanation": "Cold solutions are filtered quickly by vacuum."
         },
         {
                 "id": 22,
-                "question": "Thefunctionofthespiralvalveindogfishis:",
+                "question": "Sublimation is the change of matter from:",
                 "options": [
-                        "Respiration",
-                        "Increasingdigestivesurfacearea",
-                        "Reproduction",
-                        "Locomotion"
+                        "Solid to liquid",
+                        "Solid to gas",
+                        "Liquid to solid",
+                        "Gas to liquid"
                 ],
-                "answer": "Increasingdigestivesurfacearea",
-                "explanation": "The correct answer is: Increasingdigestivesurfacearea."
+                "answer": "Solid to gas",
+                "explanation": "Sublimation skips the liquid phase."
         },
         {
                 "id": 23,
-                "question": "Amoebamovesusing:",
+                "question": "The reverse process of sublimation is called:",
                 "options": [
-                        "Cilia",
-                        "Flagella",
-                        "Pseudopodia",
-                        "Fins"
+                        "Condensation",
+                        "Deposition",
+                        "Evaporation",
+                        "Melting"
                 ],
-                "answer": "Pseudopodia",
-                "explanation": "The correct answer is: Pseudopodia."
+                "answer": "Deposition",
+                "explanation": "Deposition is gas → solid."
         },
         {
                 "id": 24,
-                "question": "Thestructurein Amoebaresponsibleforosmoregulationis:",
+                "question": "Which of the following is a common drying agent?",
                 "options": [
-                        "Nucleus",
-                        "Foodvacuole",
-                        "Contractilevacuole",
-                        "Cytoplasm"
+                        "Sodium sulfate",
+                        "Sodium chloride",
+                        "Potassium permanganate",
+                        "Copper sulfate"
                 ],
-                "answer": "Contractilevacuole",
-                "explanation": "The correct answer is: Contractilevacuole."
+                "answer": "Sodium sulfate",
+                "explanation": "Sodium sulfate absorbs water effectively."
         },
         {
                 "id": 25,
-                "question": "Amoebareproducesby:",
+                "question": "Calcium chloride is used as a:",
                 "options": [
-                        "Binaryfission",
-                        "Budding",
-                        "Sporeformation",
-                        "Fragmentation"
+                        "Oxidizing agent",
+                        "Drying agent",
+                        "Reducing agent",
+                        "Solvent"
                 ],
-                "answer": "Binaryfission",
-                "explanation": "The correct answer is: Binaryfission."
+                "answer": "Drying agent",
+                "explanation": "Calcium chloride is commonly used as a desiccant."
         },
         {
                 "id": 26,
-                "question": "Trypanosomebelongstowhichphylum?",
+                "question": "Silica gel is commonly used in packaging to:",
                 "options": [
-                        "Sarcomastigophora",
-                        "Euglenophyta",
-                        "Ciliophora",
-                        "Amoebozoa"
+                        "Absorb odors and moisture",
+                        "Increase pressure",
+                        "Act as a preservative",
+                        "Generate heat"
                 ],
-                "answer": "Sarcomastigophora",
-                "explanation": "The correct answer is: Sarcomastigophora."
+                "answer": "Absorb odors and moisture",
+                "explanation": "Silica gel prevents moisture damage."
         },
         {
                 "id": 27,
-                "question": "Trypanosomeisknowntocause:",
+                "question": "A desiccator is used to:",
                 "options": [
-                        "Malaria",
-                        "Sleepingsickness",
-                        "Amoebiasis",
-                        "Cholera"
+                        "Store moisture-sensitive compounds",
+                        "Filter impurities",
+                        "Test melting points",
+                        "Measure density"
                 ],
-                "answer": "Sleepingsickness",
-                "explanation": "The correct answer is: Sleepingsickness."
+                "answer": "Store moisture-sensitive compounds",
+                "explanation": "Desiccators maintain dryness of compounds."
         },
         {
                 "id": 28,
-                "question": "Trypanosomesmoveusing:",
+                "question": "Sodium sulfate as a drying agent works by:",
                 "options": [
-                        "Pseudopodia",
-                        "Cilia",
-                        "Flagella",
-                        "Undulatingmembraneonly"
+                        "Absorbing water",
+                        "Generating oxygen",
+                        "Neutralizing acids",
+                        "Reacting with carbon dioxide"
                 ],
-                "answer": "Flagella",
-                "explanation": "The correct answer is: Flagella."
+                "answer": "Absorbing water",
+                "explanation": "Sodium sulfate binds water molecules."
         },
         {
                 "id": 29,
-                "question": "Euglenais:",
+                "question": "Which drying agent prevents rusting in products?",
                 "options": [
-                        "Animal-like",
-                        "Plant-like",
-                        "Bothplantandanimal-like",
-                        "Fungal-like"
+                        "Silica gel",
+                        "Sodium sulfate",
+                        "Calcium carbonate",
+                        "Zinc oxide"
                 ],
-                "answer": "Bothplantandanimal-like",
-                "explanation": "The correct answer is: Bothplantandanimal-like."
+                "answer": "Silica gel",
+                "explanation": "Silica gel reduces rust by removing moisture."
         },
         {
                 "id": 30,
-                "question": "Thelight-sensitiveorganin Euglenaiscalled:",
+                "question": "In thin layer chromatography, the retention factor (Rf) is calculated as:",
                 "options": [
-                        "Nucleus",
-                        "Eyespot",
-                        "Chloroplast",
-                        "Flagellum"
+                        "Distance moved by solvent ÷ distance moved by compound",
+                        "Distance moved by compound ÷ distance moved by solvent",
+                        "Solvent time ÷ distance moved",
+                        "Compound weight ÷ solvent volume"
                 ],
-                "answer": "Eyespot",
-                "explanation": "The correct answer is: Eyespot."
+                "answer": "Distance moved by compound ÷ distance moved by solvent",
+                "explanation": "Rf = distance compound moved ÷ distance solvent moved."
         },
         {
                 "id": 31,
-                "question": "Euglenastoresfoodintheformof:",
+                "question": "Examples of stationary phases in chromatography include:",
                 "options": [
-                        "Glycogen",
-                        "Starch",
-                        "Lipids",
-                        "Protein"
+                        "Sodium chloride and potassium nitrate",
+                        "Silica gel and alumina",
+                        "Acetone and ethanol",
+                        "Hexane and benzene"
                 ],
-                "answer": "Starch",
-                "explanation": "The correct answer is: Starch."
+                "answer": "Silica gel and alumina",
+                "explanation": "Silica gel and alumina are common adsorbents."
         },
         {
                 "id": 32,
-                "question": "Frogsbelongtowhichclass?",
+                "question": "Paper chromatography uses:",
                 "options": [
-                        "Mammalia",
-                        "Reptilia",
-                        "Amphibia",
-                        "Aves\n35..Frogsrespirethrough:"
+                        "Paper as stationary phase",
+                        "Acetone as stationary phase",
+                        "Gas as stationary phase",
+                        "Glass beads as stationary phase"
                 ],
-                "answer": "Amphibia",
-                "explanation": "The correct answer is: Amphibia."
+                "answer": "Paper as stationary phase",
+                "explanation": "Paper holds water molecules, acting as stationary phase."
         },
         {
                 "id": 33,
-                "question": "In Paramecium,locomotionisachievedby\nA)Flagella\nB)Pseudopodia\nC)Cilia\n ✅ \nD)Tentacles\n80. Theexcretaofbirdsiscalled:",
+                "question": "Activated charcoal is used to:",
                 "options": [
-                        "Urea",
-                        "Ammonia",
-                        "Uricacid",
-                        "Sweat\n81. Thebodyofasnakeiscoveredwith__________."
+                        "Remove color from solutions",
+                        "Absorb water",
+                        "Increase boiling point",
+                        "Act as a reducing agent"
                 ],
-                "answer": "Uricacid",
-                "explanation": "The correct answer is: Uricacid."
+                "answer": "Remove color from solutions",
+                "explanation": "Charcoal adsorbs colored impurities."
         },
         {
                 "id": 34,
-                "question": "In an ocean floor where there is little or no penetration which cause darkness, the organisms adapt through?",
+                "question": "Which chromatography technique uses silica plates?",
                 "options": [
-                        "a large mass",
-                        "a small body size",
-                        "well developed sense organs",
-                        "quick movements"
+                        "TLC (Thin Layer Chromatography)",
+                        "Gas chromatography",
+                        "Paper chromatography",
+                        "HPLC"
                 ],
-                "answer": "a large mass",
-                "explanation": "The correct answer is: a large mass."
+                "answer": "TLC (Thin Layer Chromatography)",
+                "explanation": "TLC plates are coated with silica gel."
         },
         {
                 "id": 35,
-                "question": "Which is not a primary consumer?",
+                "question": "For funnel separation, organic compounds must be:",
                 "options": [
-                        "grasshopper",
-                        "lizard",
-                        "rabbit",
-                        "snake"
+                        "Miscible with water",
+                        "Immiscible with water",
+                        "Solid in form",
+                        "Colorless"
                 ],
-                "answer": "grasshopper",
-                "explanation": "The correct answer is: grasshopper."
+                "answer": "Immiscible with water",
+                "explanation": "Immiscibility ensures phase separation."
         },
         {
                 "id": 36,
-                "question": "Thermistor is used to measure in an aquatic environment",
+                "question": "Miscible liquids can only be separated by:",
                 "options": [
-                        "pressure",
-                        "current",
-                        "depth",
-                        "temperature"
+                        "Distillation",
+                        "Filtration",
+                        "Decantation",
+                        "Crystallization"
                 ],
-                "answer": "pressure",
-                "explanation": "The correct answer is: pressure."
+                "answer": "Distillation",
+                "explanation": "Distillation exploits boiling point differences."
+        },
+        {
+                "id": 37,
+                "question": "Steam distillation is used for:",
+                "options": [
+                        "Heat-sensitive compounds",
+                        "Non-volatile solids",
+                        "Metals",
+                        "Miscible liquids"
+                ],
+                "answer": "Heat-sensitive compounds",
+                "explanation": "Steam allows distillation at lower temperatures."
         },
         {
                 "id": 38,
-                "question": "Nuchal crest is when frog is in an aggressive state",
+                "question": "Vacuum distillation is used for:",
                 "options": [
-                        "lowered",
-                        "strong",
-                        "weak",
-                        "raised"
+                        "High-boiling liquids",
+                        "Soluble salts",
+                        "Solids",
+                        "Alcohols"
                 ],
-                "answer": "lowered",
-                "explanation": "The correct answer is: lowered."
+                "answer": "High-boiling liquids",
+                "explanation": "Reduces boiling point of high-boiling compounds."
+        },
+        {
+                "id": 39,
+                "question": "Solubility follows the principle:",
+                "options": [
+                        "Opposites dissolve opposites",
+                        "Like dissolves like",
+                        "Solids dissolve in solids only",
+                        "Polar dissolves nonpolar"
+                ],
+                "answer": "Like dissolves like",
+                "explanation": "Polar dissolves polar; nonpolar dissolves nonpolar."
         },
         {
                 "id": 40,
-                "question": "Egg of lizard is covered by",
+                "question": "Hydrogen bonding is responsible for:",
                 "options": [
-                        "coat",
-                        "layer",
-                        "shell",
-                        "gel"
+                        "Dissolving compounds in water",
+                        "Lowering melting points",
+                        "Increasing molecular mass",
+                        "Changing color of compounds"
                 ],
-                "answer": "coat",
-                "explanation": "The correct answer is: coat."
+                "answer": "Dissolving compounds in water",
+                "explanation": "Hydrogen bonds allow solubility in polar solvents."
         },
         {
                 "id": 41,
-                "question": "Snakes mostly live on ......",
+                "question": "Why don't hydrocarbons dissolve in water?",
                 "options": [
-                        "Terrestrial",
-                        "Aquatic",
-                        "Terrestrial and Aquatic",
-                        "None"
+                        "They cannot form hydrogen bonds",
+                        "They are too heavy",
+                        "They have strong ionic bonds",
+                        "They decompose"
                 ],
-                "answer": "Terrestrial",
-                "explanation": "The correct answer is: Terrestrial."
+                "answer": "They cannot form hydrogen bonds",
+                "explanation": "Hydrocarbons are nonpolar, lacking H-bonding ability."
         },
         {
                 "id": 42,
-                "question": "wu... IS an example of Mastigophora",
-                "answer": "Euglena",
-                "explanation": "The correct answer is: Euglena."
+                "question": "Ionic compounds dissolve well in:",
+                "options": [
+                        "Nonpolar solvents",
+                        "Polar solvents like water",
+                        "Hydrocarbons",
+                        "Alcohol-free solvents"
+                ],
+                "answer": "Polar solvents like water",
+                "explanation": "Strong ionic interactions are stabilized by polar solvents."
         },
         {
                 "id": 43,
-                "question": "What's the function of Phytoplankton",
+                "question": "A refractometer is used to measure:",
                 "options": [
-                        "Tertiary consumer",
-                        "Secondary consumer",
-                        "Primary consumer",
-                        "Primary producer"
+                        "Refractive index of compounds",
+                        "Boiling points",
+                        "Melting points",
+                        "pH"
                 ],
-                "answer": "Tertiary consumer",
-                "explanation": "The correct answer is: Tertiary consumer."
+                "answer": "Refractive index of compounds",
+                "explanation": "Refractometers determine refractive index."
         },
         {
                 "id": 44,
-                "question": "Does Snake have Teeth?",
-                "answer": "Yes",
-                "explanation": "The correct answer is: Yes."
+                "question": "The instrument that measures chirality of organic compounds is:",
+                "options": [
+                        "Polarimeter",
+                        "Refractometer",
+                        "Thermometer",
+                        "Calorimeter"
+                ],
+                "answer": "Polarimeter",
+                "explanation": "Polarimeter measures optical activity of chiral molecules."
+        },
+        {
+                "id": 45,
+                "question": "A thermometer is used to measure:",
+                "options": [
+                        "Temperature",
+                        "Boiling pressure",
+                        "Mass",
+                        "Density"
+                ],
+                "answer": "Temperature",
+                "explanation": "Thermometers directly read temperature."
+        },
+        {
+                "id": 46,
+                "question": "Barometer measures:",
+                "options": [
+                        "Atmospheric pressure",
+                        "Boiling point",
+                        "Mass of gases",
+                        "Refractive index"
+                ],
+                "answer": "Atmospheric pressure",
+                "explanation": "Barometer measures air pressure."
         },
         {
                 "id": 47,
-                "question": "What do reptiles use for respiration  --- PAGE 3 ---",
+                "question": "Densities of liquids are measured using:",
                 "options": [
-                        "Lungs",
-                        "Nostril",
-                        "Gills",
-                        "None"
+                        "Pycnometer",
+                        "Calorimeter",
+                        "Spectrophotometer",
+                        "Thermometer"
                 ],
-                "answer": "Lungs",
-                "explanation": "The correct answer is: Lungs."
+                "answer": "Pycnometer",
+                "explanation": "Pycnometer gives precise density values."
         },
         {
                 "id": 48,
-                "question": "Diagram of Euglena",
-                "answer": "Euglena",
-                "explanation": "The correct answer is: Euglena."
+                "question": "Pressure decreases with:",
+                "options": [
+                        "Higher altitude",
+                        "Lower altitude",
+                        "Higher temperature",
+                        "Increased volume"
+                ],
+                "answer": "Higher altitude",
+                "explanation": "Air pressure drops with altitude."
         },
         {
                 "id": 49,
-                "question": "Diagram of Paramecium",
-                "answer": "Paramecium",
-                "explanation": "The correct answer is: Paramecium."
+                "question": "At high altitudes, boiling points of liquids are:",
+                "options": [
+                        "Higher",
+                        "Lower",
+                        "Unchanged",
+                        "Random"
+                ],
+                "answer": "Lower",
+                "explanation": "Low pressure lowers boiling points."
         },
         {
                 "id": 50,
-                "question": "Diagram of Amoeba",
-                "answer": "Amoeba",
-                "explanation": "The correct answer is: Amoeba."
+                "question": "Atmospheric pressure is highest at:",
+                "options": [
+                        "Sea level",
+                        "High mountains",
+                        "Space",
+                        "Equator only"
+                ],
+                "answer": "Sea level",
+                "explanation": "Maximum pressure occurs at sea level."
         },
         {
                 "id": 51,
-                "question": "The tympanum in frog is located where",
+                "question": "When pressure is reduced, boiling point:",
                 "options": [
-                        "Between the head and the body gland",
-                        "Between the parotoid gland and hind limb",
-                        "Between the wart",
-                        "Between the eyes and parotid gland"
+                        "Increases",
+                        "Decreases",
+                        "Stays constant",
+                        "Doubles"
                 ],
-                "answer": "Between the head and the body gland",
-                "explanation": "The correct answer is: Between the head and the body gland."
+                "answer": "Decreases",
+                "explanation": "Lower external pressure lowers boiling point."
         },
         {
                 "id": 52,
-                "question": "Tilapia Fish reproduce by.....",
+                "question": "Vacuum distillation works by:",
                 "options": [
-                        "Asexual reproduction",
-                        "Sexual reproduction",
-                        "Egg laying",
-                        "...."
+                        "Reducing pressure to lower boiling points",
+                        "Increasing volume",
+                        "Adding solutes",
+                        "Cooling rapidly"
                 ],
-                "answer": "Asexual reproduction",
-                "explanation": "The correct answer is: Asexual reproduction."
+                "answer": "Reducing pressure to lower boiling points",
+                "explanation": "Reduced pressure allows high-boiling compounds to distill."
         },
         {
                 "id": 53,
-                "question": "Which of the following organisms are cartilaginous?",
+                "question": "The size of the sample does not affect:",
                 "options": [
-                        "Skates",
-                        "Rays",
-                        "Mackerel",
-                        "...."
+                        "Melting point",
+                        "Boiling point",
+                        "Density",
+                        "Refractive index"
                 ],
-                "answer": "Skates",
-                "explanation": "The correct answer is: Skates."
+                "answer": "Boiling point",
+                "explanation": "Boiling point is an intrinsic property."
+        },
+        {
+                "id": 54,
+                "question": "Impure substances generally have:",
+                "options": [
+                        "Sharp melting points",
+                        "Lower and broader melting points",
+                        "Higher boiling points always",
+                        "No effect on melting"
+                ],
+                "answer": "Lower and broader melting points",
+                "explanation": "Impurities disrupt crystal lattice, broadening melting range."
         },
         {
                 "id": 55,
-                "question": "In an ocean floor where there is little or no penetration which cause darkness, the organisms adapt through?",
+                "question": "\"No B without BB\" in lab slang means:",
                 "options": [
-                        "a large mass",
-                        "a small body size",
-                        "well developed sense organs",
-                        "quick movements"
+                        "No bread without Blue Band (margarine)",
+                        "No benzene without boiling",
+                        "No base without buffer",
+                        "No bond without breaking"
                 ],
-                "answer": "a large mass",
-                "explanation": "The correct answer is: a large mass."
+                "answer": "No bread without Blue Band (margarine)",
+                "explanation": "It’s a lab pun referring to Blue Band margarine."
         },
         {
                 "id": 56,
-                "question": "Phytoplanktons serve as...... in aquatic food chain.",
-                "answer": "Primary producer",
-                "explanation": "The correct answer is: Primary producer."
+                "question": "Hydrocarbons are made up of:",
+                "options": [
+                        "Carbon and hydrogen only",
+                        "Carbon and oxygen",
+                        "Carbon and nitrogen",
+                        "Carbon and sulfur"
+                ],
+                "answer": "Carbon and hydrogen only",
+                "explanation": "Hydrocarbons consist solely of carbon and hydrogen atoms."
+        },
+        {
+                "id": 57,
+                "question": "The primary source of hydrocarbons is:",
+                "options": [
+                        "Coal",
+                        "Petroleum",
+                        "Natural gas",
+                        "Wood"
+                ],
+                "answer": "Petroleum",
+                "explanation": "Petroleum is the primary natural source of hydrocarbons."
         },
         {
                 "id": 58,
-                "question": "Which of the following has a slippery skin?",
+                "question": "Which of the following is an aromatic hydrocarbon?",
                 "options": [
-                        "Frog",
-                        "Toad",
-                        "Newt",
-                        "None of the above"
+                        "Methane",
+                        "Benzene",
+                        "Ethane",
+                        "Propane"
                 ],
-                "answer": "Frog",
-                "explanation": "The correct answer is: Frog."
+                "answer": "Benzene",
+                "explanation": "Benzene is a classic aromatic hydrocarbon with a delocalized electron ring."
         },
         {
                 "id": 59,
-                "question": "Fish reproduce through",
+                "question": "Alkanes are characterized by:",
                 "options": [
-                        "Sexual reproduction",
-                        "Asexual reproduction",
-                        "Egg laying",
-                        "None of the above"
+                        "Single bonds between carbon atoms",
+                        "Double bonds between carbon atoms",
+                        "Triple bonds between carbon atoms",
+                        "Aromatic rings"
                 ],
-                "answer": "Sexual reproduction",
-                "explanation": "The correct answer is: Sexual reproduction."
+                "answer": "Single bonds between carbon atoms",
+                "explanation": "Alkanes contain only single covalent bonds."
         },
         {
                 "id": 60,
-                "question": "The role of phytoplankton in the aquatic food chain?",
+                "question": "The general formula for alkanes is:",
                 "options": [
-                        "Secondary consumer",
-                        "Primary consumer",
-                        "Primary Producer",
-                        "Decomposer"
+                        "CnH2n+2",
+                        "CnH2n",
+                        "CnH2n-2",
+                        "CnHn"
                 ],
-                "answer": "Secondary consumer",
-                "explanation": "The correct answer is: Secondary consumer."
+                "answer": "CnH2n+2",
+                "explanation": "Alkanes follow the formula CnH2n+"
         },
         {
                 "id": 61,
-                "question": "The immature stage of a toad is  --- PAGE 5 ---",
+                "question": "Which of the following is an alkene?",
                 "options": [
-                        "Terrestrial like the adult",
-                        "Terrestrial with tail",
-                        "Aquatic without tail",
-                        "Aquatic with tail"
+                        "Ethane",
+                        "Ethene",
+                        "Ethyne",
+                        "Benzene"
                 ],
-                "answer": "Terrestrial like the adult",
-                "explanation": "The correct answer is: Terrestrial like the adult."
+                "answer": "Ethene",
+                "explanation": "Ethene (C2H4) contains a C=C double bond, typical of alkenes."
         },
         {
                 "id": 62,
-                "question": "The black spot on a toad is called ....",
-                "answer": "Wart",
-                "explanation": "The correct answer is: Wart."
+                "question": "The general formula for alkenes is:",
+                "options": [
+                        "CnH2n+2",
+                        "CnH2n",
+                        "CnH2n-2",
+                        "CnHn"
+                ],
+                "answer": "CnH2n",
+                "explanation": "Alkenes have formula CnH2n due to one double bond."
         },
         {
                 "id": 63,
-                "question": "What is the scientific name of Earthworm",
+                "question": "Alkynes are characterized by:",
                 "options": [
-                        "Lumbricus terrestris",
-                        "Lumbricus gigantica",
-                        "Actina",
-                        "Neresis"
+                        "Single bonds",
+                        "Double bonds",
+                        "Triple bonds between carbon atoms",
+                        "Aromatic rings"
                 ],
-                "answer": "Lumbricus terrestris",
-                "explanation": "The correct answer is: Lumbricus terrestris."
+                "answer": "Triple bonds between carbon atoms",
+                "explanation": "Alkynes contain at least one carbon-carbon triple bond."
         },
         {
                 "id": 64,
-                "question": "The poison on toad",
+                "question": "The general formula for alkynes is:",
                 "options": [
-                        "Relatively few in glands",
-                        "Abundant in glands",
-                        "Absent in glands",
-                        "No poison glands in toads"
+                        "CnH2n+2",
+                        "CnH2n",
+                        "CnH2n-2",
+                        "CnHn"
                 ],
-                "answer": "Relatively few in glands",
-                "explanation": "The correct answer is: Relatively few in glands."
+                "answer": "CnH2n-2",
+                "explanation": "The general formula for alkynes is CnH2n-"
+        },
+        {
+                "id": 65,
+                "question": "Which of the following is a functional group in organic chemistry?",
+                "options": [
+                        "Methyl",
+                        "Hydroxyl (-OH)",
+                        "Ethyl",
+                        "Propyl"
+                ],
+                "answer": "Hydroxyl (-OH)",
+                "explanation": "The hydroxyl group (-OH) is a functional group in alcohols."
         },
         {
                 "id": 66,
-                "question": "Diagram of Euglena — what is the function of part a (flagellum)",
+                "question": "The functional group of aldehydes is:",
                 "options": [
-                        "Reproduction",
-                        "Respiration",
-                        "Locomotion",
-                        "Irritability"
+                        "-COOH",
+                        "-CHO",
+                        "-OH",
+                        "-NH2"
                 ],
-                "answer": "Reproduction",
-                "explanation": "The correct answer is: Reproduction."
+                "answer": "-CHO",
+                "explanation": "The -CHO group is characteristic of aldehydes."
         },
         {
                 "id": 67,
-                "question": "Diagram of Amoeba — what protozoan is this",
+                "question": "The functional group of carboxylic acids is:",
                 "options": [
-                        "Paramecium",
-                        "Amoeba",
-                        "Euglena",
-                        "Chlamydomonas  --- PAGE 6 ---"
+                        "-CHO",
+                        "-COOH",
+                        "-OH",
+                        "-NH2"
                 ],
-                "answer": "Paramecium",
-                "explanation": "The correct answer is: Paramecium."
+                "answer": "-COOH",
+                "explanation": "Carboxylic acids contain the -COOH group."
         },
         {
                 "id": 68,
-                "question": "Diagram of Paramecium — what is the labelled part |",
-                "answer": "Anal pore",
-                "explanation": "The correct answer is: Anal pore."
+                "question": "Which compound contains an amine group?",
+                "options": [
+                        "Ethanol",
+                        "Ethylamine",
+                        "Ethanoic acid",
+                        "Acetone"
+                ],
+                "answer": "Ethylamine",
+                "explanation": "Ethylamine (CH3CH2NH2) has the -NH2 amine group."
+        },
+        {
+                "id": 69,
+                "question": "Esters are formed by the reaction of:",
+                "options": [
+                        "Alcohol and carboxylic acid",
+                        "Alkene and water",
+                        "Aldehyde and alcohol",
+                        "Ketone and amine"
+                ],
+                "answer": "Alcohol and carboxylic acid",
+                "explanation": "Esters result from alcohol + carboxylic acid condensation."
         },
         {
                 "id": 70,
-                "question": "Which of the following is a rhizopoda",
+                "question": "The functional group of ketones is:",
                 "options": [
-                        "Amoeba",
-                        "Paramecium",
-                        "Plasmodium",
-                        "Euglena"
+                        "-CHO",
+                        "-C=O (carbonyl group)",
+                        "-COOH",
+                        "-OH"
                 ],
-                "answer": "Amoeba",
-                "explanation": "The correct answer is: Amoeba."
+                "answer": "-C=O (carbonyl group)",
+                "explanation": "Ketones contain a carbonyl group bonded to two carbons."
         },
         {
                 "id": 71,
-                "question": "What is the specimen in the diagram above",
+                "question": "Which of the following is a polymer?",
                 "options": [
-                        "Garden snail",
-                        "Slug",
-                        "Holothuroid",
-                        "Actina"
+                        "Glucose",
+                        "Polyethylene",
+                        "Ethanol",
+                        "Benzene"
                 ],
-                "answer": "Garden snail",
-                "explanation": "The correct answer is: Garden snail."
+                "answer": "Polyethylene",
+                "explanation": "Polyethylene is a synthetic polymer made from ethylene."
         },
         {
                 "id": 72,
-                "question": "Tympanum in toad is located",
+                "question": "The process of forming polymers from monomers is called:",
                 "options": [
-                        "On the hind limb",
-                        "Between the forearm and arm",
-                        "Between the eyes and parotid gland",
-                        "On the head"
+                        "Hydrolysis",
+                        "Polymerization",
+                        "Saponification",
+                        "Esterification"
                 ],
-                "answer": "On the hind limb",
-                "explanation": "The correct answer is: On the hind limb."
+                "answer": "Polymerization",
+                "explanation": "Polymerization joins monomers into polymers."
         },
         {
                 "id": 73,
-                "question": "Which of the following feather is abundant in birds",
+                "question": "Which of the following is a natural polymer?",
                 "options": [
-                        "Contour",
-                        "Down",
-                        "Filoplume",
-                        "Quill"
+                        "Polyvinyl chloride",
+                        "Cellulose",
+                        "Polystyrene",
+                        "Teflon"
                 ],
-                "answer": "Contour",
-                "explanation": "The correct answer is: Contour."
+                "answer": "Cellulose",
+                "explanation": "Cellulose is a natural polymer in plant cell walls."
         },
         {
                 "id": 74,
-                "question": "Function of Gular Fold in Lizard?",
-                "answer": "Display / defense (attack enemies)",
-                "explanation": "The correct answer is: Display / defense (attack enemies)."
+                "question": "The monomer of proteins is:",
+                "options": [
+                        "Glucose",
+                        "Amino acid",
+                        "Nucleotide",
+                        "Fatty acid"
+                ],
+                "answer": "Amino acid",
+                "explanation": "Proteins are made up of amino acids."
         },
         {
                 "id": 75,
-                "question": "Habitat where snakes mostly reside?",
-                "answer": "Terrestrial",
-                "explanation": "The correct answer is: Terrestrial."
+                "question": "The monomer of nucleic acids is:",
+                "options": [
+                        "Amino acid",
+                        "Nucleotide",
+                        "Glucose",
+                        "Glycerol"
+                ],
+                "answer": "Nucleotide",
+                "explanation": "DNA and RNA are built from nucleotides."
         },
         {
                 "id": 76,
-                "question": "Natural habitat of Euglena?",
-                "answer": "Aquatic",
-                "explanation": "The correct answer is: Aquatic."
+                "question": "Lipids are primarily composed of:",
+                "options": [
+                        "Amino acids",
+                        "Fatty acids and glycerol",
+                        "Nucleotides",
+                        "Monosaccharides"
+                ],
+                "answer": "Fatty acids and glycerol",
+                "explanation": "Lipids are esters of fatty acids and glycerol."
         },
         {
                 "id": 77,
-                "question": "Function of phytoplankton in the sea?",
-                "answer": "Producers",
-                "explanation": "The correct answer is: Producers."
+                "question": "Carbohydrates are made up of:",
+                "options": [
+                        "Amino acids",
+                        "Monosaccharides",
+                        "Fatty acids",
+                        "Nucleotides"
+                ],
+                "answer": "Monosaccharides",
+                "explanation": "Carbohydrates are composed of monosaccharide units like glucose."
         },
         {
                 "id": 78,
-                "question": "Function of crown in birds?",
-                "answer": "Thermoregulation",
-                "explanation": "The correct answer is: Thermoregulation."
+                "question": "The simplest carbohydrate is:",
+                "options": [
+                        "Sucrose",
+                        "Glucose",
+                        "Starch",
+                        "Cellulose"
+                ],
+                "answer": "Glucose",
+                "explanation": "Glucose is a monosaccharide, the simplest form of carbohydrate."
         },
         {
                 "id": 79,
-                "question": "What phylum does Euglena belong to?",
-                "answer": "Protista",
-                "explanation": "The correct answer is: Protista."
+                "question": "Which of the following is a disaccharide?",
+                "options": [
+                        "Glucose",
+                        "Sucrose",
+                        "Fructose",
+                        "Maltose"
+                ],
+                "answer": "Sucrose",
+                "explanation": "Sucrose is a disaccharide made of glucose and fructose."
         },
         {
                 "id": 80,
-                "question": "Streamline body of earthworm is adapted to what kind of habitat?",
-                "answer": "Narrow burrows and soil",
-                "explanation": "The correct answer is: Narrow burrows and soil."
+                "question": "Polysaccharides include:",
+                "options": [
+                        "Glucose",
+                        "Starch",
+                        "Sucrose",
+                        "Fructose"
+                ],
+                "answer": "Starch",
+                "explanation": "Starch is a polysaccharide built from many glucose units."
         },
         {
                 "id": 81,
-                "question": "Which of the following is an example of Mastigophora?",
+                "question": "The primary source of energy for the human body is:",
                 "options": [
-                        "Amoeba",
-                        "Paramecium",
-                        "Plasmodium",
-                        "Euglena"
+                        "Proteins",
+                        "Carbohydrates",
+                        "Lipids",
+                        "Nucleic acids"
                 ],
-                "answer": "Amoeba",
-                "explanation": "The correct answer is: Amoeba."
+                "answer": "Carbohydrates",
+                "explanation": "Carbohydrates are the main source of quick energy."
+        },
+        {
+                "id": 82,
+                "question": "Which process converts sugars into alcohol?",
+                "options": [
+                        "Fermentation",
+                        "Photosynthesis",
+                        "Hydrolysis",
+                        "Oxidation"
+                ],
+                "answer": "Fermentation",
+                "explanation": "Fermentation is the anaerobic breakdown of sugars into alcohol and CO₂."
+        },
+        {
+                "id": 83,
+                "question": "The enzyme that breaks down starch is:",
+                "options": [
+                        "Amylase",
+                        "Lipase",
+                        "Protease",
+                        "Nuclease"
+                ],
+                "answer": "Amylase",
+                "explanation": "Amylase digests starch into simpler sugars."
+        },
+        {
+                "id": 84,
+                "question": "The p H of a neutral solution is:",
+                "options": [
+                        "7",
+                        "4",
+                        "9",
+                        "14"
+                ],
+                "answer": "7",
+                "explanation": "A neutral solution has a pH of"
+        },
+        {
+                "id": 85,
+                "question": "An acid is a substance that:",
+                "options": [
+                        "Donates protons (H⁺)",
+                        "Accepts protons",
+                        "Releases OH⁻",
+                        "Increases pH"
+                ],
+                "answer": "Donates protons (H⁺)",
+                "explanation": "Acids are proton donors."
+        },
+        {
+                "id": 86,
+                "question": "A base is a substance that:",
+                "options": [
+                        "Donates protons",
+                        "Accepts protons (H⁺)",
+                        "Releases H⁺",
+                        "Decreases pH"
+                ],
+                "answer": "Accepts protons (H⁺)",
+                "explanation": "Bases accept protons and raise pH."
+        },
+        {
+                "id": 87,
+                "question": "The p H of a strong acid solution is typically:",
+                "options": [
+                        "Less than 7",
+                        "7",
+                        "Greater than 7",
+                        "14"
+                ],
+                "answer": "Less than 7",
+                "explanation": "Strong acids have pH values below"
+        },
+        {
+                "id": 88,
+                "question": "The p H of a strong base solution is typically:",
+                "options": [
+                        "Less than 7",
+                        "7",
+                        "Greater than 7",
+                        "0"
+                ],
+                "answer": "Greater than 7",
+                "explanation": "Strong bases have pH values above"
+        },
+        {
+                "id": 89,
+                "question": "Which indicator changes color in acidic conditions?",
+                "options": [
+                        "Phenolphthalein",
+                        "Litmus (red in acid)",
+                        "Methyl orange",
+                        "Bromothymol blue"
+                ],
+                "answer": "Litmus (red in acid)",
+                "explanation": "Litmus turns red in acidic solutions."
+        },
+        {
+                "id": 90,
+                "question": "Which indicator changes color in basic conditions?",
+                "options": [
+                        "Litmus (blue in base)",
+                        "Methyl orange",
+                        "Phenol red",
+                        "Bromocresol green"
+                ],
+                "answer": "Litmus (blue in base)",
+                "explanation": "Litmus turns blue in basic solutions."
+        },
+        {
+                "id": 91,
+                "question": "The endpoint of a titration is detected using:",
+                "options": [
+                        "pH meter",
+                        "Indicator",
+                        "Thermometer",
+                        "Barometer"
+                ],
+                "answer": "Indicator",
+                "explanation": "Indicators show the titration endpoint by changing color."
+        },
+        {
+                "id": 92,
+                "question": "The reaction between an acid and a base is called:",
+                "options": [
+                        "Neutralization",
+                        "Oxidation",
+                        "Reduction",
+                        "Sublimation"
+                ],
+                "answer": "Neutralization",
+                "explanation": "Neutralization produces salt and water."
+        },
+        {
+                "id": 93,
+                "question": "The product of a neutralization reaction includes:",
+                "options": [
+                        "Water and salt",
+                        "Carbon dioxide",
+                        "Oxygen",
+                        "Hydrogen gas"
+                ],
+                "answer": "Water and salt",
+                "explanation": "Neutralization forms water and salt."
+        },
+        {
+                "id": 94,
+                "question": "Which gas is produced when an acid reacts with a metal?",
+                "options": [
+                        "Carbon dioxide",
+                        "Hydrogen",
+                        "Oxygen",
+                        "Nitrogen"
+                ],
+                "answer": "Hydrogen",
+                "explanation": "Acid + metal → salt + hydrogen gas."
+        },
+        {
+                "id": 95,
+                "question": "The reaction of a carbonate with an acid produces:",
+                "options": [
+                        "Hydrogen",
+                        "Carbon dioxide",
+                        "Oxygen",
+                        "Nitrogen"
+                ],
+                "answer": "Carbon dioxide",
+                "explanation": "Carbonates release CO₂ when reacting with acids."
+        },
+        {
+                "id": 96,
+                "question": "The strongest acid among the following is:",
+                "options": [
+                        "Acetic acid",
+                        "Hydrochloric acid (HCl)",
+                        "Citric acid",
+                        "Carbonic acid"
+                ],
+                "answer": "Hydrochloric acid (HCl)",
+                "explanation": "HCl is a strong acid that ionizes completely."
+        },
+        {
+                "id": 97,
+                "question": "The strongest base among the following is:",
+                "options": [
+                        "Ammonia",
+                        "Sodium hydroxide (NaOH)",
+                        "Calcium hydroxide",
+                        "Magnesium hydroxide"
+                ],
+                "answer": "Sodium hydroxide (NaOH)",
+                "explanation": "NaOH is a strong base that dissociates completely in water.\nBEST OF LUCK - BIG BOSS"
         }
     ];
 

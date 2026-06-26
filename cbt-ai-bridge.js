@@ -8,7 +8,6 @@ const COURSE_TOPICS = {
   'FSEN 106': 'Software Requirements Fundamentals',
   'MTH 102': 'Elementary Mathematics II',
   'PHY 102': 'General Physics II',
-  'MEE 102': 'Engineering Drawing II',
   'GST 112': 'Nigerian People and Culture',
   'FGNS 102': 'Integrated Reading and Writing Skills',
   'FIFT 102': 'Fundamentals of Networking',
@@ -26,7 +25,8 @@ const COURSE_TOPICS = {
   'FMEE 102': 'Engineering Workshop Practice',
   'FBIT 126': 'Introduction to Business',
   'MTS 102': 'Elementary Mathematics II',
-  'BIO 104': 'Biology Practical II'
+  'BIO 104': 'Biology Practical II',
+  'CHE 104': 'Practical Chemistry II'
 };
 
 function getAIConfigForCourse(courseCode) {
