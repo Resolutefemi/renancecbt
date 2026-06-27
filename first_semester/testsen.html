@@ -7430,6 +7430,7 @@
 
             if(typeof initDashboard === 'function') initDashboard();
             if(typeof loadStatsBar === 'function') loadStatsBar();
+        syncLocalResults();
             if(typeof showResumeBanner === 'function') showResumeBanner();
             
             if (localStorage.getItem(STORAGE_KEY)) {

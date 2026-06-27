@@ -1975,6 +1975,20 @@
             const { data: { user } } = await db.auth.getUser();
             if (!user) { el.innerText = ''; return; }
 
+            // ── 1. ALWAYS save to localStorage as backup (cross-device sync) ──
+            try {
+                const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+                localResults.push({
+                    student_id: user.id,
+                    course_id: COURSE_CODE,
+                    score: pct,
+                    timestamp: Date.now(),
+                    synced: false
+                });
+                localStorage.setItem('renance_local_results', JSON.stringify(localResults));
+            } catch (le) { console.warn('Local save failed:', le); }
+
+            // ── 2. Save to Supabase (cloud) ──
             const { data: prev } = await db.from('test_results')
                 .select('score').eq('student_id', user.id).eq('course_id', COURSE_CODE);
 
@@ -1987,10 +2001,58 @@
             const { error } = await db.from('test_results').insert([
                 { student_id: user.id, course_id: COURSE_CODE, score: pct }
             ]);
-            el.innerText = error ? '⚠️ Could not save (offline)' : '✅ Score saved!';
+
+            if (error) {
+                el.innerText = '⚠️ Could not save to cloud (saved locally — will sync later)';
+            } else {
+                el.innerText = '✅ Score saved!';
+                // Mark the just-saved local result as synced
+                try {
+                    const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+                    // Mark the last unsynced result for this course as synced
+                    for (let i = localResults.length - 1; i >= 0; i--) {
+                        if (localResults[i].student_id === user.id &&
+                            localResults[i].course_id === COURSE_CODE &&
+                            !localResults[i].synced) {
+                            localResults[i].synced = true;
+                            break;
+                        }
+                    }
+                    localStorage.setItem('renance_local_results', JSON.stringify(localResults));
+                } catch (e) {}
+            }
         } catch (e) {
-            el.innerText = '⚠️ Offline — score not saved';
+            el.innerText = '⚠️ Offline — saved locally, will sync when online';
         }
+    }
+
+    // ── Sync queued local results to Supabase (runs on page load) ──
+    async function syncLocalResults() {
+        try {
+            const { data: { user } } = await db.auth.getUser();
+            if (!user) return;
+
+            const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+            const unsynced = localResults.filter(r => !r.synced && r.student_id === user.id);
+            if (unsynced.length === 0) return;
+
+            let syncedCount = 0;
+            for (const r of unsynced) {
+                try {
+                    const { error } = await db.from('test_results').insert([
+                        { student_id: r.student_id, course_id: r.course_id, score: r.score }
+                    ]);
+                    if (!error) {
+                        r.synced = true;
+                        syncedCount++;
+                    }
+                } catch (e) { /* will retry next time */ }
+            }
+            localStorage.setItem('renance_local_results', JSON.stringify(localResults));
+            if (syncedCount > 0) {
+                console.log(`Synced ${syncedCount} queued result(s) to cloud`);
+            }
+        } catch (e) { /* not logged in or offline — will retry next time */ }
     }
 
     function enterReviewMode() {
@@ -2041,12 +2103,27 @@
         try {
             const { data: { user } } = await db.auth.getUser();
             if (!user) return;
+
+            // Fetch from cloud
             const { data } = await db.from('test_results')
                 .select('score').eq('student_id', user.id).eq('course_id', COURSE_CODE);
-            if (!data || data.length === 0) return;
-            const taken = data.length;
-            const avg  = Math.round(data.reduce((s, r) => s + r.score, 0) / taken);
-            const best = Math.max(...data.map(r => r.score));
+            const cloudScores = data ? data.map(r => r.score) : [];
+
+            // Merge with local (unsynced) results
+            let localScores = [];
+            try {
+                const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+                localScores = localResults
+                    .filter(r => r.student_id === user.id && r.course_id === COURSE_CODE && !r.synced)
+                    .map(r => r.score);
+            } catch (e) {}
+
+            const allScores = [...cloudScores, ...localScores];
+            if (allScores.length === 0) return;
+
+            const taken = allScores.length;
+            const avg  = Math.round(allScores.reduce((s, r) => s + r, 0) / taken);
+            const best = Math.max(...allScores);
             bar.innerHTML = `
                 <div class="stat-card"><div class="stat-val">${taken}</div><div class="stat-lbl">Tests Taken</div></div>
                 <div class="stat-card"><div class="stat-val">${avg}%</div><div class="stat-lbl">Average Score</div></div>
@@ -2108,6 +2185,7 @@
 
     buildDashboard();
     loadStatsBar();
+    syncLocalResults();
     checkResume();
 
         // ═══ THEORY UI + GROQ AI GRADING (one question at a time) ═══
