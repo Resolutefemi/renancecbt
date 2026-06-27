@@ -1536,38 +1536,36 @@
     </script>
 
     <!-- Renance AI Floating Chat Widget -->
-    <div id="ai-chat-widget" style="position: fixed; bottom: 105px; right: 30px; width: 360px; height: 480px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: none; flex-direction: column; overflow: hidden; z-index: 9999; transition: transform 0.3s ease, opacity 0.3s ease; transform: translateY(20px); opacity: 0; box-sizing: border-box;">
-        <!-- Header -->
-        <div style="background: var(--share-gradient); color: white; padding: 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); flex-shrink: 0;">
+    <div id="ai-chat-widget" style="position: fixed; bottom: 105px; right: 30px; width: 360px; height: 480px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); display: none; flex-direction: column; overflow: hidden; z-index: 9999; transition: transform 0.3s ease, opacity 0.3s ease; transform: translateY(20px); opacity: 0; box-sizing: border-box;">
+        <!-- Header — clean, solid color, no gradient -->
+        <div style="background: #1e293b; color: white; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;">
             <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 34px; height: 34px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">
-                    🧠
+                <div style="width: 32px; height: 32px; background: rgba(255,255,255,0.12); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <i data-lucide="message-circle" style="width: 18px; height: 18px; color: white;"></i>
                 </div>
                 <div>
-                    <strong style="font-size: 0.9rem; display: block; font-weight: 700; color: white;">Renance AI Assistant</strong>
-                    <span style="font-size: 0.68rem; color: #10b981; display: flex; align-items: center; gap: 4px; font-weight: 600;">
-                        <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; display: inline-block;"></span> Active Neural Link
-                    </span>
+                    <strong style="font-size: 0.88rem; display: block; font-weight: 700; color: white; letter-spacing: -0.2px;">Renance AI</strong>
+                    <span style="font-size: 0.68rem; color: rgba(255,255,255,0.5); font-weight: 500;">Online</span>
                 </div>
             </div>
-            <button onclick="toggleWidget()" style="background: transparent; border: none; color: white; cursor: pointer; font-size: 1.4rem; padding: 4px; line-height: 1;">&times;</button>
+            <button onclick="toggleWidget()" style="background: transparent; border: none; color: rgba(255,255,255,0.6); cursor: pointer; font-size: 1.2rem; padding: 4px; line-height: 1; transition: color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">&times;</button>
         </div>
         <!-- Messages -->
-        <div id="widget-messages" style="flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: var(--bg-body);">
-            <div style="align-self: flex-start; background: var(--card-bg); color: var(--text-main); padding: 10px 14px; border-radius: 14px; border-top-left-radius: 2px; font-size: 0.88rem; max-width: 85%; box-shadow: 0 2px 5px rgba(0,0,0,0.03); line-height: 1.45; border: 1px solid var(--border-color);">
-                Hello! I'm <strong>Renance AI</strong>, your academic mentor. Ready to help you smash your second-semester exams! 🚀
+        <div id="widget-messages" style="flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: var(--bg-body);">
+            <div style="align-self: flex-start; background: var(--card-bg); color: var(--text-main); padding: 10px 14px; border-radius: 12px; border-top-left-radius: 2px; font-size: 0.85rem; max-width: 85%; line-height: 1.5; border: 1px solid var(--border-color);">
+                Hi! I'm Renance AI. How can I help you with your studies today?
             </div>
         </div>
         <!-- Input -->
-        <div style="padding: 10px 15px; border-top: 1px solid var(--border-color); background: var(--card-bg); display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
-            <input type="text" id="widget-input" placeholder="Ask Renance AI..." onkeydown="if(event.key==='Enter')sendWidgetMessage()" style="flex: 1; border: 1px solid var(--border-color); padding: 10px 14px; border-radius: 20px; font-size: 0.88rem; outline: none; background: var(--bg-body); color: var(--text-main);" />
-            <button onclick="sendWidgetMessage()" style="background: var(--primary-accent); color: white; border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s;"><i data-lucide="send" style="width: 16px; height: 16px; color: white;"></i></button>
+        <div style="padding: 10px 12px; border-top: 1px solid var(--border-color); background: var(--card-bg); display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+            <input type="text" id="widget-input" placeholder="Type your question..." onkeydown="if(event.key==='Enter')sendWidgetMessage()" style="flex: 1; border: 1px solid var(--border-color); padding: 9px 14px; border-radius: 10px; font-size: 0.85rem; outline: none; background: var(--bg-body); color: var(--text-main);" />
+            <button onclick="sendWidgetMessage()" style="background: #1e293b; color: white; border: none; width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'"><i data-lucide="send" style="width: 15px; height: 15px; color: white;"></i></button>
         </div>
     </div>
 
     <!-- Floating Action Button for Widget -->
-    <button id="widget-trigger" onclick="toggleWidget()" style="position: fixed; bottom: 30px; right: 110px; width: 60px; height: 60px; background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: white; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 24px -8px rgba(124, 58, 237, 0.5); z-index: 9999; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-size: 22px;">
-        <i data-lucide="brain" style="width: 26px; height: 26px; color: white;"></i>
+    <button id="widget-trigger" onclick="toggleWidget()" style="position: fixed; bottom: 30px; right: 110px; width: 54px; height: 54px; background: #1e293b; color: white; border-radius: 16px; border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px -4px rgba(30, 41, 59, 0.4); z-index: 9999; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        <i data-lucide="message-circle" style="width: 24px; height: 24px; color: white;"></i>
     </button>
 
     <style>
