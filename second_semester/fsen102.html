@@ -178,7 +178,14 @@
 </nav>
 
 <main>
-    <div id="dashboard-wrap">
+    
+        <div style="text-align:center; margin-bottom:1rem;">
+            <a href="https://renasm-download.vercel.app" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--primary);color:#fff;text-decoration:none;border-radius:10px;font-weight:700;font-size:0.88rem;transition:0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+                <i class="fa-solid fa-microchip"></i> 8086 Emulator (RENASM)
+            </a>
+        </div>
+
+        <div id="dashboard-wrap">
         <div id="resume-banner"></div>
         <div id="stats-bar" class="stats-bar" style="display:none;"></div>
         <div id="dashboard"></div>
@@ -350,29 +357,2671 @@
     sendHeartbeat();
     setInterval(sendHeartbeat, 2 * 60 * 1000);
 
-    const MASTER_POOL = [
-        { "id": 1, "question": "Which OOP concept refers to wrapping data and code into a single unit?", "options": ["Encapsulation", "Inheritance", "Polymorphism", "Abstraction"], "answer": "Encapsulation", "explanation": "Encapsulation is the mechanism that binds together code and the data it manipulates, keeping both safe from outside interference." },
-        { "id": 2, "question": "In object-oriented programming, the process of defining a new class based on an existing class is called ________.", "options": ["Inheritance", "Polymorphism", "Abstraction", "Interface"], "answer": "Inheritance", "explanation": "Inheritance allows a child class to inherit fields and methods from a parent class, promoting code reusability." },
-        { "id": 3, "question": "What is polymorphism?", "options": ["The ability of different classes to respond to the same message in different ways", "Hiding the complexity of a system from the user", "Wrapping fields and methods in a single unit", "Creating multiple instances of a class"], "answer": "The ability of different classes to respond to the same message in different ways", "explanation": "Polymorphism means 'many forms' and allows objects of different classes to be treated as objects of a common superclass." },
-        { "id": 4, "question": "Which of the following is used to achieve complete abstraction in Java?", "options": ["Interface", "Abstract Class", "Concrete Class", "Constructor"], "answer": "Interface", "explanation": "A Java interface specifies only method signatures and constants, achieving 100% abstraction before Java 8 default methods." },
-        { "id": 5, "question": "A constructor is a special method used to ________.", "options": ["Initialize an object", "Destroy an object", "Call private methods", "Inherit from a parent class"], "answer": "Initialize an object", "explanation": "Constructors are called automatically when a new instance of a class (an object) is created to initialize its state." },
-        { "id": 6, "question": "Which data structure operates on a Last-In, First-Out (LIFO) basis?", "options": ["Stack", "Queue", "Linked List", "Binary Tree"], "answer": "Stack", "explanation": "A stack is a linear data structure in which elements are added and removed only from the top (LIFO)." },
-        { "id": 7, "question": "What is the time complexity of searching in a balanced binary search tree (BST) in the average case?", "options": ["O(log n)", "O(n)", "O(n log n)", "O(1)"], "answer": "O(log n)", "explanation": "Searching a balanced BST reduces the search space by half at each step, resulting in a logarithmic time complexity." },
-        { "id": 8, "question": "In Git, which command is used to save changes to the local repository history?", "options": ["git commit", "git push", "git add", "git save"], "answer": "git commit", "explanation": "The git commit command saves a snapshot of the staging area changes to the local repository history." },
-        { "id": 9, "question": "What does the git pull command do?", "options": ["Fetches changes from a remote repository and merges them into the current branch", "Uploads local changes to a remote repository", "Saves changes to the local staging area", "Creates a new branch on the local repository"], "answer": "Fetches changes from a remote repository and merges them into the current branch", "explanation": "git pull is a combination of git fetch followed by git merge, updating the local branch from its remote counterpart." },
-        { "id": 10, "question": "Which of the following is a key advantage of using version control systems?", "options": ["Tracking changes and collaborating with other developers", "Increasing execution speed of compiled programs", "Automatically fixing compiler bugs", "Designing database schemas"], "answer": "Tracking changes and collaborating with other developers", "explanation": "Version control systems (like Git) record modifications to files over time and allow teams to work concurrently on the same codebase." },
-        { "id": 11, "question": "In Java/C++, what is the purpose of the super / base keyword?", "options": ["To refer to the parent class members or constructors", "To declare a global static variable", "To prevent a class from being inherited", "To instantiate a subclass object"], "answer": "To refer to the parent class members or constructors", "explanation": "The super (Java) or base (C#) keyword is used to access parent class constructors, methods, and variables." },
-        { "id": 12, "question": "Which data structure represents a First-In, First-Out (FIFO) queue?", "options": ["Queue", "Stack", "Heap", "Graph"], "answer": "Queue", "explanation": "A queue is a linear collection where the first element added is the first one to be removed (FIFO)." },
-        { "id": 13, "question": "What is a syntax error?", "options": ["An error in the program's code structure that prevents compilation", "An error during program execution causing a crash", "An incorrect output produced by correct code", "A database connection failure"], "answer": "An error in the program's code structure that prevents compilation", "explanation": "Syntax errors occur when code violates the grammar rules of the programming language, caught during compilation or parsing." },
-        { "id": 14, "question": "Which sorting algorithm has a worst-case time complexity of O(n^2) but is very simple to implement?", "options": ["Bubble sort", "Merge sort", "Quick sort", "Heap sort"], "answer": "Bubble sort", "explanation": "Bubble sort repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order, taking O(n^2) time." },
-        { "id": 15, "question": "An instance of a class is called an ________.", "options": ["Object", "Method", "Variable", "Interface"], "answer": "Object", "explanation": "An object is a concrete instance of a class template with its own state and behavior." },
-        { "id": 16, "question": "In programming, a function that calls itself is known as a ________ function.", "options": ["Recursive", "Nested", "Callback", "Inline"], "answer": "Recursive", "explanation": "Recursion is a programming technique where a function calls itself directly or indirectly to solve a smaller instance of the same problem." },
-        { "id": 17, "question": "What is the index of the first element in a standard array in languages like C++, Java, and Python?", "options": ["0", "1", "-1", "Any number"], "answer": "0", "explanation": "Standard arrays in these languages use zero-based indexing, where the first element is at index 0." },
-        { "id": 18, "question": "Which access modifier makes a class member accessible only within the same class?", "options": ["private", "public", "protected", "default"], "answer": "private", "explanation": "The private modifier restricts access to the member to the defining class itself, aiding encapsulation." },
-        { "id": 19, "question": "What is the main purpose of unit testing?", "options": ["To verify that individual components of software work correctly in isolation", "To test the entire system's performance under load", "To check if the database is configured properly", "To review code layout styles"], "answer": "To verify that individual components of software work correctly in isolation", "explanation": "Unit testing verifies that the smallest testable parts (units) of an application work as intended under various conditions." },
-        { "id": 20, "question": "Which Git command is used to display the commit history of a repository?", "options": ["git log", "git status", "git diff", "git branch"], "answer": "git log", "explanation": "The git log command shows the commit history list for the repository in reverse chronological order." },
-        { "id": 21, "isTheory": true, "question": "Explain the difference between verification and validation in software engineering.", "answer": "Verification checks if the software conforms to specifications ('Are we building the product right?'). Validation checks if the software meets user requirements and solves the real problem ('Are we building the right product?').", "explanation": "Verification ensures specs are met. Validation ensures the real-world problem is solved." },
-        { "id": 22, "isTheory": true, "question": "What is the primary goal of the Agile software development model?", "answer": "To deliver working software frequently through iterative development, encouraging collaboration and flexibility to adapt to changing requirements.", "explanation": "Agile focuses on speed, collaboration, adaptability, and frequent delivery of working increments." }
+        const MASTER_POOL = [
+        {
+                "id": 1,
+                "question": "The Intel 8086 microprocessor is a ___-bit processor.",
+                "options": [
+                        "8-bit",
+                        "16-bit",
+                        "32-bit",
+                        "64-bit"
+                ],
+                "answer": "16-bit",
+                "explanation": "The 8086 has a 16-bit data bus and 16-bit internal registers."
+        },
+        {
+                "id": 2,
+                "question": "How many address lines does the 8086 have?",
+                "options": [
+                        "16",
+                        "20",
+                        "24",
+                        "32"
+                ],
+                "answer": "20",
+                "explanation": "20 address lines allow the 8086 to address 1 MB of memory (2^20 = 1,048,576 bytes)."
+        },
+        {
+                "id": 3,
+                "question": "The maximum memory the 8086 can address is:",
+                "options": [
+                        "64 KB",
+                        "256 KB",
+                        "1 MB",
+                        "4 MB"
+                ],
+                "answer": "1 MB",
+                "explanation": "With 20 address lines, the 8086 can address 2^20 = 1,048,576 bytes = 1 MB."
+        },
+        {
+                "id": 4,
+                "question": "The 8086 operates in which mode by default?",
+                "options": [
+                        "Protected mode",
+                        "Real mode",
+                        "Virtual mode",
+                        "Long mode"
+                ],
+                "answer": "Real mode",
+                "explanation": "The 8086 operates only in Real mode, where addresses map directly to physical memory."
+        },
+        {
+                "id": 5,
+                "question": "How many general-purpose registers does the 8086 have?",
+                "options": [
+                        "4",
+                        "8",
+                        "14",
+                        "16"
+                ],
+                "answer": "14",
+                "explanation": "The 8086 has 14 registers: AX, BX, CX, DX, SI, DI, BP, SP, CS, DS, SS, ES, IP, and FLAGS."
+        },
+        {
+                "id": 6,
+                "question": "The 8086 pipeline has how many stages?",
+                "options": [
+                        "2",
+                        "4",
+                        "6",
+                        "8"
+                ],
+                "answer": "2",
+                "explanation": "The 8086 has a 2-stage pipeline: Bus Interface Unit (BIU) and Execution Unit (EU)."
+        },
+        {
+                "id": 7,
+                "question": "The BIU (Bus Interface Unit) is responsible for:",
+                "options": [
+                        "Executing arithmetic operations",
+                        "Fetching instructions and data from memory",
+                        "Managing interrupts",
+                        "Controlling the stack"
+                ],
+                "answer": "Fetching instructions and data from memory",
+                "explanation": "The BIU handles all bus operations: instruction fetching, reading/writing data, and address generation."
+        },
+        {
+                "id": 8,
+                "question": "The EU (Execution Unit) is responsible for:",
+                "options": [
+                        "Fetching instructions",
+                        "Executing instructions",
+                        "Calculating physical addresses",
+                        "Managing the prefetch queue"
+                ],
+                "answer": "Executing instructions",
+                "explanation": "The EU decodes and executes instructions, performing arithmetic and logic operations."
+        },
+        {
+                "id": 9,
+                "question": "The prefetch queue in the 8086 can hold how many bytes?",
+                "options": [
+                        "4 bytes",
+                        "6 bytes",
+                        "8 bytes",
+                        "16 bytes"
+                ],
+                "answer": "6 bytes",
+                "explanation": "The BIU prefetches up to 6 bytes of instruction stream into the prefetch queue."
+        },
+        {
+                "id": 10,
+                "question": "The clock frequency of the original 8086 was:",
+                "options": [
+                        "4.77 MHz",
+                        "8 MHz",
+                        "16 MHz",
+                        "33 MHz"
+                ],
+                "answer": "4.77 MHz",
+                "explanation": "The original 8086 ran at 4.77 MHz, later versions reached 8 MHz and 10 MHz."
+        },
+        {
+                "id": 11,
+                "question": "The 8086 has how many pins in its package?",
+                "options": [
+                        "40",
+                        "44",
+                        "68",
+                        "100"
+                ],
+                "answer": "40",
+                "explanation": "The 8086 comes in a 40-pin DIP (Dual In-line Package)."
+        },
+        {
+                "id": 12,
+                "question": "Which signal indicates whether the 8086 is in minimum or maximum mode?",
+                "options": [
+                        "MN/MX",
+                        "CLK",
+                        "RESET",
+                        "READY"
+                ],
+                "answer": "MN/MX",
+                "explanation": "When MN/MX is tied high, the 8086 operates in minimum mode; when low, maximum mode."
+        },
+        {
+                "id": 13,
+                "question": "In minimum mode, the 8086 generates its own ___ signals.",
+                "options": [
+                        "Interrupt acknowledge",
+                        "Bus control",
+                        "Both A and B",
+                        "None"
+                ],
+                "answer": "Bus control",
+                "explanation": "In minimum mode, the 8086 generates bus control signals directly (ALE, DEN, DT/R, etc.)."
+        },
+        {
+                "id": 14,
+                "question": "In maximum mode, a ___ is needed to generate bus control signals.",
+                "options": [
+                        "Coprocessor",
+                        "Bus controller (8288)",
+                        "DMA controller",
+                        "Interrupt controller"
+                ],
+                "answer": "Bus controller (8288)",
+                "explanation": "In maximum mode, the 8288 bus controller generates control signals from the 8086's status lines."
+        },
+        {
+                "id": 15,
+                "question": "The physical address in the 8086 is calculated as:",
+                "options": [
+                        "Segment × 16 + Offset",
+                        "Segment + Offset",
+                        "Segment × 10 + Offset",
+                        "CS × 16 + IP"
+                ],
+                "answer": "Segment × 16 + Offset",
+                "explanation": "Physical Address = Segment Register × 16 (shifted left by 4) + Offset."
+        },
+        {
+                "id": 16,
+                "question": "The 8086 uses which memory segmentation scheme?",
+                "options": [
+                        "Flat memory model",
+                        "Segmented memory model",
+                        "Paged memory model",
+                        "Virtual memory model"
+                ],
+                "answer": "Segmented memory model",
+                "explanation": "The 8086 uses segmented memory, dividing memory into 64 KB segments addressed by segment:offset pairs."
+        },
+        {
+                "id": 17,
+                "question": "Each segment in the 8086 can be up to how large?",
+                "options": [
+                        "16 KB",
+                        "32 KB",
+                        "64 KB",
+                        "128 KB"
+                ],
+                "answer": "64 KB",
+                "explanation": "Since offsets are 16 bits, each segment can address up to 2^16 = 64 KB."
+        },
+        {
+                "id": 18,
+                "question": "The Instruction Pointer (IP) is how many bits wide?",
+                "options": [
+                        "8 bits",
+                        "16 bits",
+                        "20 bits",
+                        "32 bits"
+                ],
+                "answer": "16 bits",
+                "explanation": "IP is a 16-bit register that holds the offset of the next instruction within the code segment."
+        },
+        {
+                "id": 19,
+                "question": "The FLAGS register in the 8086 is how many bits wide?",
+                "options": [
+                        "8 bits",
+                        "16 bits",
+                        "20 bits",
+                        "32 bits"
+                ],
+                "answer": "16 bits",
+                "explanation": "The FLAGS register is 16 bits, containing 9 status and control flags."
+        },
+        {
+                "id": 20,
+                "question": "Which flag is set when the result of an operation is zero?",
+                "options": [
+                        "CF (Carry Flag)",
+                        "ZF (Zero Flag)",
+                        "SF (Sign Flag)",
+                        "OF (Overflow Flag)"
+                ],
+                "answer": "ZF (Zero Flag)",
+                "explanation": "ZF=1 when the result of an operation is exactly zero."
+        },
+        {
+                "id": 21,
+                "question": "Which flag indicates a borrow occurred in subtraction?",
+                "options": [
+                        "ZF",
+                        "CF",
+                        "OF",
+                        "PF"
+                ],
+                "answer": "CF",
+                "explanation": "The Carry Flag (CF) is set when a borrow occurs during subtraction or a carry occurs during addition."
+        },
+        {
+                "id": 22,
+                "question": "Which flag indicates signed overflow?",
+                "options": [
+                        "CF",
+                        "OF",
+                        "ZF",
+                        "AF"
+                ],
+                "answer": "OF",
+                "explanation": "The Overflow Flag (OF) is set when the result of a signed operation is too large to fit."
+        },
+        {
+                "id": 23,
+                "question": "Which flag indicates the sign of the result (bit 15)?",
+                "options": [
+                        "CF",
+                        "ZF",
+                        "SF",
+                        "PF"
+                ],
+                "answer": "SF",
+                "explanation": "The Sign Flag (SF) mirrors the most significant bit of the result (0=positive, 1=negative)."
+        },
+        {
+                "id": 24,
+                "question": "The Auxiliary Carry Flag (AF) is used for:",
+                "options": [
+                        "Signed arithmetic",
+                        "BCD arithmetic",
+                        "Floating-point",
+                        "String operations"
+                ],
+                "answer": "BCD arithmetic",
+                "explanation": "AF indicates a carry from bit 3 to bit 4, used in BCD (Binary Coded Decimal) adjustments."
+        },
+        {
+                "id": 25,
+                "question": "The Parity Flag (PF) is set when:",
+                "options": [
+                        "Result is even",
+                        "Result has even number of 1s",
+                        "Result is positive",
+                        "Result is odd"
+                ],
+                "answer": "Result has even number of 1s",
+                "explanation": "PF=1 when the low 8 bits of the result contain an even number of 1-bits."
+        },
+        {
+                "id": 26,
+                "question": "The Trap Flag (TF) is used for:",
+                "options": [
+                        "Interrupt handling",
+                        "Single-stepping (debugging)",
+                        "String operations",
+                        "Direction control"
+                ],
+                "answer": "Single-stepping (debugging)",
+                "explanation": "When TF=1, the 8086 generates an interrupt after each instruction (single-step mode)."
+        },
+        {
+                "id": 27,
+                "question": "The Interrupt Flag (IF) controls:",
+                "options": [
+                        "Hardware interrupts (INTR)",
+                        "Software interrupts",
+                        "Exceptions",
+                        "All interrupts"
+                ],
+                "answer": "Hardware interrupts (INTR)",
+                "explanation": "When IF=1, maskable hardware interrupts are acknowledged; when IF=0, they are masked."
+        },
+        {
+                "id": 28,
+                "question": "The Direction Flag (DF) affects which instructions?",
+                "options": [
+                        "Arithmetic",
+                        "String instructions (MOVS, STOS, etc.)",
+                        "Jump instructions",
+                        "Stack operations"
+                ],
+                "answer": "String instructions (MOVS, STOS, etc.)",
+                "explanation": "DF=0 means string operations auto-increment SI/DI; DF=1 means auto-decrement."
+        },
+        {
+                "id": 29,
+                "question": "How many interrupt types can the 8086 handle?",
+                "options": [
+                        "128",
+                        "256",
+                        "512",
+                        "1024"
+                ],
+                "answer": "256",
+                "explanation": "The 8086 supports 256 interrupt types (0-255), each with a 4-byte vector in the IVT."
+        },
+        {
+                "id": 30,
+                "question": "The Interrupt Vector Table (IVT) is located at:",
+                "options": [
+                        "0000:0000",
+                        "FFFF:0000",
+                        "0000:FFFF",
+                        "F000:0000"
+                ],
+                "answer": "0000:0000",
+                "explanation": "The IVT starts at physical address 00000h and occupies the first 1024 bytes of memory."
+        },
+        {
+                "id": 31,
+                "question": "Each entry in the IVT is how many bytes?",
+                "options": [
+                        "2 bytes",
+                        "4 bytes",
+                        "8 bytes",
+                        "16 bytes"
+                ],
+                "answer": "4 bytes",
+                "explanation": "Each interrupt vector is 4 bytes: 2 bytes for IP (offset) + 2 bytes for CS (segment)."
+        },
+        {
+                "id": 32,
+                "question": "The non-maskable interrupt (NMI) pin on the 8086 is:",
+                "options": [
+                        "INTR",
+                        "NMI",
+                        "INTA",
+                        "RESET"
+                ],
+                "answer": "NMI",
+                "explanation": "NMI is a non-maskable interrupt that cannot be disabled by software (IF flag doesn't affect it)."
+        },
+        {
+                "id": 33,
+                "question": "The 8086 can access I/O ports using which instructions?",
+                "options": [
+                        "MOV and XCHG",
+                        "IN and OUT",
+                        "LOAD and STORE",
+                        "PUSH and POP"
+                ],
+                "answer": "IN and OUT",
+                "explanation": "IN reads from an I/O port; OUT writes to an I/O port. I/O addresses are 16-bit (up to 64K ports)."
+        },
+        {
+                "id": 34,
+                "question": "The stack in the 8086 grows in which direction?",
+                "options": [
+                        "Upward (toward higher addresses)",
+                        "Downward (toward lower addresses)",
+                        "Both directions",
+                        "Fixed size"
+                ],
+                "answer": "Downward (toward lower addresses)",
+                "explanation": "The stack grows downward — PUSH decrements SP by 2, POP increments SP by 2."
+        },
+        {
+                "id": 35,
+                "question": "The Stack Pointer (SP) register contains:",
+                "options": [
+                        "The base of the stack",
+                        "The top of the stack (offset within SS)",
+                        "The stack segment",
+                        "The stack size"
+                ],
+                "answer": "The top of the stack (offset within SS)",
+                "explanation": "SP holds the offset of the current top of the stack within the Stack Segment (SS)."
+        },
+        {
+                "id": 36,
+                "question": "What is the size of each entry pushed onto the 8086 stack?",
+                "options": [
+                        "1 byte",
+                        "2 bytes (one word)",
+                        "4 bytes",
+                        "Variable"
+                ],
+                "answer": "2 bytes (one word)",
+                "explanation": "The 8086 PUSH and POP instructions always operate on 16-bit (2-byte) words."
+        },
+        {
+                "id": 37,
+                "question": "The BP (Base Pointer) register is typically used for:",
+                "options": [
+                        "String operations",
+                        "Accessing parameters on the stack",
+                        "Counting loops",
+                        "I/O operations"
+                ],
+                "answer": "Accessing parameters on the stack",
+                "explanation": "BP is used as a base register to access data and parameters in the stack segment."
+        },
+        {
+                "id": 38,
+                "question": "Which register is the accumulator in the 8086?",
+                "options": [
+                        "BX",
+                        "AX",
+                        "CX",
+                        "DX"
+                ],
+                "answer": "AX",
+                "explanation": "AX is the primary accumulator, used in multiplication, division, I/O, and most data transfer operations."
+        },
+        {
+                "id": 39,
+                "question": "The AX register can be accessed as two 8-bit registers:",
+                "options": [
+                        "AH and AL",
+                        "BH and BL",
+                        "CH and CL",
+                        "DH and DL"
+                ],
+                "answer": "AH and AL",
+                "explanation": "AX = AH (high byte) + AL (low byte). Similarly, BX=BH:BL, CX=CH:CL, DX=DH:DL."
+        },
+        {
+                "id": 40,
+                "question": "The BX register is typically used as:",
+                "options": [
+                        "Accumulator",
+                        "Base register for memory addressing",
+                        "Counter",
+                        "I/O port address"
+                ],
+                "answer": "Base register for memory addressing",
+                "explanation": "BX is the only general-purpose register that can be used as a memory pointer in addressing modes like [BX]."
+        },
+        {
+                "id": 41,
+                "question": "The CX register is typically used as:",
+                "options": [
+                        "Accumulator",
+                        "Base pointer",
+                        "Counter for loop and string operations",
+                        "Data register"
+                ],
+                "answer": "Counter for loop and string operations",
+                "explanation": "CX is used as the counter in LOOP instructions and string operations (REP prefix)."
+        },
+        {
+                "id": 42,
+                "question": "The DX register is used in:",
+                "options": [
+                        "Multiplication and division (high word)",
+                        "String operations",
+                        "Interrupt handling",
+                        "Stack operations"
+                ],
+                "answer": "Multiplication and division (high word)",
+                "explanation": "DX holds the high 16 bits of the 32-bit result in MUL/DIV operations, and the I/O port address in IN/OUT when DX is used."
+        },
+        {
+                "id": 43,
+                "question": "The SI (Source Index) register is used in:",
+                "options": [
+                        "Stack operations",
+                        "String source addressing",
+                        "I/O operations",
+                        "Interrupt handling"
+                ],
+                "answer": "String source addressing",
+                "explanation": "SI points to the source operand in string operations (e.g., MOVSB copies from DS:SI to ES:DI)."
+        },
+        {
+                "id": 44,
+                "question": "The DI (Destination Index) register is used in:",
+                "options": [
+                        "Stack operations",
+                        "String destination addressing",
+                        "Code segment addressing",
+                        "Flag operations"
+                ],
+                "answer": "String destination addressing",
+                "explanation": "DI points to the destination in string operations, always relative to the ES (Extra Segment)."
+        },
+        {
+                "id": 45,
+                "question": "Which segment register is used for code?",
+                "options": [
+                        "DS",
+                        "SS",
+                        "CS",
+                        "ES"
+                ],
+                "answer": "CS",
+                "explanation": "CS (Code Segment) defines the segment containing the currently executing code. CS:IP points to the next instruction."
+        },
+        {
+                "id": 46,
+                "question": "Which segment register is used for data by default?",
+                "options": [
+                        "CS",
+                        "DS",
+                        "SS",
+                        "ES"
+                ],
+                "answer": "DS",
+                "explanation": "DS (Data Segment) is the default segment for data memory accesses like MOV AX, [BX]."
+        },
+        {
+                "id": 47,
+                "question": "Which segment register is used for the stack?",
+                "options": [
+                        "CS",
+                        "DS",
+                        "SS",
+                        "ES"
+                ],
+                "answer": "SS",
+                "explanation": "SS (Stack Segment) defines the segment containing the stack. SS:SP points to the top of the stack."
+        },
+        {
+                "id": 48,
+                "question": "Which segment register is used for string destination operations?",
+                "options": [
+                        "CS",
+                        "DS",
+                        "SS",
+                        "ES"
+                ],
+                "answer": "ES",
+                "explanation": "ES (Extra Segment) is used as the segment for DI in string operations (e.g., MOVSB writes to ES:DI)."
+        },
+        {
+                "id": 49,
+                "question": "Which register holds the offset of the next instruction to execute?",
+                "options": [
+                        "SP",
+                        "BP",
+                        "IP",
+                        "SI"
+                ],
+                "answer": "IP",
+                "explanation": "The Instruction Pointer (IP) holds the offset of the next instruction within CS."
+        },
+        {
+                "id": 50,
+                "question": "How do you access the lower 8 bits of the CX register?",
+                "options": [
+                        "CH",
+                        "CL",
+                        "CX",
+                        "CX_L"
+                ],
+                "answer": "CL",
+                "explanation": "CL is the low byte of CX. CH is the high byte."
+        },
+        {
+                "id": 51,
+                "question": "Which register is used as the counter in the LOOP instruction?",
+                "options": [
+                        "AX",
+                        "BX",
+                        "CX",
+                        "DX"
+                ],
+                "answer": "CX",
+                "explanation": "LOOP decrements CX and jumps if CX is not zero."
+        },
+        {
+                "id": 52,
+                "question": "In MUL instruction, the result of multiplying AX by a 16-bit operand is stored in:",
+                "options": [
+                        "AX only",
+                        "DX:AX",
+                        "CX:BX",
+                        "BX:AX"
+                ],
+                "answer": "DX:AX",
+                "explanation": "16-bit multiplication produces a 32-bit result in DX:AX (DX = high word, AX = low word)."
+        },
+        {
+                "id": 53,
+                "question": "In DIV instruction, dividing DX:AX by a 16-bit operand stores the quotient in:",
+                "options": [
+                        "DX",
+                        "AX",
+                        "BX",
+                        "CX"
+                ],
+                "answer": "AX",
+                "explanation": "The quotient goes in AX and the remainder goes in DX for 16-bit division."
+        },
+        {
+                "id": 54,
+                "question": "Which register pair is used for 32-bit multiplication result?",
+                "options": [
+                        "BX:CX",
+                        "DX:AX",
+                        "DS:SI",
+                        "CS:IP"
+                ],
+                "answer": "DX:AX",
+                "explanation": "When multiplying two 16-bit values, the 32-bit product is stored in DX:AX."
+        },
+        {
+                "id": 55,
+                "question": "The CL register is used as the count in which instructions?",
+                "options": [
+                        "LOOP and REP",
+                        "SHL, SHR, ROL, ROR",
+                        "MOV and XCHG",
+                        "PUSH and POP"
+                ],
+                "answer": "SHL, SHR, ROL, ROR",
+                "explanation": "Shift and rotate instructions use CL as the count when the count is variable (e.g., SHL AX, CL)."
+        },
+        {
+                "id": 56,
+                "question": "What is the size of each general-purpose register (AX, BX, CX, DX) in the 8086?",
+                "options": [
+                        "8 bits",
+                        "16 bits",
+                        "32 bits",
+                        "64 bits"
+                ],
+                "answer": "16 bits",
+                "explanation": "Each general-purpose register is 16 bits, but AX/BX/CX/DX can be accessed as two 8-bit halves."
+        },
+        {
+                "id": 57,
+                "question": "Which registers can be split into high and low 8-bit parts?",
+                "options": [
+                        "SI and DI",
+                        "AX, BX, CX, DX",
+                        "SP and BP",
+                        "CS and DS"
+                ],
+                "answer": "AX, BX, CX, DX",
+                "explanation": "Only AX, BX, CX, and DX can be accessed as byte pairs (e.g., AH/AL, BH/BL, CH/CL, DH/DL)."
+        },
+        {
+                "id": 58,
+                "question": "Which register cannot be used as a memory pointer in the 8086?",
+                "options": [
+                        "BX",
+                        "BP",
+                        "SI",
+                        "CX"
+                ],
+                "answer": "CX",
+                "explanation": "Only BX, BP, SI, and DI can be used in memory addressing modes. CX cannot point to memory."
+        },
+        {
+                "id": 59,
+                "question": "When using [BP] as a memory pointer, the default segment is:",
+                "options": [
+                        "DS",
+                        "SS",
+                        "CS",
+                        "ES"
+                ],
+                "answer": "SS",
+                "explanation": "BP defaults to the Stack Segment (SS), unlike BX which defaults to DS."
+        },
+        {
+                "id": 60,
+                "question": "When using [BX] as a memory pointer, the default segment is:",
+                "options": [
+                        "DS",
+                        "SS",
+                        "CS",
+                        "ES"
+                ],
+                "answer": "DS",
+                "explanation": "BX defaults to the Data Segment (DS) for memory accesses."
+        },
+        {
+                "id": 61,
+                "question": "The segment override prefix allows you to:",
+                "options": [
+                        "Change the default segment for one instruction",
+                        "Disable interrupts",
+                        "Switch to protected mode",
+                        "Change the clock speed"
+                ],
+                "answer": "Change the default segment for one instruction",
+                "explanation": "Prefixes like ES:, SS:, CS: override the default segment for a single memory operand."
+        },
+        {
+                "id": 62,
+                "question": "Which register is used for I/O port addressing when the port number > 255?",
+                "options": [
+                        "AX",
+                        "BX",
+                        "DX",
+                        "CX"
+                ],
+                "answer": "DX",
+                "explanation": "For ports 256-65535, the port number is loaded into DX: IN AX, DX or OUT DX, AX."
+        },
+        {
+                "id": 63,
+                "question": "The MOV instruction can transfer data between:",
+                "options": [
+                        "Register to register only",
+                        "Memory to register and vice versa",
+                        "Immediate to register/memory",
+                        "All of the above"
+                ],
+                "answer": "All of the above",
+                "explanation": "MOV supports reg↔reg, mem↔reg, immediate→reg/mem, but NOT mem↔mem directly."
+        },
+        {
+                "id": 64,
+                "question": "Which instruction cannot move data directly from memory to memory?",
+                "options": [
+                        "MOV",
+                        "PUSH",
+                        "POP",
+                        "XCHG"
+                ],
+                "answer": "MOV",
+                "explanation": "MOV does not support memory-to-memory transfer. You must go through a register (MOV AX, [SI]; MOV [DI], AX)."
+        },
+        {
+                "id": 65,
+                "question": "The XCHG instruction swaps the contents of:",
+                "options": [
+                        "Two registers",
+                        "A register and memory",
+                        "Both A and B",
+                        "Two memory locations"
+                ],
+                "answer": "Both A and B",
+                "explanation": "XCHG can swap register↔register or register↔memory, but NOT memory↔memory."
+        },
+        {
+                "id": 66,
+                "question": "The LEA instruction is used to:",
+                "options": [
+                        "Load data from memory",
+                        "Load the effective address (offset) into a register",
+                        "Load a segment register",
+                        "Load the flags"
+                ],
+                "answer": "Load the effective address (offset) into a register",
+                "explanation": "LEA calculates the offset of a memory operand and stores it in a register without accessing memory."
+        },
+        {
+                "id": 67,
+                "question": "LEA BX, [SI+5] is equivalent to:",
+                "options": [
+                        "MOV BX, [SI+5]",
+                        "MOV BX, SI",
+                        "MOV BX, SI; ADD BX, 5",
+                        "ADD BX, SI, 5"
+                ],
+                "answer": "MOV BX, SI; ADD BX, 5",
+                "explanation": "LEA loads the computed address (SI+5), not the data at that address."
+        },
+        {
+                "id": 68,
+                "question": "The PUSH instruction does what to SP?",
+                "options": [
+                        "Increments SP by 2",
+                        "Decrements SP by 2",
+                        "Does not change SP",
+                        "Sets SP to 0"
+                ],
+                "answer": "Decrements SP by 2",
+                "explanation": "PUSH first decrements SP by 2, then stores the word at SS:SP."
+        },
+        {
+                "id": 69,
+                "question": "The POP instruction does what to SP?",
+                "options": [
+                        "Decrements SP by 2",
+                        "Increments SP by 2",
+                        "Sets SP to 0",
+                        "Does not change SP"
+                ],
+                "answer": "Increments SP by 2",
+                "explanation": "POP first reads the word at SS:SP, then increments SP by 2."
+        },
+        {
+                "id": 70,
+                "question": "How many addressing modes does the 8086 support?",
+                "options": [
+                        "4",
+                        "6",
+                        "8",
+                        "12"
+                ],
+                "answer": "8",
+                "explanation": "The 8086 has 8 addressing modes: register, immediate, direct, register indirect, based, indexed, based indexed, and based indexed with displacement."
+        },
+        {
+                "id": 71,
+                "question": "In immediate addressing, the operand is:",
+                "options": [
+                        "In a register",
+                        "In memory",
+                        "Part of the instruction itself",
+                        "On the stack"
+                ],
+                "answer": "Part of the instruction itself",
+                "explanation": "Immediate addressing embeds the value directly in the instruction (e.g., MOV AX, 1234h)."
+        },
+        {
+                "id": 72,
+                "question": "In register addressing, the operand is:",
+                "options": [
+                        "In memory",
+                        "In a register",
+                        "Part of the instruction",
+                        "In an I/O port"
+                ],
+                "answer": "In a register",
+                "explanation": "Register addressing uses a register as the operand (e.g., MOV AX, BX)."
+        },
+        {
+                "id": 73,
+                "question": "In direct addressing, the memory address is:",
+                "options": [
+                        "In a register",
+                        "Specified directly in the instruction",
+                        "Calculated from a base",
+                        "On the stack"
+                ],
+                "answer": "Specified directly in the instruction",
+                "explanation": "Direct addressing includes the offset directly (e.g., MOV AX, [1234h])."
+        },
+        {
+                "id": 74,
+                "question": "In register indirect addressing, the memory address is:",
+                "options": [
+                        "Specified directly",
+                        "Held in a register (BX, BP, SI, or DI)",
+                        "Calculated from IP",
+                        "On the stack"
+                ],
+                "answer": "Held in a register (BX, BP, SI, or DI)",
+                "explanation": "Register indirect uses a register as a pointer: MOV AX, [BX]. Only BX, BP, SI, DI can be used."
+        },
+        {
+                "id": 75,
+                "question": "Which registers can be used for register indirect addressing?",
+                "options": [
+                        "AX, BX, CX, DX",
+                        "BX, BP, SI, DI",
+                        "SP, BP, SI, DI",
+                        "CS, DS, SS, ES"
+                ],
+                "answer": "BX, BP, SI, DI",
+                "explanation": "Only BX, BP, SI, and DI can hold memory addresses for indirect addressing."
+        },
+        {
+                "id": 76,
+                "question": "In based addressing, the effective address is calculated as:",
+                "options": [
+                        "BX + displacement",
+                        "SI + displacement",
+                        "IP + displacement",
+                        "SP + displacement"
+                ],
+                "answer": "BX + displacement",
+                "explanation": "Based addressing uses BX or BP plus an 8-bit or 16-bit displacement: MOV AX, [BX+8]."
+        },
+        {
+                "id": 77,
+                "question": "In indexed addressing, the effective address is calculated as:",
+                "options": [
+                        "BX + displacement",
+                        "SI or DI + displacement",
+                        "CX + displacement",
+                        "DX + displacement"
+                ],
+                "answer": "SI or DI + displacement",
+                "explanation": "Indexed addressing uses SI or DI plus a displacement: MOV AX, [SI+10]."
+        },
+        {
+                "id": 78,
+                "question": "In based indexed addressing, the effective address is:",
+                "options": [
+                        "BX + SI",
+                        "BX + SI + displacement",
+                        "BP + DI",
+                        "All of the above"
+                ],
+                "answer": "All of the above",
+                "explanation": "Based indexed can be BX+SI, BX+DI, BP+SI, BP+DI, optionally with a displacement."
+        },
+        {
+                "id": 79,
+                "question": "MOV AX, [BX+SI+8] is an example of:",
+                "options": [
+                        "Direct addressing",
+                        "Based indexed with displacement",
+                        "Register addressing",
+                        "Immediate addressing"
+                ],
+                "answer": "Based indexed with displacement",
+                "explanation": "This uses a base register (BX), an index register (SI), and a displacement (8)."
+        },
+        {
+                "id": 80,
+                "question": "MOV AX, [1234h] is an example of:",
+                "options": [
+                        "Immediate addressing",
+                        "Direct addressing",
+                        "Register indirect",
+                        "Based addressing"
+                ],
+                "answer": "Direct addressing",
+                "explanation": "The memory offset (1234h) is specified directly in the instruction."
+        },
+        {
+                "id": 81,
+                "question": "MOV AX, 1234h is an example of:",
+                "options": [
+                        "Immediate addressing",
+                        "Direct addressing",
+                        "Register addressing",
+                        "Register indirect"
+                ],
+                "answer": "Immediate addressing",
+                "explanation": "1234h is the value itself (immediate), not a memory address. Note: no brackets."
+        },
+        {
+                "id": 82,
+                "question": "MOV AX, BX is an example of:",
+                "options": [
+                        "Immediate addressing",
+                        "Register addressing",
+                        "Direct addressing",
+                        "Register indirect"
+                ],
+                "answer": "Register addressing",
+                "explanation": "Both operands are registers — no memory or immediate value involved."
+        },
+        {
+                "id": 83,
+                "question": "MOV AX, [BX] is an example of:",
+                "options": [
+                        "Direct addressing",
+                        "Register indirect addressing",
+                        "Based addressing",
+                        "Indexed addressing"
+                ],
+                "answer": "Register indirect addressing",
+                "explanation": "BX holds the memory address; the brackets [ ] indicate memory access."
+        },
+        {
+                "id": 84,
+                "question": "What is the difference between MOV AX, 1234h and MOV AX, [1234h]?",
+                "options": [
+                        "No difference",
+                        "First loads the value 1234h; second loads data from memory address 1234h",
+                        "First loads from memory; second loads immediate",
+                        "Both are invalid"
+                ],
+                "answer": "First loads the value 1234h; second loads data from memory address 1234h",
+                "explanation": "Brackets [ ] indicate memory access. Without brackets, the value is immediate."
+        },
+        {
+                "id": 85,
+                "question": "The displacement in based addressing can be:",
+                "options": [
+                        "8-bit only",
+                        "16-bit only",
+                        "8-bit or 16-bit",
+                        "32-bit"
+                ],
+                "answer": "8-bit or 16-bit",
+                "explanation": "The 8086 supports both 8-bit (signed) and 16-bit displacements in based/indexed addressing."
+        },
+        {
+                "id": 86,
+                "question": "Which addressing mode is most useful for accessing array elements?",
+                "options": [
+                        "Direct",
+                        "Register indirect",
+                        "Indexed",
+                        "Immediate"
+                ],
+                "answer": "Indexed",
+                "explanation": "Indexed addressing (using SI or DI) is ideal for arrays — increment SI/DI to access successive elements."
+        },
+        {
+                "id": 87,
+                "question": "Which addressing mode is most useful for accessing structure fields?",
+                "options": [
+                        "Indexed",
+                        "Based",
+                        "Immediate",
+                        "Register"
+                ],
+                "answer": "Based",
+                "explanation": "Based addressing (using BX or BP + displacement) is ideal for accessing fields at fixed offsets from a base address."
+        },
+        {
+                "id": 88,
+                "question": "The effective address in MOV AX, [BP+6] is:",
+                "options": [
+                        "BP + 6, relative to DS",
+                        "BP + 6, relative to SS",
+                        "BP + 6, relative to CS",
+                        "BP + 6, relative to ES"
+                ],
+                "answer": "BP + 6, relative to SS",
+                "explanation": "BP defaults to SS (Stack Segment), so [BP+6] accesses SS:BP+6."
+        },
+        {
+                "id": 89,
+                "question": "The effective address in MOV AX, [BX+6] is:",
+                "options": [
+                        "BX + 6, relative to SS",
+                        "BX + 6, relative to DS",
+                        "BX + 6, relative to CS",
+                        "BX + 6, relative to ES"
+                ],
+                "answer": "BX + 6, relative to DS",
+                "explanation": "BX defaults to DS (Data Segment), so [BX+6] accesses DS:BX+6."
+        },
+        {
+                "id": 90,
+                "question": "To override the default segment for [BX], you would use:",
+                "options": [
+                        "ES: [BX]",
+                        "CS: [BX]",
+                        "SS: [BX]",
+                        "Any of the above"
+                ],
+                "answer": "Any of the above",
+                "explanation": "Segment override prefixes (ES:, CS:, SS:) can change the default segment for any memory operand."
+        },
+        {
+                "id": 91,
+                "question": "Which is NOT a valid 8086 addressing mode combination?",
+                "options": [
+                        "[BX+SI]",
+                        "[AX+BX]",
+                        "[BP+DI]",
+                        "[BX+DI+10]"
+                ],
+                "answer": "[AX+BX]",
+                "explanation": "AX cannot be used as a base or index register in memory addressing. Only BX, BP, SI, DI are valid."
+        },
+        {
+                "id": 92,
+                "question": "The physical address for CS:IP = 1000:2000 is:",
+                "options": [
+                        "3000h",
+                        "12000h",
+                        "10000h",
+                        "22000h"
+                ],
+                "answer": "12000h",
+                "explanation": "Physical = CS×16 + IP = 1000h×10h + 2000h = 10000h + 2000h = 12000h."
+        },
+        {
+                "id": 93,
+                "question": "If DS = 2000h and BX = 0100h, the physical address of [BX] is:",
+                "options": [
+                        "2010h",
+                        "20100h",
+                        "21000h",
+                        "20001h"
+                ],
+                "answer": "20100h",
+                "explanation": "Physical = DS×16 + BX = 2000h×10h + 0100h = 20000h + 0100h = 20100h."
+        },
+        {
+                "id": 94,
+                "question": "Two different segment:offset pairs can point to the same physical address. This is called:",
+                "options": [
+                        "Address aliasing",
+                        "Segment overlap",
+                        "Address wrapping",
+                        "Logical address equivalence"
+                ],
+                "answer": "Address aliasing",
+                "explanation": "Since segment×16 + offset can produce the same physical address from different segment:offset pairs."
+        },
+        {
+                "id": 95,
+                "question": "The ADD instruction affects which flags?",
+                "options": [
+                        "CF, ZF, SF, OF, AF, PF",
+                        "Only CF and ZF",
+                        "Only IF and TF",
+                        "No flags"
+                ],
+                "answer": "CF, ZF, SF, OF, AF, PF",
+                "explanation": "ADD affects all arithmetic flags: Carry, Zero, Sign, Overflow, Auxiliary Carry, and Parity."
+        },
+        {
+                "id": 96,
+                "question": "The SUB instruction affects which flags?",
+                "options": [
+                        "Same as ADD",
+                        "Only CF and ZF",
+                        "Only SF and OF",
+                        "No flags"
+                ],
+                "answer": "Same as ADD",
+                "explanation": "SUB affects the same flags as ADD: CF, ZF, SF, OF, AF, PF."
+        },
+        {
+                "id": 97,
+                "question": "The INC instruction affects which flags?",
+                "options": [
+                        "All flags including CF",
+                        "All flags except CF",
+                        "Only ZF and SF",
+                        "No flags"
+                ],
+                "answer": "All flags except CF",
+                "explanation": "INC does not affect CF (Carry Flag) — this allows using INC in loop counters without disturbing carry state."
+        },
+        {
+                "id": 98,
+                "question": "The DEC instruction affects which flags?",
+                "options": [
+                        "All flags including CF",
+                        "All flags except CF",
+                        "Only ZF",
+                        "No flags"
+                ],
+                "answer": "All flags except CF",
+                "explanation": "Like INC, DEC does not affect CF."
+        },
+        {
+                "id": 99,
+                "question": "The CMP instruction does what?",
+                "options": [
+                        "Adds two operands",
+                        "Subtracts operands and sets flags but discards result",
+                        "Multiplies operands",
+                        "Swaps operands"
+                ],
+                "answer": "Subtracts operands and sets flags but discards result",
+                "explanation": "CMP performs subtraction to set flags for conditional jumps, without modifying the operands."
+        },
+        {
+                "id": 100,
+                "question": "After CMP AX, BX, if ZF=1, it means:",
+                "options": [
+                        "AX > BX",
+                        "AX < BX",
+                        "AX = BX",
+                        "AX and BX are both zero"
+                ],
+                "answer": "AX = BX",
+                "explanation": "ZF=1 means the subtraction result was zero, so AX equals BX."
+        },
+        {
+                "id": 101,
+                "question": "After CMP AX, BX, if CF=1 (unsigned), it means:",
+                "options": [
+                        "AX > BX",
+                        "AX < BX",
+                        "AX = BX",
+                        "Overflow occurred"
+                ],
+                "answer": "AX < BX",
+                "explanation": "CF=1 means a borrow was needed, so AX (minuend) is less than BX (subtrahend)."
+        },
+        {
+                "id": 102,
+                "question": "The JMP instruction is:",
+                "options": [
+                        "Conditional",
+                        "Unconditional",
+                        "Both",
+                        "Neither"
+                ],
+                "answer": "Unconditional",
+                "explanation": "JMP always transfers control to the target address, regardless of flags."
+        },
+        {
+                "id": 103,
+                "question": "How many conditional jump instructions does the 8086 have?",
+                "options": [
+                        "8",
+                        "16",
+                        "18",
+                        "24"
+                ],
+                "answer": "18",
+                "explanation": "The 8086 has 18 conditional jump instructions (JE, JNE, JG, JL, JGE, JLE, JA, JB, JAE, JBE, etc.)."
+        },
+        {
+                "id": 104,
+                "question": "JE (Jump if Equal) is the same as:",
+                "options": [
+                        "JZ",
+                        "JNE",
+                        "JG",
+                        "JL"
+                ],
+                "answer": "JZ",
+                "explanation": "JE and JZ are identical — both jump when ZF=1."
+        },
+        {
+                "id": 105,
+                "question": "JNE (Jump if Not Equal) is the same as:",
+                "options": [
+                        "JZ",
+                        "JNZ",
+                        "JC",
+                        "JNC"
+                ],
+                "answer": "JNZ",
+                "explanation": "JNE and JNZ are identical — both jump when ZF=0."
+        },
+        {
+                "id": 106,
+                "question": "JA (Jump if Above) checks which flags (unsigned)?",
+                "options": [
+                        "CF=0 and ZF=0",
+                        "CF=1",
+                        "ZF=1",
+                        "SF≠OF"
+                ],
+                "answer": "CF=0 and ZF=0",
+                "explanation": "JA jumps when the destination is above the source (unsigned): no carry AND not equal."
+        },
+        {
+                "id": 107,
+                "question": "JG (Jump if Greater) checks which flags (signed)?",
+                "options": [
+                        "ZF=0 and SF=OF",
+                        "CF=0",
+                        "ZF=1",
+                        "SF≠OF"
+                ],
+                "answer": "ZF=0 and SF=OF",
+                "explanation": "JG jumps for signed greater-than: not equal AND sign flag equals overflow flag."
+        },
+        {
+                "id": 108,
+                "question": "The LOOP instruction does what?",
+                "options": [
+                        "Decrements CX and jumps if CX≠0",
+                        "Increments CX and jumps",
+                        "Jumps unconditionally",
+                        "Does not affect CX"
+                ],
+                "answer": "Decrements CX and jumps if CX≠0",
+                "explanation": "LOOP = DEC CX; JNZ target. It decrements CX and jumps if CX is not yet zero."
+        },
+        {
+                "id": 109,
+                "question": "LOOPE (Loop if Equal) decrements CX and jumps if:",
+                "options": [
+                        "CX≠0 only",
+                        "CX≠0 and ZF=1",
+                        "CX≠0 and ZF=0",
+                        "ZF=1 only"
+                ],
+                "answer": "CX≠0 and ZF=1",
+                "explanation": "LOOPE (also LOOPZ) continues the loop if CX is not zero AND ZF=1 (equal/zero condition)."
+        },
+        {
+                "id": 110,
+                "question": "LOOPNE (Loop if Not Equal) decrements CX and jumps if:",
+                "options": [
+                        "CX≠0 only",
+                        "CX≠0 and ZF=1",
+                        "CX≠0 and ZF=0",
+                        "ZF=0 only"
+                ],
+                "answer": "CX≠0 and ZF=0",
+                "explanation": "LOOPNE (also LOOPNZ) continues if CX is not zero AND ZF=0 (not equal/non-zero condition)."
+        },
+        {
+                "id": 111,
+                "question": "The MUL instruction performs ___ multiplication.",
+                "options": [
+                        "Signed",
+                        "Unsigned",
+                        "Both",
+                        "Floating-point"
+                ],
+                "answer": "Unsigned",
+                "explanation": "MUL performs unsigned multiplication. IMUL performs signed multiplication."
+        },
+        {
+                "id": 112,
+                "question": "The IMUL instruction performs ___ multiplication.",
+                "options": [
+                        "Signed",
+                        "Unsigned",
+                        "Both",
+                        "Floating-point"
+                ],
+                "answer": "Signed",
+                "explanation": "IMUL performs signed (two's complement) multiplication."
+        },
+        {
+                "id": 113,
+                "question": "MUL BL multiplies AL by BL and stores the result in:",
+                "options": [
+                        "AL",
+                        "AX",
+                        "DX:AX",
+                        "BL"
+                ],
+                "answer": "AX",
+                "explanation": "8-bit multiplication: AL × operand → AX (16-bit result)."
+        },
+        {
+                "id": 114,
+                "question": "MUL BX multiplies AX by BX and stores the result in:",
+                "options": [
+                        "AX",
+                        "BX",
+                        "DX:AX",
+                        "CX:BX"
+                ],
+                "answer": "DX:AX",
+                "explanation": "16-bit multiplication: AX × operand → DX:AX (32-bit result)."
+        },
+        {
+                "id": 115,
+                "question": "DIV BL divides AX by BL and stores the quotient in:",
+                "options": [
+                        "AL",
+                        "AH",
+                        "AX",
+                        "BL"
+                ],
+                "answer": "AL",
+                "explanation": "8-bit division: AX / operand → quotient in AL, remainder in AH."
+        },
+        {
+                "id": 116,
+                "question": "DIV BX divides DX:AX by BX and stores the quotient in:",
+                "options": [
+                        "AX (quotient), DX (remainder)",
+                        "DX (quotient), AX (remainder)",
+                        "BX (quotient), CX (remainder)",
+                        "AX only"
+                ],
+                "answer": "AX (quotient), DX (remainder)",
+                "explanation": "16-bit division: DX:AX / operand → quotient in AX, remainder in DX."
+        },
+        {
+                "id": 117,
+                "question": "The CBW instruction does what?",
+                "options": [
+                        "Converts byte to word (sign-extends AL to AX)",
+                        "Converts word to byte",
+                        "Clears AX",
+                        "Swaps AH and AL"
+                ],
+                "answer": "Converts byte to word (sign-extends AL to AX)",
+                "explanation": "CBW (Convert Byte to Word) sign-extends AL into AX: if AL is negative (bit 7=1), AH=FFh; otherwise AH=00h."
+        },
+        {
+                "id": 118,
+                "question": "The CWD instruction does what?",
+                "options": [
+                        "Converts word to doubleword (sign-extends AX to DX:AX)",
+                        "Converts doubleword to word",
+                        "Clears DX",
+                        "Swaps AX and DX"
+                ],
+                "answer": "Converts word to doubleword (sign-extends AX to DX:AX)",
+                "explanation": "CWD (Convert Word to Doubleword) sign-extends AX into DX:AX for 32-bit division."
+        },
+        {
+                "id": 119,
+                "question": "The NEG instruction does what?",
+                "options": [
+                        "Makes the operand zero",
+                        "Computes two's complement (0 - operand)",
+                        "Sets all bits to 1",
+                        "Reverses bit order"
+                ],
+                "answer": "Computes two's complement (0 - operand)",
+                "explanation": "NEG negates the operand by subtracting it from zero (equivalent to NOT + INC)."
+        },
+        {
+                "id": 120,
+                "question": "The NOT instruction does what?",
+                "options": [
+                        "Computes two's complement",
+                        "Computes one's complement (flips all bits)",
+                        "Sets operand to 0",
+                        "Sets operand to 1"
+                ],
+                "answer": "Computes one's complement (flips all bits)",
+                "explanation": "NOT flips every bit (0→1, 1→0). It does NOT affect any flags."
+        },
+        {
+                "id": 121,
+                "question": "Which logic instruction does NOT affect flags?",
+                "options": [
+                        "AND",
+                        "OR",
+                        "XOR",
+                        "NOT"
+                ],
+                "answer": "NOT",
+                "explanation": "NOT is the only logic instruction that does not modify any flags. AND, OR, XOR all clear CF and OF."
+        },
+        {
+                "id": 122,
+                "question": "AND AX, 000Fh does what?",
+                "options": [
+                        "Clears all bits except the lower 4",
+                        "Sets all bits to 1",
+                        "Inverts all bits",
+                        "Adds 0Fh to AX"
+                ],
+                "answer": "Clears all bits except the lower 4",
+                "explanation": "ANDing with 000Fh masks (preserves) only the lower 4 bits of AX."
+        },
+        {
+                "id": 123,
+                "question": "OR AX, 00FFh does what?",
+                "options": [
+                        "Clears the lower 8 bits",
+                        "Sets all bits in the lower byte to 1",
+                        "Inverts the lower byte",
+                        "Shifts AX right by 8"
+                ],
+                "answer": "Sets all bits in the lower byte to 1",
+                "explanation": "ORing with 00FFh sets (forces to 1) all bits in the lower byte (AL)."
+        },
+        {
+                "id": 124,
+                "question": "XOR AX, AX does what?",
+                "options": [
+                        "Sets AX to 0",
+                        "Sets AX to FFFFh",
+                        "Inverts AX",
+                        "Adds AX to itself"
+                ],
+                "answer": "Sets AX to 0",
+                "explanation": "XORing a register with itself always produces 0. This is a common way to clear a register."
+        },
+        {
+                "id": 125,
+                "question": "TEST AX, 0001h does what?",
+                "options": [
+                        "Sets AX to 1",
+                        "Performs AND but discards result (only sets flags)",
+                        "Adds 1 to AX",
+                        "Shifts AX right by 1"
+                ],
+                "answer": "Performs AND but discards result (only sets flags)",
+                "explanation": "TEST is like AND but does not store the result — it only sets flags for conditional jumps."
+        },
+        {
+                "id": 126,
+                "question": "SHL AX, 1 does what?",
+                "options": [
+                        "Shifts AX left by 1 bit (multiply by 2)",
+                        "Shifts AX right by 1",
+                        "Rotates AX left",
+                        "Divides AX by 2"
+                ],
+                "answer": "Shifts AX left by 1 bit (multiply by 2)",
+                "explanation": "SHL (Shift Logical Left) by 1 is equivalent to multiplying by 2. The MSB goes into CF."
+        },
+        {
+                "id": 127,
+                "question": "SHR AX, 1 does what?",
+                "options": [
+                        "Shifts AX right by 1 bit (unsigned divide by 2)",
+                        "Shifts AX left by 1",
+                        "Rotates AX right",
+                        "Multiplies AX by 2"
+                ],
+                "answer": "Shifts AX right by 1 bit (unsigned divide by 2)",
+                "explanation": "SHR (Shift Logical Right) by 1 is equivalent to unsigned division by 2. The LSB goes into CF."
+        },
+        {
+                "id": 128,
+                "question": "SAR AX, 1 does what?",
+                "options": [
+                        "Unsigned divide by 2",
+                        "Signed divide by 2 (preserves sign bit)",
+                        "Logical shift left",
+                        "Rotate right"
+                ],
+                "answer": "Signed divide by 2 (preserves sign bit)",
+                "explanation": "SAR (Shift Arithmetic Right) preserves the sign bit (MSB) while shifting right, performing signed division by 2."
+        },
+        {
+                "id": 129,
+                "question": "ROL AX, 1 does what?",
+                "options": [
+                        "Rotates AX left by 1 (MSB goes to LSB and CF)",
+                        "Shifts left",
+                        "Rotates through carry",
+                        "Does nothing"
+                ],
+                "answer": "Rotates AX left by 1 (MSB goes to LSB and CF)",
+                "explanation": "ROL (Rotate Left) moves each bit left, and the MSB wraps around to both the LSB and the Carry Flag."
+        },
+        {
+                "id": 130,
+                "question": "ROR AX, 1 does what?",
+                "options": [
+                        "Rotates AX right by 1 (LSB goes to MSB and CF)",
+                        "Shifts right",
+                        "Rotates through carry",
+                        "Does nothing"
+                ],
+                "answer": "Rotates AX right by 1 (LSB goes to MSB and CF)",
+                "explanation": "ROR (Rotate Right) moves each bit right, and the LSB wraps around to both the MSB and the Carry Flag."
+        },
+        {
+                "id": 131,
+                "question": "RCL AX, 1 does what?",
+                "options": [
+                        "Rotates left through carry (9-bit rotation)",
+                        "Rotates left without carry",
+                        "Shifts left through carry",
+                        "Does nothing"
+                ],
+                "answer": "Rotates left through carry (9-bit rotation)",
+                "explanation": "RCL (Rotate through Carry Left) treats CF as bit 16 — the MSB goes into CF, and old CF goes into LSB."
+        },
+        {
+                "id": 132,
+                "question": "RCR AX, 1 does what?",
+                "options": [
+                        "Rotates right through carry",
+                        "Rotates right without carry",
+                        "Shifts right through carry",
+                        "Does nothing"
+                ],
+                "answer": "Rotates right through carry",
+                "explanation": "RCR (Rotate through Carry Right) treats CF as bit 16 — the LSB goes into CF, and old CF goes into MSB."
+        },
+        {
+                "id": 133,
+                "question": "PUSHF pushes which register onto the stack?",
+                "options": [
+                        "AX",
+                        "FLAGS",
+                        "IP",
+                        "CS"
+                ],
+                "answer": "FLAGS",
+                "explanation": "PUSHF pushes the 16-bit FLAGS register onto the stack."
+        },
+        {
+                "id": 134,
+                "question": "POPF does what?",
+                "options": [
+                        "Pops AX from stack",
+                        "Pops FLAGS from stack into the FLAGS register",
+                        "Pops IP from stack",
+                        "Pops CS from stack"
+                ],
+                "answer": "Pops FLAGS from stack into the FLAGS register",
+                "explanation": "POPF pops the top of the stack into the FLAGS register, restoring saved flags."
+        },
+        {
+                "id": 135,
+                "question": "The CALL instruction does what?",
+                "options": [
+                        "Jumps to a subroutine and pushes the return address",
+                        "Only jumps",
+                        "Pushes flags",
+                        "Pops the stack"
+                ],
+                "answer": "Jumps to a subroutine and pushes the return address",
+                "explanation": "CALL pushes CS:IP (return address) onto the stack, then jumps to the subroutine."
+        },
+        {
+                "id": 136,
+                "question": "The RET instruction does what?",
+                "options": [
+                        "Pushes the return address",
+                        "Pops the return address from stack into CS:IP",
+                        "Clears the stack",
+                        "Does nothing"
+                ],
+                "answer": "Pops the return address from stack into CS:IP",
+                "explanation": "RET pops the saved return address from the stack back into IP (and CS for far returns)."
+        },
+        {
+                "id": 137,
+                "question": "A near CALL pushes how many bytes?",
+                "options": [
+                        "1 byte",
+                        "2 bytes (IP only)",
+                        "4 bytes (CS:IP)",
+                        "8 bytes"
+                ],
+                "answer": "2 bytes (IP only)",
+                "explanation": "A near call (same segment) pushes only IP (2 bytes). A far call pushes CS:IP (4 bytes)."
+        },
+        {
+                "id": 138,
+                "question": "A far CALL pushes how many bytes?",
+                "options": [
+                        "2 bytes",
+                        "4 bytes (CS and IP)",
+                        "6 bytes",
+                        "8 bytes"
+                ],
+                "answer": "4 bytes (CS and IP)",
+                "explanation": "A far call (different segment) pushes both CS (2 bytes) and IP (2 bytes) = 4 bytes total."
+        },
+        {
+                "id": 139,
+                "question": "RET 4 does what?",
+                "options": [
+                        "Returns and pops 4 extra bytes from stack",
+                        "Returns 4 times",
+                        "Returns to address 4",
+                        "Does nothing special"
+                ],
+                "answer": "Returns and pops 4 extra bytes from stack",
+                "explanation": "RET n returns and then adds n to SP, removing n bytes of parameters from the stack (cdecl cleanup)."
+        },
+        {
+                "id": 140,
+                "question": "INT 21h is commonly used for:",
+                "options": [
+                        "Arithmetic",
+                        "DOS function calls",
+                        "Hardware interrupts",
+                        "Stack operations"
+                ],
+                "answer": "DOS function calls",
+                "explanation": "INT 21h is the DOS API interrupt — AH specifies the function number (e.g., AH=09h for print string, AH=4Ch for exit)."
+        },
+        {
+                "id": 141,
+                "question": "Which INT 21h function displays a string?",
+                "options": [
+                        "AH=01h",
+                        "AH=09h",
+                        "AH=4Ch",
+                        "AH=00h"
+                ],
+                "answer": "AH=09h",
+                "explanation": "AH=09h displays a '$'-terminated string pointed to by DS:DX."
+        },
+        {
+                "id": 142,
+                "question": "Which INT 21h function terminates a program?",
+                "options": [
+                        "AH=01h",
+                        "AH=09h",
+                        "AH=4Ch",
+                        "AH=0Ah"
+                ],
+                "answer": "AH=4Ch",
+                "explanation": "AH=4Ch exits the program, with AL containing the return code."
+        },
+        {
+                "id": 143,
+                "question": "Which INT 21h function reads a character from keyboard?",
+                "options": [
+                        "AH=01h",
+                        "AH=02h",
+                        "AH=09h",
+                        "AH=4Ch"
+                ],
+                "answer": "AH=01h",
+                "explanation": "AH=01h reads a character from standard input, echoes it, and returns it in AL."
+        },
+        {
+                "id": 144,
+                "question": "Which INT 21h function displays a single character?",
+                "options": [
+                        "AH=01h",
+                        "AH=02h",
+                        "AH=09h",
+                        "AH=0Ah"
+                ],
+                "answer": "AH=02h",
+                "explanation": "AH=02h displays the character in DL to standard output."
+        },
+        {
+                "id": 145,
+                "question": "In INT 21h AH=09h, the string must be terminated by:",
+                "options": [
+                        "Null byte (00h)",
+                        "Dollar sign ($)",
+                        "Newline (0Ah)",
+                        "Zero (0)"
+                ],
+                "answer": "Dollar sign ($)",
+                "explanation": "DOS function 09h requires the string to end with '$' (24h)."
+        },
+        {
+                "id": 146,
+                "question": "IRET (Interrupt Return) pops how many items from the stack?",
+                "options": [
+                        "1 (IP only)",
+                        "2 (IP and CS)",
+                        "3 (IP, CS, and FLAGS)",
+                        "4 items"
+                ],
+                "answer": "3 (IP, CS, and FLAGS)",
+                "explanation": "IRET pops IP, CS, and FLAGS from the stack — used to return from interrupt handlers."
+        },
+        {
+                "id": 147,
+                "question": "The STI instruction does what?",
+                "options": [
+                        "Disables interrupts (clears IF)",
+                        "Enables interrupts (sets IF)",
+                        "Sends an interrupt",
+                        "Clears the stack"
+                ],
+                "answer": "Enables interrupts (sets IF)",
+                "explanation": "STI sets the Interrupt Flag (IF=1), enabling maskable hardware interrupts."
+        },
+        {
+                "id": 148,
+                "question": "The CLI instruction does what?",
+                "options": [
+                        "Enables interrupts",
+                        "Disables interrupts (clears IF)",
+                        "Triggers an interrupt",
+                        "Clears flags"
+                ],
+                "answer": "Disables interrupts (clears IF)",
+                "explanation": "CLI clears the Interrupt Flag (IF=0), disabling maskable hardware interrupts."
+        },
+        {
+                "id": 149,
+                "question": "The CLC instruction does what?",
+                "options": [
+                        "Sets CF",
+                        "Clears CF (Carry Flag)",
+                        "Clears all flags",
+                        "Sets all flags"
+                ],
+                "answer": "Clears CF (Carry Flag)",
+                "explanation": "CLC explicitly clears the Carry Flag (CF=0)."
+        },
+        {
+                "id": 150,
+                "question": "The STC instruction does what?",
+                "options": [
+                        "Clears CF",
+                        "Sets CF (Carry Flag = 1)",
+                        "Sets all flags",
+                        "Clears ZF"
+                ],
+                "answer": "Sets CF (Carry Flag = 1)",
+                "explanation": "STC explicitly sets the Carry Flag (CF=1)."
+        },
+        {
+                "id": 151,
+                "question": "The CMC instruction does what?",
+                "options": [
+                        "Clears CF",
+                        "Sets CF",
+                        "Complements (inverts) CF",
+                        "Does nothing to CF"
+                ],
+                "answer": "Complements (inverts) CF",
+                "explanation": "CMC (Complement Carry Flag) flips CF: if CF=0, it becomes 1, and vice versa."
+        },
+        {
+                "id": 152,
+                "question": "LAHF and SAHF transfer flags between:",
+                "options": [
+                        "AX and FLAGS",
+                        "AH and lower byte of FLAGS",
+                        "AL and FLAGS",
+                        "DX and FLAGS"
+                ],
+                "answer": "AH and lower byte of FLAGS",
+                "explanation": "LAHF loads the lower 8 bits of FLAGS into AH; SAHF stores AH into the lower 8 bits of FLAGS."
+        },
+        {
+                "id": 153,
+                "question": "MOVSB copies a byte from:",
+                "options": [
+                        "DS:SI to ES:DI",
+                        "ES:DI to DS:SI",
+                        "CS:IP to DS:SI",
+                        "SS:SP to DS:SI"
+                ],
+                "answer": "DS:SI to ES:DI",
+                "explanation": "MOVSB copies one byte from DS:SI to ES:DI, then auto-increments (or decrements) SI and DI."
+        },
+        {
+                "id": 154,
+                "question": "MOVSW copies how many bytes?",
+                "options": [
+                        "1 byte",
+                        "2 bytes (one word)",
+                        "4 bytes",
+                        "Variable"
+                ],
+                "answer": "2 bytes (one word)",
+                "explanation": "MOVSW copies a 16-bit word from DS:SI to ES:DI."
+        },
+        {
+                "id": 155,
+                "question": "When DF=0, string instructions auto-___ SI and DI.",
+                "options": [
+                        "Decrement",
+                        "Increment",
+                        "Do not change",
+                        "Set to zero"
+                ],
+                "answer": "Increment",
+                "explanation": "DF=0 (cleared by CLD) means forward direction — SI and DI increment after each string operation."
+        },
+        {
+                "id": 156,
+                "question": "When DF=1, string instructions auto-___ SI and DI.",
+                "options": [
+                        "Increment",
+                        "Decrement",
+                        "Do not change",
+                        "Set to zero"
+                ],
+                "answer": "Decrement",
+                "explanation": "DF=1 (set by STD) means backward direction — SI and DI decrement after each string operation."
+        },
+        {
+                "id": 157,
+                "question": "The CLD instruction does what?",
+                "options": [
+                        "Sets DF (backward)",
+                        "Clears DF (forward)",
+                        "Does nothing",
+                        "Clears all flags"
+                ],
+                "answer": "Clears DF (forward)",
+                "explanation": "CLD clears the Direction Flag, making string operations auto-increment SI/DI."
+        },
+        {
+                "id": 158,
+                "question": "The STD instruction does what?",
+                "options": [
+                        "Clears DF",
+                        "Sets DF (backward direction)",
+                        "Does nothing",
+                        "Sets all flags"
+                ],
+                "answer": "Sets DF (backward direction)",
+                "explanation": "STD sets the Direction Flag, making string operations auto-decrement SI/DI."
+        },
+        {
+                "id": 159,
+                "question": "The REP prefix repeats a string instruction:",
+                "options": [
+                        "Once",
+                        "Until CX=0",
+                        "Until ZF=1",
+                        "Until DF=0"
+                ],
+                "answer": "Until CX=0",
+                "explanation": "REP repeats the string instruction, decrementing CX each time, until CX becomes 0."
+        },
+        {
+                "id": 160,
+                "question": "REPE (or REPZ) repeats while:",
+                "options": [
+                        "CX≠0 and ZF=1",
+                        "CX≠0 and ZF=0",
+                        "CX=0",
+                        "ZF=1 only"
+                ],
+                "answer": "CX≠0 and ZF=1",
+                "explanation": "REPE repeats while CX is not zero AND ZF=1 (equal condition). Used with CMPSB/SCASB."
+        },
+        {
+                "id": 161,
+                "question": "REPNE (or REPNZ) repeats while:",
+                "options": [
+                        "CX≠0 and ZF=1",
+                        "CX≠0 and ZF=0",
+                        "CX=0",
+                        "ZF=0 only"
+                ],
+                "answer": "CX≠0 and ZF=0",
+                "explanation": "REPNE repeats while CX is not zero AND ZF=0 (not equal condition)."
+        },
+        {
+                "id": 162,
+                "question": "CMPSB compares:",
+                "options": [
+                        "Byte at DS:SI with byte at ES:DI",
+                        "AX with BX",
+                        "Two registers",
+                        "Two immediate values"
+                ],
+                "answer": "Byte at DS:SI with byte at ES:DI",
+                "explanation": "CMPSB subtracts ES:DI from DS:SI (byte comparison) and sets flags, then auto-adjusts SI and DI."
+        },
+        {
+                "id": 163,
+                "question": "SCASB scans a string by comparing:",
+                "options": [
+                        "AL with byte at ES:DI",
+                        "AX with ES:DI",
+                        "BL with DS:SI",
+                        "AL with DS:SI"
+                ],
+                "answer": "AL with byte at ES:DI",
+                "explanation": "SCASB compares AL with the byte at ES:DI and sets flags, then auto-adjusts DI."
+        },
+        {
+                "id": 164,
+                "question": "LODSB loads a byte from:",
+                "options": [
+                        "ES:DI into AL",
+                        "DS:SI into AL",
+                        "Stack into AL",
+                        "I/O port into AL"
+                ],
+                "answer": "DS:SI into AL",
+                "explanation": "LODSB loads the byte at DS:SI into AL, then auto-adjusts SI."
+        },
+        {
+                "id": 165,
+                "question": "STOSB stores a byte from:",
+                "options": [
+                        "AL to ES:DI",
+                        "AL to DS:SI",
+                        "AL to SS:SP",
+                        "AL to CS:IP"
+                ],
+                "answer": "AL to ES:DI",
+                "explanation": "STOSB stores AL at ES:DI, then auto-adjusts DI. Useful for filling memory."
+        },
+        {
+                "id": 166,
+                "question": "To copy a 100-byte string, you would use:",
+                "options": [
+                        "REP MOVSB with CX=100",
+                        "LOOP MOVSB",
+                        "100 MOVSB instructions",
+                        "REP with AX=100"
+                ],
+                "answer": "REP MOVSB with CX=100",
+                "explanation": "Set CX=100, use REP MOVSB to copy 100 bytes from DS:SI to ES:DI."
+        },
+        {
+                "id": 167,
+                "question": "To fill 50 bytes of memory with 0, you would use:",
+                "options": [
+                        "REP STOSB with CX=50, AL=0",
+                        "REP MOVSB",
+                        "LOOP with MOV",
+                        "REP LODSB"
+                ],
+                "answer": "REP STOSB with CX=50, AL=0",
+                "explanation": "Set AL=0, CX=50, then REP STOSB fills 50 bytes at ES:DI with zeros."
+        },
+        {
+                "id": 168,
+                "question": "REPNE SCASB is typically used for:",
+                "options": [
+                        "String copy",
+                        "Searching for a character in a string",
+                        "String comparison",
+                        "Filling memory"
+                ],
+                "answer": "Searching for a character in a string",
+                "explanation": "REPNE SCASB repeats until AL matches a byte in the string (ZF=1) or CX=0 — finding a character."
+        },
+        {
+                "id": 169,
+                "question": "After REPNE SCASB finds a match, DI points to:",
+                "options": [
+                        "The matching byte",
+                        "One byte after the match",
+                        "The start of the string",
+                        "The end of the string"
+                ],
+                "answer": "One byte after the match",
+                "explanation": "DI was auto-incremented after the comparison, so it points to the byte AFTER the match."
+        },
+        {
+                "id": 170,
+                "question": "MOVSB adjusts SI and DI by:",
+                "options": [
+                        "1 (when DF=0)",
+                        "2 (when DF=0)",
+                        "4",
+                        "Depends on operand size"
+                ],
+                "answer": "1 (when DF=0)",
+                "explanation": "MOVSB (byte) adjusts by 1; MOVSW (word) adjusts by 2. Direction depends on DF."
+        },
+        {
+                "id": 171,
+                "question": "MOVSW adjusts SI and DI by:",
+                "options": [
+                        "1",
+                        "2 (when DF=0)",
+                        "4",
+                        "8"
+                ],
+                "answer": "2 (when DF=0)",
+                "explanation": "MOVSW copies a word (2 bytes), so SI and DI are adjusted by 2."
+        },
+        {
+                "id": 172,
+                "question": "Before using string instructions, what must be set up?",
+                "options": [
+                        "Only DS",
+                        "DS and ES (for MOVSB/CMPSB)",
+                        "CS and SS",
+                        "Only ES"
+                ],
+                "answer": "DS and ES (for MOVSB/CMPSB)",
+                "explanation": "String instructions use DS:SI as source and ES:DI as destination, so both must be initialized."
+        },
+        {
+                "id": 173,
+                "question": "In 8086 assembly, comments start with:",
+                "options": [
+                        "//",
+                        "#",
+                        ";",
+                        "--"
+                ],
+                "answer": ";",
+                "explanation": "Assembly language comments use semicolon (;). Everything after ; on a line is ignored."
+        },
+        {
+                "id": 174,
+                "question": "A program that prints 'Hello World' uses which DOS interrupt?",
+                "options": [
+                        "INT 10h",
+                        "INT 21h with AH=09h",
+                        "INT 20h",
+                        "INT 16h"
+                ],
+                "answer": "INT 21h with AH=09h",
+                "explanation": "AH=09h with DS:DX pointing to a '$'-terminated string prints text via DOS."
+        },
+        {
+                "id": 175,
+                "question": "The .MODEL directive specifies:",
+                "options": [
+                        "The processor type",
+                        "The memory model (small, medium, large, etc.)",
+                        "The assembler version",
+                        "The output format"
+                ],
+                "answer": "The memory model (small, medium, large, etc.)",
+                "explanation": ".MODEL SMALL means one code segment and one data segment (most common for simple programs)."
+        },
+        {
+                "id": 176,
+                "question": "The .DATA segment directive defines:",
+                "options": [
+                        "The code segment",
+                        "The data segment (variables)",
+                        "The stack segment",
+                        "The extra segment"
+                ],
+                "answer": "The data segment (variables)",
+                "explanation": ".DATA marks the beginning of the data segment where variables are declared."
+        },
+        {
+                "id": 177,
+                "question": "The .CODE segment directive defines:",
+                "options": [
+                        "The data segment",
+                        "The code segment (instructions)",
+                        "The stack segment",
+                        "The extra segment"
+                ],
+                "answer": "The code segment (instructions)",
+                "explanation": ".CODE marks the beginning of the code segment where the program instructions go."
+        },
+        {
+                "id": 178,
+                "question": "The .STACK directive reserves:",
+                "options": [
+                        "Code space",
+                        "Stack space (e.g., .STACK 100h reserves 256 bytes)",
+                        "Data space",
+                        "I/O space"
+                ],
+                "answer": "Stack space (e.g., .STACK 100h reserves 256 bytes)",
+                "explanation": ".STACK 100h allocates 256 bytes for the stack segment."
+        },
+        {
+                "id": 179,
+                "question": "To declare a byte variable named 'count' with value 5:",
+                "options": [
+                        "count DB 5",
+                        "count DW 5",
+                        "count DD 5",
+                        "count BYTE 5"
+                ],
+                "answer": "count DB 5",
+                "explanation": "DB (Define Byte) allocates 1 byte. DW = Define Word (2 bytes), DD = Define Doubleword (4 bytes)."
+        },
+        {
+                "id": 180,
+                "question": "To declare a word variable named 'total' with value 1000:",
+                "options": [
+                        "total DB 1000",
+                        "total DW 1000",
+                        "total DD 1000",
+                        "total WORD 1000"
+                ],
+                "answer": "total DW 1000",
+                "explanation": "DW (Define Word) allocates 2 bytes, suitable for values up to 65535."
+        },
+        {
+                "id": 181,
+                "question": "To declare a string 'Hello' in data:",
+                "options": [
+                        "msg DB 'Hello'",
+                        "msg DW 'Hello'",
+                        "msg DD 'Hello'",
+                        "msg BYTE 'Hello'"
+                ],
+                "answer": "msg DB 'Hello'",
+                "explanation": "DB is used for byte arrays, including strings. Each character occupies one byte."
+        },
+        {
+                "id": 182,
+                "question": "To declare a string 'Hello$' for DOS printing:",
+                "options": [
+                        "msg DB 'Hello$'",
+                        "msg DB 'Hello', '$'",
+                        "Both A and B",
+                        "msg DW 'Hello$'"
+                ],
+                "answer": "Both A and B",
+                "explanation": "Both work: 'Hello$' includes the $ in the string, or 'Hello', '$' appends it as a separate byte."
+        },
+        {
+                "id": 183,
+                "question": "The EQU directive is used to:",
+                "options": [
+                        "Define variables",
+                        "Define constants (symbolic names)",
+                        "Reserve memory",
+                        "End the program"
+                ],
+                "answer": "Define constants (symbolic names)",
+                "explanation": "EQU assigns a constant value to a name: e.g., PI EQU 314."
+        },
+        {
+                "id": 184,
+                "question": "DUP is used to:",
+                "options": [
+                        "Duplicate instructions",
+                        "Allocate repeated storage (e.g., array DB 10 DUP(0))",
+                        "Duplicate registers",
+                        "End the program"
+                ],
+                "answer": "Allocate repeated storage (e.g., array DB 10 DUP(0))",
+                "explanation": "DUP allocates multiple identical values: 10 DUP(0) creates 10 bytes of zeros."
+        },
+        {
+                "id": 185,
+                "question": "The END directive marks:",
+                "options": [
+                        "The end of a loop",
+                        "The end of the source file (and optionally the entry point)",
+                        "The end of a procedure",
+                        "The end of data"
+                ],
+                "answer": "The end of the source file (and optionally the entry point)",
+                "explanation": "END marks the end of the program and can specify the entry point: END label."
+        },
+        {
+                "id": 186,
+                "question": "The PROC and ENDP directives define:",
+                "options": [
+                        "Data segments",
+                        "A procedure (subroutine)",
+                        "The stack",
+                        "The code segment"
+                ],
+                "answer": "A procedure (subroutine)",
+                "explanation": "PROC starts a procedure, ENDP ends it. NEAR or FAR specifies the call type."
+        },
+        {
+                "id": 187,
+                "question": "Which directive marks a procedure as far (inter-segment)?",
+                "options": [
+                        "PROC FAR",
+                        "FAR PROC",
+                        "PROC DISTANT",
+                        "EXTERNAL PROC"
+                ],
+                "answer": "PROC FAR",
+                "explanation": "name PROC FAR declares a far procedure that can be called from other segments."
+        },
+        {
+                "id": 188,
+                "question": "To read a character from keyboard without echo, use INT 21h with:",
+                "options": [
+                        "AH=01h (with echo)",
+                        "AH=08h (no echo)",
+                        "AH=0Ah (buffered input)",
+                        "AH=07h (no echo, no check)"
+                ],
+                "answer": "AH=08h (no echo)",
+                "explanation": "AH=08h reads a character without echoing it. AH=07h also doesn't echo and doesn't check Ctrl-Break."
+        },
+        {
+                "id": 189,
+                "question": "INT 21h AH=0Ah is used for:",
+                "options": [
+                        "Printing a string",
+                        "Buffered keyboard input (reading a string)",
+                        "Displaying a character",
+                        "Exiting"
+                ],
+                "answer": "Buffered keyboard input (reading a string)",
+                "explanation": "AH=0Ah reads a string into a buffer pointed to by DS:DX. The buffer's first byte specifies max length."
+        },
+        {
+                "id": 190,
+                "question": "The LABEL directive is used to:",
+                "options": [
+                        "Define a jump target without allocating memory",
+                        "Allocate variables",
+                        "Define procedures",
+                        "End the program"
+                ],
+                "answer": "Define a jump target without allocating memory",
+                "explanation": "LABEL assigns a name and type to the current location without allocating any storage."
+        },
+        {
+                "id": 191,
+                "question": "ORG 100h is used in:",
+                "options": [
+                        "EXE programs",
+                        "COM programs (to set the origin to 100h)",
+                        "Device drivers",
+                        "Boot sectors"
+                ],
+                "answer": "COM programs (to set the origin to 100h)",
+                "explanation": "COM programs start at offset 100h (PSP occupies 0-FFh). ORG 100h sets the assembler origin accordingly."
+        },
+        {
+                "id": 192,
+                "question": "In a COM program, how many segments are there?",
+                "options": [
+                        "Separate code and data segments",
+                        "One segment (code, data, and stack share the same segment)",
+                        "Two segments",
+                        "Four segments"
+                ],
+                "answer": "One segment (code, data, and stack share the same segment)",
+                "explanation": "COM programs use a single 64KB segment for code, data, and stack — CS=DS=SS."
+        },
+        {
+                "id": 193,
+                "question": "The ASSUME directive tells the assembler:",
+                "options": [
+                        "Which segment registers point to which segments",
+                        "The program size",
+                        "The stack size",
+                        "The entry point"
+                ],
+                "answer": "Which segment registers point to which segments",
+                "explanation": "ASSUME CS:CODE, DS:DATA tells the assembler which segment registers will be used for which segments."
+        },
+        {
+                "id": 194,
+                "question": "Which assembler is commonly used for 8086 assembly?",
+                "options": [
+                        "NASM",
+                        "MASM (Microsoft Macro Assembler)",
+                        "GAS",
+                        "FASM"
+                ],
+                "answer": "MASM (Microsoft Macro Assembler)",
+                "explanation": "MASM is the most common assembler for 8086 in academic settings. NASM and TASM are also popular."
+        },
+        {
+                "id": 195,
+                "question": "The OFFSET operator returns:",
+                "options": [
+                        "The segment address",
+                        "The offset (physical address within a segment) of a variable",
+                        "The size of a variable",
+                        "The value of a variable"
+                ],
+                "answer": "The offset (physical address within a segment) of a variable",
+                "explanation": "OFFSET msg gives the offset of msg within its segment. Equivalent to LEA AX, msg."
+        },
+        {
+                "id": 196,
+                "question": "The PTR operator is used to:",
+                "options": [
+                        "Override the type/size of an operand",
+                        "Get a pointer",
+                        "Print a value",
+                        "Push data"
+                ],
+                "answer": "Override the type/size of an operand",
+                "explanation": "PTR overrides type: WORD PTR [BX] treats [BX] as a word, BYTE PTR [BX] as a byte."
+        },
+        {
+                "id": 197,
+                "question": "MOV [BX], 5 is ambiguous because:",
+                "options": [
+                        "BX cannot address memory",
+                        "The assembler doesn't know if 5 is a byte or word",
+                        "5 is too large",
+                        "BX is not initialized"
+                ],
+                "answer": "The assembler doesn't know if 5 is a byte or word",
+                "explanation": "Use MOV WORD PTR [BX], 5 or MOV BYTE PTR [BX], 5 to specify the size."
+        },
+        {
+                "id": 198,
+                "question": "What is the result of XOR AX, AX?",
+                "options": [
+                        "AX = FFFFh",
+                        "AX = 0000h",
+                        "AX = 0001h",
+                        "AX is unchanged"
+                ],
+                "answer": "AX = 0000h",
+                "explanation": "XORing a value with itself always produces 0. This is faster and shorter than MOV AX, 0."
+        },
+        {
+                "id": 199,
+                "question": "Which instruction is used to multiply AX by 10 efficiently?",
+                "options": [
+                        "MUL 10",
+                        "SHL AX, 1; MOV BX, AX; SHL AX, 2; ADD AX, BX",
+                        "ADD AX, 10",
+                        "MOV BX, 10; MUL BX"
+                ],
+                "answer": "SHL AX, 1; MOV BX, AX; SHL AX, 2; ADD AX, BX",
+                "explanation": "10× = 2× + 8×. SHL by 1 = ×2, save in BX. SHL by 2 more = ×8. Add BX (×2) = ×10. Faster than MUL."
+        },
+        {
+                "id": 200,
+                "question": "The AAA instruction is used after:",
+                "options": [
+                        "Binary addition",
+                        "ASCII addition (BCD adjustment)",
+                        "Multiplication",
+                        "Subtraction"
+                ],
+                "answer": "ASCII addition (BCD adjustment)",
+                "explanation": "AAA (ASCII Adjust after Addition) corrects the result of adding two ASCII/BBCD digits in AL."
+        },
+        {
+                "id": 201,
+                "question": "The DAA instruction is used after:",
+                "options": [
+                        "ASCII addition",
+                        "Packed BCD addition",
+                        "Subtraction",
+                        "Multiplication"
+                ],
+                "answer": "Packed BCD addition",
+                "explanation": "DAA (Decimal Adjust after Addition) corrects AL after adding two packed BCD numbers."
+        },
+        {
+                "id": 202,
+                "question": "The AAM instruction does what?",
+                "options": [
+                        "Adjusts after multiplication (unpacked BCD)",
+                        "Adjusts after addition",
+                        "Adjusts after division",
+                        "Adjusts after subtraction"
+                ],
+                "answer": "Adjusts after multiplication (unpacked BCD)",
+                "explanation": "AAM (ASCII Adjust after Multiplication) converts the binary product in AX to unpacked BCD in AH and AL."
+        },
+        {
+                "id": 203,
+                "question": "XLAT is used for:",
+                "options": [
+                        "Translation (table lookup)",
+                        "Multiplication",
+                        "String operations",
+                        "I/O operations"
+                ],
+                "answer": "Translation (table lookup)",
+                "explanation": "XLAT uses AL as an index into a 256-byte table at DS:BX, replacing AL with the byte at DS:BX+AL."
+        },
+        {
+                "id": 204,
+                "question": "ENTER and LEAVE instructions are available on which processor?",
+                "options": [
+                        "8086",
+                        "80186",
+                        "80286 and later",
+                        "80386 and later"
+                ],
+                "answer": "80286 and later",
+                "explanation": "ENTER and LEAVE are stack frame instructions introduced in the 80286, not available on the 8086."
+        },
+        {
+                "id": 205,
+                "question": "The BSWAP instruction (byte swap) is available on:",
+                "options": [
+                        "8086",
+                        "80286",
+                        "80486 and later",
+                        "Pentium and later"
+                ],
+                "answer": "80486 and later",
+                "explanation": "BSWAP reverses byte order in a 32-bit register — introduced in the 80486."
+        },
+        {
+                "id": 206,
+                "question": "What is the maximum signed value a 16-bit register can hold?",
+                "options": [
+                        "32767",
+                        "65535",
+                        "65536",
+                        "127"
+                ],
+                "answer": "32767",
+                "explanation": "Signed 16-bit range: -32768 to +32767 (2^15 - 1 = 32767)."
+        },
+        {
+                "id": 207,
+                "question": "What is the maximum unsigned value a 16-bit register can hold?",
+                "options": [
+                        "32767",
+                        "65535",
+                        "65536",
+                        "255"
+                ],
+                "answer": "65535",
+                "explanation": "Unsigned 16-bit range: 0 to 65535 (2^16 - 1 = 65535)."
+        },
+        {
+                "id": 208,
+                "question": "Overflow (OF) is set when:",
+                "options": [
+                        "Unsigned result exceeds range",
+                        "Signed result exceeds range",
+                        "Carry occurs",
+                        "Result is zero"
+                ],
+                "answer": "Signed result exceeds range",
+                "explanation": "OF detects signed overflow — when the result of a signed operation is too large/small for the operand size."
+        },
+        {
+                "id": 209,
+                "question": "Carry (CF) is set when:",
+                "options": [
+                        "Signed overflow",
+                        "Unsigned result exceeds range (carry/borrow)",
+                        "Result is zero",
+                        "Result is negative"
+                ],
+                "answer": "Unsigned result exceeds range (carry/borrow)",
+                "explanation": "CF detects unsigned overflow — carry out of the MSB during addition, or borrow during subtraction."
+        },
+        {
+                "id": 210,
+                "question": "JC (Jump if Carry) jumps when:",
+                "options": [
+                        "CF=0",
+                        "CF=1",
+                        "ZF=1",
+                        "OF=1"
+                ],
+                "answer": "CF=1",
+                "explanation": "JC jumps when the Carry Flag is set (CF=1). Same as JB (Jump if Below) for unsigned comparisons."
+        },
+        {
+                "id": 211,
+                "question": "JNC (Jump if Not Carry) jumps when:",
+                "options": [
+                        "CF=1",
+                        "CF=0",
+                        "ZF=0",
+                        "OF=0"
+                ],
+                "answer": "CF=0",
+                "explanation": "JNC jumps when CF=0. Same as JAE (Jump if Above or Equal) for unsigned comparisons."
+        },
+        {
+                "id": 212,
+                "question": "JO (Jump if Overflow) jumps when:",
+                "options": [
+                        "CF=1",
+                        "OF=1",
+                        "ZF=1",
+                        "SF=1"
+                ],
+                "answer": "OF=1",
+                "explanation": "JO jumps when the Overflow Flag is set, indicating a signed arithmetic overflow."
+        },
+        {
+                "id": 213,
+                "question": "JS (Jump if Sign) jumps when:",
+                "options": [
+                        "SF=1 (result is negative)",
+                        "SF=0",
+                        "CF=1",
+                        "OF=1"
+                ],
+                "answer": "SF=1 (result is negative)",
+                "explanation": "JS jumps when the Sign Flag is set, meaning the result of the last operation was negative."
+        },
+        {
+                "id": 214,
+                "question": "JNS (Jump if Not Sign) jumps when:",
+                "options": [
+                        "SF=1",
+                        "SF=0 (result is positive)",
+                        "CF=0",
+                        "ZF=0"
+                ],
+                "answer": "SF=0 (result is positive)",
+                "explanation": "JNS jumps when SF=0, meaning the result was non-negative (positive or zero)."
+        },
+        {
+                "id": 215,
+                "question": "JP (Jump if Parity) jumps when:",
+                "options": [
+                        "PF=1 (even parity)",
+                        "PF=0",
+                        "CF=1",
+                        "ZF=1"
+                ],
+                "answer": "PF=1 (even parity)",
+                "explanation": "JP (or JPE) jumps when the Parity Flag is 1 (even number of 1-bits in the low byte)."
+        },
+        {
+                "id": 216,
+                "question": "JNP (Jump if Not Parity) jumps when:",
+                "options": [
+                        "PF=1",
+                        "PF=0 (odd parity)",
+                        "CF=0",
+                        "ZF=0"
+                ],
+                "answer": "PF=0 (odd parity)",
+                "explanation": "JNP (or JPO) jumps when PF=0 (odd number of 1-bits in the low byte)."
+        },
+        {
+                "id": 217,
+                "question": "JCXZ jumps when:",
+                "options": [
+                        "CX=0",
+                        "CX≠0",
+                        "ZF=1",
+                        "CF=1"
+                ],
+                "answer": "CX=0",
+                "explanation": "JCXZ (Jump if CX is Zero) is used to skip loops when the initial count is zero."
+        },
+        {
+                "id": 218,
+                "question": "The 8086 has a ___-bit external data bus.",
+                "options": [
+                        "8",
+                        "16",
+                        "32",
+                        "64"
+                ],
+                "answer": "16",
+                "explanation": "The 8086 has a 16-bit external data bus. The 8088 has an 8-bit data bus (used in the original IBM PC)."
+        },
+        {
+                "id": 219,
+                "question": "The 8088 differs from the 8086 in that it has:",
+                "options": [
+                        "A 16-bit data bus",
+                        "An 8-bit external data bus",
+                        "More registers",
+                        "A different instruction set"
+                ],
+                "answer": "An 8-bit external data bus",
+                "explanation": "The 8088 is identical to the 8086 internally but has an 8-bit external data bus, making it cheaper to interface."
+        },
+        {
+                "id": 220,
+                "question": "The 8086 can access how many I/O ports?",
+                "options": [
+                        "256",
+                        "1024",
+                        "65536",
+                        "Unlimited"
+                ],
+                "answer": "65536",
+                "explanation": "I/O addresses are 16-bit, allowing 2^16 = 65,536 I/O ports (0000h to FFFFh)."
+        },
+        {
+                "id": 221,
+                "question": "The READY pin on the 8086 is used to:",
+                "options": [
+                        "Reset the processor",
+                        "Wait for slow memory/devices",
+                        "Trigger an interrupt",
+                        "Enable the coprocessor"
+                ],
+                "answer": "Wait for slow memory/devices",
+                "explanation": "When READY=0, the 8086 inserts wait states to accommodate slow memory or I/O devices."
+        },
+        {
+                "id": 222,
+                "question": "The RESET pin on the 8086 does what?",
+                "options": [
+                        "Restarts the processor (CS=FFFFh, IP=0000h)",
+                        "Clears memory",
+                        "Enables interrupts",
+                        "Stops the clock"
+                ],
+                "answer": "Restarts the processor (CS=FFFFh, IP=0000h)",
+                "explanation": "On RESET, the 8086 sets CS=FFFFh, IP=0000h, DS=0000h, SS=0000h, ES=0000h, and clears the FLAGS. The first instruction is fetched from FFFF0h."
+        }
     ];
 
     let currentExamData = [];
@@ -390,7 +3039,7 @@
         dash.innerHTML = '';
 
         const totalQ = MASTER_POOL.length;
-        const partSize = 10;
+        const partSize = 25;
         const numParts = Math.ceil(totalQ / partSize);
 
         const randomBox = document.createElement('div');
@@ -453,8 +3102,8 @@
             const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
             pool = shuffleArray(pool).slice(0, qty);
         } else {
-            const start = (partNum - 1) * 10;
-            pool = pool.slice(start, start + 10);
+            const start = (partNum - 1) * 25;
+            pool = pool.slice(start, start + 25);
         }
 
         if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);
