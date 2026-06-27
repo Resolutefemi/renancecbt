@@ -72,8 +72,8 @@
         .user-info { display: flex; align-items: center; gap: 12px; }
         .avatar {
             width: 42px; height: 42px; background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            font-weight: 700; font-size: 0.95rem;
+            color: white; border-radius: 18px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.95rem; text-transform: uppercase;
         }
         .user-details h4 { color: #f8fafc; font-size: 0.95rem; font-weight: 700; }
         .user-details p { color: #64748b; font-size: 0.75rem; margin-top: 2px; }
@@ -150,8 +150,9 @@
         .podium-step:hover { transform: translateY(-5px); }
         
         .podium-avatar {
-            width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; font-weight: 800; color: white; position: absolute; top: -32px; border: 4px solid var(--bg-body);
+            width: 56px; height: 56px; border-radius: 18px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; font-weight: 800; color: white; position: absolute; top: -28px; border: 3px solid var(--bg-body);
+            text-transform: uppercase;
         }
         .podium-medal { position: absolute; top: -45px; right: -10px; font-size: 1.8rem; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2)); }
         
@@ -183,7 +184,7 @@
         
         .col-rank { width: 60px; font-weight: 800; color: var(--text-muted); font-size: 1rem; }
         .col-student { flex: 1; display: flex; align-items: center; gap: 12px; }
-        .list-avatar { width: 36px; height: 36px; border-radius: 10px; background: var(--primary-accent); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; }
+        .list-avatar { width: 36px; height: 36px; border-radius: 18px; background: var(--primary-accent); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
         .student-details h4 { font-size: 0.95rem; font-weight: 600; color: var(--text-main); }
         .student-details p { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
         
@@ -206,7 +207,7 @@
         @media (max-width: 600px) {
             .podium-wrapper { gap: 5px; height: 200px; margin-bottom: 40px; }
             .podium-step { width: 100px; }
-            .podium-avatar { width: 48px; height: 48px; font-size: 1rem; top: -24px; }
+            .podium-avatar { width: 44px; height: 44px; font-size: 0.9rem; top: -22px; border-width: 2px; }
             .podium-medal { font-size: 1.4rem; top: -35px; right: -5px; }
             .step-2 { height: 140px; } .step-1 { height: 180px; } .step-3 { height: 120px; }
             .podium-score { font-size: 1rem; padding: 4px 8px; }
@@ -337,7 +338,7 @@
         <div id="user-leaderboard-banner">
             <div style="display: flex; align-items: center; gap: 16px; min-width: 0; flex: 1;">
                 <div id="user-banner-rank" style="font-size: 1.25rem; font-weight: 900; color: #fbbf24; width: 60px;">#--</div>
-                <div id="user-banner-avatar" style="width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,0.2); border: 1.5px solid rgba(255,255,255,0.4); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">??</div>
+                <div id="user-banner-avatar" style="width: 38px; height: 38px; border-radius: 18px; background: rgba(255,255,255,0.2); border: 1.5px solid rgba(255,255,255,0.4); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">??</div>
                 <div style="min-width: 0; flex: 1;">
                     <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: white;" id="user-banner-name">Student Name</h4>
                     <p style="font-size: 0.72rem; color: #a5b4fc; margin: 2px 0 0 0;" id="user-banner-dept">Department | 0 test(s) taken</p>

@@ -219,13 +219,7 @@
             display: flex; align-items: center; gap: 9px;
             flex: 1; min-width: 0; overflow: hidden;
         }
-        .mini-avatar {
-            width: 34px; height: 34px; min-width: 34px;
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
-            border-radius: 9px; display: flex; align-items: center;
-            justify-content: center; font-weight: 700;
-            font-size: 0.72rem; color: white; flex-shrink: 0;
-        }
+        .mini-avatar { width: 38px; height: 38px; border-radius: 18px; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; }
         .mini-info { min-width: 0; flex: 1; overflow: hidden; }
         .mini-info p {
             font-size: 0.8rem; font-weight: 600;
@@ -1491,7 +1485,7 @@
                                 <div class="dash-leaderboard-row" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border-color); ${highlightStyle}">
                                     <div style="display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1;">
                                         <div style="width: 24px; font-weight: 800; font-size: 0.85rem; color: var(--text-muted); text-align: center; flex-shrink: 0;">${rankDisp}</div>
-                                        <div style="width: 30px; height: 30px; border-radius: 8px; background: ${index === 0 ? 'var(--gold)' : (index === 1 ? 'var(--silver)' : (index === 2 ? '#b45309' : 'var(--primary-accent)'))}; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; flex-shrink: 0;">${initials}</div>
+                                        <div style="width: 30px; height: 30px; border-radius: 18px; background: ${index === 0 ? 'var(--gold)' : (index === 1 ? 'var(--silver)' : (index === 2 ? '#b45309' : 'var(--primary-accent)'))}; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; flex-shrink: 0;">${initials}</div>
                                         <div style="min-width: 0; flex: 1;">
                                             <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px;">${student.fullname}</p>
                                             <p style="font-size: 0.68rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${student.department} | ${student.tests_taken} test(s)</p>

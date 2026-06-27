@@ -50,7 +50,10 @@
 <body>
 
 <nav>
-    <div id="user-info" style="font-weight: 600;">COS 101 Practice Portal</div>
+    <a href="../dashboard.html" style="color:var(--text); text-decoration:none; font-size:1.1rem; display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--border);">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <div id="user-info" style="font-weight: 600;">COS 101 Practice Portal</div>
     <div style="display: flex; gap: 15px;">
         <button class="btn" style="background:var(--accent); display:none;" id="resume-btn" onclick="resumeExam()">Resume</button>
         <button class="btn" style="background:#64748b" onclick="document.body.classList.toggle('dark-mode')"><i class="fa-solid fa-circle-half-stroke"></i></button>
