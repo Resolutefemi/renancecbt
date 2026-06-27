@@ -152,11 +152,7 @@
         <div><i class="fa-solid fa-cpu"></i> CSC 102 Practice Portal</div>
         <div style="font-size:0.9rem; font-weight:600; color:var(--text-muted); letter-spacing:0.3px;">by Resolute Femi</div>
     </div>
-    <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-        <button class="btn" style="background:var(--primary); padding:7px 14px; font-size:0.85rem;" onclick="document.getElementById('course-leaderboard').scrollIntoView({behavior:'smooth'})">
-            <i class="fa-solid fa-trophy"></i> Leaderboard
-        </button>
-    </div>
+    
 </nav>
 
 <main>
@@ -2270,19 +2266,31 @@ async function loadStatsBar() {
         rand.onclick = () => openSetup('random', 'Randomised Practice');
         board.appendChild(rand);
 
-        const partCard = document.createElement('div');
-        partCard.className = 'box';
-        partCard.innerHTML = `
-            <div style="font-size:1.8rem;color:var(--primary);">⚡</div>
-            <h3>Part 1</h3>
-            <p>${total} Question${total !== 1 ? 's' : ''}</p>`;
-        partCard.onclick = () => openSetup('part', 'Part 1');
-        board.appendChild(partCard);
+        // Split into parts of 50
+        const partSize = 50;
+        const numParts = Math.ceil(total / partSize);
+        for (let p = 1; p <= numParts; p++) {
+            const start = (p - 1) * partSize + 1;
+            const end   = Math.min(p * partSize, total);
+            const partCard = document.createElement('div');
+            partCard.className = 'box';
+            partCard.innerHTML = `
+                <div style="font-size:1.8rem;color:var(--primary);">⚡</div>
+                <h3>Part ${p}</h3>
+                <p>Q${start} – Q${end}</p>`;
+            partCard.onclick = () => openSetup('part', 'Part ' + p);
+            board.appendChild(partCard);
+        }
     }
 
+    let currentPartNum = 1;
     function openSetup(type, value) {
         examSelectionType = type;
         selectionValue    = value;
+        if (type === 'part') {
+            // Extract part number from value like "Part 1"
+            currentPartNum = parseInt(value.replace('Part ', '')) || 1;
+        }
         document.getElementById('dashboard-wrap').style.display = 'none';
         document.getElementById('setup-screen').style.display   = 'block';
         document.getElementById('setup-title').innerText        = value;
@@ -2322,8 +2330,12 @@ async function loadStatsBar() {
         if (examSelectionType === 'random') {
             const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
             pool = shuffleArray(pool).slice(0, qty);
+        } else if (examSelectionType === 'part') {
+            // Slice questions for the selected part (50 per part)
+            const partSize = 50;
+            const start = (currentPartNum - 1) * partSize;
+            pool = pool.slice(start, start + partSize);
         }
-        /* 'part' mode uses all questions from the pool as-is */
 
         if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);
 
@@ -2357,7 +2369,7 @@ async function loadStatsBar() {
         const labels      = ['A','B','C','D','E','F'];
 
         document.getElementById('cur-idx').innerText    = currentIndex + 1;
-        document.getElementById('part-text').innerText   = selectionValue === 'Part 1' ? 'Part 1' : 'Random Mix';
+        document.getElementById('part-text').innerText   = selectionValue || 'Random Mix';
         document.getElementById('question-text').innerText = q.question;
 
         const optBox   = document.getElementById('options-box');
