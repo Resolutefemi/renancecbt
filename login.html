@@ -400,12 +400,12 @@ document.getElementById('sendResetBtn').addEventListener('click',async function(
   }
   this.disabled=true; txt.textContent='Sending…';
   try{
-    const{error}=await db.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+'/reset-password.html'});
+    const{error}=await db.auth.resetPasswordForEmail(email,{redirectTo:'https://renancecbt.vercel.app/reset-password.html'});
     if(error)throw error;
     fb.textContent='✅ Reset link sent! Check your inbox.';
     fb.className='ok'; fb.style.display='block';
   }catch(err){
-    fb.textContent='❌ '+(err.message||'Failed to send reset link.');
+    fb.textContent='❌ '+(err.message||'Failed to send reset link. Check if the email is registered.');
     fb.className='bad'; fb.style.display='block';
   }finally{
     this.disabled=false; txt.textContent='Send Reset Link';
