@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renance — Live Quiz</title>
+<link rel="shortcut icon" href="logo.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script src="env-loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f1f5f9;--card-bg:#fff;--primary:#2563eb;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;--success:#16a34a;--danger:#ef4444;--accent:#f59e0b}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+nav{background:var(--card-bg);padding:0.9rem 5%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,0.04);position:sticky;top:0;z-index:100}
+nav a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+nav .arrow{width:36px;height:36px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+nav .brand{font-weight:700;color:var(--primary)}
+nav .brand span{display:block;font-size:0.78rem;color:var(--muted);font-weight:500}
+main{max-width:720px;margin:0 auto;padding:1.5rem 5% 3rem}
+
+/* JOIN SCREEN */
+.join-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:32px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.03)}
+.join-card h2{font-size:1.4rem;font-weight:800;margin-bottom:8px}
+.join-card p{color:var(--muted);font-size:0.88rem;margin-bottom:20px}
+.code-input{font-size:1.8rem;font-weight:800;letter-spacing:8px;text-align:center;border:2px solid var(--border);border-radius:12px;padding:14px;width:200px;margin:0 auto 16px;outline:none;text-transform:uppercase;transition:0.2s}
+.code-input:focus{border-color:var(--primary)}
+.btn{padding:12px 28px;border:none;border-radius:10px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:0.2s;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:8px}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:#1d4ed8;transform:translateY(-1px)}
+.btn:disabled{opacity:0.5;cursor:not-allowed}
+
+/* QUIZ HEADER */
+.quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;flex-wrap:wrap;gap:10px}
+.q-counter{font-size:1rem;font-weight:700}
+#timer{color:var(--danger);background:rgba(239,68,68,0.08);padding:6px 14px;border-radius:20px;font-size:0.95rem;font-weight:700}
+
+/* QUESTION CARD */
+.question-card{background:var(--card-bg);padding:2rem;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.06);border:1px solid var(--border)}
+#question-text{line-height:1.7;margin-bottom:1.5rem;font-size:1.05rem;word-wrap:break-word}
+.option-btn{display:block;width:100%;padding:0.95rem 1.1rem;margin:0.65rem 0;border:2px solid var(--border);border-radius:10px;background:var(--card-bg);color:var(--text);text-align:left;cursor:pointer;font-size:0.97rem;transition:0.15s;line-height:1.5}
+.option-btn:not(:disabled):hover{background:var(--bg);border-color:var(--primary)}
+.option-btn.selected{background:var(--bg);border-color:var(--primary);font-weight:600}
+.option-btn.correct{background:#dcfce7;border-color:var(--success);color:#065f46;font-weight:700}
+.option-btn.wrong{background:#fee2e2;border-color:var(--danger);color:#991b1b}
+.feedback-msg{margin-top:1.2rem;padding:1.2rem;border-radius:12px;font-weight:600;line-height:1.6}
+.explanation-box{margin-top:1rem;padding:1rem;border-radius:10px;background:rgba(0,0,0,0.02);border-left:4px solid var(--primary);font-size:0.9rem;line-height:1.6}
+.controls{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:1.8rem}
+
+/* RESULT MODAL */
+.result-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.78);backdrop-filter:blur(8px);z-index:9999;display:flex;justify-content:center;align-items:center;padding:20px}
+.result-modal-content{background:var(--card-bg);padding:40px 28px;border-radius:24px;width:100%;max-width:420px;text-align:center;color:var(--text);box-shadow:0 25px 60px rgba(0,0,0,0.45);animation:pop 0.5s cubic-bezier(0.175,0.885,0.32,1.275)}
+@keyframes pop{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+.score-display{background:rgba(37,99,235,0.06);border:2px dashed rgba(37,99,235,0.25);border-radius:18px;padding:18px;margin:18px 0}
+.score-big{font-size:3.5rem;font-weight:900;color:var(--primary);line-height:1}
+.stats-mini{display:flex;justify-content:center;gap:24px;margin:10px 0}
+.stats-mini .sm{text-align:center}
+.stats-mini .sm .sv{font-size:1.2rem;font-weight:800;color:var(--primary)}
+.stats-mini .sm .sl{font-size:0.72rem;color:var(--muted)}
+.result-actions{display:flex;flex-direction:column;gap:11px;margin-top:16px}
+.btn-action{width:100%;padding:13px;border:none;border-radius:12px;font-size:0.97rem;font-weight:700;cursor:pointer;transition:0.2s;display:flex;align-items:center;justify-content:center;gap:9px}
+.btn-share{background:var(--primary);color:#fff}
+.btn-home{background:rgba(100,116,139,0.09);color:var(--text);border:1.5px solid var(--border)}
+
+/* LEADERBOARD SECTION */
+#lb-section{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-top:1.5rem;box-shadow:0 2px 10px rgba(0,0,0,0.03)}
+#lb-section h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.lb-table{width:100%;border-collapse:collapse;font-size:0.88rem}
+.lb-table th{text-align:left;padding:8px;color:var(--muted);font-size:0.78rem;border-bottom:2px solid var(--border)}
+.lb-table td{padding:8px;border-bottom:1px solid var(--border)}
+.lb-table tr:hover{background:var(--bg)}
+
+/* TOAST */
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#1e293b;color:#fff;padding:12px 26px;border-radius:100px;font-size:0.84rem;font-weight:600;opacity:0;transition:0.3s;z-index:99999;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:600px){
+  main{padding:1rem 4% 2rem}
+  .question-card{padding:1.3rem}
+  .join-card{padding:24px 16px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="dashboard.html">
+    <div class="arrow"><i class="fa-solid fa-arrow-left"></i></div>
+    <div class="brand">Live Quiz <span>Renance CBT</span></div>
+  </a>
+</nav>
+
+<main>
+  <!-- JOIN SCREEN -->
+  <div class="join-card" id="joinScreen">
+    <h2>Join a Live Quiz</h2>
+    <p>Enter the 6-character quiz code to start</p>
+    <input type="text" class="code-input" id="codeInput" maxlength="6" placeholder="ABC123" oninput="this.value=this.value.toUpperCase()">
+    <br>
+    <button class="btn btn-primary" onclick="joinQuiz()" id="joinBtn">
+      <i class="fa-solid fa-play"></i> Join Quiz
+    </button>
+  </div>
+
+  <!-- QUIZ INTERFACE -->
+  <div id="quizInterface" style="display:none">
+    <div class="quiz-header">
+      <span class="q-counter">Question <span id="curIdx">1</span> / <span id="totalIdx">0</span></span>
+      <span id="timer">30:00</span>
+    </div>
+    <div class="question-card">
+      <h3 id="question-text"></h3>
+      <div id="optionsBox"></div>
+      <div id="feedbackArea"></div>
+    </div>
+    <div class="controls">
+      <button class="btn" style="background:#64748b;color:#fff" onclick="prevQuestion()">
+        <i class="fa-solid fa-arrow-left"></i> Previous
+      </button>
+      <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+        Next <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- LEADERBOARD -->
+  <div id="lb-section" style="display:none">
+    <h3><i class="fa-solid fa-trophy" style="color:#f59e0b"></i> Leaderboard</h3>
+    <div id="lbContent"><p style="color:var(--muted);text-align:center;padding:1rem">Loading...</p></div>
+  </div>
+</main>
+
+<!-- RESULT MODAL -->
+<div class="result-modal-overlay" id="resultModal" style="display:none">
+  <div class="result-modal-content">
+    <span style="font-size:3.6rem;display:block" id="resultIcon">🎉</span>
+    <h2 style="margin:0 0 14px;font-size:1.5rem" id="resultGreeting">Well Done!</h2>
+    <div class="score-display">
+      <div class="score-big"><span id="finalScore">0</span>%</div>
+      <div class="stats-mini">
+        <div class="sm"><div class="sv" id="modalCorrect">0</div><div class="sl">Correct</div></div>
+        <div class="sm"><div class="sv" id="modalTotal">0</div><div class="sl">Total</div></div>
+      </div>
+    </div>
+    <p id="resultFeedback" style="font-size:0.9rem;color:var(--muted);margin:0"></p>
+    <div class="result-actions">
+      <button class="btn-action btn-share" onclick="shareResult()">
+        <i class="fa-solid fa-share-nodes"></i> Share Result
+      </button>
+      <button class="btn-action btn-home" onclick="location.href='dashboard.html'">
+        <i class="fa-solid fa-house"></i> Back to Dashboard
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let quizData = null;
+let questions = [];
+let userAnswers = {};
+let currentIndex = 0;
+let timerId = null;
+let timeRemaining = 0;
+let activeMode = 'practice';
+
+// Check URL for code
+const urlParams = new URLSearchParams(window.location.search);
+const urlCode = urlParams.get('code');
+if (urlCode) {
+  document.getElementById('codeInput').value = urlCode.toUpperCase();
+  setTimeout(joinQuiz, 500);
+}
+
+async function joinQuiz() {
+  const code = document.getElementById('codeInput').value.trim().toUpperCase();
+  if (!code) { showToast('Please enter a quiz code'); return; }
+
+  const btn = document.getElementById('joinBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Loading...';
+
+  try {
+    const { data, error } = await db.from('custom_quizzes')
+      .select('*').eq('quiz_code', code).eq('status', 'approved').single();
+    if (error || !data) { showToast('Quiz not found or not approved yet'); return; }
+
+    quizData = data;
+    const { data: qData } = await db.from('custom_quiz_questions')
+      .select('*').eq('quiz_id', data.id).order('question_order', { ascending: true });
+    if (!qData || qData.length === 0) { showToast('No questions in this quiz'); return; }
+
+    questions = qData.map(q => ({
+      question: q.question_text,
+      options: [q.option_a, q.option_b, q.option_c, q.option_d],
+      answer: q.correct_answer,
+      explanation: q.explanation || ''
+    }));
+
+    document.getElementById('joinScreen').style.display = 'none';
+    document.getElementById('quizInterface').style.display = 'block';
+    document.getElementById('totalIdx').innerText = questions.length;
+    timeRemaining = (quizData.time_limit || 30) * 60;
+    runTimer();
+    renderQuestion();
+    loadLeaderboard();
+  } catch (e) {
+    showToast('Error: ' + (e.message || 'Please try again'));
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa-solid fa-play"></i> Join Quiz';
+  }
+}
+
+function runTimer() {
+  if (timerId) clearInterval(timerId);
+  updateTimerDisplay();
+  timerId = setInterval(() => {
+    timeRemaining--;
+    updateTimerDisplay();
+    if (timeRemaining <= 0) { clearInterval(timerId); showResults(); }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(timeRemaining / 60);
+  const s = timeRemaining % 60;
+  document.getElementById('timer').innerText = `${m}:${s < 10 ? '0' + s : s}`;
+}
+
+function renderQuestion() {
+  const q = questions[currentIndex];
+  const labels = ['A','B','C','D'];
+  document.getElementById('curIdx').innerText = currentIndex + 1;
+  document.getElementById('question-text').innerHTML = q.question;
+  const optBox = document.getElementById('optionsBox');
+  const feedArea = document.getElementById('feedbackArea');
+  optBox.innerHTML = '';
+  feedArea.innerHTML = '';
+
+  const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
+  const userAns = userAnswers[currentIndex];
+
+  if (q.options && q.options.length) q.options.forEach((val, idx) => {
+    const label = labels[idx];
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.innerHTML = `<strong>${label}.</strong> ${val}`;
+    if (hasAnswered) {
+      if (label === q.answer) btn.classList.add('correct');
+      else if (label === userAns) btn.classList.add('wrong');
+      btn.disabled = true;
+    }
+    btn.onclick = () => {
+      if (hasAnswered) return;
+      userAnswers[currentIndex] = label;
+      renderQuestion();
+    };
+    optBox.appendChild(btn);
+  });
+
+  if (hasAnswered) {
+    const ok = userAns === q.answer;
+    const expHtml = q.explanation ? `<div class="explanation-box"><strong>Explanation:</strong> ${q.explanation}</div>` : '';
+    feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
+      ${ok ? 'Correct!' : 'Incorrect. Answer: <strong>' + q.answer + '</strong>'}
+    </div>${expHtml}`;
+  }
+
+  document.getElementById('nextBtn').style.display = currentIndex === questions.length - 1 ? 'none' : 'inline-flex';
+}
+
+function nextQuestion() {
+  if (currentIndex < questions.length - 1) { currentIndex++; renderQuestion(); }
+}
+function prevQuestion() {
+  if (currentIndex > 0) { currentIndex--; renderQuestion(); }
+}
+
+async function showResults() {
+  clearInterval(timerId);
+  let score = 0;
+  questions.forEach((q, i) => { if (userAnswers[i] === q.answer) score++; });
+  const total = questions.length;
+  const pct = Math.round((score / total) * 100);
+
+  document.getElementById('finalScore').innerText = pct;
+  document.getElementById('modalCorrect').innerText = score;
+  document.getElementById('modalTotal').innerText = total;
+  document.getElementById('resultModal').style.display = 'flex';
+
+  if (pct >= 70) { document.getElementById('resultIcon').innerText = '🎉'; document.getElementById('resultGreeting').innerText = 'Well Done!'; confetti({ particleCount: 160, spread: 70 }); }
+  else if (pct >= 50) { document.getElementById('resultIcon').innerText = '👍'; document.getElementById('resultGreeting').innerText = 'Good Effort!'; }
+  else { document.getElementById('resultIcon').innerText = '💪'; document.getElementById('resultGreeting').innerText = 'Keep Practicing!'; }
+
+  // Save result
+  let studentName = 'Anonymous';
+  try {
+    const { data: { user } } = await db.auth.getUser();
+    if (user) {
+      const { data: s } = await db.from('students').select('fullname').eq('id', user.id).single();
+      if (s) studentName = s.fullname;
+    }
+  } catch (e) {}
+
+  try {
+    await db.from('custom_quiz_results').insert([{
+      quiz_id: quizData.id, student_name: studentName,
+      score: pct, correct_count: score, total_count: total
+    }]);
+  } catch (e) {}
+  loadLeaderboard();
+}
+
+async function loadLeaderboard() {
+  if (!quizData) return;
+  try {
+    const { data } = await db.from('custom_quiz_results')
+      .select('*').eq('quiz_id', quizData.id).order('score', { ascending: false }).limit(20);
+    if (!data || data.length === 0) return;
+    document.getElementById('lb-section').style.display = 'block';
+    let html = '<table class="lb-table"><thead><tr><th>#</th><th>Name</th><th>Score</th><th>Correct</th></tr></thead><tbody>';
+    const medals = ['🥇','🥈','🥉'];
+    data.forEach((r, i) => {
+      html += `<tr><td>${medals[i] || i+1}</td><td>${r.student_name}</td><td><strong>${r.score}%</strong></td><td>${r.correct_count}/${r.total_count}</td></tr>`;
+    });
+    html += '</tbody></table>';
+    document.getElementById('lbContent').innerHTML = html;
+  } catch (e) {}
+}
+
+function shareResult() {
+  const score = document.getElementById('finalScore').innerText;
+  const text = `I just scored ${score}% on "${quizData?.title || 'a quiz'}" on Renance CBT! 🎯\n\nTry it: https://renancecbt.vercel.app/live-quiz.html?code=${quizData?.quiz_code || ''}`;
+  if (navigator.share) navigator.share({ title: 'My Quiz Score', text });
+  else { navigator.clipboard.writeText(text); showToast('Result copied!'); }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(window._tt); window._tt = setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>

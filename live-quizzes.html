@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renance — Live Quizzes</title>
+<link rel="shortcut icon" href="logo.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="env-loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f1f5f9;--card-bg:#fff;--primary:#2563eb;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;--success:#16a34a}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+nav{background:var(--card-bg);padding:0.9rem 5%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,0.04);position:sticky;top:0;z-index:100}
+nav a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+nav .arrow{width:36px;height:36px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:0.2s}
+nav a:hover .arrow{background:var(--primary);color:#fff}
+nav .brand{font-weight:700;color:var(--primary)}
+nav .brand span{display:block;font-size:0.78rem;color:var(--muted);font-weight:500}
+main{max-width:960px;margin:0 auto;padding:1.5rem 5% 3rem}
+h1{font-size:1.5rem;font-weight:800;margin-bottom:0.5rem}
+p.sub{color:var(--muted);font-size:0.88rem;margin-bottom:1.5rem}
+
+/* JOIN BAR */
+.join-bar{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:20px;display:flex;gap:10px;align-items:center}
+.join-bar input{flex:1;border:1.5px solid var(--border);border-radius:8px;padding:9px 14px;font-size:0.9rem;outline:none;text-transform:uppercase;letter-spacing:2px;font-weight:700}
+.join-bar input:focus{border-color:var(--primary)}
+.join-bar button{padding:9px 18px;border:none;border-radius:8px;background:var(--primary);color:#fff;font-weight:700;font-size:0.88rem;cursor:pointer;transition:0.2s;white-space:nowrap}
+.join-bar button:hover{background:#1d4ed8}
+
+/* QUIZ GRID */
+.quiz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.quiz-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:18px;cursor:pointer;transition:0.2s;position:relative;overflow:hidden}
+.quiz-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+.quiz-card .color-bar{position:absolute;top:0;left:0;right:0;height:4px}
+.quiz-card h3{font-size:1.05rem;font-weight:700;margin:8px 0 6px;padding-right:30px}
+.quiz-card .desc{font-size:0.82rem;color:var(--muted);margin-bottom:10px;line-height:1.4}
+.quiz-card .meta{display:flex;gap:12px;font-size:0.78rem;color:var(--muted);flex-wrap:wrap}
+.quiz-card .meta span{display:flex;align-items:center;gap:4px}
+.quiz-card .code-badge{position:absolute;top:14px;right:14px;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:0.72rem;font-weight:800;letter-spacing:1px;color:var(--primary)}
+.empty{text-align:center;padding:3rem;color:var(--muted)}
+.empty i{font-size:2.5rem;margin-bottom:1rem;display:block;opacity:0.3}
+.btn-create{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:16px;background:var(--primary);color:#fff;border:none;font-size:1.4rem;cursor:pointer;box-shadow:0 8px 24px rgba(37,99,235,0.4);z-index:100;transition:0.3s;display:flex;align-items:center;justify-content:center}
+.btn-create:hover{transform:scale(1.1);background:#1d4ed8}
+
+@media(max-width:600px){main{padding:1rem 4% 2rem}.quiz-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="dashboard.html">
+    <div class="arrow"><i class="fa-solid fa-arrow-left"></i></div>
+    <div class="brand">Live Quizzes <span>Renance CBT</span></div>
+  </a>
+</nav>
+
+<main>
+  <h1>Live Quizzes</h1>
+  <p class="sub">Join a quiz with a code, or browse quizzes created by the community.</p>
+
+  <div class="join-bar">
+    <input type="text" id="quickCode" placeholder="ENTER QUIZ CODE" maxlength="6">
+    <button onclick="quickJoin()"><i class="fa-solid fa-play"></i> Join</button>
+  </div>
+
+  <div class="quiz-grid" id="quizGrid">
+    <div class="empty"><i class="fa-solid fa-hourglass-half"></i><p>Loading quizzes...</p></div>
+  </div>
+</main>
+
+<a href="create-quiz.html" class="btn-create" title="Create Quiz"><i class="fa-solid fa-plus"></i></a>
+
+<script>
+const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+async function loadQuizzes() {
+  try {
+    const { data, error } = await db.from('custom_quizzes')
+      .select('*').eq('status', 'approved').order('created_at', { ascending: false });
+    if (error) throw error;
+    const grid = document.getElementById('quizGrid');
+    if (!data || data.length === 0) {
+      grid.innerHTML = '<div class="empty"><i class="fa-solid fa-clipboard-question"></i><p>No live quizzes yet. Be the first to create one!</p></div>';
+      return;
+    }
+    grid.innerHTML = data.map(q => `
+      <div class="quiz-card" onclick="location.href='live-quiz.html?code=${q.quiz_code}'">
+        <div class="color-bar" style="background:${q.color || '#2563eb'}"></div>
+        <div class="code-badge">${q.quiz_code}</div>
+        <h3>${q.title}</h3>
+        <div class="desc">${q.description || 'No description'}</div>
+        <div class="meta">
+          <span><i class="fa-solid fa-user"></i> ${q.creator_name}</span>
+          <span><i class="fa-solid fa-circle-question"></i> ${q.question_count} Q</span>
+          <span><i class="fa-solid fa-clock"></i> ${q.time_limit}min</span>
+        </div>
+      </div>
+    `).join('');
+  } catch (e) {
+    document.getElementById('quizGrid').innerHTML = '<div class="empty"><i class="fa-solid fa-triangle-exclamation"></i><p>Could not load quizzes.</p></div>';
+  }
+}
+
+function quickJoin() {
+  const code = document.getElementById('quickCode').value.trim().toUpperCase();
+  if (!code) return;
+  location.href = 'live-quiz.html?code=' + code;
+}
+
+document.getElementById('quickCode').addEventListener('keydown', e => {
+  if (e.key === 'Enter') quickJoin();
+});
+
+loadQuizzes();
+</script>
+</body>
+</html>

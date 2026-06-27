@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renance — Admin Dashboard</title>
+<link rel="shortcut icon" href="logo.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="env-loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f1f5f9;--card-bg:#fff;--primary:#2563eb;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;--success:#16a34a;--danger:#ef4444;--warn:#f59e0b}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+nav{background:var(--card-bg);padding:0.9rem 5%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,0.04);position:sticky;top:0;z-index:100}
+nav a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+nav .arrow{width:36px;height:36px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+nav .brand{font-weight:700;color:var(--primary)}
+nav .brand span{display:block;font-size:0.78rem;color:var(--muted);font-weight:500}
+main{max-width:960px;margin:0 auto;padding:1.5rem 5% 3rem}
+h1{font-size:1.5rem;font-weight:800;margin-bottom:0.5rem}
+p.sub{color:var(--muted);font-size:0.88rem;margin-bottom:1.5rem}
+
+/* TABS */
+.tabs{display:flex;gap:0;margin-bottom:20px;border-bottom:2px solid var(--border)}
+.tab{flex:1;padding:12px;text-align:center;font-weight:700;font-size:0.88rem;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;transition:0.2s;margin-bottom:-2px}
+.tab.active{color:var(--primary);border-bottom-color:var(--primary)}
+.tab:hover{color:var(--primary)}
+.tab span{background:var(--border);color:var(--text);padding:1px 7px;border-radius:10px;font-size:0.72rem;margin-left:4px}
+.tab.active span{background:var(--primary);color:#fff}
+
+/* ITEM CARD */
+.item{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.item-info{flex:1;min-width:200px}
+.item-info h3{font-size:1rem;font-weight:700;margin-bottom:4px}
+.item-info p{font-size:0.82rem;color:var(--muted);line-height:1.4}
+.item-meta{display:flex;gap:10px;font-size:0.75rem;color:var(--muted);margin-top:6px;flex-wrap:wrap}
+.item-meta span{display:flex;align-items:center;gap:4px}
+.item-actions{display:flex;gap:8px;flex-shrink:0}
+.btn-sm{padding:8px 14px;border:none;border-radius:8px;font-weight:700;font-size:0.8rem;cursor:pointer;transition:0.2s;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:5px}
+.btn-approve{background:var(--success);color:#fff}
+.btn-approve:hover{opacity:0.85}
+.btn-reject{background:var(--danger);color:#fff}
+.btn-reject:hover{opacity:0.85}
+.btn-delete{background:var(--border);color:var(--danger)}
+.btn-delete:hover{background:var(--danger);color:#fff}
+
+/* STATUS BADGES */
+.badge{padding:2px 8px;border-radius:6px;font-size:0.72rem;font-weight:700;text-transform:uppercase}
+.badge-pending{background:#fef3c7;color:#92400e}
+.badge-approved{background:#dcfce7;color:#065f46}
+.badge-rejected{background:#fee2e2;color:#991b1b}
+
+/* EMPTY */
+.empty{text-align:center;padding:3rem;color:var(--muted)}
+.empty i{font-size:2.5rem;margin-bottom:1rem;display:block;opacity:0.3}
+
+/* ACCESS DENIED */
+.denied{text-align:center;padding:4rem 2rem}
+.denied i{font-size:3rem;color:var(--danger);margin-bottom:1rem}
+.denied h2{font-size:1.3rem;margin-bottom:0.5rem}
+.denied p{color:var(--muted);font-size:0.9rem}
+
+@media(max-width:600px){main{padding:1rem 4% 2rem}.item{flex-direction:column}.item-actions{width:100%}.btn-sm{flex:1;justify-content:center}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="dashboard.html">
+    <div class="arrow"><i class="fa-solid fa-arrow-left"></i></div>
+    <div class="brand">Admin Dashboard <span>Renance CBT</span></div>
+  </a>
+</nav>
+
+<main id="mainContent" style="display:none">
+  <h1>Admin Dashboard</h1>
+  <p class="sub">Approve or reject quizzes and PDF uploads. Manage all content.</p>
+
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('quizzes')" id="tab-quizzes">
+      Quizzes <span id="quizCount">0</span>
+    </div>
+    <div class="tab" onclick="switchTab('pdfs')" id="tab-pdfs">
+      PDF Uploads <span id="pdfCount">0</span>
+    </div>
+  </div>
+
+  <div id="quizzesPanel"></div>
+  <div id="pdfsPanel" style="display:none"></div>
+</main>
+
+<div class="denied" id="accessDenied" style="display:none">
+  <i class="fa-solid fa-lock"></i>
+  <h2>Access Denied</h2>
+  <p>You need admin privileges to view this page.</p>
+</div>
+
+<script>
+const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// ═══ REPLACE THIS WITH YOUR SUPABASE USER ID ═══
+const ADMIN_USER_ID = 'YOUR_USER_ID_HERE';
+
+async function checkAdmin() {
+  try {
+    const { data: { user } } = await db.auth.getUser();
+    if (!user) {
+      document.getElementById('accessDenied').style.display = 'block';
+      return false;
+    }
+    if (user.id === ADMIN_USER_ID || ADMIN_USER_ID === 'YOUR_USER_ID_HERE') {
+      document.getElementById('mainContent').style.display = 'block';
+      return true;
+    }
+    document.getElementById('accessDenied').style.display = 'block';
+    return false;
+  } catch (e) {
+    document.getElementById('accessDenied').style.display = 'block';
+    return false;
+  }
+}
+
+let currentTab = 'quizzes';
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.getElementById('quizzesPanel').style.display = tab === 'quizzes' ? 'block' : 'none';
+  document.getElementById('pdfsPanel').style.display = tab === 'pdfs' ? 'block' : 'none';
+}
+
+async function loadQuizzes() {
+  try {
+    const { data, error } = await db.from('custom_quizzes').select('*').order('created_at', { ascending: false });
+    if (error) throw error;
+    document.getElementById('quizCount').innerText = data ? data.length : 0;
+    const panel = document.getElementById('quizzesPanel');
+    if (!data || data.length === 0) {
+      panel.innerHTML = '<div class="empty"><i class="fa-solid fa-clipboard"></i><p>No quizzes yet.</p></div>';
+      return;
+    }
+    panel.innerHTML = data.map(q => `
+      <div class="item">
+        <div class="item-info">
+          <h3>${q.title} <span class="badge badge-${q.status}">${q.status}</span></h3>
+          <p>${q.description || 'No description'}</p>
+          <div class="item-meta">
+            <span><i class="fa-solid fa-user"></i> ${q.creator_name}</span>
+            <span><i class="fa-solid fa-key"></i> ${q.quiz_code}</span>
+            <span><i class="fa-solid fa-circle-question"></i> ${q.question_count} Q</span>
+            <span><i class="fa-solid fa-clock"></i> ${q.time_limit}min</span>
+          </div>
+        </div>
+        <div class="item-actions">
+          ${q.status !== 'approved' ? `<button class="btn-sm btn-approve" onclick="approveQuiz('${q.id}')"><i class="fa-solid fa-check"></i> Approve</button>` : ''}
+          ${q.status !== 'rejected' ? `<button class="btn-sm btn-reject" onclick="rejectQuiz('${q.id}')"><i class="fa-solid fa-xmark"></i> Reject</button>` : ''}
+          <button class="btn-sm btn-delete" onclick="deleteQuiz('${q.id}')"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>
+    `).join('');
+  } catch (e) { console.error(e); }
+}
+
+async function loadPDFs() {
+  try {
+    const { data, error } = await db.from('pdf_uploads').select('*').order('created_at', { ascending: false });
+    if (error) throw error;
+    document.getElementById('pdfCount').innerText = data ? data.length : 0;
+    const panel = document.getElementById('pdfsPanel');
+    if (!data || data.length === 0) {
+      panel.innerHTML = '<div class="empty"><i class="fa-solid fa-file"></i><p>No PDF uploads yet.</p></div>';
+      return;
+    }
+    panel.innerHTML = data.map(p => `
+      <div class="item">
+        <div class="item-info">
+          <h3>${p.title} <span class="badge badge-${p.status}">${p.status}</span></h3>
+          <p>${p.description || 'No description'}</p>
+          <div class="item-meta">
+            <span><i class="fa-solid fa-user"></i> ${p.uploader_name}</span>
+            <span><i class="fa-solid fa-folder"></i> ${p.category}</span>
+            <span><i class="fa-solid fa-file-pdf"></i> ${p.file_name}</span>
+          </div>
+        </div>
+        <div class="item-actions">
+          ${p.status !== 'approved' ? `<button class="btn-sm btn-approve" onclick="approvePDF('${p.id}')"><i class="fa-solid fa-check"></i> Approve</button>` : ''}
+          ${p.status !== 'rejected' ? `<button class="btn-sm btn-reject" onclick="rejectPDF('${p.id}')"><i class="fa-solid fa-xmark"></i> Reject</button>` : ''}
+          <a href="${p.file_url}" target="_blank" class="btn-sm" style="background:var(--border);color:var(--text);text-decoration:none"><i class="fa-solid fa-eye"></i> View</a>
+          <button class="btn-sm btn-delete" onclick="deletePDF('${p.id}')"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>
+    `).join('');
+  } catch (e) { console.error(e); }
+}
+
+async function approveQuiz(id) { await db.from('custom_quizzes').update({status:'approved'}).eq('id',id); loadQuizzes(); }
+async function rejectQuiz(id) { await db.from('custom_quizzes').update({status:'rejected'}).eq('id',id); loadQuizzes(); }
+async function deleteQuiz(id) { if(confirm('Delete this quiz?')) { await db.from('custom_quizzes').delete().eq('id',id); loadQuizzes(); } }
+
+async function approvePDF(id) { await db.from('pdf_uploads').update({status:'approved'}).eq('id',id); loadPDFs(); }
+async function rejectPDF(id) { await db.from('pdf_uploads').update({status:'rejected'}).eq('id',id); loadPDFs(); }
+async function deletePDF(id) { if(confirm('Delete this PDF?')) { await db.from('pdf_uploads').delete().eq('id',id); loadPDFs(); } }
+
+// Init
+checkAdmin().then(isAdmin => {
+  if (isAdmin) { loadQuizzes(); loadPDFs(); }
+});
+</script>
+</body>
+</html>

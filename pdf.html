@@ -1,229 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Materials | Academic Portal</title>
-    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        .back-to-dash {
-            display: inline-flex; align-items: center; gap: 6px;
-            text-decoration: none; color: #1a73e8; font-size: 14px;
-            font-weight: 600; margin-bottom: 12px;
-        }
-        .back-to-dash:hover { text-decoration: underline; }
-        
-        body { 
-            font-family: 'Segoe UI', Tahoma, sans-serif; 
-            background: #f8f9fa; 
-            margin: 0; 
-            padding: 15px; 
-        }
-        
-        .wrapper { 
-            max-width: 950px; 
-            margin: auto; 
-            background: white; 
-            border: 1px solid #ddd; 
-            padding: 20px; /* Responsive padding */
-            border-radius: 12px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
-        }
-        
-        header { 
-            border-bottom: 3px solid #dee2e6; 
-            margin-bottom: 20px; 
-            padding-bottom: 15px; 
-            display: flex; 
-            flex-direction: column; /* Stack header on mobile */
-            align-items: center; 
-            text-align: center;
-            gap: 15px;
-        }
-        
-        .status-header { 
-            background: #fff3cd; 
-            color: #856404; 
-            padding: 6px 15px; 
-            border-radius: 20px; 
-            font-size: 11px; 
-            font-weight: bold; 
-            border: 1px solid #ffeeba; 
-        }
-        
-        h1 { margin: 0; color: #2c3e50; font-size: 20px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renance — Course Materials</title>
+<link rel="shortcut icon" href="logo.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="env-loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f1f5f9;--card-bg:#fff;--primary:#2563eb;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;--success:#16a34a;--danger:#ef4444}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);padding:15px}
+nav{background:var(--card-bg);padding:0.9rem 5%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,0.04);position:sticky;top:0;z-index:100;border-radius:12px 12px 0 0;margin-bottom:0}
+nav a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+nav .arrow{width:36px;height:36px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+nav .brand{font-weight:700;color:var(--primary)}
+nav .brand span{display:block;font-size:0.78rem;color:var(--muted);font-weight:500}
+.wrapper{max-width:950px;margin:0 auto;background:var(--card-bg);border:1px solid var(--border);border-radius:0 0 12px 12px;padding:20px;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
+h1{margin:0 0 6px;color:var(--text);font-size:1.4rem;font-weight:800}
+.sub{color:var(--muted);font-size:0.85rem;margin-bottom:18px}
+.search-container{position:relative;margin-bottom:20px;width:100%}
+.search-container i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
+#courseSearch{width:100%;padding:12px 12px 12px 42px;border-radius:10px;border:1.5px solid var(--border);font-size:0.92rem;outline:none;transition:0.2s;box-sizing:border-box}
+#courseSearch:focus{border-color:var(--primary)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.course-card{border:1px solid var(--border);border-radius:12px;padding:16px;transition:0.2s;cursor:pointer}
+.course-card:hover{border-color:var(--primary);box-shadow:0 4px 16px rgba(37,99,235,0.1);transform:translateY(-2px)}
+.course-card h3{font-size:0.95rem;font-weight:700;margin-bottom:6px}
+.course-card p{font-size:0.78rem;color:var(--muted)}
+.course-card .badge{display:inline-block;background:var(--primary);color:#fff;padding:2px 8px;border-radius:6px;font-size:0.68rem;font-weight:700;margin-top:6px}
+.course-card .badge.uploaded{background:var(--success)}
+.empty{text-align:center;padding:2rem;color:var(--muted)}
 
-        /* Search Bar Responsive */
-        .search-container { position: relative; margin-bottom: 25px; width: 100%; }
-        .search-container i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #adb5bd; }
-        #courseSearch { 
-            width: 100%; 
-            padding: 14px 12px 14px 45px; /* Larger tap target */
-            border-radius: 8px; 
-            border: 2px solid #eee; 
-            font-size: 16px; /* Prevents iOS auto-zoom on focus */
-            outline: none; 
-            transition: 0.3s; 
-            box-sizing: border-box;
-        }
+/* UPLOAD BUTTON */
+.btn-upload{padding:10px 18px;border:none;border-radius:10px;background:var(--primary);color:#fff;font-weight:700;font-size:0.85rem;cursor:pointer;transition:0.2s;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:7px}
+.btn-upload:hover{background:#1d4ed8;transform:translateY(-1px)}
 
-        /* Grid - Default 1 Column (Mobile) */
-        .grid { 
-            display: grid; 
-            grid-template-columns: 1fr; 
-            gap: 15px; 
-        }
+/* UPLOAD MODAL */
+#uploadModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;padding:20px}
+#uploadModal.show{display:flex}
+.upload-card{background:#fff;border-radius:16px;padding:28px;max-width:440px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.upload-card h2{font-size:1.2rem;font-weight:800;margin-bottom:6px}
+.upload-card p{font-size:0.82rem;color:var(--muted);margin-bottom:18px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:0.78rem;font-weight:700;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.3px}
+.field input,.field select,.field textarea{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:0.9rem;outline:none;transition:0.2s;font-family:'Inter',sans-serif}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--primary)}
+.upload-actions{display:flex;gap:10px;margin-top:16px}
+.upload-actions button{flex:1;padding:12px;border:none;border-radius:10px;font-weight:700;font-size:0.9rem;cursor:pointer;transition:0.2s;font-family:'Inter',sans-serif}
+.btn-submit{background:var(--primary);color:#fff}
+.btn-submit:hover{background:#1d4ed8}
+.btn-cancel{background:var(--border);color:var(--text)}
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#1e293b;color:#fff;padding:12px 26px;border-radius:100px;font-size:0.84rem;font-weight:600;opacity:0;transition:0.3s;z-index:99999;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-        .course-card { 
-            border: 1px solid #e0e0e0; 
-            border-radius: 10px; 
-            padding: 15px; 
-            background: #fff; 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        
-        .code { font-weight: bold; color: #1a73e8; font-size: 12px; }
-        .name { 
-            font-size: 16px; 
-            margin: 8px 0 15px 0; 
-            color: #333; 
-            font-weight: 600; 
-            line-height: 1.3;
-        }
-
-        .btn-link, .btn-disabled { 
-            display: block; 
-            text-align: center; 
-            padding: 14px; /* Touch-friendly height */
-            border-radius: 8px; 
-            font-size: 13px; 
-            font-weight: bold;
-            text-decoration: none;
-        }
-        
-        .btn-link { background: #1a73e8; color: white; }
-        .btn-disabled { background: #e9ecef; color: #adb5bd; cursor: not-allowed; border: 1px solid #dee2e6; }
-
-        .coming-soon-tag { font-size: 10px; color: #dc3545; text-transform: uppercase; font-weight: bold; margin-top: 10px; text-align: center; }
-
-        /* WhatsApp Floating Icon - Smaller for Mobile */
-        .whatsapp-float {
-            position: fixed; width: 55px; height: 55px; bottom: 20px; right: 20px;
-            background-color: #25d366; color: #FFF; border-radius: 50%;
-            text-align: center; font-size: 25px; box-shadow: 2px 4px 10px rgba(0,0,0,0.3);
-            z-index: 1000; display: flex; align-items: center; justify-content: center;
-            text-decoration: none;
-        }
-
-        footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; }
-        .contact-info { display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: #4a4a4a; }
-
-        /* Desktop & Tablet Adjustments */
-        @media (min-width: 650px) {
-            body { padding: 40px; }
-            .wrapper { padding: 30px; }
-            header { flex-direction: row; text-align: left; justify-content: space-between; }
-            h1 { font-size: 24px; }
-            .grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-            .contact-info { flex-direction: row; justify-content: center; gap: 20px; }
-            .name { height: 45px; } /* Consistent card height on desktop */
-        }
-
-        @media print { .whatsapp-float, .search-container { display: none; } }
-    </style>
+@media(max-width:600px){.grid{grid-template-columns:1fr}.wrapper{padding:16px}}
+</style>
 </head>
 <body>
 
-<a href="https://wa.me/2347046203544" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
+<nav>
+  <a href="dashboard.html">
+    <div class="arrow"><i class="fa-solid fa-arrow-left"></i></div>
+    <div class="brand">Course Materials <span>Renance CBT</span></div>
+  </a>
+  <button class="btn-upload" onclick="document.getElementById('uploadModal').classList.add('show')">
+    <i class="fa-solid fa-cloud-arrow-up"></i> Upload PDF
+  </button>
+</nav>
 
 <div class="wrapper">
-    <a href="dashboard.html" class="back-to-dash"><i class="fa fa-arrow-left"></i> Back to Dashboard</a>
-    <header>
-        <div>
-            <h1>Academic Resource Portal</h1>
-            <p style="margin: 5px 0; color: #6c757d; font-size: 14px;">Official Course Note Repository</p>
-        </div>
-        <div class="status-header">SYSTEM UPDATE IN PROGRESS</div>
-    </header>
+  <h1>Course Materials & PDFs</h1>
+  <p class="sub">Download study materials, past questions, and handouts.</p>
 
-    <div class="search-container">
-        <i class="fa fa-search"></i>
-        <input type="text" id="courseSearch" placeholder="Search courses (e.g. MTH101)..." onkeyup="filterCourses()">
-    </div>
+  <div class="search-container">
+    <i class="fa-solid fa-search"></i>
+    <input type="text" id="courseSearch" placeholder="Search by course code or title...">
+  </div>
 
-    <div class="grid" id="courseGrid">
-        </div>
-
-    <footer>
-        <p style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">Connect with the Admin</p>
-        <div class="contact-info">
-            <span><b>WhatsApp:</b> 07046203544</span>
-            <span><b>Facebook:</b> @resolutefemi</span>
-            <span><b>Twitter:</b> @resolutefemi</span>
-        </div>
-    </footer>
+  <div class="grid" id="pdfGrid">
+    <div class="empty"><i class="fa-solid fa-circle-notch fa-spin" style="font-size:1.5rem;opacity:0.3"></i><p>Loading materials...</p></div>
+  </div>
 </div>
 
+<!-- UPLOAD MODAL -->
+<div id="uploadModal">
+  <div class="upload-card">
+    <h2>Upload a PDF</h2>
+    <p>Your upload will be reviewed by an admin before it appears here.</p>
+
+    <div class="field">
+      <label>Title</label>
+      <input type="text" id="upTitle" placeholder="e.g. CSC 102 Past Questions">
+    </div>
+    <div class="field">
+      <label>Category</label>
+      <select id="upCategory">
+        <option value="general">General</option>
+        <option value="CSC">CSC — Computer Science</option>
+        <option value="BIO">BIO — Biology</option>
+        <option value="CHE">CHE — Chemistry</option>
+        <option value="MTH">MTH — Mathematics</option>
+        <option value="PHY">PHY — Physics</option>
+        <option value="FSEN">FSEN — Software Engineering</option>
+        <option value="FIFT">FIFT — Info Tech</option>
+        <option value="FCYS">FCYS — Cyber Security</option>
+        <option value="DTS">DTS — Data Science</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Description (Optional)</label>
+      <textarea id="upDesc" rows="2" style="resize:vertical;min-height:50px"></textarea>
+    </div>
+    <div class="field">
+      <label>PDF File</label>
+      <input type="file" id="upFile" accept=".pdf" style="border:none;padding:0">
+    </div>
+
+    <div class="upload-actions">
+      <button class="btn-cancel" onclick="document.getElementById('uploadModal').classList.remove('show')">Cancel</button>
+      <button class="btn-submit" onclick="uploadPDF()" id="uploadBtn">Upload</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
 <script>
-    const courses = [
-        {code: "GNS103", name: "Information Literacy", available: true},
-        {code: "MTH101", name: "General Mathematics I", available: true},
-        {code: "COS101", name: "Introduction to Computer Science", available: true},
-        {code: "PHY101", name: "General Physics I", available: false},
-        {code: "CHM101", name: "General Chemistry I", available: false},
-        {code: "BIO101", name: "General Biology I", available: false},
-        {code: "GST101", name: "Use of English", available: false},
-        {code: "COC101", name: "Introduction to Computing", available: false},
-        {code: "MEE101", name: "Engineering Drawing", available: false}
-    ];
+const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    function renderCourses(filter = "") {
-        const container = document.getElementById('courseGrid');
-        container.innerHTML = "";
-        
-        const filtered = courses.filter(c => 
-            c.code.toLowerCase().includes(filter.toLowerCase()) || 
-            c.name.toLowerCase().includes(filter.toLowerCase())
-        );
+// Built-in PDFs (existing repo files)
+const builtinPdfs = [
+  {title:'COS 101 — Introduction to Computer', url:'COS101.pdf', category:'CSC', builtin:true},
+  {title:'GNS 103 — Information Literacy', url:'GNS103.pdf', category:'GNS', builtin:true},
+  {title:'MTH 101 — Elementary Mathematics I', url:'MTH101.pdf', category:'MTH', builtin:true},
+  {title:'FSEN 104 — Software Feasibility Study', url:'fsen104.pdf', category:'FSEN', builtin:true},
+  {title:'DTS 104 — Introduction to Python', url:'dts104.pdf', category:'DTS', builtin:true},
+  {title:'FSEN 106 — Software Requirements', url:'fsen106.pdf', category:'FSEN', builtin:true},
+];
 
-        if (filtered.length === 0) {
-            container.innerHTML = `<p style="text-align: center; color: #999; padding: 20px;">No courses match your search.</p>`;
-            return;
-        }
+async function loadPDFs() {
+  const grid = document.getElementById('pdfGrid');
+  let allPdfs = [...builtinPdfs];
 
-        filtered.forEach(c => {
-            const buttonContent = c.available ? `DOWNLOAD ${c.code}` : "LOCKED";
-            const link = c.available ? `${c.code}.pdf` : "javascript:alert('This material is coming soon!')";
-            const btnClass = c.available ? "btn-link" : "btn-disabled";
-            const status = !c.available ? '<span class="coming-soon-tag">COMING SOON</span>' : '';
-
-            container.innerHTML += `
-                <div class="course-card">
-                    <div>
-                        <span class="code">${c.code}</span>
-                        <h2 class="name">${c.name}</h2>
-                    </div>
-                    <div>
-                        <a href="${link}" class="${btnClass}">${buttonContent}</a>
-                        ${status}
-                    </div>
-                </div>
-            `;
-        });
+  try {
+    const { data } = await db.from('pdf_uploads').select('*').eq('status', 'approved').order('created_at', { ascending: false });
+    if (data) {
+      data.forEach(p => allPdfs.push({
+        title: p.title, url: p.file_url, category: p.category, builtin: false, desc: p.description, uploader: p.uploader_name
+      }));
     }
+  } catch (e) {}
 
-    function filterCourses() {
-        const query = document.getElementById('courseSearch').value;
-        renderCourses(query);
-    }
+  if (allPdfs.length === 0) {
+    grid.innerHTML = '<div class="empty"><i class="fa-solid fa-file"></i><p>No materials available yet.</p></div>';
+    return;
+  }
 
-    renderCourses();
+  grid.innerHTML = allPdfs.map(p => `
+    <div class="course-card" onclick="window.open('${p.url}', '_blank')">
+      <h3>${p.title}</h3>
+      ${p.desc ? `<p>${p.desc}</p>` : ''}
+      ${p.uploader ? `<p style="margin-top:4px">By ${p.uploader}</p>` : ''}
+      <span class="badge ${p.builtin ? '' : 'uploaded'}">${p.builtin ? 'Official' : 'Community'}</span>
+    </div>
+  `).join('');
+}
+
+// Search
+document.getElementById('courseSearch').addEventListener('input', function() {
+  const q = this.value.toLowerCase();
+  document.querySelectorAll('.course-card').forEach(card => {
+    card.style.display = card.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+});
+
+// Upload
+async function uploadPDF() {
+  const title = document.getElementById('upTitle').value.trim();
+  const category = document.getElementById('upCategory').value;
+  const desc = document.getElementById('upDesc').value.trim();
+  const fileInput = document.getElementById('upFile');
+  const file = fileInput.files[0];
+
+  if (!title) { showToast('Please enter a title'); return; }
+  if (!file) { showToast('Please select a PDF file'); return; }
+  if (file.type !== 'application/pdf') { showToast('Only PDF files are allowed'); return; }
+
+  const btn = document.getElementById('uploadBtn');
+  btn.disabled = true; btn.innerText = 'Uploading...';
+
+  try {
+    let userId = null, userName = 'Anonymous';
+    try {
+      const { data: { user } } = await db.auth.getUser();
+      if (user) {
+        userId = user.id;
+        const { data: s } = await db.from('students').select('fullname').eq('id', user.id).single();
+        if (s) userName = s.fullname;
+      }
+    } catch (e) {}
+
+    // Upload to storage
+    const fileName = `${Date.now()}_${file.name.replace(/\s/g, '_')}`;
+    const { data: storageData, error: storageErr } = await db.storage
+      .from('pdf-uploads').upload(fileName, file);
+
+    if (storageErr) throw storageErr;
+
+    // Get public URL
+    const { data: urlData } = db.storage.from('pdf-uploads').getPublicUrl(fileName);
+    const fileUrl = urlData.publicUrl;
+
+    // Insert record
+    const { error: dbErr } = await db.from('pdf_uploads').insert([{
+      title, description: desc, file_url: fileUrl, file_name: file.name,
+      file_size: file.size, uploader_id: userId, uploader_name: userName,
+      category, status: 'pending'
+    }]);
+
+    if (dbErr) throw dbErr;
+
+    showToast('Upload successful! Pending admin approval.');
+    document.getElementById('uploadModal').classList.remove('show');
+    document.getElementById('upTitle').value = '';
+    document.getElementById('upDesc').value = '';
+    fileInput.value = '';
+  } catch (e) {
+    showToast('Upload failed: ' + (e.message || 'Please try again'));
+  } finally {
+    btn.disabled = false; btn.innerText = 'Upload';
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(window._tt); window._tt = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+loadPDFs();
 </script>
-
 </body>
 </html>
