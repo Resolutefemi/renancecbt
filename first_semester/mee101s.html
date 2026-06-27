@@ -1479,16 +1479,6 @@ Keep it concise (under 100 words total).`;
         }
 
 
-        // Wrap showResults to trigger weak areas analysis
-        (function() {
-            const _originalShowResults = window.showResults;
-            window.showResults = function() {
-                _originalShowResults.apply(this, arguments);
-                // Trigger AI weak areas analysis after a short delay (let modal render)
-                setTimeout(analyzeWeakAreasWithAI, 1000);
-            };
-        })();
-
 </script>
 </body>
 </html>

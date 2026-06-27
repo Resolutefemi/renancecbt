@@ -269,6 +269,11 @@
                     </div>
 
                         <div class="result-actions">
+
+                    <button class="btn-action" id="weakAreasBtn" onclick="analyzeWeakAreasWithAI()" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
+                        <i class="fa-solid fa-brain"></i> Analyze My Weak Areas
+                    </button>
+
             <button class="btn-action" id="explainBtn" onclick="askRenanceAI()" style="background: linear-gradient(135deg, #1d4ed8, #1e40af); color: white; box-shadow: 0 4px 16px rgba(29,78,216,0.3);">
                 <i class="fa-solid fa-robot"></i> Explain Missed Questions
             </button>
@@ -1043,16 +1048,6 @@ Keep it concise (under 100 words total).`;
             }
         }
 
-
-        // Wrap showResults to trigger weak areas analysis
-        (function() {
-            const _originalShowResults = window.showResults;
-            window.showResults = function() {
-                _originalShowResults.apply(this, arguments);
-                // Trigger AI weak areas analysis after a short delay (let modal render)
-                setTimeout(analyzeWeakAreasWithAI, 1000);
-            };
-        })();
 
 </script>
 </body>
