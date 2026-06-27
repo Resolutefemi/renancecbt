@@ -1594,21 +1594,7 @@
         let popupTriggered = false;
         let widgetChatHistory = [];
 
-        // Listen for scroll to trigger popup
-        window.addEventListener('scroll', () => {
-            if (popupTriggered) return;
-            const courseGrid = document.getElementById('courseGrid');
-            if (!courseGrid) return;
-            
-            const rect = courseGrid.getBoundingClientRect();
-            const threshold = window.innerHeight * 0.85;
-            
-            if (rect.top < threshold) {
-                popupTriggered = true;
-                showWidgetPopup();
-            }
-        });
-
+        // AI widget only opens on explicit user click — no auto-popup
         function showWidgetPopup() {
             const widget = document.getElementById('ai-chat-widget');
             if (!widget || widget.style.display === 'flex') return;
