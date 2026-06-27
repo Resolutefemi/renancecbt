@@ -117,7 +117,8 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER IF NOT EXISTS update_custom_quizzes_updated_at
+DROP TRIGGER IF EXISTS update_custom_quizzes_updated_at ON custom_quizzes;
+CREATE TRIGGER update_custom_quizzes_updated_at
     BEFORE UPDATE ON custom_quizzes
     FOR EACH ROW EXECUTE FUNCTION update_updated_at();
 
