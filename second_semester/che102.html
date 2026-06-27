@@ -992,22 +992,6 @@ async function saveTestScore(pct) {
             }
             }
         } catch (e) { /* not logged in or offline — will retry next time */ }
-    } = await db.from('test_results')
-                .select('score').eq('student_id', user.id).eq('course_id', COURSE_CODE);
-
-            if (prev && prev.length > 0) {
-                const all = [...prev.map(r => r.score), pct];
-                const avg = Math.round(all.reduce((a, b) => a + b, 0) / all.length);
-                document.getElementById('modalAvg').innerText = avg + '%';
-            }
-
-            const { error } = await db.from('test_results').insert([
-                { student_id: user.id, course_id: COURSE_CODE, score: pct }
-            ]);
-            el.innerText = error ? 'âš ï¸ Could not save (offline)' : '✅ Score saved!';
-        } catch (e) {
-            el.innerText = 'âš ï¸ Offline — score not saved';
-        }
     }
 
     function enterReviewMode() {
