@@ -1142,7 +1142,7 @@ document.addEventListener('keydown', (e) => {
 
         document.getElementById('cur-idx').innerText       = currentIndex + 1;
         document.getElementById('topic-text').innerText    = q.topic || '';
-        document.getElementById('question-text').innerText = q.question;
+        document.getElementById('question-text').innerHTML = q.question;
 
         const optBox   = document.getElementById('options-box');
         const feedArea = document.getElementById('feedback-area');

@@ -1473,7 +1473,7 @@
         const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
         
         document.getElementById('cur-idx').innerText = currentIndex + 1;
-        document.getElementById('question-text').innerText = q.question;
+        document.getElementById('question-text').innerHTML = q.question;
         
         const optBox = document.getElementById('options-box');
         const feedbackArea = document.getElementById('feedback-area');

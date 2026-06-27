@@ -810,7 +810,7 @@ function renderQuestion() {
     const q        = currentExamData[currentIndex];
     const answered = userAnswers[currentIndex];
     document.getElementById('cur-idx').innerText  = currentIndex + 1;
-    document.getElementById('question-text').innerText = q.question;
+    document.getElementById('question-text').innerHTML = q.question;
 
     const optWrap  = document.getElementById('options-wrap');
     const feedArea = document.getElementById('feedback-area');
