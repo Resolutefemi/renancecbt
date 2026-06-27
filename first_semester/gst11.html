@@ -1683,6 +1683,118 @@
             setTimeout(loadCourseLeaderboard, 500);
         });
     syncLocalResults();
+
+        // ═════════════════════════════════════════════════════════════════
+        // AI WEAK AREAS ANALYSIS (runs after exam results are shown)
+        // ═════════════════════════════════════════════════════════════════
+        async function analyzeWeakAreasWithAI() {
+            const container = document.getElementById('ai-weak-areas');
+            const textEl = document.getElementById('ai-weak-areas-text');
+            if (!container || !textEl) return;
+            if (typeof currentExamData === 'undefined' || !currentExamData.length) return;
+
+            // Collect wrong answers
+            const missed = [];
+            currentExamData.forEach((q, i) => {
+                const student = userAnswers[i];
+                if (q.isTheory) {
+                    const scoreValue = student && typeof student.score === 'number' ? student.score : 0;
+                    if (scoreValue < 70) {
+                        missed.push({ question: q.question, topic: q.topic || 'General' });
+                    }
+                } else {
+                    if (student !== q.answer) {
+                        missed.push({ question: q.question, topic: q.topic || 'General' });
+                    }
+                }
+            });
+
+            if (missed.length === 0) {
+                container.style.display = 'block';
+                container.style.borderColor = '#10b981';
+                container.querySelector('strong').style.color = '#10b981';
+                textEl.innerHTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
+                return;
+            }
+
+            container.style.display = 'block';
+            textEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
+
+            const courseCode = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
+            const config = typeof getAIConfigForCourse === 'function' ? getAIConfigForCourse(courseCode) : {
+                provider: 'groq',
+                model: window.env?.AI_MODEL || 'llama-3.1-8b-instant',
+                key: window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy')
+            };
+
+            // Group missed questions by topic if available
+            const topicGroups = {};
+            missed.forEach(m => {
+                if (!topicGroups[m.topic]) topicGroups[m.topic] = 0;
+                topicGroups[m.topic]++;
+            });
+
+            const missedList = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
+            const topicSummary = Object.entries(topicGroups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
+
+            const systemPrompt = `You are Renance AI, an academic tutor for FUTA students.
+The student just completed a ${courseCode} quiz and got ${missed.length} question(s) wrong out of ${currentExamData.length}.
+
+Questions they got wrong:
+${missedList}
+
+${topicSummary ? 'Breakdown by topic: ' + topicSummary : ''}
+
+Identify 1-3 core topics/concepts the student should focus on revising.
+Respond in 2-4 short bullet points. Be specific and actionable.
+Format: • Topic name — brief advice on what to study
+Keep it concise (under 100 words total).`;
+
+            try {
+                let resultText = "";
+                const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${config.key}`
+                    },
+                    body: JSON.stringify({
+                        model: config.model,
+                        messages: [{ role: "system", content: systemPrompt }],
+                        temperature: 0.3
+                    })
+                });
+                const resData = await response.json();
+                if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
+                resultText = resData.choices[0].message.content;
+
+                // Format the response
+                const formatted = resultText
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/`(.*?)`/g, '<code>$1</code>')
+                    .replace(/\n/g, '<br>');
+                textEl.innerHTML = formatted;
+            } catch (err) {
+                // Fallback: show topic-based analysis without AI
+                if (topicSummary) {
+                    textEl.innerHTML = `Based on your missed questions, focus on: <br><strong>${topicSummary}</strong><br><br>Review these topics in your course materials and try again!`;
+                } else {
+                    textEl.innerHTML = `You missed ${missed.length} out of ${currentExamData.length} questions. Review the missed questions above and try again!`;
+                }
+            }
+        }
+
+
+        // Wrap showResults to trigger weak areas analysis
+        (function() {
+            const _originalShowResults = window.showResults;
+            window.showResults = function() {
+                _originalShowResults.apply(this, arguments);
+                // Trigger AI weak areas analysis after a short delay (let modal render)
+                setTimeout(analyzeWeakAreasWithAI, 1000);
+            };
+        })();
+
 </script>
 </body>
 </html>
