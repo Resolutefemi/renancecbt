@@ -57,29 +57,28 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 
 /* ── GLASS CARD ────────────────────────────────────── */
 .card{
-  width:100%;max-width:460px;
+  width:100%;max-width:420px;
   background: var(--glass-bg);
   border:1px solid var(--glass-border);
-  border-radius:28px;
-  padding:40px 36px 36px;
+  border-radius:22px;
+  padding:32px 28px 28px;
   box-shadow:
-    0 32px 80px rgba(0,0,0,0.45),
-    0 0 0 1px rgba(255,255,255,0.08),
-    inset 0 1px 0 rgba(255,255,255,0.18);
-  /* backdrop-filter only blurs behind the card itself — bg outside stays sharp */
-  backdrop-filter:blur(28px) saturate(1.4);
-  -webkit-backdrop-filter:blur(28px) saturate(1.4);
-  animation:cardIn 0.7s cubic-bezier(.16,1,.3,1) both;
+    0 24px 64px rgba(0,0,0,0.40),
+    0 0 0 1px rgba(255,255,255,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+  backdrop-filter:blur(24px) saturate(1.3);
+  -webkit-backdrop-filter:blur(24px) saturate(1.3);
+  animation:cardIn 0.6s cubic-bezier(.16,1,.3,1) both;
 }
 @keyframes cardIn{from{opacity:0;transform:translateY(32px) scale(.97)}to{opacity:1;transform:none}}
 
 /* ── HEADER ────────────────────────────────────────── */
-.card-header{text-align:center;margin-bottom:32px}
+.card-header{text-align:center;margin-bottom:24px}
 .gem-wrap{
   display:inline-flex;align-items:center;justify-content:center;
-  width:68px;height:68px;
+  width:56px;height:56px;
   background:linear-gradient(135deg,rgba(37,99,235,0.85),rgba(124,58,237,0.85));
-  border-radius:20px;margin-bottom:14px;
+  border-radius:16px;margin-bottom:10px;
   box-shadow:0 8px 32px rgba(37,99,235,0.5),inset 0 1px 0 rgba(255,255,255,0.2);
   border:1px solid rgba(255,255,255,0.2);
 }
@@ -90,22 +89,22 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
   letter-spacing:1px;color:rgba(255,255,255,0.85);text-transform:uppercase;
   margin-bottom:10px;
 }
-.card-header h1{font-size:1.85rem;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:6px}
-.card-header p{font-size:0.9rem;color:var(--text-glass-muted)}
+.card-header h1{font-size:1.55rem;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:4px}
+.card-header p{font-size:0.82rem;color:var(--text-glass-muted)}
 
 /* ── FIELDS ─────────────────────────────────────────── */
-.field{margin-bottom:20px}
+.field{margin-bottom:16px}
 .field label{display:block;font-size:0.86rem;font-weight:600;color:rgba(255,255,255,0.9);margin-bottom:8px}
 .field-wrap{position:relative;display:flex;align-items:center}
 .field-icon{position:absolute;left:14px;color:rgba(255,255,255,0.45);pointer-events:none;font-size:0.95rem;transition:color 0.2s}
 .field:focus-within .field-icon{color:rgba(255,255,255,0.9)}
 .field input{
-  width:100%;height:52px;
+  width:100%;height:46px;
   background: var(--glass-input);
-  border:1px solid rgba(255,255,255,0.18);
-  border-radius:14px;
-  padding:0 14px 0 44px;
-  font-size:0.95rem;font-family:'Inter',sans-serif;color:#fff;
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:12px;
+  padding:0 12px 0 40px;
+  font-size:0.9rem;font-family:'Inter',sans-serif;color:#fff;
   outline:none;
   transition:border-color 0.2s,box-shadow 0.2s,background 0.2s;
   -webkit-appearance:none;
@@ -126,7 +125,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 .pw-toggle:hover{color:#fff}
 
 /* ── REMEMBER / FORGOT ────────────────────────────── */
-.row-between{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.row-between{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
 .remember-wrap{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.86rem;color:var(--text-glass-muted);font-weight:500}
 .remember-wrap input[type=checkbox]{width:17px;height:17px;accent-color:#60a5fa;cursor:pointer;border-radius:4px;}
 .forgot-link{font-size:0.86rem;color:#93c5fd;font-weight:600;text-decoration:none;transition:color .2s}
@@ -142,7 +141,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 
 /* ── BUTTON ────────────────────────────────────────── */
 .btn-primary{
-  width:100%;height:52px;border:none;border-radius:14px;
+  width:100%;height:46px;border:none;border-radius:12px;
   background:linear-gradient(135deg,rgba(29,78,216,0.9),rgba(37,99,235,0.9));
   color:#fff;font-family:'Inter',sans-serif;font-size:0.97rem;font-weight:700;
   cursor:pointer;
@@ -222,6 +221,29 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 }
 @media(max-width:380px){
   .card{padding:24px 14px 22px}
+}
+@media(max-width:600px){
+  .layout{padding:12px 10px;min-height:100vh;display:flex;align-items:center;justify-content:center}
+  .card{padding:24px 18px 22px;border-radius:18px;max-width:100%}
+  .card-header{margin-bottom:18px}
+  .card-header h1{font-size:1.35rem}
+  .card-header p{font-size:0.76rem}
+  .gem-wrap{width:48px;height:48px;border-radius:14px}
+  .field{margin-bottom:14px}
+  .field label{font-size:0.78rem;margin-bottom:6px}
+  .field input{height:42px;font-size:16px!important;border-radius:10px;padding-left:36px}
+  .field-icon{left:12px;font-size:0.85rem}
+  .btn-primary{height:44px;font-size:0.88rem;border-radius:10px}
+  .row-between{margin-bottom:14px}
+  .remember-wrap{font-size:0.78rem}
+  .forgot-link{font-size:0.78rem}
+  .card-footer-text{font-size:0.82rem;margin-top:18px}
+}
+@media(max-width:380px){
+  .card{padding:20px 14px 18px;border-radius:16px}
+  .card-header h1{font-size:1.2rem}
+  .field input{height:40px}
+  .btn-primary{height:42px}
 }
 </style>
 </head>

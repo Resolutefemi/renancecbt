@@ -24,7 +24,7 @@
 html{height:100%}
 body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden}
 
-/* â”€â”€ BACKGROUND â€” single crisp bg.svg, no blur â”€â”€â”€â”€â”€â”€â”€ */
+/* —— BACKGROUND â€” single crisp bg.svg, no blur ——————— */
 .bg-static{
   position:fixed;inset:0;z-index:0;
   background-image:url('bg.svg');
@@ -46,38 +46,38 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 .scan{position:fixed;inset:0;z-index:2;pointer-events:none;
   background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,.012) 3px,rgba(255,255,255,.012) 4px)}
 
-/* â”€â”€ LAYOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* —— LAYOUT ——————————————————————————————————————————— */
 .layout{
   position:relative;z-index:10;
   display:flex;justify-content:center;align-items:center;
   min-height:100vh;padding:24px 16px;
 }
 
-/* â”€â”€ GLASS CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* —— GLASS CARD ——————————————————————————————————————— */
 .card{
-  width:100%;max-width:460px;
+  width:100%;max-width:420px;
   background: var(--glass-bg);
   border:1px solid var(--glass-border);
-  border-radius:28px;
-  padding:40px 36px 36px;
+  border-radius:22px;
+  padding:32px 28px 28px;
   box-shadow:
-    0 32px 80px rgba(0,0,0,0.45),
-    0 0 0 1px rgba(255,255,255,0.08),
-    inset 0 1px 0 rgba(255,255,255,0.18);
-  backdrop-filter:blur(28px) saturate(1.4);
-  -webkit-backdrop-filter:blur(28px) saturate(1.4);
-  animation:cardIn 0.7s cubic-bezier(.16,1,.3,1) both;
+    0 24px 64px rgba(0,0,0,0.40),
+    0 0 0 1px rgba(255,255,255,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+  backdrop-filter:blur(24px) saturate(1.3);
+  -webkit-backdrop-filter:blur(24px) saturate(1.3);
+  animation:cardIn 0.6s cubic-bezier(.16,1,.3,1) both;
   overflow:hidden;
 }
 @keyframes cardIn{from{opacity:0;transform:translateY(32px) scale(.97)}to{opacity:1;transform:none}}
 
-/* â”€â”€ HEADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-.card-header{text-align:center;margin-bottom:28px}
+/* —— HEADER ——————————————————————————————————————————— */
+.card-header{text-align:center;margin-bottom:20px}
 .gem-wrap{
   display:inline-flex;align-items:center;justify-content:center;
-  width:68px;height:68px;
+  width:56px;height:56px;
   background:linear-gradient(135deg,rgba(37,99,235,0.85),rgba(124,58,237,0.85));
-  border-radius:20px;margin-bottom:14px;
+  border-radius:16px;margin-bottom:10px;
   box-shadow:0 8px 32px rgba(37,99,235,0.5),inset 0 1px 0 rgba(255,255,255,0.2);
   border:1px solid rgba(255,255,255,0.2);
 }
@@ -88,32 +88,32 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
   letter-spacing:1px;color:rgba(255,255,255,0.85);text-transform:uppercase;
   margin-bottom:10px;
 }
-.card-header h1{font-size:1.85rem;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:6px}
-.card-header p{font-size:0.9rem;color:var(--text-glass-muted)}
+.card-header h1{font-size:1.55rem;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:4px}
+.card-header p{font-size:0.82rem;color:var(--text-glass-muted)}
 
-/* â”€â”€ STEP INDICATOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-.step-indicator { display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; }
+/* —— STEP INDICATOR ———————————————————————————————————— */
+.step-indicator { display: flex; justify-content: center; gap: 6px; margin-bottom: 18px; }
 .step-dot { width: 30px; height: 4px; background: rgba(255,255,255,0.15); border-radius: 4px; transition: background 0.4s; }
 .step-dot.active { background: #60a5fa; box-shadow: 0 0 8px rgba(96,165,250,0.5); }
 
-/* â”€â”€ FORM SLIDING TRACK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* —— FORM SLIDING TRACK ————————————————————————————————— */
 .form-window { overflow: hidden; width: 100%; position: relative; }
 .form-track { display: flex; width: 200%; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
 .step-pane { width: 50%; padding: 0 4px; flex-shrink: 0; }
 
-/* â”€â”€ FIELDS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-.field{margin-bottom:20px}
+/* —— FIELDS ———————————————————————————————————————————— */
+.field{margin-bottom:16px}
 .field label{display:block;font-size:0.86rem;font-weight:600;color:rgba(255,255,255,0.9);margin-bottom:8px}
 .field-wrap{position:relative;display:flex;align-items:center}
 .field-icon{position:absolute;left:14px;color:rgba(255,255,255,0.45);pointer-events:none;font-size:0.95rem;transition:color 0.2s}
 .field:focus-within .field-icon{color:rgba(255,255,255,0.9)}
 .field input{
-  width:100%;height:52px;
+  width:100%;height:46px;
   background: var(--glass-input);
-  border:1px solid rgba(255,255,255,0.18);
-  border-radius:14px;
-  padding:0 14px 0 44px;
-  font-size:0.95rem;font-family:'Inter',sans-serif;color:#fff;
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:12px;
+  padding:0 12px 0 40px;
+  font-size:0.9rem;font-family:'Inter',sans-serif;color:#fff;
   outline:none;
   transition:border-color 0.2s,box-shadow 0.2s,background 0.2s;
   -webkit-appearance:none;
@@ -134,14 +134,14 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 .pw-toggle{position:absolute;right:14px;color:rgba(255,255,255,0.45);cursor:pointer;padding:8px;transition:color .2s;z-index:2}
 .pw-toggle:hover{color:#fff}
 
-/* â”€â”€ PHONE NUMBER STYLING â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* —— PHONE NUMBER STYLING —————————————————————————————— */
 .pr{display:flex;gap:10px}
 .cw{flex-shrink:0;position:relative}
 .cw select{
-  width:105px;height:52px;
+  width:95px;height:46px;
   background: var(--glass-input);
-  border:1px solid rgba(255,255,255,0.18);
-  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:12px;
   color:#fff;font-family:'Inter',sans-serif;font-size:0.9rem;
   outline:none;cursor:pointer;
   -webkit-appearance:none;
@@ -159,15 +159,15 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
   color:#fff;
 }
 
-/* â”€â”€ SELECT / DROPDOWNS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* —— SELECT / DROPDOWNS ————————————————————————————————— */
 .sw{position:relative;display:flex;align-items:center}
 .sw select{
-  width:100%;height:52px;
+  width:100%;height:46px;
   background: var(--glass-input);
-  border:1px solid rgba(255,255,255,0.18);
-  border-radius:14px;
-  padding:0 44px 0 44px;
-  font-size:0.95rem;font-family:'Inter',sans-serif;color:#fff;
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:12px;
+  padding:0 40px 0 40px;
+  font-size:0.9rem;font-family:'Inter',sans-serif;color:#fff;
   outline:none;
   transition:border-color 0.2s,box-shadow 0.2s,background 0.2s;
   -webkit-appearance:none;
@@ -189,17 +189,17 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 }
 .sw:focus-within .field-icon{color:rgba(255,255,255,0.9)}
 
-/* â”€â”€ STRENGTH INDICATOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* —— STRENGTH INDICATOR ———————————————————————————————— */
 .str{display:flex;gap:4px;margin-top:8px}
 .sg{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,0.06);transition:background 0.4s,box-shadow 0.4s}
 
-/* â”€â”€ ERRORS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* —— ERRORS ———————————————————————————————————————————— */
 .err{font-size:0.8rem;color:#fca5a5;margin-top:6px;display:none;}
 
-/* â”€â”€ BUTTONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* —— BUTTONS ——————————————————————————————————————————— */
 .btn-row { display: flex; gap: 10px; margin-top: 24px; z-index: 10; position: relative; }
 .btn-primary{
-  flex:1;height:52px;border:none;border-radius:14px;
+  flex:1;height:46px;border:none;border-radius:12px;
   background:linear-gradient(135deg,rgba(29,78,216,0.9),rgba(37,99,235,0.9));
   color:#fff;font-family:'Inter',sans-serif;font-size:0.97rem;font-weight:700;
   cursor:pointer;
@@ -216,7 +216,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 .btn-primary:disabled{opacity:.6;cursor:not-allowed;transform:none}
 
 .btn-secondary{
-  width:52px;height:52px;border:none;border-radius:14px;
+  width:46px;height:46px;border:none;border-radius:12px;
   background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);
   color:#fff;font-family:'Inter',sans-serif;font-size:1rem;
   cursor:pointer;
@@ -228,7 +228,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 }
 .btn-secondary:active{transform:scale(0.97)}
 
-/* â”€â”€ FOOTER LINK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* —— FOOTER LINK ——————————————————————————————————————— */
 .lr{text-align:center;margin-top:24px;font-size:0.88rem;color:var(--text-glass-muted)}
 .lr a{color:#93c5fd;font-weight:700;text-decoration:none;transition:color .2s}
 .lr a:hover{color:#fff}
@@ -236,7 +236,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 .card-divider{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);text-align:center}
 .card-divider p{font-size:0.72rem;font-weight:700;color:rgba(255,255,255,0.45);letter-spacing:1px;text-transform:uppercase}
 
-/* â”€â”€ TOAST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* —— TOAST ————————————————————————————————————————————— */
 #toast{
   position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);
   background:rgba(17,24,39,0.96);border:1px solid rgba(255,255,255,.1);
@@ -249,17 +249,35 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
 #toast.ok{border-color:rgba(16,185,129,.4);color:#34d399}
 #toast.bad{border-color:rgba(239,68,68,.4);color:#f87171}
 
-/* â”€â”€ RESPONSIVE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* —— RESPONSIVE ——————————————————————————————————————— */
 @media(max-width:600px){
-  .layout{padding:16px 12px}
-  .card{padding:30px 20px 26px;border-radius:22px;max-width:100%}
-  .card-header h1{font-size:1.55rem}
-  .gem-wrap{width:56px;height:56px;border-radius:15px}
-  .field input, .sw select, .cw select{font-size:16px!important;height:48px}
-  .btn-primary, .btn-secondary{height:48px;font-size:0.9rem}
+  .layout{padding:12px 10px;min-height:100vh;display:flex;align-items:center;justify-content:center}
+  .card{padding:24px 18px 22px;border-radius:18px;max-width:100%}
+  .card-header{margin-bottom:16px}
+  .card-header h1{font-size:1.35rem}
+  .card-header p{font-size:0.76rem}
+  .gem-wrap{width:48px;height:48px;border-radius:14px}
+  .step-indicator{margin-bottom:14px}
+  .step-dot{width:24px;height:3px}
+  .field{margin-bottom:14px}
+  .field label{font-size:0.78rem;margin-bottom:6px}
+  .field input{height:42px;font-size:16px!important;border-radius:10px;padding-left:36px}
+  .field-icon{left:12px;font-size:0.85rem}
+  .cw select{width:85px;height:42px;font-size:0.85rem;border-radius:10px}
+  .sw select{height:42px;font-size:16px!important;border-radius:10px;padding-left:36px;padding-right:36px}
+  .btn-primary{height:44px;font-size:0.88rem;border-radius:10px}
+  .btn-secondary{width:44px;height:44px;border-radius:10px}
+  .btn-row{margin-top:18px;gap:8px}
+  .lr{font-size:0.82rem;margin-top:18px}
 }
 @media(max-width:380px){
-  .card{padding:24px 14px 22px}
+  .card{padding:20px 14px 18px;border-radius:16px}
+  .card-header h1{font-size:1.2rem}
+  .field input{height:40px}
+  .cw select{width:78px;height:40px}
+  .sw select{height:40px}
+  .btn-primary{height:42px}
+  .btn-secondary{width:42px;height:42px}
 }
 </style>
 </head>
@@ -340,7 +358,7 @@ body{min-height:100%;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden
               <div class="pr">
                 <div class="cw">
                   <select id="code" tabindex="-1">
-                    <option value="+234">+234 ðŸ‡³ðŸ‡¬</option>
+                    <option value="+234">+234 🇳🇬</option>
                   </select>
                 </div>
                 <div class="field-wrap" style="flex:1">
