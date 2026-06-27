@@ -1520,7 +1520,7 @@
 
         function logout() { db.auth.signOut().then(() => { window.location.href = 'index.html'; }); }
 
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             renderCourses();
             const isDark = localStorage.getItem('theme') === 'dark';
             if (isDark) document.body.classList.add('dark-mode');
