@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Renance CBT">
 <title>Renance — Admin Dashboard</title>
 <link rel="shortcut icon" href="logo.png" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -103,7 +108,7 @@ const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6Ik
 const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ═══ REPLACE THIS WITH YOUR SUPABASE USER ID ═══
-const ADMIN_USER_ID = 'YOUR_USER_ID_HERE';
+const ADMIN_USER_ID = '81f0f21c-62d2-404a-90e8-3f9f89b4faf4';
 
 async function checkAdmin() {
   try {
@@ -112,7 +117,7 @@ async function checkAdmin() {
       document.getElementById('accessDenied').style.display = 'block';
       return false;
     }
-    if (user.id === ADMIN_USER_ID || ADMIN_USER_ID === 'YOUR_USER_ID_HERE') {
+    if (user.id === ADMIN_USER_ID || ADMIN_USER_ID === '81f0f21c-62d2-404a-90e8-3f9f89b4faf4') {
       document.getElementById('mainContent').style.display = 'block';
       return true;
     }
@@ -211,5 +216,76 @@ checkAdmin().then(isAdmin => {
   if (isAdmin) { loadQuizzes(); loadPDFs(); }
 });
 </script>
+
+<!-- PWA Install Prompt -->
+<div id="pwaInstallBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e2e8f0;box-shadow:0 -4px 20px rgba(0,0,0,0.1);padding:14px 16px;z-index:99998;transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);box-sizing:border-box">
+  <div style="max-width:480px;margin:0 auto;display:flex;align-items:center;gap:12px">
+    <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#2563eb,#1d4ed8);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <img src="logo.png" style="width:28px;height:28px;border-radius:8px" alt="Renance CBT">
+    </div>
+    <div style="flex:1;min-width:0">
+      <strong style="font-size:0.88rem;display:block;color:#1e293b;font-family:'Inter',sans-serif">Install Renance CBT</strong>
+      <span style="font-size:0.76rem;color:#64748b;font-family:'Inter',sans-serif">Add to home screen for quick access</span>
+    </div>
+    <button id="pwaInstallBtn" style="background:#2563eb;color:#fff;border:none;padding:9px 18px;border-radius:8px;font-weight:700;font-size:0.82rem;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:background 0.2s" onmouseover="this.style.background='#1d4ed8'" onmouseout="this.style.background='#2563eb'">Install</button>
+    <button id="pwaDismissBtn" style="background:none;border:none;color:#94a3b8;font-size:1.2rem;cursor:pointer;padding:4px;flex-shrink:0" onclick="dismissPWA()">×</button>
+  </div>
+</div>
+
+<script>
+// PWA Install Logic
+let deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  
+  // Check if already dismissed
+  if (sessionStorage.getItem('pwaDismissed') === 'true') return;
+  
+  // Show banner after 3 seconds
+  setTimeout(() => {
+    const banner = document.getElementById('pwaInstallBanner');
+    if (banner) {
+      banner.style.display = 'block';
+      requestAnimationFrame(() => {
+        banner.style.transform = 'translateY(0)';
+      });
+    }
+  }, 3000);
+});
+
+function dismissPWA() {
+  const banner = document.getElementById('pwaInstallBanner');
+  if (banner) {
+    banner.style.transform = 'translateY(100%)';
+    setTimeout(() => { banner.style.display = 'none'; }, 400);
+  }
+  sessionStorage.setItem('pwaDismissed', 'true');
+}
+
+document.addEventListener('click', function(e) {
+  if (e.target && e.target.id === 'pwaInstallBtn') {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((result) => {
+        if (result.outcome === 'accepted') {
+          console.log('PWA installed');
+        }
+        deferredPrompt = null;
+        dismissPWA();
+      });
+    }
+  }
+});
+
+// Register Service Worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+</script>
+
 </body>
 </html>

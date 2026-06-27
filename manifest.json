@@ -1,0 +1,44 @@
+{
+  "name": "Renance CBT — FUTA Exam Practice",
+  "short_name": "Renance CBT",
+  "description": "Practice past questions, take quizzes, track your progress, and ace your FUTA exams.",
+  "start_url": "/dashboard.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f1f5f9",
+  "theme_color": "#2563eb",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "url": "/dashboard.html",
+      "icons": [{"src": "logo.png", "sizes": "192x192"}]
+    },
+    {
+      "name": "Live Quizzes",
+      "url": "/live-quizzes.html",
+      "icons": [{"src": "logo.png", "sizes": "192x192"}]
+    },
+    {
+      "name": "Leaderboard",
+      "url": "/leaderboard.html",
+      "icons": [{"src": "logo.png", "sizes": "192x192"}]
+    }
+  ]
+}
