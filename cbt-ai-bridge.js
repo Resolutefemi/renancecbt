@@ -25,7 +25,8 @@ const COURSE_TOPICS = {
   'FBIT 126': 'Introduction to Business',
   'MTS 102': 'Elementary Mathematics II',
   'BIO 104': 'Biology Practical II',
-  'CHE 104': 'Practical Chemistry II'
+  'CHE 104': 'Practical Chemistry II',
+  'GNS 106': 'Philosophy and Logic'
 };
 
 function getAIConfigForCourse(courseCode) {

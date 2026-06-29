@@ -1,0 +1,3297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GNS 106 CBT Portal</title>
+    <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../env-loader.js"></script>
+    <script src="../cbt-ai-bridge.js"></script>
+
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --bg: #faf5ff;
+            --card-bg: #ffffff;
+            --text: #2e1065;
+            --text-muted: #7c3aed;
+            --success: #10b981;
+            --danger: #ef4444;
+            --accent: #f59e0b;
+            --border: rgba(124,58,237,0.15);
+            --share-gradient: linear-gradient(135deg, #2e1065 0%, #7c3aed 55%, #a78bfa 100%);
+        }
+        .dark-mode {
+            --bg: #1e1b4b;
+            --card-bg: #2e1065;
+            --text: #faf5ff;
+            --text-muted: #c084fc;
+            --border: rgba(192,132,252,0.12);
+        }
+
+        * { box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: background 0.3s, color 0.3s; min-height: 100vh; }
+
+        nav {
+            background: var(--card-bg); padding: 0.9rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08);
+            position: sticky; top: 0; z-index: 100; gap: 10px; flex-wrap: wrap;
+        }
+        .nav-brand { font-weight: 700; font-size: 1.05rem; color: var(--primary); }
+
+        main { padding: 2rem 5%; max-width: 960px; margin: 0 auto; }
+
+        #resume-banner {
+            display: none; background: var(--card-bg);
+            border: 1.5px solid var(--success); border-radius: 14px;
+            padding: 1rem 1.2rem; margin-bottom: 1.2rem;
+            box-shadow: 0 2px 10px rgba(124,58,237,0.1);
+        }
+
+        .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.8rem; margin-bottom: 1.5rem; }
+        .stat-card { background: var(--card-bg); border-radius: 12px; padding: 1rem; text-align: center; border: 1.5px solid var(--border); box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+        .stat-card .stat-val { font-size: 1.6rem; font-weight: 800; color: var(--primary); }
+        .stat-card .stat-lbl { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
+
+        #dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.1rem; }
+        .box {
+            background: var(--card-bg); padding: 1.5rem 1rem; border-radius: 14px;
+            text-align: center; cursor: pointer;
+            transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+            border: 1.5px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .box:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(124,58,237,0.12); }
+        .box h3 { margin: 10px 0 4px; font-size: 1rem; line-height: 1.4; }
+        .box p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
+        .box-random { background: linear-gradient(135deg, #7c3aed, #a78bfa) !important; color: white !important; border: none !important; }
+        .box-random p { color: rgba(255,255,255,0.8) !important; }
+
+        #setup-screen { text-align: center; background: var(--card-bg); padding: 3rem 2rem; border-radius: 16px; border: 1.5px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        .setup-group { margin: 1.5rem auto; text-align: left; max-width: 360px; }
+        .setup-group label { font-weight: 600; font-size: 0.88rem; color: var(--text); display: block; margin-bottom: 7px; }
+        .setup-input { width: 100%; padding: 11px 14px; border: 2px solid #ddd6fe; border-radius: 9px; font-size: 0.95rem; background: var(--bg); color: var(--text); outline: none; transition: border-color 0.2s; }
+        .setup-input:focus { border-color: var(--primary); }
+        .checkbox-group { display: flex; flex-direction: column; gap: 12px; margin-top: 1rem; background: rgba(124,58,237,0.02); padding: 14px; border-radius: 10px; border: 1px solid #ddd6fe; }
+        .custom-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; color: var(--text); font-weight: 500; user-select: none; }
+        .custom-checkbox input { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; }
+
+        .quiz-header { display: flex; justify-content: space-between; align-items: center; font-weight: 700; margin-bottom: 15px; padding: 0 4px; flex-wrap: wrap; gap: 10px; }
+        .q-counter { font-size: 1rem; color: var(--text); }
+        .btn-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        #timer { color: var(--danger); background: rgba(239,68,68,0.08); padding: 6px 14px; border-radius: 20px; font-size: 0.95rem; font-weight: 700; }
+
+        .question-card { background: var(--card-bg); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1.5px solid var(--border); }
+        #question-text { line-height: 1.7; margin-bottom: 1.5rem; font-size: 1.05rem; word-wrap: break-word; }
+
+        .option-btn {
+            display: block; width: 100%; padding: 0.95rem 1.1rem;
+            margin: 0.65rem 0; border: 2px solid var(--border); border-radius: 10px;
+            background: var(--card-bg); color: var(--text); text-align: left;
+            cursor: pointer; font-size: 0.97rem; transition: background 0.15s, border-color 0.15s; line-height: 1.5;
+        }
+        .option-btn:not(:disabled):hover { background: var(--bg); border-color: var(--primary); }
+        .option-btn.selected { background: var(--bg) !important; border-color: var(--primary) !important; color: var(--text) !important; font-weight: 600; }
+        .option-btn.correct  { background: #dcfce7 !important; border-color: #10b981 !important; color: #065f46 !important; font-weight: 700; }
+        .option-btn.wrong    { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
+
+        .feedback-msg { margin-top: 1.2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600; animation: fadeIn 0.3s; line-height: 1.6; }
+        .explanation-box { margin-top: 1rem; padding: 1rem; border-radius: 10px; background: rgba(0,0,0,0.02); border-left: 4px solid var(--primary); font-size: 0.9rem; line-height: 1.6; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        .controls { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 1.8rem; }
+        .btn { padding: 0.8rem 1.6rem; border: none; border-radius: 9px; cursor: pointer; font-weight: 700; background: var(--primary); color: white; transition: opacity 0.2s, transform 0.2s; font-size: 0.95rem; }
+        .btn:hover { opacity: 0.88; transform: translateY(-2px); }
+        .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+        .result-modal-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.78);
+            backdrop-filter: blur(8px); z-index: 9999;
+            display: flex; justify-content: center; align-items: center; padding: 20px;
+        }
+        .result-modal-content {
+            background: var(--card-bg); padding: 40px 28px; border-radius: 24px;
+            width: 100%; max-width: 420px; text-align: center; color: var(--text);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+            animation: bounceIn 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes bounceIn {
+            0%   { opacity: 0; transform: scale(0.78) translateY(30px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .result-icon { font-size: 3.6rem; margin-bottom: 8px; display: block; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .score-display { background: rgba(124,58,237,0.06); border: 2px dashed rgba(124,58,237,0.25); border-radius: 18px; padding: 18px; margin: 18px 0; }
+        .score-big { font-size: 3.5rem; font-weight: 900; color: var(--primary); line-height: 1; }
+        .stats-mini { display: flex; justify-content: center; gap: 24px; margin: 10px 0 4px; }
+        .stats-mini .sm { text-align: center; }
+        .stats-mini .sm .sv { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
+        .stats-mini .sm .sl { font-size: 0.72rem; color: var(--text-muted); }
+        #save-status { font-size: 0.78rem; color: var(--text-muted); margin: 8px 0 14px; }
+        .result-actions { display: flex; flex-direction: column; gap: 11px; }
+        .btn-action { width: 100%; padding: 13px; border: none; border-radius: 12px; font-size: 0.97rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s; display: flex; align-items: center; justify-content: center; gap: 9px; }
+        .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-share  { background: var(--share-gradient); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3); }
+        .btn-review { background: rgba(124,58,237,0.08); color: var(--primary); border: 1.5px solid rgba(124,58,237,0.2); }
+        .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
+
+        @media (max-width: 600px) {
+            #dashboard { grid-template-columns: repeat(2, 1fr); }
+            .question-card { padding: 1.3rem; }
+            .result-modal-content { padding: 28px 18px; }
+            .score-big { font-size: 2.8rem; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div style="display:flex; align-items:center; gap:12px;">
+        <a href="../dashboard.html" style="color:var(--text); text-decoration:none; font-size:1.1rem; display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--border);"><i class="fa-solid fa-arrow-left"></i></a>
+        <div class="nav-brand">
+            <div><i class="fa-solid fa-lightbulb"></i> GNS 106 Practice Portal</div>
+            <div style="font-size:0.8rem; font-weight:600; color:var(--text-muted); letter-spacing:0.3px;">by Resolute Femi</div>
+        </div>
+    </div>
+    
+</nav>
+
+<main>
+    <div id="dashboard-wrap">
+        <div id="resume-banner"></div>
+        <div id="stats-bar" class="stats-bar" style="display:none;"></div>
+        <div id="dashboard"></div>
+    </div>
+
+    <div id="setup-screen" style="display:none;">
+        <h2 id="setup-title" style="margin-bottom:1.8rem; color:var(--primary); font-size:1.3rem;"></h2>
+
+        <div class="setup-group">
+            <label>Select Mode:</label>
+            <select id="quiz-mode" class="setup-input">
+                <option value="practice">Practice Mode (Instant Answers)</option>
+                <option value="exam">Exam Mode (Answers at End)</option>
+            </select>
+        </div>
+
+        <div id="random-settings">
+            <div class="setup-group">
+                <label>Question Quantity:</label>
+                <input type="number" id="q-count" value="50" class="setup-input" min="1" max="999">
+            </div>
+        </div>
+
+        <div class="setup-group">
+            <label>Time Limit (Minutes):</label>
+            <input type="number" id="t-limit" value="30" class="setup-input" min="1">
+        </div>
+
+        <div class="setup-group checkbox-group">
+            <label class="custom-checkbox">
+                <input type="checkbox" id="shuffle-questions" checked> Shuffle Questions
+            </label>
+            <label class="custom-checkbox">
+                <input type="checkbox" id="shuffle-options" checked> Shuffle Options (A, B, C, D)
+            </label>
+        </div>
+
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
+            <button class="btn" style="background:#64748b;" onclick="goHome()">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </button>
+            <button class="btn" onclick="startExam()" style="min-width:160px;">
+                Start Now <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="quiz-interface" style="display:none;">
+        <div class="quiz-header">
+            <span class="q-counter">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
+            <div class="btn-group">
+                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding:8px 15px; font-size:0.87rem;" onclick="showResults()">
+                    <i class="fa-solid fa-paper-plane"></i> Submit
+                </button>
+                <button class="btn" id="finish-review-btn" style="display:none; padding:8px 15px; font-size:0.87rem;" onclick="goHome()">
+                    <i class="fa-solid fa-house"></i> Exit Review
+                </button>
+                <span id="timer">30:00</span>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <h3 id="question-text"></h3>
+            <div id="options-box"></div>
+            <div id="feedback-area"></div>
+        </div>
+
+        <div class="controls">
+            <button class="btn" style="background:#64748b;" onclick="move(-1)">
+                <i class="fa-solid fa-arrow-left"></i> Previous
+            </button>
+            <button class="btn" id="next-btn" onclick="move(1)">
+                Next <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</main>
+
+<div id="quizResultModal" class="result-modal-overlay" style="display:none;">
+    <div class="result-modal-content">
+        <span class="result-icon" id="resultIcon">🏆</span>
+        <h2 id="resultGreeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
+
+        <div class="score-display">
+            <div class="score-big"><span id="finalScoreText">0</span>%</div>
+            <div class="stats-mini">
+                <div class="sm"><div class="sv" id="modalCorrect">0</div><div class="sl">Correct</div></div>
+                <div class="sm"><div class="sv" id="modalTotal">0</div><div class="sl">Total</div></div>
+                <div class="sm"><div class="sv" id="modalAvg">—</div><div class="sl">Your Avg</div></div>
+            </div>
+        </div>
+
+        <p id="resultFeedback" style="font-size:0.9rem; color:var(--text-muted); margin:0;"></p>
+        <p id="save-status"></p>
+
+        
+                    <div id="ai-weak-areas" style="margin: 15px 0; padding: 12px; background: rgba(124, 58, 237, 0.06); border-left: 4px solid #7c3aed; border-radius: 8px; text-align: left; display: none;">
+                        <strong style="font-size: 0.82rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; margin-bottom: 5px;">
+                            <i class="fa-solid fa-brain"></i> AI Weak Areas Analysis
+                        </strong>
+                        <div id="ai-weak-areas-text" style="font-size: 0.8rem; margin: 0; line-height: 1.4; color: var(--text);">
+                            Analyzing your performance...
+                        </div>
+                    </div>
+
+                        <div class="result-actions">
+
+                    <button class="btn-action" id="weakAreasBtn" onclick="analyzeWeakAreasWithAI()" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
+                        <i class="fa-solid fa-brain"></i> Analyze My Weak Areas
+                    </button>
+
+            <button class="btn-action" id="explainBtn" onclick="askRenanceAI()" style="background: linear-gradient(135deg, #7c3aed, #6d28d9); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
+                <i class="fa-solid fa-robot"></i> Explain Missed Questions
+            </button>
+            <button class="btn-action btn-share" onclick="shareQuizResult()">
+                <i class="fa-solid fa-share-nodes"></i> Share Score
+            </button>
+            <button class="btn-action btn-review" id="modalReviewBtn" onclick="enterReviewMode()">
+                <i class="fa-solid fa-magnifying-glass"></i> Review Answers
+            </button>
+            <button class="btn-action btn-home" onclick="goHome()">
+                <i class="fa-solid fa-house"></i> Dashboard
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
+    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+    const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const COURSE_CODE = 'GNS 106';
+    const STORAGE_KEY = 'saved_gns106_exam';
+
+    async function sendHeartbeat() {
+        try {
+            const { data: { user } } = await db.auth.getUser();
+            if (!user) return;
+            await db.from('students').update({ last_seen: new Date().toISOString() }).eq('id', user.id);
+        } catch (e) {  }
+    }
+    sendHeartbeat();
+    setInterval(sendHeartbeat, 2 * 60 * 1000);
+
+            const MASTER_POOL = [
+        {
+                "id": 1,
+                "topic": "Philosophy",
+                "question": "Aristotle holds that understanding philosophy entails mastering ___",
+                "options": [
+                        "God",
+                        "atheism",
+                        "theology",
+                        "other sciences"
+                ],
+                "answer": "other sciences",
+                "explanation": "The correct answer is: other sciences."
+        },
+        {
+                "id": 2,
+                "topic": "Philosophy",
+                "question": "The Greek word for wisdom is ___",
+                "options": [
+                        "philo",
+                        "alethia",
+                        "sophia",
+                        "philosophy"
+                ],
+                "answer": "sophia",
+                "explanation": "The correct answer is: sophia."
+        },
+        {
+                "id": 3,
+                "topic": "Philosophy",
+                "question": "The natural sciences broke away from philosophy in ___",
+                "options": [
+                        "17th century",
+                        "20th century",
+                        "19th century",
+                        "18th century"
+                ],
+                "answer": "18th century",
+                "explanation": "The correct answer is: 18th century."
+        },
+        {
+                "id": 4,
+                "topic": "Philosophy",
+                "question": "Thales identified ___ as the primary substance of the universe",
+                "options": [
+                        "sand",
+                        "cold",
+                        "ashes",
+                        "water"
+                ],
+                "answer": "water",
+                "explanation": "The correct answer is: water."
+        },
+        {
+                "id": 5,
+                "topic": "Philosophy",
+                "question": "___ regrded fire as the primary substance of all reality",
+                "options": [
+                        "Anaximenes",
+                        "Heraclitus",
+                        "Anaximander",
+                        "Locke"
+                ],
+                "answer": "Heraclitus",
+                "explanation": "The correct answer is: Heraclitus."
+        },
+        {
+                "id": 6,
+                "topic": "Philosophy",
+                "question": "Anaximenes was the first to explain ___",
+                "options": [
+                        "eclipse of the sun",
+                        "the regenerative power of music",
+                        "cause of rainbow",
+                        "that man evolved from fishes"
+                ],
+                "answer": "cause of rainbow",
+                "explanation": "The correct answer is: cause of rainbow."
+        },
+        {
+                "id": 7,
+                "topic": "Philosophy",
+                "question": "The first standard comment about the nature and definition of philosophy was made by ___",
+                "options": [
+                        "Plato",
+                        "Aristotle",
+                        "Isaac Newton",
+                        "Pythagoras"
+                ],
+                "answer": "Aristotle",
+                "explanation": "The correct answer is: Aristotle."
+        },
+        {
+                "id": 8,
+                "topic": "Philosophy",
+                "question": "Logos, the Greek word from which Logic derived does not mean ___",
+                "options": [
+                        "study",
+                        "discourse",
+                        "life",
+                        "word"
+                ],
+                "answer": "word",
+                "explanation": "The correct answer is: word."
+        },
+        {
+                "id": 9,
+                "topic": "Philosophy",
+                "question": "Which of these was not among the pre-colonial regional capitals",
+                "options": [
+                        "Lagos",
+                        "Kaduna",
+                        "Ibadan",
+                        "Enugu"
+                ],
+                "answer": "Ibadan",
+                "explanation": "The correct answer is: Ibadan."
+        },
+        {
+                "id": 10,
+                "topic": "Philosophy",
+                "question": "Every philosopher define philosophy in his or her own way because philosophy is ___",
+                "options": [
+                        "old discipline",
+                        "hard",
+                        "everyday wisdom",
+                        "complex"
+                ],
+                "answer": "complex",
+                "explanation": "The correct answer is: complex."
+        },
+        {
+                "id": 11,
+                "topic": "Philosophy",
+                "question": "The hotel manager with a degree in food and nutrition is heard refering to herself as a philosopher Her doing so is regarded as ___",
+                "options": [
+                        "false identification",
+                        "impersonation",
+                        "double assumption of identity",
+                        "layman use of the term"
+                ],
+                "answer": "layman use of the term",
+                "explanation": "The correct answer is: layman use of the term."
+        },
+        {
+                "id": 12,
+                "topic": "Philosophy",
+                "question": "Philosophy is the only discipline that is ___ in nature",
+                "options": [
+                        "scientific",
+                        "universal",
+                        "old FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE",
+                        "atheistic"
+                ],
+                "answer": "universal",
+                "explanation": "The correct answer is: universal."
+        },
+        {
+                "id": 13,
+                "topic": "Philosophy",
+                "question": "___ writings were regarded as Encyclopedia of philosophy by the medieval men",
+                "options": [
+                        "Pythagoras",
+                        "Augustine",
+                        "Plato",
+                        "Aristotle"
+                ],
+                "answer": "Aristotle",
+                "explanation": "The correct answer is: Aristotle."
+        },
+        {
+                "id": 14,
+                "topic": "Philosophy",
+                "question": "___ had his philosophical training in Africa",
+                "options": [
+                        "Pythagoras",
+                        "Plato",
+                        "Confucius",
+                        "Augustine"
+                ],
+                "answer": "Pythagoras",
+                "explanation": "The correct answer is: Pythagoras."
+        },
+        {
+                "id": 15,
+                "topic": "Philosophy",
+                "question": "“Honesty is my best policy” is an expression of ____",
+                "options": [
+                        "Manifestation of one’s righteousness",
+                        "One’s philosophy of life",
+                        "One’s religious belief",
+                        "Declaration of one’s honesty"
+                ],
+                "answer": "Manifestation of one’s righteousness",
+                "explanation": "The correct answer is: Manifestation of one’s righteousness."
+        },
+        {
+                "id": 16,
+                "topic": "Philosophy",
+                "question": "__ is regarded as a group of propositions whose function is to make a claim about something",
+                "options": [
+                        "dissertation",
+                        "law FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE",
+                        "philosophy",
+                        "argument"
+                ],
+                "answer": "argument",
+                "explanation": "The correct answer is: argument."
+        },
+        {
+                "id": 17,
+                "topic": "Philosophy",
+                "question": "In dividing Nigeria into Eastern and Western regions __ was used as the boundary",
+                "options": [
+                        "Ikom River",
+                        "Ndiukwuenu Forest",
+                        "River Niger",
+                        "River Benue"
+                ],
+                "answer": "River Niger",
+                "explanation": "The correct answer is: River Niger."
+        },
+        {
+                "id": 18,
+                "topic": "Philosophy",
+                "question": "Western Philosophy originated in___",
+                "options": [
+                        "Athens",
+                        "Rome",
+                        "Miletus",
+                        "Sicily"
+                ],
+                "answer": "Rome",
+                "explanation": "The correct answer is: Rome."
+        },
+        {
+                "id": 19,
+                "topic": "Philosophy",
+                "question": "___ is not among the sources of philosophy",
+                "options": [
+                        "desire for knowledge for its sake",
+                        "sense of wonder",
+                        "idleness and poverty",
+                        "curiousity"
+                ],
+                "answer": "idleness and poverty",
+                "explanation": "The correct answer is: idleness and poverty."
+        },
+        {
+                "id": 20,
+                "topic": "Philosophy",
+                "question": "Thales predicted ___ in 585 B C",
+                "options": [
+                        "C",
+                        "Global famine",
+                        "death of King Herod FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE",
+                        "Coming of Jesus"
+                ],
+                "answer": "Coming of Jesus",
+                "explanation": "The correct answer is: Coming of Jesus."
+        },
+        {
+                "id": 21,
+                "topic": "Philosophy",
+                "question": "___ is not a source of knowledge",
+                "options": [
+                        "reason",
+                        "faith",
+                        "intuition",
+                        "gossip"
+                ],
+                "answer": "gossip",
+                "explanation": "The correct answer is: gossip."
+        },
+        {
+                "id": 22,
+                "topic": "Philosophy",
+                "question": "___ branch of philosophy is regrded as theory of knowledge",
+                "options": [
+                        "physicalism",
+                        "metaphysics",
+                        "epistemology",
+                        "logic"
+                ],
+                "answer": "epistemology",
+                "explanation": "The correct answer is: epistemology."
+        },
+        {
+                "id": 23,
+                "topic": "Philosophy",
+                "question": "___ and ___ qualify a statement as logical",
+                "options": [
+                        "truth and observability",
+                        "contradiction and inferability",
+                        "deniability ad assertability",
+                        "conditionality and proportionality"
+                ],
+                "answer": "truth and observability",
+                "explanation": "The correct answer is: truth and observability."
+        },
+        {
+                "id": 24,
+                "topic": "Philosophy",
+                "question": "___ is the logical process exhibited in this statement: All FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE lecturers are homosexuals",
+                "options": [
+                        "judgement",
+                        "simple apprehension",
+                        "reasoning",
+                        "intuition"
+                ],
+                "answer": "judgement",
+                "explanation": "The correct answer is: judgement."
+        },
+        {
+                "id": 25,
+                "topic": "Philosophy",
+                "question": "__ is not among the three divisions of formal logic",
+                "options": [
+                        "logic of propositions",
+                        "logic of terms",
+                        "logic of assumptions",
+                        "logic of relations"
+                ],
+                "answer": "logic of assumptions",
+                "explanation": "The correct answer is: logic of assumptions."
+        },
+        {
+                "id": 26,
+                "topic": "Philosophy",
+                "question": "In logic, another name for statement is ___",
+                "options": [
+                        "truth",
+                        "proposition",
+                        "conceptual analysis",
+                        "fact of matter"
+                ],
+                "answer": "proposition",
+                "explanation": "The correct answer is: proposition."
+        },
+        {
+                "id": 27,
+                "topic": "Philosophy",
+                "question": "Deny the following statement: “I am a thief”__",
+                "options": [
+                        "It is my father that was once a thief",
+                        "There is no single thief in my family",
+                        "It is you that is a thief",
+                        "No, I am not a thief"
+                ],
+                "answer": "No, I am not a thief",
+                "explanation": "The correct answer is: No, I am not a thief."
+        },
+        {
+                "id": 28,
+                "topic": "Philosophy",
+                "question": "The saying that unexamined life is not worth living is attributable to ___",
+                "options": [
+                        "Aristotle",
+                        "Kukah",
+                        "Manford",
+                        "Socrates"
+                ],
+                "answer": "Socrates",
+                "explanation": "The correct answer is: Socrates."
+        },
+        {
+                "id": 29,
+                "topic": "Philosophy",
+                "question": "Another name for ethics is called ____",
+                "options": [
+                        "moral philosophy",
+                        "empiricism",
+                        "characater",
+                        "materialism"
+                ],
+                "answer": "moral philosophy",
+                "explanation": "The correct answer is: moral philosophy."
+        },
+        {
+                "id": 30,
+                "topic": "Philosophy",
+                "question": "In standard argument conclusion is infered from__",
+                "options": [
+                        "debate",
+                        "formality",
+                        "premises",
+                        "symbolism"
+                ],
+                "answer": "premises",
+                "explanation": "The correct answer is: premises."
+        },
+        {
+                "id": 31,
+                "topic": "Philosophy",
+                "question": "___ is regrded as the study of first principles",
+                "options": [
+                        "politics",
+                        "metaphysics",
+                        "metalogical deontic logics",
+                        "ethics"
+                ],
+                "answer": "metaphysics",
+                "explanation": "The correct answer is: metaphysics."
+        },
+        {
+                "id": 32,
+                "topic": "Philosophy",
+                "question": "Aristotle named his book that deals with nature ___",
+                "options": [
+                        "Physics",
+                        "De Anima",
+                        "versmeneutic FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE",
+                        "Oncology"
+                ],
+                "answer": "Physics",
+                "explanation": "The correct answer is: Physics."
+        },
+        {
+                "id": 33,
+                "topic": "Philosophy",
+                "question": "Arguments are either deductive or ___",
+                "options": [
+                        "imperative",
+                        "argumentative",
+                        "inductive",
+                        "doxastic"
+                ],
+                "answer": "inductive",
+                "explanation": "The correct answer is: inductive."
+        },
+        {
+                "id": 34,
+                "topic": "Philosophy",
+                "question": "_____ is the concern of ethics",
+                "options": [
+                        "what ought to be",
+                        "what is",
+                        "what was",
+                        "what will be"
+                ],
+                "answer": "what ought to be",
+                "explanation": "The correct answer is: what ought to be."
+        },
+        {
+                "id": 35,
+                "topic": "Philosophy",
+                "question": "Deductive argument move from __ to ___",
+                "options": [
+                        "particular to general",
+                        "general to particular",
+                        "from horizontal to perpedincular",
+                        "up to down"
+                ],
+                "answer": "general to particular",
+                "explanation": "The correct answer is: general to particular."
+        },
+        {
+                "id": 36,
+                "topic": "Philosophy",
+                "question": "An argument that rests on probability is called ___",
+                "options": [
+                        "deductive argument",
+                        "inductive argument",
+                        "empirical argument",
+                        "rational argument"
+                ],
+                "answer": "rational argument",
+                "explanation": "The correct answer is: rational argument."
+        },
+        {
+                "id": 37,
+                "topic": "Philosophy",
+                "question": "In logic, when the mind forms the concept of anything we say that ___ has taken place",
+                "options": [
+                        "simple apprehension FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE",
+                        "intuition",
+                        "judgement",
+                        "reasoning"
+                ],
+                "answer": "reasoning",
+                "explanation": "The correct answer is: reasoning."
+        },
+        {
+                "id": 38,
+                "topic": "Philosophy",
+                "question": "___ is not a branch of ethics",
+                "options": [
+                        "normative ethics",
+                        "causative ethics",
+                        "descriptive ethics",
+                        "meta ethics"
+                ],
+                "answer": "meta ethics",
+                "explanation": "The correct answer is: meta ethics."
+        },
+        {
+                "id": 39,
+                "topic": "Philosophy",
+                "question": "Man’s ability to think is regarded as ___",
+                "options": [
+                        "sensibility",
+                        "reason",
+                        "productivity",
+                        "ethics"
+                ],
+                "answer": "reason",
+                "explanation": "The correct answer is: reason."
+        },
+        {
+                "id": 40,
+                "topic": "Philosophy",
+                "question": "Draw the conclusion of this argument: All lecturers will go to heaven; Dr Uthman is a lecturer; therefore__",
+                "options": [
+                        "Dr Uthman will go to heaven",
+                        "I have seen a lecturer involved in evil",
+                        "Dr Uthman is an exception",
+                        "False, bad lecturers will not go to heaven"
+                ],
+                "answer": "Dr Uthman will go to heaven",
+                "explanation": "The correct answer is: Dr Uthman will go to heaven."
+        },
+        {
+                "id": 41,
+                "topic": "Philosophy",
+                "question": "“It shall be well with you,” the pastor thundered to the congregation ___ Function of language is at play here",
+                "options": [
+                        "Declarative function",
+                        "Emotive function",
+                        "Blessing function",
+                        "Deductive function"
+                ],
+                "answer": "Declarative function",
+                "explanation": "The correct answer is: Declarative function."
+        },
+        {
+                "id": 42,
+                "topic": "Philosophy",
+                "question": "The type of argument that proceeds from particular to the general is called __",
+                "options": [
+                        "Inductive argument",
+                        "Voluntary argument",
+                        "Syllogistic",
+                        "Deductive argument"
+                ],
+                "answer": "Inductive argument",
+                "explanation": "The correct answer is: Inductive argument."
+        },
+        {
+                "id": 43,
+                "topic": "Philosophy",
+                "question": "All Nigerians are rich; Dr Eric Omazu is a Nigerian; Therefore, Dr Eric Omazu is rich",
+                "options": [
+                        "All Nigerians are rich",
+                        "Therefore, Dr Eric Omazu is rich",
+                        "Dr Eric Omazu is a Nigerian",
+                        "I do not know whether Dr Eric Omazu is rich or not"
+                ],
+                "answer": "Therefore, Dr Eric Omazu is rich",
+                "explanation": "The correct answer is: Therefore, Dr Eric Omazu is rich."
+        },
+        {
+                "id": 44,
+                "topic": "Philosophy",
+                "question": "An argument that contains three propositions is called___",
+                "options": [
+                        "Conclusion",
+                        "Induction",
+                        "Premises",
+                        "Syllogism"
+                ],
+                "answer": "Syllogism",
+                "explanation": "The correct answer is: Syllogism."
+        },
+        {
+                "id": 45,
+                "topic": "Philosophy",
+                "question": "“The NOUN vice-chancellor is good” The predicate term of the proposition is ___",
+                "options": [
+                        "Unknown",
+                        "NOUN",
+                        "Vice-chancellor",
+                        "Good"
+                ],
+                "answer": "Good",
+                "explanation": "The correct answer is: Good."
+        },
+        {
+                "id": 46,
+                "topic": "Philosophy",
+                "question": "__ is not a conclusion indicator",
+                "options": [
+                        "Therefore",
+                        "For the reason that",
+                        "Since",
+                        "Because"
+                ],
+                "answer": "Because",
+                "explanation": "The correct answer is: Because."
+        },
+        {
+                "id": 47,
+                "topic": "Philosophy",
+                "question": "Evidence for holding a conclusion is called ___",
+                "options": [
+                        "Truth table",
+                        "Inferred parts",
+                        "Premise",
+                        "Justification"
+                ],
+                "answer": "Premise",
+                "explanation": "The correct answer is: Premise."
+        },
+        {
+                "id": 48,
+                "topic": "Philosophy",
+                "question": "____ is a function of language",
+                "options": [
+                        "Echoistic function",
+                        "Normative function",
+                        "Literary function",
+                        "Expressive function"
+                ],
+                "answer": "Expressive function",
+                "explanation": "The correct answer is: Expressive function."
+        },
+        {
+                "id": 49,
+                "topic": "Philosophy",
+                "question": "___ is not among Haliday’s function of language",
+                "options": [
+                        "Imaginative",
+                        "Heuristic",
+                        "Commissive FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE",
+                        "Regulatory"
+                ],
+                "answer": "Commissive FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE",
+                "explanation": "The correct answer is: Commissive FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE."
+        },
+        {
+                "id": 50,
+                "topic": "Philosophy",
+                "question": "The fallacy that misrepresents a fact, and then goes ahead to attack that misrepresentation is called ___ fallacy",
+                "options": [
+                        "Bandwagon",
+                        "Ad hominem",
+                        "Accusatory",
+                        "Straw man"
+                ],
+                "answer": "Ad hominem",
+                "explanation": "The correct answer is: Ad hominem."
+        },
+        {
+                "id": 51,
+                "topic": "Philosophy",
+                "question": "“If you see any lecturer supporting the current administration, that person has been paid heavily ” This is an example of ___ fallacy",
+                "options": [
+                        "Straw man",
+                        "Accusatory",
+                        "Bandwagon",
+                        "Ad hominem"
+                ],
+                "answer": "Ad hominem",
+                "explanation": "The correct answer is: Ad hominem."
+        },
+        {
+                "id": 52,
+                "topic": "Philosophy",
+                "question": "__ is not a logical sentence",
+                "options": [
+                        "Shut up",
+                        "You are stupid",
+                        "Mr Amos is a drunkard",
+                        "My father is good"
+                ],
+                "answer": "You are stupid",
+                "explanation": "The correct answer is: You are stupid."
+        },
+        {
+                "id": 53,
+                "topic": "Philosophy",
+                "question": "Jamiu raised the veil that covered the face of his new bride, “I will be with you till the end of my life ” ___ is the function of language expressed here",
+                "options": [
+                        "commissive function",
+                        "Informative function",
+                        "Expressive function FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE",
+                        "directive function"
+                ],
+                "answer": "commissive function",
+                "explanation": "The correct answer is: commissive function."
+        },
+        {
+                "id": 54,
+                "topic": "Philosophy",
+                "question": "If you have ever heard of the book; “How to do things with words”, kindly identify ___ as the author",
+                "options": [
+                        "Wole Soyinka",
+                        "J L Austin",
+                        "Socrates",
+                        "Nelson Mandela"
+                ],
+                "answer": "J L Austin",
+                "explanation": "The correct answer is: J L Austin."
+        },
+        {
+                "id": 55,
+                "topic": "Philosophy",
+                "question": "___ is the middle term of the following syllogism: All Kanuris live in the North East Galadima is a Kanuri Therefore, Galadima lives in the North East",
+                "options": [
+                        "North East",
+                        "Lives",
+                        "Galadima",
+                        "Kanuri"
+                ],
+                "answer": "Kanuri",
+                "explanation": "The correct answer is: Kanuri."
+        },
+        {
+                "id": 56,
+                "topic": "Philosophy",
+                "question": "All students cheat in exams; I am a student; Therefore, I cheat in exams __is the major premise of this statement",
+                "options": [
+                        "I have never cheated in my exams",
+                        "All students cheat in exams",
+                        "Therefore, I cheat in exams",
+                        "I am a student"
+                ],
+                "answer": "All students cheat in exams",
+                "explanation": "The correct answer is: All students cheat in exams."
+        },
+        {
+                "id": 57,
+                "topic": "Philosophy",
+                "question": "“I am writing my TMA 3 of GST203 ” ___ Function of language is expressed here",
+                "options": [
+                        "3 of GST203 ” ___ Function of language is expressed here",
+                        "Informative function",
+                        "Directive function",
+                        "Expressive function FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE"
+                ],
+                "answer": "3 of GST203 ” ___ Function of language is expressed here",
+                "explanation": "The correct answer is: 3 of GST203 ” ___ Function of language is expressed here."
+        },
+        {
+                "id": 58,
+                "topic": "Philosophy",
+                "question": "Errors in reasoning are called ___",
+                "options": [
+                        "Irrationality",
+                        "Fallacies",
+                        "Mindset",
+                        "Aberration"
+                ],
+                "answer": "Fallacies",
+                "explanation": "The correct answer is: Fallacies."
+        },
+        {
+                "id": 59,
+                "topic": "Philosophy",
+                "question": "The abbreviation, L A D means ____",
+                "options": [
+                        "D means ____",
+                        "Logic and Development",
+                        "Legal Advancement Digital",
+                        "Linguistic Advancement Conference"
+                ],
+                "answer": "Linguistic Advancement Conference",
+                "explanation": "The correct answer is: Linguistic Advancement Conference."
+        },
+        {
+                "id": 60,
+                "topic": "Philosophy",
+                "question": "In informal fallacies___ does not render an argument fallacious",
+                "options": [
+                        "Emotions are appeal to",
+                        "Argument lacks structure",
+                        "Arguments are not about the thesis under consideration",
+                        "At least one premise is false"
+                ],
+                "answer": "At least one premise is false",
+                "explanation": "The correct answer is: At least one premise is false."
+        },
+        {
+                "id": 61,
+                "topic": "Philosophy",
+                "question": "___ type of definition has truth value",
+                "options": [
+                        "extensional definition",
+                        "theoretical definition",
+                        "Heuristic definition",
+                        "Lexical definition"
+                ],
+                "answer": "Lexical definition",
+                "explanation": "The correct answer is: Lexical definition."
+        },
+        {
+                "id": 62,
+                "topic": "Philosophy",
+                "question": "“We are going to deal with anyone who fails to vote Mr Ajayi in the upcoming election ” This is an example of ___fallacy",
+                "options": [
+                        "ad bacculum",
+                        "argument against the man",
+                        "straw man",
+                        "tu quogue"
+                ],
+                "answer": "argument against the man",
+                "explanation": "The correct answer is: argument against the man."
+        },
+        {
+                "id": 63,
+                "topic": "Philosophy",
+                "question": "“Let’s eat grandma,” is an example of ___fallacy",
+                "options": [
+                        "fallacy of pity",
+                        "fallacy of amphiboly",
+                        "fallacy of composition",
+                        "fallacy of equivocation"
+                ],
+                "answer": "fallacy of pity",
+                "explanation": "The correct answer is: fallacy of pity."
+        },
+        {
+                "id": 64,
+                "topic": "Philosophy",
+                "question": "Categorical syllogism asserts or deny ___ between classes",
+                "options": [
+                        "premises",
+                        "logic",
+                        "relationship",
+                        "propositions"
+                ],
+                "answer": "relationship",
+                "explanation": "The correct answer is: relationship."
+        },
+        {
+                "id": 65,
+                "topic": "Philosophy",
+                "question": "___ is not an example of fallacy of ambiguity FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE",
+                "options": [
+                        "fallacy of pity",
+                        "fallacy of amphiboly",
+                        "fallacy of equivocation",
+                        "fallacy of composition"
+                ],
+                "answer": "fallacy of pity",
+                "explanation": "The correct answer is: fallacy of pity."
+        },
+        {
+                "id": 66,
+                "topic": "Philosophy",
+                "question": "Every categorical syllogism contains ___",
+                "options": [
+                        "one term",
+                        "three terms",
+                        "two terms",
+                        "four terms"
+                ],
+                "answer": "three terms",
+                "explanation": "The correct answer is: three terms."
+        },
+        {
+                "id": 67,
+                "topic": "Philosophy",
+                "question": "“All students are good” is an example of __",
+                "options": [
+                        "univeral positive proposition",
+                        "universal negative proposition",
+                        "particular negative proposition",
+                        "particular positive proposition"
+                ],
+                "answer": "univeral positive proposition",
+                "explanation": "The correct answer is: univeral positive proposition."
+        },
+        {
+                "id": 68,
+                "topic": "Philosophy",
+                "question": "___ is the branch of ethics concerned with logic of ethical arguments",
+                "options": [
+                        "meta ethics",
+                        "normative ethics",
+                        "applied ethics",
+                        "prescriptive ethics"
+                ],
+                "answer": "meta ethics",
+                "explanation": "The correct answer is: meta ethics."
+        },
+        {
+                "id": 69,
+                "topic": "Philosophy",
+                "question": "“I am having my girlfriend for dinner,” is a fallacy of ambiguity because",
+                "options": [
+                        "It is an euphemism for saying I will have sex with my girlfriend this evening",
+                        "I want to eat dinner with a girl who is not married to me FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE",
+                        "it conveys more than one meaning",
+                        "I want to practice cannibalism on my girlfriend"
+                ],
+                "answer": "it conveys more than one meaning",
+                "explanation": "The correct answer is: it conveys more than one meaning."
+        },
+        {
+                "id": 70,
+                "topic": "Philosophy",
+                "question": "The letter “P” in categorical syllogism represents ___",
+                "options": [
+                        "Minor term",
+                        "Major term",
+                        "Middle term",
+                        "Inclusive term"
+                ],
+                "answer": "Major term",
+                "explanation": "The correct answer is: Major term."
+        },
+        {
+                "id": 71,
+                "topic": "Philosophy",
+                "question": "___ is not a characteristics of a syllogism",
+                "options": [
+                        "Has independent conclusion",
+                        "Has at least three propositions",
+                        "Has at least two propositions",
+                        "Has one conclusion"
+                ],
+                "answer": "Has at least two propositions",
+                "explanation": "The correct answer is: Has at least two propositions."
+        },
+        {
+                "id": 72,
+                "topic": "Philosophy",
+                "question": "___ is not a type of definition",
+                "options": [
+                        "Lexical definition",
+                        "Heuristic definition",
+                        "theoretical definition",
+                        "extensional definition"
+                ],
+                "answer": "Heuristic definition",
+                "explanation": "The correct answer is: Heuristic definition."
+        },
+        {
+                "id": 73,
+                "topic": "Philosophy",
+                "question": "My car is heavy Therefore, the side mirrors to my car are heavy This is an example of ___ fallacy",
+                "options": [
+                        "fallacy of division",
+                        "fallacy of composition",
+                        "ad cumbum fallacy",
+                        "dubiousity fallacy"
+                ],
+                "answer": "fallacy of division",
+                "explanation": "The correct answer is: fallacy of division."
+        },
+        {
+                "id": 74,
+                "topic": "Philosophy",
+                "question": "“A is A” expresses __ law of thought FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE",
+                "options": [
+                        "is A” expresses __ law of thought FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE",
+                        "law of excluded middle",
+                        "law of contradiction",
+                        "identity"
+                ],
+                "answer": "law of contradiction",
+                "explanation": "The correct answer is: law of contradiction."
+        },
+        {
+                "id": 75,
+                "topic": "Philosophy",
+                "question": "Teachers are good Adamu is a teacher Therefore, Adamu is good ___ is the major term of this categorical syllogism",
+                "options": [
+                        "Teachers",
+                        "Good",
+                        "Adamu",
+                        "None of the above"
+                ],
+                "answer": "Teachers",
+                "explanation": "The correct answer is: Teachers."
+        },
+        {
+                "id": 76,
+                "topic": "Philosophy",
+                "question": "The art of attributing qualities of part of a whole to the whole is refered to as ____",
+                "options": [
+                        "fallacy of division",
+                        "ad cumbum fallacy",
+                        "fallacy of composition",
+                        "dubiousity fallacy"
+                ],
+                "answer": "fallacy of composition",
+                "explanation": "The correct answer is: fallacy of composition."
+        },
+        {
+                "id": 77,
+                "topic": "Philosophy",
+                "question": "The Greek word for knowledge is __",
+                "options": [
+                        "euthyphro",
+                        "episteme",
+                        "apologia",
+                        "alithia"
+                ],
+                "answer": "episteme",
+                "explanation": "The correct answer is: episteme."
+        },
+        {
+                "id": 78,
+                "topic": "Philosophy",
+                "question": "The terms of a categorical syllogism does not include ___",
+                "options": [
+                        "middle term",
+                        "major term FORREVISIONPURPOSEONLY,IFEKITANCARES NOTFORSALE",
+                        "minor term",
+                        "inclusive term"
+                ],
+                "answer": "inclusive term",
+                "explanation": "The correct answer is: inclusive term."
+        },
+        {
+                "id": 79,
+                "topic": "Philosophy",
+                "question": "“Pastor, you are advising me against armed robbery, were you not the one caught with Ogbuefi’s wife?” This is an example of ____",
+                "options": [
+                        "situational ad hominem",
+                        "abusive ad hominem",
+                        "circumstantial ad hominem",
+                        "tu quoque ad hominem"
+                ],
+                "answer": "circumstantial ad hominem",
+                "explanation": "The correct answer is: circumstantial ad hominem."
+        },
+        {
+                "id": 80,
+                "topic": "Philosophy",
+                "question": "___ and __ are two types of affirmo",
+                "options": [
+                        "universal and essential",
+                        "univeral and particular",
+                        "Paricular and incubative",
+                        "particular and essential"
+                ],
+                "answer": "univeral and particular",
+                "explanation": "The correct answer is: univeral and particular."
+        },
+        {
+                "id": 81,
+                "topic": "Philosophy",
+                "question": "Philosophy literally means ___",
+                "options": [
+                        "love of wisdom",
+                        "study of nature",
+                        "art of reasoning",
+                        "search for truth"
+                ],
+                "answer": "love of wisdom",
+                "explanation": "Philosophy comes from Greek 'philo' (love) + 'sophia' (wisdom) = love of wisdom."
+        },
+        {
+                "id": 82,
+                "topic": "Philosophy",
+                "question": "The branch of philosophy that deals with the nature of reality is:",
+                "options": [
+                        "Epistemology",
+                        "Metaphysics",
+                        "Ethics",
+                        "Logic"
+                ],
+                "answer": "Metaphysics",
+                "explanation": "Metaphysics deals with the fundamental nature of reality and existence."
+        },
+        {
+                "id": 83,
+                "topic": "Philosophy",
+                "question": "Epistemology is the branch of philosophy concerned with:",
+                "options": [
+                        "Moral values",
+                        "The nature of knowledge",
+                        "The nature of beauty",
+                        "Logical reasoning"
+                ],
+                "answer": "The nature of knowledge",
+                "explanation": "Epistemology is the theory of knowledge — its nature, sources, and limits."
+        },
+        {
+                "id": 84,
+                "topic": "Philosophy",
+                "question": "Ethics is the branch of philosophy that deals with:",
+                "options": [
+                        "Reality",
+                        "Knowledge",
+                        "Moral values and right conduct",
+                        "Aesthetic beauty"
+                ],
+                "answer": "Moral values and right conduct",
+                "explanation": "Ethics studies moral principles, values, and what constitutes right and wrong behavior."
+        },
+        {
+                "id": 85,
+                "topic": "Logic",
+                "question": "Logic is the study of:",
+                "options": [
+                        "Beauty",
+                        "Correct reasoning",
+                        "Human existence",
+                        "Political systems"
+                ],
+                "answer": "Correct reasoning",
+                "explanation": "Logic is the systematic study of valid inference and correct reasoning."
+        },
+        {
+                "id": 86,
+                "topic": "Philosophy",
+                "question": "Aesthetics is the branch of philosophy concerned with:",
+                "options": [
+                        "Knowledge",
+                        "Beauty and art",
+                        "Morality",
+                        "Reality"
+                ],
+                "answer": "Beauty and art",
+                "explanation": "Aesthetics deals with the nature of beauty, art, and taste."
+        },
+        {
+                "id": 87,
+                "topic": "Philosophy",
+                "question": "The father of Western philosophy is:",
+                "options": [
+                        "Socrates",
+                        "Plato",
+                        "Aristotle",
+                        "Thales"
+                ],
+                "answer": "Socrates",
+                "explanation": "Socrates is often considered the father of Western philosophy."
+        },
+        {
+                "id": 88,
+                "topic": "Philosophy",
+                "question": "Who said 'I think, therefore I am'?",
+                "options": [
+                        "Plato",
+                        "Aristotle",
+                        "Descartes",
+                        "Kant"
+                ],
+                "answer": "Descartes",
+                "explanation": "Rene Descartes' famous statement 'Cogito, ergo sum' (I think, therefore I am)."
+        },
+        {
+                "id": 89,
+                "topic": "Philosophy",
+                "question": "The Socratic method involves:",
+                "options": [
+                        "Lecturing",
+                        "Question and answer dialogue",
+                        "Experimentation",
+                        "Memorization"
+                ],
+                "answer": "Question and answer dialogue",
+                "explanation": "The Socratic method uses systematic questioning to stimulate critical thinking."
+        },
+        {
+                "id": 90,
+                "topic": "Philosophy",
+                "question": "Thales is known as:",
+                "options": [
+                        "The father of logic",
+                        "The first Western philosopher",
+                        "The father of ethics",
+                        "The first scientist only"
+                ],
+                "answer": "The first Western philosopher",
+                "explanation": "Thales of Miletus is regarded as the first philosopher of the Western tradition."
+        },
+        {
+                "id": 91,
+                "topic": "Logic",
+                "question": "A proposition in logic is:",
+                "options": [
+                        "A question",
+                        "A statement that can be true or false",
+                        "An emotion",
+                        "A command"
+                ],
+                "answer": "A statement that can be true or false",
+                "explanation": "A proposition is a declarative statement that has a truth value (true or false)."
+        },
+        {
+                "id": 92,
+                "topic": "Logic",
+                "question": "A valid argument is one where:",
+                "options": [
+                        "The conclusion is true",
+                        "The premises are true",
+                        "If premises are true, conclusion must be true",
+                        "The argument is persuasive"
+                ],
+                "answer": "If premises are true, conclusion must be true",
+                "explanation": "Validity means the conclusion logically follows from the premises."
+        },
+        {
+                "id": 93,
+                "topic": "Logic",
+                "question": "A sound argument is one that is:",
+                "options": [
+                        "Valid with true premises",
+                        "Persuasive",
+                        "Long and detailed",
+                        "Popular"
+                ],
+                "answer": "Valid with true premises",
+                "explanation": "A sound argument is both valid (logically correct) and has all true premises."
+        },
+        {
+                "id": 94,
+                "topic": "Logic",
+                "question": "Deductive reasoning moves from:",
+                "options": [
+                        "Specific to general",
+                        "General to specific",
+                        "Cause to effect",
+                        "Effect to cause"
+                ],
+                "answer": "General to specific",
+                "explanation": "Deduction starts with general premises and reaches a specific, certain conclusion."
+        },
+        {
+                "id": 95,
+                "topic": "Logic",
+                "question": "Inductive reasoning moves from:",
+                "options": [
+                        "General to specific",
+                        "Specific to general",
+                        "Premise to conclusion",
+                        "Cause to effect"
+                ],
+                "answer": "Specific to general",
+                "explanation": "Induction starts with specific observations and reaches a general, probable conclusion."
+        },
+        {
+                "id": 96,
+                "topic": "Logic",
+                "question": "A fallacy is:",
+                "options": [
+                        "A true statement",
+                        "An error in reasoning",
+                        "A type of argument",
+                        "A logical rule"
+                ],
+                "answer": "An error in reasoning",
+                "explanation": "A fallacy is a flaw or error in reasoning that makes an argument invalid."
+        },
+        {
+                "id": 97,
+                "topic": "Logic",
+                "question": "The law of non-contradiction states that:",
+                "options": [
+                        "Everything changes",
+                        "A statement cannot be both true and false at the same time",
+                        "Every effect has a cause",
+                        "Knowledge comes from experience"
+                ],
+                "answer": "A statement cannot be both true and false at the same time",
+                "explanation": "The law of non-contradiction: A cannot be both A and not-A simultaneously."
+        },
+        {
+                "id": 98,
+                "topic": "Logic",
+                "question": "The law of identity states that:",
+                "options": [
+                        "A is A",
+                        "Everything has a cause",
+                        "Knowledge is power",
+                        "Change is constant"
+                ],
+                "answer": "A is A",
+                "explanation": "The law of identity: each thing is the same with itself and different from another."
+        },
+        {
+                "id": 99,
+                "topic": "Logic",
+                "question": "The law of excluded middle states that:",
+                "options": [
+                        "A statement is either true or false, nothing in between",
+                        "Every argument has two sides",
+                        "Truth is relative",
+                        "Logic excludes emotion"
+                ],
+                "answer": "A statement is either true or false, nothing in between",
+                "explanation": "For any proposition, either that proposition is true, or its negation is true."
+        },
+        {
+                "id": 100,
+                "topic": "Logic",
+                "question": "Syllogism is a form of:",
+                "options": [
+                        "Inductive reasoning",
+                        "Deductive reasoning",
+                        "Abductive reasoning",
+                        "Analogical reasoning"
+                ],
+                "answer": "Deductive reasoning",
+                "explanation": "A syllogism is a form of deductive reasoning with major premise, minor premise, and conclusion."
+        },
+        {
+                "id": 101,
+                "topic": "Logic",
+                "question": "In a syllogism 'All men are mortal. Socrates is a man. Therefore Socrates is mortal' — the conclusion is:",
+                "options": [
+                        "All men are mortal",
+                        "Socrates is a man",
+                        "Socrates is mortal",
+                        "None of the above"
+                ],
+                "answer": "Socrates is mortal",
+                "explanation": "The conclusion 'Socrates is mortal' follows deductively from the two premises."
+        },
+        {
+                "id": 102,
+                "topic": "Logic",
+                "question": "The Greek word 'logos' means:",
+                "options": [
+                        "Love",
+                        "Wisdom",
+                        "Word, reason, discourse",
+                        "Nature"
+                ],
+                "answer": "Word, reason, discourse",
+                "explanation": "Logos means word, reason, or discourse — from which 'logic' is derived."
+        },
+        {
+                "id": 103,
+                "topic": "Philosophy",
+                "question": "Who founded the Academy in Athens?",
+                "options": [
+                        "Socrates",
+                        "Plato",
+                        "Aristotle",
+                        "Pythagoras"
+                ],
+                "answer": "Plato",
+                "explanation": "Plato founded the Academy in Athens around 387 BC — the first institution of higher learning."
+        },
+        {
+                "id": 104,
+                "topic": "Philosophy",
+                "question": "Who was Plato's most famous student?",
+                "options": [
+                        "Socrates",
+                        "Aristotle",
+                        "Thales",
+                        "Descartes"
+                ],
+                "answer": "Aristotle",
+                "explanation": "Aristotle studied at Plato's Academy for 20 years before founding his own school, the Lyceum."
+        },
+        {
+                "id": 105,
+                "topic": "Philosophy",
+                "question": "Empiricism holds that knowledge comes primarily from:",
+                "options": [
+                        "Reason alone",
+                        "Sense experience",
+                        "Intuition",
+                        "Revelation"
+                ],
+                "answer": "Sense experience",
+                "explanation": "Empiricism emphasizes that knowledge derives from sensory experience and observation."
+        },
+        {
+                "id": 106,
+                "topic": "Philosophy",
+                "question": "Rationalism holds that knowledge comes primarily from:",
+                "options": [
+                        "Sense experience",
+                        "Reason and logic",
+                        "Tradition",
+                        "Emotion"
+                ],
+                "answer": "Reason and logic",
+                "explanation": "Rationalism holds that reason is the primary source of knowledge, not experience."
+        },
+        {
+                "id": 107,
+                "topic": "Logic",
+                "question": "The statement 'All bachelors are unmarried men' is an example of:",
+                "options": [
+                        "Synthetic truth",
+                        "Analytic truth",
+                        "Empirical truth",
+                        "Contingent truth"
+                ],
+                "answer": "Analytic truth",
+                "explanation": "An analytic truth is true by definition — 'unmarried' is part of the meaning of 'bachelor'."
+        },
+        {
+                "id": 108,
+                "topic": "Logic",
+                "question": "An argument ad hominem is one that:",
+                "options": [
+                        "Attacks the person instead of the argument",
+                        "Uses statistics",
+                        "Appeals to authority",
+                        "Uses analogy"
+                ],
+                "answer": "Attacks the person instead of the argument",
+                "explanation": "Ad hominem is a fallacy that attacks the character of the person rather than addressing their argument."
+        },
+        {
+                "id": 109,
+                "topic": "Logic",
+                "question": "The fallacy of appealing to authority (ad verecundiam) occurs when:",
+                "options": [
+                        "An authority in one field is cited on another field",
+                        "Statistics are used",
+                        "Logic is applied",
+                        "Evidence is presented"
+                ],
+                "answer": "An authority in one field is cited on another field",
+                "explanation": "It's fallacious when an authority outside their area of expertise is cited as evidence."
+        },
+        {
+                "id": 110,
+                "topic": "Logic",
+                "question": "A conditional statement has the form:",
+                "options": [
+                        "If P then Q",
+                        "P and Q",
+                        "P or Q",
+                        "Not P"
+                ],
+                "answer": "If P then Q",
+                "explanation": "A conditional (hypothetical) statement has the form 'if antecedent, then consequent'."
+        },
+        {
+                "id": 111,
+                "topic": "Logic",
+                "question": "In 'If it rains, the ground is wet' — the antecedent is:",
+                "options": [
+                        "The ground is wet",
+                        "It rains",
+                        "Both",
+                        "Neither"
+                ],
+                "answer": "It rains",
+                "explanation": "In 'if P then Q', P (it rains) is the antecedent and Q (ground is wet) is the consequent."
+        },
+        {
+                "id": 112,
+                "topic": "Logic",
+                "question": "The contrapositive of 'If P then Q' is:",
+                "options": [
+                        "If Q then P",
+                        "If not Q then not P",
+                        "If not P then not Q",
+                        "If P then not Q"
+                ],
+                "answer": "If not Q then not P",
+                "explanation": "The contrapositive of 'if P then Q' is 'if not Q then not P' — logically equivalent."
+        },
+        {
+                "id": 113,
+                "topic": "Logic",
+                "question": "The converse of 'If P then Q' is:",
+                "options": [
+                        "If Q then P",
+                        "If not Q then not P",
+                        "If not P then not Q",
+                        "If P then Q"
+                ],
+                "answer": "If Q then P",
+                "explanation": "The converse swaps antecedent and consequent: 'if Q then P'. It is NOT necessarily true."
+        },
+        {
+                "id": 114,
+                "topic": "Logic",
+                "question": "Modus ponens is the argument form:",
+                "options": [
+                        "If P then Q; P; therefore Q",
+                        "If P then Q; not Q; therefore not P",
+                        "If P then Q; Q; therefore P",
+                        "P or Q; not P; therefore Q"
+                ],
+                "answer": "If P then Q; P; therefore Q",
+                "explanation": "Modus ponens (affirming the antecedent): If P→Q, and P is true, then Q must be true."
+        },
+        {
+                "id": 115,
+                "topic": "Logic",
+                "question": "Modus tollens is the argument form:",
+                "options": [
+                        "If P then Q; P; therefore Q",
+                        "If P then Q; not Q; therefore not P",
+                        "If P then Q; Q; therefore P",
+                        "P or Q; not P; therefore Q"
+                ],
+                "answer": "If P then Q; not Q; therefore not P",
+                "explanation": "Modus tollens (denying the consequent): If P→Q, and Q is false, then P must be false."
+        },
+        {
+                "id": 116,
+                "topic": "Logic",
+                "question": "Affirming the consequent is a:",
+                "options": [
+                        "Valid argument form",
+                        "Formal fallacy",
+                        "Type of induction",
+                        "Sound argument"
+                ],
+                "answer": "Formal fallacy",
+                "explanation": "Affirming the consequent (If P→Q, Q, therefore P) is a formal fallacy — invalid reasoning."
+        },
+        {
+                "id": 117,
+                "topic": "Logic",
+                "question": "Denying the antecedent is a:",
+                "options": [
+                        "Valid argument",
+                        "Formal fallacy",
+                        "Sound argument",
+                        "Type of syllogism"
+                ],
+                "answer": "Formal fallacy",
+                "explanation": "Denying the antecedent (If P→Q, not P, therefore not Q) is a formal fallacy."
+        },
+        {
+                "id": 118,
+                "topic": "Philosophy",
+                "question": "The principle of causality states that:",
+                "options": [
+                        "Everything has a cause",
+                        "Nothing exists",
+                        "Change is illusion",
+                        "Knowledge is impossible"
+                ],
+                "answer": "Everything has a cause",
+                "explanation": "The principle of causality: every event or effect has a cause."
+        },
+        {
+                "id": 119,
+                "topic": "Philosophy",
+                "question": "Determinism is the view that:",
+                "options": [
+                        "Humans have free will",
+                        "All events are determined by prior causes",
+                        "Nothing is real",
+                        "Knowledge is uncertain"
+                ],
+                "answer": "All events are determined by prior causes",
+                "explanation": "Determinism holds that every event is the necessary result of prior causes and laws of nature."
+        },
+        {
+                "id": 120,
+                "topic": "Philosophy",
+                "question": "Free will is the ability to:",
+                "options": [
+                        "Think without emotion",
+                        "Make choices unconstrained by certain factors",
+                        "Ignore logic",
+                        "Act randomly"
+                ],
+                "answer": "Make choices unconstrained by certain factors",
+                "explanation": "Free will is the capacity to make choices that are not wholly determined by prior causes."
+        },
+        {
+                "id": 121,
+                "topic": "Philosophy",
+                "question": "Existentialism emphasizes:",
+                "options": [
+                        "Collective identity",
+                        "Individual existence and freedom",
+                        "Scientific method",
+                        "Religious doctrine"
+                ],
+                "answer": "Individual existence and freedom",
+                "explanation": "Existentialism focuses on individual existence, freedom, and meaning in an indifferent universe."
+        },
+        {
+                "id": 122,
+                "topic": "Philosophy",
+                "question": "Who is known for the statement 'Existence precedes essence'?",
+                "options": [
+                        "Kant",
+                        "Sartre",
+                        "Hegel",
+                        "Nietzsche"
+                ],
+                "answer": "Sartre",
+                "explanation": "Jean-Paul Sartre's key existentialist claim: humans exist first, then define themselves."
+        },
+        {
+                "id": 123,
+                "topic": "Philosophy",
+                "question": "Pragmatism holds that truth is determined by:",
+                "options": [
+                        "Correspondence to reality",
+                        "Practical consequences and usefulness",
+                        "Logical consistency",
+                        "Divine revelation"
+                ],
+                "answer": "Practical consequences and usefulness",
+                "explanation": "Pragmatism (Peirce, James, Dewey) evaluates truth by practical outcomes and utility."
+        },
+        {
+                "id": 124,
+                "topic": "Philosophy",
+                "question": "Utilitarianism is an ethical theory that:",
+                "options": [
+                        "Maximizes happiness for the greatest number",
+                        "Follows duty regardless of consequences",
+                        "Seeks virtue",
+                        "Obeys divine commands"
+                ],
+                "answer": "Maximizes happiness for the greatest number",
+                "explanation": "Utilitarianism (Bentham, Mill) judges actions by their consequences — greatest good for greatest number."
+        },
+        {
+                "id": 125,
+                "topic": "Philosophy",
+                "question": "Kant's categorical imperative states that:",
+                "options": [
+                        "Act only on principles you could will to be universal laws",
+                        "Seek pleasure",
+                        "Follow tradition",
+                        "Obey authority"
+                ],
+                "answer": "Act only on principles you could will to be universal laws",
+                "explanation": "Kant's categorical imperative: act only according to maxims you could will to become universal laws."
+        },
+        {
+                "id": 126,
+                "topic": "Philosophy",
+                "question": "The term 'philosophy' was first used by:",
+                "options": [
+                        "Socrates",
+                        "Plato",
+                        "Pythagoras",
+                        "Aristotle"
+                ],
+                "answer": "Pythagoras",
+                "explanation": "Pythagoras is traditionally credited with first using the term 'philosopher' (lover of wisdom)."
+        },
+        {
+                "id": 127,
+                "topic": "Philosophy",
+                "question": "The pre-Socratic philosophers were primarily concerned with:",
+                "options": [
+                        "Ethics",
+                        "The nature of the cosmos and reality",
+                        "Political theory",
+                        "Logic"
+                ],
+                "answer": "The nature of the cosmos and reality",
+                "explanation": "Pre-Socratics (Thales, Anaximander, Heraclitus) sought the fundamental substance of reality."
+        },
+        {
+                "id": 128,
+                "topic": "Philosophy",
+                "question": "Heraclitus is famous for the doctrine that:",
+                "options": [
+                        "Everything is static",
+                        "Everything is in constant flux/change",
+                        "Change is an illusion",
+                        "Reality is eternal"
+                ],
+                "answer": "Everything is in constant flux/change",
+                "explanation": "Heraclitus: 'You cannot step into the same river twice' — everything flows, everything changes."
+        },
+        {
+                "id": 129,
+                "topic": "Philosophy",
+                "question": "Parmenides argued that:",
+                "options": [
+                        "Change is real",
+                        "Change is an illusion; only Being exists",
+                        "Knowledge comes from senses",
+                        "Everything is made of atoms"
+                ],
+                "answer": "Change is an illusion; only Being exists",
+                "explanation": "Parmenides held that reality is one, unchanging, eternal — change is an illusion."
+        },
+        {
+                "id": 130,
+                "topic": "Philosophy",
+                "question": "The Sophists were known for:",
+                "options": [
+                        "Seeking absolute truth",
+                        "Teaching rhetoric and persuasion for fees",
+                        "Defending democracy",
+                        "Rejecting philosophy"
+                ],
+                "answer": "Teaching rhetoric and persuasion for fees",
+                "explanation": "The Sophists were itinerant teachers who taught rhetoric and persuasion, often for payment."
+        },
+        {
+                "id": 131,
+                "topic": "Philosophy",
+                "question": "Plato's theory of Forms holds that:",
+                "options": [
+                        "Only the physical world is real",
+                        "Abstract Forms/Ideas are the true reality",
+                        "Everything is material",
+                        "Reality is subjective"
+                ],
+                "answer": "Abstract Forms/Ideas are the true reality",
+                "explanation": "Plato's theory of Forms: the physical world is a shadow of the perfect, eternal, abstract Forms."
+        },
+        {
+                "id": 132,
+                "topic": "Philosophy",
+                "question": "Plato's allegory of the cave illustrates:",
+                "options": [
+                        "The nature of education and enlightenment",
+                        "Political oppression",
+                        "The physical world",
+                        "Mathematical truths"
+                ],
+                "answer": "The nature of education and enlightenment",
+                "explanation": "The cave allegory shows how humans mistake shadows (appearances) for reality, and philosophy leads to truth."
+        },
+        {
+                "id": 133,
+                "topic": "Philosophy",
+                "question": "Aristotle's four causes include all EXCEPT:",
+                "options": [
+                        "Material cause",
+                        "Formal cause",
+                        "Efficient cause",
+                        "Spiritual cause"
+                ],
+                "answer": "Spiritual cause",
+                "explanation": "Aristotle's four causes: material, formal, efficient, and final — not spiritual."
+        },
+        {
+                "id": 134,
+                "topic": "Philosophy",
+                "question": "The final cause in Aristotle's philosophy refers to:",
+                "options": [
+                        "What something is made of",
+                        "The purpose or goal of something",
+                        "Who made it",
+                        "Its shape"
+                ],
+                "answer": "The purpose or goal of something",
+                "explanation": "The final cause (telos) is the purpose or end for which something exists."
+        },
+        {
+                "id": 135,
+                "topic": "Philosophy",
+                "question": "Stoicism teaches that:",
+                "options": [
+                        "Pursue pleasure",
+                        "Accept what you cannot change and cultivate virtue",
+                        "Reject society",
+                        "Seek power"
+                ],
+                "answer": "Accept what you cannot change and cultivate virtue",
+                "explanation": "Stoicism (Epictetus, Marcus Aurelius) emphasizes accepting fate and cultivating inner virtue."
+        },
+        {
+                "id": 136,
+                "topic": "Philosophy",
+                "question": "The phrase 'tabula rasa' means:",
+                "options": [
+                        "Blank slate",
+                        "Full mind",
+                        "Divine knowledge",
+                        "Eternal truth"
+                ],
+                "answer": "Blank slate",
+                "explanation": "Tabula rasa (Locke): the mind at birth is a blank slate, filled by experience."
+        },
+        {
+                "id": 137,
+                "topic": "Philosophy",
+                "question": "Immanuel Kant's Critique of Pure Reason deals with:",
+                "options": [
+                        "Ethics",
+                        "The limits and scope of human knowledge",
+                        "Aesthetics",
+                        "Politics"
+                ],
+                "answer": "The limits and scope of human knowledge",
+                "explanation": "Kant's Critique of Pure Reason examines what we can know and the limits of reason."
+        },
+        {
+                "id": 138,
+                "topic": "Philosophy",
+                "question": "Nihilism is the belief that:",
+                "options": [
+                        "Life has inherent meaning",
+                        "Life lacks inherent meaning, value, or purpose",
+                        "God exists",
+                        "Science is infallible"
+                ],
+                "answer": "Life lacks inherent meaning, value, or purpose",
+                "explanation": "Nihilism (Nietzsche) denies that life has inherent meaning, value, or purpose."
+        },
+        {
+                "id": 139,
+                "topic": "Logic",
+                "question": "A necessary truth is one that:",
+                "options": [
+                        "Could be false",
+                        "Cannot be false under any circumstances",
+                        "Depends on experience",
+                        "Changes over time"
+                ],
+                "answer": "Cannot be false under any circumstances",
+                "explanation": "A necessary truth (like 2+2=4) must be true in all possible circumstances."
+        },
+        {
+                "id": 140,
+                "topic": "Logic",
+                "question": "A contingent truth is one that:",
+                "options": [
+                        "Must always be true",
+                        "Could have been false",
+                        "Is never true",
+                        "Is logically impossible"
+                ],
+                "answer": "Could have been false",
+                "explanation": "A contingent truth happens to be true but could have been otherwise (e.g., 'it is raining today')."
+        },
+        {
+                "id": 141,
+                "topic": "Philosophy",
+                "question": "An a priori truth is known:",
+                "options": [
+                        "Through experience",
+                        "Independent of experience",
+                        "Through experiments",
+                        "By tradition"
+                ],
+                "answer": "Independent of experience",
+                "explanation": "A priori knowledge is independent of experience (e.g., mathematical truths)."
+        },
+        {
+                "id": 142,
+                "topic": "Philosophy",
+                "question": "An a posteriori truth is known:",
+                "options": [
+                        "Independent of experience",
+                        "Through experience",
+                        "By reasoning alone",
+                        "By definition"
+                ],
+                "answer": "Through experience",
+                "explanation": "A posteriori knowledge depends on sensory experience (e.g., 'the sky is blue')."
+        },
+        {
+                "id": 143,
+                "topic": "Philosophy",
+                "question": "The problem of evil challenges:",
+                "options": [
+                        "The existence of logic",
+                        "The existence of an all-good, all-powerful God given evil",
+                        "The nature of truth",
+                        "The validity of science"
+                ],
+                "answer": "The existence of an all-good, all-powerful God given evil",
+                "explanation": "The problem of evil: if God is all-good and all-powerful, why does evil exist?"
+        },
+        {
+                "id": 144,
+                "topic": "Philosophy",
+                "question": "Solipsism is the view that:",
+                "options": [
+                        "Only one's own mind is sure to exist",
+                        "Everything is material",
+                        "God is everything",
+                        "Knowledge is impossible"
+                ],
+                "answer": "Only one's own mind is sure to exist",
+                "explanation": "Solipsism holds that only one's own mind and its contents are certain to exist."
+        },
+        {
+                "id": 145,
+                "topic": "Philosophy",
+                "question": "Dualism (Descartes) holds that:",
+                "options": [
+                        "Only matter exists",
+                        "Only mind exists",
+                        "Mind and matter are two distinct substances",
+                        "Everything is one substance"
+                ],
+                "answer": "Mind and matter are two distinct substances",
+                "explanation": "Cartesian dualism: reality consists of two fundamental substances — mind (res cogitans) and matter (res extensa)."
+        },
+        {
+                "id": 146,
+                "topic": "Philosophy",
+                "question": "Materialism holds that:",
+                "options": [
+                        "Only mind exists",
+                        "Only matter/physical substance exists",
+                        "Both mind and matter exist",
+                        "Neither exists"
+                ],
+                "answer": "Only matter/physical substance exists",
+                "explanation": "Materialism (physicalism): everything that exists is material or physical."
+        },
+        {
+                "id": 147,
+                "topic": "Philosophy",
+                "question": "Idealism holds that:",
+                "options": [
+                        "Only matter is real",
+                        "Only mind or ideas are fundamentally real",
+                        "Both are real",
+                        "Nothing is real"
+                ],
+                "answer": "Only mind or ideas are fundamentally real",
+                "explanation": "Idealism (Berkeley, Hegel): reality is fundamentally mental or spiritual in nature."
+        },
+        {
+                "id": 148,
+                "topic": "Philosophy",
+                "question": "Phenomenology is the philosophical study of:",
+                "options": [
+                        "Physical phenomena only",
+                        "Conscious experience from the first-person perspective",
+                        "Mathematical logic",
+                        "Political systems"
+                ],
+                "answer": "Conscious experience from the first-person perspective",
+                "explanation": "Phenomenology (Husserl, Heidegger) studies the structure of conscious experience."
+        },
+        {
+                "id": 149,
+                "topic": "Philosophy",
+                "question": "Postmodernism is characterized by:",
+                "options": [
+                        "Belief in absolute truth",
+                        "Skepticism toward grand narratives and absolute truths",
+                        "Faith in science",
+                        "Return to tradition"
+                ],
+                "answer": "Skepticism toward grand narratives and absolute truths",
+                "explanation": "Postmodernism (Lyotard, Foucault, Derrida) questions absolute truths and grand narratives."
+        },
+        {
+                "id": 150,
+                "topic": "Logic",
+                "question": "A tautology is:",
+                "options": [
+                        "A false statement",
+                        "A statement that is always true by logical form",
+                        "A contradiction",
+                        "An empirical claim"
+                ],
+                "answer": "A statement that is always true by logical form",
+                "explanation": "A tautology is true in all possible interpretations (e.g., 'it will rain or it will not rain')."
+        },
+        {
+                "id": 151,
+                "topic": "Logic",
+                "question": "A contradiction is:",
+                "options": [
+                        "Always true",
+                        "Always false",
+                        "Sometimes true",
+                        "Neither true nor false"
+                ],
+                "answer": "Always false",
+                "explanation": "A contradiction (e.g., 'P and not P') is false in all possible circumstances."
+        },
+        {
+                "id": 152,
+                "topic": "Logic",
+                "question": "The principle of charity in argumentation means:",
+                "options": [
+                        "Giving money to the poor",
+                        "Interpreting an opponent's argument in its strongest form",
+                        "Being polite",
+                        "Avoiding disagreement"
+                ],
+                "answer": "Interpreting an opponent's argument in its strongest form",
+                "explanation": "The principle of charity: interpret arguments as charitably as possible before criticizing them."
+        },
+        {
+                "id": 153,
+                "topic": "Philosophy",
+                "question": "Occam's Razor states that:",
+                "options": [
+                        "The simplest explanation is usually correct",
+                        "The most complex explanation is best",
+                        "Never make assumptions",
+                        "Always trust authority"
+                ],
+                "answer": "The simplest explanation is usually correct",
+                "explanation": "Occam's Razor: among competing hypotheses, prefer the one with fewest assumptions."
+        },
+        {
+                "id": 154,
+                "topic": "Philosophy",
+                "question": "The 'veil of ignorance' (Rawls) is a thought experiment about:",
+                "options": [
+                        "Logic",
+                        "Justice and fairness",
+                        "Knowledge",
+                        "Aesthetics"
+                ],
+                "answer": "Justice and fairness",
+                "explanation": "Rawls' veil of ignorance: design society not knowing your place in it — ensures fairness."
+        },
+        {
+                "id": 155,
+                "topic": "Philosophy",
+                "question": "Cultural relativism holds that:",
+                "options": [
+                        "There are universal moral truths",
+                        "Moral values vary by culture and no culture's values are objectively superior",
+                        "One culture's values are always best",
+                        "Morality doesn't exist"
+                ],
+                "answer": "Moral values vary by culture and no culture's values are objectively superior",
+                "explanation": "Cultural relativism: moral standards are culture-specific; no universal moral truths."
+        },
+        {
+                "id": 156,
+                "topic": "Philosophy",
+                "question": "The golden rule states:",
+                "options": [
+                        "He who has the gold makes the rules",
+                        "Treat others as you would want to be treated",
+                        "Survival of the fittest",
+                        "Might makes right"
+                ],
+                "answer": "Treat others as you would want to be treated",
+                "explanation": "The golden rule: treat others as you wish to be treated — found in many ethical traditions."
+        },
+        {
+                "id": 157,
+                "topic": "Logic",
+                "question": "In logic, the term 'premise' refers to:",
+                "options": [
+                        "The conclusion of an argument",
+                        "A statement given as evidence for a conclusion",
+                        "A type of fallacy",
+                        "A logical operator"
+                ],
+                "answer": "A statement given as evidence for a conclusion",
+                "explanation": "A premise is a proposition that supports or provides evidence for the conclusion."
+        },
+        {
+                "id": 158,
+                "topic": "Logic",
+                "question": "A counterexample to a universal claim:",
+                "options": [
+                        "Proves the claim",
+                        "Disproves the claim by showing one instance where it fails",
+                        "Is irrelevant",
+                        "Strengthens the claim"
+                ],
+                "answer": "Disproves the claim by showing one instance where it fails",
+                "explanation": "A single counterexample disproves a universal statement (e.g., one black swan disproves 'all swans are white')."
+        },
+        {
+                "id": 159,
+                "topic": "Logic",
+                "question": "An 'if and only if' (biconditional) statement means:",
+                "options": [
+                        "P implies Q",
+                        "P and Q are equivalent — both true or both false",
+                        "P or Q",
+                        "Not P"
+                ],
+                "answer": "P and Q are equivalent — both true or both false",
+                "explanation": "Biconditional (P ↔ Q): P is true if and only if Q is true — they have the same truth value."
+        },
+        {
+                "id": 160,
+                "topic": "Logic",
+                "question": "The difference between deductive and inductive arguments is:",
+                "options": [
+                        "Deductive guarantees truth; inductive only makes it probable",
+                        "Inductive is always better",
+                        "Deductive uses statistics",
+                        "There is no difference"
+                ],
+                "answer": "Deductive guarantees truth; inductive only makes it probable",
+                "explanation": "Deductive: if valid, conclusion is certain. Inductive: conclusion is probable but not guaranteed."
+        }
+    ];
+
+    let currentExamData = [];
+    let userAnswers     = {};
+    let currentIndex    = 0;
+    let timeRemaining   = 0;
+    let timerId         = null;
+    let activeMode      = 'practice';
+    let examSelectionType = 'random';
+    let partNum         = 1;
+    let isReviewMode    = false;
+
+    function buildDashboard() {
+        const dash = document.getElementById('dashboard');
+        dash.innerHTML = '';
+
+        const totalQ = MASTER_POOL.length;
+        const partSize = 25;
+        const numParts = Math.ceil(totalQ / partSize);
+
+        const randomBox = document.createElement('div');
+        randomBox.className = 'box box-random';
+        randomBox.innerHTML = `<i class="fa-solid fa-shuffle" style="font-size:2rem;"></i><h3>Random Mix</h3><p>${totalQ} Questions</p>`;
+        randomBox.onclick = () => openSetup('random', 0);
+        dash.appendChild(randomBox);
+
+        for (let p = 1; p <= numParts; p++) {
+            const start = (p - 1) * partSize + 1;
+            const end   = Math.min(p * partSize, totalQ);
+            const box   = document.createElement('div');
+            box.className = 'box';
+            box.innerHTML = `<i class="fa-solid fa-book-open" style="font-size:2rem; color:var(--primary);"></i><h3>Part ${p}</h3><p>Q${start} – Q${end}</p>`;
+            box.onclick = () => openSetup('part', p);
+            dash.appendChild(box);
+        }
+    }
+
+    function openSetup(type, part) {
+        examSelectionType = type;
+        partNum = part;
+        document.getElementById('dashboard-wrap').style.display = 'none';
+        document.getElementById('setup-screen').style.display   = 'block';
+        document.getElementById('setup-title').innerText = type === 'random' ? 'Randomised Practice' : `${COURSE_CODE} — Part ${part}`;
+        document.getElementById('random-settings').style.display = type === 'random' ? 'block' : 'none';
+    }
+
+    function goHome() {
+        clearInterval(timerId);
+        isReviewMode = false;
+        currentExamData = []; userAnswers = {}; currentIndex = 0;
+        document.getElementById('quiz-interface').style.display  = 'none';
+        document.getElementById('setup-screen').style.display    = 'none';
+        document.getElementById('quizResultModal').style.display = 'none';
+        document.getElementById('dashboard-wrap').style.display  = 'block';
+        showResumeBanner();
+        loadStatsBar();
+    }
+
+    function shuffleArray(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    }
+
+    function startExam() {
+        timeRemaining = parseInt(document.getElementById('t-limit').value) * 60;
+        activeMode    = document.getElementById('quiz-mode').value;
+        isReviewMode  = false;
+        userAnswers   = {};
+        currentIndex  = 0;
+
+        let pool = JSON.parse(JSON.stringify(MASTER_POOL));
+
+        if (examSelectionType === 'random') {
+            const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
+            pool = shuffleArray(pool).slice(0, qty);
+        } else {
+            const start = (partNum - 1) * 25;
+            pool = pool.slice(start, start + 25);
+        }
+
+        if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);
+
+        if (document.getElementById('shuffle-options').checked) {
+            pool.forEach(q => {
+                q.options = shuffleArray([...q.options]);
+            });
+        }
+
+        currentExamData = pool;
+
+        document.getElementById('setup-screen').style.display  = 'none';
+        document.getElementById('quiz-interface').style.display = 'block';
+        document.getElementById('total-idx').innerText = currentExamData.length;
+        runTimer();
+        renderQuestion();
+    }
+
+    function runTimer() {
+        clearInterval(timerId);
+        timerId = setInterval(() => {
+            timeRemaining--;
+            const m = Math.floor(timeRemaining / 60);
+            const s = timeRemaining % 60;
+            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
+            if (timeRemaining <= 0) { clearInterval(timerId); showResults(true); }
+        }, 1000);
+    }
+
+    // Render Question
+    function renderQuestion() {
+        const q          = currentExamData[currentIndex];
+        const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
+        const userAns    = userAnswers[currentIndex];
+        const labels     = ['A','B','C','D'];
+
+        document.getElementById('cur-idx').innerText       = currentIndex + 1;
+        document.getElementById('question-text').innerHTML = q.question;
+
+        const optBox   = document.getElementById('options-box');
+        const feedArea = document.getElementById('feedback-area');
+        optBox.innerHTML  = '';
+        feedArea.innerHTML = '';
+
+        if (q.options && q.options.length) if (q.options && q.options.length) q.options.forEach((val, idx) => {
+            const label = labels[idx] || (idx + 1);
+            const btn   = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerHTML = `<strong>${label}.</strong> ${val}`;
+
+            if (isReviewMode || (activeMode === 'practice' && hasAnswered)) {
+                if (val === q.answer)    btn.classList.add('correct');
+                else if (userAns === val) btn.classList.add('wrong');
+                btn.disabled = true;
+            } else if (activeMode === 'exam' && hasAnswered && userAns === val) {
+                btn.classList.add('selected');
+            }
+
+            btn.onclick = () => {
+                if (isReviewMode) return;
+                if (activeMode === 'practice' && hasAnswered) return;
+                userAnswers[currentIndex] = val;
+                saveState();
+                renderQuestion();
+
+                if (activeMode === 'practice') {
+                    const isLast = currentIndex === currentExamData.length - 1;
+                    // Auto-next removed: user must click "Next" manually.
+                    if (isLast) {
+                        const submitBtn = document.getElementById('submit-btn');
+                        if (submitBtn) submitBtn.style.display = 'inline-flex';
+                    }
+                }
+            };
+            optBox.appendChild(btn);
+        });
+
+        const expHtml = q.explanation
+            ? `<div class="explanation-box"><strong>Explanation:</strong> ${q.explanation}</div>`
+            : '';
+
+        if (isReviewMode) {
+            if (hasAnswered) {
+                const ok = userAns === q.answer;
+                feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
+                    ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
+                </div>${expHtml}`;
+            } else {
+                feedArea.innerHTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
+                    ⚠ Not answered. Correct: <strong>${q.answer}</strong>
+                </div>${expHtml}`;
+            }
+        } else if (activeMode === 'practice' && hasAnswered && !q.isTheory) {
+            const ok = userAns === q.answer;
+            feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
+                ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
+            </div>${expHtml}`;
+        }
+
+        const isLast = currentIndex === currentExamData.length - 1;
+        document.getElementById('next-btn').style.display          = isLast ? 'none' : 'block';
+        document.getElementById('submit-btn').style.display        = isReviewMode ? 'none' : 'block';
+        document.getElementById('finish-review-btn').style.display = isReviewMode ? 'block' : 'none';
+    }
+
+    function move(d) {
+        const n = currentIndex + d;
+        if (n >= 0 && n < currentExamData.length) { currentIndex = n; renderQuestion(); }
+    }
+
+    // Save State
+    function saveState() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            currentExamData, userAnswers, currentIndex,
+            timeRemaining, activeMode, examSelectionType, partNum,
+            savedAt: Date.now()
+        }));
+    }
+
+    function resumeExam() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (!saved) return;
+        const s = JSON.parse(saved);
+
+        currentExamData   = s.currentExamData;
+        userAnswers       = s.userAnswers;
+        currentIndex      = s.currentIndex;
+        timeRemaining     = s.timeRemaining;
+        activeMode        = s.activeMode || 'practice';
+        examSelectionType = s.examSelectionType || 'random';
+        partNum           = s.partNum || 1;
+        isReviewMode      = false;
+
+        document.getElementById('dashboard-wrap').style.display  = 'none';
+        document.getElementById('resume-banner').style.display   = 'none';
+        document.getElementById('setup-screen').style.display    = 'none';
+        document.getElementById('quizResultModal').style.display = 'none';
+        document.getElementById('resume-btn').style.display      = 'none';
+        document.getElementById('quiz-interface').style.display  = 'block';
+        document.getElementById('total-idx').innerText           = currentExamData.length;
+
+        const timerEl = document.getElementById('timer');
+        timerEl.style.background = 'rgba(239,68,68,0.08)';
+        timerEl.style.color      = 'var(--danger)';
+
+        runTimer();
+        renderQuestion();
+    }
+
+    async function showResults(forced = false) {
+        const answered = Object.keys(userAnswers).length;
+        if (!forced && answered < currentExamData.length) {
+            if (!confirm(`You answered ${answered} of ${currentExamData.length}. Submit anyway?`)) return;
+        }
+
+        clearInterval(timerId);
+        localStorage.removeItem(STORAGE_KEY);
+
+        let score = 0;
+        currentExamData.forEach((q, i) => { if (userAnswers[i] === q.answer) score++; });
+        const total = currentExamData.length;
+        const pct   = Math.round((score / total) * 100);
+
+        document.getElementById('finalScoreText').innerText = pct;
+        document.getElementById('modalCorrect').innerText   = score;
+        document.getElementById('modalTotal').innerText     = total;
+        document.getElementById('modalReviewBtn').style.display = activeMode === 'practice' ? 'none' : 'flex';
+
+        if (pct >= 70) {
+            document.getElementById('resultIcon').innerText     = '🏆';
+            document.getElementById('resultGreeting').innerText = 'Outstanding! 🌟';
+            document.getElementById('resultFeedback').innerText = 'Excellent work! Keep it up!';
+            confetti({ particleCount: 160, spread: 70, origin: { y: 0.6 } });
+        } else if (pct >= 50) {
+            document.getElementById('resultIcon').innerText     = '👍';
+            document.getElementById('resultGreeting').innerText = 'Good Job!';
+            document.getElementById('resultFeedback').innerText = 'Almost there — aim for 70%+!';
+        } else {
+            document.getElementById('resultIcon').innerText     = '💪';
+            document.getElementById('resultGreeting').innerText = 'Keep Trying!';
+            document.getElementById('resultFeedback').innerText = 'Review your notes and try again!';
+        }
+
+        document.getElementById('quizResultModal').style.display = 'flex';
+        await saveTestScore(pct);
+    }
+
+    async function saveTestScore(pct) {
+        const el = document.getElementById('save-status');
+        el.innerText = '⏳ Saving...';
+        try {
+            const { data: { user } } = await db.auth.getUser();
+            if (!user) { el.innerText = ''; return; }
+
+            // ── 1. ALWAYS save to localStorage as backup (cross-device sync) ──
+            try {
+                const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+                localResults.push({
+                    student_id: user.id,
+                    course_id: COURSE_CODE,
+                    score: pct,
+                    timestamp: Date.now(),
+                    synced: false
+                });
+                localStorage.setItem('renance_local_results', JSON.stringify(localResults));
+            } catch (le) { console.warn('Local save failed:', le); }
+
+            // ── 2. Save to Supabase (cloud) ──
+            const { data: prev } = await db.from('test_results')
+                .select('score').eq('student_id', user.id).eq('course_id', COURSE_CODE);
+
+            if (prev && prev.length > 0) {
+                const all = [...prev.map(r => r.score), pct];
+                const avg = Math.round(all.reduce((a, b) => a + b, 0) / all.length);
+                document.getElementById('modalAvg').innerText = avg + '%';
+            }
+
+            const { error } = await db.from('test_results').insert([
+                { student_id: user.id, course_id: COURSE_CODE, score: pct }
+            ]);
+
+            if (error) {
+                el.innerText = '⚠️ Could not save to cloud (saved locally — will sync later)';
+            } else {
+                el.innerText = '✅ Score saved!';
+                // Mark the just-saved local result as synced
+                try {
+                    const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+                    // Mark the last unsynced result for this course as synced
+                    for (let i = localResults.length - 1; i >= 0; i--) {
+                        if (localResults[i].student_id === user.id &&
+                            localResults[i].course_id === COURSE_CODE &&
+                            !localResults[i].synced) {
+                            localResults[i].synced = true;
+                            break;
+                        }
+                    }
+                    localStorage.setItem('renance_local_results', JSON.stringify(localResults));
+                } catch (e) {}
+
+                // ── Update students table with aggregated stats ──
+                try {
+                    const { data: allResults } = await db.from('test_results')
+                        .select('score').eq('student_id', user.id);
+                    if (allResults && allResults.length > 0) {
+                        const testsTaken = allResults.length;
+                        const avgScore = Math.round(allResults.reduce((s, r) => s + Number(r.score), 0) / testsTaken);
+                        await db.from('students').update({
+                            tests_taken: testsTaken,
+                            avg_score: avgScore,
+                            last_seen: new Date().toISOString()
+                        }).eq('id', user.id);
+                    }
+                } catch (ue) {}
+            }
+        } catch (e) {
+            el.innerText = '⚠️ Offline — saved locally, will sync when online';
+        }
+    }
+
+    // ── Sync queued local results to Supabase (runs on page load) ──
+    async function syncLocalResults() {
+        try {
+            const { data: { user } } = await db.auth.getUser();
+            if (!user) return;
+
+            const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+            const unsynced = localResults.filter(r => !r.synced && r.student_id === user.id);
+            if (unsynced.length === 0) return;
+
+            let syncedCount = 0;
+            for (const r of unsynced) {
+                try {
+                    const { error } = await db.from('test_results').insert([
+                        { student_id: r.student_id, course_id: r.course_id, score: r.score }
+                    ]);
+                    if (!error) {
+                        r.synced = true;
+                        syncedCount++;
+                    }
+                } catch (e) { /* will retry next time */ }
+            }
+            localStorage.setItem('renance_local_results', JSON.stringify(localResults));
+            if (syncedCount > 0) {
+                console.log(`Synced ${syncedCount} queued result(s) to cloud`);
+
+            // Update students table after syncing
+            if (syncedCount > 0) {
+                try {
+                    const { data: { user } } = await db.auth.getUser();
+                    if (user) {
+                        const { data: allResults } = await db.from('test_results')
+                            .select('score').eq('student_id', user.id);
+                        if (allResults && allResults.length > 0) {
+                            const testsTaken = allResults.length;
+                            const avgScore = Math.round(allResults.reduce((s, r) => s + Number(r.score), 0) / testsTaken);
+                            await db.from('students').update({
+                                tests_taken: testsTaken,
+                                avg_score: avgScore,
+                                last_seen: new Date().toISOString()
+                            }).eq('id', user.id);
+                        }
+                    }
+                } catch (ue) {}
+            }
+            }
+        } catch (e) { /* not logged in or offline — will retry next time */ }
+    }
+
+    function enterReviewMode() {
+        document.getElementById('quizResultModal').style.display = 'none';
+        isReviewMode = true;
+        currentIndex = 0;
+        document.getElementById('timer').innerText         = 'REVIEW';
+        document.getElementById('timer').style.background = '#ddd6fe';
+        document.getElementById('timer').style.color      = '#7c3aed';
+        renderQuestion();
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+        if (document.getElementById('quiz-interface').style.display === 'none') return;
+
+        const key = e.key.toUpperCase();
+        if (['A', 'B', 'C', 'D'].includes(key)) {
+            const buttons = document.querySelectorAll('.option-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText.trim().startsWith(key + '.')) {
+                    btn.click();
+                }
+            });
+            return;
+        }
+
+        if (key === 'N') { move(1); return; }
+        if (key === 'P') { move(-1); return; }
+    });
+
+    async function shareQuizResult() {
+        const score   = document.getElementById('finalScoreText').innerText;
+        const section = examSelectionType === 'random' ? 'a random mix' : `Part ${partNum}`;
+        const text    = `I just scored ${score}% on ${COURSE_CODE} (${section})! 🚀\n\nChallenge yourself on the Renance CBT portal! 📚🔥\nhttps://renancecbt.vercel.app`;
+        try {
+            if (navigator.share) await navigator.share({ title: `My ${COURSE_CODE} Score`, text, url: 'https://renancecbt.vercel.app' });
+            else { await navigator.clipboard.writeText(text); alert('Score copied to clipboard! 📋'); }
+        } catch (_) {}
+    }
+
+    function askRenanceAI() {
+        sendToAI(COURSE_CODE, currentExamData, userAnswers);
+    }
+
+    async function loadStatsBar() {
+        const bar = document.getElementById('stats-bar');
+        try {
+            const { data: { user } } = await db.auth.getUser();
+            if (!user) return;
+
+            // Fetch from cloud
+            const { data } = await db.from('test_results')
+                .select('score').eq('student_id', user.id).eq('course_id', COURSE_CODE);
+            const cloudScores = data ? data.map(r => r.score) : [];
+
+            // Merge with local (unsynced) results
+            let localScores = [];
+            try {
+                const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+                localScores = localResults
+                    .filter(r => r.student_id === user.id && r.course_id === COURSE_CODE && !r.synced)
+                    .map(r => r.score);
+            } catch (e) {}
+
+            const allScores = [...cloudScores, ...localScores];
+            if (allScores.length === 0) return;
+
+            const taken = allScores.length;
+            const avg  = Math.round(allScores.reduce((s, r) => s + r, 0) / taken);
+            const best = Math.max(...allScores);
+            bar.innerHTML = `
+                <div class="stat-card"><div class="stat-val">${taken}</div><div class="stat-lbl">Tests Taken</div></div>
+                <div class="stat-card"><div class="stat-val">${avg}%</div><div class="stat-lbl">Average Score</div></div>
+                <div class="stat-card"><div class="stat-val">${best}%</div><div class="stat-lbl">Best Score</div></div>`;
+            bar.style.display = 'grid';
+        } catch (e) {  }
+    }
+
+    function showResumeBanner() {
+        const saved  = localStorage.getItem(STORAGE_KEY);
+        const banner = document.getElementById('resume-banner');
+        if (!saved || !banner) return;
+
+        const s        = JSON.parse(saved);
+        const answered = Object.keys(s.userAnswers).length;
+        const total    = s.currentExamData.length;
+        const label    = s.examSelectionType === 'random' ? 'Random Mix' : `Part ${s.partNum}`;
+        const mLeft    = Math.floor(s.timeRemaining / 60);
+        const sLeft    = s.timeRemaining % 60;
+        const timeStr  = `${mLeft}:${sLeft < 10 ? '0'+sLeft : sLeft}`;
+        const pct      = Math.round((answered / total) * 100);
+
+        banner.innerHTML = `
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                <div>
+                    <div style="font-weight:700;font-size:0.95rem;">📌 Resume Saved Exam</div>
+                    <div style="font-size:0.82rem;color:var(--text-muted);margin-top:3px;">
+                        <strong>${label}</strong> &nbsp;·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;·&nbsp; ⏳ ${timeStr} left
+                    </div>
+                </div>
+                <div style="display:flex;gap:8px;flex-shrink:0;">
+                    <button class="btn" style="background:var(--success);padding:8px 16px;font-size:0.87rem;" onclick="resumeExam()">
+                        <i class="fa-solid fa-rotate-right"></i> Continue
+                    </button>
+                    <button class="btn" style="background:#64748b;padding:8px 16px;font-size:0.87rem;" onclick="discardSaved()">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            </div>`;
+        banner.style.display = 'block';
+    }
+
+    function discardSaved() {
+        if (!confirm('Discard your saved exam progress?')) return;
+        localStorage.removeItem(STORAGE_KEY);
+        document.getElementById('resume-banner').style.display = 'none';
+        document.getElementById('resume-btn').style.display    = 'none';
+    }
+
+    // Check Resume
+    function checkResume() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (!saved) { document.getElementById('resume-btn').style.display = 'none'; return; }
+        const s = JSON.parse(saved);
+        const mins = Math.floor((Date.now() - s.savedAt) / 60000);
+        if (mins > 180) { localStorage.removeItem(STORAGE_KEY); return; }
+        document.getElementById('resume-btn').style.display = 'inline-flex';
+        showResumeBanner();
+    }
+
+    buildDashboard();
+    loadStatsBar();
+    syncLocalResults();
+    checkResume();
+
+        // ═════════════════════════════════════════════════════════════════
+        // THEORY QUESTION UI + GROQ AI GRADING (one question at a time)
+        // ═════════════════════════════════════════════════════════════════
+        (function() {
+            const _originalRender = window.renderQuestion;
+            window.renderQuestion = function() {
+                _originalRender.apply(this, arguments);
+                const q = currentExamData && currentExamData[currentIndex];
+                if (q && q.isTheory) {
+                    injectTheoryUI(q);
+                }
+            };
+        })();
+
+        function injectTheoryUI(q) {
+            const feedArea = document.getElementById('feedback-area');
+            if (!feedArea) return;
+            if (feedArea.querySelector('.theory-ui')) return;
+
+            const existing = userAnswers[currentIndex];
+            const hasAnswered = existing && typeof existing === 'object' && 'response' in existing;
+
+            const html = `
+                <div class="theory-ui" style="margin-top:1rem; padding:1rem; background:rgba(124,58,237,0.04); border-left:4px solid #7c3aed; border-radius:10px;">
+                    <label style="font-weight:700; color:var(--primary); display:block; margin-bottom:6px;">
+                        <i class="fa-solid fa-pen-to-square"></i> Your Answer:
+                    </label>
+                    <textarea id="theory-response" rows="6" style="width:100%; padding:10px; border:2px solid #ddd6fe; border-radius:8px; font-family:inherit; font-size:0.95rem; resize:vertical; ${hasAnswered ? 'background:#f5f5f5;' : ''}"
+                        placeholder="Type your detailed answer here..." ${hasAnswered ? 'disabled' : ''}>${hasAnswered ? (existing.response || '').replace(/</g, '&lt;') : ''}</textarea>
+
+                    ${hasAnswered ? `
+                        <div style="margin-top:10px; padding:10px; background:#fff; border-radius:8px; border:1px solid var(--border);">
+                            <strong style="color:var(--primary);">Your Score:</strong>
+                            <span style="font-size:1.1rem; font-weight:800; color:${(existing.score||0) >= 70 ? '#10b981' : (existing.score||0) >= 40 ? '#f59e0b' : '#ef4444'};">${existing.score || 0}%</span>
+                            ${existing.aiFeedback ? `<div style="margin-top:6px; font-size:0.88rem; color:var(--text-muted);"><strong>AI Feedback:</strong> ${existing.aiFeedback}</div>` : ''}
+                        </div>
+                    ` : `
+                        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
+                            <button class="btn" style="background:var(--danger); padding:7px 14px; font-size:0.85rem;" onclick="gradeTheoryAnswer(0)">
+                                <i class="fa-solid fa-xmark"></i> Incorrect (0%)
+                            </button>
+                            <button class="btn" style="background:var(--accent); padding:7px 14px; font-size:0.85rem;" onclick="gradeTheoryAnswer(50)">
+                                <i class="fa-solid fa-circle-half-stroke"></i> Partial (50%)
+                            </button>
+                            <button class="btn" style="background:var(--success); padding:7px 14px; font-size:0.85rem;" onclick="gradeTheoryAnswer(100)">
+                                <i class="fa-solid fa-check"></i> Correct (100%)
+                            </button>
+                            <button class="btn" id="ai-grade-btn" style="background:linear-gradient(135deg, #4f46e5, #818cf8); padding:7px 14px; font-size:0.85rem;" onclick="gradeWithGroqAI()">
+                                <i class="fa-solid fa-robot"></i> Auto-Grade (AI)
+                            </button>
+                        </div>
+                        <div id="ai-feedback-response" style="display:none; margin-top:10px; padding:10px; background:#fff; border-radius:8px; border:1px solid var(--border);">
+                            <div id="ai-feedback-text" style="font-size:0.92rem; line-height:1.5;"></div>
+                        </div>
+                    `}
+                </div>
+            `;
+            feedArea.insertAdjacentHTML('beforeend', html);
+        }
+
+        function gradeTheoryAnswer(scorePct) {
+            const q = currentExamData[currentIndex];
+            const textarea = document.getElementById('theory-response');
+            if (!textarea) return;
+            const response = textarea.value.trim();
+            if (!response) { alert("Please type your answer first."); return; }
+            userAnswers[currentIndex] = {
+                response: response,
+                score: scorePct,
+                aiFeedback: userAnswers[currentIndex] && userAnswers[currentIndex].aiFeedback
+            };
+            saveState();
+            renderQuestion();
+        }
+
+        async function gradeWithGroqAI() {
+            const q = currentExamData[currentIndex];
+            const textarea = document.getElementById('theory-response');
+            if (!textarea) return;
+            const userResponse = textarea.value.trim();
+            if (!userResponse) { alert("Please type your answer first."); return; }
+
+            const aiBtn = document.getElementById('ai-grade-btn');
+            const aiFeedback = document.getElementById('ai-feedback-response');
+            const aiFeedbackText = document.getElementById('ai-feedback-text');
+            aiBtn.disabled = true;
+            aiBtn.innerText = "\u23F3 Grading...";
+
+            const provider = window.env?.AI_PROVIDER || 'groq';
+            const model = window.env?.AI_MODEL || 'llama-3.1-8b-instant';
+            const key = window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy');
+
+            const systemPrompt = `You are a strict, professional academic examiner grading a ${COURSE_CODE} exam question.
+Grade the student's answer against the provided model answer.
+
+Question: "${q.question}"
+Model Answer: "${q.answer}"
+Student's Answer: "${userResponse}"
+
+Rate the response from 0 to 100% accuracy.
+Provide your response strictly in the following JSON format:
+{
+  "score": <integer 0-100>,
+  "feedback": "<A concise 1-2 sentence explanation of what they got correct or missed>"
+}`;
+
+            try {
+                let result = null;
+                if (provider === 'groq') {
+                    if (!key) throw new Error("API Key is missing. Please configure your Groq key in Renance AI page first.");
+                    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+                        body: JSON.stringify({
+                            model: model,
+                            messages: [{ role: "system", content: systemPrompt }],
+                            response_format: { type: "json_object" },
+                            temperature: 0.2
+                        })
+                    });
+                    const resData = await response.json();
+                    if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
+                    result = JSON.parse(resData.choices[0].message.content.trim());
+                } else {
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: systemPrompt }] }],
+                            generationConfig: { responseMimeType: "application/json" }
+                        })
+                    });
+                    const resData = await response.json();
+                    if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
+                    const text = resData.candidates[0].content.parts[0].text;
+                    result = JSON.parse(text.trim());
+                }
+
+                if (result && typeof result.score === 'number') {
+                    aiFeedbackText.innerHTML = `<strong>AI Grade:</strong> ${result.score}%<br><strong>AI Feedback:</strong> ${result.feedback}`;
+                    aiFeedback.style.display = 'block';
+                    userAnswers[currentIndex] = {
+                        response: userResponse,
+                        score: result.score,
+                        aiFeedback: result.feedback
+                    };
+                    saveState();
+                    setTimeout(() => renderQuestion(), 800);
+                } else {
+                    throw new Error("Invalid API response structure");
+                }
+            } catch (e) {
+                console.error("AI Grading Error:", e);
+                alert(`Auto-grading failed: ${e.message || "Please self-grade using the buttons."}`);
+            } finally {
+                aiBtn.disabled = false;
+                aiBtn.innerText = "\uD83E\uDD16 Auto-Grade (AI)";
+            }
+        }
+
+
+        // ═════════════════════════════════════════════════════════════════
+        // PER-COURSE LEADERBOARD
+        // ═════════════════════════════════════════════════════════════════
+        async function loadCourseLeaderboard() {
+            const lbContent = document.getElementById('lb-content');
+            const lbStatus = document.getElementById('lb-status');
+            const lbCourseName = document.getElementById('lb-course-name');
+            if (lbCourseName) lbCourseName.innerText = COURSE_CODE;
+            if (!lbContent) return;
+
+            try {
+                // Fetch all test_results for this course
+                const { data: results, error: rErr } = await db
+                    .from('test_results')
+                    .select('student_id, score')
+                    .eq('course_id', COURSE_CODE);
+
+                if (rErr) throw rErr;
+                if (!results || results.length === 0) {
+                    lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
+                    lbStatus.innerText = '0 attempts';
+                    return;
+                }
+
+                // Aggregate by student: avg score + count
+                const byStudent = {};
+                results.forEach(r => {
+                    if (!byStudent[r.student_id]) {
+                        byStudent[r.student_id] = { total: 0, count: 0 };
+                    }
+                    byStudent[r.student_id].total += Number(r.score);
+                    byStudent[r.student_id].count += 1;
+                });
+
+                // Fetch student profiles
+                const studentIds = Object.keys(byStudent);
+                const { data: students, error: sErr } = await db
+                    .from('students')
+                    .select('id, fullname, department, matric')
+                    .in('id', studentIds);
+
+                // Build leaderboard rows
+                const rows = studentIds.map(sid => {
+                    const agg = byStudent[sid];
+                    const avg = Math.round(agg.total / agg.count);
+                    const student = students ? students.find(s => s.id === sid) : null;
+                    return {
+                        fullname: student ? student.fullname : 'Anonymous',
+                        department: student ? (student.department || '—') : '—',
+                        matric: student ? (student.matric || '—') : '—',
+                        avg: avg,
+                        tests: agg.count
+                    };
+                });
+
+                // Sort by avg score desc, then by tests desc
+                rows.sort((a, b) => b.avg - a.avg || b.tests - a.tests);
+
+                // Get current user id for highlighting
+                let currentUserId = null;
+                try {
+                    const { data: { user } } = await db.auth.getUser();
+                    if (user) currentUserId = user.id;
+                } catch (e) {}
+
+                // Render top 20
+                const medals = ['🥇', '🥈', '🥉'];
+                const topRows = rows.slice(0, 20);
+                let html = '<table style="width:100%; border-collapse:collapse; font-size:0.88rem;">';
+                html += '<thead><tr style="border-bottom:2px solid var(--border);">';
+                html += '<th style="text-align:left; padding:8px; color:var(--text-muted); font-size:0.78rem;">#</th>';
+                html += '<th style="text-align:left; padding:8px; color:var(--text-muted); font-size:0.78rem;">Name</th>';
+                html += '<th style="text-align:left; padding:8px; color:var(--text-muted); font-size:0.78rem; display:none;" class="lb-dept-col">Dept</th>';
+                html += '<th style="text-align:center; padding:8px; color:var(--text-muted); font-size:0.78rem;">Tests</th>';
+                html += '<th style="text-align:right; padding:8px; color:var(--text-muted); font-size:0.78rem;">Avg Score</th>';
+                html += '</tr></thead><tbody>';
+                topRows.forEach((row, i) => {
+                    const rank = i + 1;
+                    const medal = medals[i] || '';
+                    const highlight = row.id === currentUserId ? 'background:rgba(124,58,237,0.08);' : '';
+                    html += `<tr style="border-bottom:1px solid var(--border); ${highlight}">`;
+                    html += `<td style="padding:8px; font-weight:700;">${medal || rank}</td>`;
+                    html += `<td style="padding:8px;">${row.fullname}<br><span style="font-size:0.72rem; color:var(--text-muted);">${row.matric}</span></td>`;
+                    html += `<td style="padding:8px; display:none;" class="lb-dept-col">${row.department}</td>`;
+                    html += `<td style="padding:8px; text-align:center;">${row.tests}</td>`;
+                    html += `<td style="padding:8px; text-align:right; font-weight:700; color:${row.avg >= 70 ? '#10b981' : row.avg >= 40 ? '#f59e0b' : '#ef4444'};">${row.avg}%</td>`;
+                    html += '</tr>';
+                });
+                html += '</tbody></table>';
+
+                // If current user is not in top 20, show their rank below
+                if (currentUserId) {
+                    const userRowIdx = rows.findIndex(r => r.id === currentUserId);
+                    if (userRowIdx >= 20) {
+                        const userRow = rows[userRowIdx];
+                        html += `<div style="margin-top:10px; padding:10px; background:rgba(124,58,237,0.08); border-radius:8px; display:flex; justify-content:space-between; font-size:0.85rem;">
+                            <span><strong>Your Rank: #${userRowIdx + 1}</strong> — ${userRow.fullname}</span>
+                            <span><strong style="color:${userRow.avg >= 70 ? '#10b981' : userRow.avg >= 40 ? '#f59e0b' : '#ef4444'};">${userRow.avg}%</strong> (${userRow.tests} tests)</span>
+                        </div>`;
+                    }
+                }
+
+                lbContent.innerHTML = html;
+                lbStatus.innerText = `${rows.length} students · ${results.length} attempts`;
+            } catch (e) {
+                console.error('Leaderboard error:', e);
+                lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
+                lbStatus.innerText = 'Error';
+            }
+        }
+
+        // Load leaderboard after page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(loadCourseLeaderboard, 500);
+        });
+
+        // ═════════════════════════════════════════════════════════════════
+        // AI WEAK AREAS ANALYSIS (runs after exam results are shown)
+        // ═════════════════════════════════════════════════════════════════
+        async function analyzeWeakAreasWithAI() {
+            const container = document.getElementById('ai-weak-areas');
+            const textEl = document.getElementById('ai-weak-areas-text');
+            if (!container || !textEl) return;
+            if (typeof currentExamData === 'undefined' || !currentExamData.length) return;
+
+            // Collect wrong answers
+            const missed = [];
+            currentExamData.forEach((q, i) => {
+                const student = userAnswers[i];
+                if (q.isTheory) {
+                    const scoreValue = student && typeof student.score === 'number' ? student.score : 0;
+                    if (scoreValue < 70) {
+                        missed.push({ question: q.question, topic: q.topic || 'General' });
+                    }
+                } else {
+                    if (student !== q.answer) {
+                        missed.push({ question: q.question, topic: q.topic || 'General' });
+                    }
+                }
+            });
+
+            if (missed.length === 0) {
+                container.style.display = 'block';
+                container.style.borderColor = '#10b981';
+                container.querySelector('strong').style.color = '#10b981';
+                textEl.innerHTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
+                return;
+            }
+
+            container.style.display = 'block';
+            textEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
+
+            const courseCode = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
+            const config = typeof getAIConfigForCourse === 'function' ? getAIConfigForCourse(courseCode) : {
+                provider: 'groq',
+                model: window.env?.AI_MODEL || 'llama-3.1-8b-instant',
+                key: window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy')
+            };
+
+            // Group missed questions by topic if available
+            const topicGroups = {};
+            missed.forEach(m => {
+                if (!topicGroups[m.topic]) topicGroups[m.topic] = 0;
+                topicGroups[m.topic]++;
+            });
+
+            const missedList = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
+            const topicSummary = Object.entries(topicGroups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
+
+            const systemPrompt = `You are Renance AI, an academic tutor for FUTA students.
+The student just completed a ${courseCode} quiz and got ${missed.length} question(s) wrong out of ${currentExamData.length}.
+
+Questions they got wrong:
+${missedList}
+
+${topicSummary ? 'Breakdown by topic: ' + topicSummary : ''}
+
+Identify 1-3 core topics/concepts the student should focus on revising.
+Respond in 2-4 short bullet points. Be specific and actionable.
+Format: • Topic name — brief advice on what to study
+Keep it concise (under 100 words total).`;
+
+            try {
+                let resultText = "";
+                const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${config.key}`
+                    },
+                    body: JSON.stringify({
+                        model: config.model,
+                        messages: [{ role: "system", content: systemPrompt }],
+                        temperature: 0.3
+                    })
+                });
+                const resData = await response.json();
+                if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
+                resultText = resData.choices[0].message.content;
+
+                // Format the response
+                const formatted = resultText
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/`(.*?)`/g, '<code>$1</code>')
+                    .replace(/\n/g, '<br>');
+                textEl.innerHTML = formatted;
+            } catch (err) {
+                // Fallback: show topic-based analysis without AI
+                if (topicSummary) {
+                    textEl.innerHTML = `Based on your missed questions, focus on: <br><strong>${topicSummary}</strong><br><br>Review these topics in your course materials and try again!`;
+                } else {
+                    textEl.innerHTML = `You missed ${missed.length} out of ${currentExamData.length} questions. Review the missed questions above and try again!`;
+                }
+            }
+        }
+
+
+</script>
+</body>
+</html>
