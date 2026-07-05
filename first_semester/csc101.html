@@ -23,7 +23,7 @@
         
         #dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
         .box { background: var(--card-bg); padding: 1.5rem; border-radius: 12px; text-align: center; cursor: pointer; transition: 0.3s; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .box:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .box:hover { transform: translate Y(-5px); border-color: var(--primary); }
         .box-random { background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; }
         
         .option-btn { display: block; width: 100%; padding: 1rem; margin: 0.75rem 0; border: 2px solid #e2e8f0; border-radius: 10px; background: var(--card-bg); color: var(--text); text-align: left; cursor: pointer; font-size: 1rem; transition: 0.2s; }
@@ -33,14 +33,14 @@
         .option-btn.correct { background-color: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: bold; }
         .option-btn.wrong { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
         
-        .feedback-container { margin-top: 1.5rem; animation: fadeIn 0.3s; }
+        .feedback-container { margin-top: 1.5rem; animation: fade In 0.3s; }
         .feedback-status { padding: 1rem; border-radius: 10px; font-weight: bold; text-align: center; border: 1px solid; margin-bottom: 0.5rem; }
         
         /* New Explanation Box Style */
         .explanation-box { background: rgba(30, 64, 175, 0.1); border-left: 5px solid var(--primary); padding: 1rem; border-radius: 4px; color: var(--text); line-height: 1.6; }
         .dark-mode .explanation-box { background: rgba(30, 64, 175, 0.2); }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fade In { from { opacity: 0; transform: translate Y(10px); } to { opacity: 1; transform: translate Y(0); } }
 
         .controls { display: flex; justify-content: space-between; margin-top: 2rem; }
         .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; background: var(--primary); color: white; transition: 0.2s; }
@@ -55,8 +55,8 @@
         </a>
         <div id="user-info" style="font-weight: 600;">COS 101 Practice Portal</div>
     <div style="display: flex; gap: 15px;">
-        <button class="btn" style="background:var(--accent); display:none;" id="resume-btn" onclick="resumeExam()">Resume</button>
-        <button class="btn" style="background:#64748b" onclick="document.body.classList.toggle('dark-mode')"><i class="fa-solid fa-circle-half-stroke"></i></button>
+        <button class="btn" style="background:var(--accent); display:none;" id="resume-btn" onclick="resume Exam()">Resume</button>
+        <button class="btn" style="background:#64748b" onclick="document.body.class List.toggle('dark-mode')"><i class="fa-solid fa-circle-half-stroke"></i></button>
     </div>
 </nav>
 
@@ -73,7 +73,7 @@
             <label>Time (Minutes):</label><br>
             <input type="number" id="t-limit" value="30" style="padding: 10px; border-radius: 5px; width: 80px;">
         </div>
-        <button class="btn" onclick="startExam()">Start Practice</button>
+        <button class="btn" onclick="start Exam()">Start Practice</button>
     </div>
 
     <div id="quiz-interface" style="display:none;">
@@ -89,7 +89,7 @@
         <div class="controls">
             <button class="btn" style="background:#64748b" id="prev-btn" onclick="move(-1)">Previous</button>
             <button class="btn" id="next-btn" onclick="move(1)">Next Question</button>
-            <button class="btn" id="submit-btn" style="background:var(--success); display:none;" onclick="showResults()">Submit Exam</button>
+            <button class="btn" id="submit-btn" style="background:var(--success); display:none;" onclick="show Results()">Submit Exam</button>
         </div>
     </div>
 
@@ -216,7 +216,7 @@
 {"id": 103, "q": "The storage subsystem in a microcomputer consists mainly of __ or __ media with varying capacities", "options": ["Memory or video", "Magnetic or optical", "Optical or memory", "Video or magnetic"], "ans": 1},
 {"id": 104, "q": "Programs designed to perform specific tasks is known as", "options": ["system software", "application software", "utility programs", "operating system"], "ans": 1},
 {"id": 105, "q": "Computer operators", "options": ["writes computer programs for specific problems", "operate the device which input and output data from the computer", "normally require a college degree in computer science", "all of the above"], "ans": 1},
-{"id": 106, "q": "Which of the following is not anti-viruses software?", "options": ["NAV", "F-Prot", "Oracle", "McAfee"], "ans": 2},
+{"id": 106, "q": "Which of the following is not anti-viruses software?", "options": ["NAV", "F-Prot", "Oracle", "Mc Afee"], "ans": 2},
 {"id": 107, "q": "What is a compiler?", "options": ["A compiler does a conversion line by line as the program is run", "A compiler converts the whole of a higher level program code into machine code in one step", "A compiler is a general purpose language providing very efficient execution", "None of the above"], "ans": 1},
 {"id": 108, "q": "_______ computers are also called personal computers", "options": ["Mainframe Computer", "Mini Computers", "Micro Computers", "Super Computers"], "ans": 2},
 {"id": 109, "q": "Which of the following is not input unit device?", "options": ["scanner", "camera", "plotter", "digitizer"], "ans": 2},
@@ -348,7 +348,7 @@
 {"id": 242, "q": "The first general purpose electronic computer in the world was", "options": ["UNIVAC", "EDVAC", "ENIAC", "All of above"], "ans": 2},
 {"id": 243, "q": "The contents of information are stored in", "options": ["Memory data register", "Memory address register", "Memory arithmetic registers", "Memory access register"], "ans": 0},
 {"id": 244, "q": "Which of the following is correct full form of BCD?", "options": ["Binary Coded Decimal", "Bit Coded Decimal", "Binary Coded Digit", "Bit Coded Digit"], "ans": 0},
-{"id": 245, "q": "Which was the worldâ€™s first microcomputer that used Intel 80386 microprocessor chip?", "options": ["IBM PS/2", "HP-9830", "DeskPro-386", "IBM-360"], "ans": 2},
+{"id": 245, "q": "Which was the worldâ€™s first microcomputer that used Intel 80386 microprocessor chip?", "options": ["IBM PS/2", "HP-9830", "Desk Pro-386", "IBM-360"], "ans": 2},
 {"id": 246, "q": "The qualitative or quantitative attribute of a variable is termed as", "options": ["data", "information", "both of above", "none of above"], "ans": 0},
 {"id": 247, "q": "Main storage is also called", "options": ["Accumulator", "Control Unit", "Register Unit", "Memory"], "ans": 3},
 {"id": 248, "q": "Which of the following are (is) considered to be video component?", "options": ["Resolution", "Color depth", "Refresh rate", "All of the above"], "ans": 3},
@@ -681,221 +681,221 @@
          
     ];
 
-    let currentExamData = [];
-    let userAnswers = {};
-    let currentIndex = 0;
-    let timeRemaining = 0;
-    let timerId;
+    let current Exam Data = [];
+    let user Answers = {};
+    let current Index = 0;
+    let time Remaining = 0;
+    let timer Id;
 
     window.onload = () => {
-        initDashboard();
-        if(localStorage.getItem('saved_gns_exam')) document.getElementById('resume-btn').style.display = 'block';
+        init Dashboard();
+        if(local Storage.get Item('saved_gns_exam')) document.get Element By Id('resume-btn').style.display = 'block';
     };
 
-    function initDashboard() {
-        const board = document.getElementById('dashboard');
-        board.innerHTML = '';
-        const totalQuestions = MASTER_POOL.length;
-        const parts = Math.ceil(totalQuestions / 50);
+    function init Dashboard() {
+        const board = document.get Element By Id('dashboard');
+        board.inner HTML = '';
+        const total Questions = MASTER_POOL.length;
+        const parts = Math.ceil(total Questions / 50);
 
-        const rand = document.createElement('div');
-        rand.className = 'box box-random';
-        rand.innerHTML = `<i class="fa-solid fa-shuffle"></i><h3>Random Mode</h3><p>Full Shuffle</p>`;
-        rand.onclick = () => openSetup('random', 0);
-        board.appendChild(rand);
+        const rand = document.create Element('div');
+        rand.class Name = 'box box-random';
+        rand.inner HTML = `<i class="fa-solid fa-shuffle"></i><h3>Random Mode</h3><p>Full Shuffle</p>`;
+        rand.onclick = () => open Setup('random', 0);
+        board.append Child(rand);
 
         for (let i = 1; i <= parts; i++) {
-            const card = document.createElement('div');
+            const card = document.create Element('div');
             const start = (i - 1) * 50 + 1;
-            const end = Math.min(i * 50, totalQuestions);
-            card.className = 'box';
-            card.innerHTML = `<i class="fa-solid fa-book-open"></i><h3>Part ${i}</h3><p>Q${start} - Q${end}</p>`;
-            card.onclick = () => openSetup('part', i);
-            board.appendChild(card);
+            const end = Math.min(i * 50, total Questions);
+            card.class Name = 'box';
+            card.inner HTML = `<i class="fa-solid fa-book-open"></i><h3>Part ${i}</h3><p>Q${start} - Q${end}</p>`;
+            card.onclick = () => open Setup('part', i);
+            board.append Child(card);
         }
     }
 
-    function openSetup(mode, partNum) {
-        window.examMode = mode;
-        window.partNum = partNum;
-        document.getElementById('dashboard').style.display = 'none';
-        document.getElementById('setup-screen').style.display = 'block';
-        document.getElementById('setup-title').innerText = mode === 'random' ? "Random Exam Setup" : `COS 101: Part ${partNum}`;
-        document.getElementById('random-settings').style.display = (mode === 'random') ? 'block' : 'none';
+    function open Setup(mode, part Num) {
+        window.exam Mode = mode;
+        window.part Num = part Num;
+        document.get Element By Id('dashboard').style.display = 'none';
+        document.get Element By Id('setup-screen').style.display = 'block';
+        document.get Element By Id('setup-title').inner Text = mode === 'random' ? "Random Exam Setup" : `COS 101: Part ${part Num}`;
+        document.get Element By Id('random-settings').style.display = (mode === 'random') ? 'block' : 'none';
     }
 
-    function startExam() {
-        const timeInput = document.getElementById('t-limit').value;
-        timeRemaining = timeInput * 60;
+    function start Exam() {
+        const time Input = document.get Element By Id('t-limit').value;
+        time Remaining = time Input * 60;
 
-        if (window.examMode === 'random') {
-            const qty = document.getElementById('q-count').value;
-            currentExamData = [...MASTER_POOL].sort(() => 0.5 - Math.random()).slice(0, qty);
+        if (window.exam Mode === 'random') {
+            const qty = document.get Element By Id('q-count').value;
+            current Exam Data = [...MASTER_POOL].sort(() => 0.5 - Math.random()).slice(0, qty);
         } else {
-            const start = (window.partNum - 1) * 50;
-            currentExamData = MASTER_POOL.slice(start, start + 50);
+            const start = (window.part Num - 1) * 50;
+            current Exam Data = MASTER_POOL.slice(start, start + 50);
         }
 
-        document.getElementById('setup-screen').style.display = 'none';
-        document.getElementById('quiz-interface').style.display = 'block';
-        document.getElementById('total-idx').innerText = currentExamData.length;
+        document.get Element By Id('setup-screen').style.display = 'none';
+        document.get Element By Id('quiz-interface').style.display = 'block';
+        document.get Element By Id('total-idx').inner Text = current Exam Data.length;
         
-        runTimer();
-        renderQuestion();
+        run Timer();
+        render Question();
     }
 
-    function runTimer() {
-        if(timerId) clearInterval(timerId);
-        timerId = setInterval(() => {
-            timeRemaining--;
-            let m = Math.floor(timeRemaining / 60);
-            let s = timeRemaining % 60;
-            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
-            if(timeRemaining <= 0) showResults();
+    function run Timer() {
+        if(timer Id) clear Interval(timer Id);
+        timer Id = set Interval(() => {
+            time Remaining--;
+            let m = Math.floor(time Remaining / 60);
+            let s = time Remaining % 60;
+            document.get Element By Id('timer').inner Text = `${m}:${s < 10 ? '0'+s : s}`;
+            if(time Remaining <= 0) show Results();
         }, 1000);
     }
 
-    function renderQuestion() {
-        const q = currentExamData[currentIndex];
-        const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
+    function render Question() {
+        const q = current Exam Data[current Index];
+        const has Answered = user Answers.has Own Property(current Index);
         
-        document.getElementById('cur-idx').innerText = currentIndex + 1;
-        document.getElementById('question-text').innerText = q.q;
+        document.get Element By Id('cur-idx').inner Text = current Index + 1;
+        document.get Element By Id('question-text').inner Text = q.q;
         
-        const optBox = document.getElementById('options-box');
-        const feedbackArea = document.getElementById('feedback-area');
-        optBox.innerHTML = '';
-        feedbackArea.innerHTML = '';
+        const opt Box = document.get Element By Id('options-box');
+        const feedback Area = document.get Element By Id('feedback-area');
+        opt Box.inner HTML = '';
+        feedback Area.inner HTML = '';
         
-        q.options.forEach((option, index) => {
-            const btn = document.createElement('button');
-            btn.className = `option-btn`;
-            const letter = String.fromCharCode(65 + index); // A, B, C, D...
+        q.options.for Each((option, index) => {
+            const btn = document.create Element('button');
+            btn.class Name = `option-btn`;
+            const letter = String.from Char Code(65 + index); // A, B, C, D...
             
-            if (hasAnswered) {
+            if (has Answered) {
                 if (index === q.ans) {
-                    btn.classList.add('correct');
-                } else if (userAnswers[currentIndex] === index) {
-                    btn.classList.add('wrong');
+                    btn.class List.add('correct');
+                } else if (user Answers[current Index] === index) {
+                    btn.class List.add('wrong');
                 }
                 btn.disabled = true;
             }
 
-            btn.innerHTML = `<strong>${letter}.</strong> ${option}`;
+            btn.inner HTML = `<strong>${letter}.</strong> ${option}`;
             btn.onclick = () => { 
-                if (!hasAnswered) {
-                    userAnswers[currentIndex] = index; 
-                    saveState(); 
-                    renderQuestion();
+                if (!has Answered) {
+                    user Answers[current Index] = index; 
+                    save State(); 
+                    render Question();
                 }
             };
-            optBox.appendChild(btn);
+            opt Box.append Child(btn);
         });
 
-        if (hasAnswered) {
-            const isCorrect = userAnswers[currentIndex] === q.ans;
+        if (has Answered) {
+            const is Correct = user Answers[current Index] === q.ans;
 
-            feedbackArea.innerHTML = `
+            feedback Area.inner HTML = `
                 <div class="feedback-container">
-                    <div class="feedback-status" style="border-color: ${isCorrect ? '#22c55e' : '#ef4444'}; background: ${isCorrect ? '#dcfce7' : '#fee2e2'}; color: ${isCorrect ? '#166534' : '#991b1b'}">
-                        ${isCorrect ? 'âœ” Correct Answer!' : 'âœ˜ Incorrect. The correct answer is (' + String.fromCharCode(65 + q.ans) + ') ' + q.options[q.ans]}
+                    <div class="feedback-status" style="border-color: ${is Correct ? '#22c55e' : '#ef4444'}; background: ${is Correct ? '#dcfce7' : '#fee2e2'}; color: ${is Correct ? '#166534' : '#991b1b'}">
+                        ${is Correct ? 'âœ” Correct Answer!' : 'âœ˜ Incorrect. The correct answer is (' + String.from Char Code(65 + q.ans) + ') ' + q.options[q.ans]}
                     </div>
                 </div>
             `;
         }
 
-        document.getElementById('prev-btn').disabled = currentIndex === 0;
-        document.getElementById('next-btn').style.display = (currentIndex === currentExamData.length - 1) ? 'none' : 'block';
-        document.getElementById('submit-btn').style.display = (currentIndex === currentExamData.length - 1) ? 'block' : 'none';
+        document.get Element By Id('prev-btn').disabled = current Index === 0;
+        document.get Element By Id('next-btn').style.display = (current Index === current Exam Data.length - 1) ? 'none' : 'block';
+        document.get Element By Id('submit-btn').style.display = (current Index === current Exam Data.length - 1) ? 'block' : 'none';
     }
 
     function move(dir) {
-        if(currentIndex + dir >= 0 && currentIndex + dir < currentExamData.length) {
-            currentIndex += dir;
-            renderQuestion();
+        if(current Index + dir >= 0 && current Index + dir < current Exam Data.length) {
+            current Index += dir;
+            render Question();
         }
     }
 
-    function saveState() {
-        const state = { currentExamData, userAnswers, currentIndex, timeRemaining };
-        localStorage.setItem('saved_gns_exam', JSON.stringify(state));
+    function save State() {
+        const state = { current Exam Data, user Answers, current Index, time Remaining };
+        local Storage.set Item('saved_gns_exam', JSON.stringify(state));
     }
 
-    function resumeExam() {
-        const state = JSON.parse(localStorage.getItem('saved_gns_exam'));
-        currentExamData = state.currentExamData;
-        userAnswers = state.userAnswers;
-        currentIndex = state.currentIndex;
-        timeRemaining = state.timeRemaining;
+    function resume Exam() {
+        const state = JSON.parse(local Storage.get Item('saved_gns_exam'));
+        current Exam Data = state.current Exam Data;
+        user Answers = state.user Answers;
+        current Index = state.current Index;
+        time Remaining = state.time Remaining;
         
-        document.getElementById('dashboard').style.display = 'none';
-        document.getElementById('resume-btn').style.display = 'none';
-        document.getElementById('quiz-interface').style.display = 'block';
-        document.getElementById('total-idx').innerText = currentExamData.length;
-        runTimer();
-        renderQuestion();
+        document.get Element By Id('dashboard').style.display = 'none';
+        document.get Element By Id('resume-btn').style.display = 'none';
+        document.get Element By Id('quiz-interface').style.display = 'block';
+        document.get Element By Id('total-idx').inner Text = current Exam Data.length;
+        run Timer();
+        render Question();
     }
 
     fetch(" https://florencia-prorefugee-unindustriously.ngrok-free.dev", {
     method: "POST",
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ matric: studentMatric })
+    body: JSON.stringify({ matric: student Matric })
 });
-    function showResults() {
-        clearInterval(timerId);
+    function show Results() {
+        clear Interval(timer Id);
         let score = 0;
-        currentExamData.forEach((q, i) => { 
-            if(userAnswers[i] === q.ans) score++; 
+        current Exam Data.for Each((q, i) => { 
+            if(user Answers[i] === q.ans) score++; 
         });
-        alert(`Practice Complete!\nYour Score: ${score} / ${currentExamData.length}`);
-        localStorage.removeItem('saved_gns_exam');
+        alert(`Practice Complete!\n Your Score: ${score} / ${current Exam Data.length}`);
+        local Storage.remove Item('saved_gns_exam');
         location.reload();
     }
 
         // ═════════════════════════════════════════════════════════════════
         // PER-COURSE LEADERBOARD
         // ═════════════════════════════════════════════════════════════════
-        async function loadCourseLeaderboard() {
-            const lbContent = document.getElementById('lb-content');
-            const lbStatus = document.getElementById('lb-status');
-            const lbCourseName = document.getElementById('lb-course-name');
-            if (lbCourseName) lbCourseName.innerText = COURSE_CODE;
-            if (!lbContent) return;
+        async function load Course Leaderboard() {
+            const lb Content = document.get Element By Id('lb-content');
+            const lb Status = document.get Element By Id('lb-status');
+            const lb Course Name = document.get Element By Id('lb-course-name');
+            if (lb Course Name) lb Course Name.inner Text = COURSE_CODE;
+            if (!lb Content) return;
 
             try {
                 // Fetch all test_results for this course
-                const { data: results, error: rErr } = await db
+                const { data: results, error: r Err } = await db
                     .from('test_results')
                     .select('student_id, score')
                     .eq('course_id', COURSE_CODE);
 
-                if (rErr) throw rErr;
+                if (r Err) throw r Err;
                 if (!results || results.length === 0) {
-                    lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
-                    lbStatus.innerText = '0 attempts';
+                    lb Content.inner HTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
+                    lb Status.inner Text = '0 attempts';
                     return;
                 }
 
                 // Aggregate by student: avg score + count
-                const byStudent = {};
-                results.forEach(r => {
-                    if (!byStudent[r.student_id]) {
-                        byStudent[r.student_id] = { total: 0, count: 0 };
+                const by Student = {};
+                results.for Each(r => {
+                    if (!by Student[r.student_id]) {
+                        by Student[r.student_id] = { total: 0, count: 0 };
                     }
-                    byStudent[r.student_id].total += Number(r.score);
-                    byStudent[r.student_id].count += 1;
+                    by Student[r.student_id].total += Number(r.score);
+                    by Student[r.student_id].count += 1;
                 });
 
                 // Fetch student profiles
-                const studentIds = Object.keys(byStudent);
-                const { data: students, error: sErr } = await db
+                const student Ids = Object.keys(by Student);
+                const { data: students, error: s Err } = await db
                     .from('students')
                     .select('id, fullname, department, matric')
-                    .in('id', studentIds);
+                    .in('id', student Ids);
 
                 // Build leaderboard rows
-                const rows = studentIds.map(sid => {
-                    const agg = byStudent[sid];
+                const rows = student Ids.map(sid => {
+                    const agg = by Student[sid];
                     const avg = Math.round(agg.total / agg.count);
                     const student = students ? students.find(s => s.id === sid) : null;
                     return {
@@ -911,15 +911,15 @@
                 rows.sort((a, b) => b.avg - a.avg || b.tests - a.tests);
 
                 // Get current user id for highlighting
-                let currentUserId = null;
+                let current User Id = null;
                 try {
-                    const { data: { user } } = await db.auth.getUser();
-                    if (user) currentUserId = user.id;
+                    const { data: { user } } = await db.auth.get User();
+                    if (user) current User Id = user.id;
                 } catch (e) {}
 
                 // Render top 20
                 const medals = ['🥇', '🥈', '🥉'];
-                const topRows = rows.slice(0, 20);
+                const top Rows = rows.slice(0, 20);
                 let html = '<table style="width:100%; border-collapse:collapse; font-size:0.88rem;">';
                 html += '<thead><tr style="border-bottom:2px solid var(--border);">';
                 html += '<th style="text-align:left; padding:8px; color:var(--text-muted); font-size:0.78rem;">#</th>';
@@ -928,10 +928,10 @@
                 html += '<th style="text-align:center; padding:8px; color:var(--text-muted); font-size:0.78rem;">Tests</th>';
                 html += '<th style="text-align:right; padding:8px; color:var(--text-muted); font-size:0.78rem;">Avg Score</th>';
                 html += '</tr></thead><tbody>';
-                topRows.forEach((row, i) => {
+                top Rows.for Each((row, i) => {
                     const rank = i + 1;
                     const medal = medals[i] || '';
-                    const highlight = row.id === currentUserId ? 'background:rgba(124,58,237,0.08);' : '';
+                    const highlight = row.id === current User Id ? 'background:rgba(124,58,237,0.08);' : '';
                     html += `<tr style="border-bottom:1px solid var(--border); ${highlight}">`;
                     html += `<td style="padding:8px; font-weight:700;">${medal || rank}</td>`;
                     html += `<td style="padding:8px;">${row.fullname}<br><span style="font-size:0.72rem; color:var(--text-muted);">${row.matric}</span></td>`;
@@ -943,48 +943,48 @@
                 html += '</tbody></table>';
 
                 // If current user is not in top 20, show their rank below
-                if (currentUserId) {
-                    const userRowIdx = rows.findIndex(r => r.id === currentUserId);
-                    if (userRowIdx >= 20) {
-                        const userRow = rows[userRowIdx];
+                if (current User Id) {
+                    const user Row Idx = rows.find Index(r => r.id === current User Id);
+                    if (user Row Idx >= 20) {
+                        const user Row = rows[user Row Idx];
                         html += `<div style="margin-top:10px; padding:10px; background:rgba(124,58,237,0.08); border-radius:8px; display:flex; justify-content:space-between; font-size:0.85rem;">
-                            <span><strong>Your Rank: #${userRowIdx + 1}</strong> — ${userRow.fullname}</span>
-                            <span><strong style="color:${userRow.avg >= 70 ? '#10b981' : userRow.avg >= 40 ? '#f59e0b' : '#ef4444'};">${userRow.avg}%</strong> (${userRow.tests} tests)</span>
+                            <span><strong>Your Rank: #${user Row Idx + 1}</strong> — ${user Row.fullname}</span>
+                            <span><strong style="color:${user Row.avg >= 70 ? '#10b981' : user Row.avg >= 40 ? '#f59e0b' : '#ef4444'};">${user Row.avg}%</strong> (${user Row.tests} tests)</span>
                         </div>`;
                     }
                 }
 
-                lbContent.innerHTML = html;
-                lbStatus.innerText = `${rows.length} students · ${results.length} attempts`;
+                lb Content.inner HTML = html;
+                lb Status.inner Text = `${rows.length} students · ${results.length} attempts`;
             } catch (e) {
                 console.error('Leaderboard error:', e);
-                lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
-                lbStatus.innerText = 'Error';
+                lb Content.inner HTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
+                lb Status.inner Text = 'Error';
             }
         }
 
         // Load leaderboard after page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(loadCourseLeaderboard, 500);
+        document.add Event Listener('DOMContent Loaded', function() {
+            set Timeout(load Course Leaderboard, 500);
         });
-    syncLocalResults();
+    sync Local Results();
 
         // ═════════════════════════════════════════════════════════════════
         // AI WEAK AREAS ANALYSIS (runs after exam results are shown)
         // ═════════════════════════════════════════════════════════════════
-        async function analyzeWeakAreasWithAI() {
-            const container = document.getElementById('ai-weak-areas');
-            const textEl = document.getElementById('ai-weak-areas-text');
-            if (!container || !textEl) return;
-            if (typeof currentExamData === 'undefined' || !currentExamData.length) return;
+        async function analyze Weak Areas With AI() {
+            const container = document.get Element By Id('ai-weak-areas');
+            const text El = document.get Element By Id('ai-weak-areas-text');
+            if (!container || !text El) return;
+            if (typeof current Exam Data === 'undefined' || !current Exam Data.length) return;
 
             // Collect wrong answers
             const missed = [];
-            currentExamData.forEach((q, i) => {
-                const student = userAnswers[i];
-                if (q.isTheory) {
-                    const scoreValue = student && typeof student.score === 'number' ? student.score : 0;
-                    if (scoreValue < 70) {
+            current Exam Data.for Each((q, i) => {
+                const student = user Answers[i];
+                if (q.is Theory) {
+                    const score Value = student && typeof student.score === 'number' ? student.score : 0;
+                    if (score Value < 70) {
                         missed.push({ question: q.question, topic: q.topic || 'General' });
                     }
                 } else {
@@ -996,39 +996,39 @@
 
             if (missed.length === 0) {
                 container.style.display = 'block';
-                container.style.borderColor = '#10b981';
-                container.querySelector('strong').style.color = '#10b981';
-                textEl.innerHTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
+                container.style.border Color = '#10b981';
+                container.query Selector('strong').style.color = '#10b981';
+                text El.inner HTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
                 return;
             }
 
             container.style.display = 'block';
-            textEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
+            text El.inner HTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
 
-            const courseCode = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
-            const config = typeof getAIConfigForCourse === 'function' ? getAIConfigForCourse(courseCode) : {
+            const course Code = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
+            const config = typeof get AIConfig For Course === 'function' ? get AIConfig For Course(course Code) : {
                 provider: 'groq',
                 model: window.env?.AI_MODEL || 'llama-3.1-8b-instant',
-                key: window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy')
+                key: window.env?.AI_API_KEY || ('gsk_71n Ddj9ca C9CGo XD0Qx SW' + 'Gdyb3FYct CCz V6YNHGz Ylj4O9Qpk Qcy')
             };
 
             // Group missed questions by topic if available
-            const topicGroups = {};
-            missed.forEach(m => {
-                if (!topicGroups[m.topic]) topicGroups[m.topic] = 0;
-                topicGroups[m.topic]++;
+            const topic Groups = {};
+            missed.for Each(m => {
+                if (!topic Groups[m.topic]) topic Groups[m.topic] = 0;
+                topic Groups[m.topic]++;
             });
 
-            const missedList = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
-            const topicSummary = Object.entries(topicGroups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
+            const missed List = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
+            const topic Summary = Object.entries(topic Groups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
 
-            const systemPrompt = `You are Renance AI, an academic tutor for FUTA students.
-The student just completed a ${courseCode} quiz and got ${missed.length} question(s) wrong out of ${currentExamData.length}.
+            const system Prompt = `You are Renance AI, an academic tutor for FUTA students.
+The student just completed a ${course Code} quiz and got ${missed.length} question(s) wrong out of ${current Exam Data.length}.
 
 Questions they got wrong:
-${missedList}
+${missed List}
 
-${topicSummary ? 'Breakdown by topic: ' + topicSummary : ''}
+${topic Summary ? 'Breakdown by topic: ' + topic Summary : ''}
 
 Identify 1-3 core topics/concepts the student should focus on revising.
 Respond in 2-4 short bullet points. Be specific and actionable.
@@ -1036,7 +1036,7 @@ Format: • Topic name — brief advice on what to study
 Keep it concise (under 100 words total).`;
 
             try {
-                let resultText = "";
+                let result Text = "";
                 const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: 'POST',
                     headers: {
@@ -1045,26 +1045,26 @@ Keep it concise (under 100 words total).`;
                     },
                     body: JSON.stringify({
                         model: config.model,
-                        messages: [{ role: "system", content: systemPrompt }],
+                        messages: [{ role: "system", content: system Prompt }],
                         temperature: 0.3
                     })
                 });
-                const resData = await response.json();
-                if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
-                resultText = resData.choices[0].message.content;
+                const res Data = await response.json();
+                if (!response.ok) throw new Error(res Data.error?.message || `HTTP ${response.status}`);
+                result Text = res Data.choices[0].message.content;
 
                 // Format the response
-                const formatted = resultText
+                const formatted = result Text
                     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                     .replace(/`(.*?)`/g, '<code>$1</code>')
                     .replace(/\n/g, '<br>');
-                textEl.innerHTML = formatted;
+                text El.inner HTML = formatted;
             } catch (err) {
                 // Fallback: show topic-based analysis without AI
-                if (topicSummary) {
-                    textEl.innerHTML = `Based on your missed questions, focus on: <br><strong>${topicSummary}</strong><br><br>Review these topics in your course materials and try again!`;
+                if (topic Summary) {
+                    text El.inner HTML = `Based on your missed questions, focus on: <br><strong>${topic Summary}</strong><br><br>Review these topics in your course materials and try again!`;
                 } else {
-                    textEl.innerHTML = `You missed ${missed.length} out of ${currentExamData.length} questions. Review the missed questions above and try again!`;
+                    text El.inner HTML = `You missed ${missed.length} out of ${current Exam Data.length} questions. Review the missed questions above and try again!`;
                 }
             }
         }

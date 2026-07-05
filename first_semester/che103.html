@@ -65,7 +65,7 @@
             border: 1.5px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-        .box:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(30,64,175,0.12); }
+        .box:hover { transform: translate Y(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(30,64,175,0.12); }
         .box h3 { margin: 10px 0 4px; font-size: 1rem; line-height: 1.4; }
         .box p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
         .box-random { background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; border: none !important; }
@@ -100,21 +100,21 @@
         .option-btn.correct  { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: 700; }
         .option-btn.wrong    { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
 
-        .feedback-msg { margin-top: 1.2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600; animation: fadeIn 0.3s; line-height: 1.6; }
+        .feedback-msg { margin-top: 1.2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600; animation: fade In 0.3s; line-height: 1.6; }
         .explanation-box { background: rgba(30,64,175,0.07); border-left: 4px solid var(--primary); padding: 1rem; border-radius: 6px; margin-top: 10px; font-weight: 400; font-size: 0.88rem; line-height: 1.6; color: var(--text); }
         .dark-mode .explanation-box { background: rgba(30,64,175,0.15); }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fade In { from { opacity: 0; transform: translate Y(8px); } to { opacity: 1; transform: translate Y(0); } }
 
         .controls { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 1.8rem; }
         .btn { padding: 0.8rem 1.6rem; border: none; border-radius: 9px; cursor: pointer; font-weight: 700; background: var(--primary); color: white; transition: opacity 0.2s, transform 0.2s; font-size: 0.95rem; }
-        .btn:hover { opacity: 0.88; transform: translateY(-2px); }
+        .btn:hover { opacity: 0.88; transform: translate Y(-2px); }
         .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
         .result-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.78); backdrop-filter: blur(8px); z-index: 9999; display: flex; justify-content: center; align-items: center; padding: 20px; }
-        .result-modal-content { background: var(--card-bg); padding: 40px 28px; border-radius: 24px; width: 100%; max-width: 420px; text-align: center; color: var(--text); box-shadow: 0 25px 60px rgba(0,0,0,0.45); animation: bounceIn 0.55s cubic-bezier(0.175,0.885,0.32,1.275); }
-        @keyframes bounceIn { 0% { opacity:0; transform:scale(0.78) translateY(30px); } 100% { opacity:1; transform:scale(1) translateY(0); } }
+        .result-modal-content { background: var(--card-bg); padding: 40px 28px; border-radius: 24px; width: 100%; max-width: 420px; text-align: center; color: var(--text); box-shadow: 0 25px 60px rgba(0,0,0,0.45); animation: bounce In 0.55s cubic-bezier(0.175,0.885,0.32,1.275); }
+        @keyframes bounce In { 0% { opacity:0; transform:scale(0.78) translate Y(30px); } 100% { opacity:1; transform:scale(1) translate Y(0); } }
         .result-icon { font-size: 3.6rem; margin-bottom: 8px; display: block; animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+        @keyframes float { 0%,100% { transform:translate Y(0); } 50% { transform:translate Y(-10px); } }
         .score-display { background: rgba(37,99,235,0.06); border: 2px dashed rgba(37,99,235,0.2); border-radius: 18px; padding: 18px; margin: 18px 0; }
         .score-big { font-size: 3.5rem; font-weight: 900; color: var(--primary); line-height: 1; }
         .stats-mini { display: flex; justify-content: center; gap: 24px; margin: 10px 0 4px; }
@@ -124,7 +124,7 @@
         #save-status { font-size: 0.78rem; color: var(--text-muted); margin: 8px 0 14px; }
         .result-actions { display: flex; flex-direction: column; gap: 11px; }
         .btn-action { width: 100%; padding: 13px; border: none; border-radius: 12px; font-size: 0.97rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s; display: flex; align-items: center; justify-content: center; gap: 9px; }
-        .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-action:hover { opacity: 0.9; transform: translate Y(-1px); }
         .btn-share  { background: var(--share-gradient); color: white; box-shadow: 0 4px 16px rgba(37,99,235,0.3); }
         .btn-review { background: rgba(30,64,175,0.08); color: var(--primary); border: 1.5px solid rgba(30,64,175,0.2); }
         .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
@@ -179,8 +179,8 @@
             <label class="custom-checkbox"><input type="checkbox" id="shuffle-options" checked> Shuffle Options (A, B, C, D)</label>
         </div>
         <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
-            <button class="btn" style="background:#64748b;" onclick="goHome()"><i class="fa-solid fa-arrow-left"></i> Back</button>
-            <button class="btn" onclick="startExam()" style="min-width:160px;">Start Now <i class="fa-solid fa-arrow-right"></i></button>
+            <button class="btn" style="background:#64748b;" onclick="go Home()"><i class="fa-solid fa-arrow-left"></i> Back</button>
+            <button class="btn" onclick="start Exam()" style="min-width:160px;">Start Now <i class="fa-solid fa-arrow-right"></i></button>
         </div>
     </div>
 
@@ -188,8 +188,8 @@
         <div class="quiz-header">
             <span class="q-counter">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
             <div class="btn-group">
-                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding:8px 15px; font-size:0.87rem;" onclick="showResults()"><i class="fa-solid fa-paper-plane"></i> Submit</button>
-                <button class="btn" id="finish-review-btn" style="display:none; padding:8px 15px; font-size:0.87rem;" onclick="goHome()"><i class="fa-solid fa-house"></i> Exit Review</button>
+                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding:8px 15px; font-size:0.87rem;" onclick="show Results()"><i class="fa-solid fa-paper-plane"></i> Submit</button>
+                <button class="btn" id="finish-review-btn" style="display:none; padding:8px 15px; font-size:0.87rem;" onclick="go Home()"><i class="fa-solid fa-house"></i> Exit Review</button>
                 <span id="timer">30:00</span>
             </div>
         </div>
@@ -206,19 +206,19 @@
     </div>
 </main>
 
-<div id="quizResultModal" class="result-modal-overlay" style="display:none;">
+<div id="quiz Result Modal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
-        <span class="result-icon" id="resultIcon">ðŸ†</span>
-        <h2 id="resultGreeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
+        <span class="result-icon" id="result Icon">ðŸ†</span>
+        <h2 id="result Greeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
         <div class="score-display">
-            <div class="score-big"><span id="finalScoreText">0</span>%</div>
+            <div class="score-big"><span id="final Score Text">0</span>%</div>
             <div class="stats-mini">
-                <div class="sm"><div class="sv" id="modalCorrect">0</div><div class="sl">Correct</div></div>
-                <div class="sm"><div class="sv" id="modalTotal">0</div><div class="sl">Total</div></div>
-                <div class="sm"><div class="sv" id="modalAvg">â€”</div><div class="sl">Your Avg</div></div>
+                <div class="sm"><div class="sv" id="modal Correct">0</div><div class="sl">Correct</div></div>
+                <div class="sm"><div class="sv" id="modal Total">0</div><div class="sl">Total</div></div>
+                <div class="sm"><div class="sv" id="modal Avg">â€”</div><div class="sl">Your Avg</div></div>
             </div>
         </div>
-        <p id="resultFeedback" style="font-size:0.9rem; color:var(--text-muted); margin:0;"></p>
+        <p id="result Feedback" style="font-size:0.9rem; color:var(--text-muted); margin:0;"></p>
         <p id="save-status"></p>
         
                     <div id="ai-weak-areas" style="margin: 15px 0; padding: 12px; background: rgba(124, 58, 237, 0.06); border-left: 4px solid #7c3aed; border-radius: 8px; text-align: left; display: none;">
@@ -232,38 +232,38 @@
 
                         <div class="result-actions">
 
-                    <button class="btn-action" id="weakAreasBtn" onclick="analyzeWeakAreasWithAI()" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
+                    <button class="btn-action" id="weak Areas Btn" onclick="analyze Weak Areas With AI()" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
                         <i class="fa-solid fa-brain"></i> Analyze My Weak Areas
                     </button>
 
-            <button class="btn-action" id="explainBtn" onclick="askRenanceAI()" style="background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; box-shadow: 0 4px 16px rgba(79,70,229,0.3);">
+            <button class="btn-action" id="explain Btn" onclick="ask Renance AI()" style="background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; box-shadow: 0 4px 16px rgba(79,70,229,0.3);">
                 <i class="fa-solid fa-robot"></i> Explain Missed Questions
             </button>
 
-            <button class="btn-action btn-share" onclick="shareQuizResult()"><i class="fa-solid fa-share-nodes"></i> Share Score</button>
-            <button class="btn-action btn-review" id="modalReviewBtn" onclick="enterReviewMode()"><i class="fa-solid fa-magnifying-glass"></i> Review Answers</button>
-            <button class="btn-action btn-home" onclick="goHome()"><i class="fa-solid fa-house"></i> Dashboard</button>
+            <button class="btn-action btn-share" onclick="share Quiz Result()"><i class="fa-solid fa-share-nodes"></i> Share Score</button>
+            <button class="btn-action btn-review" id="modal Review Btn" onclick="enter Review Mode()"><i class="fa-solid fa-magnifying-glass"></i> Review Answers</button>
+            <button class="btn-action btn-home" onclick="go Home()"><i class="fa-solid fa-house"></i> Dashboard</button>
         </div>
     </div>
 </div>
 
 <script>
     const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
-    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
-    const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'ey Jhb Gci Oi JIUz I1Ni Is In R5c CI6Ikp XVCJ9.ey Jpc3Mi Oi Jzd XBh Ym Fz ZSIs In Jl Zi I6In Vie HN5d2F4ZHZra Glx ZXBjdm1x Iiwicm9s ZSI6Im Fub24i LCJp YXQi Oj E3Nz E5ODcw MDAs Im V4c CI6Mj A4Nz U2Mz Aw MH0.gk R3Aud3LRLNy Nwp DHJTT0v Ir WCn Qk SBk FSa Fj Q5qy4';
+    const db = supabase.create Client(SUPABASE_URL, SUPABASE_KEY);
     const COURSE_CODE = 'CHE 103';
     const STORAGE_KEY = 'saved_che103_exam';
 
     
-    async function sendHeartbeat() {
+    async function send Heartbeat() {
         try {
-            const { data: { user } } = await db.auth.getUser();
+            const { data: { user } } = await db.auth.get User();
             if (!user) return;
-            await db.from('students').update({ last_seen: new Date().toISOString() }).eq('id', user.id);
+            await db.from('students').update({ last_seen: new Date().to ISOString() }).eq('id', user.id);
         } catch (e) {}
     }
-    sendHeartbeat();
-    setInterval(sendHeartbeat, 2 * 60 * 1000);
+    send Heartbeat();
+    set Interval(send Heartbeat, 2 * 60 * 1000);
 
     
     const MASTER_POOL = [
@@ -278,9 +278,9 @@
         { "id": 8, "topic": "Separation Techniques", "question": "Crystallization exploits difference in which factors?", "options": ["Specific heat", "Boiling point", "Melting point", "Bubble point"], "answer": "Melting point", "explanation": "Crystallization exploits differences in solubility at different temperatures â€” cooling a hot saturated solution causes less-soluble material to crystallize out." },
         { "id": 9, "topic": "Separation Techniques", "question": "Which of the following methods is applied to separate Oxygen-rich and Nitrogen-rich components from liquid air?", "options": ["Crystallization", "Zone melting", "Magnetic separation", "Distillation"], "answer": "Distillation", "explanation": "Fractional distillation of liquid air separates Oâ‚‚ (b.p. -183Â°C) and Nâ‚‚ (b.p. -196Â°C) based on their different boiling points." },
         { "id": 10, "topic": "Separation Techniques", "question": "How are Oil and Hexane separated?", "options": ["Distillation", "Separating funnel", "Crystallization", "Electrophoresis"], "answer": "Separating funnel", "explanation": "Oil and hexane are immiscible liquids that form separate layers. A separating funnel allows the denser layer to be drained off independently." },
-        { "id": 11, "topic": "Analytical Chemistry", "question": "When do we use a Buffer Solution?", "options": ["To make the solution basic", "To make the solution acidic", "To prevent solution's pH change", "None of the above"], "answer": "To prevent solution's pH change", "explanation": "A buffer solution resists changes in pH when small amounts of acid or base are added, maintaining a relatively constant pH." },
-        { "id": 12, "topic": "Analytical Chemistry", "question": "What type of indicator is Chlorophenol Red?", "options": ["Redox indicator", "Colorimetric indicator", "Adsorption indicator", "Radioactive indicator"], "answer": "Colorimetric indicator", "explanation": "Chlorophenol Red is a pH colorimetric indicator that changes colour based on the hydrogen ion concentration of the solution." },
-        { "id": 13, "topic": "Analytical Chemistry", "question": "What is the colour of the Phenolsulfonphthalein (Phenol Red) indicator at pH 7.0?", "options": ["Red", "Violet", "Green", "Yellow"], "answer": "Yellow", "explanation": "Phenol Red (Phenolsulfonphthalein) appears yellow below pH 6.8, orange-red at neutral pH 7, and bright pink/red above pH 8.4." },
+        { "id": 11, "topic": "Analytical Chemistry", "question": "When do we use a Buffer Solution?", "options": ["To make the solution basic", "To make the solution acidic", "To prevent solution's p H change", "None of the above"], "answer": "To prevent solution's p H change", "explanation": "A buffer solution resists changes in p H when small amounts of acid or base are added, maintaining a relatively constant p H." },
+        { "id": 12, "topic": "Analytical Chemistry", "question": "What type of indicator is Chlorophenol Red?", "options": ["Redox indicator", "Colorimetric indicator", "Adsorption indicator", "Radioactive indicator"], "answer": "Colorimetric indicator", "explanation": "Chlorophenol Red is a p H colorimetric indicator that changes colour based on the hydrogen ion concentration of the solution." },
+        { "id": 13, "topic": "Analytical Chemistry", "question": "What is the colour of the Phenolsulfonphthalein (Phenol Red) indicator at p H 7.0?", "options": ["Red", "Violet", "Green", "Yellow"], "answer": "Yellow", "explanation": "Phenol Red (Phenolsulfonphthalein) appears yellow below p H 6.8, orange-red at neutral p H 7, and bright pink/red above p H 8.4." },
         { "id": 14, "topic": "Analytical Chemistry", "question": "Why does the colour of [Fe(SCN)]Â²âº solution appear red?", "options": ["Complex adds red radiation to solvent", "Absorbs in the complementary green region and transmits red component", "Absorbs in the red region", "None of the above"], "answer": "Absorbs in the complementary green region and transmits red component", "explanation": "The Fe(SCN)Â²âº complex absorbs green light (complementary colour) and transmits red light, which is what we perceive as the red colour." },
         { "id": 15, "topic": "Redox Chemistry", "question": "What is the correct statement for a 'reducing agent'?", "options": ["It has a higher oxidation state", "It withdraws electrons", "It reduces oxidising agents by donating electrons", "It gets reduced itself in the redox reaction"], "answer": "It reduces oxidising agents by donating electrons", "explanation": "A reducing agent donates electrons to other species (oxidising agents), causing them to be reduced. The reducing agent itself gets oxidised." },
         { "id": 16, "topic": "Redox Chemistry", "question": "In photosynthesis, water is oxidised into ____________.", "options": ["Hâ‚‚", "COâ‚‚", "Câ‚†Hâ‚â‚‚Oâ‚†", "Oâ‚‚"], "answer": "Oâ‚‚", "explanation": "In photosynthesis, water molecules are split (oxidised) by light energy: 2Hâ‚‚O â†’ 4Hâº + 4eâ» + Oâ‚‚. The oxygen is released as a byproduct." },
@@ -295,8 +295,8 @@
         { "id": 25, "topic": "Lab Apparatus", "question": "What piece of equipment is used to hold test tubes upright?", "options": ["Test tube rack", "Forceps", "Ring clamp", "Petri dish"], "answer": "Test tube rack", "explanation": "A test tube rack holds multiple test tubes in an upright position, preventing them from rolling or falling during experiments." },
         { "id": 26, "topic": "Organic Chemistry", "question": "Which of the following is the simplest member of organic compounds?", "options": ["Formic acid", "Formaldehyde", "Methane", "Methanol"], "answer": "Methane", "explanation": "Methane (CHâ‚„) is the simplest alkane and the simplest organic compound, consisting of one carbon atom bonded to four hydrogen atoms." },
         { "id": 27, "topic": "Organic Chemistry", "question": "Hydrocarbons are organic compounds containing element(s) ________.", "options": ["Both hydrogen and carbon", "Carbon only", "Hydrogen only", "Oxygen"], "answer": "Both hydrogen and carbon", "explanation": "Hydrocarbons by definition contain ONLY hydrogen and carbon atoms. Examples include methane (CHâ‚„), ethane (Câ‚‚Hâ‚†), and benzene (Câ‚†Hâ‚†)." },
-        { "id": 28, "topic": "Analytical Chemistry", "question": "Ammonia evolved from 0.75 g soil sample neutralises 10 mL of 1M Hâ‚‚SOâ‚„ in Kjeldahl's method. Find the percentage of nitrogen in the soil.", "options": ["35.33%", "37.33%", "43.33%", "45.33%"], "answer": "37.33%", "explanation": "Moles Hâ‚‚SOâ‚„ = 0.01Ã—1 = 0.01 mol. Moles NHâ‚ƒ = 0.02 mol (1 mol Hâ‚‚SOâ‚„ reacts with 2 mol NHâ‚ƒ). Mass N = 0.02Ã—14 = 0.28 g. %N = (0.28/0.75)Ã—100 = 37.33%." },
-        { "id": 29, "topic": "Analytical Chemistry", "question": "25 mL of barium hydroxide solution titrated against 0.1 M HCl gave titer of 35 mL. What is the molarity of Ba(OH)â‚‚?", "options": ["0.07", "0.14", "0.28", "0.35"], "answer": "0.07", "explanation": "Ba(OH)â‚‚ + 2HCl â†’ BaClâ‚‚ + 2Hâ‚‚O. Moles HCl = 0.035Ã—0.1 = 0.0035. Moles Ba(OH)â‚‚ = 0.0035/2 = 0.00175. Molarity = 0.00175/0.025 = 0.07 M." },
+        { "id": 28, "topic": "Analytical Chemistry", "question": "Ammonia evolved from 0.75 g soil sample neutralises 10 m L of 1M Hâ‚‚SOâ‚„ in Kjeldahl's method. Find the percentage of nitrogen in the soil.", "options": ["35.33%", "37.33%", "43.33%", "45.33%"], "answer": "37.33%", "explanation": "Moles Hâ‚‚SOâ‚„ = 0.01Ã—1 = 0.01 mol. Moles NHâ‚ƒ = 0.02 mol (1 mol Hâ‚‚SOâ‚„ reacts with 2 mol NHâ‚ƒ). Mass N = 0.02Ã—14 = 0.28 g. %N = (0.28/0.75)Ã—100 = 37.33%." },
+        { "id": 29, "topic": "Analytical Chemistry", "question": "25 m L of barium hydroxide solution titrated against 0.1 M HCl gave titer of 35 m L. What is the molarity of Ba(OH)â‚‚?", "options": ["0.07", "0.14", "0.28", "0.35"], "answer": "0.07", "explanation": "Ba(OH)â‚‚ + 2HCl â†’ Ba Clâ‚‚ + 2Hâ‚‚O. Moles HCl = 0.035Ã—0.1 = 0.0035. Moles Ba(OH)â‚‚ = 0.0035/2 = 0.00175. Molarity = 0.00175/0.025 = 0.07 M." },
         { "id": 30, "topic": "Solutions", "question": "With increase in temperature, which of these changes?", "options": ["Molality", "Fraction of solute present in water", "Weight fraction of solute", "Mole fraction"], "answer": "Weight fraction of solute", "explanation": "Molality, mole fraction, and mass fraction are all temperature-independent. Molarity changes with temperature, and weight fraction of solute can change as density changes with temperature." },
 
         
@@ -305,11 +305,11 @@
         { "id": 33, "topic": "Lab Apparatus", "question": "A Bunsen burner is the most common heating device in the general chemistry laboratory. It burns what type of fuel gas?", "options": ["Hydrogen gas (Hâ‚‚) from a cylinder", "Oxygen gas (Oâ‚‚) under pressure", "Liquefied petroleum gas (LPG) â€” propane or butane", "Carbon monoxide (CO) piped from the main line"], "answer": "Liquefied petroleum gas (LPG) â€” propane or butane", "explanation": "Bunsen burners typically use LPG (propane/butane) or natural gas (methane) as fuel. The air-gas ratio is adjusted via the air hole to control flame type." },
         { "id": 34, "topic": "Lab Apparatus", "question": "What is the beehive shelf used for in a gas preparation set-up involving collection over water?", "options": ["To hold hot crucibles safely after ignition", "To support the Bunsen burner and tripod stand", "To support the inverted gas jar at the right height in a pneumatic trough for displacement collection", "To hold folded filter paper flat during gravity filtration"], "answer": "To support the inverted gas jar at the right height in a pneumatic trough for displacement collection", "explanation": "The beehive shelf sits in the pneumatic trough and has a hole through which gas travels upward into the inverted water-filled gas jar." },
         { "id": 35, "topic": "Lab Apparatus", "question": "What is the crucible primarily used for in the chemistry laboratory?", "options": ["Measuring volumes of liquids accurately to 0.01 cmÂ³", "Supporting filter paper during gravity filtration", "Holding solid substances being heated or ignited to very high temperatures until they decompose", "Dissolving solid chemicals in a liquid solvent at room temperature"], "answer": "Holding solid substances being heated or ignited to very high temperatures until they decompose", "explanation": "Crucibles are made of porcelain, clay, or platinum and can withstand extremely high temperatures needed for ignition and decomposition reactions." },
-        { "id": 36, "topic": "Lab Apparatus", "question": "A mortar and pestle (porcelain or agate) are used for what specific purpose in the chemistry laboratory?", "options": ["Measuring the pH of a solution accurately", "Grinding and crushing solid chemicals into a fine, homogeneous powder", "Holding liquid reagents at constant high temperatures for extended reactions", "Mixing two immiscible liquid phases by mechanical agitation"], "answer": "Grinding and crushing solid chemicals into a fine, homogeneous powder", "explanation": "The pestle is used to crush and grind solids in the bowl (mortar), increasing surface area for faster dissolution or reaction." },
+        { "id": 36, "topic": "Lab Apparatus", "question": "A mortar and pestle (porcelain or agate) are used for what specific purpose in the chemistry laboratory?", "options": ["Measuring the p H of a solution accurately", "Grinding and crushing solid chemicals into a fine, homogeneous powder", "Holding liquid reagents at constant high temperatures for extended reactions", "Mixing two immiscible liquid phases by mechanical agitation"], "answer": "Grinding and crushing solid chemicals into a fine, homogeneous powder", "explanation": "The pestle is used to crush and grind solids in the bowl (mortar), increasing surface area for faster dissolution or reaction." },
         { "id": 37, "topic": "Lab Apparatus", "question": "A wire gauze with a ceramic/asbestos centre is placed on a tripod stand. What is its purpose?", "options": ["To filter fine solid particles from a liquid suspension", "To collect gases over water by displacement in a trough", "To support a vessel (beaker, flask, dish) and distribute heat evenly from the Bunsen burner below", "To weigh solid chemicals accurately on an analytical balance"], "answer": "To support a vessel (beaker, flask, dish) and distribute heat evenly from the Bunsen burner below", "explanation": "The ceramic centre of the wire gauze spreads heat from the Bunsen flame uniformly, preventing hot spots that could crack glassware." },
         { "id": 38, "topic": "Lab Apparatus", "question": "A retort stand with a clamp is used to support which apparatus during laboratory experiments?", "options": ["The Bunsen burner and tripod stand only", "The filter funnel, thermometer, burette, condenser, or flask â€” whichever requires vertical support", "The evaporating dish during crystallisation only", "The mortar and pestle during grinding operations"], "answer": "The filter funnel, thermometer, burette, condenser, or flask â€” whichever requires vertical support", "explanation": "The retort stand with boss and clamp is a versatile support system for virtually any piece of apparatus requiring vertical or angled positioning." },
         { "id": 39, "topic": "Lab Apparatus", "question": "A test-tube holder is specifically designed for what purpose?", "options": ["Holding test tubes upright in a rack when not in use", "Safely gripping hot test tubes or those containing corrosive and reactive reagents", "Measuring the exact volume of liquid inside a test tube", "Sealing a test tube tightly to prevent escape of gas"], "answer": "Safely gripping hot test tubes or those containing corrosive and reactive reagents", "explanation": "Test-tube holders allow the experimenter to handle test tubes safely during heating without burning their fingers or dropping the tube." },
-        { "id": 40, "topic": "Lab Apparatus", "question": "What is the key difference between a measuring cylinder and a burette when measuring liquid volumes?", "options": ["A measuring cylinder is more accurate than a burette in all situations", "They are identical â€” 'burette' is just an alternative name for a measuring cylinder", "A burette (Â±0.05 cmÂ³) is far more accurate than a measuring cylinder (Â±0.5 mL); only the burette has a stopcock for controlled delivery", "A measuring cylinder has a stopcock; a burette does not"], "answer": "A burette (Â±0.05 cmÂ³) is far more accurate than a measuring cylinder (Â±0.5 mL); only the burette has a stopcock for controlled delivery", "explanation": "A burette is a precision instrument with 10Ã— better accuracy than a measuring cylinder and is used in quantitative titration analysis." },
+        { "id": 40, "topic": "Lab Apparatus", "question": "What is the key difference between a measuring cylinder and a burette when measuring liquid volumes?", "options": ["A measuring cylinder is more accurate than a burette in all situations", "They are identical â€” 'burette' is just an alternative name for a measuring cylinder", "A burette (Â±0.05 cmÂ³) is far more accurate than a measuring cylinder (Â±0.5 m L); only the burette has a stopcock for controlled delivery", "A measuring cylinder has a stopcock; a burette does not"], "answer": "A burette (Â±0.05 cmÂ³) is far more accurate than a measuring cylinder (Â±0.5 m L); only the burette has a stopcock for controlled delivery", "explanation": "A burette is a precision instrument with 10Ã— better accuracy than a measuring cylinder and is used in quantitative titration analysis." },
         { "id": 41, "topic": "Lab Apparatus", "question": "The Hofmann voltameter is used in the laboratory for which specific purpose?", "options": ["Measuring the electromotive force (EMF) of a galvanic cell", "Electrolyzing water to produce and separately collect hydrogen (cathode) and oxygen (anode) in graduated tubes", "Testing electrical conductivity of dilute ionic solutions", "Separating charged molecules by electrophoresis on a gel plate"], "answer": "Electrolyzing water to produce and separately collect hydrogen (cathode) and oxygen (anode) in graduated tubes", "explanation": "The Hofmann voltameter demonstrates the electrolysis of water: 2Hâ‚‚O â†’ 2Hâ‚‚ + Oâ‚‚. Hâ‚‚ collects at the cathode (twice the volume of Oâ‚‚ at the anode)." },
         { "id": 42, "topic": "Separation Techniques", "question": "Simple distillation separates components based on which physical property?", "options": ["Difference in density of the two liquids", "Difference in volatility (boiling point) â€” the more volatile component evaporates and is condensed and collected first", "Difference in solubility in a common third solvent", "Difference in magnetic susceptibility of the components"], "answer": "Difference in volatility (boiling point) â€” the more volatile component evaporates and is condensed and collected first", "explanation": "Simple distillation works best when boiling points differ by more than 25Â°C. The lower boiling point component distils over first." },
         { "id": 43, "topic": "Separation Techniques", "question": "Fractional distillation of ethanol (b.p. 78Â°C) and water (b.p. 100Â°C) requires which additional apparatus compared to simple distillation?", "options": ["A separating funnel to drain off the denser layer", "A fractionating column packed with glass beads â€” providing multiple condensation/re-evaporation cycles for better separation", "A Buchner funnel and vacuum pump for suction filtration", "A chromatographic tank with solvent and silica stationary phase"], "answer": "A fractionating column packed with glass beads â€” providing multiple condensation/re-evaporation cycles for better separation", "explanation": "The fractionating column provides many theoretical plates where vapour repeatedly condenses and re-evaporates, giving better separation of close-boiling components." },
@@ -325,7 +325,7 @@
         { "id": 53, "topic": "Organic Chemistry", "question": "Which of the following is the simplest member of all organic compounds?", "options": ["Formic acid (HCOOH) â€” the simplest carboxylic acid", "Formaldehyde (HCHO) â€” the simplest aldehyde", "Methane (CHâ‚„) â€” the simplest alkane, hydrocarbon, and organic compound", "Methanol (CHâ‚ƒOH) â€” the simplest alcohol"], "answer": "Methane (CHâ‚„) â€” the simplest alkane, hydrocarbon, and organic compound", "explanation": "Methane (CHâ‚„) has just one carbon and four hydrogens. It is the first member of the alkane homologous series and the simplest of all organic compounds." },
         { "id": 54, "topic": "Lab Apparatus", "question": "The Liebig condenser consists of an inner glass tube and an outer glass jacket. What is its function in distillation?", "options": ["To increase the boiling point of the liquid being distilled", "To cool and condense vapour from the flask into liquid distillate using cold water flowing through the outer jacket", "To separate gases by molecular weight in a density gradient", "To precisely measure the temperature of the boiling liquid"], "answer": "To cool and condense vapour from the flask into liquid distillate using cold water flowing through the outer jacket", "explanation": "The Liebig condenser uses flowing cold water in the outer jacket to cool and condense vapour passing through the inner tube, converting it back to liquid distillate." },
         { "id": 55, "topic": "Lab Apparatus", "question": "A Buchner funnel is made of perforated porcelain. When connected to a Buchner flask and vacuum pump, what process does it enable?", "options": ["Simple gravity filtration using folded filter paper in a conical funnel", "Fractional distillation of close-boiling liquid mixtures", "Filtration under suction (reduced pressure), which is faster and leaves the solid drier", "Intermittent supply of liquid acid reagents to a reaction mixture"], "answer": "Filtration under suction (reduced pressure), which is faster and leaves the solid drier", "explanation": "Vacuum filtration through a Buchner funnel is 10Ã— faster than gravity filtration and produces much drier filter cakes â€” essential for collecting crystalline products." },
-        { "id": 56, "topic": "Lab Apparatus", "question": "To accurately measure and transfer exactly 25.0 cmÂ³ of a liquid for a titration, which apparatus should be used?", "options": ["A 100 mL measuring cylinder read to the nearest 0.5 mL", "A 250 mL conical flask filled to a graduation mark", "A 25 cmÂ³ bulb (transfer) pipette calibrated to deliver precisely 25.00 cmÂ³", "A 50 mL beaker with printed graduation marks"], "answer": "A 25 cmÂ³ bulb (transfer) pipette calibrated to deliver precisely 25.00 cmÂ³", "explanation": "A bulb (one-mark) pipette delivers exactly one fixed volume with the highest accuracy (Â±0.04 cmÂ³), far superior to measuring cylinders or beakers." },
+        { "id": 56, "topic": "Lab Apparatus", "question": "To accurately measure and transfer exactly 25.0 cmÂ³ of a liquid for a titration, which apparatus should be used?", "options": ["A 100 m L measuring cylinder read to the nearest 0.5 m L", "A 250 m L conical flask filled to a graduation mark", "A 25 cmÂ³ bulb (transfer) pipette calibrated to deliver precisely 25.00 cmÂ³", "A 50 m L beaker with printed graduation marks"], "answer": "A 25 cmÂ³ bulb (transfer) pipette calibrated to deliver precisely 25.00 cmÂ³", "explanation": "A bulb (one-mark) pipette delivers exactly one fixed volume with the highest accuracy (Â±0.04 cmÂ³), far superior to measuring cylinders or beakers." },
         { "id": 57, "topic": "Lab Apparatus", "question": "Why is a round-bottomed flask (RBF) preferred over a flat-bottomed flask for distillation and reflux?", "options": ["Because it is cheaper and more readily available than flat-bottomed flasks", "Because it holds more liquid than a flat-bottomed flask of the same size", "Because the curved surface distributes heat evenly and prevents the glass from cracking under thermal stress", "Because it can be stoppered more easily with a rubber bung"], "answer": "Because the curved surface distributes heat evenly and prevents the glass from cracking under thermal stress", "explanation": "Curved glassware distributes thermal stress evenly. Flat-bottomed flasks concentrate stress at corners and can crack when heated strongly." },
         { "id": 58, "topic": "Lab Apparatus", "question": "A thistle funnel has a bulb top and a long, narrow stem. What is it used for in gas preparation?", "options": ["Filtering solid impurities from a liquid solvent", "Adding a liquid reagent (acid) to a solid inside a flask, allowing controlled introduction while sealing the apparatus", "Separating two immiscible liquid layers in an extraction", "Dispensing a measured volume of indicator to a conical flask"], "answer": "Adding a liquid reagent (acid) to a solid inside a flask, allowing controlled introduction while sealing the apparatus", "explanation": "The thistle funnel allows addition of acid dropwise to the solid reactant while keeping the gas-generation apparatus sealed, controlling the rate of gas production." },
         { "id": 59, "topic": "Lab Apparatus", "question": "In a titration set-up, why is a white tile or sheet of white paper placed beneath the conical flask?", "options": ["To prevent the flask from sliding or moving during swirling", "To keep the flask and its contents warm during the reaction", "To provide a sharp, bright white background making the colour change at the endpoint easier to detect", "To reflect heat from below and maintain a steady reaction temperature"], "answer": "To provide a sharp, bright white background making the colour change at the endpoint easier to detect", "explanation": "The white background maximises contrast at the titration endpoint, helping the analyst detect the precise moment of permanent colour change." },
@@ -334,19 +334,19 @@
         { "id": 3, "topic": "Lab Apparatus", "question": "A Bunsen burner burns what type of fuel gas?", "options": ["Hydrogen gas (Hâ‚‚) from a cylinder", "Oxygen gas (Oâ‚‚) under pressure", "Liquefied petroleum gas (LPG) â€” propane or butane", "Carbon monoxide (CO) piped from the main line"], "answer": "Liquefied petroleum gas (LPG) â€” propane or butane", "explanation": "Bunsen burners typically use LPG (propane/butane) or natural gas (methane) as fuel. The air-gas ratio is adjusted via the air hole to control flame type." },
         { "id": 4, "topic": "Lab Apparatus", "question": "What is the beehive shelf used for in a gas preparation set-up involving collection over water?", "options": ["To hold hot crucibles safely after ignition", "To support the Bunsen burner and tripod stand", "To support the inverted gas jar at the right height in a pneumatic trough for displacement collection", "To hold folded filter paper flat during gravity filtration"], "answer": "To support the inverted gas jar at the right height in a pneumatic trough for displacement collection", "explanation": "The beehive shelf sits in the pneumatic trough and has a hole through which gas travels upward into the inverted water-filled gas jar." },
         { "id": 5, "topic": "Lab Apparatus", "question": "What is the crucible primarily used for in the chemistry laboratory?", "options": ["Measuring volumes of liquids accurately", "Supporting filter paper during gravity filtration", "Holding solid substances being heated or ignited to very high temperatures", "Dissolving solid chemicals in a liquid solvent at room temperature"], "answer": "Holding solid substances being heated or ignited to very high temperatures", "explanation": "Crucibles are made of porcelain, clay, or platinum and can withstand extremely high temperatures needed for ignition and decomposition reactions." },
-        { "id": 6, "topic": "Lab Apparatus", "question": "A mortar and pestle are used for what specific purpose in the chemistry laboratory?", "options": ["Measuring the pH of a solution accurately", "Grinding and crushing solid chemicals into a fine, homogeneous powder", "Holding liquid reagents at constant high temperatures", "Mixing two immiscible liquid phases by mechanical agitation"], "answer": "Grinding and crushing solid chemicals into a fine, homogeneous powder", "explanation": "The pestle is used to crush and grind solids in the bowl (mortar), increasing surface area for faster dissolution or reaction." },
+        { "id": 6, "topic": "Lab Apparatus", "question": "A mortar and pestle are used for what specific purpose in the chemistry laboratory?", "options": ["Measuring the p H of a solution accurately", "Grinding and crushing solid chemicals into a fine, homogeneous powder", "Holding liquid reagents at constant high temperatures", "Mixing two immiscible liquid phases by mechanical agitation"], "answer": "Grinding and crushing solid chemicals into a fine, homogeneous powder", "explanation": "The pestle is used to crush and grind solids in the bowl (mortar), increasing surface area for faster dissolution or reaction." },
         { "id": 7, "topic": "Lab Apparatus", "question": "A wire gauze with a ceramic centre is placed on a tripod stand. What is its purpose?", "options": ["To filter fine solid particles from a liquid suspension", "To collect gases over water by displacement", "To support a vessel and distribute heat evenly from the Bunsen burner below", "To weigh solid chemicals accurately on an analytical balance"], "answer": "To support a vessel and distribute heat evenly from the Bunsen burner below", "explanation": "The ceramic centre of the wire gauze spreads heat from the Bunsen flame uniformly, preventing hot spots that could crack glassware." },
         { "id": 8, "topic": "Lab Apparatus", "question": "A retort stand with a clamp is used to support which apparatus during laboratory experiments?", "options": ["The Bunsen burner and tripod stand only", "The filter funnel, thermometer, burette, condenser, or flask â€” whichever requires vertical support", "The evaporating dish during crystallisation only", "The mortar and pestle during grinding operations"], "answer": "The filter funnel, thermometer, burette, condenser, or flask â€” whichever requires vertical support", "explanation": "The retort stand with boss and clamp is a versatile support system for virtually any piece of apparatus requiring vertical or angled positioning." },
         { "id": 9, "topic": "Lab Apparatus", "question": "A test-tube holder is specifically designed for what purpose?", "options": ["Holding test tubes upright in a rack when not in use", "Safely gripping hot test tubes or those containing corrosive and reactive reagents", "Measuring the exact volume of liquid inside a test tube", "Sealing a test tube tightly to prevent escape of gas"], "answer": "Safely gripping hot test tubes or those containing corrosive and reactive reagents", "explanation": "Test-tube holders allow the experimenter to handle test tubes safely during heating without burning their fingers or dropping the tube." },
-        { "id": 10, "topic": "Lab Apparatus", "question": "What is the key difference between a measuring cylinder and a burette when measuring liquid volumes?", "options": ["A measuring cylinder is more accurate than a burette", "They are identical â€” 'burette' is just an alternative name for a measuring cylinder", "A burette (Â±0.05 cmÂ³) is far more accurate than a measuring cylinder (Â±0.5 mL); only the burette has a stopcock", "A measuring cylinder has a stopcock; a burette does not"], "answer": "A burette (Â±0.05 cmÂ³) is far more accurate than a measuring cylinder (Â±0.5 mL); only the burette has a stopcock", "explanation": "A burette is a precision instrument with 10Ã— better accuracy than a measuring cylinder and is used in quantitative titration analysis." },
+        { "id": 10, "topic": "Lab Apparatus", "question": "What is the key difference between a measuring cylinder and a burette when measuring liquid volumes?", "options": ["A measuring cylinder is more accurate than a burette", "They are identical â€” 'burette' is just an alternative name for a measuring cylinder", "A burette (Â±0.05 cmÂ³) is far more accurate than a measuring cylinder (Â±0.5 m L); only the burette has a stopcock", "A measuring cylinder has a stopcock; a burette does not"], "answer": "A burette (Â±0.05 cmÂ³) is far more accurate than a measuring cylinder (Â±0.5 m L); only the burette has a stopcock", "explanation": "A burette is a precision instrument with 10Ã— better accuracy than a measuring cylinder and is used in quantitative titration analysis." },
         { "id": 11, "topic": "Lab Apparatus", "question": "The Hofmann voltameter is used for which specific purpose?", "options": ["Measuring the EMF of a galvanic cell", "Electrolyzing water to produce and separately collect hydrogen (cathode) and oxygen (anode) in graduated tubes", "Testing electrical conductivity of dilute ionic solutions", "Separating charged molecules by electrophoresis on a gel plate"], "answer": "Electrolyzing water to produce and separately collect hydrogen (cathode) and oxygen (anode) in graduated tubes", "explanation": "The Hofmann voltameter demonstrates the electrolysis of water: 2Hâ‚‚O â†’ 2Hâ‚‚ + Oâ‚‚. Hâ‚‚ collects at cathode (twice the volume of Oâ‚‚ at anode)." },
         { "id": 12, "topic": "Lab Apparatus", "question": "Which apparatus and procedure is used to determine the melting point of a crystalline substance?", "options": ["A volumetric flask filled with a saturated standard solution", "A Woulff's bottle connected to a vacuum pump", "A melting-point capillary tube attached to a thermometer, immersed in a slowly heated oil or water bath", "A Kipp's apparatus with solid and liquid acid chambers"], "answer": "A melting-point capillary tube attached to a thermometer, immersed in a slowly heated oil or water bath", "explanation": "Melting point determination uses a thin capillary tube containing the solid attached to a thermometer in a heating bath. The sharp MP indicates purity." },
         { "id": 13, "topic": "Lab Apparatus", "question": "A combustion tube for organic analysis must be made of what material?", "options": ["Soda-lime glass â€” transparent and thin-walled", "Polypropylene plastic for broad chemical resistance", "Pyrex (borosilicate) or hard glass â€” to withstand very high combustion temperatures", "Porcelain â€” same material as crucibles"], "answer": "Pyrex (borosilicate) or hard glass â€” to withstand very high combustion temperatures", "explanation": "Pyrex/borosilicate glass has very low thermal expansion and can withstand the high temperatures used in organic combustion analysis (600â€“900Â°C)." },
         { "id": 14, "topic": "Lab Apparatus", "question": "Crucible tongs are used in the chemistry laboratory for which specific operation?", "options": ["Handling hot crucibles, evaporating dishes, and other hot porcelain items safely", "Tightening the stopcock of a burette or separating funnel", "Clamping a Liebig condenser to the distillation flask", "Crushing large solid samples before analysis"], "answer": "Handling hot crucibles, evaporating dishes, and other hot porcelain items safely", "explanation": "Crucible tongs are made of metal and designed to grip the rim of hot crucibles and porcelain ware without burning hands or risking dropping." },
         { "id": 15, "topic": "Lab Apparatus", "question": "What is the function of a delivery tube in a gas preparation experiment?", "options": ["To store the prepared gas at elevated pressure", "To absorb moisture and impurities from the prepared gas", "To convey (lead) the prepared gas from the generator to the collection vessel or test reagent", "To measure the rate of gas production in cmÂ³ per minute"], "answer": "To convey (lead) the prepared gas from the generator to the collection vessel or test reagent", "explanation": "The delivery tube connects the gas generator (flask) to the collection vessel or testing solution, guiding the gas flow through the system." },
         { "id": 16, "topic": "Lab Apparatus", "question": "What is the purpose of a pneumatic trough in gas collection?", "options": ["To dry the gas using a column of drying agent", "To absorb acidic impurities from the gas stream", "To hold water so that gas can be collected by displacement in an inverted jar", "To measure the volume of gas produced at standard conditions"], "answer": "To hold water so that gas can be collected by displacement in an inverted jar", "explanation": "The pneumatic trough is filled with water. Gas bubbles up from the delivery tube into the inverted, water-filled gas jar, displacing the water." },
-        { "id": 17, "topic": "Lab Apparatus", "question": "The amber (dark brown) reagent bottle is designed for what specific purpose?", "options": ["Storing dry solids that readily absorb moisture", "Storing liquid reagents that decompose on exposure to sunlight (e.g. Hâ‚‚Oâ‚‚, AgNOâ‚ƒ, iodine solutions)", "Storing concentrated acids that attack ordinary glass", "Collecting and storing gases produced during reactions"], "answer": "Storing liquid reagents that decompose on exposure to sunlight (e.g. Hâ‚‚Oâ‚‚, AgNOâ‚ƒ, iodine solutions)", "explanation": "Amber glass blocks UV and visible light that would catalyse the decomposition of light-sensitive reagents like Hâ‚‚Oâ‚‚, AgNOâ‚ƒ, and iodine solutions." },
-        { "id": 18, "topic": "Lab Apparatus", "question": "A desiccator is used to store substances after drying. What is placed in the base to absorb moisture?", "options": ["Concentrated HCl to absorb basic vapours", "Silica gel, CaClâ‚‚, or Pâ‚‚Oâ‚… â€” desiccant that absorbs water vapour from the enclosed space", "Activated charcoal to remove organic vapour impurities", "Distilled water to maintain a constant humidity inside"], "answer": "Silica gel, CaClâ‚‚, or Pâ‚‚Oâ‚… â€” desiccant that absorbs water vapour from the enclosed space", "explanation": "A desiccator stores hygroscopic substances in a dry environment. Common desiccants: silica gel (mild), CaClâ‚‚, anhydrous CaSOâ‚„, and Pâ‚‚Oâ‚… (very strong)." },
+        { "id": 17, "topic": "Lab Apparatus", "question": "The amber (dark brown) reagent bottle is designed for what specific purpose?", "options": ["Storing dry solids that readily absorb moisture", "Storing liquid reagents that decompose on exposure to sunlight (e.g. Hâ‚‚Oâ‚‚, Ag NOâ‚ƒ, iodine solutions)", "Storing concentrated acids that attack ordinary glass", "Collecting and storing gases produced during reactions"], "answer": "Storing liquid reagents that decompose on exposure to sunlight (e.g. Hâ‚‚Oâ‚‚, Ag NOâ‚ƒ, iodine solutions)", "explanation": "Amber glass blocks UV and visible light that would catalyse the decomposition of light-sensitive reagents like Hâ‚‚Oâ‚‚, Ag NOâ‚ƒ, and iodine solutions." },
+        { "id": 18, "topic": "Lab Apparatus", "question": "A desiccator is used to store substances after drying. What is placed in the base to absorb moisture?", "options": ["Concentrated HCl to absorb basic vapours", "Silica gel, Ca Clâ‚‚, or Pâ‚‚Oâ‚… â€” desiccant that absorbs water vapour from the enclosed space", "Activated charcoal to remove organic vapour impurities", "Distilled water to maintain a constant humidity inside"], "answer": "Silica gel, Ca Clâ‚‚, or Pâ‚‚Oâ‚… â€” desiccant that absorbs water vapour from the enclosed space", "explanation": "A desiccator stores hygroscopic substances in a dry environment. Common desiccants: silica gel (mild), Ca Clâ‚‚, anhydrous Ca SOâ‚„, and Pâ‚‚Oâ‚… (very strong)." },
         { "id": 19, "topic": "Lab Apparatus", "question": "The volumetric (standard) flask has a single graduation mark on its narrow neck. What is its specific purpose?", "options": ["Heating liquids to boiling point and collecting distillate", "Collecting filtrate during suction filtration", "Preparing a standard solution of a precise, definite volume (e.g. exactly 250.00 cmÂ³)", "Distilling immiscible liquid mixtures at varying pressures"], "answer": "Preparing a standard solution of a precise, definite volume (e.g. exactly 250.00 cmÂ³)", "explanation": "The volumetric flask's single calibration mark ensures exactly the stated volume when the meniscus is at the mark. Used to prepare standard solutions." },
         { "id": 20, "topic": "Lab Apparatus", "question": "A Buchner flask (side-arm flask) side arm is connected to what during filtration under reduced pressure?", "options": ["A Liebig condenser for cooling vapour", "A vacuum pump â€” creating suction that draws the filtrate through the Buchner funnel", "A burette for standardized delivery of acid", "A thermometer to monitor the reaction temperature"], "answer": "A vacuum pump â€” creating suction that draws the filtrate through the Buchner funnel", "explanation": "The side arm of the Buchner flask connects via rubber tubing to a vacuum pump. The reduced pressure inside pulls filtrate rapidly through the filter cake." },
         { "id": 21, "topic": "Lab Apparatus", "question": "The separating funnel has a glass stopcock and is pear-shaped. What is it primarily used for?", "options": ["Separating miscible liquids with closely related boiling points", "Separating immiscible liquids (e.g. kerosene and water) that form two distinct density-based layers", "Filtering fine solid particles out of a liquid suspension", "Separating dissolved gases from a liquid mixture"], "answer": "Separating immiscible liquids (e.g. kerosene and water) that form two distinct density-based layers", "explanation": "Immiscible liquids separate into layers by density in the separating funnel. The stopcock allows the lower (denser) layer to be drained first." },
@@ -354,7 +354,7 @@
         { "id": 23, "topic": "Lab Apparatus", "question": "A bulb (transfer) pipette is used during titrations. What is its primary function?", "options": ["Dispensing indicator liquid dropwise during endpoint detection", "Accurately transferring a fixed, definite volume (e.g. 25.00 cmÂ³) of solution from a stock solution to the conical flask", "Measuring approximate volumes in a large beaker", "Filling the burette from the reagent bottle safely"], "answer": "Accurately transferring a fixed, definite volume (e.g. 25.00 cmÂ³) of solution from a stock solution to the conical flask", "explanation": "A bulb (one-mark) pipette delivers exactly one fixed volume with the highest accuracy (Â±0.04 cmÂ³), far superior to measuring cylinders or beakers." },
         { "id": 24, "topic": "Lab Apparatus", "question": "The Liebig condenser's function in distillation is to:", "options": ["Increase the boiling point of the liquid being distilled", "Cool and condense vapour from the flask into liquid distillate using cold water flowing through the outer jacket", "Separate gases by molecular weight in a density gradient", "Precisely measure the temperature of the boiling liquid"], "answer": "Cool and condense vapour from the flask into liquid distillate using cold water flowing through the outer jacket", "explanation": "The Liebig condenser uses flowing cold water in the outer jacket to cool and condense vapour passing through the inner tube, converting it back to liquid." },
         { "id": 25, "topic": "Lab Apparatus", "question": "A Buchner funnel is made of perforated porcelain. When connected to a vacuum pump, what process does it enable?", "options": ["Simple gravity filtration using folded filter paper", "Fractional distillation of close-boiling liquid mixtures", "Filtration under suction (reduced pressure), which is faster and leaves the solid drier", "Intermittent supply of liquid acid reagents to a reaction mixture"], "answer": "Filtration under suction (reduced pressure), which is faster and leaves the solid drier", "explanation": "Vacuum filtration through a Buchner funnel is 10Ã— faster than gravity filtration and produces much drier filter cakes â€” essential for collecting crystalline products." },
-        { "id": 26, "topic": "Lab Apparatus", "question": "To accurately measure and transfer exactly 25.0 cmÂ³ of a liquid for a titration, which apparatus should be used?", "options": ["A 100 mL measuring cylinder read to the nearest 0.5 mL", "A 250 mL conical flask filled to a graduation mark", "A 25 cmÂ³ bulb (transfer) pipette calibrated to deliver precisely 25.00 cmÂ³", "A 50 mL beaker with printed graduation marks"], "answer": "A 25 cmÂ³ bulb (transfer) pipette calibrated to deliver precisely 25.00 cmÂ³", "explanation": "A bulb (one-mark) pipette delivers exactly one fixed volume with the highest accuracy (Â±0.04 cmÂ³), far superior to measuring cylinders or beakers." },
+        { "id": 26, "topic": "Lab Apparatus", "question": "To accurately measure and transfer exactly 25.0 cmÂ³ of a liquid for a titration, which apparatus should be used?", "options": ["A 100 m L measuring cylinder read to the nearest 0.5 m L", "A 250 m L conical flask filled to a graduation mark", "A 25 cmÂ³ bulb (transfer) pipette calibrated to deliver precisely 25.00 cmÂ³", "A 50 m L beaker with printed graduation marks"], "answer": "A 25 cmÂ³ bulb (transfer) pipette calibrated to deliver precisely 25.00 cmÂ³", "explanation": "A bulb (one-mark) pipette delivers exactly one fixed volume with the highest accuracy (Â±0.04 cmÂ³), far superior to measuring cylinders or beakers." },
         { "id": 27, "topic": "Lab Apparatus", "question": "Why is a round-bottomed flask (RBF) preferred over a flat-bottomed flask for distillation and reflux?", "options": ["Because it is cheaper and more readily available", "Because it holds more liquid than a flat-bottomed flask of the same size", "Because the curved surface distributes heat evenly and prevents the glass from cracking under thermal stress", "Because it can be stoppered more easily with a rubber bung"], "answer": "Because the curved surface distributes heat evenly and prevents the glass from cracking under thermal stress", "explanation": "Curved glassware distributes thermal stress evenly. Flat-bottomed flasks concentrate stress at corners and can crack when heated strongly." },
         { "id": 28, "topic": "Lab Apparatus", "question": "A thistle funnel has a bulb top and long, narrow stem. What is it used for in gas preparation?", "options": ["Filtering solid impurities from a liquid solvent", "Adding a liquid reagent (acid) to a solid inside a flask, allowing controlled introduction while sealing the apparatus", "Separating two immiscible liquid layers in an extraction", "Dispensing a measured volume of indicator to a conical flask"], "answer": "Adding a liquid reagent (acid) to a solid inside a flask, allowing controlled introduction while sealing the apparatus", "explanation": "The thistle funnel allows addition of acid dropwise to the solid reactant while keeping the gas-generation apparatus sealed, controlling gas production rate." },
         { "id": 29, "topic": "Lab Apparatus", "question": "In a titration set-up, why is a white tile placed beneath the conical flask?", "options": ["To prevent the flask from sliding during swirling", "To keep the flask and its contents warm", "To provide a sharp, bright white background making the colour change at the endpoint easier to detect", "To reflect heat from below and maintain a steady reaction temperature"], "answer": "To provide a sharp, bright white background making the colour change at the endpoint easier to detect", "explanation": "The white background maximises contrast at the titration endpoint, helping the analyst detect the precise moment of permanent colour change." },
@@ -373,7 +373,7 @@
         { "id": 40, "topic": "Separation Techniques", "question": "Selection of the correct filter paper grade depends on:", "options": ["The drying rate of the paper after filtration", "Finer particles require slower, denser paper; coarser particles allow faster-flow paper", "The ability of the paper to absorb and decolorise the solution", "The paper's thickness to determine the decantation rate"], "answer": "Finer particles require slower, denser paper; coarser particles allow faster-flow paper", "explanation": "Filter paper pore size must match particle size. If pores are too large, fine particles pass through; if too small, filtration is too slow." },
         { "id": 41, "topic": "Separation Techniques", "question": "Fractional distillation of liquefied air separates nitrogen and oxygen because:", "options": ["Nitrogen is magnetic and oxygen is not", "They have different densities in the liquid phase", "Nâ‚‚ (b.p. âˆ’196Â°C) has a lower boiling point than Oâ‚‚ (b.p. âˆ’183Â°C) and boils off first during gradual warming", "They have different solubilities in the liquid nitrogen phase"], "answer": "Nâ‚‚ (b.p. âˆ’196Â°C) has a lower boiling point than Oâ‚‚ (b.p. âˆ’183Â°C) and boils off first during gradual warming", "explanation": "During gradual warming of liquid air, the more volatile nitrogen (lower b.p.) evaporates first and is collected separately from the less volatile oxygen." },
         { "id": 42, "topic": "Separation Techniques", "question": "Sublimation as a separation technique is applicable when:", "options": ["Both components dissolve in the same solvent at room temperature", "One component converts directly from solid to vapour without melting when gently heated, while the other remains solid", "Both components are liquids with significantly different boiling points", "One component is ferromagnetic and the other is non-magnetic"], "answer": "One component converts directly from solid to vapour without melting when gently heated, while the other remains solid", "explanation": "Substances that sublime (e.g. iodine, ammonium chloride, naphthalene) can be separated from non-subliming impurities by gentle heating and condensation." },
-        { "id": 43, "topic": "Separation Techniques", "question": "Zone refining (zone melting) is an advanced purification technique used to produce ultra-pure:", "options": ["Distilled water for laboratory use", "Semiconductor materials like silicon and germanium for the electronics industry", "Salt (NaCl) from seawater by controlled crystallisation", "Pharmaceutical compounds from plant extracts"], "answer": "Semiconductor materials like silicon and germanium for the electronics industry", "explanation": "Zone refining sweeps impurities to one end of a solid rod by moving a narrow molten zone along it repeatedly, producing 99.9999% pure semiconductors." },
+        { "id": 43, "topic": "Separation Techniques", "question": "Zone refining (zone melting) is an advanced purification technique used to produce ultra-pure:", "options": ["Distilled water for laboratory use", "Semiconductor materials like silicon and germanium for the electronics industry", "Salt (Na Cl) from seawater by controlled crystallisation", "Pharmaceutical compounds from plant extracts"], "answer": "Semiconductor materials like silicon and germanium for the electronics industry", "explanation": "Zone refining sweeps impurities to one end of a solid rod by moving a narrow molten zone along it repeatedly, producing 99.9999% pure semiconductors." },
         { "id": 44, "topic": "Separation Techniques", "question": "Steam distillation is used to separate substances that:", "options": ["Are completely miscible with water in all proportions", "Are immiscible with water and have high boiling points â€” they co-distil with steam at temperatures below 100Â°C", "Are solids that sublime readily when heated gently", "Are gases at room temperature and must be liquefied for collection"], "answer": "Are immiscible with water and have high boiling points â€” they co-distil with steam at temperatures below 100Â°C", "explanation": "Steam distillation is used to isolate high-boiling, water-immiscible compounds (e.g. essential oils) without decomposing them at their normal boiling points." },
         { "id": 45, "topic": "Separation Techniques", "question": "In liquid-liquid extraction, the process depends on:", "options": ["The difference in density between the two solvents", "The partition coefficient â€” the ratio of solute concentration in solvent A to solvent B at equilibrium", "The difference in boiling point between the two solvents", "The magnetic susceptibility of the solute in each solvent"], "answer": "The partition coefficient â€” the ratio of solute concentration in solvent A to solvent B at equilibrium", "explanation": "The partition (distribution) coefficient K = [solute]_A / [solute]_B determines how completely a solute transfers between two immiscible solvents." },
         { "id": 46, "topic": "Separation Techniques", "question": "What is the stationary phase in paper chromatography?", "options": ["The solvent (mobile phase) that moves up the paper", "The water adsorbed on the cellulose fibres of the paper", "The solute being separated and identified", "The solvent front that moves to the top of the paper"], "answer": "The water adsorbed on the cellulose fibres of the paper", "explanation": "In paper chromatography, the cellulose paper fibres adsorb water, which acts as the stationary phase. The solvent (mobile phase) moves through it carrying solutes at different rates." },
@@ -381,24 +381,24 @@
         { "id": 48, "topic": "Separation Techniques", "question": "A mixture of oil and water is separated by ____.", "options": ["Separating funnel", "Evaporation", "Decantation", "Filtration"], "answer": "Separating funnel", "explanation": "Oil and water are immiscible. They form two distinct layers in a separating funnel, allowing each layer to be drained separately." },
 
         
-        { "id": 49, "topic": "Indicators & Redox", "question": "When is a buffer solution used in chemistry?", "options": ["To make a solution permanently and strongly basic", "To make a solution permanently and strongly acidic", "To resist (prevent) significant changes in pH when small amounts of acid or base are added", "To neutralise all acids and bases to exactly pH 7.0"], "answer": "To resist (prevent) significant changes in pH when small amounts of acid or base are added", "explanation": "A buffer solution resists changes in pH when small amounts of acid or base are added, maintaining a relatively constant pH." },
-        { "id": 50, "topic": "Indicators & Redox", "question": "What type of indicator is Chlorophenol Red?", "options": ["A redox indicator that changes colour with changes in oxidation state", "A colorimetric (pH) indicator â€” changes colour based on the acidity or alkalinity of the solution", "An adsorption indicator used in precipitation titrations", "A radioactive tracer used in kinetic studies"], "answer": "A colorimetric (pH) indicator â€” changes colour based on the acidity or alkalinity of the solution", "explanation": "Chlorophenol Red is a pH colorimetric indicator that changes colour based on the hydrogen ion concentration of the solution." },
-        { "id": 51, "topic": "Indicators & Redox", "question": "Phenolsulfonphthalein (Phenol Red) appears what colour at exactly pH 7.0?", "options": ["Bright red", "Violet or purple", "Blue-green", "Yellow â€” it is yellow below pH 6.8 and transitions to red above pH 8.4"], "answer": "Yellow â€” it is yellow below pH 6.8 and transitions to red above pH 8.4", "explanation": "Phenol Red appears yellow below pH 6.8, orange at neutral pH 7, and bright pink/red above pH 8.4." },
+        { "id": 49, "topic": "Indicators & Redox", "question": "When is a buffer solution used in chemistry?", "options": ["To make a solution permanently and strongly basic", "To make a solution permanently and strongly acidic", "To resist (prevent) significant changes in p H when small amounts of acid or base are added", "To neutralise all acids and bases to exactly p H 7.0"], "answer": "To resist (prevent) significant changes in p H when small amounts of acid or base are added", "explanation": "A buffer solution resists changes in p H when small amounts of acid or base are added, maintaining a relatively constant p H." },
+        { "id": 50, "topic": "Indicators & Redox", "question": "What type of indicator is Chlorophenol Red?", "options": ["A redox indicator that changes colour with changes in oxidation state", "A colorimetric (p H) indicator â€” changes colour based on the acidity or alkalinity of the solution", "An adsorption indicator used in precipitation titrations", "A radioactive tracer used in kinetic studies"], "answer": "A colorimetric (p H) indicator â€” changes colour based on the acidity or alkalinity of the solution", "explanation": "Chlorophenol Red is a p H colorimetric indicator that changes colour based on the hydrogen ion concentration of the solution." },
+        { "id": 51, "topic": "Indicators & Redox", "question": "Phenolsulfonphthalein (Phenol Red) appears what colour at exactly p H 7.0?", "options": ["Bright red", "Violet or purple", "Blue-green", "Yellow â€” it is yellow below p H 6.8 and transitions to red above p H 8.4"], "answer": "Yellow â€” it is yellow below p H 6.8 and transitions to red above p H 8.4", "explanation": "Phenol Red appears yellow below p H 6.8, orange at neutral p H 7, and bright pink/red above p H 8.4." },
         { "id": 52, "topic": "Indicators & Redox", "question": "Why does the [Fe(SCN)]Â²âº complex solution appear red?", "options": ["It emits red light through fluorescence when excited by UV radiation", "It absorbs green wavelengths (~490 nm) and transmits the complementary red wavelengths to our eyes", "It absorbs all red wavelengths and reflects all green light", "The SCNâ» ion itself is inherently red-coloured in all metal complexes"], "answer": "It absorbs green wavelengths (~490 nm) and transmits the complementary red wavelengths to our eyes", "explanation": "The Fe(SCN)Â²âº complex absorbs green light (complementary colour) and transmits red light, which is what we perceive as the red colour." },
         { "id": 53, "topic": "Indicators & Redox", "question": "Which statement correctly describes a reducing agent?", "options": ["It accepts electrons from the substance it reacts with and is itself reduced", "It has a higher oxidation state than the substance being reduced", "It donates electrons to the oxidising agent, reducing it â€” and is itself oxidised in the process", "It is always a metal oxide or a hydroxide compound"], "answer": "It donates electrons to the oxidising agent, reducing it â€” and is itself oxidised in the process", "explanation": "A reducing agent donates electrons to other species (oxidising agents), causing them to be reduced. The reducing agent itself gets oxidised (loses electrons)." },
         { "id": 54, "topic": "Indicators & Redox", "question": "The standard hydrogen electrode (SHE) has a standard electrode potential of:", "options": ["0.00 V â€” by international convention", "+2.87 V â€” the most positive possible electrode potential", "âˆ’3.04 V â€” the most negative electrode potential", "+1.23 V â€” the potential for oxygen evolution"], "answer": "0.00 V â€” by international convention", "explanation": "By international convention, the SHE is assigned EÂ° = 0.00 V at all temperatures. All other standard electrode potentials are measured relative to it." },
-        { "id": 55, "topic": "Indicators & Redox", "question": "Potassium permanganate (KMnOâ‚„) is deep purple. When it reacts with a reducing agent in acidic solution, what colour change occurs?", "options": ["Colourless to deep purple", "Deep purple/violet to colourless (or very pale pink) â€” MnOâ‚„â» reduced to MnÂ²âº", "Yellow to colourless â€” the chromate ion is reduced", "Blue to red â€” the complex ion changes oxidation state"], "answer": "Deep purple/violet to colourless (or very pale pink) â€” MnOâ‚„â» reduced to MnÂ²âº", "explanation": "MnOâ‚„â» (purple, Mn in +7 state) is reduced to MnÂ²âº (almost colourless, pale pink) in acidic solution. The colour disappearance marks the endpoint." },
+        { "id": 55, "topic": "Indicators & Redox", "question": "Potassium permanganate (KMn Oâ‚„) is deep purple. When it reacts with a reducing agent in acidic solution, what colour change occurs?", "options": ["Colourless to deep purple", "Deep purple/violet to colourless (or very pale pink) â€” Mn Oâ‚„â» reduced to MnÂ²âº", "Yellow to colourless â€” the chromate ion is reduced", "Blue to red â€” the complex ion changes oxidation state"], "answer": "Deep purple/violet to colourless (or very pale pink) â€” Mn Oâ‚„â» reduced to MnÂ²âº", "explanation": "Mn Oâ‚„â» (purple, Mn in +7 state) is reduced to MnÂ²âº (almost colourless, pale pink) in acidic solution. The colour disappearance marks the endpoint." },
         { "id": 56, "topic": "Indicators & Redox", "question": "In photosynthesis, water is oxidised into ____________.", "options": ["Hâ‚‚", "COâ‚‚", "Câ‚†Hâ‚â‚‚Oâ‚†", "Oâ‚‚"], "answer": "Oâ‚‚", "explanation": "In photosynthesis, water molecules are split (oxidised) by light energy: 2Hâ‚‚O â†’ 4Hâº + 4eâ» + Oâ‚‚. The oxygen is released as a byproduct." },
         { "id": 57, "topic": "Indicators & Redox", "question": "With an increase in temperature, which concentration measure changes while others remain constant?", "options": ["Molality (mol/kg) â€” based on mass of solvent", "Mole fraction â€” a dimensionless ratio of moles", "Molarity (mol/L) â€” volume changes with temperature, so mol/L changes too", "Mass percent (% w/w) â€” based on mass ratio"], "answer": "Molarity (mol/L) â€” volume changes with temperature, so mol/L changes too", "explanation": "Molality, mole fraction, and mass fraction are temperature-independent (based on mass). Molarity depends on volume which changes with temperature." },
-        { "id": 58, "topic": "Indicators & Redox", "question": "Which indicator is used in EDTA complexometric titration for determining water hardness?", "options": ["Phenolphthalein â€” colourless to pink at pH 9", "Methyl orange â€” red to yellow in acidic to basic transition", "Eriochrome Black T (EBT) â€” wine-red in presence of metal ions, turns blue at endpoint", "Starch solution â€” gives a blue-black colour with iodine"], "answer": "Eriochrome Black T (EBT) â€” wine-red in presence of metal ions, turns blue at endpoint", "explanation": "EBT forms a wine-red complex with CaÂ²âº and MgÂ²âº ions. When EDTA fully complexes all metal ions, EBT is released and turns blue â€” this is the endpoint." },
-        { "id": 59, "topic": "Indicators & Redox", "question": "In an iodometric titration, starch indicator gives what endpoint?", "options": ["Colourless to pink â€” starch reacts with iodide to form a coloured complex", "Blue-black to colourless â€” starch forms blue-black complex with Iâ‚‚; at endpoint all Iâ‚‚ is consumed and colour disappears", "Yellow to red â€” the iodo-starch complex changes colour as pH increases", "Colourless to yellow â€” the appearance of free iodine causes the yellow colour"], "answer": "Blue-black to colourless â€” starch forms blue-black complex with Iâ‚‚; at endpoint all Iâ‚‚ is consumed and colour disappears", "explanation": "Starch forms an intense blue-black complex with Iâ‚ƒâ». When the reducing agent consumes all Iâ‚‚, the blue-black colour disappears sharply â€” the endpoint." },
+        { "id": 58, "topic": "Indicators & Redox", "question": "Which indicator is used in EDTA complexometric titration for determining water hardness?", "options": ["Phenolphthalein â€” colourless to pink at p H 9", "Methyl orange â€” red to yellow in acidic to basic transition", "Eriochrome Black T (EBT) â€” wine-red in presence of metal ions, turns blue at endpoint", "Starch solution â€” gives a blue-black colour with iodine"], "answer": "Eriochrome Black T (EBT) â€” wine-red in presence of metal ions, turns blue at endpoint", "explanation": "EBT forms a wine-red complex with CaÂ²âº and MgÂ²âº ions. When EDTA fully complexes all metal ions, EBT is released and turns blue â€” this is the endpoint." },
+        { "id": 59, "topic": "Indicators & Redox", "question": "In an iodometric titration, starch indicator gives what endpoint?", "options": ["Colourless to pink â€” starch reacts with iodide to form a coloured complex", "Blue-black to colourless â€” starch forms blue-black complex with Iâ‚‚; at endpoint all Iâ‚‚ is consumed and colour disappears", "Yellow to red â€” the iodo-starch complex changes colour as p H increases", "Colourless to yellow â€” the appearance of free iodine causes the yellow colour"], "answer": "Blue-black to colourless â€” starch forms blue-black complex with Iâ‚‚; at endpoint all Iâ‚‚ is consumed and colour disappears", "explanation": "Starch forms an intense blue-black complex with Iâ‚ƒâ». When the reducing agent consumes all Iâ‚‚, the blue-black colour disappears sharply â€” the endpoint." },
 
         
-        { "id": 60, "topic": "Qualitative Analysis", "question": "When excess NaOH is added to a solution containing CuÂ²âº ions, what is observed?", "options": ["A white precipitate that dissolves in excess NaOH to give a colourless solution", "A green precipitate that is insoluble in excess NaOH", "A pale blue precipitate of Cu(OH)â‚‚ that is insoluble in excess NaOH", "No precipitate â€” CuÂ²âº ions remain in solution even with excess NaOH"], "answer": "A pale blue precipitate of Cu(OH)â‚‚ that is insoluble in excess NaOH", "explanation": "CuÂ²âº + 2OHâ» â†’ Cu(OH)â‚‚â†“ (pale blue gelatinous precipitate). This precipitate does NOT dissolve in excess NaOH, distinguishing CuÂ²âº from AlÂ³âº and ZnÂ²âº." },
-        { "id": 61, "topic": "Qualitative Analysis", "question": "When excess NaOH is added to a solution containing AlÂ³âº ions, what is observed?", "options": ["A pale blue gelatinous precipitate that does not dissolve in excess NaOH", "A green precipitate that darkens on standing in air", "A white gelatinous precipitate of Al(OH)â‚ƒ that dissolves in excess NaOH to give a colourless aluminate solution", "No precipitate â€” AlÂ³âº remains fully in solution even with excess NaOH"], "answer": "A white gelatinous precipitate of Al(OH)â‚ƒ that dissolves in excess NaOH to give a colourless aluminate solution", "explanation": "Al(OH)â‚ƒ is amphoteric â€” it dissolves in excess NaOH: Al(OH)â‚ƒ + NaOH â†’ NaAl(OH)â‚„ (sodium aluminate, colourless solution). This amphoteric behaviour distinguishes AlÂ³âº." },
-        { "id": 62, "topic": "Qualitative Analysis", "question": "The 'brown ring' test is used to confirm the presence of which ion?", "options": ["The sulphate ion (SOâ‚„Â²â»)", "The nitrate ion (NOâ‚ƒâ») â€” FeSOâ‚„ + conc. Hâ‚‚SOâ‚„ gives a brown ring at the interface", "The chloride ion (Clâ»)", "The carbonate ion (COâ‚ƒÂ²â»)"], "answer": "The nitrate ion (NOâ‚ƒâ») â€” FeSOâ‚„ + conc. Hâ‚‚SOâ‚„ gives a brown ring at the interface", "explanation": "The brown ring test: FeSOâ‚„ solution + test solution layered over conc. Hâ‚‚SOâ‚„. A brown ring of [Fe(NO)(Hâ‚‚O)â‚…]Â²âº at the interface confirms NOâ‚ƒâ»." },
-        { "id": 63, "topic": "Qualitative Analysis", "question": "When AgNOâ‚ƒ solution is added to a solution containing Clâ» ions, what is observed?", "options": ["A yellow precipitate soluble in dilute HNOâ‚ƒ", "A white precipitate of AgCl insoluble in dilute HNOâ‚ƒ but soluble in dilute NHâ‚ƒ", "A red precipitate of Agâ‚‚CrOâ‚„ insoluble in all acids", "No precipitate â€” chloride ions remain in solution"], "answer": "A white precipitate of AgCl insoluble in dilute HNOâ‚ƒ but soluble in dilute NHâ‚ƒ", "explanation": "Agâº + Clâ» â†’ AgClâ†“ (white). AgCl is insoluble in dilute HNOâ‚ƒ but dissolves in dilute NHâ‚ƒ: AgCl + 2NHâ‚ƒ â†’ [Ag(NHâ‚ƒ)â‚‚]âº + Clâ». This confirms Clâ»." },
-        { "id": 64, "topic": "Qualitative Analysis", "question": "When dilute Hâ‚‚SOâ‚„ is added to a carbonate or bicarbonate, what is observed?", "options": ["Yellow fumes produced that turn moist starch-iodide paper blue", "Colourless odourless gas produced that turns limewater milky", "A pungent smell of SOâ‚‚ and a white precipitate forms", "Effervescence of a gas that relights a glowing splint"], "answer": "Colourless odourless gas produced that turns limewater milky", "explanation": "COâ‚ƒÂ²â» + Hâº â†’ COâ‚‚ + Hâ‚‚O. COâ‚‚ turns limewater (Ca(OH)â‚‚ solution) milky due to CaCOâ‚ƒ precipitation. This is the standard test for COâ‚ƒÂ²â» and COâ‚‚." },
+        { "id": 60, "topic": "Qualitative Analysis", "question": "When excess Na OH is added to a solution containing CuÂ²âº ions, what is observed?", "options": ["A white precipitate that dissolves in excess Na OH to give a colourless solution", "A green precipitate that is insoluble in excess Na OH", "A pale blue precipitate of Cu(OH)â‚‚ that is insoluble in excess Na OH", "No precipitate â€” CuÂ²âº ions remain in solution even with excess Na OH"], "answer": "A pale blue precipitate of Cu(OH)â‚‚ that is insoluble in excess Na OH", "explanation": "CuÂ²âº + 2OHâ» â†’ Cu(OH)â‚‚â†“ (pale blue gelatinous precipitate). This precipitate does NOT dissolve in excess Na OH, distinguishing CuÂ²âº from AlÂ³âº and ZnÂ²âº." },
+        { "id": 61, "topic": "Qualitative Analysis", "question": "When excess Na OH is added to a solution containing AlÂ³âº ions, what is observed?", "options": ["A pale blue gelatinous precipitate that does not dissolve in excess Na OH", "A green precipitate that darkens on standing in air", "A white gelatinous precipitate of Al(OH)â‚ƒ that dissolves in excess Na OH to give a colourless aluminate solution", "No precipitate â€” AlÂ³âº remains fully in solution even with excess Na OH"], "answer": "A white gelatinous precipitate of Al(OH)â‚ƒ that dissolves in excess Na OH to give a colourless aluminate solution", "explanation": "Al(OH)â‚ƒ is amphoteric â€” it dissolves in excess Na OH: Al(OH)â‚ƒ + Na OH â†’ Na Al(OH)â‚„ (sodium aluminate, colourless solution). This amphoteric behaviour distinguishes AlÂ³âº." },
+        { "id": 62, "topic": "Qualitative Analysis", "question": "The 'brown ring' test is used to confirm the presence of which ion?", "options": ["The sulphate ion (SOâ‚„Â²â»)", "The nitrate ion (NOâ‚ƒâ») â€” Fe SOâ‚„ + conc. Hâ‚‚SOâ‚„ gives a brown ring at the interface", "The chloride ion (Clâ»)", "The carbonate ion (COâ‚ƒÂ²â»)"], "answer": "The nitrate ion (NOâ‚ƒâ») â€” Fe SOâ‚„ + conc. Hâ‚‚SOâ‚„ gives a brown ring at the interface", "explanation": "The brown ring test: Fe SOâ‚„ solution + test solution layered over conc. Hâ‚‚SOâ‚„. A brown ring of [Fe(NO)(Hâ‚‚O)â‚…]Â²âº at the interface confirms NOâ‚ƒâ»." },
+        { "id": 63, "topic": "Qualitative Analysis", "question": "When Ag NOâ‚ƒ solution is added to a solution containing Clâ» ions, what is observed?", "options": ["A yellow precipitate soluble in dilute HNOâ‚ƒ", "A white precipitate of Ag Cl insoluble in dilute HNOâ‚ƒ but soluble in dilute NHâ‚ƒ", "A red precipitate of Agâ‚‚Cr Oâ‚„ insoluble in all acids", "No precipitate â€” chloride ions remain in solution"], "answer": "A white precipitate of Ag Cl insoluble in dilute HNOâ‚ƒ but soluble in dilute NHâ‚ƒ", "explanation": "Agâº + Clâ» â†’ Ag Clâ†“ (white). Ag Cl is insoluble in dilute HNOâ‚ƒ but dissolves in dilute NHâ‚ƒ: Ag Cl + 2NHâ‚ƒ â†’ [Ag(NHâ‚ƒ)â‚‚]âº + Clâ». This confirms Clâ»." },
+        { "id": 64, "topic": "Qualitative Analysis", "question": "When dilute Hâ‚‚SOâ‚„ is added to a carbonate or bicarbonate, what is observed?", "options": ["Yellow fumes produced that turn moist starch-iodide paper blue", "Colourless odourless gas produced that turns limewater milky", "A pungent smell of SOâ‚‚ and a white precipitate forms", "Effervescence of a gas that relights a glowing splint"], "answer": "Colourless odourless gas produced that turns limewater milky", "explanation": "COâ‚ƒÂ²â» + Hâº â†’ COâ‚‚ + Hâ‚‚O. COâ‚‚ turns limewater (Ca(OH)â‚‚ solution) milky due to Ca COâ‚ƒ precipitation. This is the standard test for COâ‚ƒÂ²â» and COâ‚‚." },
         { "id": 65, "topic": "Qualitative Analysis", "question": "A gas that turns moist blue litmus paper red and has a pungent smell is most likely:", "options": ["Ammonia (NHâ‚ƒ)", "Carbon dioxide (COâ‚‚)", "Hydrogen chloride (HCl) or sulphur dioxide (SOâ‚‚) â€” acidic pungent gases", "Nitrogen (Nâ‚‚)"], "answer": "Hydrogen chloride (HCl) or sulphur dioxide (SOâ‚‚) â€” acidic pungent gases", "explanation": "Acidic gases like HCl, SOâ‚‚, and HBr turn moist blue litmus red. Ammonia turns red litmus blue. COâ‚‚ is acidic but not pungent. Nâ‚‚ is inert." },
 
         
@@ -410,7 +410,7 @@
         { "id": 71, "topic": "Lab Safety", "question": "Which variety of glass is most commonly used for high-quality chemistry laboratory apparatus?", "options": ["Pyrex (borosilicate glass) â€” low thermal expansion, high chemical resistance, withstands strong heating", "Soda-lime glass (sodaglass) â€” the most chemically resistant and cheapest", "Lead crystal glass â€” used for precision optical components", "Polycarbonate â€” a synthetic transparent polymer for impact resistance"], "answer": "Pyrex (borosilicate glass) â€” low thermal expansion, high chemical resistance, withstands strong heating", "explanation": "Pyrex/borosilicate glass has very low thermal expansion coefficient (~3Ã—10â»â¶/Â°C vs 9Ã—10â»â¶/Â°C for soda-lime glass), making it resistant to thermal shock during heating." },
         { "id": 72, "topic": "Lab Safety", "question": "Plastic apparatus (polythene, polypropene) has a significant limitation in the chemistry laboratory. What is it?", "options": ["They are very expensive compared to glass and porcelain apparatus", "They cannot withstand contact with dilute mineral acids or water", "They are readily dissolved or swollen by organic solvents (e.g. acetone, CHClâ‚ƒ, benzene)", "They are opaque and cannot be used where colour changes must be observed"], "answer": "They are readily dissolved or swollen by organic solvents (e.g. acetone, CHClâ‚ƒ, benzene)", "explanation": "Plastics like polythene and polypropylene are chemically resistant to aqueous acids and bases but are attacked or swollen by many organic solvents." },
         { "id": 73, "topic": "Lab Safety", "question": "Why is Teflon (PTFE) used for stopcock plugs, tubing, and seals in laboratory apparatus?", "options": ["Because it is transparent and allows colour changes to be observed easily", "Because it is the cheapest and most available polymer material", "Because it is chemically inert to virtually all common chemicals including strong acids, bases, and organic solvents", "Because it is an excellent conductor of heat and electricity"], "answer": "Because it is chemically inert to virtually all common chemicals including strong acids, bases, and organic solvents", "explanation": "PTFE (Teflon) has exceptional chemical resistance due to strong C-F bonds that resist attack by virtually all laboratory chemicals, making it ideal for seals and stopcocks." },
-        { "id": 74, "topic": "Lab Safety", "question": "Concentrated Hâ‚‚SOâ‚„ is used as a drying agent for prepared gases. Which gas CANNOT be dried with conc. Hâ‚‚SOâ‚„?", "options": ["Hydrogen (Hâ‚‚)", "Chlorine (Clâ‚‚)", "Carbon dioxide (COâ‚‚)", "Ammonia (NHâ‚ƒ) â€” reacts with Hâ‚‚SOâ‚„ to form (NHâ‚„)â‚‚SOâ‚„"], "answer": "Ammonia (NHâ‚ƒ) â€” reacts with Hâ‚‚SOâ‚„ to form (NHâ‚„)â‚‚SOâ‚„", "explanation": "NHâ‚ƒ is an alkaline gas. It reacts with Hâ‚‚SOâ‚„: 2NHâ‚ƒ + Hâ‚‚SOâ‚„ â†’ (NHâ‚„)â‚‚SOâ‚„. So it cannot be dried using conc. Hâ‚‚SOâ‚„. Use CaO or soda-lime for NHâ‚ƒ." },
+        { "id": 74, "topic": "Lab Safety", "question": "Concentrated Hâ‚‚SOâ‚„ is used as a drying agent for prepared gases. Which gas CANNOT be dried with conc. Hâ‚‚SOâ‚„?", "options": ["Hydrogen (Hâ‚‚)", "Chlorine (Clâ‚‚)", "Carbon dioxide (COâ‚‚)", "Ammonia (NHâ‚ƒ) â€” reacts with Hâ‚‚SOâ‚„ to form (NHâ‚„)â‚‚SOâ‚„"], "answer": "Ammonia (NHâ‚ƒ) â€” reacts with Hâ‚‚SOâ‚„ to form (NHâ‚„)â‚‚SOâ‚„", "explanation": "NHâ‚ƒ is an alkaline gas. It reacts with Hâ‚‚SOâ‚„: 2NHâ‚ƒ + Hâ‚‚SOâ‚„ â†’ (NHâ‚„)â‚‚SOâ‚„. So it cannot be dried using conc. Hâ‚‚SOâ‚„. Use Ca O or soda-lime for NHâ‚ƒ." },
         { "id": 75, "topic": "Lab Safety", "question": "A Kipp's apparatus (gas generator) allows intermittent production of gas WITHOUT heating. What reaction does it use?", "options": ["A solid reacts with a liquid (acid) at room temperature â€” e.g. marble chips + HCl â†’ COâ‚‚; Zn + Hâ‚‚SOâ‚„ â†’ Hâ‚‚", "A liquid mixture is heated to boiling and vapour collected over water", "Two liquids are electrolysed to produce gas at electrodes", "A solid is strongly heated in air until it thermally decomposes"], "answer": "A solid reacts with a liquid (acid) at room temperature â€” e.g. marble chips + HCl â†’ COâ‚‚; Zn + Hâ‚‚SOâ‚„ â†’ Hâ‚‚", "explanation": "Kipp's apparatus has three chambers. Opening the tap allows acid to contact the solid, producing gas on demand. Closing the tap stops the reaction automatically." },
         { "id": 76, "topic": "Lab Safety", "question": "When a gas jar or test tube containing a dangerous chemical breaks in the laboratory, what is the FIRST action?", "options": ["Continue the experiment and clean up after", "Alert everyone in the lab immediately; evacuate if necessary; then clean up following COSHH procedures with gloves and protective equipment", "Pour water on the spill to dilute and neutralise it", "Leave the area and allow the chemical to evaporate naturally"], "answer": "Alert everyone in the lab immediately; evacuate if necessary; then clean up following COSHH procedures with gloves and protective equipment", "explanation": "Safety first: alert others, ensure everyone is safe, evacuate if the spill is serious. Then clean up following proper COSHH procedures with appropriate PPE." },
 
@@ -424,11 +424,11 @@
         { "id": 83, "topic": "Organic Chemistry", "question": "The IUPAC name for CHâ‚ƒCHâ‚‚CHâ‚‚OH is:", "options": ["Methanol", "Ethanol", "Propan-1-ol", "Butan-1-ol"], "answer": "Propan-1-ol", "explanation": "CHâ‚ƒCHâ‚‚CHâ‚‚OH has 3 carbon atoms (prop-), it is an alcohol (-ol), and the -OH is on carbon 1 (1-ol). Hence propan-1-ol." },
 
         
-        { "id": 84, "topic": "Analytical Calculations", "question": "Ammonia evolved from 0.75 g soil sample neutralises 10 mL of 1M Hâ‚‚SOâ‚„ in Kjeldahl's method. Find the percentage of nitrogen in the soil.", "options": ["35.33%", "37.33%", "43.33%", "45.33%"], "answer": "37.33%", "explanation": "Moles Hâ‚‚SOâ‚„ = 0.01Ã—1 = 0.01 mol. Moles NHâ‚ƒ = 0.02 mol (1 mol Hâ‚‚SOâ‚„ reacts with 2 mol NHâ‚ƒ). Mass N = 0.02Ã—14 = 0.28 g. %N = (0.28/0.75)Ã—100 = 37.33%." },
-        { "id": 85, "topic": "Analytical Calculations", "question": "25 mL of barium hydroxide solution titrated against 0.1 M HCl gave titer of 35 mL. What is the molarity of Ba(OH)â‚‚?", "options": ["0.07 M", "0.14 M", "0.28 M", "0.35 M"], "answer": "0.07 M", "explanation": "Ba(OH)â‚‚ + 2HCl â†’ BaClâ‚‚ + 2Hâ‚‚O. Moles HCl = 0.035Ã—0.1 = 0.0035. Moles Ba(OH)â‚‚ = 0.0035/2 = 0.00175. Molarity = 0.00175/0.025 = 0.07 M." },
-        { "id": 86, "topic": "Analytical Calculations", "question": "How many moles of NaOH are needed to neutralise 25 mL of 0.1 M Hâ‚‚SOâ‚„?", "options": ["0.0025 mol", "0.005 mol", "0.01 mol", "0.025 mol"], "answer": "0.005 mol", "explanation": "Hâ‚‚SOâ‚„ + 2NaOH â†’ Naâ‚‚SOâ‚„ + 2Hâ‚‚O. Moles Hâ‚‚SOâ‚„ = 0.025Ã—0.1 = 0.0025 mol. Moles NaOH = 2Ã—0.0025 = 0.005 mol." },
-        { "id": 87, "topic": "Analytical Calculations", "question": "What volume of 2 M HCl is needed to dissolve 5.85 g of NaCl? (Molar mass NaCl = 58.5 g/mol)", "options": ["50 mL", "100 mL", "No HCl is needed â€” NaCl dissolves in water", "200 mL"], "answer": "No HCl is needed â€” NaCl dissolves in water", "explanation": "NaCl is a neutral salt that dissolves readily in water without needing acid. This question tests understanding that HCl is unnecessary for dissolving neutral salts." },
-        { "id": 88, "topic": "Analytical Calculations", "question": "The molarity of a solution prepared by dissolving 4 g of NaOH (Mr = 40) in water to make 500 mL of solution is:", "options": ["0.1 M", "0.2 M", "0.4 M", "0.8 M"], "answer": "0.2 M", "explanation": "Moles NaOH = 4/40 = 0.1 mol. Volume = 500 mL = 0.5 L. Molarity = 0.1/0.5 = 0.2 M." },
+        { "id": 84, "topic": "Analytical Calculations", "question": "Ammonia evolved from 0.75 g soil sample neutralises 10 m L of 1M Hâ‚‚SOâ‚„ in Kjeldahl's method. Find the percentage of nitrogen in the soil.", "options": ["35.33%", "37.33%", "43.33%", "45.33%"], "answer": "37.33%", "explanation": "Moles Hâ‚‚SOâ‚„ = 0.01Ã—1 = 0.01 mol. Moles NHâ‚ƒ = 0.02 mol (1 mol Hâ‚‚SOâ‚„ reacts with 2 mol NHâ‚ƒ). Mass N = 0.02Ã—14 = 0.28 g. %N = (0.28/0.75)Ã—100 = 37.33%." },
+        { "id": 85, "topic": "Analytical Calculations", "question": "25 m L of barium hydroxide solution titrated against 0.1 M HCl gave titer of 35 m L. What is the molarity of Ba(OH)â‚‚?", "options": ["0.07 M", "0.14 M", "0.28 M", "0.35 M"], "answer": "0.07 M", "explanation": "Ba(OH)â‚‚ + 2HCl â†’ Ba Clâ‚‚ + 2Hâ‚‚O. Moles HCl = 0.035Ã—0.1 = 0.0035. Moles Ba(OH)â‚‚ = 0.0035/2 = 0.00175. Molarity = 0.00175/0.025 = 0.07 M." },
+        { "id": 86, "topic": "Analytical Calculations", "question": "How many moles of Na OH are needed to neutralise 25 m L of 0.1 M Hâ‚‚SOâ‚„?", "options": ["0.0025 mol", "0.005 mol", "0.01 mol", "0.025 mol"], "answer": "0.005 mol", "explanation": "Hâ‚‚SOâ‚„ + 2Na OH â†’ Naâ‚‚SOâ‚„ + 2Hâ‚‚O. Moles Hâ‚‚SOâ‚„ = 0.025Ã—0.1 = 0.0025 mol. Moles Na OH = 2Ã—0.0025 = 0.005 mol." },
+        { "id": 87, "topic": "Analytical Calculations", "question": "What volume of 2 M HCl is needed to dissolve 5.85 g of Na Cl? (Molar mass Na Cl = 58.5 g/mol)", "options": ["50 m L", "100 m L", "No HCl is needed â€” Na Cl dissolves in water", "200 m L"], "answer": "No HCl is needed â€” Na Cl dissolves in water", "explanation": "Na Cl is a neutral salt that dissolves readily in water without needing acid. This question tests understanding that HCl is unnecessary for dissolving neutral salts." },
+        { "id": 88, "topic": "Analytical Calculations", "question": "The molarity of a solution prepared by dissolving 4 g of Na OH (Mr = 40) in water to make 500 m L of solution is:", "options": ["0.1 M", "0.2 M", "0.4 M", "0.8 M"], "answer": "0.2 M", "explanation": "Moles Na OH = 4/40 = 0.1 mol. Volume = 500 m L = 0.5 L. Molarity = 0.1/0.5 = 0.2 M." },
 
         
         { "id": 89, "topic": "Lab Apparatus", "question": "What piece of equipment dispenses liquids in measured drops?", "options": ["Pipette", "Dropper", "Beaker", "Flask"], "answer": "Dropper", "explanation": "A dropper (also called a Pasteur pipette or medicine dropper) dispenses liquids one drop at a time for precise small volume addition." },
@@ -444,10 +444,10 @@
         { "id": 99, "topic": "Separation Techniques", "question": "Which of the following methods can be used to separate a mixture of iron and copper fillings?", "options": ["Magnetic separation", "Crystallisation", "Evaporation", "Distillation"], "answer": "Magnetic separation", "explanation": "Iron is ferromagnetic and is attracted to a magnet, while copper is non-magnetic. A magnet easily separates the two metals." },
         { "id": 100, "topic": "Indicators & Redox", "question": "In photosynthesis reaction water is oxidised into ____________.", "options": ["Hâ‚‚", "COâ‚‚", "Câ‚†Hâ‚â‚‚Oâ‚†", "Oâ‚‚"], "answer": "Oâ‚‚", "explanation": "In photosynthesis, water molecules are split (oxidised) by light energy: 2Hâ‚‚O â†’ 4Hâº + 4eâ» + Oâ‚‚. The oxygen is released as a byproduct." },
         { "id": 101, "topic": "Indicators & Redox", "question": "What is the correct statement for 'reducing agent'?", "options": ["It has a higher oxidation state", "It withdraws electrons", "It reduces oxidising agents by donating electrons", "It gets reduced itself in the redox reaction"], "answer": "It reduces oxidising agents by donating electrons", "explanation": "A reducing agent donates electrons to other species (oxidising agents), causing them to be reduced. The reducing agent itself gets oxidised." },
-        { "id": 102, "topic": "Analytical Calculations", "question": "25 mL of a solution of barium hydroxide on titration with 0.1 molar solution of hydrochloric acid gave titer value of 35 mL. The molarity of barium hydroxide solution was:", "options": ["0.07", "0.14", "0.28", "0.35"], "answer": "0.07", "explanation": "Ba(OH)â‚‚ + 2HCl â†’ BaClâ‚‚ + 2Hâ‚‚O. Moles HCl = 0.035Ã—0.1 = 0.0035. Moles Ba(OH)â‚‚ = 0.0035/2 = 0.00175. Molarity = 0.00175/0.025 = 0.07 M." },
-        { "id": 103, "topic": "Indicators & Redox", "question": "When do we use Buffer Solution?", "options": ["To make the solution basic", "To make the solution acidic", "To prevent solution's pH change", "None of the above"], "answer": "To prevent solution's pH change", "explanation": "A buffer solution resists changes in pH when small amounts of acid or base are added, maintaining a relatively constant pH." },
-        { "id": 104, "topic": "Indicators & Redox", "question": "What type of indicator is Chlorophenol Red?", "options": ["Redox indicator", "Colorimetric indicator", "Adsorption indicator", "Radioactive indicator"], "answer": "Colorimetric indicator", "explanation": "Chlorophenol Red is a pH colorimetric indicator that changes colour based on the hydrogen ion concentration of the solution." },
-        { "id": 105, "topic": "Indicators & Redox", "question": "What is the colour of the Phenolsulfonphthalein indicator at pH 7.0?", "options": ["Red", "Violet", "Green", "Yellow"], "answer": "Yellow", "explanation": "Phenol Red (Phenolsulfonphthalein) appears yellow below pH 6.8, orange-red at neutral pH 7, and bright pink/red above pH 8.4." },
+        { "id": 102, "topic": "Analytical Calculations", "question": "25 m L of a solution of barium hydroxide on titration with 0.1 molar solution of hydrochloric acid gave titer value of 35 m L. The molarity of barium hydroxide solution was:", "options": ["0.07", "0.14", "0.28", "0.35"], "answer": "0.07", "explanation": "Ba(OH)â‚‚ + 2HCl â†’ Ba Clâ‚‚ + 2Hâ‚‚O. Moles HCl = 0.035Ã—0.1 = 0.0035. Moles Ba(OH)â‚‚ = 0.0035/2 = 0.00175. Molarity = 0.00175/0.025 = 0.07 M." },
+        { "id": 103, "topic": "Indicators & Redox", "question": "When do we use Buffer Solution?", "options": ["To make the solution basic", "To make the solution acidic", "To prevent solution's p H change", "None of the above"], "answer": "To prevent solution's p H change", "explanation": "A buffer solution resists changes in p H when small amounts of acid or base are added, maintaining a relatively constant p H." },
+        { "id": 104, "topic": "Indicators & Redox", "question": "What type of indicator is Chlorophenol Red?", "options": ["Redox indicator", "Colorimetric indicator", "Adsorption indicator", "Radioactive indicator"], "answer": "Colorimetric indicator", "explanation": "Chlorophenol Red is a p H colorimetric indicator that changes colour based on the hydrogen ion concentration of the solution." },
+        { "id": 105, "topic": "Indicators & Redox", "question": "What is the colour of the Phenolsulfonphthalein indicator at p H 7.0?", "options": ["Red", "Violet", "Green", "Yellow"], "answer": "Yellow", "explanation": "Phenol Red (Phenolsulfonphthalein) appears yellow below p H 6.8, orange-red at neutral p H 7, and bright pink/red above p H 8.4." },
         { "id": 106, "topic": "Indicators & Redox", "question": "Why does the colour of [Fe(SCN)]Â²âº solution appear red?", "options": ["Complex add red radiation to solvent", "Absorbs in the complementary green region and transmit red component", "Absorbs in the red region", "None of the above"], "answer": "Absorbs in the complementary green region and transmit red component", "explanation": "The Fe(SCN)Â²âº complex absorbs green light (complementary colour) and transmits red light, which is what we perceive as the red colour." },
         { "id": 107, "topic": "Separation Techniques", "question": "How is Oil and Hexane separated?", "options": ["Distillation", "Separating funnel", "Crystallization", "Electrophoresis"], "answer": "Separating funnel", "explanation": "Oil and hexane are immiscible liquids that form separate layers. A separating funnel allows the denser layer to be drained off independently." },
         { "id": 108, "topic": "Lab Apparatus", "question": "Selection of filter paper depends on size of particles to be ________.", "options": ["filtered", "dried", "decolorized", "decanted"], "answer": "filtered", "explanation": "Filter paper pore size is chosen based on the size of the particles to be filtered â€” coarser particles use larger pore size paper." },
@@ -470,17 +470,17 @@
         { "id": 121, "topic": "Chemical Bonding", "question": "Which property of water is explained by hydrogen bonding?", "options": ["Its ability to dissolve ionic compounds", "Its unusually high boiling point (100Â°C) for a molecule of its size", "Its colourless and odourless nature", "Its reaction with metals to produce hydrogen gas"], "answer": "Its unusually high boiling point (100Â°C) for a molecule of its size", "explanation": "Without hydrogen bonding, water's b.p. would be about -80Â°C (like Hâ‚‚S, -60Â°C). Hydrogen bonds require extra energy to break, giving water its anomalously high boiling point." },
 
         
-        { "id": 122, "topic": "Acids, Bases & Salts", "question": "According to the BrÃ¸nsted-Lowry theory, an acid is defined as:", "options": ["A substance that produces OHâ» ions in solution", "A proton (Hâº) donor â€” it gives a proton to another substance", "An electron pair acceptor (Lewis acid)", "A substance with pH less than 5"], "answer": "A proton (Hâº) donor â€” it gives a proton to another substance", "explanation": "BrÃ¸nsted-Lowry: an acid is a proton donor and a base is a proton acceptor. E.g. HCl â†’ Hâº + Clâ» (HCl donates Hâº, so it is an acid)." },
-        { "id": 123, "topic": "Acids, Bases & Salts", "question": "What is the pH of a neutral solution at 25Â°C?", "options": ["0", "7", "14", "It depends on the concentration of water"], "answer": "7", "explanation": "At 25Â°C, pure water has [Hâº] = [OHâ»] = 10â»â· mol/L. pH = -log[Hâº] = -log(10â»â·) = 7. Below 7 is acidic; above 7 is alkaline." },
+        { "id": 122, "topic": "Acids, Bases & Salts", "question": "According to the BrÃ¸nsted-Lowry theory, an acid is defined as:", "options": ["A substance that produces OHâ» ions in solution", "A proton (Hâº) donor â€” it gives a proton to another substance", "An electron pair acceptor (Lewis acid)", "A substance with p H less than 5"], "answer": "A proton (Hâº) donor â€” it gives a proton to another substance", "explanation": "BrÃ¸nsted-Lowry: an acid is a proton donor and a base is a proton acceptor. E.g. HCl â†’ Hâº + Clâ» (HCl donates Hâº, so it is an acid)." },
+        { "id": 123, "topic": "Acids, Bases & Salts", "question": "What is the p H of a neutral solution at 25Â°C?", "options": ["0", "7", "14", "It depends on the concentration of water"], "answer": "7", "explanation": "At 25Â°C, pure water has [Hâº] = [OHâ»] = 10â»â· mol/L. p H = -log[Hâº] = -log(10â»â·) = 7. Below 7 is acidic; above 7 is alkaline." },
         { "id": 124, "topic": "Acids, Bases & Salts", "question": "Which of the following is a strong acid?", "options": ["Acetic acid (CHâ‚ƒCOOH)", "Hydrochloric acid (HCl)", "Carbonic acid (Hâ‚‚COâ‚ƒ)", "Formic acid (HCOOH)"], "answer": "Hydrochloric acid (HCl)", "explanation": "HCl is a strong acid â€” it fully dissociates in water: HCl â†’ Hâº + Clâ». Acetic, carbonic, and formic acids are weak acids that only partially dissociate." },
-        { "id": 125, "topic": "Acids, Bases & Salts", "question": "The reaction between an acid and a metal carbonate produces:", "options": ["A salt, hydrogen gas, and water", "A salt, carbon dioxide gas, and water", "A salt and hydrogen gas only", "An oxide, carbon dioxide, and water"], "answer": "A salt, carbon dioxide gas, and water", "explanation": "Acid + Carbonate â†’ Salt + COâ‚‚ + Hâ‚‚O. E.g. 2HCl + CaCOâ‚ƒ â†’ CaClâ‚‚ + COâ‚‚ + Hâ‚‚O. The COâ‚‚ effervescence is a test for carbonates." },
-        { "id": 126, "topic": "Acids, Bases & Salts", "question": "What is produced when sodium hydroxide (NaOH) reacts with sulphuric acid (Hâ‚‚SOâ‚„)?", "options": ["Sodium sulphate and hydrogen", "Sodium sulphate and water", "Sodium hydrogen sulphate and water only", "Sodium oxide and sulphurous acid"], "answer": "Sodium sulphate and water", "explanation": "NaOH + Hâ‚‚SOâ‚„ â†’ Naâ‚‚SOâ‚„ + Hâ‚‚O (neutralisation). With excess NaOH: 2NaOH + Hâ‚‚SOâ‚„ â†’ Naâ‚‚SOâ‚„ + 2Hâ‚‚O." },
+        { "id": 125, "topic": "Acids, Bases & Salts", "question": "The reaction between an acid and a metal carbonate produces:", "options": ["A salt, hydrogen gas, and water", "A salt, carbon dioxide gas, and water", "A salt and hydrogen gas only", "An oxide, carbon dioxide, and water"], "answer": "A salt, carbon dioxide gas, and water", "explanation": "Acid + Carbonate â†’ Salt + COâ‚‚ + Hâ‚‚O. E.g. 2HCl + Ca COâ‚ƒ â†’ Ca Clâ‚‚ + COâ‚‚ + Hâ‚‚O. The COâ‚‚ effervescence is a test for carbonates." },
+        { "id": 126, "topic": "Acids, Bases & Salts", "question": "What is produced when sodium hydroxide (Na OH) reacts with sulphuric acid (Hâ‚‚SOâ‚„)?", "options": ["Sodium sulphate and hydrogen", "Sodium sulphate and water", "Sodium hydrogen sulphate and water only", "Sodium oxide and sulphurous acid"], "answer": "Sodium sulphate and water", "explanation": "Na OH + Hâ‚‚SOâ‚„ â†’ Naâ‚‚SOâ‚„ + Hâ‚‚O (neutralisation). With excess Na OH: 2Na OH + Hâ‚‚SOâ‚„ â†’ Naâ‚‚SOâ‚„ + 2Hâ‚‚O." },
         { "id": 127, "topic": "Acids, Bases & Salts", "question": "An amphoteric substance is one that can:", "options": ["React with both water and alcohol", "Act as both an acid (proton donor) and a base (proton acceptor)", "Dissolve in both polar and non-polar solvents", "Form both ionic and covalent bonds"], "answer": "Act as both an acid (proton donor) and a base (proton acceptor)", "explanation": "Amphoteric substances react with both acids and bases. Examples: Al(OH)â‚ƒ, Zn(OH)â‚‚, water (Hâ‚‚O), and amino acids." },
-        { "id": 128, "topic": "Acids, Bases & Salts", "question": "The indicator methyl orange is red in acid and yellow in alkali. What colour does it show at its end point (pH ~4)?", "options": ["Yellow", "Red", "Orange", "Blue"], "answer": "Orange", "explanation": "Methyl orange transitions from red (acid, pH < 3.1) through orange (at transition pH ~4) to yellow (alkali, pH > 4.4). The endpoint is orange." },
+        { "id": 128, "topic": "Acids, Bases & Salts", "question": "The indicator methyl orange is red in acid and yellow in alkali. What colour does it show at its end point (p H ~4)?", "options": ["Yellow", "Red", "Orange", "Blue"], "answer": "Orange", "explanation": "Methyl orange transitions from red (acid, p H < 3.1) through orange (at transition p H ~4) to yellow (alkali, p H > 4.4). The endpoint is orange." },
 
         
         { "id": 129, "topic": "Energetics", "question": "If the enthalpy of products is lower than the enthalpy of reactants, the reaction is:", "options": ["Endothermic", "Exothermic", "Isothermal", "Catalytic"], "answer": "Exothermic", "explanation": "A lower final enthalpy means energy was lost (given off) to the surroundings during the reaction. Î”H is negative for exothermic reactions." },
-        { "id": 130, "topic": "Energetics", "question": "What is the standard enthalpy of formation (Î”HfÂ°) for an element in its standard state?", "options": ["100 kJ/mol", "1 kJ/mol", "0 kJ/mol", "It varies depending on temperature"], "answer": "0 kJ/mol", "explanation": "By thermodynamic convention, the standard enthalpy of formation of any element in its most stable form at standard conditions is exactly zero." },
+        { "id": 130, "topic": "Energetics", "question": "What is the standard enthalpy of formation (Î”HfÂ°) for an element in its standard state?", "options": ["100 k J/mol", "1 k J/mol", "0 k J/mol", "It varies depending on temperature"], "answer": "0 k J/mol", "explanation": "By thermodynamic convention, the standard enthalpy of formation of any element in its most stable form at standard conditions is exactly zero." },
         { "id": 131, "topic": "Energetics", "question": "Hess's Law states that:", "options": ["The enthalpy change of a reaction depends on the pathway taken", "The total enthalpy change is the same regardless of the route, as long as initial and final states are the same", "Endothermic reactions cannot occur spontaneously", "All combustion reactions release exactly the same amount of heat"], "answer": "The total enthalpy change is the same regardless of the route, as long as initial and final states are the same", "explanation": "Hess's Law (conservation of energy): Î”H for a reaction is independent of the pathway. This allows calculation of Î”H for reactions that cannot be measured directly." },
         { "id": 132, "topic": "Energetics", "question": "An endothermic reaction is one in which:", "options": ["Heat is released to the surroundings and the products have lower energy than reactants", "Heat is absorbed from the surroundings and the products have higher energy than reactants", "The temperature of the reaction mixture rises during the reaction", "No energy change occurs and Î”H = 0"], "answer": "Heat is absorbed from the surroundings and the products have higher energy than reactants", "explanation": "In endothermic reactions, Î”H is positive. Energy is absorbed from the surroundings, so the surroundings cool down. E.g. dissolution of ammonium nitrate in water." },
         { "id": 133, "topic": "Energetics", "question": "Which of the following is an exothermic process?", "options": ["Melting of ice (solid â†’ liquid)", "Evaporation of water (liquid â†’ vapour)", "Combustion of methane (CHâ‚„ + 2Oâ‚‚ â†’ COâ‚‚ + 2Hâ‚‚O)", "Dissolution of ammonium chloride in water"], "answer": "Combustion of methane (CHâ‚„ + 2Oâ‚‚ â†’ COâ‚‚ + 2Hâ‚‚O)", "explanation": "Combustion is always exothermic â€” it releases energy as heat and light. Melting and evaporation are endothermic (absorb energy to break intermolecular forces)." },
@@ -503,12 +503,12 @@
         { "id": 144, "topic": "Stoichiometry", "question": "How many moles of atoms are in 24 g of carbon? (Ar of C = 12)", "options": ["0.5 mol", "1 mol", "2 mol", "24 mol"], "answer": "2 mol", "explanation": "Moles = mass Ã· molar mass = 24 Ã· 12 = 2 mol of carbon atoms." },
         { "id": 145, "topic": "Stoichiometry", "question": "The empirical formula of a compound is the:", "options": ["Actual number of atoms of each element in one molecule", "Simplest whole number ratio of atoms of each element present", "Structural arrangement of atoms in the molecule", "Total molecular weight of the compound"], "answer": "Simplest whole number ratio of atoms of each element present", "explanation": "The empirical formula shows the simplest ratio. E.g. glucose Câ‚†Hâ‚â‚‚Oâ‚† has the empirical formula CHâ‚‚O (ratio 1:2:1)." },
         { "id": 146, "topic": "Stoichiometry", "question": "What mass of water is produced when 4 g of hydrogen completely combusts in excess oxygen? (H=1, O=16)", "options": ["18 g", "32 g", "36 g", "64 g"], "answer": "36 g", "explanation": "2Hâ‚‚ + Oâ‚‚ â†’ 2Hâ‚‚O. Moles Hâ‚‚ = 4/2 = 2 mol. Moles Hâ‚‚O = 2 mol. Mass Hâ‚‚O = 2 Ã— 18 = 36 g." },
-        { "id": 147, "topic": "Stoichiometry", "question": "A 25.0 mL sample of 0.200 M NaOH requires 20.0 mL of HCl for complete neutralisation. What is the concentration of HCl?", "options": ["0.160 M", "0.200 M", "0.250 M", "0.400 M"], "answer": "0.250 M", "explanation": "NaOH + HCl â†’ NaCl + Hâ‚‚O (1:1 ratio). Moles NaOH = 0.025 Ã— 0.200 = 0.005 mol. Moles HCl = 0.005 mol. [HCl] = 0.005/0.020 = 0.250 M." },
+        { "id": 147, "topic": "Stoichiometry", "question": "A 25.0 m L sample of 0.200 M Na OH requires 20.0 m L of HCl for complete neutralisation. What is the concentration of HCl?", "options": ["0.160 M", "0.200 M", "0.250 M", "0.400 M"], "answer": "0.250 M", "explanation": "Na OH + HCl â†’ Na Cl + Hâ‚‚O (1:1 ratio). Moles Na OH = 0.025 Ã— 0.200 = 0.005 mol. Moles HCl = 0.005 mol. [HCl] = 0.005/0.020 = 0.250 M." },
 
         
         { "id": 148, "topic": "Gas Laws", "question": "Boyle's Law states that, at constant temperature, the pressure of a fixed mass of gas is:", "options": ["Directly proportional to its volume", "Inversely proportional to its volume (P âˆ 1/V)", "Independent of its volume", "Directly proportional to the square of its volume"], "answer": "Inversely proportional to its volume (P âˆ 1/V)", "explanation": "Boyle's Law: Pâ‚Vâ‚ = Pâ‚‚Vâ‚‚ at constant temperature. If volume doubles, pressure halves. Gas molecules spread further apart, hitting the walls less frequently." },
         { "id": 149, "topic": "Gas Laws", "question": "Charles's Law states that, at constant pressure, the volume of a fixed mass of gas is:", "options": ["Inversely proportional to the absolute temperature", "Directly proportional to the absolute temperature (V âˆ T)", "Independent of temperature", "Proportional to the square root of temperature"], "answer": "Directly proportional to the absolute temperature (V âˆ T)", "explanation": "Charles's Law: Vâ‚/Tâ‚ = Vâ‚‚/Tâ‚‚ at constant pressure. As temperature rises, gas molecules move faster and occupy more volume. Temperature must be in Kelvin." },
-        { "id": 150, "topic": "Gas Laws", "question": "The ideal gas equation is PV = nRT. What does R represent?", "options": ["Rate of reaction constant", "The universal gas constant (8.314 J molâ»Â¹ Kâ»Â¹)", "Ratio of products to reactants at equilibrium", "Relative atomic mass of the gas"], "answer": "The universal gas constant (8.314 J molâ»Â¹ Kâ»Â¹)", "explanation": "R is the universal (molar) gas constant = 8.314 J molâ»Â¹ Kâ»Â¹ = 0.08206 L atm molâ»Â¹ Kâ»Â¹. It relates pressure, volume, moles, and temperature for ideal gases." },
+        { "id": 150, "topic": "Gas Laws", "question": "The ideal gas equation is PV = n RT. What does R represent?", "options": ["Rate of reaction constant", "The universal gas constant (8.314 J molâ»Â¹ Kâ»Â¹)", "Ratio of products to reactants at equilibrium", "Relative atomic mass of the gas"], "answer": "The universal gas constant (8.314 J molâ»Â¹ Kâ»Â¹)", "explanation": "R is the universal (molar) gas constant = 8.314 J molâ»Â¹ Kâ»Â¹ = 0.08206 L atm molâ»Â¹ Kâ»Â¹. It relates pressure, volume, moles, and temperature for ideal gases." },
         { "id": 151, "topic": "Gas Laws", "question": "At standard temperature and pressure (STP), one mole of an ideal gas occupies approximately:", "options": ["11.2 L", "22.4 L", "33.6 L", "44.8 L"], "answer": "22.4 L", "explanation": "At STP (0Â°C = 273.15 K, 1 atm), 1 mole of any ideal gas occupies 22.4 L (the molar volume). This is useful for gas stoichiometry calculations." },
         { "id": 152, "topic": "Gas Laws", "question": "Graham's Law of diffusion states that the rate of diffusion of a gas is:", "options": ["Directly proportional to its molecular mass", "Directly proportional to the square root of its molecular mass", "Inversely proportional to the square root of its molecular mass", "Independent of molecular mass at constant temperature"], "answer": "Inversely proportional to the square root of its molecular mass", "explanation": "Graham's Law: rate âˆ 1/âˆšM. Lighter gases diffuse faster. E.g. Hâ‚‚ (M=2) diffuses 4Ã— faster than Oâ‚‚ (M=32) since âˆš(32/2) = âˆš16 = 4." },
 
@@ -516,68 +516,68 @@
         { "id": 153, "topic": "Solutions", "question": "Which of the following is an example of a colligative property?", "options": ["Colour of the solution", "Boiling point elevation", "Conductivity of the solution", "Viscosity of the solvent"], "answer": "Boiling point elevation", "explanation": "Colligative properties depend only on the number of solute particles, not their identity. Examples: boiling point elevation, freezing point depression, osmotic pressure, vapour pressure lowering." },
         { "id": 154, "topic": "Solutions", "question": "Adding a non-volatile solute to a solvent causes the boiling point of the solution to:", "options": ["Decrease â€” solute molecules lower the vapour pressure", "Increase â€” solute molecules raise the boiling point above the pure solvent's boiling point", "Remain unchanged â€” only the melting point changes", "Depend on the identity of the solute"], "answer": "Increase â€” solute molecules raise the boiling point above the pure solvent's boiling point", "explanation": "Dissolved solute particles reduce the vapour pressure (Raoult's Law). The solution must be heated to a higher temperature before vapour pressure equals atmospheric pressure â€” hence higher b.p." },
         { "id": 155, "topic": "Solutions", "question": "Osmosis is defined as the movement of solvent molecules through a semi-permeable membrane:", "options": ["From a region of high solute concentration to low solute concentration", "From a region of low solute concentration (high solvent) to high solute concentration (low solvent)", "Only from concentrated solution to dilute solution for ionic compounds", "Against the concentration gradient using active transport"], "answer": "From a region of low solute concentration (high solvent) to high solute concentration (low solvent)", "explanation": "Osmosis: solvent moves from dilute solution (high water potential) through a semi-permeable membrane to concentrated solution (low water potential)." },
-        { "id": 156, "topic": "Solutions", "question": "Molarity is defined as:", "options": ["Moles of solute per kilogram of solvent", "Moles of solute per litre of solution", "Grams of solute per 100 mL of solvent", "Moles of solute per mole of solvent"], "answer": "Moles of solute per litre of solution", "explanation": "Molarity (M) = moles of solute / volume of solution in litres. E.g. dissolving 58.5 g NaCl (1 mol) in water to make 1 L gives 1 M NaCl solution." },
+        { "id": 156, "topic": "Solutions", "question": "Molarity is defined as:", "options": ["Moles of solute per kilogram of solvent", "Moles of solute per litre of solution", "Grams of solute per 100 m L of solvent", "Moles of solute per mole of solvent"], "answer": "Moles of solute per litre of solution", "explanation": "Molarity (M) = moles of solute / volume of solution in litres. E.g. dissolving 58.5 g Na Cl (1 mol) in water to make 1 L gives 1 M Na Cl solution." },
         { "id": 157, "topic": "Solutions", "question": "Molality is defined as:", "options": ["Moles of solute per litre of solution", "Moles of solute per kilogram of solvent", "Grams of solute per litre of solution", "Moles of solvent per mole of solute"], "answer": "Moles of solute per kilogram of solvent", "explanation": "Molality (m) = moles of solute / mass of solvent in kg. Unlike molarity, molality is independent of temperature because it uses mass (not volume) of solvent." },
 
         
-        { "id": 158, "topic": "Applied Chemistry", "question": "What is the primary cause of acid rain?", "options": ["Excess COâ‚‚ in the atmosphere reacting with water vapour", "Oxides of sulphur (SOâ‚‚, SOâ‚ƒ) and nitrogen (NO, NOâ‚‚) dissolving in rainwater to form Hâ‚‚SOâ‚„ and HNOâ‚ƒ", "Chlorofluorocarbons (CFCs) reacting with atmospheric water", "Ozone (Oâ‚ƒ) reacting with water droplets in clouds"], "answer": "Oxides of sulphur (SOâ‚‚, SOâ‚ƒ) and nitrogen (NO, NOâ‚‚) dissolving in rainwater to form Hâ‚‚SOâ‚„ and HNOâ‚ƒ", "explanation": "SOâ‚‚ + Hâ‚‚O â†’ Hâ‚‚SOâ‚ƒ; SOâ‚ƒ + Hâ‚‚O â†’ Hâ‚‚SOâ‚„; NOâ‚‚ + Hâ‚‚O â†’ HNOâ‚ƒ. These acids lower the pH of rain to below 5.6, causing acid rain." },
+        { "id": 158, "topic": "Applied Chemistry", "question": "What is the primary cause of acid rain?", "options": ["Excess COâ‚‚ in the atmosphere reacting with water vapour", "Oxides of sulphur (SOâ‚‚, SOâ‚ƒ) and nitrogen (NO, NOâ‚‚) dissolving in rainwater to form Hâ‚‚SOâ‚„ and HNOâ‚ƒ", "Chlorofluorocarbons (CFCs) reacting with atmospheric water", "Ozone (Oâ‚ƒ) reacting with water droplets in clouds"], "answer": "Oxides of sulphur (SOâ‚‚, SOâ‚ƒ) and nitrogen (NO, NOâ‚‚) dissolving in rainwater to form Hâ‚‚SOâ‚„ and HNOâ‚ƒ", "explanation": "SOâ‚‚ + Hâ‚‚O â†’ Hâ‚‚SOâ‚ƒ; SOâ‚ƒ + Hâ‚‚O â†’ Hâ‚‚SOâ‚„; NOâ‚‚ + Hâ‚‚O â†’ HNOâ‚ƒ. These acids lower the p H of rain to below 5.6, causing acid rain." },
         { "id": 159, "topic": "Applied Chemistry", "question": "The Haber process is used for the industrial synthesis of:", "options": ["Sulphuric acid from SOâ‚‚ and Oâ‚‚", "Ammonia from nitrogen and hydrogen", "Nitric acid from ammonia and oxygen", "Sodium hydroxide from sodium chloride by electrolysis"], "answer": "Ammonia from nitrogen and hydrogen", "explanation": "Haber process: Nâ‚‚ + 3Hâ‚‚ â‡Œ 2NHâ‚ƒ. Conditions: 450Â°C, 200 atm, iron catalyst. About 150 million tonnes of NHâ‚ƒ are produced annually for fertilisers." },
-        { "id": 160, "topic": "Applied Chemistry", "question": "Hard water is caused by the presence of dissolved:", "options": ["NaCl and KCl â€” common table and potassium salts", "CaÂ²âº and MgÂ²âº ions from dissolved CaCOâ‚ƒ, CaSOâ‚„, and MgSOâ‚„", "COâ‚‚ gas dissolved from the atmosphere", "FeÂ²âº ions from corroded pipes"], "answer": "CaÂ²âº and MgÂ²âº ions from dissolved CaCOâ‚ƒ, CaSOâ‚„, and MgSOâ‚„", "explanation": "Hard water contains CaÂ²âº and MgÂ²âº ions. These ions react with soap to form insoluble scum (metal stearates). They can be removed by ion exchange, boiling (temporary hardness), or adding Naâ‚‚COâ‚ƒ." },
+        { "id": 160, "topic": "Applied Chemistry", "question": "Hard water is caused by the presence of dissolved:", "options": ["Na Cl and KCl â€” common table and potassium salts", "CaÂ²âº and MgÂ²âº ions from dissolved Ca COâ‚ƒ, Ca SOâ‚„, and Mg SOâ‚„", "COâ‚‚ gas dissolved from the atmosphere", "FeÂ²âº ions from corroded pipes"], "answer": "CaÂ²âº and MgÂ²âº ions from dissolved Ca COâ‚ƒ, Ca SOâ‚„, and Mg SOâ‚„", "explanation": "Hard water contains CaÂ²âº and MgÂ²âº ions. These ions react with soap to form insoluble scum (metal stearates). They can be removed by ion exchange, boiling (temporary hardness), or adding Naâ‚‚COâ‚ƒ." },
 
         
-        { "id": 161, "topic": "Organic Chemistry", "question": "What reagent is used to test for the presence of a C=C double bond (alkenes)?", "options": ["Fehling's solution â€” turns from blue to brick-red precipitate", "Bromine water â€” decolourised from orange/brown to colourless", "Tollens' reagent â€” forms a silver mirror", "Limewater â€” turns milky"], "answer": "Bromine water â€” decolourised from orange/brown to colourless", "explanation": "Alkenes undergo electrophilic addition with Brâ‚‚: CHâ‚‚=CHâ‚‚ + Brâ‚‚ â†’ CHâ‚‚BrCHâ‚‚Br. Bromine water is decolourised instantly. Alkanes do not react with bromine water in the dark." },
-        { "id": 162, "topic": "Organic Chemistry", "question": "Which reagent is used to distinguish an aldehyde from a ketone?", "options": ["Bromine water â€” decolourises with both", "Tollens' reagent (ammoniacal AgNOâ‚ƒ) â€” gives silver mirror with aldehydes only", "Concentrated Hâ‚‚SOâ‚„ â€” reacts with ketones only", "Limewater â€” turns milky with aldehydes only"], "answer": "Tollens' reagent (ammoniacal AgNOâ‚ƒ) â€” gives silver mirror with aldehydes only", "explanation": "Aldehydes are reducing agents and reduce Agâº to Ag metal (silver mirror test). Ketones are not easily oxidised and give no reaction with Tollens' reagent." },
+        { "id": 161, "topic": "Organic Chemistry", "question": "What reagent is used to test for the presence of a C=C double bond (alkenes)?", "options": ["Fehling's solution â€” turns from blue to brick-red precipitate", "Bromine water â€” decolourised from orange/brown to colourless", "Tollens' reagent â€” forms a silver mirror", "Limewater â€” turns milky"], "answer": "Bromine water â€” decolourised from orange/brown to colourless", "explanation": "Alkenes undergo electrophilic addition with Brâ‚‚: CHâ‚‚=CHâ‚‚ + Brâ‚‚ â†’ CHâ‚‚Br CHâ‚‚Br. Bromine water is decolourised instantly. Alkanes do not react with bromine water in the dark." },
+        { "id": 162, "topic": "Organic Chemistry", "question": "Which reagent is used to distinguish an aldehyde from a ketone?", "options": ["Bromine water â€” decolourises with both", "Tollens' reagent (ammoniacal Ag NOâ‚ƒ) â€” gives silver mirror with aldehydes only", "Concentrated Hâ‚‚SOâ‚„ â€” reacts with ketones only", "Limewater â€” turns milky with aldehydes only"], "answer": "Tollens' reagent (ammoniacal Ag NOâ‚ƒ) â€” gives silver mirror with aldehydes only", "explanation": "Aldehydes are reducing agents and reduce Agâº to Ag metal (silver mirror test). Ketones are not easily oxidised and give no reaction with Tollens' reagent." },
         { "id": 163, "topic": "Qualitative Analysis", "question": "Which gas is produced when a metal reacts with a dilute acid, and how is it tested?", "options": ["COâ‚‚ â€” turns limewater milky", "Oâ‚‚ â€” relights a glowing splint", "Hâ‚‚ â€” gives a squeaky pop with a burning splint", "SOâ‚‚ â€” turns dichromate paper green"], "answer": "Hâ‚‚ â€” gives a squeaky pop with a burning splint", "explanation": "Metals + dilute acid â†’ salt + Hâ‚‚. The squeaky pop test: a burning splint at the mouth of the test tube causes hydrogen to ignite with a characteristic 'pop'." },
-        { "id": 164, "topic": "Qualitative Analysis", "question": "Limewater (Ca(OH)â‚‚ solution) turns milky when which gas is passed through it?", "options": ["Oxygen (Oâ‚‚)", "Hydrogen (Hâ‚‚)", "Carbon dioxide (COâ‚‚)", "Nitrogen (Nâ‚‚)"], "answer": "Carbon dioxide (COâ‚‚)", "explanation": "COâ‚‚ + Ca(OH)â‚‚ â†’ CaCOâ‚ƒâ†“ (white precipitate) + Hâ‚‚O. The milky appearance is due to insoluble CaCOâ‚ƒ. Excess COâ‚‚ redissolves the precipitate: CaCOâ‚ƒ + COâ‚‚ + Hâ‚‚O â†’ Ca(HCOâ‚ƒ)â‚‚." },
+        { "id": 164, "topic": "Qualitative Analysis", "question": "Limewater (Ca(OH)â‚‚ solution) turns milky when which gas is passed through it?", "options": ["Oxygen (Oâ‚‚)", "Hydrogen (Hâ‚‚)", "Carbon dioxide (COâ‚‚)", "Nitrogen (Nâ‚‚)"], "answer": "Carbon dioxide (COâ‚‚)", "explanation": "COâ‚‚ + Ca(OH)â‚‚ â†’ Ca COâ‚ƒâ†“ (white precipitate) + Hâ‚‚O. The milky appearance is due to insoluble Ca COâ‚ƒ. Excess COâ‚‚ redissolves the precipitate: Ca COâ‚ƒ + COâ‚‚ + Hâ‚‚O â†’ Ca(HCOâ‚ƒ)â‚‚." },
         { "id": 165, "topic": "Analytical Calculations", "question": "How many molecules are in 0.5 mol of COâ‚‚? (Nâ‚ = 6.02 Ã— 10Â²Â³)", "options": ["3.01 Ã— 10Â²Â³", "6.02 Ã— 10Â²Â³", "1.20 Ã— 10Â²â´", "3.01 Ã— 10Â²â´"], "answer": "3.01 Ã— 10Â²Â³", "explanation": "Number of molecules = moles Ã— Nâ‚ = 0.5 Ã— 6.02 Ã— 10Â²Â³ = 3.01 Ã— 10Â²Â³ molecules of COâ‚‚." },
         { "id": 166, "topic": "Stoichiometry", "question": "In the reaction Nâ‚‚ + 3Hâ‚‚ â†’ 2NHâ‚ƒ, how many moles of NHâ‚ƒ are produced from 6 moles of Hâ‚‚?", "options": ["2 mol", "3 mol", "4 mol", "6 mol"], "answer": "4 mol", "explanation": "From the equation, 3 mol Hâ‚‚ produces 2 mol NHâ‚ƒ. So 6 mol Hâ‚‚ produces (6/3) Ã— 2 = 4 mol NHâ‚ƒ." },
         { "id": 167, "topic": "Chemical Kinetics", "question": "Which of the following will NOT increase the rate of the reaction between marble chips and dilute HCl?", "options": ["Increasing the temperature", "Using powdered marble instead of chips", "Adding more HCl to increase concentration", "Adding a solid catalyst that is insoluble in HCl"], "answer": "Adding a solid catalyst that is insoluble in HCl", "explanation": "A catalyst that cannot contact the reactants (insoluble marble chips and aqueous HCl system) cannot lower the activation energy and therefore would not affect the rate." },
         { "id": 168, "topic": "Atomic Structure", "question": "Which of the following elements has the largest atomic radius in Period 3 of the periodic table?", "options": ["Sodium (Na)", "Silicon (Si)", "Chlorine (Cl)", "Argon (Ar)"], "answer": "Sodium (Na)", "explanation": "Across Period 3, atomic radius decreases from Na to Cl as nuclear charge increases. Na has the largest radius in Period 3 as it has the lowest nuclear charge (Z=11) pulling its outermost electron." },
-        { "id": 169, "topic": "Chemical Bonding", "question": "Which of the following substances has the highest melting point?", "options": ["NaCl (sodium chloride)", "SiOâ‚‚ (silicon dioxide â€” giant covalent)", "COâ‚‚ (carbon dioxide)", "Hâ‚‚O (water)"], "answer": "SiOâ‚‚ (silicon dioxide â€” giant covalent)", "explanation": "SiOâ‚‚ has a giant covalent lattice with millions of strong Si-O covalent bonds throughout â€” it requires very high energy to melt (~1650Â°C). NaCl has strong ionic bonds (~801Â°C). COâ‚‚ is molecular and easily sublimes." },
-        { "id": 170, "topic": "Acids, Bases & Salts", "question": "What is the pH of a 0.01 M HCl solution? (HCl fully dissociates)", "options": ["1", "2", "7", "12"], "answer": "2", "explanation": "[Hâº] = 0.01 M = 10â»Â² M. pH = -log[Hâº] = -log(10â»Â²) = 2. This confirms that stronger acids (higher concentration) give lower pH values." }
+        { "id": 169, "topic": "Chemical Bonding", "question": "Which of the following substances has the highest melting point?", "options": ["Na Cl (sodium chloride)", "Si Oâ‚‚ (silicon dioxide â€” giant covalent)", "COâ‚‚ (carbon dioxide)", "Hâ‚‚O (water)"], "answer": "Si Oâ‚‚ (silicon dioxide â€” giant covalent)", "explanation": "Si Oâ‚‚ has a giant covalent lattice with millions of strong Si-O covalent bonds throughout â€” it requires very high energy to melt (~1650Â°C). Na Cl has strong ionic bonds (~801Â°C). COâ‚‚ is molecular and easily sublimes." },
+        { "id": 170, "topic": "Acids, Bases & Salts", "question": "What is the p H of a 0.01 M HCl solution? (HCl fully dissociates)", "options": ["1", "2", "7", "12"], "answer": "2", "explanation": "[Hâº] = 0.01 M = 10â»Â² M. p H = -log[Hâº] = -log(10â»Â²) = 2. This confirms that stronger acids (higher concentration) give lower p H values." }
     ];
 
     
-    let currentExamData = [], userAnswers = {}, currentIndex = 0;
-    let timeRemaining = 0, timerId = null;
-    let activeMode = 'practice', isReviewMode = false;
-    let examSelectionType = 'random', partNum = 1;
+    let current Exam Data = [], user Answers = {}, current Index = 0;
+    let time Remaining = 0, timer Id = null;
+    let active Mode = 'practice', is Review Mode = false;
+    let exam Selection Type = 'random', part Num = 1;
 
     window.onload = () => {
-        initDashboard();
-        loadStatsBar();
-        syncLocalResults();
-        showResumeBanner();
-        if (localStorage.getItem(STORAGE_KEY)) document.getElementById('resume-btn').style.display = 'block';
+        init Dashboard();
+        load Stats Bar();
+        sync Local Results();
+        show Resume Banner();
+        if (local Storage.get Item(STORAGE_KEY)) document.get Element By Id('resume-btn').style.display = 'block';
     };
 
-async function loadStatsBar() {
-        const bar = document.getElementById('stats-bar');
+async function load Stats Bar() {
+        const bar = document.get Element By Id('stats-bar');
         try {
-            const { data: { user } } = await db.auth.getUser();
+            const { data: { user } } = await db.auth.get User();
             if (!user) return;
 
             // Fetch from cloud
             const { data } = await db.from('test_results')
                 .select('score').eq('student_id', user.id).eq('course_id', COURSE_CODE);
-            const cloudScores = data ? data.map(r => r.score) : [];
+            const cloud Scores = data ? data.map(r => r.score) : [];
 
             // Merge with local (unsynced) results
-            let localScores = [];
+            let local Scores = [];
             try {
-                const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
-                localScores = localResults
+                const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
+                local Scores = local Results
                     .filter(r => r.student_id === user.id && r.course_id === COURSE_CODE && !r.synced)
                     .map(r => r.score);
             } catch (e) {}
 
-            const allScores = [...cloudScores, ...localScores];
-            if (allScores.length === 0) return;
+            const all Scores = [...cloud Scores, ...local Scores];
+            if (all Scores.length === 0) return;
 
-            const taken = allScores.length;
-            const avg  = Math.round(allScores.reduce((s, r) => s + r, 0) / taken);
-            const best = Math.max(...allScores);
-            bar.innerHTML = `
+            const taken = all Scores.length;
+            const avg  = Math.round(all Scores.reduce((s, r) => s + r, 0) / taken);
+            const best = Math.max(...all Scores);
+            bar.inner HTML = `
                 <div class="stat-card"><div class="stat-val">${taken}</div><div class="stat-lbl">Tests Taken</div></div>
                 <div class="stat-card"><div class="stat-val">${avg}%</div><div class="stat-lbl">Average Score</div></div>
                 <div class="stat-card"><div class="stat-val">${best}%</div><div class="stat-lbl">Best Score</div></div>`;
@@ -585,224 +585,224 @@ async function loadStatsBar() {
         } catch (e) {  }
     }
 
-    function showResumeBanner() {
-        const saved  = localStorage.getItem(STORAGE_KEY);
-        const banner = document.getElementById('resume-banner');
+    function show Resume Banner() {
+        const saved  = local Storage.get Item(STORAGE_KEY);
+        const banner = document.get Element By Id('resume-banner');
         if (!saved || !banner) return;
         const s        = JSON.parse(saved);
-        const answered = Object.keys(s.userAnswers).length;
-        const total    = s.currentExamData.length;
-        const label    = s.examSelectionType === 'random' ? 'Random Mix' : `Part ${s.partNum}`;
-        const mLeft    = Math.floor(s.timeRemaining / 60);
-        const sLeft    = s.timeRemaining % 60;
-        const timeStr  = `${mLeft}:${sLeft < 10 ? '0'+sLeft : sLeft}`;
+        const answered = Object.keys(s.user Answers).length;
+        const total    = s.current Exam Data.length;
+        const label    = s.exam Selection Type === 'random' ? 'Random Mix' : `Part ${s.part Num}`;
+        const m Left    = Math.floor(s.time Remaining / 60);
+        const s Left    = s.time Remaining % 60;
+        const time Str  = `${m Left}:${s Left < 10 ? '0'+s Left : s Left}`;
         const pct      = Math.round((answered / total) * 100);
-        banner.innerHTML = `
+        banner.inner HTML = `
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
                 <div>
                     <div style="font-weight:700;font-size:0.95rem;">ðŸ“Œ Resume Saved Exam</div>
                     <div style="font-size:0.82rem;color:var(--text-muted);margin-top:3px;">
-                        <strong>${label}</strong> &nbsp;Â·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;Â·&nbsp; â± ${timeStr} left
+                        <strong>${label}</strong> &nbsp;Â·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;Â·&nbsp; â± ${time Str} left
                     </div>
                 </div>
                 <div style="display:flex;gap:8px;flex-shrink:0;">
-                    <button class="btn" style="background:var(--success);padding:8px 16px;font-size:0.87rem;" onclick="resumeExam()"><i class="fa-solid fa-rotate-right"></i> Continue</button>
-                    <button class="btn" style="background:#64748b;padding:8px 16px;font-size:0.87rem;" onclick="discardSaved()"><i class="fa-solid fa-trash"></i></button>
+                    <button class="btn" style="background:var(--success);padding:8px 16px;font-size:0.87rem;" onclick="resume Exam()"><i class="fa-solid fa-rotate-right"></i> Continue</button>
+                    <button class="btn" style="background:#64748b;padding:8px 16px;font-size:0.87rem;" onclick="discard Saved()"><i class="fa-solid fa-trash"></i></button>
                 </div>
             </div>`;
         banner.style.display = 'block';
     }
 
-    function discardSaved() {
+    function discard Saved() {
         if (!confirm('Discard your saved exam progress?')) return;
-        localStorage.removeItem(STORAGE_KEY);
-        document.getElementById('resume-banner').style.display = 'none';
-        document.getElementById('resume-btn').style.display    = 'none';
+        local Storage.remove Item(STORAGE_KEY);
+        document.get Element By Id('resume-banner').style.display = 'none';
+        document.get Element By Id('resume-btn').style.display    = 'none';
     }
 
-    function initDashboard() {
-        const board = document.getElementById('dashboard');
-        board.innerHTML = '';
+    function init Dashboard() {
+        const board = document.get Element By Id('dashboard');
+        board.inner HTML = '';
         const total = MASTER_POOL.length;
         const parts = Math.ceil(total / 50);
-        if (total === 0) { board.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);">No questions loaded.</p>`; return; }
-        const rand = document.createElement('div');
-        rand.className = 'box box-random';
-        rand.innerHTML = `<div style="font-size:1.8rem;">ðŸ”€</div><h3>Random Mode</h3><p>${total} Questions</p>`;
-        rand.onclick = () => openSetup('random', 0);
-        board.appendChild(rand);
+        if (total === 0) { board.inner HTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);">No questions loaded.</p>`; return; }
+        const rand = document.create Element('div');
+        rand.class Name = 'box box-random';
+        rand.inner HTML = `<div style="font-size:1.8rem;">ðŸ”€</div><h3>Random Mode</h3><p>${total} Questions</p>`;
+        rand.onclick = () => open Setup('random', 0);
+        board.append Child(rand);
         for (let i = 1; i <= parts; i++) {
             const start = (i - 1) * 50 + 1;
             const end   = Math.min(i * 50, total);
-            const card  = document.createElement('div');
-            card.className = 'box';
-            card.innerHTML = `<div style="font-size:1.8rem;color:var(--primary);">âš—ï¸</div><h3>Part ${i}</h3><p>Q${start} â€“ Q${end}</p>`;
-            card.onclick = () => openSetup('part', i);
-            board.appendChild(card);
+            const card  = document.create Element('div');
+            card.class Name = 'box';
+            card.inner HTML = `<div style="font-size:1.8rem;color:var(--primary);">âš—ï¸</div><h3>Part ${i}</h3><p>Q${start} â€“ Q${end}</p>`;
+            card.onclick = () => open Setup('part', i);
+            board.append Child(card);
         }
     }
 
-    function openSetup(type, part) {
-        examSelectionType = type; partNum = part;
-        document.getElementById('dashboard-wrap').style.display = 'none';
-        document.getElementById('setup-screen').style.display   = 'block';
-        document.getElementById('setup-title').innerText = type === 'random' ? 'Randomised Practice' : `CHE 103 â€” Part ${part}`;
-        document.getElementById('random-settings').style.display = type === 'random' ? 'block' : 'none';
+    function open Setup(type, part) {
+        exam Selection Type = type; part Num = part;
+        document.get Element By Id('dashboard-wrap').style.display = 'none';
+        document.get Element By Id('setup-screen').style.display   = 'block';
+        document.get Element By Id('setup-title').inner Text = type === 'random' ? 'Randomised Practice' : `CHE 103 â€” Part ${part}`;
+        document.get Element By Id('random-settings').style.display = type === 'random' ? 'block' : 'none';
     }
 
-    function goHome() {
-        clearInterval(timerId);
-        isReviewMode = false; currentExamData = []; userAnswers = {}; currentIndex = 0;
-        document.getElementById('quiz-interface').style.display  = 'none';
-        document.getElementById('setup-screen').style.display    = 'none';
-        document.getElementById('quizResultModal').style.display = 'none';
-        document.getElementById('dashboard-wrap').style.display  = 'block';
-        showResumeBanner(); loadStatsBar();
+    function go Home() {
+        clear Interval(timer Id);
+        is Review Mode = false; current Exam Data = []; user Answers = {}; current Index = 0;
+        document.get Element By Id('quiz-interface').style.display  = 'none';
+        document.get Element By Id('setup-screen').style.display    = 'none';
+        document.get Element By Id('quiz Result Modal').style.display = 'none';
+        document.get Element By Id('dashboard-wrap').style.display  = 'block';
+        show Resume Banner(); load Stats Bar();
     }
 
-    function shuffleArray(arr) {
+    function shuffle Array(arr) {
         const a = [...arr];
         for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
         return a;
     }
 
-    function startExam() {
-        timeRemaining = parseInt(document.getElementById('t-limit').value) * 60;
-        activeMode    = document.getElementById('quiz-mode').value;
-        isReviewMode  = false; userAnswers = {}; currentIndex = 0;
+    function start Exam() {
+        time Remaining = parse Int(document.get Element By Id('t-limit').value) * 60;
+        active Mode    = document.get Element By Id('quiz-mode').value;
+        is Review Mode  = false; user Answers = {}; current Index = 0;
         let pool = JSON.parse(JSON.stringify(MASTER_POOL));
-        if (examSelectionType === 'random') {
-            const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
-            pool = shuffleArray(pool).slice(0, qty);
+        if (exam Selection Type === 'random') {
+            const qty = Math.min(parse Int(document.get Element By Id('q-count').value), pool.length);
+            pool = shuffle Array(pool).slice(0, qty);
         } else {
-            const start = (partNum - 1) * 50;
+            const start = (part Num - 1) * 50;
             pool = pool.slice(start, start + 50);
         }
-        if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);
-        if (document.getElementById('shuffle-options').checked) pool.forEach(q => { q.options = shuffleArray([...q.options]); });
-        currentExamData = pool;
-        document.getElementById('setup-screen').style.display  = 'none';
-        document.getElementById('quiz-interface').style.display = 'block';
-        document.getElementById('total-idx').innerText = currentExamData.length;
-        runTimer(); renderQuestion();
+        if (document.get Element By Id('shuffle-questions').checked) pool = shuffle Array(pool);
+        if (document.get Element By Id('shuffle-options').checked) pool.for Each(q => { q.options = shuffle Array([...q.options]); });
+        current Exam Data = pool;
+        document.get Element By Id('setup-screen').style.display  = 'none';
+        document.get Element By Id('quiz-interface').style.display = 'block';
+        document.get Element By Id('total-idx').inner Text = current Exam Data.length;
+        run Timer(); render Question();
     }
 
-    function runTimer() {
-        clearInterval(timerId);
-        timerId = setInterval(() => {
-            timeRemaining--;
-            const m = Math.floor(timeRemaining/60), s = timeRemaining%60;
-            document.getElementById('timer').innerText = `${m}:${s<10?'0'+s:s}`;
-            if (timeRemaining <= 0) { clearInterval(timerId); showResults(true); }
+    function run Timer() {
+        clear Interval(timer Id);
+        timer Id = set Interval(() => {
+            time Remaining--;
+            const m = Math.floor(time Remaining/60), s = time Remaining%60;
+            document.get Element By Id('timer').inner Text = `${m}:${s<10?'0'+s:s}`;
+            if (time Remaining <= 0) { clear Interval(timer Id); show Results(true); }
         }, 1000);
     }
 
-    function renderQuestion() {
-        const q = currentExamData[currentIndex];
-        const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
-        const userAns = userAnswers[currentIndex];
+    function render Question() {
+        const q = current Exam Data[current Index];
+        const has Answered = user Answers.has Own Property(current Index);
+        const user Ans = user Answers[current Index];
         const labels  = ['A','B','C','D','E','F'];
-        document.getElementById('cur-idx').innerText       = currentIndex + 1;
-        document.getElementById('topic-text').innerText    = q.topic || '';
-        document.getElementById('question-text').innerHTML = q.question;
-        const optBox = document.getElementById('options-box');
-        const feedArea = document.getElementById('feedback-area');
-        optBox.innerHTML = ''; feedArea.innerHTML = '';
-        q.options.forEach((val, idx) => {
-            const btn = document.createElement('button');
-            btn.className = 'option-btn';
-            btn.innerHTML = `<strong>${labels[idx]||idx+1}.</strong> ${val}`;
-            if (isReviewMode || (activeMode === 'practice' && hasAnswered)) {
-                if (val === q.answer)    btn.classList.add('correct');
-                else if (userAns === val) btn.classList.add('wrong');
+        document.get Element By Id('cur-idx').inner Text       = current Index + 1;
+        document.get Element By Id('topic-text').inner Text    = q.topic || '';
+        document.get Element By Id('question-text').inner HTML = q.question;
+        const opt Box = document.get Element By Id('options-box');
+        const feed Area = document.get Element By Id('feedback-area');
+        opt Box.inner HTML = ''; feed Area.inner HTML = '';
+        q.options.for Each((val, idx) => {
+            const btn = document.create Element('button');
+            btn.class Name = 'option-btn';
+            btn.inner HTML = `<strong>${labels[idx]||idx+1}.</strong> ${val}`;
+            if (is Review Mode || (active Mode === 'practice' && has Answered)) {
+                if (val === q.answer)    btn.class List.add('correct');
+                else if (user Ans === val) btn.class List.add('wrong');
                 btn.disabled = true;
-            } else if (activeMode === 'exam' && hasAnswered && userAns === val) {
-                btn.classList.add('selected');
+            } else if (active Mode === 'exam' && has Answered && user Ans === val) {
+                btn.class List.add('selected');
             }
             btn.onclick = () => {
-                if (isReviewMode) return;
-                if (activeMode === 'practice' && hasAnswered) return;
-                userAnswers[currentIndex] = val; saveState(); renderQuestion();
+                if (is Review Mode) return;
+                if (active Mode === 'practice' && has Answered) return;
+                user Answers[current Index] = val; save State(); render Question();
             };
-            optBox.appendChild(btn);
+            opt Box.append Child(btn);
         });
-        const expHtml = q.explanation ? `<div class="explanation-box"><strong>Explanation:</strong> ${q.explanation}</div>` : '';
-        if (isReviewMode) {
-            if (hasAnswered) {
-                const ok = userAns === q.answer;
-                feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">${ok?'âœ” Correct!':'âœ˜ Incorrect. Answer: <strong>'+q.answer+'</strong>'}</div>${expHtml}`;
+        const exp Html = q.explanation ? `<div class="explanation-box"><strong>Explanation:</strong> ${q.explanation}</div>` : '';
+        if (is Review Mode) {
+            if (has Answered) {
+                const ok = user Ans === q.answer;
+                feed Area.inner HTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">${ok?'âœ” Correct!':'âœ˜ Incorrect. Answer: <strong>'+q.answer+'</strong>'}</div>${exp Html}`;
             } else {
-                feedArea.innerHTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">âš  Not answered. Correct: <strong>${q.answer}</strong></div>${expHtml}`;
+                feed Area.inner HTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">âš  Not answered. Correct: <strong>${q.answer}</strong></div>${exp Html}`;
             }
-        } else if (activeMode === 'practice' && hasAnswered) {
-            const ok = userAns === q.answer;
-            feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">${ok?'âœ” Correct!':'âœ˜ Incorrect. Answer: <strong>'+q.answer+'</strong>'}</div>${expHtml}`;
+        } else if (active Mode === 'practice' && has Answered) {
+            const ok = user Ans === q.answer;
+            feed Area.inner HTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">${ok?'âœ” Correct!':'âœ˜ Incorrect. Answer: <strong>'+q.answer+'</strong>'}</div>${exp Html}`;
         }
-        const isLast = currentIndex === currentExamData.length - 1;
-        document.getElementById('next-btn').style.display          = isLast ? 'none' : 'block';
-        document.getElementById('submit-btn').style.display        = isReviewMode ? 'none' : 'block';
-        document.getElementById('finish-review-btn').style.display = isReviewMode ? 'block' : 'none';
+        const is Last = current Index === current Exam Data.length - 1;
+        document.get Element By Id('next-btn').style.display          = is Last ? 'none' : 'block';
+        document.get Element By Id('submit-btn').style.display        = is Review Mode ? 'none' : 'block';
+        document.get Element By Id('finish-review-btn').style.display = is Review Mode ? 'block' : 'none';
     }
 
-    function move(d) { const n=currentIndex+d; if(n>=0&&n<currentExamData.length){currentIndex=n;renderQuestion();} }
+    function move(d) { const n=current Index+d; if(n>=0&&n<current Exam Data.length){current Index=n;render Question();} }
 
-    function saveState() {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({ currentExamData, userAnswers, currentIndex, timeRemaining, activeMode, examSelectionType, partNum, savedAt: Date.now() }));
+    function save State() {
+        local Storage.set Item(STORAGE_KEY, JSON.stringify({ current Exam Data, user Answers, current Index, time Remaining, active Mode, exam Selection Type, part Num, saved At: Date.now() }));
     }
 
-    function resumeExam() {
-        const saved = localStorage.getItem(STORAGE_KEY); if (!saved) return;
+    function resume Exam() {
+        const saved = local Storage.get Item(STORAGE_KEY); if (!saved) return;
         const s = JSON.parse(saved);
-        currentExamData=s.currentExamData; userAnswers=s.userAnswers; currentIndex=s.currentIndex;
-        timeRemaining=s.timeRemaining; activeMode=s.activeMode||'practice';
-        examSelectionType=s.examSelectionType||'random'; partNum=s.partNum||1; isReviewMode=false;
-        document.getElementById('dashboard-wrap').style.display  = 'none';
-        document.getElementById('resume-banner').style.display   = 'none';
-        document.getElementById('setup-screen').style.display    = 'none';
-        document.getElementById('quizResultModal').style.display = 'none';
-        document.getElementById('resume-btn').style.display      = 'none';
-        document.getElementById('quiz-interface').style.display  = 'block';
-        document.getElementById('total-idx').innerText           = currentExamData.length;
-        const timerEl = document.getElementById('timer');
-        timerEl.style.background='rgba(220,38,38,0.08)'; timerEl.style.color='var(--danger)';
-        runTimer(); renderQuestion();
+        current Exam Data=s.current Exam Data; user Answers=s.user Answers; current Index=s.current Index;
+        time Remaining=s.time Remaining; active Mode=s.active Mode||'practice';
+        exam Selection Type=s.exam Selection Type||'random'; part Num=s.part Num||1; is Review Mode=false;
+        document.get Element By Id('dashboard-wrap').style.display  = 'none';
+        document.get Element By Id('resume-banner').style.display   = 'none';
+        document.get Element By Id('setup-screen').style.display    = 'none';
+        document.get Element By Id('quiz Result Modal').style.display = 'none';
+        document.get Element By Id('resume-btn').style.display      = 'none';
+        document.get Element By Id('quiz-interface').style.display  = 'block';
+        document.get Element By Id('total-idx').inner Text           = current Exam Data.length;
+        const timer El = document.get Element By Id('timer');
+        timer El.style.background='rgba(220,38,38,0.08)'; timer El.style.color='var(--danger)';
+        run Timer(); render Question();
     }
 
-    async function showResults(forced=false) {
-        const answered = Object.keys(userAnswers).length;
-        if (!forced && answered < currentExamData.length) { if (!confirm(`You answered ${answered} of ${currentExamData.length}. Submit anyway?`)) return; }
-        clearInterval(timerId); localStorage.removeItem(STORAGE_KEY);
-        let score=0; currentExamData.forEach((q,i)=>{ if(userAnswers[i]===q.answer) score++; });
-        const total=currentExamData.length, pct=Math.round((score/total)*100);
-        document.getElementById('finalScoreText').innerText = pct;
-        document.getElementById('modalCorrect').innerText   = score;
-        document.getElementById('modalTotal').innerText     = total;
-        document.getElementById('modalReviewBtn').style.display = activeMode==='practice'?'none':'flex';
-        if (pct>=70) { document.getElementById('resultIcon').innerText='ðŸ†'; document.getElementById('resultGreeting').innerText='Outstanding! ðŸŒŸ'; document.getElementById('resultFeedback').innerText='Excellent work! Keep it up!'; confetti({particleCount:160,spread:70,origin:{y:0.6}}); }
-        else if (pct>=50) { document.getElementById('resultIcon').innerText='ðŸ‘'; document.getElementById('resultGreeting').innerText='Good Job!'; document.getElementById('resultFeedback').innerText='Almost there â€” aim for 70%+!'; }
-        else { document.getElementById('resultIcon').innerText='ðŸ’ª'; document.getElementById('resultGreeting').innerText='Keep Trying!'; document.getElementById('resultFeedback').innerText='Review your notes and try again!'; }
-        document.getElementById('quizResultModal').style.display = 'flex';
-        await saveTestScore(pct);
+    async function show Results(forced=false) {
+        const answered = Object.keys(user Answers).length;
+        if (!forced && answered < current Exam Data.length) { if (!confirm(`You answered ${answered} of ${current Exam Data.length}. Submit anyway?`)) return; }
+        clear Interval(timer Id); local Storage.remove Item(STORAGE_KEY);
+        let score=0; current Exam Data.for Each((q,i)=>{ if(user Answers[i]===q.answer) score++; });
+        const total=current Exam Data.length, pct=Math.round((score/total)*100);
+        document.get Element By Id('final Score Text').inner Text = pct;
+        document.get Element By Id('modal Correct').inner Text   = score;
+        document.get Element By Id('modal Total').inner Text     = total;
+        document.get Element By Id('modal Review Btn').style.display = active Mode==='practice'?'none':'flex';
+        if (pct>=70) { document.get Element By Id('result Icon').inner Text='ðŸ†'; document.get Element By Id('result Greeting').inner Text='Outstanding! ðŸŒŸ'; document.get Element By Id('result Feedback').inner Text='Excellent work! Keep it up!'; confetti({particle Count:160,spread:70,origin:{y:0.6}}); }
+        else if (pct>=50) { document.get Element By Id('result Icon').inner Text='ðŸ‘'; document.get Element By Id('result Greeting').inner Text='Good Job!'; document.get Element By Id('result Feedback').inner Text='Almost there â€” aim for 70%+!'; }
+        else { document.get Element By Id('result Icon').inner Text='ðŸ’ª'; document.get Element By Id('result Greeting').inner Text='Keep Trying!'; document.get Element By Id('result Feedback').inner Text='Review your notes and try again!'; }
+        document.get Element By Id('quiz Result Modal').style.display = 'flex';
+        await save Test Score(pct);
     }
 
-async function saveTestScore(pct) {
-        const el = document.getElementById('save-status');
-        el.innerText = '⏳ Saving...';
+async function save Test Score(pct) {
+        const el = document.get Element By Id('save-status');
+        el.inner Text = '⏳ Saving...';
         try {
-            const { data: { user } } = await db.auth.getUser();
-            if (!user) { el.innerText = ''; return; }
+            const { data: { user } } = await db.auth.get User();
+            if (!user) { el.inner Text = ''; return; }
 
-            // ── 1. ALWAYS save to localStorage as backup (cross-device sync) ──
+            // ── 1. ALWAYS save to local Storage as backup (cross-device sync) ──
             try {
-                const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
-                localResults.push({
+                const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
+                local Results.push({
                     student_id: user.id,
                     course_id: COURSE_CODE,
                     score: pct,
                     timestamp: Date.now(),
                     synced: false
                 });
-                localStorage.setItem('renance_local_results', JSON.stringify(localResults));
+                local Storage.set Item('renance_local_results', JSON.stringify(local Results));
             } catch (le) { console.warn('Local save failed:', le); }
 
             // ── 2. Save to Supabase (cloud) ──
@@ -812,7 +812,7 @@ async function saveTestScore(pct) {
             if (prev && prev.length > 0) {
                 const all = [...prev.map(r => r.score), pct];
                 const avg = Math.round(all.reduce((a, b) => a + b, 0) / all.length);
-                document.getElementById('modalAvg').innerText = avg + '%';
+                document.get Element By Id('modal Avg').inner Text = avg + '%';
             }
 
             const { error } = await db.from('test_results').insert([
@@ -820,55 +820,55 @@ async function saveTestScore(pct) {
             ]);
 
             if (error) {
-                el.innerText = '⚠️ Could not save to cloud (saved locally — will sync later)';
+                el.inner Text = '⚠️ Could not save to cloud (saved locally — will sync later)';
             } else {
-                el.innerText = '✅ Score saved!';
+                el.inner Text = '✅ Score saved!';
                 // Mark the just-saved local result as synced
                 try {
-                    const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+                    const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
                     // Mark the last unsynced result for this course as synced
-                    for (let i = localResults.length - 1; i >= 0; i--) {
-                        if (localResults[i].student_id === user.id &&
-                            localResults[i].course_id === COURSE_CODE &&
-                            !localResults[i].synced) {
-                            localResults[i].synced = true;
+                    for (let i = local Results.length - 1; i >= 0; i--) {
+                        if (local Results[i].student_id === user.id &&
+                            local Results[i].course_id === COURSE_CODE &&
+                            !local Results[i].synced) {
+                            local Results[i].synced = true;
                             break;
                         }
                     }
-                    localStorage.setItem('renance_local_results', JSON.stringify(localResults));
+                    local Storage.set Item('renance_local_results', JSON.stringify(local Results));
                 } catch (e) {}
 
                 // ── Update students table with aggregated stats ──
                 try {
-                    const { data: allResults } = await db.from('test_results')
+                    const { data: all Results } = await db.from('test_results')
                         .select('score').eq('student_id', user.id);
-                    if (allResults && allResults.length > 0) {
-                        const testsTaken = allResults.length;
-                        const avgScore = Math.round(allResults.reduce((s, r) => s + Number(r.score), 0) / testsTaken);
+                    if (all Results && all Results.length > 0) {
+                        const tests Taken = all Results.length;
+                        const avg Score = Math.round(all Results.reduce((s, r) => s + Number(r.score), 0) / tests Taken);
                         await db.from('students').update({
-                            tests_taken: testsTaken,
-                            avg_score: avgScore,
-                            last_seen: new Date().toISOString()
+                            tests_taken: tests Taken,
+                            avg_score: avg Score,
+                            last_seen: new Date().to ISOString()
                         }).eq('id', user.id);
                     }
                 } catch (ue) {}
             }
         } catch (e) {
-            el.innerText = '⚠️ Offline — saved locally, will sync when online';
+            el.inner Text = '⚠️ Offline — saved locally, will sync when online';
         }
     }
 
     // ── Sync queued local results to Supabase (runs on page load) ──
-    async function syncLocalResults() {
+    async function sync Local Results() {
         try {
-            const { data: { user } } = await db.auth.getUser();
+            const { data: { user } } = await db.auth.get User();
             if (!user) return;
 
-            const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
-            const unsynced = localResults.filter(r => !r.synced && r.student_id === user.id);
+            const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
+            const unsynced = local Results.filter(r => !r.synced && r.student_id === user.id);
             if (unsynced.length === 0) return;
 
-            let syncedCount = 0;
+            let synced Count = 0;
             for (const r of unsynced) {
                 try {
                     const { error } = await db.from('test_results').insert([
@@ -876,28 +876,28 @@ async function saveTestScore(pct) {
                     ]);
                     if (!error) {
                         r.synced = true;
-                        syncedCount++;
+                        synced Count++;
                     }
                 } catch (e) { /* will retry next time */ }
             }
-            localStorage.setItem('renance_local_results', JSON.stringify(localResults));
-            if (syncedCount > 0) {
-                console.log(`Synced ${syncedCount} queued result(s) to cloud`);
+            local Storage.set Item('renance_local_results', JSON.stringify(local Results));
+            if (synced Count > 0) {
+                console.log(`Synced ${synced Count} queued result(s) to cloud`);
 
             // Update students table after syncing
-            if (syncedCount > 0) {
+            if (synced Count > 0) {
                 try {
-                    const { data: { user } } = await db.auth.getUser();
+                    const { data: { user } } = await db.auth.get User();
                     if (user) {
-                        const { data: allResults } = await db.from('test_results')
+                        const { data: all Results } = await db.from('test_results')
                             .select('score').eq('student_id', user.id);
-                        if (allResults && allResults.length > 0) {
-                            const testsTaken = allResults.length;
-                            const avgScore = Math.round(allResults.reduce((s, r) => s + Number(r.score), 0) / testsTaken);
+                        if (all Results && all Results.length > 0) {
+                            const tests Taken = all Results.length;
+                            const avg Score = Math.round(all Results.reduce((s, r) => s + Number(r.score), 0) / tests Taken);
                             await db.from('students').update({
-                                tests_taken: testsTaken,
-                                avg_score: avgScore,
-                                last_seen: new Date().toISOString()
+                                tests_taken: tests Taken,
+                                avg_score: avg Score,
+                                last_seen: new Date().to ISOString()
                             }).eq('id', user.id);
                         }
                     }
@@ -906,24 +906,24 @@ async function saveTestScore(pct) {
             }
         } catch (e) { /* not logged in or offline — will retry next time */ }
     }=await db.from('test_results').select('score').eq('student_id',user.id).eq('course_id',COURSE_CODE);
-            if (prev&&prev.length>0) { const all=[...prev.map(r=>r.score),pct]; document.getElementById('modalAvg').innerText=Math.round(all.reduce((a,b)=>a+b,0)/all.length)+'%'; }
+            if (prev&&prev.length>0) { const all=[...prev.map(r=>r.score),pct]; document.get Element By Id('modal Avg').inner Text=Math.round(all.reduce((a,b)=>a+b,0)/all.length)+'%'; }
             const {error}=await db.from('test_results').insert([{student_id:user.id,course_id:COURSE_CODE,score:pct}]);
-            el.innerText=error?'âš ï¸ Could not save (offline)':'âœ… Score saved!';
-        } catch(e) { el.innerText='âš ï¸ Offline â€” score not saved'; }
+            el.inner Text=error?'âš ï¸ Could not save (offline)':'âœ… Score saved!';
+        } catch(e) { el.inner Text='âš ï¸ Offline â€” score not saved'; }
     }
-    document.addEventListener('keydown', (e) => {
+    document.add Event Listener('keydown', (e) => {
 
-    if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+    if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.active Element.tag Name)) return;
 
-    if (document.getElementById('quiz-interface').style.display === 'none') return;
+    if (document.get Element By Id('quiz-interface').style.display === 'none') return;
 
-    const key = e.key.toUpperCase();
+    const key = e.key.to Upper Case();
 
     if (['A', 'B', 'C', 'D'].includes(key)) {
-        const buttons = document.querySelectorAll('.option-btn');
-        buttons.forEach(btn => {
+        const buttons = document.query Selector All('.option-btn');
+        buttons.for Each(btn => {
 
-            if (btn.innerText.trim().startsWith(key + '.')) {
+            if (btn.inner Text.trim().starts With(key + '.')) {
                 btn.click();
             }
         });
@@ -935,63 +935,63 @@ async function saveTestScore(pct) {
     if (key === 'P') { move(-1); return; }
 
 });
-    function enterReviewMode() {
-        document.getElementById('quizResultModal').style.display='none'; isReviewMode=true; currentIndex=0;
-        document.getElementById('timer').innerText='REVIEW'; document.getElementById('timer').style.background='#dbeafe'; document.getElementById('timer').style.color='#1e40af';
-        renderQuestion();
+    function enter Review Mode() {
+        document.get Element By Id('quiz Result Modal').style.display='none'; is Review Mode=true; current Index=0;
+        document.get Element By Id('timer').inner Text='REVIEW'; document.get Element By Id('timer').style.background='#dbeafe'; document.get Element By Id('timer').style.color='#1e40af';
+        render Question();
     }
 
-    async function shareQuizResult() {
-        const score=document.getElementById('finalScoreText').innerText;
-        const section=examSelectionType==='random'?'a random mix':`Part ${partNum}`;
-        const text=`I just scored ${score}% on ${COURSE_CODE} (${section})! ðŸš€\n\nChallenge yourself on the Renance CBT portal! ðŸ“šðŸ”¥\nhttps://renancecbt.vercel.app`;
-        try { if(navigator.share) await navigator.share({title:`My ${COURSE_CODE} Score`,text,url:'https://renancecbt.vercel.app'}); else { await navigator.clipboard.writeText(text); alert('Score copied to clipboard! ðŸ“‹'); } } catch(_) {}
+    async function share Quiz Result() {
+        const score=document.get Element By Id('final Score Text').inner Text;
+        const section=exam Selection Type==='random'?'a random mix':`Part ${part Num}`;
+        const text=`I just scored ${score}% on ${COURSE_CODE} (${section})! ðŸš€\n\n Challenge yourself on the Renance CBT portal! ðŸ“šðŸ”¥\nhttps://renancecbt.vercel.app`;
+        try { if(navigator.share) await navigator.share({title:`My ${COURSE_CODE} Score`,text,url:'https://renancecbt.vercel.app'}); else { await navigator.clipboard.write Text(text); alert('Score copied to clipboard! ðŸ“‹'); } } catch(_) {}
     }
 
         // ═════════════════════════════════════════════════════════════════
         // PER-COURSE LEADERBOARD
         // ═════════════════════════════════════════════════════════════════
-        async function loadCourseLeaderboard() {
-            const lbContent = document.getElementById('lb-content');
-            const lbStatus = document.getElementById('lb-status');
-            const lbCourseName = document.getElementById('lb-course-name');
-            if (lbCourseName) lbCourseName.innerText = COURSE_CODE;
-            if (!lbContent) return;
+        async function load Course Leaderboard() {
+            const lb Content = document.get Element By Id('lb-content');
+            const lb Status = document.get Element By Id('lb-status');
+            const lb Course Name = document.get Element By Id('lb-course-name');
+            if (lb Course Name) lb Course Name.inner Text = COURSE_CODE;
+            if (!lb Content) return;
 
             try {
                 // Fetch all test_results for this course
-                const { data: results, error: rErr } = await db
+                const { data: results, error: r Err } = await db
                     .from('test_results')
                     .select('student_id, score')
                     .eq('course_id', COURSE_CODE);
 
-                if (rErr) throw rErr;
+                if (r Err) throw r Err;
                 if (!results || results.length === 0) {
-                    lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
-                    lbStatus.innerText = '0 attempts';
+                    lb Content.inner HTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
+                    lb Status.inner Text = '0 attempts';
                     return;
                 }
 
                 // Aggregate by student: avg score + count
-                const byStudent = {};
-                results.forEach(r => {
-                    if (!byStudent[r.student_id]) {
-                        byStudent[r.student_id] = { total: 0, count: 0 };
+                const by Student = {};
+                results.for Each(r => {
+                    if (!by Student[r.student_id]) {
+                        by Student[r.student_id] = { total: 0, count: 0 };
                     }
-                    byStudent[r.student_id].total += Number(r.score);
-                    byStudent[r.student_id].count += 1;
+                    by Student[r.student_id].total += Number(r.score);
+                    by Student[r.student_id].count += 1;
                 });
 
                 // Fetch student profiles
-                const studentIds = Object.keys(byStudent);
-                const { data: students, error: sErr } = await db
+                const student Ids = Object.keys(by Student);
+                const { data: students, error: s Err } = await db
                     .from('students')
                     .select('id, fullname, department, matric')
-                    .in('id', studentIds);
+                    .in('id', student Ids);
 
                 // Build leaderboard rows
-                const rows = studentIds.map(sid => {
-                    const agg = byStudent[sid];
+                const rows = student Ids.map(sid => {
+                    const agg = by Student[sid];
                     const avg = Math.round(agg.total / agg.count);
                     const student = students ? students.find(s => s.id === sid) : null;
                     return {
@@ -1007,15 +1007,15 @@ async function saveTestScore(pct) {
                 rows.sort((a, b) => b.avg - a.avg || b.tests - a.tests);
 
                 // Get current user id for highlighting
-                let currentUserId = null;
+                let current User Id = null;
                 try {
-                    const { data: { user } } = await db.auth.getUser();
-                    if (user) currentUserId = user.id;
+                    const { data: { user } } = await db.auth.get User();
+                    if (user) current User Id = user.id;
                 } catch (e) {}
 
                 // Render top 20
                 const medals = ['🥇', '🥈', '🥉'];
-                const topRows = rows.slice(0, 20);
+                const top Rows = rows.slice(0, 20);
                 let html = '<table style="width:100%; border-collapse:collapse; font-size:0.88rem;">';
                 html += '<thead><tr style="border-bottom:2px solid var(--border);">';
                 html += '<th style="text-align:left; padding:8px; color:var(--text-muted); font-size:0.78rem;">#</th>';
@@ -1024,10 +1024,10 @@ async function saveTestScore(pct) {
                 html += '<th style="text-align:center; padding:8px; color:var(--text-muted); font-size:0.78rem;">Tests</th>';
                 html += '<th style="text-align:right; padding:8px; color:var(--text-muted); font-size:0.78rem;">Avg Score</th>';
                 html += '</tr></thead><tbody>';
-                topRows.forEach((row, i) => {
+                top Rows.for Each((row, i) => {
                     const rank = i + 1;
                     const medal = medals[i] || '';
-                    const highlight = row.id === currentUserId ? 'background:rgba(124,58,237,0.08);' : '';
+                    const highlight = row.id === current User Id ? 'background:rgba(124,58,237,0.08);' : '';
                     html += `<tr style="border-bottom:1px solid var(--border); ${highlight}">`;
                     html += `<td style="padding:8px; font-weight:700;">${medal || rank}</td>`;
                     html += `<td style="padding:8px;">${row.fullname}<br><span style="font-size:0.72rem; color:var(--text-muted);">${row.matric}</span></td>`;
@@ -1039,47 +1039,47 @@ async function saveTestScore(pct) {
                 html += '</tbody></table>';
 
                 // If current user is not in top 20, show their rank below
-                if (currentUserId) {
-                    const userRowIdx = rows.findIndex(r => r.id === currentUserId);
-                    if (userRowIdx >= 20) {
-                        const userRow = rows[userRowIdx];
+                if (current User Id) {
+                    const user Row Idx = rows.find Index(r => r.id === current User Id);
+                    if (user Row Idx >= 20) {
+                        const user Row = rows[user Row Idx];
                         html += `<div style="margin-top:10px; padding:10px; background:rgba(124,58,237,0.08); border-radius:8px; display:flex; justify-content:space-between; font-size:0.85rem;">
-                            <span><strong>Your Rank: #${userRowIdx + 1}</strong> — ${userRow.fullname}</span>
-                            <span><strong style="color:${userRow.avg >= 70 ? '#10b981' : userRow.avg >= 40 ? '#f59e0b' : '#ef4444'};">${userRow.avg}%</strong> (${userRow.tests} tests)</span>
+                            <span><strong>Your Rank: #${user Row Idx + 1}</strong> — ${user Row.fullname}</span>
+                            <span><strong style="color:${user Row.avg >= 70 ? '#10b981' : user Row.avg >= 40 ? '#f59e0b' : '#ef4444'};">${user Row.avg}%</strong> (${user Row.tests} tests)</span>
                         </div>`;
                     }
                 }
 
-                lbContent.innerHTML = html;
-                lbStatus.innerText = `${rows.length} students · ${results.length} attempts`;
+                lb Content.inner HTML = html;
+                lb Status.inner Text = `${rows.length} students · ${results.length} attempts`;
             } catch (e) {
                 console.error('Leaderboard error:', e);
-                lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
-                lbStatus.innerText = 'Error';
+                lb Content.inner HTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
+                lb Status.inner Text = 'Error';
             }
         }
 
         // Load leaderboard after page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(loadCourseLeaderboard, 500);
+        document.add Event Listener('DOMContent Loaded', function() {
+            set Timeout(load Course Leaderboard, 500);
         });
 
         // ═════════════════════════════════════════════════════════════════
         // AI WEAK AREAS ANALYSIS (runs after exam results are shown)
         // ═════════════════════════════════════════════════════════════════
-        async function analyzeWeakAreasWithAI() {
-            const container = document.getElementById('ai-weak-areas');
-            const textEl = document.getElementById('ai-weak-areas-text');
-            if (!container || !textEl) return;
-            if (typeof currentExamData === 'undefined' || !currentExamData.length) return;
+        async function analyze Weak Areas With AI() {
+            const container = document.get Element By Id('ai-weak-areas');
+            const text El = document.get Element By Id('ai-weak-areas-text');
+            if (!container || !text El) return;
+            if (typeof current Exam Data === 'undefined' || !current Exam Data.length) return;
 
             // Collect wrong answers
             const missed = [];
-            currentExamData.forEach((q, i) => {
-                const student = userAnswers[i];
-                if (q.isTheory) {
-                    const scoreValue = student && typeof student.score === 'number' ? student.score : 0;
-                    if (scoreValue < 70) {
+            current Exam Data.for Each((q, i) => {
+                const student = user Answers[i];
+                if (q.is Theory) {
+                    const score Value = student && typeof student.score === 'number' ? student.score : 0;
+                    if (score Value < 70) {
                         missed.push({ question: q.question, topic: q.topic || 'General' });
                     }
                 } else {
@@ -1091,39 +1091,39 @@ async function saveTestScore(pct) {
 
             if (missed.length === 0) {
                 container.style.display = 'block';
-                container.style.borderColor = '#10b981';
-                container.querySelector('strong').style.color = '#10b981';
-                textEl.innerHTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
+                container.style.border Color = '#10b981';
+                container.query Selector('strong').style.color = '#10b981';
+                text El.inner HTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
                 return;
             }
 
             container.style.display = 'block';
-            textEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
+            text El.inner HTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
 
-            const courseCode = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
-            const config = typeof getAIConfigForCourse === 'function' ? getAIConfigForCourse(courseCode) : {
+            const course Code = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
+            const config = typeof get AIConfig For Course === 'function' ? get AIConfig For Course(course Code) : {
                 provider: 'groq',
                 model: window.env?.AI_MODEL || 'llama-3.1-8b-instant',
-                key: window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy')
+                key: window.env?.AI_API_KEY || ('gsk_71n Ddj9ca C9CGo XD0Qx SW' + 'Gdyb3FYct CCz V6YNHGz Ylj4O9Qpk Qcy')
             };
 
             // Group missed questions by topic if available
-            const topicGroups = {};
-            missed.forEach(m => {
-                if (!topicGroups[m.topic]) topicGroups[m.topic] = 0;
-                topicGroups[m.topic]++;
+            const topic Groups = {};
+            missed.for Each(m => {
+                if (!topic Groups[m.topic]) topic Groups[m.topic] = 0;
+                topic Groups[m.topic]++;
             });
 
-            const missedList = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
-            const topicSummary = Object.entries(topicGroups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
+            const missed List = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
+            const topic Summary = Object.entries(topic Groups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
 
-            const systemPrompt = `You are Renance AI, an academic tutor for FUTA students.
-The student just completed a ${courseCode} quiz and got ${missed.length} question(s) wrong out of ${currentExamData.length}.
+            const system Prompt = `You are Renance AI, an academic tutor for FUTA students.
+The student just completed a ${course Code} quiz and got ${missed.length} question(s) wrong out of ${current Exam Data.length}.
 
 Questions they got wrong:
-${missedList}
+${missed List}
 
-${topicSummary ? 'Breakdown by topic: ' + topicSummary : ''}
+${topic Summary ? 'Breakdown by topic: ' + topic Summary : ''}
 
 Identify 1-3 core topics/concepts the student should focus on revising.
 Respond in 2-4 short bullet points. Be specific and actionable.
@@ -1131,7 +1131,7 @@ Format: • Topic name — brief advice on what to study
 Keep it concise (under 100 words total).`;
 
             try {
-                let resultText = "";
+                let result Text = "";
                 const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: 'POST',
                     headers: {
@@ -1140,26 +1140,26 @@ Keep it concise (under 100 words total).`;
                     },
                     body: JSON.stringify({
                         model: config.model,
-                        messages: [{ role: "system", content: systemPrompt }],
+                        messages: [{ role: "system", content: system Prompt }],
                         temperature: 0.3
                     })
                 });
-                const resData = await response.json();
-                if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
-                resultText = resData.choices[0].message.content;
+                const res Data = await response.json();
+                if (!response.ok) throw new Error(res Data.error?.message || `HTTP ${response.status}`);
+                result Text = res Data.choices[0].message.content;
 
                 // Format the response
-                const formatted = resultText
+                const formatted = result Text
                     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                     .replace(/`(.*?)`/g, '<code>$1</code>')
                     .replace(/\n/g, '<br>');
-                textEl.innerHTML = formatted;
+                text El.inner HTML = formatted;
             } catch (err) {
                 // Fallback: show topic-based analysis without AI
-                if (topicSummary) {
-                    textEl.innerHTML = `Based on your missed questions, focus on: <br><strong>${topicSummary}</strong><br><br>Review these topics in your course materials and try again!`;
+                if (topic Summary) {
+                    text El.inner HTML = `Based on your missed questions, focus on: <br><strong>${topic Summary}</strong><br><br>Review these topics in your course materials and try again!`;
                 } else {
-                    textEl.innerHTML = `You missed ${missed.length} out of ${currentExamData.length} questions. Review the missed questions above and try again!`;
+                    text El.inner HTML = `You missed ${missed.length} out of ${current Exam Data.length} questions. Review the missed questions above and try again!`;
                 }
             }
         }

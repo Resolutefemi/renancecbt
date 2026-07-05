@@ -65,7 +65,7 @@
             border: 1.5px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-        .box:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(79,70,229,0.12); }
+        .box:hover { transform: translate Y(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(79,70,229,0.12); }
         .box h3 { margin: 10px 0 4px; font-size: 1rem; line-height: 1.4; }
         .box p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
         .box-random { background: linear-gradient(135deg, #4f46e5, #818cf8) !important; color: white !important; border: none !important; }
@@ -99,13 +99,13 @@
         .option-btn.correct  { background: #dcfce7 !important; border-color: #10b981 !important; color: #065f46 !important; font-weight: 700; }
         .option-btn.wrong    { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
 
-        .feedback-msg { margin-top: 1.2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600; animation: fadeIn 0.3s; line-height: 1.6; }
+        .feedback-msg { margin-top: 1.2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600; animation: fade In 0.3s; line-height: 1.6; }
         .explanation-box { margin-top: 1rem; padding: 1rem; border-radius: 10px; background: rgba(0,0,0,0.02); border-left: 4px solid var(--primary); font-size: 0.9rem; line-height: 1.6; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fade In { from { opacity: 0; transform: translate Y(8px); } to { opacity: 1; transform: translate Y(0); } }
 
         .controls { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 1.8rem; }
         .btn { padding: 0.8rem 1.6rem; border: none; border-radius: 9px; cursor: pointer; font-weight: 700; background: var(--primary); color: white; transition: opacity 0.2s, transform 0.2s; font-size: 0.95rem; }
-        .btn:hover { opacity: 0.88; transform: translateY(-2px); }
+        .btn:hover { opacity: 0.88; transform: translate Y(-2px); }
         .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
         .result-modal-overlay {
@@ -117,14 +117,14 @@
             background: var(--card-bg); padding: 40px 28px; border-radius: 24px;
             width: 100%; max-width: 420px; text-align: center; color: var(--text);
             box-shadow: 0 25px 60px rgba(0,0,0,0.45);
-            animation: bounceIn 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: bounce In 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        @keyframes bounceIn {
-            0%   { opacity: 0; transform: scale(0.78) translateY(30px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
+        @keyframes bounce In {
+            0%   { opacity: 0; transform: scale(0.78) translate Y(30px); }
+            100% { opacity: 1; transform: scale(1) translate Y(0); }
         }
         .result-icon { font-size: 3.6rem; margin-bottom: 8px; display: block; animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes float { 0%,100% { transform: translate Y(0); } 50% { transform: translate Y(-10px); } }
         .score-display { background: rgba(79,70,229,0.06); border: 2px dashed rgba(79,70,229,0.25); border-radius: 18px; padding: 18px; margin: 18px 0; }
         .score-big { font-size: 3.5rem; font-weight: 900; color: var(--primary); line-height: 1; }
         .stats-mini { display: flex; justify-content: center; gap: 24px; margin: 10px 0 4px; }
@@ -134,7 +134,7 @@
         #save-status { font-size: 0.78rem; color: var(--text-muted); margin: 8px 0 14px; }
         .result-actions { display: flex; flex-direction: column; gap: 11px; }
         .btn-action { width: 100%; padding: 13px; border: none; border-radius: 12px; font-size: 0.97rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s; display: flex; align-items: center; justify-content: center; gap: 9px; }
-        .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-action:hover { opacity: 0.9; transform: translate Y(-1px); }
         .btn-share  { background: var(--share-gradient); color: white; box-shadow: 0 4px 16px rgba(79,70,229,0.3); }
         .btn-review { background: rgba(79,70,229,0.08); color: var(--primary); border: 1.5px solid rgba(79,70,229,0.2); }
         .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
@@ -201,10 +201,10 @@
         </div>
 
         <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
-            <button class="btn" style="background:#64748b;" onclick="goHome()">
+            <button class="btn" style="background:#64748b;" onclick="go Home()">
                 <i class="fa-solid fa-arrow-left"></i> Back
             </button>
-            <button class="btn" onclick="startExam()" style="min-width:160px;">
+            <button class="btn" onclick="start Exam()" style="min-width:160px;">
                 Start Now <i class="fa-solid fa-arrow-right"></i>
             </button>
         </div>
@@ -214,10 +214,10 @@
         <div class="quiz-header">
             <span class="q-counter">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
             <div class="btn-group">
-                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding:8px 15px; font-size:0.87rem;" onclick="showResults()">
+                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding:8px 15px; font-size:0.87rem;" onclick="show Results()">
                     <i class="fa-solid fa-paper-plane"></i> Submit
                 </button>
-                <button class="btn" id="finish-review-btn" style="display:none; padding:8px 15px; font-size:0.87rem;" onclick="goHome()">
+                <button class="btn" id="finish-review-btn" style="display:none; padding:8px 15px; font-size:0.87rem;" onclick="go Home()">
                     <i class="fa-solid fa-house"></i> Exit Review
                 </button>
                 <span id="timer">30:00</span>
@@ -241,21 +241,21 @@
     </div>
 </main>
 
-<div id="quizResultModal" class="result-modal-overlay" style="display:none;">
+<div id="quiz Result Modal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
-        <span class="result-icon" id="resultIcon">🏆</span>
-        <h2 id="resultGreeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
+        <span class="result-icon" id="result Icon">🏆</span>
+        <h2 id="result Greeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
 
         <div class="score-display">
-            <div class="score-big"><span id="finalScoreText">0</span>%</div>
+            <div class="score-big"><span id="final Score Text">0</span>%</div>
             <div class="stats-mini">
-                <div class="sm"><div class="sv" id="modalCorrect">0</div><div class="sl">Correct</div></div>
-                <div class="sm"><div class="sv" id="modalTotal">0</div><div class="sl">Total</div></div>
-                <div class="sm"><div class="sv" id="modalAvg">—</div><div class="sl">Your Avg</div></div>
+                <div class="sm"><div class="sv" id="modal Correct">0</div><div class="sl">Correct</div></div>
+                <div class="sm"><div class="sv" id="modal Total">0</div><div class="sl">Total</div></div>
+                <div class="sm"><div class="sv" id="modal Avg">—</div><div class="sl">Your Avg</div></div>
             </div>
         </div>
 
-        <p id="resultFeedback" style="font-size:0.9rem; color:var(--text-muted); margin:0;"></p>
+        <p id="result Feedback" style="font-size:0.9rem; color:var(--text-muted); margin:0;"></p>
         <p id="save-status"></p>
 
         
@@ -270,20 +270,20 @@
 
                         <div class="result-actions">
 
-                    <button class="btn-action" id="weakAreasBtn" onclick="analyzeWeakAreasWithAI()" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
+                    <button class="btn-action" id="weak Areas Btn" onclick="analyze Weak Areas With AI()" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
                         <i class="fa-solid fa-brain"></i> Analyze My Weak Areas
                     </button>
 
-            <button class="btn-action" id="explainBtn" onclick="askRenanceAI()" style="background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; box-shadow: 0 4px 16px rgba(79,70,229,0.3);">
+            <button class="btn-action" id="explain Btn" onclick="ask Renance AI()" style="background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; box-shadow: 0 4px 16px rgba(79,70,229,0.3);">
                 <i class="fa-solid fa-robot"></i> Explain Missed Questions
             </button>
-            <button class="btn-action btn-share" onclick="shareQuizResult()">
+            <button class="btn-action btn-share" onclick="share Quiz Result()">
                 <i class="fa-solid fa-share-nodes"></i> Share Score
             </button>
-            <button class="btn-action btn-review" id="modalReviewBtn" onclick="enterReviewMode()">
+            <button class="btn-action btn-review" id="modal Review Btn" onclick="enter Review Mode()">
                 <i class="fa-solid fa-magnifying-glass"></i> Review Answers
             </button>
-            <button class="btn-action btn-home" onclick="goHome()">
+            <button class="btn-action btn-home" onclick="go Home()">
                 <i class="fa-solid fa-house"></i> Dashboard
             </button>
         </div>
@@ -292,20 +292,20 @@
 
 <script>
     const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
-    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
-    const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'ey Jhb Gci Oi JIUz I1Ni Is In R5c CI6Ikp XVCJ9.ey Jpc3Mi Oi Jzd XBh Ym Fz ZSIs In Jl Zi I6In Vie HN5d2F4ZHZra Glx ZXBjdm1x Iiwicm9s ZSI6Im Fub24i LCJp YXQi Oj E3Nz E5ODcw MDAs Im V4c CI6Mj A4Nz U2Mz Aw MH0.gk R3Aud3LRLNy Nwp DHJTT0v Ir WCn Qk SBk FSa Fj Q5qy4';
+    const db = supabase.create Client(SUPABASE_URL, SUPABASE_KEY);
     const COURSE_CODE = 'FIFT 106';
     const STORAGE_KEY = 'saved_fift106_exam';
 
-    async function sendHeartbeat() {
+    async function send Heartbeat() {
         try {
-            const { data: { user } } = await db.auth.getUser();
+            const { data: { user } } = await db.auth.get User();
             if (!user) return;
-            await db.from('students').update({ last_seen: new Date().toISOString() }).eq('id', user.id);
+            await db.from('students').update({ last_seen: new Date().to ISOString() }).eq('id', user.id);
         } catch (e) {  }
     }
-    sendHeartbeat();
-    setInterval(sendHeartbeat, 2 * 60 * 1000);
+    send Heartbeat();
+    set Interval(send Heartbeat, 2 * 60 * 1000);
 
     const MASTER_POOL = [
         {
@@ -430,63 +430,63 @@
         }
 ];
 
-    let currentExamData = [];
-    let userAnswers     = {};
-    let currentIndex    = 0;
-    let timeRemaining   = 0;
-    let timerId         = null;
-    let activeMode      = 'practice';
-    let examSelectionType = 'random';
-    let partNum         = 1;
-    let isReviewMode    = false;
+    let current Exam Data = [];
+    let user Answers     = {};
+    let current Index    = 0;
+    let time Remaining   = 0;
+    let timer Id         = null;
+    let active Mode      = 'practice';
+    let exam Selection Type = 'random';
+    let part Num         = 1;
+    let is Review Mode    = false;
 
-    function buildDashboard() {
-        const dash = document.getElementById('dashboard');
-        dash.innerHTML = '';
+    function build Dashboard() {
+        const dash = document.get Element By Id('dashboard');
+        dash.inner HTML = '';
 
-        const totalQ = MASTER_POOL.length;
-        const partSize = 10;
-        const numParts = Math.ceil(totalQ / partSize);
+        const total Q = MASTER_POOL.length;
+        const part Size = 10;
+        const num Parts = Math.ceil(total Q / part Size);
 
-        const randomBox = document.createElement('div');
-        randomBox.className = 'box box-random';
-        randomBox.innerHTML = `<i class="fa-solid fa-shuffle" style="font-size:2rem;"></i><h3>Random Mix</h3><p>${totalQ} Questions</p>`;
-        randomBox.onclick = () => openSetup('random', 0);
-        dash.appendChild(randomBox);
+        const random Box = document.create Element('div');
+        random Box.class Name = 'box box-random';
+        random Box.inner HTML = `<i class="fa-solid fa-shuffle" style="font-size:2rem;"></i><h3>Random Mix</h3><p>${total Q} Questions</p>`;
+        random Box.onclick = () => open Setup('random', 0);
+        dash.append Child(random Box);
 
-        for (let p = 1; p <= numParts; p++) {
-            const start = (p - 1) * partSize + 1;
-            const end   = Math.min(p * partSize, totalQ);
-            const box   = document.createElement('div');
-            box.className = 'box';
-            box.innerHTML = `<i class="fa-solid fa-book-open" style="font-size:2rem; color:var(--primary);"></i><h3>Part ${p}</h3><p>Q${start} – Q${end}</p>`;
-            box.onclick = () => openSetup('part', p);
-            dash.appendChild(box);
+        for (let p = 1; p <= num Parts; p++) {
+            const start = (p - 1) * part Size + 1;
+            const end   = Math.min(p * part Size, total Q);
+            const box   = document.create Element('div');
+            box.class Name = 'box';
+            box.inner HTML = `<i class="fa-solid fa-book-open" style="font-size:2rem; color:var(--primary);"></i><h3>Part ${p}</h3><p>Q${start} – Q${end}</p>`;
+            box.onclick = () => open Setup('part', p);
+            dash.append Child(box);
         }
     }
 
-    function openSetup(type, part) {
-        examSelectionType = type;
-        partNum = part;
-        document.getElementById('dashboard-wrap').style.display = 'none';
-        document.getElementById('setup-screen').style.display   = 'block';
-        document.getElementById('setup-title').innerText = type === 'random' ? 'Randomised Practice' : `${COURSE_CODE} — Part ${part}`;
-        document.getElementById('random-settings').style.display = type === 'random' ? 'block' : 'none';
+    function open Setup(type, part) {
+        exam Selection Type = type;
+        part Num = part;
+        document.get Element By Id('dashboard-wrap').style.display = 'none';
+        document.get Element By Id('setup-screen').style.display   = 'block';
+        document.get Element By Id('setup-title').inner Text = type === 'random' ? 'Randomised Practice' : `${COURSE_CODE} — Part ${part}`;
+        document.get Element By Id('random-settings').style.display = type === 'random' ? 'block' : 'none';
     }
 
-    function goHome() {
-        clearInterval(timerId);
-        isReviewMode = false;
-        currentExamData = []; userAnswers = {}; currentIndex = 0;
-        document.getElementById('quiz-interface').style.display  = 'none';
-        document.getElementById('setup-screen').style.display    = 'none';
-        document.getElementById('quizResultModal').style.display = 'none';
-        document.getElementById('dashboard-wrap').style.display  = 'block';
-        showResumeBanner();
-        loadStatsBar();
+    function go Home() {
+        clear Interval(timer Id);
+        is Review Mode = false;
+        current Exam Data = []; user Answers = {}; current Index = 0;
+        document.get Element By Id('quiz-interface').style.display  = 'none';
+        document.get Element By Id('setup-screen').style.display    = 'none';
+        document.get Element By Id('quiz Result Modal').style.display = 'none';
+        document.get Element By Id('dashboard-wrap').style.display  = 'block';
+        show Resume Banner();
+        load Stats Bar();
     }
 
-    function shuffleArray(arr) {
+    function shuffle Array(arr) {
         const a = [...arr];
         for (let i = a.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -495,226 +495,226 @@
         return a;
     }
 
-    function startExam() {
-        timeRemaining = parseInt(document.getElementById('t-limit').value) * 60;
-        activeMode    = document.getElementById('quiz-mode').value;
-        isReviewMode  = false;
-        userAnswers   = {};
-        currentIndex  = 0;
+    function start Exam() {
+        time Remaining = parse Int(document.get Element By Id('t-limit').value) * 60;
+        active Mode    = document.get Element By Id('quiz-mode').value;
+        is Review Mode  = false;
+        user Answers   = {};
+        current Index  = 0;
 
         let pool = JSON.parse(JSON.stringify(MASTER_POOL));
 
-        if (examSelectionType === 'random') {
-            const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
-            pool = shuffleArray(pool).slice(0, qty);
+        if (exam Selection Type === 'random') {
+            const qty = Math.min(parse Int(document.get Element By Id('q-count').value), pool.length);
+            pool = shuffle Array(pool).slice(0, qty);
         } else {
-            const start = (partNum - 1) * 10;
+            const start = (part Num - 1) * 10;
             pool = pool.slice(start, start + 10);
         }
 
-        if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);
+        if (document.get Element By Id('shuffle-questions').checked) pool = shuffle Array(pool);
 
-        if (document.getElementById('shuffle-options').checked) {
-            pool.forEach(q => {
-                q.options = shuffleArray([...q.options]);
+        if (document.get Element By Id('shuffle-options').checked) {
+            pool.for Each(q => {
+                q.options = shuffle Array([...q.options]);
             });
         }
 
-        currentExamData = pool;
+        current Exam Data = pool;
 
-        document.getElementById('setup-screen').style.display  = 'none';
-        document.getElementById('quiz-interface').style.display = 'block';
-        document.getElementById('total-idx').innerText = currentExamData.length;
-        runTimer();
-        renderQuestion();
+        document.get Element By Id('setup-screen').style.display  = 'none';
+        document.get Element By Id('quiz-interface').style.display = 'block';
+        document.get Element By Id('total-idx').inner Text = current Exam Data.length;
+        run Timer();
+        render Question();
     }
 
-    function runTimer() {
-        clearInterval(timerId);
-        timerId = setInterval(() => {
-            timeRemaining--;
-            const m = Math.floor(timeRemaining / 60);
-            const s = timeRemaining % 60;
-            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
-            if (timeRemaining <= 0) { clearInterval(timerId); showResults(true); }
+    function run Timer() {
+        clear Interval(timer Id);
+        timer Id = set Interval(() => {
+            time Remaining--;
+            const m = Math.floor(time Remaining / 60);
+            const s = time Remaining % 60;
+            document.get Element By Id('timer').inner Text = `${m}:${s < 10 ? '0'+s : s}`;
+            if (time Remaining <= 0) { clear Interval(timer Id); show Results(true); }
         }, 1000);
     }
 
     // Render Question
-    function renderQuestion() {
-        const q          = currentExamData[currentIndex];
-        const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
-        const userAns    = userAnswers[currentIndex];
+    function render Question() {
+        const q          = current Exam Data[current Index];
+        const has Answered = user Answers.has Own Property(current Index);
+        const user Ans    = user Answers[current Index];
         const labels     = ['A','B','C','D'];
 
-        document.getElementById('cur-idx').innerText       = currentIndex + 1;
-        document.getElementById('question-text').innerHTML = q.question;
+        document.get Element By Id('cur-idx').inner Text       = current Index + 1;
+        document.get Element By Id('question-text').inner HTML = q.question;
 
-        const optBox   = document.getElementById('options-box');
-        const feedArea = document.getElementById('feedback-area');
-        optBox.innerHTML  = '';
-        feedArea.innerHTML = '';
+        const opt Box   = document.get Element By Id('options-box');
+        const feed Area = document.get Element By Id('feedback-area');
+        opt Box.inner HTML  = '';
+        feed Area.inner HTML = '';
 
-        q.options.forEach((val, idx) => {
+        q.options.for Each((val, idx) => {
             const label = labels[idx] || (idx + 1);
-            const btn   = document.createElement('button');
-            btn.className = 'option-btn';
-            btn.innerHTML = `<strong>${label}.</strong> ${val}`;
+            const btn   = document.create Element('button');
+            btn.class Name = 'option-btn';
+            btn.inner HTML = `<strong>${label}.</strong> ${val}`;
 
-            if (isReviewMode || (activeMode === 'practice' && hasAnswered)) {
-                if (val === q.answer)    btn.classList.add('correct');
-                else if (userAns === val) btn.classList.add('wrong');
+            if (is Review Mode || (active Mode === 'practice' && has Answered)) {
+                if (val === q.answer)    btn.class List.add('correct');
+                else if (user Ans === val) btn.class List.add('wrong');
                 btn.disabled = true;
-            } else if (activeMode === 'exam' && hasAnswered && userAns === val) {
-                btn.classList.add('selected');
+            } else if (active Mode === 'exam' && has Answered && user Ans === val) {
+                btn.class List.add('selected');
             }
 
             btn.onclick = () => {
-                if (isReviewMode) return;
-                if (activeMode === 'practice' && hasAnswered) return;
-                userAnswers[currentIndex] = val;
-                saveState();
-                renderQuestion();
+                if (is Review Mode) return;
+                if (active Mode === 'practice' && has Answered) return;
+                user Answers[current Index] = val;
+                save State();
+                render Question();
 
-                if (activeMode === 'practice') {
-                    const isLast = currentIndex === currentExamData.length - 1;
-                    if (!isLast) {
-                        setTimeout(() => { currentIndex++; renderQuestion(); }, 1200);
+                if (active Mode === 'practice') {
+                    const is Last = current Index === current Exam Data.length - 1;
+                    if (!is Last) {
+                        set Timeout(() => { current Index++; render Question(); }, 1200);
                     } else {
-                        setTimeout(() => showResults(true), 1200);
+                        set Timeout(() => show Results(true), 1200);
                     }
                 }
             };
-            optBox.appendChild(btn);
+            opt Box.append Child(btn);
         });
 
-        const expHtml = q.explanation
+        const exp Html = q.explanation
             ? `<div class="explanation-box"><strong>Explanation:</strong> ${q.explanation}</div>`
             : '';
 
-        if (isReviewMode) {
-            if (hasAnswered) {
-                const ok = userAns === q.answer;
-                feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
+        if (is Review Mode) {
+            if (has Answered) {
+                const ok = user Ans === q.answer;
+                feed Area.inner HTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
                     ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
-                </div>${expHtml}`;
+                </div>${exp Html}`;
             } else {
-                feedArea.innerHTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
+                feed Area.inner HTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
                     ⚠ Not answered. Correct: <strong>${q.answer}</strong>
-                </div>${expHtml}`;
+                </div>${exp Html}`;
             }
-        } else if (activeMode === 'practice' && hasAnswered) {
-            const ok = userAns === q.answer;
-            feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
+        } else if (active Mode === 'practice' && has Answered) {
+            const ok = user Ans === q.answer;
+            feed Area.inner HTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
                 ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
-            </div>${expHtml}`;
+            </div>${exp Html}`;
         }
 
-        const isLast = currentIndex === currentExamData.length - 1;
-        document.getElementById('next-btn').style.display          = isLast ? 'none' : 'block';
-        document.getElementById('submit-btn').style.display        = isReviewMode ? 'none' : 'block';
-        document.getElementById('finish-review-btn').style.display = isReviewMode ? 'block' : 'none';
+        const is Last = current Index === current Exam Data.length - 1;
+        document.get Element By Id('next-btn').style.display          = is Last ? 'none' : 'block';
+        document.get Element By Id('submit-btn').style.display        = is Review Mode ? 'none' : 'block';
+        document.get Element By Id('finish-review-btn').style.display = is Review Mode ? 'block' : 'none';
     }
 
     function move(d) {
-        const n = currentIndex + d;
-        if (n >= 0 && n < currentExamData.length) { currentIndex = n; renderQuestion(); }
+        const n = current Index + d;
+        if (n >= 0 && n < current Exam Data.length) { current Index = n; render Question(); }
     }
 
-    function saveState() {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({
-            currentExamData, userAnswers, currentIndex,
-            timeRemaining, activeMode, examSelectionType, partNum,
-            savedAt: Date.now()
+    function save State() {
+        local Storage.set Item(STORAGE_KEY, JSON.stringify({
+            current Exam Data, user Answers, current Index,
+            time Remaining, active Mode, exam Selection Type, part Num,
+            saved At: Date.now()
         }));
     }
 
-    function resumeExam() {
-        const saved = localStorage.getItem(STORAGE_KEY);
+    function resume Exam() {
+        const saved = local Storage.get Item(STORAGE_KEY);
         if (!saved) return;
         const s = JSON.parse(saved);
 
-        currentExamData   = s.currentExamData;
-        userAnswers       = s.userAnswers;
-        currentIndex      = s.currentIndex;
-        timeRemaining     = s.timeRemaining;
-        activeMode        = s.activeMode || 'practice';
-        examSelectionType = s.examSelectionType || 'random';
-        partNum           = s.partNum || 1;
-        isReviewMode      = false;
+        current Exam Data   = s.current Exam Data;
+        user Answers       = s.user Answers;
+        current Index      = s.current Index;
+        time Remaining     = s.time Remaining;
+        active Mode        = s.active Mode || 'practice';
+        exam Selection Type = s.exam Selection Type || 'random';
+        part Num           = s.part Num || 1;
+        is Review Mode      = false;
 
-        document.getElementById('dashboard-wrap').style.display  = 'none';
-        document.getElementById('resume-banner').style.display   = 'none';
-        document.getElementById('setup-screen').style.display    = 'none';
-        document.getElementById('quizResultModal').style.display = 'none';
-        document.getElementById('resume-btn').style.display      = 'none';
-        document.getElementById('quiz-interface').style.display  = 'block';
-        document.getElementById('total-idx').innerText           = currentExamData.length;
+        document.get Element By Id('dashboard-wrap').style.display  = 'none';
+        document.get Element By Id('resume-banner').style.display   = 'none';
+        document.get Element By Id('setup-screen').style.display    = 'none';
+        document.get Element By Id('quiz Result Modal').style.display = 'none';
+        document.get Element By Id('resume-btn').style.display      = 'none';
+        document.get Element By Id('quiz-interface').style.display  = 'block';
+        document.get Element By Id('total-idx').inner Text           = current Exam Data.length;
 
-        const timerEl = document.getElementById('timer');
-        timerEl.style.background = 'rgba(239,68,68,0.08)';
-        timerEl.style.color      = 'var(--danger)';
+        const timer El = document.get Element By Id('timer');
+        timer El.style.background = 'rgba(239,68,68,0.08)';
+        timer El.style.color      = 'var(--danger)';
 
-        runTimer();
-        renderQuestion();
+        run Timer();
+        render Question();
     }
 
-    async function showResults(forced = false) {
-        const answered = Object.keys(userAnswers).length;
-        if (!forced && answered < currentExamData.length) {
-            if (!confirm(`You answered ${answered} of ${currentExamData.length}. Submit anyway?`)) return;
+    async function show Results(forced = false) {
+        const answered = Object.keys(user Answers).length;
+        if (!forced && answered < current Exam Data.length) {
+            if (!confirm(`You answered ${answered} of ${current Exam Data.length}. Submit anyway?`)) return;
         }
 
-        clearInterval(timerId);
-        localStorage.removeItem(STORAGE_KEY);
+        clear Interval(timer Id);
+        local Storage.remove Item(STORAGE_KEY);
 
         let score = 0;
-        currentExamData.forEach((q, i) => { if (userAnswers[i] === q.answer) score++; });
-        const total = currentExamData.length;
+        current Exam Data.for Each((q, i) => { if (user Answers[i] === q.answer) score++; });
+        const total = current Exam Data.length;
         const pct   = Math.round((score / total) * 100);
 
-        document.getElementById('finalScoreText').innerText = pct;
-        document.getElementById('modalCorrect').innerText   = score;
-        document.getElementById('modalTotal').innerText     = total;
-        document.getElementById('modalReviewBtn').style.display = activeMode === 'practice' ? 'none' : 'flex';
+        document.get Element By Id('final Score Text').inner Text = pct;
+        document.get Element By Id('modal Correct').inner Text   = score;
+        document.get Element By Id('modal Total').inner Text     = total;
+        document.get Element By Id('modal Review Btn').style.display = active Mode === 'practice' ? 'none' : 'flex';
 
         if (pct >= 70) {
-            document.getElementById('resultIcon').innerText     = '🏆';
-            document.getElementById('resultGreeting').innerText = 'Outstanding! 🌟';
-            document.getElementById('resultFeedback').innerText = 'Excellent work! Keep it up!';
-            confetti({ particleCount: 160, spread: 70, origin: { y: 0.6 } });
+            document.get Element By Id('result Icon').inner Text     = '🏆';
+            document.get Element By Id('result Greeting').inner Text = 'Outstanding! 🌟';
+            document.get Element By Id('result Feedback').inner Text = 'Excellent work! Keep it up!';
+            confetti({ particle Count: 160, spread: 70, origin: { y: 0.6 } });
         } else if (pct >= 50) {
-            document.getElementById('resultIcon').innerText     = '👍';
-            document.getElementById('resultGreeting').innerText = 'Good Job!';
-            document.getElementById('resultFeedback').innerText = 'Almost there — aim for 70%+!';
+            document.get Element By Id('result Icon').inner Text     = '👍';
+            document.get Element By Id('result Greeting').inner Text = 'Good Job!';
+            document.get Element By Id('result Feedback').inner Text = 'Almost there — aim for 70%+!';
         } else {
-            document.getElementById('resultIcon').innerText     = '💪';
-            document.getElementById('resultGreeting').innerText = 'Keep Trying!';
-            document.getElementById('resultFeedback').innerText = 'Review your notes and try again!';
+            document.get Element By Id('result Icon').inner Text     = '💪';
+            document.get Element By Id('result Greeting').inner Text = 'Keep Trying!';
+            document.get Element By Id('result Feedback').inner Text = 'Review your notes and try again!';
         }
 
-        document.getElementById('quizResultModal').style.display = 'flex';
-        await saveTestScore(pct);
+        document.get Element By Id('quiz Result Modal').style.display = 'flex';
+        await save Test Score(pct);
     }
 
-    async function saveTestScore(pct) {
-        const el = document.getElementById('save-status');
-        el.innerText = '⏳ Saving...';
+    async function save Test Score(pct) {
+        const el = document.get Element By Id('save-status');
+        el.inner Text = '⏳ Saving...';
         try {
-            const { data: { user } } = await db.auth.getUser();
-            if (!user) { el.innerText = ''; return; }
+            const { data: { user } } = await db.auth.get User();
+            if (!user) { el.inner Text = ''; return; }
 
-            // ── 1. ALWAYS save to localStorage as backup (cross-device sync) ──
+            // ── 1. ALWAYS save to local Storage as backup (cross-device sync) ──
             try {
-                const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
-                localResults.push({
+                const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
+                local Results.push({
                     student_id: user.id,
                     course_id: COURSE_CODE,
                     score: pct,
                     timestamp: Date.now(),
                     synced: false
                 });
-                localStorage.setItem('renance_local_results', JSON.stringify(localResults));
+                local Storage.set Item('renance_local_results', JSON.stringify(local Results));
             } catch (le) { console.warn('Local save failed:', le); }
 
             // ── 2. Save to Supabase (cloud) ──
@@ -724,7 +724,7 @@
             if (prev && prev.length > 0) {
                 const all = [...prev.map(r => r.score), pct];
                 const avg = Math.round(all.reduce((a, b) => a + b, 0) / all.length);
-                document.getElementById('modalAvg').innerText = avg + '%';
+                document.get Element By Id('modal Avg').inner Text = avg + '%';
             }
 
             const { error } = await db.from('test_results').insert([
@@ -732,55 +732,55 @@
             ]);
 
             if (error) {
-                el.innerText = '⚠️ Could not save to cloud (saved locally — will sync later)';
+                el.inner Text = '⚠️ Could not save to cloud (saved locally — will sync later)';
             } else {
-                el.innerText = '✅ Score saved!';
+                el.inner Text = '✅ Score saved!';
                 // Mark the just-saved local result as synced
                 try {
-                    const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+                    const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
                     // Mark the last unsynced result for this course as synced
-                    for (let i = localResults.length - 1; i >= 0; i--) {
-                        if (localResults[i].student_id === user.id &&
-                            localResults[i].course_id === COURSE_CODE &&
-                            !localResults[i].synced) {
-                            localResults[i].synced = true;
+                    for (let i = local Results.length - 1; i >= 0; i--) {
+                        if (local Results[i].student_id === user.id &&
+                            local Results[i].course_id === COURSE_CODE &&
+                            !local Results[i].synced) {
+                            local Results[i].synced = true;
                             break;
                         }
                     }
-                    localStorage.setItem('renance_local_results', JSON.stringify(localResults));
+                    local Storage.set Item('renance_local_results', JSON.stringify(local Results));
                 } catch (e) {}
 
                 // ── Update students table with aggregated stats ──
                 try {
-                    const { data: allResults } = await db.from('test_results')
+                    const { data: all Results } = await db.from('test_results')
                         .select('score').eq('student_id', user.id);
-                    if (allResults && allResults.length > 0) {
-                        const testsTaken = allResults.length;
-                        const avgScore = Math.round(allResults.reduce((s, r) => s + Number(r.score), 0) / testsTaken);
+                    if (all Results && all Results.length > 0) {
+                        const tests Taken = all Results.length;
+                        const avg Score = Math.round(all Results.reduce((s, r) => s + Number(r.score), 0) / tests Taken);
                         await db.from('students').update({
-                            tests_taken: testsTaken,
-                            avg_score: avgScore,
-                            last_seen: new Date().toISOString()
+                            tests_taken: tests Taken,
+                            avg_score: avg Score,
+                            last_seen: new Date().to ISOString()
                         }).eq('id', user.id);
                     }
                 } catch (ue) {}
             }
         } catch (e) {
-            el.innerText = '⚠️ Offline — saved locally, will sync when online';
+            el.inner Text = '⚠️ Offline — saved locally, will sync when online';
         }
     }
 
     // ── Sync queued local results to Supabase (runs on page load) ──
-    async function syncLocalResults() {
+    async function sync Local Results() {
         try {
-            const { data: { user } } = await db.auth.getUser();
+            const { data: { user } } = await db.auth.get User();
             if (!user) return;
 
-            const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
-            const unsynced = localResults.filter(r => !r.synced && r.student_id === user.id);
+            const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
+            const unsynced = local Results.filter(r => !r.synced && r.student_id === user.id);
             if (unsynced.length === 0) return;
 
-            let syncedCount = 0;
+            let synced Count = 0;
             for (const r of unsynced) {
                 try {
                     const { error } = await db.from('test_results').insert([
@@ -788,28 +788,28 @@
                     ]);
                     if (!error) {
                         r.synced = true;
-                        syncedCount++;
+                        synced Count++;
                     }
                 } catch (e) { /* will retry next time */ }
             }
-            localStorage.setItem('renance_local_results', JSON.stringify(localResults));
-            if (syncedCount > 0) {
-                console.log(`Synced ${syncedCount} queued result(s) to cloud`);
+            local Storage.set Item('renance_local_results', JSON.stringify(local Results));
+            if (synced Count > 0) {
+                console.log(`Synced ${synced Count} queued result(s) to cloud`);
 
             // Update students table after syncing
-            if (syncedCount > 0) {
+            if (synced Count > 0) {
                 try {
-                    const { data: { user } } = await db.auth.getUser();
+                    const { data: { user } } = await db.auth.get User();
                     if (user) {
-                        const { data: allResults } = await db.from('test_results')
+                        const { data: all Results } = await db.from('test_results')
                             .select('score').eq('student_id', user.id);
-                        if (allResults && allResults.length > 0) {
-                            const testsTaken = allResults.length;
-                            const avgScore = Math.round(allResults.reduce((s, r) => s + Number(r.score), 0) / testsTaken);
+                        if (all Results && all Results.length > 0) {
+                            const tests Taken = all Results.length;
+                            const avg Score = Math.round(all Results.reduce((s, r) => s + Number(r.score), 0) / tests Taken);
                             await db.from('students').update({
-                                tests_taken: testsTaken,
-                                avg_score: avgScore,
-                                last_seen: new Date().toISOString()
+                                tests_taken: tests Taken,
+                                avg_score: avg Score,
+                                last_seen: new Date().to ISOString()
                             }).eq('id', user.id);
                         }
                     }
@@ -819,25 +819,25 @@
         } catch (e) { /* not logged in or offline — will retry next time */ }
     }
 
-    function enterReviewMode() {
-        document.getElementById('quizResultModal').style.display = 'none';
-        isReviewMode = true;
-        currentIndex = 0;
-        document.getElementById('timer').innerText         = 'REVIEW';
-        document.getElementById('timer').style.background = '#ddd6fe';
-        document.getElementById('timer').style.color      = '#4f46e5';
-        renderQuestion();
+    function enter Review Mode() {
+        document.get Element By Id('quiz Result Modal').style.display = 'none';
+        is Review Mode = true;
+        current Index = 0;
+        document.get Element By Id('timer').inner Text         = 'REVIEW';
+        document.get Element By Id('timer').style.background = '#ddd6fe';
+        document.get Element By Id('timer').style.color      = '#4f46e5';
+        render Question();
     }
 
-    document.addEventListener('keydown', (e) => {
-        if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
-        if (document.getElementById('quiz-interface').style.display === 'none') return;
+    document.add Event Listener('keydown', (e) => {
+        if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.active Element.tag Name)) return;
+        if (document.get Element By Id('quiz-interface').style.display === 'none') return;
 
-        const key = e.key.toUpperCase();
+        const key = e.key.to Upper Case();
         if (['A', 'B', 'C', 'D'].includes(key)) {
-            const buttons = document.querySelectorAll('.option-btn');
-            buttons.forEach(btn => {
-                if (btn.innerText.trim().startsWith(key + '.')) {
+            const buttons = document.query Selector All('.option-btn');
+            buttons.for Each(btn => {
+                if (btn.inner Text.trim().starts With(key + '.')) {
                     btn.click();
                 }
             });
@@ -848,47 +848,47 @@
         if (key === 'P') { move(-1); return; }
     });
 
-    async function shareQuizResult() {
-        const score   = document.getElementById('finalScoreText').innerText;
-        const section = examSelectionType === 'random' ? 'a random mix' : `Part ${partNum}`;
-        const text    = `I just scored ${score}% on ${COURSE_CODE} (${section})! 🚀\n\nChallenge yourself on the Renance CBT portal! 📚🔥\nhttps://renancecbt.vercel.app`;
+    async function share Quiz Result() {
+        const score   = document.get Element By Id('final Score Text').inner Text;
+        const section = exam Selection Type === 'random' ? 'a random mix' : `Part ${part Num}`;
+        const text    = `I just scored ${score}% on ${COURSE_CODE} (${section})! 🚀\n\n Challenge yourself on the Renance CBT portal! 📚🔥\nhttps://renancecbt.vercel.app`;
         try {
             if (navigator.share) await navigator.share({ title: `My ${COURSE_CODE} Score`, text, url: 'https://renancecbt.vercel.app' });
-            else { await navigator.clipboard.writeText(text); alert('Score copied to clipboard! 📋'); }
+            else { await navigator.clipboard.write Text(text); alert('Score copied to clipboard! 📋'); }
         } catch (_) {}
     }
 
-    function askRenanceAI() {
-        sendToAI(COURSE_CODE, currentExamData, userAnswers);
+    function ask Renance AI() {
+        send To AI(COURSE_CODE, current Exam Data, user Answers);
     }
 
-    async function loadStatsBar() {
-        const bar = document.getElementById('stats-bar');
+    async function load Stats Bar() {
+        const bar = document.get Element By Id('stats-bar');
         try {
-            const { data: { user } } = await db.auth.getUser();
+            const { data: { user } } = await db.auth.get User();
             if (!user) return;
 
             // Fetch from cloud
             const { data } = await db.from('test_results')
                 .select('score').eq('student_id', user.id).eq('course_id', COURSE_CODE);
-            const cloudScores = data ? data.map(r => r.score) : [];
+            const cloud Scores = data ? data.map(r => r.score) : [];
 
             // Merge with local (unsynced) results
-            let localScores = [];
+            let local Scores = [];
             try {
-                const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
-                localScores = localResults
+                const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
+                local Scores = local Results
                     .filter(r => r.student_id === user.id && r.course_id === COURSE_CODE && !r.synced)
                     .map(r => r.score);
             } catch (e) {}
 
-            const allScores = [...cloudScores, ...localScores];
-            if (allScores.length === 0) return;
+            const all Scores = [...cloud Scores, ...local Scores];
+            if (all Scores.length === 0) return;
 
-            const taken = allScores.length;
-            const avg  = Math.round(allScores.reduce((s, r) => s + r, 0) / taken);
-            const best = Math.max(...allScores);
-            bar.innerHTML = `
+            const taken = all Scores.length;
+            const avg  = Math.round(all Scores.reduce((s, r) => s + r, 0) / taken);
+            const best = Math.max(...all Scores);
+            bar.inner HTML = `
                 <div class="stat-card"><div class="stat-val">${taken}</div><div class="stat-lbl">Tests Taken</div></div>
                 <div class="stat-card"><div class="stat-val">${avg}%</div><div class="stat-lbl">Average Score</div></div>
                 <div class="stat-card"><div class="stat-val">${best}%</div><div class="stat-lbl">Best Score</div></div>`;
@@ -896,33 +896,33 @@
         } catch (e) {  }
     }
 
-    function showResumeBanner() {
-        const saved  = localStorage.getItem(STORAGE_KEY);
-        const banner = document.getElementById('resume-banner');
+    function show Resume Banner() {
+        const saved  = local Storage.get Item(STORAGE_KEY);
+        const banner = document.get Element By Id('resume-banner');
         if (!saved || !banner) return;
 
         const s        = JSON.parse(saved);
-        const answered = Object.keys(s.userAnswers).length;
-        const total    = s.currentExamData.length;
-        const label    = s.examSelectionType === 'random' ? 'Random Mix' : `Part ${s.partNum}`;
-        const mLeft    = Math.floor(s.timeRemaining / 60);
-        const sLeft    = s.timeRemaining % 60;
-        const timeStr  = `${mLeft}:${sLeft < 10 ? '0'+sLeft : sLeft}`;
+        const answered = Object.keys(s.user Answers).length;
+        const total    = s.current Exam Data.length;
+        const label    = s.exam Selection Type === 'random' ? 'Random Mix' : `Part ${s.part Num}`;
+        const m Left    = Math.floor(s.time Remaining / 60);
+        const s Left    = s.time Remaining % 60;
+        const time Str  = `${m Left}:${s Left < 10 ? '0'+s Left : s Left}`;
         const pct      = Math.round((answered / total) * 100);
 
-        banner.innerHTML = `
+        banner.inner HTML = `
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
                 <div>
                     <div style="font-weight:700;font-size:0.95rem;">📌 Resume Saved Exam</div>
                     <div style="font-size:0.82rem;color:var(--text-muted);margin-top:3px;">
-                        <strong>${label}</strong> &nbsp;·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;·&nbsp; ⏳ ${timeStr} left
+                        <strong>${label}</strong> &nbsp;·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;·&nbsp; ⏳ ${time Str} left
                     </div>
                 </div>
                 <div style="display:flex;gap:8px;flex-shrink:0;">
-                    <button class="btn" style="background:var(--success);padding:8px 16px;font-size:0.87rem;" onclick="resumeExam()">
+                    <button class="btn" style="background:var(--success);padding:8px 16px;font-size:0.87rem;" onclick="resume Exam()">
                         <i class="fa-solid fa-rotate-right"></i> Continue
                     </button>
-                    <button class="btn" style="background:#64748b;padding:8px 16px;font-size:0.87rem;" onclick="discardSaved()">
+                    <button class="btn" style="background:#64748b;padding:8px 16px;font-size:0.87rem;" onclick="discard Saved()">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
@@ -930,72 +930,72 @@
         banner.style.display = 'block';
     }
 
-    function discardSaved() {
+    function discard Saved() {
         if (!confirm('Discard your saved exam progress?')) return;
-        localStorage.removeItem(STORAGE_KEY);
-        document.getElementById('resume-banner').style.display = 'none';
-        document.getElementById('resume-btn').style.display    = 'none';
+        local Storage.remove Item(STORAGE_KEY);
+        document.get Element By Id('resume-banner').style.display = 'none';
+        document.get Element By Id('resume-btn').style.display    = 'none';
     }
 
-    function checkResume() {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (!saved) { document.getElementById('resume-btn').style.display = 'none'; return; }
+    function check Resume() {
+        const saved = local Storage.get Item(STORAGE_KEY);
+        if (!saved) { document.get Element By Id('resume-btn').style.display = 'none'; return; }
         const s = JSON.parse(saved);
-        const mins = Math.floor((Date.now() - s.savedAt) / 60000);
-        if (mins > 180) { localStorage.removeItem(STORAGE_KEY); return; }
-        document.getElementById('resume-btn').style.display = 'inline-flex';
-        showResumeBanner();
+        const mins = Math.floor((Date.now() - s.saved At) / 60000);
+        if (mins > 180) { local Storage.remove Item(STORAGE_KEY); return; }
+        document.get Element By Id('resume-btn').style.display = 'inline-flex';
+        show Resume Banner();
     }
 
-    buildDashboard();
-    loadStatsBar();
-    syncLocalResults();
-    checkResume();
+    build Dashboard();
+    load Stats Bar();
+    sync Local Results();
+    check Resume();
 
         // ═════════════════════════════════════════════════════════════════
         // PER-COURSE LEADERBOARD
         // ═════════════════════════════════════════════════════════════════
-        async function loadCourseLeaderboard() {
-            const lbContent = document.getElementById('lb-content');
-            const lbStatus = document.getElementById('lb-status');
-            const lbCourseName = document.getElementById('lb-course-name');
-            if (lbCourseName) lbCourseName.innerText = COURSE_CODE;
-            if (!lbContent) return;
+        async function load Course Leaderboard() {
+            const lb Content = document.get Element By Id('lb-content');
+            const lb Status = document.get Element By Id('lb-status');
+            const lb Course Name = document.get Element By Id('lb-course-name');
+            if (lb Course Name) lb Course Name.inner Text = COURSE_CODE;
+            if (!lb Content) return;
 
             try {
                 // Fetch all test_results for this course
-                const { data: results, error: rErr } = await db
+                const { data: results, error: r Err } = await db
                     .from('test_results')
                     .select('student_id, score')
                     .eq('course_id', COURSE_CODE);
 
-                if (rErr) throw rErr;
+                if (r Err) throw r Err;
                 if (!results || results.length === 0) {
-                    lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
-                    lbStatus.innerText = '0 attempts';
+                    lb Content.inner HTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
+                    lb Status.inner Text = '0 attempts';
                     return;
                 }
 
                 // Aggregate by student: avg score + count
-                const byStudent = {};
-                results.forEach(r => {
-                    if (!byStudent[r.student_id]) {
-                        byStudent[r.student_id] = { total: 0, count: 0 };
+                const by Student = {};
+                results.for Each(r => {
+                    if (!by Student[r.student_id]) {
+                        by Student[r.student_id] = { total: 0, count: 0 };
                     }
-                    byStudent[r.student_id].total += Number(r.score);
-                    byStudent[r.student_id].count += 1;
+                    by Student[r.student_id].total += Number(r.score);
+                    by Student[r.student_id].count += 1;
                 });
 
                 // Fetch student profiles
-                const studentIds = Object.keys(byStudent);
-                const { data: students, error: sErr } = await db
+                const student Ids = Object.keys(by Student);
+                const { data: students, error: s Err } = await db
                     .from('students')
                     .select('id, fullname, department, matric')
-                    .in('id', studentIds);
+                    .in('id', student Ids);
 
                 // Build leaderboard rows
-                const rows = studentIds.map(sid => {
-                    const agg = byStudent[sid];
+                const rows = student Ids.map(sid => {
+                    const agg = by Student[sid];
                     const avg = Math.round(agg.total / agg.count);
                     const student = students ? students.find(s => s.id === sid) : null;
                     return {
@@ -1011,15 +1011,15 @@
                 rows.sort((a, b) => b.avg - a.avg || b.tests - a.tests);
 
                 // Get current user id for highlighting
-                let currentUserId = null;
+                let current User Id = null;
                 try {
-                    const { data: { user } } = await db.auth.getUser();
-                    if (user) currentUserId = user.id;
+                    const { data: { user } } = await db.auth.get User();
+                    if (user) current User Id = user.id;
                 } catch (e) {}
 
                 // Render top 20
                 const medals = ['🥇', '🥈', '🥉'];
-                const topRows = rows.slice(0, 20);
+                const top Rows = rows.slice(0, 20);
                 let html = '<table style="width:100%; border-collapse:collapse; font-size:0.88rem;">';
                 html += '<thead><tr style="border-bottom:2px solid var(--border);">';
                 html += '<th style="text-align:left; padding:8px; color:var(--text-muted); font-size:0.78rem;">#</th>';
@@ -1028,10 +1028,10 @@
                 html += '<th style="text-align:center; padding:8px; color:var(--text-muted); font-size:0.78rem;">Tests</th>';
                 html += '<th style="text-align:right; padding:8px; color:var(--text-muted); font-size:0.78rem;">Avg Score</th>';
                 html += '</tr></thead><tbody>';
-                topRows.forEach((row, i) => {
+                top Rows.for Each((row, i) => {
                     const rank = i + 1;
                     const medal = medals[i] || '';
-                    const highlight = row.id === currentUserId ? 'background:rgba(124,58,237,0.08);' : '';
+                    const highlight = row.id === current User Id ? 'background:rgba(124,58,237,0.08);' : '';
                     html += `<tr style="border-bottom:1px solid var(--border); ${highlight}">`;
                     html += `<td style="padding:8px; font-weight:700;">${medal || rank}</td>`;
                     html += `<td style="padding:8px;">${row.fullname}<br><span style="font-size:0.72rem; color:var(--text-muted);">${row.matric}</span></td>`;
@@ -1043,47 +1043,47 @@
                 html += '</tbody></table>';
 
                 // If current user is not in top 20, show their rank below
-                if (currentUserId) {
-                    const userRowIdx = rows.findIndex(r => r.id === currentUserId);
-                    if (userRowIdx >= 20) {
-                        const userRow = rows[userRowIdx];
+                if (current User Id) {
+                    const user Row Idx = rows.find Index(r => r.id === current User Id);
+                    if (user Row Idx >= 20) {
+                        const user Row = rows[user Row Idx];
                         html += `<div style="margin-top:10px; padding:10px; background:rgba(124,58,237,0.08); border-radius:8px; display:flex; justify-content:space-between; font-size:0.85rem;">
-                            <span><strong>Your Rank: #${userRowIdx + 1}</strong> — ${userRow.fullname}</span>
-                            <span><strong style="color:${userRow.avg >= 70 ? '#10b981' : userRow.avg >= 40 ? '#f59e0b' : '#ef4444'};">${userRow.avg}%</strong> (${userRow.tests} tests)</span>
+                            <span><strong>Your Rank: #${user Row Idx + 1}</strong> — ${user Row.fullname}</span>
+                            <span><strong style="color:${user Row.avg >= 70 ? '#10b981' : user Row.avg >= 40 ? '#f59e0b' : '#ef4444'};">${user Row.avg}%</strong> (${user Row.tests} tests)</span>
                         </div>`;
                     }
                 }
 
-                lbContent.innerHTML = html;
-                lbStatus.innerText = `${rows.length} students · ${results.length} attempts`;
+                lb Content.inner HTML = html;
+                lb Status.inner Text = `${rows.length} students · ${results.length} attempts`;
             } catch (e) {
                 console.error('Leaderboard error:', e);
-                lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
-                lbStatus.innerText = 'Error';
+                lb Content.inner HTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
+                lb Status.inner Text = 'Error';
             }
         }
 
         // Load leaderboard after page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(loadCourseLeaderboard, 500);
+        document.add Event Listener('DOMContent Loaded', function() {
+            set Timeout(load Course Leaderboard, 500);
         });
 
         // ═════════════════════════════════════════════════════════════════
         // AI WEAK AREAS ANALYSIS (runs after exam results are shown)
         // ═════════════════════════════════════════════════════════════════
-        async function analyzeWeakAreasWithAI() {
-            const container = document.getElementById('ai-weak-areas');
-            const textEl = document.getElementById('ai-weak-areas-text');
-            if (!container || !textEl) return;
-            if (typeof currentExamData === 'undefined' || !currentExamData.length) return;
+        async function analyze Weak Areas With AI() {
+            const container = document.get Element By Id('ai-weak-areas');
+            const text El = document.get Element By Id('ai-weak-areas-text');
+            if (!container || !text El) return;
+            if (typeof current Exam Data === 'undefined' || !current Exam Data.length) return;
 
             // Collect wrong answers
             const missed = [];
-            currentExamData.forEach((q, i) => {
-                const student = userAnswers[i];
-                if (q.isTheory) {
-                    const scoreValue = student && typeof student.score === 'number' ? student.score : 0;
-                    if (scoreValue < 70) {
+            current Exam Data.for Each((q, i) => {
+                const student = user Answers[i];
+                if (q.is Theory) {
+                    const score Value = student && typeof student.score === 'number' ? student.score : 0;
+                    if (score Value < 70) {
                         missed.push({ question: q.question, topic: q.topic || 'General' });
                     }
                 } else {
@@ -1095,39 +1095,39 @@
 
             if (missed.length === 0) {
                 container.style.display = 'block';
-                container.style.borderColor = '#10b981';
-                container.querySelector('strong').style.color = '#10b981';
-                textEl.innerHTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
+                container.style.border Color = '#10b981';
+                container.query Selector('strong').style.color = '#10b981';
+                text El.inner HTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
                 return;
             }
 
             container.style.display = 'block';
-            textEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
+            text El.inner HTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
 
-            const courseCode = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
-            const config = typeof getAIConfigForCourse === 'function' ? getAIConfigForCourse(courseCode) : {
+            const course Code = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
+            const config = typeof get AIConfig For Course === 'function' ? get AIConfig For Course(course Code) : {
                 provider: 'groq',
                 model: window.env?.AI_MODEL || 'llama-3.1-8b-instant',
-                key: window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy')
+                key: window.env?.AI_API_KEY || ('gsk_71n Ddj9ca C9CGo XD0Qx SW' + 'Gdyb3FYct CCz V6YNHGz Ylj4O9Qpk Qcy')
             };
 
             // Group missed questions by topic if available
-            const topicGroups = {};
-            missed.forEach(m => {
-                if (!topicGroups[m.topic]) topicGroups[m.topic] = 0;
-                topicGroups[m.topic]++;
+            const topic Groups = {};
+            missed.for Each(m => {
+                if (!topic Groups[m.topic]) topic Groups[m.topic] = 0;
+                topic Groups[m.topic]++;
             });
 
-            const missedList = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
-            const topicSummary = Object.entries(topicGroups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
+            const missed List = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
+            const topic Summary = Object.entries(topic Groups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
 
-            const systemPrompt = `You are Renance AI, an academic tutor for FUTA students.
-The student just completed a ${courseCode} quiz and got ${missed.length} question(s) wrong out of ${currentExamData.length}.
+            const system Prompt = `You are Renance AI, an academic tutor for FUTA students.
+The student just completed a ${course Code} quiz and got ${missed.length} question(s) wrong out of ${current Exam Data.length}.
 
 Questions they got wrong:
-${missedList}
+${missed List}
 
-${topicSummary ? 'Breakdown by topic: ' + topicSummary : ''}
+${topic Summary ? 'Breakdown by topic: ' + topic Summary : ''}
 
 Identify 1-3 core topics/concepts the student should focus on revising.
 Respond in 2-4 short bullet points. Be specific and actionable.
@@ -1135,7 +1135,7 @@ Format: • Topic name — brief advice on what to study
 Keep it concise (under 100 words total).`;
 
             try {
-                let resultText = "";
+                let result Text = "";
                 const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: 'POST',
                     headers: {
@@ -1144,26 +1144,26 @@ Keep it concise (under 100 words total).`;
                     },
                     body: JSON.stringify({
                         model: config.model,
-                        messages: [{ role: "system", content: systemPrompt }],
+                        messages: [{ role: "system", content: system Prompt }],
                         temperature: 0.3
                     })
                 });
-                const resData = await response.json();
-                if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
-                resultText = resData.choices[0].message.content;
+                const res Data = await response.json();
+                if (!response.ok) throw new Error(res Data.error?.message || `HTTP ${response.status}`);
+                result Text = res Data.choices[0].message.content;
 
                 // Format the response
-                const formatted = resultText
+                const formatted = result Text
                     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                     .replace(/`(.*?)`/g, '<code>$1</code>')
                     .replace(/\n/g, '<br>');
-                textEl.innerHTML = formatted;
+                text El.inner HTML = formatted;
             } catch (err) {
                 // Fallback: show topic-based analysis without AI
-                if (topicSummary) {
-                    textEl.innerHTML = `Based on your missed questions, focus on: <br><strong>${topicSummary}</strong><br><br>Review these topics in your course materials and try again!`;
+                if (topic Summary) {
+                    text El.inner HTML = `Based on your missed questions, focus on: <br><strong>${topic Summary}</strong><br><br>Review these topics in your course materials and try again!`;
                 } else {
-                    textEl.innerHTML = `You missed ${missed.length} out of ${currentExamData.length} questions. Review the missed questions above and try again!`;
+                    text El.inner HTML = `You missed ${missed.length} out of ${current Exam Data.length} questions. Review the missed questions above and try again!`;
                 }
             }
         }

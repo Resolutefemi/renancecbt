@@ -78,7 +78,7 @@
             box-shadow: 0 2px 8px rgba(22,163,74,0.06);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-        .box:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(22,163,74,0.15); }
+        .box:hover { transform: translate Y(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(22,163,74,0.15); }
         .box h3 { margin: 10px 0 4px; font-size: 1rem; }
         .box p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
         .box-random { background: linear-gradient(135deg, #16a34a, #4ade80) !important; color: white !important; border: none !important; }
@@ -114,12 +114,12 @@
         .option-btn.correct  { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: 700; }
         .option-btn.wrong    { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
 
-        .feedback-msg { margin-top: 1.2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600; animation: fadeIn 0.3s; line-height: 1.6; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .feedback-msg { margin-top: 1.2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600; animation: fade In 0.3s; line-height: 1.6; }
+        @keyframes fade In { from { opacity: 0; transform: translate Y(8px); } to { opacity: 1; transform: translate Y(0); } }
 
         .controls { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 1.8rem; }
         .btn { padding: 0.8rem 1.6rem; border: none; border-radius: 9px; cursor: pointer; font-weight: 700; background: var(--primary); color: white; transition: opacity 0.2s, transform 0.2s; font-size: 0.95rem; }
-        .btn:hover { opacity: 0.88; transform: translateY(-2px); }
+        .btn:hover { opacity: 0.88; transform: translate Y(-2px); }
         .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
         
@@ -132,14 +132,14 @@
             background: var(--card-bg); padding: 40px 28px; border-radius: 24px;
             width: 100%; max-width: 420px; text-align: center; color: var(--text);
             box-shadow: 0 25px 60px rgba(0,0,0,0.45);
-            animation: bounceIn 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: bounce In 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        @keyframes bounceIn {
-            0%   { opacity: 0; transform: scale(0.78) translateY(30px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
+        @keyframes bounce In {
+            0%   { opacity: 0; transform: scale(0.78) translate Y(30px); }
+            100% { opacity: 1; transform: scale(1) translate Y(0); }
         }
         .result-icon { font-size: 3.6rem; margin-bottom: 8px; display: block; animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes float { 0%,100% { transform: translate Y(0); } 50% { transform: translate Y(-10px); } }
         .score-display { background: rgba(22,163,74,0.06); border: 2px dashed rgba(22,163,74,0.25); border-radius: 18px; padding: 18px; margin: 18px 0; }
         .score-big { font-size: 3.5rem; font-weight: 900; color: var(--primary); line-height: 1; }
         .stats-mini { display: flex; justify-content: center; gap: 24px; margin: 10px 0 4px; }
@@ -149,7 +149,7 @@
         #save-status { font-size: 0.78rem; color: var(--text-muted); margin: 8px 0 14px; }
         .result-actions { display: flex; flex-direction: column; gap: 11px; }
         .btn-action { width: 100%; padding: 13px; border: none; border-radius: 12px; font-size: 0.97rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s; display: flex; align-items: center; justify-content: center; gap: 9px; }
-        .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-action:hover { opacity: 0.9; transform: translate Y(-1px); }
         .btn-share  { background: var(--share-gradient); color: white; box-shadow: 0 4px 16px rgba(22,163,74,0.3); }
         .btn-review { background: rgba(22,163,74,0.08); color: var(--primary); border: 1.5px solid rgba(22,163,74,0.2); }
         .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
@@ -172,10 +172,10 @@
         <div style="font-size:0.9rem; font-weight:600; color:var(--text-muted); letter-spacing:0.3px;">by Resolute Femi</div>
     </div>
     <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-        <button class="btn" style="background:var(--accent); display:none; padding:7px 14px; font-size:0.85rem;" id="resume-btn" onclick="resumeExam()">
+        <button class="btn" style="background:var(--accent); display:none; padding:7px 14px; font-size:0.85rem;" id="resume-btn" onclick="resume Exam()">
             <i class="fa-solid fa-rotate-right"></i> Resume
         </button>
-        <button class="btn" style="background:#4b7a5f; padding:7px 14px;" onclick="document.body.classList.toggle('dark-mode')">
+        <button class="btn" style="background:#4b7a5f; padding:7px 14px;" onclick="document.body.class List.toggle('dark-mode')">
             <i class="fa-solid fa-moon"></i>
         </button>
     </div>
@@ -221,10 +221,10 @@
         </div>
 
         <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
-            <button class="btn" style="background:#64748b;" onclick="goHome()">
+            <button class="btn" style="background:#64748b;" onclick="go Home()">
                 <i class="fa-solid fa-arrow-left"></i> Back
             </button>
-            <button class="btn" onclick="startExam()" style="min-width:160px;">
+            <button class="btn" onclick="start Exam()" style="min-width:160px;">
                 Start Now <i class="fa-solid fa-arrow-right"></i>
             </button>
         </div>
@@ -234,10 +234,10 @@
         <div class="quiz-header">
             <span class="q-counter">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
             <div class="btn-group">
-                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding:8px 15px; font-size:0.87rem;" onclick="showResults()">
+                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding:8px 15px; font-size:0.87rem;" onclick="show Results()">
                     <i class="fa-solid fa-paper-plane"></i> Submit
                 </button>
-                <button class="btn" id="finish-review-btn" style="background:#64748b; display:none; padding:8px 15px; font-size:0.87rem;" onclick="goHome()">
+                <button class="btn" id="finish-review-btn" style="background:#64748b; display:none; padding:8px 15px; font-size:0.87rem;" onclick="go Home()">
                     <i class="fa-solid fa-house"></i> Home
                 </button>
                 <span id="timer">00:00</span>
@@ -275,18 +275,18 @@
 
 </main>
 
-<div id="quizResultModal" class="result-modal-overlay" style="display:none;">
+<div id="quiz Result Modal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
-        <span class="result-icon" id="resultIcon">ðŸ†</span>
-        <h2 id="resultGreeting" style="margin:0 0 4px; font-size:1.4rem;"></h2>
-        <p id="resultFeedback" style="color:var(--text-muted); font-size:0.9rem; margin:0 0 8px;"></p>
+        <span class="result-icon" id="result Icon">ðŸ†</span>
+        <h2 id="result Greeting" style="margin:0 0 4px; font-size:1.4rem;"></h2>
+        <p id="result Feedback" style="color:var(--text-muted); font-size:0.9rem; margin:0 0 8px;"></p>
 
         <div class="score-display">
-            <div class="score-big"><span id="finalScoreText">0</span>%</div>
+            <div class="score-big"><span id="final Score Text">0</span>%</div>
             <div class="stats-mini">
-                <div class="sm"><div class="sv" id="modalCorrect">0</div><div class="sl">Correct</div></div>
-                <div class="sm"><div class="sv" id="modalTotal">0</div><div class="sl">Total</div></div>
-                <div class="sm"><div class="sv" id="modalAvg">â€”</div><div class="sl">Avg</div></div>
+                <div class="sm"><div class="sv" id="modal Correct">0</div><div class="sl">Correct</div></div>
+                <div class="sm"><div class="sv" id="modal Total">0</div><div class="sl">Total</div></div>
+                <div class="sm"><div class="sv" id="modal Avg">â€”</div><div class="sl">Avg</div></div>
             </div>
         </div>
 
@@ -304,21 +304,21 @@
 
                         <div class="result-actions">
 
-                    <button class="btn-action" id="weakAreasBtn" onclick="analyzeWeakAreasWithAI()" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
+                    <button class="btn-action" id="weak Areas Btn" onclick="analyze Weak Areas With AI()" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
                         <i class="fa-solid fa-brain"></i> Analyze My Weak Areas
                     </button>
 
-            <button class="btn-action" id="explainBtn" onclick="askRenanceAI()" style="background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; box-shadow: 0 4px 16px rgba(79,70,229,0.3);">
+            <button class="btn-action" id="explain Btn" onclick="ask Renance AI()" style="background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; box-shadow: 0 4px 16px rgba(79,70,229,0.3);">
                 <i class="fa-solid fa-robot"></i> Explain Missed Questions
             </button>
 
-            <button class="btn-action btn-share" onclick="shareQuizResult()">
+            <button class="btn-action btn-share" onclick="share Quiz Result()">
                 <i class="fa-solid fa-share-nodes"></i> Share Score
             </button>
-            <button class="btn-action btn-review" id="modalReviewBtn" onclick="enterReviewMode()" style="display:none;">
+            <button class="btn-action btn-review" id="modal Review Btn" onclick="enter Review Mode()" style="display:none;">
                 <i class="fa-solid fa-magnifying-glass"></i> Review Answers
             </button>
-            <button class="btn-action btn-home" onclick="goHome()">
+            <button class="btn-action btn-home" onclick="go Home()">
                 <i class="fa-solid fa-house"></i> Back Home
             </button>
         </div>
@@ -367,7 +367,7 @@ const ALL_QUESTIONS = [
   { question: "What organelle is associated with digestion of materials inside the cell?", options: { A: "Ribosome", B: "Lysosome", C: "Peroxisome", D: "Vacuole" }, answer: "B", explanation: "Lysosomes contain hydrolytic enzymes that digest worn-out organelles, food particles, and foreign invaders." },
   { question: "What structure is involved in the initial routing and modification of newly formed proteins and in the formation of lipids?", options: { A: "Golgi Body", B: "Endoplasmic Reticulum", C: "Ribosome", D: "Nucleus" }, answer: "B", explanation: "The rough ER modifies newly synthesized proteins; the smooth ER synthesizes lipids and detoxifies substances." },
   { question: "What is the structure that directs and coordinates all cellular activity?", options: { A: "Mitochondria", B: "Ribosome", C: "Golgi Body", D: "Nucleus" }, answer: "D", explanation: "The nucleus contains the cell's genetic instructions (DNA) that direct all cellular activities." },
-  { question: "Ribosomes are assembled in which nuclear structure?", options: { A: "Nuclear Membrane", B: "Chromatin", C: "Nucleolus", D: "Nuclear Pore" }, answer: "C", explanation: "The nucleolus is the site of ribosomal RNA (rRNA) synthesis and initial assembly of ribosomal subunits." },
+  { question: "Ribosomes are assembled in which nuclear structure?", options: { A: "Nuclear Membrane", B: "Chromatin", C: "Nucleolus", D: "Nuclear Pore" }, answer: "C", explanation: "The nucleolus is the site of ribosomal RNA (r RNA) synthesis and initial assembly of ribosomal subunits." },
   { question: "When first proposed, Darwin's theory of natural selection did not fully explain how evolution could occur because:", options: { A: "Darwin failed to recognize over-reproduction", B: "Darwin overemphasized genetic drift", C: "Accurate mechanisms explaining genetic inheritance were not widely known", D: "Embryological development was not accurately described" }, answer: "C", explanation: "Darwin proposed natural selection but lacked knowledge of genetics. Mendel's work was not yet widely recognized, leaving a gap in explaining how traits were inherited." },
   { question: "Which of the following is NOT a part of Darwin's theory of natural selection?", options: { A: "Individuals of a population vary", B: "Organisms tend to over-reproduce themselves", C: "There are limited resources for which individuals compete", D: "Modifications an organism acquires during its lifetime can be passed to its offspring" }, answer: "D", explanation: "This describes Lamarck's theory of inheritance of acquired characteristics, not Darwin's theory." },
   { question: "The evolutionary theory proposed by Charles Darwin was:", options: { A: "Change in populations through time as a result of mutations", B: "The spontaneous generation of new organisms", C: "The passing on of genes from one generation to the next", D: "Change in populations through time as a response to environmental change" }, answer: "D", explanation: "Darwin's core idea was descent with modification via natural selection, where populations change over generations in response to environmental pressures." },
@@ -421,7 +421,7 @@ const ALL_QUESTIONS = [
   { question: "Plasma membrane is composed of:", options: { A: "Protein", B: "Lipids", C: "Cellulose", D: "Protein and Lipids" }, answer: "D", explanation: "The fluid mosaic model describes the plasma membrane as a phospholipid bilayer with embedded proteins." },
   { question: "Cellular organelles containing hydrolytic enzymes are called:", options: { A: "Peroxisomes", B: "Lysosomes", C: "Ribosomes", D: "Mesosomes" }, answer: "B", explanation: "Lysosomes are membrane-bound vesicles containing digestive (hydrolytic) enzymes for breaking down waste materials and pathogens." },
   { question: "The sedimentation constant of a prokaryotic ribosome is generally 70S. It breaks up into two subunits whose sedimentation constants are:", options: { A: "50S and 20S", B: "40S and 30S", C: "60S and 10S", D: "50S and 30S" }, answer: "D", explanation: "Prokaryotic 70S ribosomes consist of a large 50S subunit and a small 30S subunit. (S = Svedberg unit)" },
-  { question: "Ribosomes help in:", options: { A: "Photosynthesis", B: "Protein synthesis", C: "Lipid synthesis", D: "Respiration" }, answer: "B", explanation: "Ribosomes are the sites of translation, where mRNA is decoded to build polypeptide (protein) chains." },
+  { question: "Ribosomes help in:", options: { A: "Photosynthesis", B: "Protein synthesis", C: "Lipid synthesis", D: "Respiration" }, answer: "B", explanation: "Ribosomes are the sites of translation, where m RNA is decoded to build polypeptide (protein) chains." },
   { question: "Food is converted to energy in:", options: { A: "Nucleus", B: "Nucleolus", C: "Chloroplast", D: "Mitochondria" }, answer: "D", explanation: "Mitochondria are the sites of cellular respiration (Krebs cycle and oxidative phosphorylation), where food molecules are oxidized to produce ATP." },
   { question: "What is the main characteristic of animals?", options: { A: "They are autotrophs", B: "They are heterotrophs", C: "They are cold-blooded", D: "They are warm-blooded" }, answer: "B", explanation: "All animals are heterotrophic, meaning they must ingest other organisms for nutrition." },
   { question: "What is the main characteristic of plants?", options: { A: "They are heterotrophs", B: "They are autotrophs", C: "They are cold-blooded", D: "They are warm-blooded" }, answer: "B", explanation: "Plants are primarily photoautotrophic, producing their own food via photosynthesis." },
@@ -435,7 +435,7 @@ const ALL_QUESTIONS = [
   { question: "What is the main characteristic of plants in the phylum Pteridophyta?", options: { A: "They produce seeds in cones", B: "They have flowers and produce seeds protected inside fruits", C: "They have roots, stems, and leaves and reproduce by spores", D: "They are small plants with tiny leaves one cell thick" }, answer: "C", explanation: "Pteridophytes (ferns and allies) are vascular plants but reproduce via spores, not seeds." },
   { question: "What is the hierarchical system of classification used in biology?", options: { A: "Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species", B: "Kingdom, Phylum, Class, Order, Family, Genus, Species", C: "Domain, Kingdom, Phylum, Class, Order, Family", D: "Phylum, Class, Order, Family, Genus, Species" }, answer: "A", explanation: "The modern hierarchy includes Domain as the most inclusive rank, followed by the traditional Linnaean ranks." },
   { question: "What are the three domains of life?", options: { A: "Archaea, Bacteria, and Eukarya", B: "Animalia, Plantae, and Fungi", C: "Protista, Chromista, and Monera", D: "Eukarya, Prokaryota, and Archaea" }, answer: "A", explanation: "The three-domain system, based on molecular phylogeny, was proposed by Carl Woese and is now the standard." },
-  { question: "Who modified the taxonomy hierarchy in 1990 to include the Domain?", options: { A: "Carl Linnaeus", B: "Carl Woese", C: "Cavalier-Smith", D: "Haeckel" }, answer: "B", explanation: "Carl Woese, based on rRNA sequencing, proposed the three-domain system, elevating the domain above the kingdom." },
+  { question: "Who modified the taxonomy hierarchy in 1990 to include the Domain?", options: { A: "Carl Linnaeus", B: "Carl Woese", C: "Cavalier-Smith", D: "Haeckel" }, answer: "B", explanation: "Carl Woese, based on r RNA sequencing, proposed the three-domain system, elevating the domain above the kingdom." },
   { question: "What is the advantage of using Latin language in biological nomenclature?", options: { A: "It is a universal language", B: "It is a simple language", C: "It is a language easy to learn", D: "It provides stability and universality to the names" }, answer: "D", explanation: "Latin is a 'dead' language that does not evolve colloquially, ensuring scientific names remain consistent and universally understood." },
   { question: "Who is credited with developing the binomial system of nomenclature?", options: { A: "Carl Linnaeus", B: "Carl Woese", C: "Cavalier-Smith", D: "Haeckel" }, answer: "A", explanation: "Carl Linnaeus formalized and popularized the binomial nomenclature system in the 18th century." },
   { question: "What is biodiversity?", options: { A: "The variety of life on Earth in all its forms and interactions", B: "The number of species in a habitat", C: "The genetic variation within a species", D: "The number of ecosystems in a region" }, answer: "A", explanation: "This is the comprehensive definition of biodiversity, encompassing genetic, species, and ecosystem diversity." },
@@ -450,7 +450,7 @@ const ALL_QUESTIONS = [
   { question: "What is the function of the Golgi complex?", options: { A: "To synthesize proteins", B: "To store and modify proteins", C: "To produce energy", D: "To regulate cell growth" }, answer: "B", explanation: "The Golgi apparatus modifies, sorts, packages, and tags proteins and lipids for storage or transport." },
   { question: "What is the term for the process by which cells become specialized?", options: { A: "Mitosis", B: "Meiosis", C: "Differentiation", D: "Photosynthesis" }, answer: "C", explanation: "Cellular differentiation is the process where a less specialized cell becomes a more specialized cell type." },
   { question: "What is the basic structure of cilia and flagella?", options: { A: "Nine-plus-one arrangement of tubules", B: "Nine-plus-two arrangement of tubules", C: "Ten-plus-one arrangement of tubules", D: "Ten-plus-two arrangement of tubules" }, answer: "B", explanation: "The core axoneme of eukaryotic cilia and flagella has a characteristic '9+2' microtubule structure." },
-  { question: "What is the function of the nucleolus?", options: { A: "To synthesize DNA", B: "To synthesize ribosomal RNA", C: "To synthesize proteins", D: "To store genetic information" }, answer: "B", explanation: "The nucleolus is the site of rRNA transcription and initial assembly of ribosomal subunits." },
+  { question: "What is the function of the nucleolus?", options: { A: "To synthesize DNA", B: "To synthesize ribosomal RNA", C: "To synthesize proteins", D: "To store genetic information" }, answer: "B", explanation: "The nucleolus is the site of r RNA transcription and initial assembly of ribosomal subunits." },
   { question: "What is the term for the simplest cell known?", options: { A: "Eukaryotic cell", B: "Prokaryotic cell", C: "Nucleated cell", D: "Non-nucleated cell" }, answer: "B", explanation: "Prokaryotic cells (bacteria and archaea) are structurally simpler and smaller than eukaryotic cells, lacking membrane-bound organelles." },
   { question: "What is the main difference in the structure of genetic material between prokaryotes and eukaryotes?", options: { A: "Prokaryotes have a single chromosome, while eukaryotes have multiple", B: "Prokaryotes have a membrane-bound nucleus, while eukaryotes do not", C: "Prokaryotes have DNA complexed with histones, while eukaryotes do not", D: "Prokaryotes have a simple, circular chromosome, while eukaryotes have complex, linear chromosomes" }, answer: "D", explanation: "Prokaryotes typically have a single, circular DNA molecule not enclosed in a nucleus. Eukaryotes have multiple, linear chromosomes within the nucleus." },
   { question: "How do prokaryotes divide?", options: { A: "By mitotic division", B: "By meiotic division", C: "By binary fission", D: "By endoreduplication" }, answer: "C", explanation: "Prokaryotes reproduce asexually through binary fission, a simpler process than mitosis." },
@@ -505,7 +505,7 @@ const ALL_QUESTIONS = [
   { question: "Monohybrid test cross ratio is:", options: { A: "3:1", B: "2:1", C: "1:1", D: "9:3:3:1" }, answer: "C", explanation: "When a heterozygous (Aa) is test-crossed with homozygous recessive (aa), the result is a 1:1 ratio of Aa:aa." },
   { question: "The cross in which parents differ in two pairs of contrasting characters is called:", options: { A: "Monohybrid cross", B: "Dihybrid cross", C: "Trihybrid cross", D: "Tetrahybrid cross" }, answer: "B", explanation: "A dihybrid cross involves two pairs of contrasting traits and produces the classic 9:3:3:1 F2 ratio." },
   { question: "The phenotypic dihybrid ratio is:", options: { A: "9:3:2:1", B: "9:3:2:2", C: "1:1", D: "9:3:3:1" }, answer: "D", explanation: "Mendel's dihybrid cross produces a 9:3:3:1 phenotypic ratio in the F2 generation." },
-  { question: "The Dihybrid test cross ratio is:", options: { A: "9:3:2:1", B: "9:3:2:2", C: "1:1:1:1", D: "9:3:3:1" }, answer: "C", explanation: "When a dihybrid (AaBb) is test-crossed with homozygous recessive (aabb), the result is a 1:1:1:1 ratio." },
+  { question: "The Dihybrid test cross ratio is:", options: { A: "9:3:2:1", B: "9:3:2:2", C: "1:1:1:1", D: "9:3:3:1" }, answer: "C", explanation: "When a dihybrid (Aa Bb) is test-crossed with homozygous recessive (aabb), the result is a 1:1:1:1 ratio." },
   { question: "All of the following obey Mendel's laws EXCEPT:", options: { A: "Linkage", B: "Independent assortment", C: "Dominance", D: "Purity of gametes" }, answer: "A", explanation: "Linked genes (on the same chromosome) do not assort independently and violate Mendel's law of independent assortment." },
   { question: "The title of Mendel's paper while presenting at Brunn Natural History Society in 1865 was:", options: { A: "Laws of inheritance", B: "Laws of heredity", C: "Experiments on pea plants", D: "Experiments in plant hybridization" }, answer: "D", explanation: "Mendel's famous 1865 paper presented to the Brunn Natural History Society was titled 'Versuche Ã¼ber Pflanzenhybriden' (Experiments on Plant Hybridization)." },
   { question: "Down syndrome is usually the result of an extra chromosome ___, so that each body cell has a total of 47 chromosomes.", options: { A: "18", B: "19", C: "20", D: "21" }, answer: "D", explanation: "Down syndrome (Trisomy 21) results from an extra copy of chromosome 21, giving 47 chromosomes total." },
@@ -553,14 +553,14 @@ const ALL_QUESTIONS = [
   { question: "A solution that causes a cell to shrink due to water loss is called:", options: { A: "Hypotonic", B: "Isotonic", C: "Hypertonic", D: "Tonic" }, answer: "C", explanation: "A hypertonic solution has a higher solute concentration than the cell, so water moves out by osmosis, causing the cell to shrink." },
   { question: "Mitosis produces:", options: { A: "Two haploid daughter cells", B: "Four haploid daughter cells", C: "Two diploid daughter cells identical to the parent", D: "Four diploid daughter cells" }, answer: "C", explanation: "Mitosis produces two genetically identical diploid daughter cells used in growth and repair." },
   { question: "Meiosis produces:", options: { A: "Two diploid daughter cells", B: "Four haploid daughter cells", C: "Two haploid daughter cells", D: "Four diploid daughter cells" }, answer: "B", explanation: "Meiosis produces four non-identical haploid cells (gametes) through two rounds of division." },
-  { question: "The process by which mRNA is decoded to produce a protein is called:", options: { A: "Replication", B: "Transcription", C: "Translation", D: "Transduction" }, answer: "C", explanation: "Translation is the process at the ribosome where the mRNA sequence is read to assemble a polypeptide." },
-  { question: "A codon consists of how many nucleotides?", options: { A: "2", B: "3", C: "4", D: "5" }, answer: "B", explanation: "A codon is a sequence of three nucleotides in mRNA that codes for a specific amino acid or stop signal." },
+  { question: "The process by which m RNA is decoded to produce a protein is called:", options: { A: "Replication", B: "Transcription", C: "Translation", D: "Transduction" }, answer: "C", explanation: "Translation is the process at the ribosome where the m RNA sequence is read to assemble a polypeptide." },
+  { question: "A codon consists of how many nucleotides?", options: { A: "2", B: "3", C: "4", D: "5" }, answer: "B", explanation: "A codon is a sequence of three nucleotides in m RNA that codes for a specific amino acid or stop signal." },
   { question: "Which of the following is an example of a sex-linked trait in humans?", options: { A: "ABO blood type", B: "Sickle cell anemia", C: "Red-green color blindness", D: "Cystic fibrosis" }, answer: "C", explanation: "Red-green color blindness is caused by genes on the X chromosome and is more prevalent in males." },
   { question: "The Hardy-Weinberg principle applies when:", options: { A: "Population size is small", B: "Mutations occur frequently", C: "Mating is non-random", D: "Population is large, random mating, no mutation, no migration, no selection" }, answer: "D", explanation: "The Hardy-Weinberg equilibrium assumes ideal conditions: large population, random mating, no mutation, migration, or natural selection." },
   { question: "Which of the following types of selection reduces variation in a population by favoring the average phenotype?", options: { A: "Directional selection", B: "Disruptive selection", C: "Stabilizing selection", D: "Sexual selection" }, answer: "C", explanation: "Stabilizing selection favors intermediate phenotypes and reduces the frequency of extreme variants." },
   { question: "Reproductive isolation between two populations can lead to:", options: { A: "Gene flow", B: "Speciation", C: "Genetic drift", D: "Bottleneck effect" }, answer: "B", explanation: "When gene flow between populations stops due to reproductive isolation, they may diverge genetically, eventually becoming separate species." },
   { question: "Which of the following is NOT a characteristic of living organisms?", options: { A: "Reproduction", B: "Response to stimuli", C: "Made entirely of metal", D: "Growth and development" }, answer: "C", explanation: "Living organisms are made of organic molecules (cells), not metal. All other options are properties of life." },
-  { question: "Homeostasis refers to:", options: { A: "Movement of organisms from one place to another", B: "The ability to maintain a stable internal environment", C: "The process of growth", D: "Reproduction by asexual means" }, answer: "B", explanation: "Homeostasis is the regulation of internal conditions (temperature, pH, glucose) to maintain a stable, balanced state." },
+  { question: "Homeostasis refers to:", options: { A: "Movement of organisms from one place to another", B: "The ability to maintain a stable internal environment", C: "The process of growth", D: "Reproduction by asexual means" }, answer: "B", explanation: "Homeostasis is the regulation of internal conditions (temperature, p H, glucose) to maintain a stable, balanced state." },
   { question: "Which level of ecological organization includes all organisms of different species in an area and their physical environment?", options: { A: "Population", B: "Community", C: "Ecosystem", D: "Biome" }, answer: "C", explanation: "An ecosystem includes all living organisms (biotic) and their physical environment (abiotic) in a defined area." },
   { question: "Which of the following correctly describes a food chain?", options: { A: "Energy flows from consumers to producers", B: "Energy flows from producers to consumers", C: "Nutrients flow from carnivores to herbivores", D: "Decomposers are at the top of the food chain" }, answer: "B", explanation: "In a food chain, energy flows from producers (plants) to primary consumers (herbivores) and then to higher consumers." },
   { question: "Which ecological term describes an organism that feeds on dead organic matter?", options: { A: "Producer", B: "Herbivore", C: "Carnivore", D: "Decomposer" }, answer: "D", explanation: "Decomposers (bacteria and fungi) break down dead organic matter, recycling nutrients back into the ecosystem." },
@@ -597,10 +597,10 @@ const ALL_QUESTIONS = [
   { question: "HIV attacks which type of immune cells?", options: { A: "B cells", B: "Red blood cells", C: "CD4+ T helper cells", D: "Neutrophils" }, answer: "C", explanation: "HIV (Human Immunodeficiency Virus) targets and destroys CD4+ T helper cells, progressively weakening the immune system." },
   { question: "What is the role of a vaccine?", options: { A: "Directly kill pathogens in the body", B: "Replace damaged immune cells", C: "Stimulate the immune system to develop memory against a specific pathogen", D: "Suppress the immune response" }, answer: "C", explanation: "Vaccines introduce antigens (weakened or dead pathogens or their parts) to stimulate the immune system to form memory cells without causing disease." },
   { question: "Which type of white blood cell is responsible for engulfing and digesting pathogens?", options: { A: "Lymphocyte", B: "Erythrocyte", C: "Phagocyte (neutrophil/macrophage)", D: "Thrombocyte" }, answer: "C", explanation: "Phagocytes (neutrophils and macrophages) engulf and destroy pathogens through phagocytosis." },
-  { question: "Which molecule carries amino acids to the ribosome during translation?", options: { A: "mRNA", B: "rRNA", C: "tRNA", D: "snRNA" }, answer: "C", explanation: "Transfer RNA (tRNA) carries specific amino acids to the ribosome, matching anticodons to mRNA codons." },
-  { question: "The site of ribosomal RNA (rRNA) assembly in the nucleus is the:", options: { A: "Nuclear pore", B: "Nucleolus", C: "Chromatin", D: "Nuclear envelope" }, answer: "B", explanation: "The nucleolus is the site within the nucleus where rRNA is synthesized and ribosomal subunits are assembled." },
+  { question: "Which molecule carries amino acids to the ribosome during translation?", options: { A: "m RNA", B: "r RNA", C: "t RNA", D: "sn RNA" }, answer: "C", explanation: "Transfer RNA (t RNA) carries specific amino acids to the ribosome, matching anticodons to m RNA codons." },
+  { question: "The site of ribosomal RNA (r RNA) assembly in the nucleus is the:", options: { A: "Nuclear pore", B: "Nucleolus", C: "Chromatin", D: "Nuclear envelope" }, answer: "B", explanation: "The nucleolus is the site within the nucleus where r RNA is synthesized and ribosomal subunits are assembled." },
   { question: "Which enzyme synthesizes RNA from a DNA template?", options: { A: "DNA polymerase", B: "RNA polymerase", C: "Ligase", D: "Helicase" }, answer: "B", explanation: "RNA polymerase binds to the promoter region of a gene and synthesizes a complementary RNA strand from the DNA template." },
-  { question: "The sequence of amino acids in a protein is determined by:", options: { A: "The sequence of nucleotides in DNA/mRNA", B: "The pH of the cell", C: "The type of membrane lipids", D: "The amount of ATP available" }, answer: "A", explanation: "The nucleotide sequence in a gene (via mRNA codons) determines the order of amino acids in a polypeptide." },
+  { question: "The sequence of amino acids in a protein is determined by:", options: { A: "The sequence of nucleotides in DNA/m RNA", B: "The p H of the cell", C: "The type of membrane lipids", D: "The amount of ATP available" }, answer: "A", explanation: "The nucleotide sequence in a gene (via m RNA codons) determines the order of amino acids in a polypeptide." },
   { question: "Which of the following is an example of a frameshift mutation?", options: { A: "Substitution of one nucleotide", B: "Insertion of one nucleotide", C: "No change in the reading frame", D: "Substitution that codes for the same amino acid" }, answer: "B", explanation: "Insertion (or deletion) of one nucleotide shifts the reading frame of all subsequent codons, usually producing a non-functional protein." },
   { question: "What is the term for the movement of alleles from one population to another?", options: { A: "Mutation", B: "Genetic drift", C: "Gene flow", D: "Natural selection" }, answer: "C", explanation: "Gene flow is the transfer of alleles between populations through migration, increasing or decreasing allele frequencies." },
   { question: "What is the bottleneck effect?", options: { A: "When a large population grows rapidly", B: "When a small group of individuals establish a new population", C: "When a population dramatically decreases, reducing genetic diversity", D: "When natural selection favors extreme phenotypes" }, answer: "C", explanation: "The bottleneck effect occurs when a catastrophic event drastically reduces population size, resulting in loss of genetic variation." },
@@ -615,7 +615,7 @@ const ALL_QUESTIONS = [
   { question: "Which type of speciation occurs when populations are geographically separated?", options: { A: "Sympatric speciation", B: "Allopatric speciation", C: "Parapatric speciation", D: "Peripatric speciation" }, answer: "B", explanation: "Allopatric speciation occurs when a geographic barrier separates a population, preventing gene flow and allowing divergence." },
   { question: "Which of the following is NOT a property of enzymes?", options: { A: "They are biological catalysts", B: "They are consumed in chemical reactions", C: "They lower activation energy", D: "They are usually proteins" }, answer: "B", explanation: "Enzymes are not consumed in the reactions they catalyze; they are regenerated and can be reused." },
   { question: "The active site of an enzyme:", options: { A: "Is where substrates bind", B: "Is the entire enzyme surface", C: "Is made of lipids", D: "Changes permanently after each reaction" }, answer: "A", explanation: "The active site is the specific region of an enzyme where the substrate binds and the chemical reaction occurs." },
-  { question: "Enzyme activity can be reduced by:", options: { A: "Optimal temperature and pH", B: "Increased substrate concentration", C: "High temperatures that denature the enzyme", D: "Presence of cofactors" }, answer: "C", explanation: "High temperatures disrupt hydrogen bonds and other interactions maintaining enzyme structure, leading to denaturation and loss of activity." },
+  { question: "Enzyme activity can be reduced by:", options: { A: "Optimal temperature and p H", B: "Increased substrate concentration", C: "High temperatures that denature the enzyme", D: "Presence of cofactors" }, answer: "C", explanation: "High temperatures disrupt hydrogen bonds and other interactions maintaining enzyme structure, leading to denaturation and loss of activity." },
   { question: "What is a competitive inhibitor?", options: { A: "A molecule that binds to the active site and blocks substrate entry", B: "A molecule that destroys the enzyme permanently", C: "A molecule that binds to the substrate", D: "A molecule that activates the enzyme" }, answer: "A", explanation: "Competitive inhibitors have a similar shape to the substrate and compete for binding at the active site, reducing enzyme activity." },
   { question: "An allosteric inhibitor affects enzyme activity by:", options: { A: "Competing for the active site", B: "Binding to a site other than the active site, changing the enzyme's shape", C: "Degrading the enzyme protein", D: "Increasing substrate concentration" }, answer: "B", explanation: "Allosteric inhibitors bind to a regulatory (allosteric) site, inducing a conformational change that reduces the enzyme's affinity for its substrate." },
   { question: "Proteins are made up of chains of:", options: { A: "Nucleotides", B: "Fatty acids", C: "Amino acids", D: "Monosaccharides" }, answer: "C", explanation: "Proteins are polymers of amino acids linked by peptide bonds." },
@@ -629,80 +629,80 @@ const ALL_QUESTIONS = [
   { question: "Cellulose differs from starch in that cellulose:", options: { A: "Is more easily digested by humans", B: "Has beta-glycosidic linkages between glucose units", C: "Contains fructose instead of glucose", D: "Is a lipid, not a carbohydrate" }, answer: "B", explanation: "Cellulose is made of glucose monomers linked by beta-1,4-glycosidic bonds, which humans cannot digest (no cellulase enzyme)." },
   { question: "The process of endocytosis involves:", options: { A: "Secretion of materials from the cell", B: "Uptake of materials into the cell via membrane folding", C: "Transport of ions against a gradient", D: "Diffusion of small molecules through the membrane" }, answer: "B", explanation: "Endocytosis is the process where the cell membrane engulfs material and forms an internal vesicle, bringing substances into the cell." },
   { question: "Which of the following is a purine base found in DNA?", options: { A: "Thymine", B: "Cytosine", C: "Adenine", D: "Uracil" }, answer: "C", explanation: "Purines (adenine and guanine) have a double-ring structure. Pyrimidines (thymine, cytosine, uracil) have single rings." },
-  { question: "The anticodon is found on:", options: { A: "mRNA", B: "rRNA", C: "tRNA", D: "DNA" }, answer: "C", explanation: "The anticodon is a three-nucleotide sequence on tRNA that is complementary to a specific mRNA codon." },
-  { question: "Which of the following is a posttranslational modification?", options: { A: "Splicing of pre-mRNA", B: "Addition of a 5' cap to mRNA", C: "Phosphorylation of a protein", D: "Polyadenylation of mRNA" }, answer: "C", explanation: "Post-translational modifications (e.g., phosphorylation, glycosylation) alter proteins after they are synthesized to regulate their activity." },
-  { question: "Which type of RNA carries genetic information from DNA to the ribosome?", options: { A: "tRNA", B: "rRNA", C: "mRNA", D: "miRNA" }, answer: "C", explanation: "Messenger RNA (mRNA) carries the genetic information from DNA in the nucleus to the ribosome in the cytoplasm for translation." },
+  { question: "The anticodon is found on:", options: { A: "m RNA", B: "r RNA", C: "t RNA", D: "DNA" }, answer: "C", explanation: "The anticodon is a three-nucleotide sequence on t RNA that is complementary to a specific m RNA codon." },
+  { question: "Which of the following is a posttranslational modification?", options: { A: "Splicing of pre-m RNA", B: "Addition of a 5' cap to m RNA", C: "Phosphorylation of a protein", D: "Polyadenylation of m RNA" }, answer: "C", explanation: "Post-translational modifications (e.g., phosphorylation, glycosylation) alter proteins after they are synthesized to regulate their activity." },
+  { question: "Which type of RNA carries genetic information from DNA to the ribosome?", options: { A: "t RNA", B: "r RNA", C: "m RNA", D: "mi RNA" }, answer: "C", explanation: "Messenger RNA (m RNA) carries the genetic information from DNA in the nucleus to the ribosome in the cytoplasm for translation." },
   { question: "The fluid mosaic model of the plasma membrane describes:", options: { A: "A rigid, fixed structure of lipids and proteins", B: "A dynamic bilayer with proteins that can move laterally", C: "A membrane composed entirely of proteins", D: "A structure with no lipid component" }, answer: "B", explanation: "The fluid mosaic model (Singer & Nicolson, 1972) describes the plasma membrane as a fluid phospholipid bilayer with mobile embedded proteins." },
   { question: "Apoptosis is the term for:", options: { A: "Uncontrolled cell division", B: "Programmed cell death", C: "Cell differentiation", D: "Cell growth" }, answer: "B", explanation: "Apoptosis is a regulated process of cell self-destruction important in development, immune function, and tissue homeostasis." },
   { question: "Cancer is characterized by:", options: { A: "Controlled cell death", B: "Uncontrolled cell division and growth", C: "Reduced metabolic rate", D: "Loss of mitochondria" }, answer: "B", explanation: "Cancer involves unregulated cell proliferation where cells ignore normal growth signals and may invade other tissues (metastasize)." }
 ];
 
 
-let currentExamData = [];
-let userAnswers     = {};
-let currentIndex    = 0;
-let timeRemaining   = 0;
-let timerId         = null;
-let activeMode      = 'practice';
-let examSelectionType = 'random';
-let partNum         = 1;
-let isReviewMode    = false;
+let current Exam Data = [];
+let user Answers     = {};
+let current Index    = 0;
+let time Remaining   = 0;
+let timer Id         = null;
+let active Mode      = 'practice';
+let exam Selection Type = 'random';
+let part Num         = 1;
+let is Review Mode    = false;
 
 
-function buildDashboard() {
-    const dash = document.getElementById('dashboard');
-    dash.innerHTML = '';
+function build Dashboard() {
+    const dash = document.get Element By Id('dashboard');
+    dash.inner HTML = '';
 
-    const totalQ = ALL_QUESTIONS.length;
-    const partSize = 60;
-    const numParts = Math.ceil(totalQ / partSize);
+    const total Q = ALL_QUESTIONS.length;
+    const part Size = 60;
+    const num Parts = Math.ceil(total Q / part Size);
 
-    const randomBox = document.createElement('div');
-    randomBox.className = 'box box-random';
-    randomBox.innerHTML = `<i class="fa-solid fa-shuffle" style="font-size:2rem;"></i><h3>Random Mix</h3><p>${totalQ} Questions</p>`;
-    randomBox.onclick = () => showSetup('random');
-    dash.appendChild(randomBox);
+    const random Box = document.create Element('div');
+    random Box.class Name = 'box box-random';
+    random Box.inner HTML = `<i class="fa-solid fa-shuffle" style="font-size:2rem;"></i><h3>Random Mix</h3><p>${total Q} Questions</p>`;
+    random Box.onclick = () => show Setup('random');
+    dash.append Child(random Box);
 
-    for (let p = 1; p <= numParts; p++) {
-        const start = (p - 1) * partSize + 1;
-        const end   = Math.min(p * partSize, totalQ);
-        const box   = document.createElement('div');
-        box.className = 'box';
-        box.innerHTML = `<i class="fa-solid fa-book-open" style="font-size:2rem; color:var(--primary);"></i><h3>Part ${p}</h3><p>Q${start} â€“ Q${end}</p>`;
-        box.onclick = () => showSetup('part', p);
-        dash.appendChild(box);
+    for (let p = 1; p <= num Parts; p++) {
+        const start = (p - 1) * part Size + 1;
+        const end   = Math.min(p * part Size, total Q);
+        const box   = document.create Element('div');
+        box.class Name = 'box';
+        box.inner HTML = `<i class="fa-solid fa-book-open" style="font-size:2rem; color:var(--primary);"></i><h3>Part ${p}</h3><p>Q${start} â€“ Q${end}</p>`;
+        box.onclick = () => show Setup('part', p);
+        dash.append Child(box);
     }
 }
 
-function showSetup(type, pNum = 1) {
-    examSelectionType = type;
-    partNum = pNum;
-    document.getElementById('dashboard-wrap').style.display = 'none';
-    document.getElementById('setup-screen').style.display   = 'block';
-    document.getElementById('random-settings').style.display = type === 'random' ? 'block' : 'none';
+function show Setup(type, p Num = 1) {
+    exam Selection Type = type;
+    part Num = p Num;
+    document.get Element By Id('dashboard-wrap').style.display = 'none';
+    document.get Element By Id('setup-screen').style.display   = 'block';
+    document.get Element By Id('random-settings').style.display = type === 'random' ? 'block' : 'none';
 
     if (type === 'random') {
-        document.getElementById('setup-title').innerText = 'ðŸ”€ Random Mix Setup';
+        document.get Element By Id('setup-title').inner Text = 'ðŸ”€ Random Mix Setup';
     } else {
         const size = 60;
-        const start = (pNum - 1) * size + 1;
-        const end   = Math.min(pNum * size, ALL_QUESTIONS.length);
-        document.getElementById('setup-title').innerText = `ðŸ“– Part ${pNum} (Q${start}â€“Q${end})`;
+        const start = (p Num - 1) * size + 1;
+        const end   = Math.min(p Num * size, ALL_QUESTIONS.length);
+        document.get Element By Id('setup-title').inner Text = `ðŸ“– Part ${p Num} (Q${start}â€“Q${end})`;
     }
 }
-document.addEventListener('keydown', (e) => {
+document.add Event Listener('keydown', (e) => {
 
-    if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+    if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.active Element.tag Name)) return;
 
-    if (document.getElementById('quiz-interface').style.display === 'none') return;
+    if (document.get Element By Id('quiz-interface').style.display === 'none') return;
 
-    const key = e.key.toUpperCase();
+    const key = e.key.to Upper Case();
 
     if (['A', 'B', 'C', 'D'].includes(key)) {
-        const buttons = document.querySelectorAll('.option-btn');
-        buttons.forEach(btn => {
+        const buttons = document.query Selector All('.option-btn');
+        buttons.for Each(btn => {
 
-            if (btn.innerText.trim().startsWith(key + '.')) {
+            if (btn.inner Text.trim().starts With(key + '.')) {
                 btn.click();
             }
         });
@@ -716,290 +716,290 @@ document.addEventListener('keydown', (e) => {
     if (key === 'P') { move(-1); return; }
 
 });
-function goHome() {
-    clearInterval(timerId);
-    document.getElementById('dashboard-wrap').style.display  = 'block';
-    document.getElementById('setup-screen').style.display    = 'none';
-    document.getElementById('quiz-interface').style.display  = 'none';
-    document.getElementById('quizResultModal').style.display = 'none';
+function go Home() {
+    clear Interval(timer Id);
+    document.get Element By Id('dashboard-wrap').style.display  = 'block';
+    document.get Element By Id('setup-screen').style.display    = 'none';
+    document.get Element By Id('quiz-interface').style.display  = 'none';
+    document.get Element By Id('quiz Result Modal').style.display = 'none';
 
-    isReviewMode = false;
-    checkResume();
-    loadStats();
+    is Review Mode = false;
+    check Resume();
+    load Stats();
 }
 
 
-function startExam() {
-    activeMode  = document.getElementById('quiz-mode').value;
-    const mins  = parseInt(document.getElementById('t-limit').value) || 30;
-    const shuffQ = document.getElementById('shuffle-questions').checked;
-    const shuffO = document.getElementById('shuffle-options').checked;
-    timeRemaining = mins * 60;
+function start Exam() {
+    active Mode  = document.get Element By Id('quiz-mode').value;
+    const mins  = parse Int(document.get Element By Id('t-limit').value) || 30;
+    const shuff Q = document.get Element By Id('shuffle-questions').checked;
+    const shuff O = document.get Element By Id('shuffle-options').checked;
+    time Remaining = mins * 60;
 
     let pool;
-    if (examSelectionType === 'random') {
-        const qty = parseInt(document.getElementById('q-count').value) || 50;
+    if (exam Selection Type === 'random') {
+        const qty = parse Int(document.get Element By Id('q-count').value) || 50;
         pool = shuffle([...ALL_QUESTIONS]).slice(0, Math.min(qty, ALL_QUESTIONS.length));
     } else {
         const size  = 60;
-        const start = (partNum - 1) * size;
+        const start = (part Num - 1) * size;
         pool = [...ALL_QUESTIONS].slice(start, start + size);
     }
 
-    if (shuffQ) pool = shuffle(pool);
+    if (shuff Q) pool = shuffle(pool);
 
-    currentExamData = pool.map(q => {
+    current Exam Data = pool.map(q => {
         const keys = ['A', 'B', 'C', 'D'];
         const values = keys.map(k => q.options[k]);
         const answer = q.options[q.answer];
 
-        if (shuffO) {
+        if (shuff O) {
             const zipped = keys.map((k, i) => ({ label: k, val: values[i] }));
             const shuffled = shuffle(zipped);
-            const newOpts = {};
-            shuffled.forEach((item, i) => { newOpts[keys[i]] = item.val; });
-            const newAnswer = keys[shuffled.findIndex(s => s.val === answer)];
-            return { question: q.question, options: newOpts, answer: newAnswer, explanation: q.explanation || '' };
+            const new Opts = {};
+            shuffled.for Each((item, i) => { new Opts[keys[i]] = item.val; });
+            const new Answer = keys[shuffled.find Index(s => s.val === answer)];
+            return { question: q.question, options: new Opts, answer: new Answer, explanation: q.explanation || '' };
         }
 
         return { question: q.question, options: q.options, answer: q.answer, explanation: q.explanation || '' };
     });
 
-    userAnswers  = {};
-    currentIndex = 0;
-    isReviewMode = false;
+    user Answers  = {};
+    current Index = 0;
+    is Review Mode = false;
 
-    document.getElementById('setup-screen').style.display   = 'none';
-    document.getElementById('quiz-interface').style.display = 'block';
-    document.getElementById('total-idx').innerText = currentExamData.length;
-    document.getElementById('submit-btn').style.display     = activeMode === 'exam' ? 'block' : 'none';
-    document.getElementById('finish-review-btn').style.display = 'none';
+    document.get Element By Id('setup-screen').style.display   = 'none';
+    document.get Element By Id('quiz-interface').style.display = 'block';
+    document.get Element By Id('total-idx').inner Text = current Exam Data.length;
+    document.get Element By Id('submit-btn').style.display     = active Mode === 'exam' ? 'block' : 'none';
+    document.get Element By Id('finish-review-btn').style.display = 'none';
 
-    const timerEl = document.getElementById('timer');
-    timerEl.style.background = 'rgba(220,38,38,0.08)';
-    timerEl.style.color      = 'var(--danger)';
+    const timer El = document.get Element By Id('timer');
+    timer El.style.background = 'rgba(220,38,38,0.08)';
+    timer El.style.color      = 'var(--danger)';
 
-    runTimer();
-    renderQuestion();
-    saveState();
+    run Timer();
+    render Question();
+    save State();
 }
 
 
-function runTimer() {
-    clearInterval(timerId);
-    updateTimerDisplay();
-    timerId = setInterval(() => {
-        timeRemaining--;
-        updateTimerDisplay();
-        saveState();
-        if (timeRemaining <= 0) { clearInterval(timerId); showResults(true); }
+function run Timer() {
+    clear Interval(timer Id);
+    update Timer Display();
+    timer Id = set Interval(() => {
+        time Remaining--;
+        update Timer Display();
+        save State();
+        if (time Remaining <= 0) { clear Interval(timer Id); show Results(true); }
     }, 1000);
 }
 
-function updateTimerDisplay() {
-    const m = Math.floor(timeRemaining / 60);
-    const s = timeRemaining % 60;
-    document.getElementById('timer').innerText = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-    const el = document.getElementById('timer');
-    if (timeRemaining <= 120) { el.style.background = 'rgba(220,38,38,0.18)'; el.style.color = '#dc2626'; }
-    else if (timeRemaining <= 300) { el.style.background = 'rgba(234,88,12,0.12)'; el.style.color = '#ea580c'; }
+function update Timer Display() {
+    const m = Math.floor(time Remaining / 60);
+    const s = time Remaining % 60;
+    document.get Element By Id('timer').inner Text = `${String(m).pad Start(2,'0')}:${String(s).pad Start(2,'0')}`;
+    const el = document.get Element By Id('timer');
+    if (time Remaining <= 120) { el.style.background = 'rgba(220,38,38,0.18)'; el.style.color = '#dc2626'; }
+    else if (time Remaining <= 300) { el.style.background = 'rgba(234,88,12,0.12)'; el.style.color = '#ea580c'; }
 }
 
 
-function renderQuestion() {
-    const q        = currentExamData[currentIndex];
-    const answered = userAnswers[currentIndex];
-    document.getElementById('cur-idx').innerText  = currentIndex + 1;
-    document.getElementById('question-text').innerHTML = q.question;
+function render Question() {
+    const q        = current Exam Data[current Index];
+    const answered = user Answers[current Index];
+    document.get Element By Id('cur-idx').inner Text  = current Index + 1;
+    document.get Element By Id('question-text').inner HTML = q.question;
 
-    const optWrap  = document.getElementById('options-wrap');
-    const feedArea = document.getElementById('feedback-area');
-    optWrap.innerHTML = '';
-    feedArea.innerHTML = '';
+    const opt Wrap  = document.get Element By Id('options-wrap');
+    const feed Area = document.get Element By Id('feedback-area');
+    opt Wrap.inner HTML = '';
+    feed Area.inner HTML = '';
 
-    Object.entries(q.options).forEach(([key, val]) => {
-        const btn = document.createElement('button');
-        btn.className = 'option-btn';
-        btn.innerText = `${key}. ${val}`;
-        btn.onclick = () => handleAnswer(key);
+    Object.entries(q.options).for Each(([key, val]) => {
+        const btn = document.create Element('button');
+        btn.class Name = 'option-btn';
+        btn.inner Text = `${key}. ${val}`;
+        btn.onclick = () => handle Answer(key);
 
         if (answered) {
             btn.disabled = true;
-            if (key === q.answer) btn.classList.add('correct');
-            if (key === answered && answered !== q.answer) btn.classList.add('wrong');
+            if (key === q.answer) btn.class List.add('correct');
+            if (key === answered && answered !== q.answer) btn.class List.add('wrong');
         }
-        optWrap.appendChild(btn);
+        opt Wrap.append Child(btn);
     });
 
-    const expHtml = q.explanation
+    const exp Html = q.explanation
         ? `<br><span style="font-weight:400; font-size:0.88rem;">ðŸ’¡ ${q.explanation}</span>` : '';
 
-    if (answered && activeMode === 'practice') {
+    if (answered && active Mode === 'practice') {
         const ok = answered === q.answer;
-        feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok ? '#dcfce7' : '#fee2e2'}; color:${ok ? '#166534' : '#991b1b'}; border:1px solid ${ok ? '#22c55e' : '#ef4444'}">
-            ${ok ? 'âœ” Correct!' : 'âœ˜ Incorrect. Answer: <strong>' + q.answer + '. ' + q.options[q.answer] + '</strong>'}${expHtml}</div>`;
+        feed Area.inner HTML = `<div class="feedback-msg" style="background:${ok ? '#dcfce7' : '#fee2e2'}; color:${ok ? '#166534' : '#991b1b'}; border:1px solid ${ok ? '#22c55e' : '#ef4444'}">
+            ${ok ? 'âœ” Correct!' : 'âœ˜ Incorrect. Answer: <strong>' + q.answer + '. ' + q.options[q.answer] + '</strong>'}${exp Html}</div>`;
     }
 
-    if (isReviewMode && !answered) {
-        feedArea.innerHTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
-            âš  Not answered. Correct: <strong>${q.answer}. ${q.options[q.answer]}</strong>${expHtml}</div>`;
+    if (is Review Mode && !answered) {
+        feed Area.inner HTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
+            âš  Not answered. Correct: <strong>${q.answer}. ${q.options[q.answer]}</strong>${exp Html}</div>`;
     }
 
-    const isLast = currentIndex === currentExamData.length - 1;
-    document.getElementById('next-btn').style.display = isLast ? 'none' : 'block';
-    document.getElementById('submit-btn').style.display        = isReviewMode ? 'none' : (activeMode === 'exam' ? 'block' : 'none');
-    document.getElementById('finish-review-btn').style.display = isReviewMode ? 'block' : 'none';
+    const is Last = current Index === current Exam Data.length - 1;
+    document.get Element By Id('next-btn').style.display = is Last ? 'none' : 'block';
+    document.get Element By Id('submit-btn').style.display        = is Review Mode ? 'none' : (active Mode === 'exam' ? 'block' : 'none');
+    document.get Element By Id('finish-review-btn').style.display = is Review Mode ? 'block' : 'none';
 }
 
-function handleAnswer(key) {
-    if (userAnswers[currentIndex] !== undefined) return;
-    userAnswers[currentIndex] = key;
-    renderQuestion();
-    saveState();
+function handle Answer(key) {
+    if (user Answers[current Index] !== undefined) return;
+    user Answers[current Index] = key;
+    render Question();
+    save State();
 
-    if (activeMode === 'practice') {
-        const isLast = currentIndex === currentExamData.length - 1;
-        if (!isLast) {
-            setTimeout(() => { currentIndex++; renderQuestion(); }, 1000);
+    if (active Mode === 'practice') {
+        const is Last = current Index === current Exam Data.length - 1;
+        if (!is Last) {
+            set Timeout(() => { current Index++; render Question(); }, 1000);
         } else {
-            setTimeout(() => showResults(true), 1200);
+            set Timeout(() => show Results(true), 1200);
         }
     }
 }
 
 function move(d) {
-    const n = currentIndex + d;
-    if (n >= 0 && n < currentExamData.length) { currentIndex = n; renderQuestion(); }
+    const n = current Index + d;
+    if (n >= 0 && n < current Exam Data.length) { current Index = n; render Question(); }
 }
 
 
-function saveState() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        currentExamData, userAnswers, currentIndex,
-        timeRemaining, activeMode, examSelectionType, partNum,
-        savedAt: Date.now()
+function save State() {
+    local Storage.set Item(STORAGE_KEY, JSON.stringify({
+        current Exam Data, user Answers, current Index,
+        time Remaining, active Mode, exam Selection Type, part Num,
+        saved At: Date.now()
     }));
 }
 
-function checkResume() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved) { document.getElementById('resume-btn').style.display = 'none'; return; }
+function check Resume() {
+    const saved = local Storage.get Item(STORAGE_KEY);
+    if (!saved) { document.get Element By Id('resume-btn').style.display = 'none'; return; }
     const s = JSON.parse(saved);
-    const mins = Math.floor((Date.now() - s.savedAt) / 60000);
-    if (mins > 180) { localStorage.removeItem(STORAGE_KEY); return; }
+    const mins = Math.floor((Date.now() - s.saved At) / 60000);
+    if (mins > 180) { local Storage.remove Item(STORAGE_KEY); return; }
 
-    document.getElementById('resume-btn').style.display = 'inline-flex';
-    const banner = document.getElementById('resume-banner');
+    document.get Element By Id('resume-btn').style.display = 'inline-flex';
+    const banner = document.get Element By Id('resume-banner');
     banner.style.display = 'block';
-    banner.innerHTML = `<strong>ðŸ“Œ Unfinished Session</strong> â€” ${s.currentExamData.length} questions, ${Object.keys(s.userAnswers).length} answered. 
-        <button class="btn" style="margin-left:12px; padding:6px 14px; font-size:0.85rem;" onclick="resumeExam()">Resume</button>
-        <button class="btn" style="background:#64748b; margin-left:6px; padding:6px 14px; font-size:0.85rem;" onclick="discardSession()">Discard</button>`;
+    banner.inner HTML = `<strong>ðŸ“Œ Unfinished Session</strong> â€” ${s.current Exam Data.length} questions, ${Object.keys(s.user Answers).length} answered. 
+        <button class="btn" style="margin-left:12px; padding:6px 14px; font-size:0.85rem;" onclick="resume Exam()">Resume</button>
+        <button class="btn" style="background:#64748b; margin-left:6px; padding:6px 14px; font-size:0.85rem;" onclick="discard Session()">Discard</button>`;
 }
 
-function discardSession() {
-    localStorage.removeItem(STORAGE_KEY);
-    document.getElementById('resume-banner').style.display = 'none';
-    document.getElementById('resume-btn').style.display    = 'none';
+function discard Session() {
+    local Storage.remove Item(STORAGE_KEY);
+    document.get Element By Id('resume-banner').style.display = 'none';
+    document.get Element By Id('resume-btn').style.display    = 'none';
 }
 
-function resumeExam() {
-    const saved = localStorage.getItem(STORAGE_KEY);
+function resume Exam() {
+    const saved = local Storage.get Item(STORAGE_KEY);
     if (!saved) return;
     const s = JSON.parse(saved);
 
-    currentExamData   = s.currentExamData;
-    userAnswers       = s.userAnswers;
-    currentIndex      = s.currentIndex;
-    timeRemaining     = s.timeRemaining;
-    activeMode        = s.activeMode || 'practice';
-    examSelectionType = s.examSelectionType || 'random';
-    partNum           = s.partNum || 1;
-    isReviewMode      = false;
+    current Exam Data   = s.current Exam Data;
+    user Answers       = s.user Answers;
+    current Index      = s.current Index;
+    time Remaining     = s.time Remaining;
+    active Mode        = s.active Mode || 'practice';
+    exam Selection Type = s.exam Selection Type || 'random';
+    part Num           = s.part Num || 1;
+    is Review Mode      = false;
 
-    document.getElementById('dashboard-wrap').style.display  = 'none';
-    document.getElementById('resume-banner').style.display   = 'none';
-    document.getElementById('setup-screen').style.display    = 'none';
-    document.getElementById('quizResultModal').style.display = 'none';
-    document.getElementById('resume-btn').style.display      = 'none';
-    document.getElementById('quiz-interface').style.display  = 'block';
-    document.getElementById('total-idx').innerText           = currentExamData.length;
-    document.getElementById('submit-btn').style.display      = activeMode === 'exam' ? 'block' : 'none';
+    document.get Element By Id('dashboard-wrap').style.display  = 'none';
+    document.get Element By Id('resume-banner').style.display   = 'none';
+    document.get Element By Id('setup-screen').style.display    = 'none';
+    document.get Element By Id('quiz Result Modal').style.display = 'none';
+    document.get Element By Id('resume-btn').style.display      = 'none';
+    document.get Element By Id('quiz-interface').style.display  = 'block';
+    document.get Element By Id('total-idx').inner Text           = current Exam Data.length;
+    document.get Element By Id('submit-btn').style.display      = active Mode === 'exam' ? 'block' : 'none';
 
-    const timerEl = document.getElementById('timer');
-    timerEl.style.background = 'rgba(220,38,38,0.08)';
-    timerEl.style.color      = 'var(--danger)';
+    const timer El = document.get Element By Id('timer');
+    timer El.style.background = 'rgba(220,38,38,0.08)';
+    timer El.style.color      = 'var(--danger)';
 
-    runTimer();
-    renderQuestion();
+    run Timer();
+    render Question();
 }
 
 
-function showResults(forced = false) {
-    const answered = Object.keys(userAnswers).length;
-    if (!forced && answered < currentExamData.length) {
-        if (!confirm(`You answered ${answered} of ${currentExamData.length}. Submit anyway?`)) return;
+function show Results(forced = false) {
+    const answered = Object.keys(user Answers).length;
+    if (!forced && answered < current Exam Data.length) {
+        if (!confirm(`You answered ${answered} of ${current Exam Data.length}. Submit anyway?`)) return;
     }
 
-    clearInterval(timerId);
-    localStorage.removeItem(STORAGE_KEY);
+    clear Interval(timer Id);
+    local Storage.remove Item(STORAGE_KEY);
 
     let score = 0;
-    currentExamData.forEach((q, i) => { if (userAnswers[i] === q.answer) score++; });
-    const total = currentExamData.length;
+    current Exam Data.for Each((q, i) => { if (user Answers[i] === q.answer) score++; });
+    const total = current Exam Data.length;
     const pct   = Math.round((score / total) * 100);
 
-    document.getElementById('finalScoreText').innerText = pct;
-    document.getElementById('modalCorrect').innerText   = score;
-    document.getElementById('modalTotal').innerText     = total;
-    document.getElementById('modalReviewBtn').style.display = activeMode === 'practice' ? 'none' : 'flex';
+    document.get Element By Id('final Score Text').inner Text = pct;
+    document.get Element By Id('modal Correct').inner Text   = score;
+    document.get Element By Id('modal Total').inner Text     = total;
+    document.get Element By Id('modal Review Btn').style.display = active Mode === 'practice' ? 'none' : 'flex';
 
-    const stats = JSON.parse(localStorage.getItem('bio101_stats')) || { tests: 0, total: 0 };
+    const stats = JSON.parse(local Storage.get Item('bio101_stats')) || { tests: 0, total: 0 };
     stats.tests++;
     stats.total += pct;
-    localStorage.setItem('bio101_stats', JSON.stringify(stats));
+    local Storage.set Item('bio101_stats', JSON.stringify(stats));
     const avg = Math.round(stats.total / stats.tests);
-    document.getElementById('modalAvg').innerText = avg + '%';
+    document.get Element By Id('modal Avg').inner Text = avg + '%';
 
     if (pct >= 70) {
-        document.getElementById('resultIcon').innerText     = 'ðŸ†';
-        document.getElementById('resultGreeting').innerText = 'Outstanding! ðŸŒŸ';
-        document.getElementById('resultFeedback').innerText = 'Excellent work! Keep it up!';
-        confetti({ particleCount: 160, spread: 70, origin: { y: 0.6 } });
+        document.get Element By Id('result Icon').inner Text     = 'ðŸ†';
+        document.get Element By Id('result Greeting').inner Text = 'Outstanding! ðŸŒŸ';
+        document.get Element By Id('result Feedback').inner Text = 'Excellent work! Keep it up!';
+        confetti({ particle Count: 160, spread: 70, origin: { y: 0.6 } });
     } else if (pct >= 50) {
-        document.getElementById('resultIcon').innerText     = 'ðŸ‘';
-        document.getElementById('resultGreeting').innerText = 'Good Job!';
-        document.getElementById('resultFeedback').innerText = 'Almost there â€” aim for 70%+!';
+        document.get Element By Id('result Icon').inner Text     = 'ðŸ‘';
+        document.get Element By Id('result Greeting').inner Text = 'Good Job!';
+        document.get Element By Id('result Feedback').inner Text = 'Almost there â€” aim for 70%+!';
     } else {
-        document.getElementById('resultIcon').innerText     = 'ðŸ’ª';
-        document.getElementById('resultGreeting').innerText = 'Keep Trying!';
-        document.getElementById('resultFeedback').innerText = 'Review your notes and try again!';
+        document.get Element By Id('result Icon').inner Text     = 'ðŸ’ª';
+        document.get Element By Id('result Greeting').inner Text = 'Keep Trying!';
+        document.get Element By Id('result Feedback').inner Text = 'Review your notes and try again!';
     }
 
-    document.getElementById('quiz-interface').style.display  = 'none';
-    document.getElementById('quizResultModal').style.display = 'flex';
-    document.getElementById('save-status').innerText = 'âœ… Score saved locally!';
-    loadStats();
+    document.get Element By Id('quiz-interface').style.display  = 'none';
+    document.get Element By Id('quiz Result Modal').style.display = 'flex';
+    document.get Element By Id('save-status').inner Text = 'âœ… Score saved locally!';
+    load Stats();
 }
 
-function enterReviewMode() {
-    document.getElementById('quizResultModal').style.display = 'none';
-    document.getElementById('quiz-interface').style.display  = 'block';
-    isReviewMode = true;
-    currentIndex = 0;
-    document.getElementById('timer').innerText         = 'REVIEW';
-    document.getElementById('timer').style.background = '#dcfce7';
-    document.getElementById('timer').style.color      = '#16a34a';
-    renderQuestion();
+function enter Review Mode() {
+    document.get Element By Id('quiz Result Modal').style.display = 'none';
+    document.get Element By Id('quiz-interface').style.display  = 'block';
+    is Review Mode = true;
+    current Index = 0;
+    document.get Element By Id('timer').inner Text         = 'REVIEW';
+    document.get Element By Id('timer').style.background = '#dcfce7';
+    document.get Element By Id('timer').style.color      = '#16a34a';
+    render Question();
 }
 
 
-function loadStats() {
-    const s = JSON.parse(localStorage.getItem('bio101_stats'));
-    const bar = document.getElementById('stats-bar');
+function load Stats() {
+    const s = JSON.parse(local Storage.get Item('bio101_stats'));
+    const bar = document.get Element By Id('stats-bar');
     if (!s) { bar.style.display = 'none'; return; }
     bar.style.display = 'grid';
     const avg = Math.round(s.total / s.tests);
-    bar.innerHTML = `
+    bar.inner HTML = `
         <div class="stat-card"><div class="stat-val">${s.tests}</div><div class="stat-lbl">Tests Taken</div></div>
         <div class="stat-card"><div class="stat-val">${avg}%</div><div class="stat-lbl">Average Score</div></div>
         <div class="stat-card"><div class="stat-val">${ALL_QUESTIONS.length}</div><div class="stat-lbl">Total Questions</div></div>
@@ -1007,13 +1007,13 @@ function loadStats() {
 }
 
 
-function shareQuizResult() {
-    const score   = document.getElementById('finalScoreText').innerText;
-    const section = examSelectionType === 'random' ? 'a random mix' : `Part ${partNum}`;
-    const text    = `I just scored ${score}% on BIO 101 (${section})! ðŸŒ±\n\nPractice Biology CBT questions now! ðŸ“šðŸ”¥`;
+function share Quiz Result() {
+    const score   = document.get Element By Id('final Score Text').inner Text;
+    const section = exam Selection Type === 'random' ? 'a random mix' : `Part ${part Num}`;
+    const text    = `I just scored ${score}% on BIO 101 (${section})! ðŸŒ±\n\n Practice Biology CBT questions now! ðŸ“šðŸ”¥`;
     try {
         if (navigator.share) navigator.share({ title: `My BIO101 Score`, text });
-        else { navigator.clipboard.writeText(text); alert('Score copied to clipboard! ðŸ“‹'); }
+        else { navigator.clipboard.write Text(text); alert('Score copied to clipboard! ðŸ“‹'); }
     } catch (_) {}
 }
 
@@ -1027,54 +1027,54 @@ function shuffle(arr) {
 }
 
 
-buildDashboard();
-loadStats();
-checkResume();
+build Dashboard();
+load Stats();
+check Resume();
 
         // ═════════════════════════════════════════════════════════════════
         // PER-COURSE LEADERBOARD
         // ═════════════════════════════════════════════════════════════════
-        async function loadCourseLeaderboard() {
-            const lbContent = document.getElementById('lb-content');
-            const lbStatus = document.getElementById('lb-status');
-            const lbCourseName = document.getElementById('lb-course-name');
-            if (lbCourseName) lbCourseName.innerText = COURSE_CODE;
-            if (!lbContent) return;
+        async function load Course Leaderboard() {
+            const lb Content = document.get Element By Id('lb-content');
+            const lb Status = document.get Element By Id('lb-status');
+            const lb Course Name = document.get Element By Id('lb-course-name');
+            if (lb Course Name) lb Course Name.inner Text = COURSE_CODE;
+            if (!lb Content) return;
 
             try {
                 // Fetch all test_results for this course
-                const { data: results, error: rErr } = await db
+                const { data: results, error: r Err } = await db
                     .from('test_results')
                     .select('student_id, score')
                     .eq('course_id', COURSE_CODE);
 
-                if (rErr) throw rErr;
+                if (r Err) throw r Err;
                 if (!results || results.length === 0) {
-                    lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
-                    lbStatus.innerText = '0 attempts';
+                    lb Content.inner HTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
+                    lb Status.inner Text = '0 attempts';
                     return;
                 }
 
                 // Aggregate by student: avg score + count
-                const byStudent = {};
-                results.forEach(r => {
-                    if (!byStudent[r.student_id]) {
-                        byStudent[r.student_id] = { total: 0, count: 0 };
+                const by Student = {};
+                results.for Each(r => {
+                    if (!by Student[r.student_id]) {
+                        by Student[r.student_id] = { total: 0, count: 0 };
                     }
-                    byStudent[r.student_id].total += Number(r.score);
-                    byStudent[r.student_id].count += 1;
+                    by Student[r.student_id].total += Number(r.score);
+                    by Student[r.student_id].count += 1;
                 });
 
                 // Fetch student profiles
-                const studentIds = Object.keys(byStudent);
-                const { data: students, error: sErr } = await db
+                const student Ids = Object.keys(by Student);
+                const { data: students, error: s Err } = await db
                     .from('students')
                     .select('id, fullname, department, matric')
-                    .in('id', studentIds);
+                    .in('id', student Ids);
 
                 // Build leaderboard rows
-                const rows = studentIds.map(sid => {
-                    const agg = byStudent[sid];
+                const rows = student Ids.map(sid => {
+                    const agg = by Student[sid];
                     const avg = Math.round(agg.total / agg.count);
                     const student = students ? students.find(s => s.id === sid) : null;
                     return {
@@ -1090,15 +1090,15 @@ checkResume();
                 rows.sort((a, b) => b.avg - a.avg || b.tests - a.tests);
 
                 // Get current user id for highlighting
-                let currentUserId = null;
+                let current User Id = null;
                 try {
-                    const { data: { user } } = await db.auth.getUser();
-                    if (user) currentUserId = user.id;
+                    const { data: { user } } = await db.auth.get User();
+                    if (user) current User Id = user.id;
                 } catch (e) {}
 
                 // Render top 20
                 const medals = ['🥇', '🥈', '🥉'];
-                const topRows = rows.slice(0, 20);
+                const top Rows = rows.slice(0, 20);
                 let html = '<table style="width:100%; border-collapse:collapse; font-size:0.88rem;">';
                 html += '<thead><tr style="border-bottom:2px solid var(--border);">';
                 html += '<th style="text-align:left; padding:8px; color:var(--text-muted); font-size:0.78rem;">#</th>';
@@ -1107,10 +1107,10 @@ checkResume();
                 html += '<th style="text-align:center; padding:8px; color:var(--text-muted); font-size:0.78rem;">Tests</th>';
                 html += '<th style="text-align:right; padding:8px; color:var(--text-muted); font-size:0.78rem;">Avg Score</th>';
                 html += '</tr></thead><tbody>';
-                topRows.forEach((row, i) => {
+                top Rows.for Each((row, i) => {
                     const rank = i + 1;
                     const medal = medals[i] || '';
-                    const highlight = row.id === currentUserId ? 'background:rgba(124,58,237,0.08);' : '';
+                    const highlight = row.id === current User Id ? 'background:rgba(124,58,237,0.08);' : '';
                     html += `<tr style="border-bottom:1px solid var(--border); ${highlight}">`;
                     html += `<td style="padding:8px; font-weight:700;">${medal || rank}</td>`;
                     html += `<td style="padding:8px;">${row.fullname}<br><span style="font-size:0.72rem; color:var(--text-muted);">${row.matric}</span></td>`;
@@ -1122,48 +1122,48 @@ checkResume();
                 html += '</tbody></table>';
 
                 // If current user is not in top 20, show their rank below
-                if (currentUserId) {
-                    const userRowIdx = rows.findIndex(r => r.id === currentUserId);
-                    if (userRowIdx >= 20) {
-                        const userRow = rows[userRowIdx];
+                if (current User Id) {
+                    const user Row Idx = rows.find Index(r => r.id === current User Id);
+                    if (user Row Idx >= 20) {
+                        const user Row = rows[user Row Idx];
                         html += `<div style="margin-top:10px; padding:10px; background:rgba(124,58,237,0.08); border-radius:8px; display:flex; justify-content:space-between; font-size:0.85rem;">
-                            <span><strong>Your Rank: #${userRowIdx + 1}</strong> — ${userRow.fullname}</span>
-                            <span><strong style="color:${userRow.avg >= 70 ? '#10b981' : userRow.avg >= 40 ? '#f59e0b' : '#ef4444'};">${userRow.avg}%</strong> (${userRow.tests} tests)</span>
+                            <span><strong>Your Rank: #${user Row Idx + 1}</strong> — ${user Row.fullname}</span>
+                            <span><strong style="color:${user Row.avg >= 70 ? '#10b981' : user Row.avg >= 40 ? '#f59e0b' : '#ef4444'};">${user Row.avg}%</strong> (${user Row.tests} tests)</span>
                         </div>`;
                     }
                 }
 
-                lbContent.innerHTML = html;
-                lbStatus.innerText = `${rows.length} students · ${results.length} attempts`;
+                lb Content.inner HTML = html;
+                lb Status.inner Text = `${rows.length} students · ${results.length} attempts`;
             } catch (e) {
                 console.error('Leaderboard error:', e);
-                lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
-                lbStatus.innerText = 'Error';
+                lb Content.inner HTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
+                lb Status.inner Text = 'Error';
             }
         }
 
         // Load leaderboard after page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(loadCourseLeaderboard, 500);
+        document.add Event Listener('DOMContent Loaded', function() {
+            set Timeout(load Course Leaderboard, 500);
         });
-    syncLocalResults();
+    sync Local Results();
 
         // ═════════════════════════════════════════════════════════════════
         // AI WEAK AREAS ANALYSIS (runs after exam results are shown)
         // ═════════════════════════════════════════════════════════════════
-        async function analyzeWeakAreasWithAI() {
-            const container = document.getElementById('ai-weak-areas');
-            const textEl = document.getElementById('ai-weak-areas-text');
-            if (!container || !textEl) return;
-            if (typeof currentExamData === 'undefined' || !currentExamData.length) return;
+        async function analyze Weak Areas With AI() {
+            const container = document.get Element By Id('ai-weak-areas');
+            const text El = document.get Element By Id('ai-weak-areas-text');
+            if (!container || !text El) return;
+            if (typeof current Exam Data === 'undefined' || !current Exam Data.length) return;
 
             // Collect wrong answers
             const missed = [];
-            currentExamData.forEach((q, i) => {
-                const student = userAnswers[i];
-                if (q.isTheory) {
-                    const scoreValue = student && typeof student.score === 'number' ? student.score : 0;
-                    if (scoreValue < 70) {
+            current Exam Data.for Each((q, i) => {
+                const student = user Answers[i];
+                if (q.is Theory) {
+                    const score Value = student && typeof student.score === 'number' ? student.score : 0;
+                    if (score Value < 70) {
                         missed.push({ question: q.question, topic: q.topic || 'General' });
                     }
                 } else {
@@ -1175,39 +1175,39 @@ checkResume();
 
             if (missed.length === 0) {
                 container.style.display = 'block';
-                container.style.borderColor = '#10b981';
-                container.querySelector('strong').style.color = '#10b981';
-                textEl.innerHTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
+                container.style.border Color = '#10b981';
+                container.query Selector('strong').style.color = '#10b981';
+                text El.inner HTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
                 return;
             }
 
             container.style.display = 'block';
-            textEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
+            text El.inner HTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
 
-            const courseCode = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
-            const config = typeof getAIConfigForCourse === 'function' ? getAIConfigForCourse(courseCode) : {
+            const course Code = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
+            const config = typeof get AIConfig For Course === 'function' ? get AIConfig For Course(course Code) : {
                 provider: 'groq',
                 model: window.env?.AI_MODEL || 'llama-3.1-8b-instant',
-                key: window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy')
+                key: window.env?.AI_API_KEY || ('gsk_71n Ddj9ca C9CGo XD0Qx SW' + 'Gdyb3FYct CCz V6YNHGz Ylj4O9Qpk Qcy')
             };
 
             // Group missed questions by topic if available
-            const topicGroups = {};
-            missed.forEach(m => {
-                if (!topicGroups[m.topic]) topicGroups[m.topic] = 0;
-                topicGroups[m.topic]++;
+            const topic Groups = {};
+            missed.for Each(m => {
+                if (!topic Groups[m.topic]) topic Groups[m.topic] = 0;
+                topic Groups[m.topic]++;
             });
 
-            const missedList = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
-            const topicSummary = Object.entries(topicGroups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
+            const missed List = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
+            const topic Summary = Object.entries(topic Groups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
 
-            const systemPrompt = `You are Renance AI, an academic tutor for FUTA students.
-The student just completed a ${courseCode} quiz and got ${missed.length} question(s) wrong out of ${currentExamData.length}.
+            const system Prompt = `You are Renance AI, an academic tutor for FUTA students.
+The student just completed a ${course Code} quiz and got ${missed.length} question(s) wrong out of ${current Exam Data.length}.
 
 Questions they got wrong:
-${missedList}
+${missed List}
 
-${topicSummary ? 'Breakdown by topic: ' + topicSummary : ''}
+${topic Summary ? 'Breakdown by topic: ' + topic Summary : ''}
 
 Identify 1-3 core topics/concepts the student should focus on revising.
 Respond in 2-4 short bullet points. Be specific and actionable.
@@ -1215,7 +1215,7 @@ Format: • Topic name — brief advice on what to study
 Keep it concise (under 100 words total).`;
 
             try {
-                let resultText = "";
+                let result Text = "";
                 const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: 'POST',
                     headers: {
@@ -1224,26 +1224,26 @@ Keep it concise (under 100 words total).`;
                     },
                     body: JSON.stringify({
                         model: config.model,
-                        messages: [{ role: "system", content: systemPrompt }],
+                        messages: [{ role: "system", content: system Prompt }],
                         temperature: 0.3
                     })
                 });
-                const resData = await response.json();
-                if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
-                resultText = resData.choices[0].message.content;
+                const res Data = await response.json();
+                if (!response.ok) throw new Error(res Data.error?.message || `HTTP ${response.status}`);
+                result Text = res Data.choices[0].message.content;
 
                 // Format the response
-                const formatted = resultText
+                const formatted = result Text
                     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                     .replace(/`(.*?)`/g, '<code>$1</code>')
                     .replace(/\n/g, '<br>');
-                textEl.innerHTML = formatted;
+                text El.inner HTML = formatted;
             } catch (err) {
                 // Fallback: show topic-based analysis without AI
-                if (topicSummary) {
-                    textEl.innerHTML = `Based on your missed questions, focus on: <br><strong>${topicSummary}</strong><br><br>Review these topics in your course materials and try again!`;
+                if (topic Summary) {
+                    text El.inner HTML = `Based on your missed questions, focus on: <br><strong>${topic Summary}</strong><br><br>Review these topics in your course materials and try again!`;
                 } else {
-                    textEl.innerHTML = `You missed ${missed.length} out of ${currentExamData.length} questions. Review the missed questions above and try again!`;
+                    text El.inner HTML = `You missed ${missed.length} out of ${current Exam Data.length} questions. Review the missed questions above and try again!`;
                 }
             }
         }

@@ -68,7 +68,7 @@
             border: 1.5px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-        .box:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(30,64,175,0.12); }
+        .box:hover { transform: translate Y(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(30,64,175,0.12); }
         .box h3 { margin: 10px 0 4px; font-size: 1rem; line-height: 1.4; }
         .box p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
         .box-random { background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; border: none !important; }
@@ -105,22 +105,22 @@
         .option-btn.correct  { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: 700; }
         .option-btn.wrong    { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
 
-        .feedback-msg { margin-top: 1.2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600; animation: fadeIn 0.3s; line-height: 1.6; }
+        .feedback-msg { margin-top: 1.2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600; animation: fade In 0.3s; line-height: 1.6; }
         .explanation-box { background: rgba(30,64,175,0.07); border-left: 4px solid var(--primary); padding: 1rem; border-radius: 6px; margin-top: 10px; font-weight: 400; font-size: 0.88rem; line-height: 1.6; color: var(--text); }
         .dark-mode .explanation-box { background: rgba(30,64,175,0.15); }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fade In { from { opacity: 0; transform: translate Y(8px); } to { opacity: 1; transform: translate Y(0); } }
 
         .controls { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 1.8rem; }
         .btn { padding: 0.8rem 1.6rem; border: none; border-radius: 9px; cursor: pointer; font-weight: 700; background: var(--primary); color: white; transition: opacity 0.2s, transform 0.2s; font-size: 0.95rem; }
-        .btn:hover { opacity: 0.88; transform: translateY(-2px); }
+        .btn:hover { opacity: 0.88; transform: translate Y(-2px); }
         .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
         
         .result-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.78); backdrop-filter: blur(8px); z-index: 9999; display: flex; justify-content: center; align-items: center; padding: 20px; }
-        .result-modal-content { background: var(--card-bg); padding: 40px 28px; border-radius: 24px; width: 100%; max-width: 420px; text-align: center; color: var(--text); box-shadow: 0 25px 60px rgba(0,0,0,0.45); animation: bounceIn 0.55s cubic-bezier(0.175,0.885,0.32,1.275); }
-        @keyframes bounceIn { 0% { opacity:0; transform:scale(0.78) translateY(30px); } 100% { opacity:1; transform:scale(1) translateY(0); } }
+        .result-modal-content { background: var(--card-bg); padding: 40px 28px; border-radius: 24px; width: 100%; max-width: 420px; text-align: center; color: var(--text); box-shadow: 0 25px 60px rgba(0,0,0,0.45); animation: bounce In 0.55s cubic-bezier(0.175,0.885,0.32,1.275); }
+        @keyframes bounce In { 0% { opacity:0; transform:scale(0.78) translate Y(30px); } 100% { opacity:1; transform:scale(1) translate Y(0); } }
         .result-icon { font-size: 3.6rem; margin-bottom: 8px; display: block; animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+        @keyframes float { 0%,100% { transform:translate Y(0); } 50% { transform:translate Y(-10px); } }
         .score-display { background: rgba(37,99,235,0.06); border: 2px dashed rgba(37,99,235,0.2); border-radius: 18px; padding: 18px; margin: 18px 0; }
         .score-big { font-size: 3.5rem; font-weight: 900; color: var(--primary); line-height: 1; }
         .stats-mini { display: flex; justify-content: center; gap: 24px; margin: 10px 0 4px; }
@@ -130,7 +130,7 @@
         #save-status { font-size: 0.78rem; color: var(--text-muted); margin: 8px 0 14px; }
         .result-actions { display: flex; flex-direction: column; gap: 11px; }
         .btn-action { width: 100%; padding: 13px; border: none; border-radius: 12px; font-size: 0.97rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s; display: flex; align-items: center; justify-content: center; gap: 9px; }
-        .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-action:hover { opacity: 0.9; transform: translate Y(-1px); }
         .btn-share  { background: var(--share-gradient); color: white; box-shadow: 0 4px 16px rgba(37,99,235,0.3); }
         .btn-review { background: rgba(30,64,175,0.08); color: var(--primary); border: 1.5px solid rgba(30,64,175,0.2); }
         .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
@@ -196,10 +196,10 @@
         </div>
 
         <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
-            <button class="btn" style="background:#64748b;" onclick="goHome()">
+            <button class="btn" style="background:#64748b;" onclick="go Home()">
                 <i class="fa-solid fa-arrow-left"></i> Back
             </button>
-            <button class="btn" onclick="startExam()" style="min-width:160px;">
+            <button class="btn" onclick="start Exam()" style="min-width:160px;">
                 Start Now <i class="fa-solid fa-arrow-right"></i>
             </button>
         </div>
@@ -209,10 +209,10 @@
         <div class="quiz-header">
             <span class="q-counter">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
             <div class="btn-group">
-                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding:8px 15px; font-size:0.87rem;" onclick="showResults()">
+                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding:8px 15px; font-size:0.87rem;" onclick="show Results()">
                     <i class="fa-solid fa-paper-plane"></i> Submit
                 </button>
-                <button class="btn" id="finish-review-btn" style="display:none; padding:8px 15px; font-size:0.87rem;" onclick="goHome()">
+                <button class="btn" id="finish-review-btn" style="display:none; padding:8px 15px; font-size:0.87rem;" onclick="go Home()">
                     <i class="fa-solid fa-house"></i> Exit Review
                 </button>
                 <span id="timer">30:00</span>
@@ -237,21 +237,21 @@
     </div>
 </main>
 
-<div id="quizResultModal" class="result-modal-overlay" style="display:none;">
+<div id="quiz Result Modal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
-        <span class="result-icon" id="resultIcon">ðŸ†</span>
-        <h2 id="resultGreeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
+        <span class="result-icon" id="result Icon">ðŸ†</span>
+        <h2 id="result Greeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
 
         <div class="score-display">
-            <div class="score-big"><span id="finalScoreText">0</span>%</div>
+            <div class="score-big"><span id="final Score Text">0</span>%</div>
             <div class="stats-mini">
-                <div class="sm"><div class="sv" id="modalCorrect">0</div><div class="sl">Correct</div></div>
-                <div class="sm"><div class="sv" id="modalTotal">0</div><div class="sl">Total</div></div>
-                <div class="sm"><div class="sv" id="modalAvg">â€”</div><div class="sl">Your Avg</div></div>
+                <div class="sm"><div class="sv" id="modal Correct">0</div><div class="sl">Correct</div></div>
+                <div class="sm"><div class="sv" id="modal Total">0</div><div class="sl">Total</div></div>
+                <div class="sm"><div class="sv" id="modal Avg">â€”</div><div class="sl">Your Avg</div></div>
             </div>
         </div>
 
-        <p id="resultFeedback" style="font-size:0.9rem; color:var(--text-muted); margin:0;"></p>
+        <p id="result Feedback" style="font-size:0.9rem; color:var(--text-muted); margin:0;"></p>
         <p id="save-status"></p>
 
         
@@ -266,21 +266,21 @@
 
                         <div class="result-actions">
 
-                    <button class="btn-action" id="weakAreasBtn" onclick="analyzeWeakAreasWithAI()" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
+                    <button class="btn-action" id="weak Areas Btn" onclick="analyze Weak Areas With AI()" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
                         <i class="fa-solid fa-brain"></i> Analyze My Weak Areas
                     </button>
 
-            <button class="btn-action" id="explainBtn" onclick="askRenanceAI()" style="background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; box-shadow: 0 4px 16px rgba(79,70,229,0.3);">
+            <button class="btn-action" id="explain Btn" onclick="ask Renance AI()" style="background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; box-shadow: 0 4px 16px rgba(79,70,229,0.3);">
                 <i class="fa-solid fa-robot"></i> Explain Missed Questions
             </button>
 
-            <button class="btn-action btn-share" onclick="shareQuizResult()">
+            <button class="btn-action btn-share" onclick="share Quiz Result()">
                 <i class="fa-solid fa-share-nodes"></i> Share Score
             </button>
-            <button class="btn-action btn-review" id="modalReviewBtn" onclick="enterReviewMode()">
+            <button class="btn-action btn-review" id="modal Review Btn" onclick="enter Review Mode()">
                 <i class="fa-solid fa-magnifying-glass"></i> Review Answers
             </button>
-            <button class="btn-action btn-home" onclick="goHome()">
+            <button class="btn-action btn-home" onclick="go Home()">
                 <i class="fa-solid fa-house"></i> Dashboard
             </button>
         </div>
@@ -290,21 +290,21 @@
 <script>
     
     const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
-    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
-    const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'ey Jhb Gci Oi JIUz I1Ni Is In R5c CI6Ikp XVCJ9.ey Jpc3Mi Oi Jzd XBh Ym Fz ZSIs In Jl Zi I6In Vie HN5d2F4ZHZra Glx ZXBjdm1x Iiwicm9s ZSI6Im Fub24i LCJp YXQi Oj E3Nz E5ODcw MDAs Im V4c CI6Mj A4Nz U2Mz Aw MH0.gk R3Aud3LRLNy Nwp DHJTT0v Ir WCn Qk SBk FSa Fj Q5qy4';
+    const db = supabase.create Client(SUPABASE_URL, SUPABASE_KEY);
     const COURSE_CODE = 'PHY 101';
     const STORAGE_KEY = 'saved_phy101_exam';
 
     
-    async function sendHeartbeat() {
+    async function send Heartbeat() {
         try {
-            const { data: { user } } = await db.auth.getUser();
+            const { data: { user } } = await db.auth.get User();
             if (!user) return;
-            await db.from('students').update({ last_seen: new Date().toISOString() }).eq('id', user.id);
+            await db.from('students').update({ last_seen: new Date().to ISOString() }).eq('id', user.id);
         } catch (e) { }
     }
-    sendHeartbeat();
-    setInterval(sendHeartbeat, 2 * 60 * 1000);
+    send Heartbeat();
+    set Interval(send Heartbeat, 2 * 60 * 1000);
 
     
     const MASTER_POOL = [
@@ -333,7 +333,7 @@
 { "id": 25, "topic": "Universal Gravitation", "question": "Below the earth's surface, the acceleration due to gravity decreases linearly with", "options": ["density", "depth", "height", "None of these"], "answer": "depth", "explanation": "Inside the earth, gravity decreases because only the mass within the sphere below you exerts a net pull." },
 { "id": 26, "topic": "Work and energy", "question": "Which of the following is not a fundamental force", "options": ["gravitational", "electroweak", "strong", "minute"], "answer": "minute", "explanation": "The four fundamental forces are gravity, electromagnetism, the weak force, and the strong force." },
 { "id": 27, "topic": "Universal Gravitation", "question": "The acceleration due to gravity vary from location to location because of the effect of earth's", "options": ["rotation", "radius", "weight", "mass"], "answer": "rotation", "explanation": "Earth's rotation creates centrifugal effects that reduce apparent gravity, most notably at the equator." },
-{ "id": 28, "topic": "Universal Gravitation", "question": "The âˆš2gR is known as the", "options": ["uniform velocity", "escape velocity", "fixed velocity", "constant velocity"], "answer": "escape velocity", "explanation": "This is the formula for calculating the escape velocity from a celestial body of radius R." },
+{ "id": 28, "topic": "Universal Gravitation", "question": "The âˆš2g R is known as the", "options": ["uniform velocity", "escape velocity", "fixed velocity", "constant velocity"], "answer": "escape velocity", "explanation": "This is the formula for calculating the escape velocity from a celestial body of radius R." },
 { "id": 29, "topic": "Universal Gravitation", "question": "The height of the parking orbit above the surface of the earth is given by", "options": ["h=R+r", "h=R-V", "h=R-r", "h=r-R"], "answer": "h=r-R", "explanation": "The height h is the difference between the orbital radius r and the Earth's radius R." },
 { "id": 31, "topic": "Universal Gravitation", "question": "The velocity of orbiting satellite is given by", "options": ["âˆš2gr", "VGM", "r/t", "âˆšGM/r"], "answer": "âˆšGM/r", "explanation": "The orbital velocity is determined by the gravitational constant, the mass of the planet, and the radius of the orbit." },
 { "id": 32, "topic": "Universal Gravitation", "question": "The gravitational force on a satellite produces the centripetal acceleration that keeps the satellite in", "options": ["orbit", "constant position", "radial path", "freefall"], "answer": "orbit", "explanation": "Gravity acts as the centripetal force necessary to keep a satellite moving in a circular path around a body." },
@@ -352,18 +352,18 @@
 { "id": 47, "topic": "Kinematics", "question": "A car that takes 2hrs to travel a distance of 200km is said to have an average speed of", "options": ["100km/hr", "10km/hr", "1000km/hr", "10,000km/hr"], "answer": "100km/hr", "explanation": "Average speed = Total distance / Total time = 200km / 2hr = 100km/hr." },
 { "id": 48, "topic": "Kinematics", "question": "If you run a distance of 240m in 20sec then your average speed is", "options": ["6m/s", "12m/s", "16m/s", "20m/s"], "answer": "12m/s", "explanation": "Average speed = 240m / 20s = 12m/s." },
 { "id": 49, "topic": "Vectors", "question": "Which of the following is a vector quantity?", "options": ["distance", "speed", "temperature", "displacement"], "answer": "displacement", "explanation": "Displacement has both magnitude (distance) and a specific direction." },
-{ "id": 50, "topic": "Quantities, Units and Dimensions", "question": "The velocity V of a transverse wave along a stretched string depends on stress P and density D. Find x and y in V=kP^x D^y", "options": ["x=1; y=2", "x=1/2; y=-1/2", "x=1; y=1/2", "x=1; y=0"], "answer": "x=1/2; y=-1/2", "explanation": "Dimensional analysis shows velocity is proportional to the square root of tension (stress) divided by density." },
+{ "id": 50, "topic": "Quantities, Units and Dimensions", "question": "The velocity V of a transverse wave along a stretched string depends on stress P and density D. Find x and y in V=k P^x D^y", "options": ["x=1; y=2", "x=1/2; y=-1/2", "x=1; y=1/2", "x=1; y=0"], "answer": "x=1/2; y=-1/2", "explanation": "Dimensional analysis shows velocity is proportional to the square root of tension (stress) divided by density." },
 { "id": 51, "topic": "Quantities, Units and Dimensions", "question": "Which of the following is the correct combination of dimensions for energy?", "options": ["MLT", "LTÂ²/M", "MLÂ²/TÂ²", "MÂ²LÂ³T"], "answer": "MLÂ²/TÂ²", "explanation": "Energy (Work) = Force (MLTâ»Â²) Ã— Distance (L) = MLÂ²Tâ»Â²." },
 { "id": 52, "topic": "Quantities, Units and Dimensions", "question": "Suppose A= BCâ¿ where A is LT, B is LÂ²Tâ»Â¹ and C is LTÂ². What is the value of n?", "options": ["2/3", "2", "4/5", "1/5"], "answer": "2/3", "explanation": "Equating the dimensions of both sides allows you to solve for the exponent n." },
 { "id": 53, "topic": "Vectors", "question": "The pair of physical quantities that are scalar only are:", "options": ["Volume and area", "Moment and momentum", "Light and displacement", "None of the above"], "answer": "Volume and area", "explanation": "Volume and area have magnitude but no specific direction in space." },
-{ "id": 54, "topic": "Quantities, Units and Dimensions", "question": "In v=kF^x Î¼^y, where F is tension and Î¼ is mass per unit length, the values of x and y are:", "options": ["2 and 4", "-1/2 and 1/2", "1/2 and -1/2", "2 and 1/2"], "answer": "1/2 and -1/2", "explanation": "Velocity of a wave on a string is âˆš(F/Î¼), so F is to the power of 1/2 and Î¼ to the power of -1/2." },
+{ "id": 54, "topic": "Quantities, Units and Dimensions", "question": "In v=k F^x Î¼^y, where F is tension and Î¼ is mass per unit length, the values of x and y are:", "options": ["2 and 4", "-1/2 and 1/2", "1/2 and -1/2", "2 and 1/2"], "answer": "1/2 and -1/2", "explanation": "Velocity of a wave on a string is âˆš(F/Î¼), so F is to the power of 1/2 and Î¼ to the power of -1/2." },
 { "id": 55, "topic": "Quantities, Units and Dimensions", "question": "Which expression represents the dimensional relationship for velocity V of a wave on a string?", "options": ["V âˆ Fâ»Ë£ lÊ¸ mâ»á¶»", "V âˆ FË£ lÊ¸ má¶»", "V âˆ Fâ»Ë£ lâ»Ê¸ mâ»á¶»", "V âˆ FË£ lâ»Ê¸ má¶»"], "answer": "V âˆ FË£ lÊ¸ má¶»", "explanation": "This represents the general power-law form used in dimensional analysis." },
 { "id": 56, "topic": "Vectors", "question": "Find the magnitude of C = 4A + 3B where A=10i+3j+7k and B=6i-9j+4k.", "options": ["58i-39j+40k", "58i-15j+40k", "22i-15j+40k", "58i-15j+16k"], "answer": "58i-15j+40k", "explanation": "4(10i+3j+7k) + 3(6i-9j+4k) = (40+18)i + (12-27)j + (28+12)k = 58i-15j+40k." },
 { "id": 57, "topic": "Vectors", "question": "Find the vector 3D-E where D=6i+3j-k and E=4i-5j+8k.", "options": ["14i+14j-11k", "22i+14j-11k", "14i+4j-11k", "22i+4j+11k"], "answer": "14i+14j-11k", "explanation": "3(6i+3j-k) - (4i-5j+8k) = (18-4)i + (9+5)j + (-3-8)k = 14i+14j-11k." },
 { "id": 58, "topic": "Vectors", "question": "Two vectors of 10 N and 20 N are inclined at 60Â°. Find the resultant vector magnitude.", "options": ["30.00N", "10.00N", "17.32N", "26.46N"], "answer": "26.46N", "explanation": "R = âˆš(10Â² + 20Â² + 2*10*20*cos60) = âˆš(100 + 400 + 200) = âˆš700 â‰ˆ 26.46N." },
 { "id": 59, "topic": "Work and energy", "question": "If force F=2i+3k and distance d=4i-2j+2k. Find the work done W=F.d", "options": ["12J", "14J", "10J", "17J"], "answer": "14J", "explanation": "W = (2*4) + (0*-2) + (3*2) = 8 + 0 + 6 = 14J." },
-{ "id": 60, "topic": "Vectors", "question": "If P=3i+4j-6k and Q=4i+5k. Find PxQ", "options": ["20i-9j-16k", "20i+9j-16k", "20i-39j-16k", "20i-39j+16k"], "answer": "20i-39j-16k", "explanation": "Calculated using the determinant of the unit vectors i, j, k and the vector components." },
-{ "id": 61, "topic": "Vectors", "question": "If vectors A and B are (2i+4j) and (5j+3k) respectively. Find AxB", "options": ["12i+6j-10k", "12i-6j+10k", "12i-6j-10k", "12i-6j+10k"], "answer": "12i-6j+10k", "explanation": "Cross product calculated as the determinant of the matrix formed by unit vectors and vector components." },
+{ "id": 60, "topic": "Vectors", "question": "If P=3i+4j-6k and Q=4i+5k. Find Px Q", "options": ["20i-9j-16k", "20i+9j-16k", "20i-39j-16k", "20i-39j+16k"], "answer": "20i-39j-16k", "explanation": "Calculated using the determinant of the unit vectors i, j, k and the vector components." },
+{ "id": 61, "topic": "Vectors", "question": "If vectors A and B are (2i+4j) and (5j+3k) respectively. Find Ax B", "options": ["12i+6j-10k", "12i-6j+10k", "12i-6j-10k", "12i-6j+10k"], "answer": "12i-6j+10k", "explanation": "Cross product calculated as the determinant of the matrix formed by unit vectors and vector components." },
 { "id": 62, "topic": "Vectors", "question": "The magnitude of a vector with components 10m (+x), 10m (+y), and 5m (+z) is:", "options": ["zero", "15 m", "20 m", "25 m"], "answer": "15 m", "explanation": "Magnitude = âˆš(10Â² + 10Â² + 5Â²) = âˆš(100 + 100 + 25) = âˆš225 = 15m." },
 { "id": 63, "topic": "Vectors", "question": "Given two vectors P=i-3j+4k and Q=2i+j+k. The dot product P.Q is:", "options": ["3", "4", "5", "3"], "answer": "3", "explanation": "P.Q = (1*2) + (-3*1) + (4*1) = 2 - 3 + 4 = 3." },
 { "id": 64, "topic": "Kinematics", "question": "Which of the following is the unit of impulse?", "options": ["N/m", "Ns", "N/s", "kgm/sÂ²"], "answer": "Ns", "explanation": "Impulse is Force (N) multiplied by time (s), giving Newton-seconds (Ns)." },
@@ -386,7 +386,7 @@
 { "id": 83, "topic": "Work and energy", "question": "Which material has the highest Young's modulus?", "options": ["Rubber", "Steel", "Wood", "Plastic"], "answer": "Steel", "explanation": "Steel is much stiffer and resists deformation more than the other listed materials." },
 { "id": 84, "topic": "Universal Gravitation", "question": "Capillarity is due to:", "options": ["Surface tension", "Viscosity", "Gravity", "Density"], "answer": "Surface tension", "explanation": "Capillary action results from the combination of surface tension and adhesive forces between the liquid and the tube." },
 { "id": 85, "topic": "Work and energy", "question": "The work done in a closed path in a conservative field is:", "options": ["Maximum", "Zero", "Minimum", "Infinite"], "answer": "Zero", "explanation": "In a conservative field (like gravity), the work done depends only on the start and end points; if they are the same, work is zero." },
-{ "id": 86, "topic": "Work and energy", "question": "Kilowatt-hour is a unit of:", "options": ["Power", "Energy", "Force", "Time"], "answer": "Energy", "explanation": "kWh is Power (kW) multiplied by time (h), which equals energy consumed." },
+{ "id": 86, "topic": "Work and energy", "question": "Kilowatt-hour is a unit of:", "options": ["Power", "Energy", "Force", "Time"], "answer": "Energy", "explanation": "k Wh is Power (k W) multiplied by time (h), which equals energy consumed." },
 { "id": 87, "topic": "Kinematics", "question": "The angle of projection for maximum range is:", "options": ["30 degrees", "45 degrees", "60 degrees", "90 degrees"], "answer": "45 degrees", "explanation": "At 45Â°, the sine of twice the angle (sin 2Î¸) is maximized at 1." },
 { "id": 88, "topic": "Kinematics", "question": "Simple harmonic motion is a type of:", "options": ["Circular motion", "Periodic motion", "Linear motion", "Random motion"], "answer": "Periodic motion", "explanation": "SHM is a repetitive movement back and forth through an equilibrium position, making it periodic." },
 { "id": 90, "topic": "Rotational Dynamics of Rigid Bodies", "question": "Moment of inertia depends on:", "options": ["Mass only", "Distribution of mass", "Angular velocity", "None of these"], "answer": "Distribution of mass", "explanation": "It depends on how far the mass is distributed from the axis of rotation." },
@@ -515,13 +515,13 @@
 { "id": 217, "topic": "Universal Gravitation", "question": "The weight of an object on the Moon is strictly:", "options": ["1/6 its weight on Earth", "1/4 its weight on Earth", "Equal to its weight on Earth", "Zero"], "answer": "1/6 its weight on Earth", "explanation": "The Moon's surface gravity is approximately 1/6th that of Earth's gravity." },
 { "id": 218, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The work done by a constant torque Ï„ in turning a body through an angle Î¸ is:", "options": ["Ï„/Î¸", "Ï„Î¸", "1/2 Ï„Î¸", "Ï„Î¸Â²"], "answer": "Ï„Î¸", "explanation": "This is the rotational analog of linear work W = Fs." },
 { "id": 219, "topic": "Kinematics", "question": "In a parabolic trajectory, the speed of the projectile is minimum at:", "options": ["The launch point", "The landing point", "The highest point", "Mid-way to peak"], "answer": "The highest point", "explanation": "At the peak, vertical velocity is zero, so speed equals only the horizontal component (u cos Î¸)." },
-{ "id": 220, "topic": "Work and energy", "question": "One electron-volt (eV) is a unit of:", "options": ["Potential", "Charge", "Energy", "Power"], "answer": "Energy", "explanation": "1 eV is the energy gained by an electron accelerating through a potential of 1 volt." },
+{ "id": 220, "topic": "Work and energy", "question": "One electron-volt (e V) is a unit of:", "options": ["Potential", "Charge", "Energy", "Power"], "answer": "Energy", "explanation": "1 e V is the energy gained by an electron accelerating through a potential of 1 volt." },
 { "id": 221, "topic": "Universal Gravitation", "question": "Which of Kepler's laws is a consequence of the conservation of angular momentum?", "options": ["Law of Orbits", "Law of Areas", "Law of Periods", "Law of Gravitation"], "answer": "Law of Areas", "explanation": "Kepler's Second Law describes equal areas being swept in equal times due to constant angular momentum." },
 { "id": 222, "topic": "Kinematics", "question": "A bullet is fired into a wooden block and remains embedded. This is an example of:", "options": ["Elastic collision", "Inelastic collision", "Perfectly inelastic collision", "Partial collision"], "answer": "Perfectly inelastic collision", "explanation": "Collisions where objects stick together lose the maximum kinetic energy possible." },
 { "id": 223, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The SI unit of torque is:", "options": ["N/m", "Nm", "J/s", "kgm/s"], "answer": "Nm", "explanation": "Torque is Force Ã— Perpendicular distance (Newton-meters)." },
 { "id": 224, "topic": "Vectors", "question": "A vector that has its starting point at the origin is called a:", "options": ["Null vector", "Unit vector", "Position vector", "Free vector"], "answer": "Position vector", "explanation": "A position vector specifies the location of a point relative to the origin." },
 { "id": 225, "topic": "Quantities, Units and Dimensions", "question": "The dimension of the coefficient of viscosity is:", "options": ["MLâ»Â¹Tâ»Â¹", "MLTâ»Â¹", "MLâ»Â¹Tâ»Â²", "Mâ»Â¹LTâ»Â¹"], "answer": "MLâ»Â¹Tâ»Â¹", "explanation": "Derived from Î· = F / (A * dv/dx) = [MLTâ»Â²] / ([LÂ²][Tâ»Â¹]) = MLâ»Â¹Tâ»Â¹." },
-{ "id": 226, "topic": "Work and energy", "question": "The potential energy of a simple harmonic oscillator at its mean position is:", "options": ["Maximum", "Zero", "1/2 kAÂ²", "mgh"], "answer": "Zero", "explanation": "At the mean position (x=0), the displacement-based potential energy 1/2 kxÂ² is zero." },
+{ "id": 226, "topic": "Work and energy", "question": "The potential energy of a simple harmonic oscillator at its mean position is:", "options": ["Maximum", "Zero", "1/2 k AÂ²", "mgh"], "answer": "Zero", "explanation": "At the mean position (x=0), the displacement-based potential energy 1/2 kxÂ² is zero." },
 { "id": 227, "topic": "Kinematics", "question": "The relative velocity of A with respect to B, where both move in the same direction, is:", "options": ["v_A + v_B", "v_A - v_B", "v_B - v_A", "v_A * v_B"], "answer": "v_A - v_B", "explanation": "For same-direction motion, the relative speed is the difference between the individual speeds." },
 { "id": 228, "topic": "Universal Gravitation", "question": "The period of a geostationary satellite is:", "options": ["12 hours", "24 hours", "90 minutes", "1 month"], "answer": "24 hours", "explanation": "It must match the Earth's rotation period to remain stationary relative to the surface." },
 { "id": 229, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The rotational inertia of a solid sphere of mass M and radius R about its diameter is:", "options": ["2/3 MRÂ²", "1/2 MRÂ²", "2/5 MRÂ²", "MRÂ²"], "answer": "2/5 MRÂ²", "explanation": "This is the standard derived result for a solid uniform sphere." },
@@ -534,7 +534,7 @@
 { "id": 236, "topic": "Work and energy", "question": "Spring constant k has dimensions of:", "options": ["MLTâ»Â²", "MTâ»Â²", "MLÂ²Tâ»Â²", "MLTâ»Â¹"], "answer": "MTâ»Â²", "explanation": "k = Force/Extension = [MLTâ»Â²]/[L] = MTâ»Â²." },
 { "id": 237, "topic": "Vectors", "question": "The projection of A on B is given by:", "options": ["AÂ·B", "(AÂ·B)/|B|", "(AÂ·B)/|A|", "|AÃ—B|"], "answer": "(AÂ·B)/|B|", "explanation": "The scalar projection is A cos Î¸, which is (AÂ·B)/|B|." },
 { "id": 238, "topic": "Kinematics", "question": "For a projectile, the maximum horizontal range R is given by:", "options": ["uÂ²/g", "u/g", "uÂ²/2g", "2u/g"], "answer": "uÂ²/g", "explanation": "R = (uÂ² sin 2Î¸)/g. For Î¸ = 45Â°, sin 90Â° = 1, so R = uÂ²/g." },
-{ "id": 239, "topic": "Work and energy", "question": "Kilowatt-hour (kWh) is a unit of:", "options": ["Power", "Force", "Energy", "Time"], "answer": "Energy", "explanation": "Power Ã— Time = Energy. 1 kWh = 3.6 Ã— 10â¶ J." },
+{ "id": 239, "topic": "Work and energy", "question": "Kilowatt-hour (k Wh) is a unit of:", "options": ["Power", "Force", "Energy", "Time"], "answer": "Energy", "explanation": "Power Ã— Time = Energy. 1 k Wh = 3.6 Ã— 10â¶ J." },
 { "id": 240, "topic": "Quantities, Units and Dimensions", "question": "The dimensions of pressure are strictly the same as:", "options": ["Force per unit length", "Energy per unit volume", "Momentum per unit time", "Force per unit mass"], "answer": "Energy per unit volume", "explanation": "Energy/Volume = [MLÂ²Tâ»Â²]/[LÂ³] = MLâ»Â¹Tâ»Â², which matches pressure." },
 { "id": 241, "topic": "Universal Gravitation", "question": "The intensity of gravitational field inside a hollow spherical shell is:", "options": ["g", "GM/RÂ²", "Zero", "Infinite"], "answer": "Zero", "explanation": "Gravitational forces from the shell cancel out completely at any point inside." },
 { "id": 242, "topic": "Rotational Dynamics of Rigid Bodies", "question": "Angular acceleration Î± relates to tangential acceleration a_t by:", "options": ["a_t = rÎ±", "a_t = rÂ²Î±", "a_t = Î±/r", "a_t = r/Î±"], "answer": "a_t = rÎ±", "explanation": "Tangential acceleration is the radius times the angular acceleration." },
@@ -581,12 +581,12 @@
 { "id": 283, "topic": "Vectors", "question": "The cross product j x i is equal to:", "options": ["k", "-k", "0", "1"], "answer": "-k", "explanation": "By the cyclic rule (iâ†’jâ†’k), j x i is in the reverse order, making it negative." },
 { "id": 284, "topic": "Universal Gravitation", "question": "The gravitational potential at infinity is taken as:", "options": ["Maximum", "Minimum", "Zero", "9.8"], "answer": "Zero", "explanation": "This is the standard scientific convention for setting the reference point of potential energy." },
 { "id": 285, "topic": "Work and energy", "question": "A machine does 500 J of work in 10 s. Its power is:", "options": ["5000 W", "50 W", "5 W", "500 W"], "answer": "50 W", "explanation": "P = W / t = 500 / 10 = 50 Watts." },
-{ "id": 286, "topic": "Rotational Dynamics of Rigid Bodies", "question": "Torque is maximum when the force is applied ______ to the position vector.", "options": ["Parallel", "Perpendicular", "At 45Â°", "Antiparallel"], "answer": "Perpendicular", "explanation": "Ï„ = rF sin Î¸. sin Î¸ is maximum at 90Â°." },
+{ "id": 286, "topic": "Rotational Dynamics of Rigid Bodies", "question": "Torque is maximum when the force is applied ______ to the position vector.", "options": ["Parallel", "Perpendicular", "At 45Â°", "Antiparallel"], "answer": "Perpendicular", "explanation": "Ï„ = r F sin Î¸. sin Î¸ is maximum at 90Â°." },
 { "id": 287, "topic": "Kinematics", "question": "The maximum height of a projectile is attained when Î¸ is:", "options": ["0Â°", "45Â°", "90Â°", "60Â°"], "answer": "90Â°", "explanation": "H = uÂ² sinÂ² Î¸ / 2g. To maximize height, the object should be thrown straight up (90Â°)." },
 { "id": 288, "topic": "Quantities, Units and Dimensions", "question": "Which of these is a dimensionless quantity?", "options": ["Density", "Velocity", "Refractive Index", "Acceleration"], "answer": "Refractive Index", "explanation": "It is the ratio of speeds (c/v), so all units cancel out." },
 { "id": 289, "topic": "Vectors", "question": "If A = 3i and B = 4j, the magnitude of A + B is:", "options": ["7", "1", "5", "12"], "answer": "5", "explanation": "Magnitude = sqrt(3Â² + 4Â²) = sqrt(25) = 5 (3-4-5 triangle)." },
 { "id": 290, "topic": "Universal Gravitation", "question": "The speed of a satellite in orbit depends on:", "options": ["Mass of satellite", "Mass of planet", "Radius of orbit", "Both B and C"], "answer": "Both B and C", "explanation": "V = sqrt(GM/r). It depends on the planet's mass M and the distance r." },
-{ "id": 291, "topic": "Work and energy", "question": "Which of the following is equal to 1 kWh?", "options": ["3.6 * 10â¶ J", "1000 J", "3600 J", "3.6 * 10Â³ J"], "answer": "3.6 * 10â¶ J", "explanation": "1 kWh = 1000 W * 3600 s = 3,600,000 Joules." },
+{ "id": 291, "topic": "Work and energy", "question": "Which of the following is equal to 1 k Wh?", "options": ["3.6 * 10â¶ J", "1000 J", "3600 J", "3.6 * 10Â³ J"], "answer": "3.6 * 10â¶ J", "explanation": "1 k Wh = 1000 W * 3600 s = 3,600,000 Joules." },
 { "id": 292, "topic": "Rotational Dynamics of Rigid Bodies", "question": "If no external torque acts, the ______ of the system remains constant.", "options": ["Kinetic Energy", "Angular Momentum", "Angular Velocity", "Moment of Inertia"], "answer": "Angular Momentum", "explanation": "This is the Law of Conservation of Angular Momentum (L_initial = L_final)." },
 { "id": 293, "topic": "Kinematics", "question": "For a body moving with constant velocity, the acceleration is strictly:", "options": ["Constant", "Zero", "Increasing", "Negative"], "answer": "Zero", "explanation": "Acceleration is the change in velocity; if there is no change, acceleration must be zero." },
 { "id": 294, "topic": "Quantities, Units and Dimensions", "question": "The dimension of surface tension is same as:", "options": ["Force", "Spring constant", "Pressure", "Torque"], "answer": "Spring constant", "explanation": "Both have dimension [MTâ»Â²] (Force per length)." },
@@ -629,9 +629,9 @@
 { "id": 331, "topic": "Kinematics", "question": "The range of a projectile is same for angles Î¸ and:", "options": ["2Î¸", "90Â° - Î¸", "Î¸/2", "180Â° - Î¸"], "answer": "90Â° - Î¸", "explanation": "Complementary angles (e.g., 30Â° and 60Â°) yield the same horizontal range for the same launch speed." },
 { "id": 332, "topic": "Quantities, Units and Dimensions", "question": "Dimensions of Stress are strictly:", "options": ["MLTâ»Â²", "MLâ»Â¹Tâ»Â²", "MLÂ²Tâ»Â²", "MLTâ»Â¹"], "answer": "MLâ»Â¹Tâ»Â²", "explanation": "Stress = Force / Area = [MLTâ»Â²]/[LÂ²] = MLâ»Â¹Tâ»Â²." },
 { "id": 333, "topic": "Vectors", "question": "If the angle between vectors is 0Â°, their cross product magnitude is:", "options": ["AB", "1", "Zero", "sqrt(AB)"], "answer": "Zero", "explanation": "sin 0Â° = 0, which makes the magnitude of the cross product zero." },
-{ "id": 334, "topic": "Work and energy", "question": "A 1000 W engine operates for 1 hour. The energy consumed is:", "options": ["1000 J", "3.6 * 10â¶ J", "3600 J", "60 J"], "answer": "3.6 * 10â¶ J", "explanation": "E = P * t = 1000 W * 3600 s = 3,600,000 J (or 1 kWh)." },
+{ "id": 334, "topic": "Work and energy", "question": "A 1000 W engine operates for 1 hour. The energy consumed is:", "options": ["1000 J", "3.6 * 10â¶ J", "3600 J", "60 J"], "answer": "3.6 * 10â¶ J", "explanation": "E = P * t = 1000 W * 3600 s = 3,600,000 J (or 1 k Wh)." },
 { "id": 335, "topic": "Universal Gravitation", "question": "The escape velocity on Moon is lower than on Earth because Moon has:", "options": ["No atmosphere", "Lower mass and radius", "Higher radius", "No water"], "answer": "Lower mass and radius", "explanation": "V = sqrt(2GM/R). Smaller M and R result in a lower escape speed." },
-{ "id": 336, "topic": "Rotational Dynamics of Rigid Bodies", "question": "Angular momentum is conserved when net ______ is zero.", "options": ["Force", "Velocity", "Torque", "Mass"], "answer": "Torque", "explanation": "If Î£Ï„ = 0, then dL/dt = 0, meaning L remains constant." },
+{ "id": 336, "topic": "Rotational Dynamics of Rigid Bodies", "question": "Angular momentum is conserved when net ______ is zero.", "options": ["Force", "Velocity", "Torque", "Mass"], "answer": "Torque", "explanation": "If Î£Ï„ = 0, then d L/dt = 0, meaning L remains constant." },
 { "id": 337, "topic": "Kinematics", "question": "Average speed is always ______ the magnitude of average velocity.", "options": ["Less than", "Greater than or equal to", "Equal to", "Exactly half of"], "answer": "Greater than or equal to", "explanation": "Speed considers total path length, while velocity only considers the straight-line displacement." },
 { "id": 338, "topic": "Quantities, Units and Dimensions", "question": "The dimensional formula for Torque is same as that of:", "options": ["Force", "Power", "Work", "Impulse"], "answer": "Work", "explanation": "Both have dimensions [MLÂ²Tâ»Â²]. Torque is r * F, Work is F * d." },
 { "id": 339, "topic": "Vectors", "question": "Vector addition is commutative, meaning:", "options": ["A + B = B + A", "A - B = B - A", "A x B = B x A", "AÂ·B = 0"], "answer": "A + B = B + A", "explanation": "The order of addition does not change the final resultant vector." },
@@ -647,24 +647,24 @@
 { "id": 349, "topic": "Kinematics", "question": "A car covers 1/3 distance at 10 km/h, 1/3 at 20 km/h and 1/3 at 60 km/h. Average speed is:", "options": ["30 km/h", "18 km/h", "20 km/h", "25 km/h"], "answer": "18 km/h", "explanation": "Average speed = Total distance / Total time. Calculating harmonic mean: 3 / (1/10 + 1/20 + 1/60) = 18 km/h." },
 { "id": 350, "topic": "Quantities, Units and Dimensions", "question": "Which of these quantities has the same unit as Power?", "options": ["Work / Time", "Force * Velocity", "Energy / Time", "All of the above"], "answer": "All of the above", "explanation": "These are all equivalent definitions of Power." },
 { "id": 351, "topic": "Rotational Dynamics of Rigid Bodies", "question": "A solid cylinder of mass M and radius R rolls down an incline of angle Î¸ without slipping. The minimum coefficient of static friction Î¼ required is:", "options": ["(1/3) tan Î¸", "(2/3) tan Î¸", "tan Î¸", "(1/2) tan Î¸"], "answer": "(1/3) tan Î¸", "explanation": "For a solid cylinder, I = 1/2 MRÂ². The required friction to maintain pure rolling is (1/3) Mg sin Î¸, so Î¼ â‰¥ (1/3) tan Î¸." },
-{ "id": 352, "topic": "Rotational Dynamics of Rigid Bodies", "question": "A uniform rod of length L is pivoted at one end and released from a horizontal position. Its initial angular acceleration is:", "options": ["3g/2L", "g/L", "2g/3L", "3g/L"], "answer": "3g/2L", "explanation": "Torque Ï„ = Mg(L/2) and I = MLÂ²/3. Î± = Ï„/I = (MgL/2) / (MLÂ²/3) = 3g/2L." },
+{ "id": 352, "topic": "Rotational Dynamics of Rigid Bodies", "question": "A uniform rod of length L is pivoted at one end and released from a horizontal position. Its initial angular acceleration is:", "options": ["3g/2L", "g/L", "2g/3L", "3g/L"], "answer": "3g/2L", "explanation": "Torque Ï„ = Mg(L/2) and I = MLÂ²/3. Î± = Ï„/I = (Mg L/2) / (MLÂ²/3) = 3g/2L." },
 { "id": 353, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The angular momentum of a planet of mass m orbiting in a circle of radius r with speed v is:", "options": ["mvr", "mvÂ²/r", "1/2 mvr", "mrÂ²v"], "answer": "mvr", "explanation": "Angular momentum L = r Ã— p. Since v is perpendicular to r in a circular orbit, L = rmv." },
 { "id": 354, "topic": "Rotational Dynamics of Rigid Bodies", "question": "A rotating disk has its angular velocity increased from Ï‰ to 3Ï‰ while its moment of inertia is kept constant. Its rotational kinetic energy increases by a factor of:", "options": ["3", "6", "9", "12"], "answer": "9", "explanation": "K.E = 1/2 IÏ‰Â². If Ï‰ increases by a factor of 3, Ï‰Â² increases by a factor of 3Â² = 9." },
 { "id": 355, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The theorem that relates the moment of inertia of a 2D planar object about a perpendicular axis to the sum of its moments about two orthogonal in-plane axes is:", "options": ["Parallel Axis Theorem", "Perpendicular Axes Theorem", "Steiner's Theorem", "Pappus's Theorem"], "answer": "Perpendicular Axes Theorem", "explanation": "Iz = Ix + Iy, valid strictly for 2D plane laminas." },
-{ "id": 356, "topic": "Rotational Dynamics of Rigid Bodies", "question": "If the net torque acting on a completely isolated system is zero, which quantity is strictly conserved?", "options": ["Linear momentum", "Rotational kinetic energy", "Angular momentum", "Mechanical energy"], "answer": "Angular momentum", "explanation": "Ï„ = dL/dt. If Ï„ = 0, then L must be constant." },
+{ "id": 356, "topic": "Rotational Dynamics of Rigid Bodies", "question": "If the net torque acting on a completely isolated system is zero, which quantity is strictly conserved?", "options": ["Linear momentum", "Rotational kinetic energy", "Angular momentum", "Mechanical energy"], "answer": "Angular momentum", "explanation": "Ï„ = d L/dt. If Ï„ = 0, then L must be constant." },
 { "id": 357, "topic": "Rotational Dynamics of Rigid Bodies", "question": "A solid sphere and a hollow sphere of the same mass and radius are spinning with the exact same angular momentum. Which has the greater rotational kinetic energy?", "options": ["The solid sphere", "The hollow sphere", "They have exactly the same", "Depends on mass"], "answer": "The solid sphere", "explanation": "K.E = LÂ² / 2I. The solid sphere has a smaller moment of inertia (2/5 MRÂ² vs 2/3 MRÂ²), giving it a larger kinetic energy." },
 { "id": 358, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The mathematically exact formula for torque Ï„ is:", "options": ["r Ã— F", "F Ã— r", "r Â· F", "IÏ‰"], "answer": "r Ã— F", "explanation": "Torque is strictly defined as the cross product of the position vector and the force vector." },
 { "id": 359, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The moment of inertia of a solid uniform sphere of mass M and radius R spinning about its diameter is:", "options": ["2/5 MRÂ²", "2/3 MRÂ²", "1/2 MRÂ²", "MRÂ²"], "answer": "2/5 MRÂ²", "explanation": "This is the standard integrated result for a solid sphere." },
 { "id": 360, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The moment of inertia of a thin hollow spherical shell of mass M and radius R about its diameter is:", "options": ["2/5 MRÂ²", "2/3 MRÂ²", "1/2 MRÂ²", "MRÂ²"], "answer": "2/3 MRÂ²", "explanation": "Since mass is distributed further from the axis on average compared to a solid sphere, its rotational inertia is higher (2/3 vs 2/5)." },
 { "id": 361, "topic": "Universal Gravitation", "question": "The gravitational potential V at a distance r from a point mass M is strictly defined as:", "options": ["-GM/r", "GM/r", "-GM/rÂ²", "GM/rÂ²"], "answer": "-GM/r", "explanation": "Gravitational potential is zero at infinity and negative everywhere in the field, representing the work done per unit mass." },
-{ "id": 362, "topic": "Universal Gravitation", "question": "The relation between gravitational field intensity E and gravitational potential V is exactly:", "options": ["E = -dV/dr", "E = dV/dr", "V = -dE/dr", "E = V/r"], "answer": "E = -dV/dr", "explanation": "The field is the negative spatial gradient of the potential." },
-{ "id": 363, "topic": "Universal Gravitation", "question": "The speed of a satellite orbiting very close to the Earth's surface (radius R) is approximately:", "options": ["âˆš(gR)", "âˆš(2gR)", "gR", "2gR"], "answer": "âˆš(gR)", "explanation": "Equating centripetal force to gravitational force at the surface yields v = âˆš(GM/R), and since g = GM/RÂ², v = âˆš(gR)." },
+{ "id": 362, "topic": "Universal Gravitation", "question": "The relation between gravitational field intensity E and gravitational potential V is exactly:", "options": ["E = -d V/dr", "E = d V/dr", "V = -d E/dr", "E = V/r"], "answer": "E = -d V/dr", "explanation": "The field is the negative spatial gradient of the potential." },
+{ "id": 363, "topic": "Universal Gravitation", "question": "The speed of a satellite orbiting very close to the Earth's surface (radius R) is approximately:", "options": ["âˆš(g R)", "âˆš(2g R)", "g R", "2g R"], "answer": "âˆš(g R)", "explanation": "Equating centripetal force to gravitational force at the surface yields v = âˆš(GM/R), and since g = GM/RÂ², v = âˆš(g R)." },
 { "id": 364, "topic": "Universal Gravitation", "question": "If the distance between the Earth and the Sun were doubled, the duration of a year would become:", "options": ["2 times", "4 times", "2âˆš2 times", "8 times"], "answer": "2âˆš2 times", "explanation": "By Kepler's Third Law, TÂ² âˆ RÂ³. If R becomes 2R, TÂ² becomes 8 times larger, so T increases by âˆš8 = 2âˆš2." },
 { "id": 365, "topic": "Universal Gravitation", "question": "The gravitational force inside a uniform spherical shell of mass M at any interior point is:", "options": ["Infinite", "Proportional to distance", "Zero", "Constant"], "answer": "Zero", "explanation": "By Newton's Shell Theorem, all gravitational vectors from the shell cancel perfectly at any point inside." },
 { "id": 366, "topic": "Universal Gravitation", "question": "A projectile is fired vertically upwards from Earth with a speed equal to half the escape velocity. The maximum altitude reached is:", "options": ["R", "R/2", "R/3", "R/4"], "answer": "R/3", "explanation": "Using energy conservation with v = 1/2 âˆš(2GM/R), solving for height h gives h = R/3." },
 { "id": 367, "topic": "Universal Gravitation", "question": "Kepler's First Law strictly states that planets move in:", "options": ["Circular orbits", "Elliptical orbits with the Sun at one focus", "Parabolic orbits", "Elliptical orbits with the Earth at one focus"], "answer": "Elliptical orbits with the Sun at one focus", "explanation": "This is the Law of Orbits." },
 { "id": 368, "topic": "Universal Gravitation", "question": "The value of acceleration due to gravity g is maximum at the Earth's:", "options": ["Equator", "Poles", "Center", "Altitude of 100km"], "answer": "Poles", "explanation": "Earth is oblate, so the poles are closer to the center of mass. Also, the centrifugal effect is zero at the poles." },
-{ "id": 369, "topic": "Universal Gravitation", "question": "The work done in moving a mass m from the surface of the Earth to an altitude h = R (Earth's radius) is:", "options": ["mgR", "mgR/2", "2mgR", "Zero"], "answer": "mgR/2", "explanation": "Î”U = -GMm/(2R) - (-GMm/R) = GMm/2R. Since g = GM/RÂ², this equals mgR/2." },
+{ "id": 369, "topic": "Universal Gravitation", "question": "The work done in moving a mass m from the surface of the Earth to an altitude h = R (Earth's radius) is:", "options": ["mg R", "mg R/2", "2mg R", "Zero"], "answer": "mg R/2", "explanation": "Î”U = -GMm/(2R) - (-GMm/R) = GMm/2R. Since g = GM/RÂ², this equals mg R/2." },
 { "id": 370, "topic": "Universal Gravitation", "question": "The escape velocity on a planet with twice Earth's mass and twice Earth's radius is:", "options": ["Same as Earth", "Twice Earth's", "Half Earth's", "Four times Earth's"], "answer": "Same as Earth", "explanation": "v_esc = âˆš(2GM/R). If Mâ†’2M and Râ†’2R, the factor of 2 cancels, leaving velocity unchanged." },
 { "id": 371, "topic": "Work and energy", "question": "The Work-Energy Theorem states that the net work done on a particle equals the change in its:", "options": ["Potential Energy", "Kinetic Energy", "Mechanical Energy", "Momentum"], "answer": "Kinetic Energy", "explanation": "W_net = Î”K is the fundamental formulation derived from Newton's Second Law." },
 { "id": 372, "topic": "Work and energy", "question": "The area strictly under a Force-Position graph gives the physical quantity of:", "options": ["Power", "Impulse", "Work done", "Acceleration"], "answer": "Work done", "explanation": "Work is defined as the integral of force with respect to position (W = âˆ« F dx)." },
@@ -674,7 +674,7 @@
 { "id": 376, "topic": "Work and energy", "question": "Instantaneous power delivered by a force F to a body moving with velocity v is exactly:", "options": ["F Ã— v", "F Â· v", "F/v", "v/F"], "answer": "F Â· v", "explanation": "Power is the dot product of the force and velocity vectors (Scalar)." },
 { "id": 377, "topic": "Work and energy", "question": "The exact elastic potential energy stored in an ideal spring stretched by distance x is:", "options": ["kx", "1/2 kx", "1/2 kxÂ²", "kxÂ²"], "answer": "1/2 kxÂ²", "explanation": "Derived from integrating the restoring force F = kx over the distance x." },
 { "id": 378, "topic": "Work and energy", "question": "The work done by the centripetal force on a particle in uniform circular motion over a full revolution is:", "options": ["Positive", "Negative", "Zero", "Infinite"], "answer": "Zero", "explanation": "Centripetal force is always perpendicular to instantaneous displacement, making the dot product (Work) zero." },
-{ "id": 379, "topic": "Work and energy", "question": "One kilowatt-hour (kWh) is strictly equal to how many Joules?", "options": ["3.6 Ã— 10Â³ J", "3.6 Ã— 10âµ J", "3.6 Ã— 10â¶ J", "1000 J"], "answer": "3.6 Ã— 10â¶ J", "explanation": "1000 Watts Ã— 3600 seconds = 3,600,000 Joules." },
+{ "id": 379, "topic": "Work and energy", "question": "One kilowatt-hour (k Wh) is strictly equal to how many Joules?", "options": ["3.6 Ã— 10Â³ J", "3.6 Ã— 10âµ J", "3.6 Ã— 10â¶ J", "1000 J"], "answer": "3.6 Ã— 10â¶ J", "explanation": "1000 Watts Ã— 3600 seconds = 3,600,000 Joules." },
 { "id": 380, "topic": "Work and energy", "question": "A collision in which strictly both linear momentum and total kinetic energy are conserved is called:", "options": ["Inelastic collision", "Perfectly inelastic collision", "Elastic collision", "Explosive collision"], "answer": "Elastic collision", "explanation": "Elastic collisions involve no loss of kinetic energy to heat, sound, or deformation." },
 { "id": 381, "topic": "Kinematics", "question": "The first derivative of a particle's position vector with respect to time is exactly its:", "options": ["Acceleration", "Jerk", "Velocity", "Displacement"], "answer": "Velocity", "explanation": "v = dr/dt by definition." },
 { "id": 382, "topic": "Kinematics", "question": "The area strictly under a velocity-time graph gives the exact physical quantity of:", "options": ["Acceleration", "Displacement", "Jerk", "Force"], "answer": "Displacement", "explanation": "Integration of velocity over time yields the net change in position." },
@@ -721,12 +721,12 @@
 { "id": 423, "topic": "Universal Gravitation", "question": "The completely exact orbital speed of a strictly exact satellite at distance r from the center of mass M is exactly:", "options": ["âˆš(2GM/r)", "GM/rÂ²", "âˆš(GM/r)", "GM/r"], "answer": "âˆš(GM/r)", "explanation": "Equating centripetal force to gravitational force: mvÂ²/r = GMm/rÂ² yields v = âˆš(GM/r)." },
 { "id": 424, "topic": "Universal Gravitation", "question": "The perfectly exact formula for completely exact escape velocity from a planet of mass M and radius R is strictly:", "options": ["âˆš(GM/R)", "âˆš(2GM/R)", "2GM/R", "GM/RÂ²"], "answer": "âˆš(2GM/R)", "explanation": "Using energy conservation, setting total energy to zero at infinity yields v = âˆš(2GM/R)." },
 { "id": 425, "topic": "Universal Gravitation", "question": "The strictly exact numerical value of the Universal Gravitational Constant G in SI units is approximately completely:", "options": ["9.8", "6.67 Ã— 10â»Â¹Â¹", "6.02 Ã— 10Â²Â³", "3.0 Ã— 10â¸"], "answer": "6.67 Ã— 10â»Â¹Â¹", "explanation": "The value measured by Cavendish is 6.674 Ã— 10â»Â¹Â¹ NÂ·mÂ²/kgÂ²." },
-{ "id": 426, "topic": "Universal Gravitation", "question": "The exactly strict formula for acceleration due to completely exact gravity g at the Earth's surface is strictly:", "options": ["GmM/RÂ²", "GM/RÂ²", "GM/R", "2GM/R"], "answer": "GM/RÂ²", "explanation": "Derived from Newton's Second Law mg = GMm/RÂ²." },
+{ "id": 426, "topic": "Universal Gravitation", "question": "The exactly strict formula for acceleration due to completely exact gravity g at the Earth's surface is strictly:", "options": ["Gm M/RÂ²", "GM/RÂ²", "GM/R", "2GM/R"], "answer": "GM/RÂ²", "explanation": "Derived from Newton's Second Law mg = GMm/RÂ²." },
 { "id": 427, "topic": "Universal Gravitation", "question": "The exactly strict approximation for completely exact acceleration due to gravity g at a small depth d is strictly:", "options": ["g(1 - d/R)", "g(1 - 2d/R)", "g(1 + d/R)", "Zero"], "answer": "g(1 - d/R)", "explanation": "Gravity decreases linearly inside a uniform sphere." },
 { "id": 428, "topic": "Universal Gravitation", "question": "The strictly exact approximation for completely exact acceleration due to gravity g at a small altitude h (h << R) is exactly:", "options": ["g(1 - h/R)", "g(1 - 2h/R)", "g(1 + h/R)", "g(R/h)Â²"], "answer": "g(1 - 2h/R)", "explanation": "Using binomial expansion on GM/(R+h)Â², we get the linear approximation 1 - 2h/R." },
 { "id": 429, "topic": "Universal Gravitation", "question": "The perfectly exact weight of any strictly exact object placed completely at the exact center of the Earth is strictly:", "options": ["Maximum", "Infinity", "Zero", "9.8 N"], "answer": "Zero", "explanation": "At the center, gravitational pull from all sides of the Earth perfectly cancels out." },
-{ "id": 430, "topic": "Universal Gravitation", "question": "The exactly strict value of perfectly complete escape velocity from the exact surface of the Earth is approximately strictly:", "options": ["8.0 km/s", "9.8 km/s", "11.2 km/s", "3.0 Ã— 10â¸ m/s"], "answer": "11.2 km/s", "explanation": "Calculated using v = âˆš(2gR) with Earth's radius and surface gravity." },
-{ "id": 431, "topic": "Work and energy", "question": "The strictly exact mechanical power P is completely defined as the dot product of exactly which vectors?", "options": ["Force and Displacement", "Force and Velocity", "Mass and Velocity", "Torque and Angular Velocity"], "answer": "Force and Velocity", "explanation": "P = dW/dt = FÂ·(dr/dt) = FÂ·v." },
+{ "id": 430, "topic": "Universal Gravitation", "question": "The exactly strict value of perfectly complete escape velocity from the exact surface of the Earth is approximately strictly:", "options": ["8.0 km/s", "9.8 km/s", "11.2 km/s", "3.0 Ã— 10â¸ m/s"], "answer": "11.2 km/s", "explanation": "Calculated using v = âˆš(2g R) with Earth's radius and surface gravity." },
+{ "id": 431, "topic": "Work and energy", "question": "The strictly exact mechanical power P is completely defined as the dot product of exactly which vectors?", "options": ["Force and Displacement", "Force and Velocity", "Mass and Velocity", "Torque and Angular Velocity"], "answer": "Force and Velocity", "explanation": "P = d W/dt = FÂ·(dr/dt) = FÂ·v." },
 { "id": 432, "topic": "Work and energy", "question": "The exactly strict total mechanical energy of an isolated system with only conservative forces is strictly:", "options": ["Kinetic Energy + Potential Energy", "Kinetic Energy - Potential Energy", "Work Done + Heat", "Zero"], "answer": "Kinetic Energy + Potential Energy", "explanation": "This sum remains strictly constant according to the Law of Conservation of Energy." },
 { "id": 433, "topic": "Work and energy", "question": "The perfectly exact work done by completely exact kinetic friction is usually strictly:", "options": ["Positive", "Zero", "Negative", "Infinite"], "answer": "Negative", "explanation": "Friction force opposes the direction of motion, giving an angle of 180Â° and making work negative." },
 { "id": 434, "topic": "Work and energy", "question": "One strictly exact Joule of completely exact energy is strictly equal to exactly how many ergs?", "options": ["10Â³", "10âµ", "10â·", "10â¹"], "answer": "10â·", "explanation": "1 Joule = 1 kgÂ·mÂ²/sÂ² = 1000g Ã— (100cm)Â² / sÂ² = 10â· gÂ·cmÂ²/sÂ² = 10â· ergs." },
@@ -769,9 +769,9 @@
 { "id": 471, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The perfectly exact center of mass of a strictly uniform completely thin rod of length L is exactly at:", "options": ["L", "L/4", "L/2", "L/3"], "answer": "L/2", "explanation": "By symmetry, the center of mass of a uniform rod is precisely in its middle." },
 { "id": 472, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The exactly strict moment of inertia of a completely exact uniform disc of mass M and radius R perfectly about its diameter is strictly:", "options": ["1/2 MRÂ²", "1/4 MRÂ²", "MRÂ²", "2/5 MRÂ²"], "answer": "1/4 MRÂ²", "explanation": "Using perpendicular axes: Iz = 2 Ix. Since Iz = 1/2 MRÂ², Ix (diameter) = 1/4 MRÂ²." },
 { "id": 473, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The completely exact moment of inertia of a strictly uniform solid cylinder of mass M and radius R perfectly about its own axis is exactly:", "options": ["MRÂ²", "1/2 MRÂ²", "1/4 MRÂ²", "2/5 MRÂ²"], "answer": "1/2 MRÂ²", "explanation": "A solid cylinder is mathematically equivalent to a stack of discs rotating around their center." },
-{ "id": 474, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The completely exact total angular momentum of a strictly solid sphere perfectly rolling without slipping is the exactly strict sum of:", "options": ["Translational and Rotational kinetic energy", "IÏ‰ and MvR", "Force and Torque", "None of the above"], "answer": "IÏ‰ and MvR", "explanation": "L_total = L_cm + r Ã— P_cm = I_cm Ï‰ + MvR." },
+{ "id": 474, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The completely exact total angular momentum of a strictly solid sphere perfectly rolling without slipping is the exactly strict sum of:", "options": ["Translational and Rotational kinetic energy", "IÏ‰ and Mv R", "Force and Torque", "None of the above"], "answer": "IÏ‰ and Mv R", "explanation": "L_total = L_cm + r Ã— P_cm = I_cm Ï‰ + Mv R." },
 { "id": 475, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The perfectly exact work done by a strictly constant torque Ï„ turning a body through exactly angle Î¸ is strictly:", "options": ["Ï„/Î¸", "1/2 Ï„Î¸", "Ï„Î¸", "Ï„Î¸Â²"], "answer": "Ï„Î¸", "explanation": "W = âˆ« Ï„ dÎ¸. If Ï„ is constant, this is simply Ï„Î¸." },
-{ "id": 476, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The completely exact power delivered in perfectly exact rotational motion is strictly defined as exactly:", "options": ["Fv", "Ï„Ï‰", "1/2 IÏ‰Â²", "IÎ±"], "answer": "Ï„Ï‰", "explanation": "P = dW/dt = Ï„ (dÎ¸/dt) = Ï„Ï‰." },
+{ "id": 476, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The completely exact power delivered in perfectly exact rotational motion is strictly defined as exactly:", "options": ["Fv", "Ï„Ï‰", "1/2 IÏ‰Â²", "IÎ±"], "answer": "Ï„Ï‰", "explanation": "P = d W/dt = Ï„ (dÎ¸/dt) = Ï„Ï‰." },
 { "id": 477, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The strictly exact phenomenon where a perfectly spinning top changes the direction of its exact rotation axis due to gravity is exactly:", "options": ["Nutation", "Precession", "Translation", "Revolution"], "answer": "Precession", "explanation": "Gravity applies a torque that causes the angular momentum vector to rotate (precess) around the vertical." },
 { "id": 478, "topic": "Rotational Dynamics of Rigid Bodies", "question": "A completely exact gyroscope perfectly maintains its exact orientation in strictly exact space completely due to the conservation of perfectly exact:", "options": ["Energy", "Linear momentum", "Angular momentum", "Mass"], "answer": "Angular momentum", "explanation": "Without external torques, a spinning gyroscope's angular momentum vector remains rigidly fixed in space." },
 { "id": 479, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The strictly exact relation between perfectly exact linear acceleration a and strictly exact angular acceleration Î± is exactly:", "options": ["a = rÂ²Î±", "a = Î±/r", "a = rÎ±", "Î± = ra"], "answer": "a = rÎ±", "explanation": "Tangential linear acceleration is the radius multiplied by the angular acceleration." },
@@ -813,7 +813,7 @@
 { "id": 515, "topic": "Quantities, Units and Dimensions", "question": "What is the SI unit of torque?", "options": ["Joule", "Newton-meter", "Watt", "Newton/meter"], "answer": "Newton-meter", "explanation": "Torque is force times distance (NÂ·m). Although equivalent to a Joule, NÂ·m is used for vector torque." },
 { "id": 516, "topic": "Work and energy", "question": "The coefficient of restitution for a perfectly elastic collision is:", "options": ["0", "0.5", "1", "Infinity"], "answer": "1", "explanation": "In elastic collisions, the speed of separation equals the speed of approach." },
 { "id": 517, "topic": "Universal Gravitation", "question": "The escape velocity from Earth is 11.2 km/s. What is it for a planet with the same radius but 4x the mass?", "options": ["11.2 km/s", "22.4 km/s", "5.6 km/s", "44.8 km/s"], "answer": "22.4 km/s", "explanation": "v_esc âˆ âˆšM. If M becomes 4M, velocity becomes âˆš4 = 2 times larger. 11.2 * 2 = 22.4." },
-{ "id": 518, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The rotational equivalent of Newton's second law is Ï„ = dL/dt. This relates torque to:", "options": ["Angular acceleration", "Angular momentum", "Moment of inertia", "Angular displacement"], "answer": "Angular momentum", "explanation": "Torque is the rate of change of angular momentum." },
+{ "id": 518, "topic": "Rotational Dynamics of Rigid Bodies", "question": "The rotational equivalent of Newton's second law is Ï„ = d L/dt. This relates torque to:", "options": ["Angular acceleration", "Angular momentum", "Moment of inertia", "Angular displacement"], "answer": "Angular momentum", "explanation": "Torque is the rate of change of angular momentum." },
 { "id": 519, "topic": "Kinematics", "question": "If an object is thrown up and reaches height H, the total distance traveled when it returns is:", "options": ["H", "2H", "Zero", "H/2"], "answer": "2H", "explanation": "Distance is the total path length (H up + H down), whereas displacement would be zero." },
 { "id": 520, "topic": "Vectors", "question": "If vector A = 4i and B = 3j, the magnitude of the resultant A + B is:", "options": ["7", "1", "5", "12"], "answer": "5", "explanation": "âˆš(4Â² + 3Â²) = âˆš25 = 5." },
 { "id": 521, "topic": "Quantities, Units and Dimensions", "question": "The dimension MLÂ²Tâ»Â²Î¸â»Â¹ represents:", "options": ["Torque", "Power", "Work", "Thermal capacity"], "answer": "Thermal capacity", "explanation": "Thermal capacity = Energy/Temperature = [MLÂ²Tâ»Â²]/[Î¸]." },
@@ -825,7 +825,7 @@
 { "id": 527, "topic": "Quantities, Units and Dimensions", "question": "How many meters are in one astronomical unit (AU) approximately?", "options": ["1.5 Ã— 10Â¹Â¹", "3 Ã— 10â¸", "9.4 Ã— 10Â¹âµ", "6.4 Ã— 10â¶"], "answer": "1.5 Ã— 10Â¹Â¹", "explanation": "1 AU is the average distance from the Earth to the Sun." },
 { "id": 528, "topic": "Work and energy", "question": "When a force does negative work on a system, the system's kinetic energy:", "options": ["Increases", "Decreases", "Remains same", "Becomes zero"], "answer": "Decreases", "explanation": "Negative work removes energy from the system (retardation)." },
 { "id": 529, "topic": "Universal Gravitation", "question": "The time period of a satellite is independent of its:", "options": ["Orbit radius", "Mass", "Earth's mass", "Orbital velocity"], "answer": "Mass", "explanation": "Satellite mass 'm' cancels out in the orbital period derivation." },
-{ "id": 530, "topic": "Rotational Dynamics of Rigid Bodies", "question": "Torque is also defined as the rate of change of ______.", "options": ["Work", "Angular Velocity", "Angular Momentum", "Linear Momentum"], "answer": "Angular Momentum", "explanation": "Ï„ = dL/dt, analogous to F = dp/dt." },
+{ "id": 530, "topic": "Rotational Dynamics of Rigid Bodies", "question": "Torque is also defined as the rate of change of ______.", "options": ["Work", "Angular Velocity", "Angular Momentum", "Linear Momentum"], "answer": "Angular Momentum", "explanation": "Ï„ = d L/dt, analogous to F = dp/dt." },
 { "id": 531, "topic": "Kinematics", "question": "A body starts from rest and moves with acceleration a = 4t. Its velocity at t = 3 s is:", "options": ["12 m/s", "18 m/s", "36 m/s", "6 m/s"], "answer": "18 m/s", "explanation": "v = âˆ«4t dt = 2tÂ². At t=3, v = 2(9) = 18 m/s." },
 { "id": 532, "topic": "Vectors", "question": "If A Ã— B = 0 and A Â· B = AB, the angle between A and B is:", "options": ["0Â°", "90Â°", "180Â°", "45Â°"], "answer": "0Â°", "explanation": "Cross product zero and dot product max indicates parallel vectors." },
 { "id": 533, "topic": "Quantities, Units and Dimensions", "question": "Dimensions of Stress are strictly:", "options": ["MLTâ»Â²", "MLâ»Â¹Tâ»Â²", "MLÂ²Tâ»Â²", "MLTâ»Â¹"], "answer": "MLâ»Â¹Tâ»Â²", "explanation": "Stress = Force / Area = [MLTâ»Â²]/[LÂ²] = MLâ»Â¹Tâ»Â²." },
@@ -849,7 +849,7 @@
 { "id": 551, "topic": "Quantities, Units and Dimensions", "question": "The dimension of angular velocity is strictly:", "options": ["T", "Tâ»Â¹", "LTâ»Â¹", "LÂ²Tâ»Â¹"], "answer": "Tâ»Â¹", "explanation": "Ï‰ = angle/time. Angles are dimensionless, so 1/T." },
 { "id": 552, "topic": "Work and energy", "question": "Potential energy of a stretched string is 1/2 Fx. If tension F is doubled for same x, energy:", "options": ["Doubles", "Remains same", "Quadruples", "Halves"], "answer": "Doubles", "explanation": "U is directly proportional to F if x is constant." },
 { "id": 553, "topic": "Universal Gravitation", "question": "The escape velocity on Moon is lower because of its small ______.", "options": ["Mass", "Radius", "Both A and B", "Atmosphere"], "answer": "Both A and B", "explanation": "v_esc depends on both mass and radius (âˆš(2GM/R))." },
-{ "id": 554, "topic": "Rotational Dynamics of Rigid Bodies", "question": "If a body rotates with constant angular momentum, net torque is:", "options": ["Zero", "Constant", "Increasing", "Negative"], "answer": "Zero", "explanation": "dL/dt = Ï„. If L is constant, derivative is zero." },
+{ "id": 554, "topic": "Rotational Dynamics of Rigid Bodies", "question": "If a body rotates with constant angular momentum, net torque is:", "options": ["Zero", "Constant", "Increasing", "Negative"], "answer": "Zero", "explanation": "d L/dt = Ï„. If L is constant, derivative is zero." },
 { "id": 555, "topic": "Kinematics", "question": "Distance-time graph for uniform motion is a:", "options": ["Circle", "Straight line with slope", "Horizontal line", "Parabola"], "answer": "Straight line with slope", "explanation": "s = vt is a linear relationship." },
 { "id": 556, "topic": "Vectors", "question": "Component of vector A in direction of A is strictly:", "options": ["Zero", "A", "1", "AÂ²"], "answer": "A", "explanation": "A vector is completely its own component along its own line." },
 { "id": 557, "topic": "Quantities, Units and Dimensions", "question": "Which of these is not a fundamental SI unit?", "options": ["Meter", "Kelvin", "Watt", "Second"], "answer": "Watt", "explanation": "Watt is a derived unit (J/s)." },
@@ -866,7 +866,7 @@
 { "id": 568, "topic": "Vectors", "question": "Magnitude of i - j is:", "options": ["0", "2", "sqrt(2)", "1"], "answer": "sqrt(2)", "explanation": "âˆš(1Â² + (-1)Â²) = âˆš2." },
 { "id": 569, "topic": "Quantities, Units and Dimensions", "question": "Prefix 'pico' represents:", "options": ["10â»â¹", "10â»Â¹Â²", "10â»Â¹âµ", "10â»â¶"], "answer": "10â»Â¹Â²", "explanation": "Standard SI prefix." },
 { "id": 570, "topic": "Work and energy", "question": "A 100 W bulb is on for 10 s. Energy used is:", "options": ["1000 J", "10 J", "1 J", "100 J"], "answer": "1000 J", "explanation": "E = P*t = 100*10 = 1000 J." },
-{ "id": 571, "topic": "Universal Gravitation", "question": "Escape velocity from Earth is âˆš(2gR). If g was double, v_esc would increase by factor of:", "options": ["2", "4", "sqrt(2)", "1.5"], "answer": "sqrt(2)", "explanation": "v âˆ âˆšg." },
+{ "id": 571, "topic": "Universal Gravitation", "question": "Escape velocity from Earth is âˆš(2g R). If g was double, v_esc would increase by factor of:", "options": ["2", "4", "sqrt(2)", "1.5"], "answer": "sqrt(2)", "explanation": "v âˆ âˆšg." },
 { "id": 572, "topic": "Rotational Dynamics of Rigid Bodies", "question": "Angular acceleration is change in ______ over time.", "options": ["Angle", "Angular Velocity", "Torque", "Momentum"], "answer": "Angular Velocity", "explanation": "Î± = dÏ‰/dt." },
 { "id": 573, "topic": "Kinematics", "question": "A car stops in 50 m from 20 m/s. Its deceleration is:", "options": ["2 m/sÂ²", "4 m/sÂ²", "8 m/sÂ²", "10 m/sÂ²"], "answer": "4 m/sÂ²", "explanation": "0 = 20Â² - 2a(50) => 100a = 400 => a = 4." },
 { "id": 574, "topic": "Vectors", "question": "Dot product of parallel vectors is ______.", "options": ["Zero", "Maximum", "Minimum", "1"], "answer": "Maximum", "explanation": "cos 0Â° = 1." },
@@ -885,7 +885,7 @@
 { "id": 587, "topic": "Quantities, Units and Dimensions", "question": "Dimensions of velocity is LTâ»Â¹. What is acceleration?", "options": ["LT", "LTâ»Â²", "LÂ²T", "Tâ»Â¹"], "answer": "LTâ»Â²", "explanation": "Rate of change of velocity." },
 { "id": 588, "topic": "Work and energy", "question": "Work is done when force produces ______.", "options": ["Heat", "Mass", "Displacement", "Time"], "answer": "Displacement", "explanation": "W = Fd." },
 { "id": 589, "topic": "Universal Gravitation", "question": "Weight is the ______ of gravity on a body.", "options": ["Mass", "Velocity", "Force", "Work"], "answer": "Force", "explanation": "W = mg." },
-{ "id": 590, "topic": "Rotational Dynamics of Rigid Bodies", "question": "Ï„ = rF sin Î¸. If Î¸ = 90Â°, torque is:", "options": ["Zero", "rF", "1", "r/F"], "answer": "rF", "explanation": "Maximum turning effect." },
+{ "id": 590, "topic": "Rotational Dynamics of Rigid Bodies", "question": "Ï„ = r F sin Î¸. If Î¸ = 90Â°, torque is:", "options": ["Zero", "r F", "1", "r/F"], "answer": "r F", "explanation": "Maximum turning effect." },
 { "id": 591, "topic": "Kinematics", "question": "Velocity is a ______ quantity.", "options": ["Scalar", "Vector", "Fundamental", "Dimensionless"], "answer": "Vector", "explanation": "Has magnitude and direction." },
 { "id": 592, "topic": "Vectors", "question": "Dot product of i and i is:", "options": ["0", "1", "k", "j"], "answer": "1", "explanation": "Parallel unit vectors." },
 { "id": 593, "topic": "Quantities, Units and Dimensions", "question": "Dimensions of area is:", "options": ["L", "LÂ²", "LÂ³", "M"], "answer": "LÂ²", "explanation": "Length squared." },
@@ -902,34 +902,34 @@
     ];
 
     
-    let currentExamData = [], userAnswers = {}, currentIndex = 0;
-    let timeRemaining = 0, timerId = null;
-    let activeMode = 'practice', isReviewMode = false;
-    let examSelectionType = 'random', selectionValue = '';
+    let current Exam Data = [], user Answers = {}, current Index = 0;
+    let time Remaining = 0, timer Id = null;
+    let active Mode = 'practice', is Review Mode = false;
+    let exam Selection Type = 'random', selection Value = '';
 
     
     window.onload = () => {
-        initDashboard();
-        loadStatsBar();
-        syncLocalResults();
-        showResumeBanner();
-        if (localStorage.getItem(STORAGE_KEY)) {
-            document.getElementById('resume-btn').style.display = 'block';
+        init Dashboard();
+        load Stats Bar();
+        sync Local Results();
+        show Resume Banner();
+        if (local Storage.get Item(STORAGE_KEY)) {
+            document.get Element By Id('resume-btn').style.display = 'block';
         }
     };
-document.addEventListener('keydown', (e) => {
+document.add Event Listener('keydown', (e) => {
 
-    if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+    if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.active Element.tag Name)) return;
 
-    if (document.getElementById('quiz-interface').style.display === 'none') return;
+    if (document.get Element By Id('quiz-interface').style.display === 'none') return;
 
-    const key = e.key.toUpperCase();
+    const key = e.key.to Upper Case();
 
     if (['A', 'B', 'C', 'D'].includes(key)) {
-        const buttons = document.querySelectorAll('.option-btn');
-        buttons.forEach(btn => {
+        const buttons = document.query Selector All('.option-btn');
+        buttons.for Each(btn => {
 
-            if (btn.innerText.trim().startsWith(key + '.')) {
+            if (btn.inner Text.trim().starts With(key + '.')) {
                 btn.click();
             }
         });
@@ -942,33 +942,33 @@ document.addEventListener('keydown', (e) => {
 
 });
     
-    async function loadStatsBar() {
-        const bar = document.getElementById('stats-bar');
+    async function load Stats Bar() {
+        const bar = document.get Element By Id('stats-bar');
         try {
-            const { data: { user } } = await db.auth.getUser();
+            const { data: { user } } = await db.auth.get User();
             if (!user) return;
 
             // Fetch from cloud
             const { data } = await db.from('test_results')
                 .select('score').eq('student_id', user.id).eq('course_id', COURSE_CODE);
-            const cloudScores = data ? data.map(r => r.score) : [];
+            const cloud Scores = data ? data.map(r => r.score) : [];
 
             // Merge with local (unsynced) results
-            let localScores = [];
+            let local Scores = [];
             try {
-                const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
-                localScores = localResults
+                const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
+                local Scores = local Results
                     .filter(r => r.student_id === user.id && r.course_id === COURSE_CODE && !r.synced)
                     .map(r => r.score);
             } catch (e) {}
 
-            const allScores = [...cloudScores, ...localScores];
-            if (allScores.length === 0) return;
+            const all Scores = [...cloud Scores, ...local Scores];
+            if (all Scores.length === 0) return;
 
-            const taken = allScores.length;
-            const avg  = Math.round(allScores.reduce((s, r) => s + r, 0) / taken);
-            const best = Math.max(...allScores);
-            bar.innerHTML = `
+            const taken = all Scores.length;
+            const avg  = Math.round(all Scores.reduce((s, r) => s + r, 0) / taken);
+            const best = Math.max(...all Scores);
+            bar.inner HTML = `
                 <div class="stat-card"><div class="stat-val">${taken}</div><div class="stat-lbl">Tests Taken</div></div>
                 <div class="stat-card"><div class="stat-val">${avg}%</div><div class="stat-lbl">Average Score</div></div>
                 <div class="stat-card"><div class="stat-val">${best}%</div><div class="stat-lbl">Best Score</div></div>`;
@@ -977,33 +977,33 @@ document.addEventListener('keydown', (e) => {
     }
 
     
-    function showResumeBanner() {
-        const saved  = localStorage.getItem(STORAGE_KEY);
-        const banner = document.getElementById('resume-banner');
+    function show Resume Banner() {
+        const saved  = local Storage.get Item(STORAGE_KEY);
+        const banner = document.get Element By Id('resume-banner');
         if (!saved || !banner) return;
 
         const s        = JSON.parse(saved);
-        const answered = Object.keys(s.userAnswers).length;
-        const total    = s.currentExamData.length;
-        const label    = s.examSelectionType === 'random' ? 'Random Mix' : s.selectionValue;
-        const mLeft    = Math.floor(s.timeRemaining / 60);
-        const sLeft    = s.timeRemaining % 60;
-        const timeStr  = `${mLeft}:${sLeft < 10 ? '0'+sLeft : sLeft}`;
+        const answered = Object.keys(s.user Answers).length;
+        const total    = s.current Exam Data.length;
+        const label    = s.exam Selection Type === 'random' ? 'Random Mix' : s.selection Value;
+        const m Left    = Math.floor(s.time Remaining / 60);
+        const s Left    = s.time Remaining % 60;
+        const time Str  = `${m Left}:${s Left < 10 ? '0'+s Left : s Left}`;
         const pct      = Math.round((answered / total) * 100);
 
-        banner.innerHTML = `
+        banner.inner HTML = `
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
                 <div>
                     <div style="font-weight:700;font-size:0.95rem;">ðŸ“Œ Resume Saved Exam</div>
                     <div style="font-size:0.82rem;color:var(--text-muted);margin-top:3px;">
-                        <strong>${label}</strong> &nbsp;Â·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;Â·&nbsp; â± ${timeStr} left
+                        <strong>${label}</strong> &nbsp;Â·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;Â·&nbsp; â± ${time Str} left
                     </div>
                 </div>
                 <div style="display:flex;gap:8px;flex-shrink:0;">
-                    <button class="btn" style="background:var(--success);padding:8px 16px;font-size:0.87rem;" onclick="resumeExam()">
+                    <button class="btn" style="background:var(--success);padding:8px 16px;font-size:0.87rem;" onclick="resume Exam()">
                         <i class="fa-solid fa-rotate-right"></i> Continue
                     </button>
-                    <button class="btn" style="background:#64748b;padding:8px 16px;font-size:0.87rem;" onclick="discardSaved()">
+                    <button class="btn" style="background:#64748b;padding:8px 16px;font-size:0.87rem;" onclick="discard Saved()">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
@@ -1011,73 +1011,73 @@ document.addEventListener('keydown', (e) => {
         banner.style.display = 'block';
     }
 
-    function discardSaved() {
+    function discard Saved() {
         if (!confirm('Discard your saved exam progress?')) return;
-        localStorage.removeItem(STORAGE_KEY);
-        document.getElementById('resume-banner').style.display = 'none';
-        document.getElementById('resume-btn').style.display    = 'none';
+        local Storage.remove Item(STORAGE_KEY);
+        document.get Element By Id('resume-banner').style.display = 'none';
+        document.get Element By Id('resume-btn').style.display    = 'none';
     }
 
     
-    function initDashboard() {
-        const board = document.getElementById('dashboard');
-        board.innerHTML = '';
+    function init Dashboard() {
+        const board = document.get Element By Id('dashboard');
+        board.inner HTML = '';
         const total = MASTER_POOL.length;
 
         if (total === 0) {
-            board.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);">No questions loaded. Paste your JSON into MASTER_POOL.</p>`;
+            board.inner HTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);">No questions loaded. Paste your JSON into MASTER_POOL.</p>`;
             return;
         }
 
-        const rand = document.createElement('div');
-        rand.className = 'box box-random';
-        rand.innerHTML = `<div style="font-size:1.8rem;">ðŸ”€</div><h3>Random Mode</h3><p>${total} Questions</p>`;
-        rand.onclick = () => openSetup('random', 'Randomised Practice');
-        board.appendChild(rand);
+        const rand = document.create Element('div');
+        rand.class Name = 'box box-random';
+        rand.inner HTML = `<div style="font-size:1.8rem;">ðŸ”€</div><h3>Random Mode</h3><p>${total} Questions</p>`;
+        rand.onclick = () => open Setup('random', 'Randomised Practice');
+        board.append Child(rand);
 
-        const topicMap = {};
-        MASTER_POOL.forEach(q => {
+        const topic Map = {};
+        MASTER_POOL.for Each(q => {
             const t = q.topic || 'General';
-            topicMap[t] = (topicMap[t] || 0) + 1;
+            topic Map[t] = (topic Map[t] || 0) + 1;
         });
 
-        for (const [topic, count] of Object.entries(topicMap)) {
-            const card = document.createElement('div');
-            card.className = 'box';
-            card.innerHTML = `
+        for (const [topic, count] of Object.entries(topic Map)) {
+            const card = document.create Element('div');
+            card.class Name = 'box';
+            card.inner HTML = `
                 <div style="font-size:1.8rem;color:var(--primary);">âš¡</div>
                 <h3>${topic}</h3>
                 <p>${count} Question${count !== 1 ? 's' : ''}</p>`;
-            card.onclick = () => openSetup('topic', topic);
-            board.appendChild(card);
+            card.onclick = () => open Setup('topic', topic);
+            board.append Child(card);
         }
     }
 
-    function openSetup(type, value) {
-        examSelectionType = type;
-        selectionValue    = value;
-        document.getElementById('dashboard-wrap').style.display = 'none';
-        document.getElementById('setup-screen').style.display   = 'block';
-        document.getElementById('setup-title').innerText =
+    function open Setup(type, value) {
+        exam Selection Type = type;
+        selection Value    = value;
+        document.get Element By Id('dashboard-wrap').style.display = 'none';
+        document.get Element By Id('setup-screen').style.display   = 'block';
+        document.get Element By Id('setup-title').inner Text =
             type === 'random' ? 'Randomised Practice' : value;
-        document.getElementById('random-settings').style.display =
+        document.get Element By Id('random-settings').style.display =
             type === 'random' ? 'block' : 'none';
     }
 
-    function goHome() {
-        clearInterval(timerId);
-        isReviewMode = false;
-        currentExamData = []; userAnswers = {}; currentIndex = 0;
-        document.getElementById('quiz-interface').style.display  = 'none';
-        document.getElementById('setup-screen').style.display    = 'none';
-        document.getElementById('quizResultModal').style.display = 'none';
-        document.getElementById('dashboard-wrap').style.display  = 'block';
-        showResumeBanner();
-        loadStatsBar();
+    function go Home() {
+        clear Interval(timer Id);
+        is Review Mode = false;
+        current Exam Data = []; user Answers = {}; current Index = 0;
+        document.get Element By Id('quiz-interface').style.display  = 'none';
+        document.get Element By Id('setup-screen').style.display    = 'none';
+        document.get Element By Id('quiz Result Modal').style.display = 'none';
+        document.get Element By Id('dashboard-wrap').style.display  = 'block';
+        show Resume Banner();
+        load Stats Bar();
     }
 
     
-    function shuffleArray(arr) {
+    function shuffle Array(arr) {
         const a = [...arr];
         for (let i = a.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -1087,221 +1087,221 @@ document.addEventListener('keydown', (e) => {
     }
 
     
-    function startExam() {
-        timeRemaining = parseInt(document.getElementById('t-limit').value) * 60;
-        activeMode    = document.getElementById('quiz-mode').value;
-        isReviewMode  = false;
-        userAnswers   = {};
-        currentIndex  = 0;
+    function start Exam() {
+        time Remaining = parse Int(document.get Element By Id('t-limit').value) * 60;
+        active Mode    = document.get Element By Id('quiz-mode').value;
+        is Review Mode  = false;
+        user Answers   = {};
+        current Index  = 0;
 
         let pool = JSON.parse(JSON.stringify(MASTER_POOL));
 
-        if (examSelectionType === 'random') {
-            const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
-            pool = shuffleArray(pool).slice(0, qty);
+        if (exam Selection Type === 'random') {
+            const qty = Math.min(parse Int(document.get Element By Id('q-count').value), pool.length);
+            pool = shuffle Array(pool).slice(0, qty);
         } else {
-            pool = pool.filter(q => (q.topic || 'General') === selectionValue);
+            pool = pool.filter(q => (q.topic || 'General') === selection Value);
         }
 
-        if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);
+        if (document.get Element By Id('shuffle-questions').checked) pool = shuffle Array(pool);
 
-        if (document.getElementById('shuffle-options').checked) {
-            pool.forEach(q => {
+        if (document.get Element By Id('shuffle-options').checked) {
+            pool.for Each(q => {
 
-                q.options = shuffleArray([...q.options]);
+                q.options = shuffle Array([...q.options]);
             });
         }
 
-        currentExamData = pool;
+        current Exam Data = pool;
 
-        document.getElementById('setup-screen').style.display  = 'none';
-        document.getElementById('quiz-interface').style.display = 'block';
-        document.getElementById('total-idx').innerText = currentExamData.length;
-        runTimer();
-        renderQuestion();
+        document.get Element By Id('setup-screen').style.display  = 'none';
+        document.get Element By Id('quiz-interface').style.display = 'block';
+        document.get Element By Id('total-idx').inner Text = current Exam Data.length;
+        run Timer();
+        render Question();
     }
 
     
-    function runTimer() {
-        clearInterval(timerId);
-        timerId = setInterval(() => {
-            timeRemaining--;
-            const m = Math.floor(timeRemaining / 60);
-            const s = timeRemaining % 60;
-            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
-            if (timeRemaining <= 0) { clearInterval(timerId); showResults(true); }
+    function run Timer() {
+        clear Interval(timer Id);
+        timer Id = set Interval(() => {
+            time Remaining--;
+            const m = Math.floor(time Remaining / 60);
+            const s = time Remaining % 60;
+            document.get Element By Id('timer').inner Text = `${m}:${s < 10 ? '0'+s : s}`;
+            if (time Remaining <= 0) { clear Interval(timer Id); show Results(true); }
         }, 1000);
     }
 
     
-    function renderQuestion() {
-        const q          = currentExamData[currentIndex];
-        const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
-        const userAns    = userAnswers[currentIndex];
+    function render Question() {
+        const q          = current Exam Data[current Index];
+        const has Answered = user Answers.has Own Property(current Index);
+        const user Ans    = user Answers[current Index];
         const labels     = ['A','B','C','D','E','F'];
 
-        document.getElementById('cur-idx').innerText       = currentIndex + 1;
-        document.getElementById('topic-text').innerText    = q.topic || '';
-        document.getElementById('question-text').innerHTML = q.question;
+        document.get Element By Id('cur-idx').inner Text       = current Index + 1;
+        document.get Element By Id('topic-text').inner Text    = q.topic || '';
+        document.get Element By Id('question-text').inner HTML = q.question;
 
-        const optBox   = document.getElementById('options-box');
-        const feedArea = document.getElementById('feedback-area');
-        optBox.innerHTML  = '';
-        feedArea.innerHTML = '';
+        const opt Box   = document.get Element By Id('options-box');
+        const feed Area = document.get Element By Id('feedback-area');
+        opt Box.inner HTML  = '';
+        feed Area.inner HTML = '';
 
-        q.options.forEach((val, idx) => {
+        q.options.for Each((val, idx) => {
             const label = labels[idx] || (idx + 1);
-            const btn   = document.createElement('button');
-            btn.className = 'option-btn';
-            btn.innerHTML = `<strong>${label}.</strong> ${val}`;
+            const btn   = document.create Element('button');
+            btn.class Name = 'option-btn';
+            btn.inner HTML = `<strong>${label}.</strong> ${val}`;
 
-            if (isReviewMode || (activeMode === 'practice' && hasAnswered)) {
-                if (val === q.answer)    btn.classList.add('correct');
-                else if (userAns === val) btn.classList.add('wrong');
+            if (is Review Mode || (active Mode === 'practice' && has Answered)) {
+                if (val === q.answer)    btn.class List.add('correct');
+                else if (user Ans === val) btn.class List.add('wrong');
                 btn.disabled = true;
-            } else if (activeMode === 'exam' && hasAnswered && userAns === val) {
-                btn.classList.add('selected');
+            } else if (active Mode === 'exam' && has Answered && user Ans === val) {
+                btn.class List.add('selected');
             }
 
             btn.onclick = () => {
-                if (isReviewMode) return;
-                if (activeMode === 'practice' && hasAnswered) return;
-                userAnswers[currentIndex] = val;
-                saveState();
-                renderQuestion();
+                if (is Review Mode) return;
+                if (active Mode === 'practice' && has Answered) return;
+                user Answers[current Index] = val;
+                save State();
+                render Question();
             };
-            optBox.appendChild(btn);
+            opt Box.append Child(btn);
         });
 
-        const expHtml = q.explanation
+        const exp Html = q.explanation
             ? `<div class="explanation-box"><strong>Explanation:</strong> ${q.explanation}</div>`
             : '';
 
-        if (isReviewMode) {
-            if (hasAnswered) {
-                const ok = userAns === q.answer;
-                feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">
+        if (is Review Mode) {
+            if (has Answered) {
+                const ok = user Ans === q.answer;
+                feed Area.inner HTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">
                     ${ok ? 'âœ” Correct!' : 'âœ˜ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
-                </div>${expHtml}`;
+                </div>${exp Html}`;
             } else {
-                feedArea.innerHTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
+                feed Area.inner HTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
                     âš  Not answered. Correct: <strong>${q.answer}</strong>
-                </div>${expHtml}`;
+                </div>${exp Html}`;
             }
-        } else if (activeMode === 'practice' && hasAnswered) {
-            const ok = userAns === q.answer;
-            feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">
+        } else if (active Mode === 'practice' && has Answered) {
+            const ok = user Ans === q.answer;
+            feed Area.inner HTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">
                 ${ok ? 'âœ” Correct!' : 'âœ˜ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
-            </div>${expHtml}`;
+            </div>${exp Html}`;
         }
 
-        const isLast = currentIndex === currentExamData.length - 1;
-        document.getElementById('next-btn').style.display          = isLast ? 'none' : 'block';
-        document.getElementById('submit-btn').style.display        = isReviewMode ? 'none' : 'block';
-        document.getElementById('finish-review-btn').style.display = isReviewMode ? 'block' : 'none';
+        const is Last = current Index === current Exam Data.length - 1;
+        document.get Element By Id('next-btn').style.display          = is Last ? 'none' : 'block';
+        document.get Element By Id('submit-btn').style.display        = is Review Mode ? 'none' : 'block';
+        document.get Element By Id('finish-review-btn').style.display = is Review Mode ? 'block' : 'none';
     }
 
     function move(d) {
-        const n = currentIndex + d;
-        if (n >= 0 && n < currentExamData.length) { currentIndex = n; renderQuestion(); }
+        const n = current Index + d;
+        if (n >= 0 && n < current Exam Data.length) { current Index = n; render Question(); }
     }
 
     
-    function saveState() {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({
-            currentExamData, userAnswers, currentIndex,
-            timeRemaining, activeMode, examSelectionType, selectionValue,
-            savedAt: Date.now()
+    function save State() {
+        local Storage.set Item(STORAGE_KEY, JSON.stringify({
+            current Exam Data, user Answers, current Index,
+            time Remaining, active Mode, exam Selection Type, selection Value,
+            saved At: Date.now()
         }));
     }
 
-    function resumeExam() {
-        const saved = localStorage.getItem(STORAGE_KEY);
+    function resume Exam() {
+        const saved = local Storage.get Item(STORAGE_KEY);
         if (!saved) return;
         const s = JSON.parse(saved);
 
-        currentExamData   = s.currentExamData;
-        userAnswers       = s.userAnswers;
-        currentIndex      = s.currentIndex;
-        timeRemaining     = s.timeRemaining;
-        activeMode        = s.activeMode || 'practice';
-        examSelectionType = s.examSelectionType || 'random';
-        selectionValue    = s.selectionValue || '';
-        isReviewMode      = false;
+        current Exam Data   = s.current Exam Data;
+        user Answers       = s.user Answers;
+        current Index      = s.current Index;
+        time Remaining     = s.time Remaining;
+        active Mode        = s.active Mode || 'practice';
+        exam Selection Type = s.exam Selection Type || 'random';
+        selection Value    = s.selection Value || '';
+        is Review Mode      = false;
 
-        document.getElementById('dashboard-wrap').style.display  = 'none';
-        document.getElementById('resume-banner').style.display   = 'none';
-        document.getElementById('setup-screen').style.display    = 'none';
-        document.getElementById('quizResultModal').style.display = 'none';
-        document.getElementById('resume-btn').style.display      = 'none';
-        document.getElementById('quiz-interface').style.display  = 'block';
-        document.getElementById('total-idx').innerText           = currentExamData.length;
+        document.get Element By Id('dashboard-wrap').style.display  = 'none';
+        document.get Element By Id('resume-banner').style.display   = 'none';
+        document.get Element By Id('setup-screen').style.display    = 'none';
+        document.get Element By Id('quiz Result Modal').style.display = 'none';
+        document.get Element By Id('resume-btn').style.display      = 'none';
+        document.get Element By Id('quiz-interface').style.display  = 'block';
+        document.get Element By Id('total-idx').inner Text           = current Exam Data.length;
 
-        const timerEl = document.getElementById('timer');
-        timerEl.style.background = 'rgba(220,38,38,0.08)';
-        timerEl.style.color      = 'var(--danger)';
+        const timer El = document.get Element By Id('timer');
+        timer El.style.background = 'rgba(220,38,38,0.08)';
+        timer El.style.color      = 'var(--danger)';
 
-        runTimer();
-        renderQuestion();
+        run Timer();
+        render Question();
     }
 
     
-    async function showResults(forced = false) {
-        const answered = Object.keys(userAnswers).length;
-        if (!forced && answered < currentExamData.length) {
-            if (!confirm(`You answered ${answered} of ${currentExamData.length}. Submit anyway?`)) return;
+    async function show Results(forced = false) {
+        const answered = Object.keys(user Answers).length;
+        if (!forced && answered < current Exam Data.length) {
+            if (!confirm(`You answered ${answered} of ${current Exam Data.length}. Submit anyway?`)) return;
         }
 
-        clearInterval(timerId);
-        localStorage.removeItem(STORAGE_KEY);
+        clear Interval(timer Id);
+        local Storage.remove Item(STORAGE_KEY);
 
         let score = 0;
-        currentExamData.forEach((q, i) => { if (userAnswers[i] === q.answer) score++; });
-        const total = currentExamData.length;
+        current Exam Data.for Each((q, i) => { if (user Answers[i] === q.answer) score++; });
+        const total = current Exam Data.length;
         const pct   = Math.round((score / total) * 100);
 
-        document.getElementById('finalScoreText').innerText = pct;
-        document.getElementById('modalCorrect').innerText   = score;
-        document.getElementById('modalTotal').innerText     = total;
-        document.getElementById('modalReviewBtn').style.display = activeMode === 'practice' ? 'none' : 'flex';
+        document.get Element By Id('final Score Text').inner Text = pct;
+        document.get Element By Id('modal Correct').inner Text   = score;
+        document.get Element By Id('modal Total').inner Text     = total;
+        document.get Element By Id('modal Review Btn').style.display = active Mode === 'practice' ? 'none' : 'flex';
 
         if (pct >= 70) {
-            document.getElementById('resultIcon').innerText     = 'ðŸ†';
-            document.getElementById('resultGreeting').innerText = 'Outstanding! ðŸŒŸ';
-            document.getElementById('resultFeedback').innerText = 'Excellent work! Keep it up!';
-            confetti({ particleCount: 160, spread: 70, origin: { y: 0.6 } });
+            document.get Element By Id('result Icon').inner Text     = 'ðŸ†';
+            document.get Element By Id('result Greeting').inner Text = 'Outstanding! ðŸŒŸ';
+            document.get Element By Id('result Feedback').inner Text = 'Excellent work! Keep it up!';
+            confetti({ particle Count: 160, spread: 70, origin: { y: 0.6 } });
         } else if (pct >= 50) {
-            document.getElementById('resultIcon').innerText     = 'ðŸ‘';
-            document.getElementById('resultGreeting').innerText = 'Good Job!';
-            document.getElementById('resultFeedback').innerText = 'Almost there â€” aim for 70%+!';
+            document.get Element By Id('result Icon').inner Text     = 'ðŸ‘';
+            document.get Element By Id('result Greeting').inner Text = 'Good Job!';
+            document.get Element By Id('result Feedback').inner Text = 'Almost there â€” aim for 70%+!';
         } else {
-            document.getElementById('resultIcon').innerText     = 'ðŸ’ª';
-            document.getElementById('resultGreeting').innerText = 'Keep Trying!';
-            document.getElementById('resultFeedback').innerText = 'Review your notes and try again!';
+            document.get Element By Id('result Icon').inner Text     = 'ðŸ’ª';
+            document.get Element By Id('result Greeting').inner Text = 'Keep Trying!';
+            document.get Element By Id('result Feedback').inner Text = 'Review your notes and try again!';
         }
 
-        document.getElementById('quizResultModal').style.display = 'flex';
-        await saveTestScore(pct);
+        document.get Element By Id('quiz Result Modal').style.display = 'flex';
+        await save Test Score(pct);
     }
 
-async function saveTestScore(pct) {
-        const el = document.getElementById('save-status');
-        el.innerText = '⏳ Saving...';
+async function save Test Score(pct) {
+        const el = document.get Element By Id('save-status');
+        el.inner Text = '⏳ Saving...';
         try {
-            const { data: { user } } = await db.auth.getUser();
-            if (!user) { el.innerText = ''; return; }
+            const { data: { user } } = await db.auth.get User();
+            if (!user) { el.inner Text = ''; return; }
 
-            // ── 1. ALWAYS save to localStorage as backup (cross-device sync) ──
+            // ── 1. ALWAYS save to local Storage as backup (cross-device sync) ──
             try {
-                const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
-                localResults.push({
+                const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
+                local Results.push({
                     student_id: user.id,
                     course_id: COURSE_CODE,
                     score: pct,
                     timestamp: Date.now(),
                     synced: false
                 });
-                localStorage.setItem('renance_local_results', JSON.stringify(localResults));
+                local Storage.set Item('renance_local_results', JSON.stringify(local Results));
             } catch (le) { console.warn('Local save failed:', le); }
 
             // ── 2. Save to Supabase (cloud) ──
@@ -1311,7 +1311,7 @@ async function saveTestScore(pct) {
             if (prev && prev.length > 0) {
                 const all = [...prev.map(r => r.score), pct];
                 const avg = Math.round(all.reduce((a, b) => a + b, 0) / all.length);
-                document.getElementById('modalAvg').innerText = avg + '%';
+                document.get Element By Id('modal Avg').inner Text = avg + '%';
             }
 
             const { error } = await db.from('test_results').insert([
@@ -1319,55 +1319,55 @@ async function saveTestScore(pct) {
             ]);
 
             if (error) {
-                el.innerText = '⚠️ Could not save to cloud (saved locally — will sync later)';
+                el.inner Text = '⚠️ Could not save to cloud (saved locally — will sync later)';
             } else {
-                el.innerText = '✅ Score saved!';
+                el.inner Text = '✅ Score saved!';
                 // Mark the just-saved local result as synced
                 try {
-                    const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+                    const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
                     // Mark the last unsynced result for this course as synced
-                    for (let i = localResults.length - 1; i >= 0; i--) {
-                        if (localResults[i].student_id === user.id &&
-                            localResults[i].course_id === COURSE_CODE &&
-                            !localResults[i].synced) {
-                            localResults[i].synced = true;
+                    for (let i = local Results.length - 1; i >= 0; i--) {
+                        if (local Results[i].student_id === user.id &&
+                            local Results[i].course_id === COURSE_CODE &&
+                            !local Results[i].synced) {
+                            local Results[i].synced = true;
                             break;
                         }
                     }
-                    localStorage.setItem('renance_local_results', JSON.stringify(localResults));
+                    local Storage.set Item('renance_local_results', JSON.stringify(local Results));
                 } catch (e) {}
 
                 // ── Update students table with aggregated stats ──
                 try {
-                    const { data: allResults } = await db.from('test_results')
+                    const { data: all Results } = await db.from('test_results')
                         .select('score').eq('student_id', user.id);
-                    if (allResults && allResults.length > 0) {
-                        const testsTaken = allResults.length;
-                        const avgScore = Math.round(allResults.reduce((s, r) => s + Number(r.score), 0) / testsTaken);
+                    if (all Results && all Results.length > 0) {
+                        const tests Taken = all Results.length;
+                        const avg Score = Math.round(all Results.reduce((s, r) => s + Number(r.score), 0) / tests Taken);
                         await db.from('students').update({
-                            tests_taken: testsTaken,
-                            avg_score: avgScore,
-                            last_seen: new Date().toISOString()
+                            tests_taken: tests Taken,
+                            avg_score: avg Score,
+                            last_seen: new Date().to ISOString()
                         }).eq('id', user.id);
                     }
                 } catch (ue) {}
             }
         } catch (e) {
-            el.innerText = '⚠️ Offline — saved locally, will sync when online';
+            el.inner Text = '⚠️ Offline — saved locally, will sync when online';
         }
     }
 
     // ── Sync queued local results to Supabase (runs on page load) ──
-    async function syncLocalResults() {
+    async function sync Local Results() {
         try {
-            const { data: { user } } = await db.auth.getUser();
+            const { data: { user } } = await db.auth.get User();
             if (!user) return;
 
-            const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
-            const unsynced = localResults.filter(r => !r.synced && r.student_id === user.id);
+            const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
+            const unsynced = local Results.filter(r => !r.synced && r.student_id === user.id);
             if (unsynced.length === 0) return;
 
-            let syncedCount = 0;
+            let synced Count = 0;
             for (const r of unsynced) {
                 try {
                     const { error } = await db.from('test_results').insert([
@@ -1375,28 +1375,28 @@ async function saveTestScore(pct) {
                     ]);
                     if (!error) {
                         r.synced = true;
-                        syncedCount++;
+                        synced Count++;
                     }
                 } catch (e) { /* will retry next time */ }
             }
-            localStorage.setItem('renance_local_results', JSON.stringify(localResults));
-            if (syncedCount > 0) {
-                console.log(`Synced ${syncedCount} queued result(s) to cloud`);
+            local Storage.set Item('renance_local_results', JSON.stringify(local Results));
+            if (synced Count > 0) {
+                console.log(`Synced ${synced Count} queued result(s) to cloud`);
 
             // Update students table after syncing
-            if (syncedCount > 0) {
+            if (synced Count > 0) {
                 try {
-                    const { data: { user } } = await db.auth.getUser();
+                    const { data: { user } } = await db.auth.get User();
                     if (user) {
-                        const { data: allResults } = await db.from('test_results')
+                        const { data: all Results } = await db.from('test_results')
                             .select('score').eq('student_id', user.id);
-                        if (allResults && allResults.length > 0) {
-                            const testsTaken = allResults.length;
-                            const avgScore = Math.round(allResults.reduce((s, r) => s + Number(r.score), 0) / testsTaken);
+                        if (all Results && all Results.length > 0) {
+                            const tests Taken = all Results.length;
+                            const avg Score = Math.round(all Results.reduce((s, r) => s + Number(r.score), 0) / tests Taken);
                             await db.from('students').update({
-                                tests_taken: testsTaken,
-                                avg_score: avgScore,
-                                last_seen: new Date().toISOString()
+                                tests_taken: tests Taken,
+                                avg_score: avg Score,
+                                last_seen: new Date().to ISOString()
                             }).eq('id', user.id);
                         }
                     }
@@ -1410,82 +1410,82 @@ async function saveTestScore(pct) {
             if (prev && prev.length > 0) {
                 const all = [...prev.map(r => r.score), pct];
                 const avg = Math.round(all.reduce((a, b) => a + b, 0) / all.length);
-                document.getElementById('modalAvg').innerText = avg + '%';
+                document.get Element By Id('modal Avg').inner Text = avg + '%';
             }
 
             const { error } = await db.from('test_results').insert([
                 { student_id: user.id, course_id: COURSE_CODE, score: pct }
             ]);
-            el.innerText = error ? 'âš ï¸ Could not save (offline)' : 'âœ… Score saved!';
+            el.inner Text = error ? 'âš ï¸ Could not save (offline)' : 'âœ… Score saved!';
         } catch (e) {
-            el.innerText = 'âš ï¸ Offline â€” score not saved';
+            el.inner Text = 'âš ï¸ Offline â€” score not saved';
         }
     }
 
-    function enterReviewMode() {
-        document.getElementById('quizResultModal').style.display = 'none';
-        isReviewMode = true;
-        currentIndex = 0;
-        document.getElementById('timer').innerText         = 'REVIEW';
-        document.getElementById('timer').style.background = '#dbeafe';
-        document.getElementById('timer').style.color      = '#1e40af';
-        renderQuestion();
+    function enter Review Mode() {
+        document.get Element By Id('quiz Result Modal').style.display = 'none';
+        is Review Mode = true;
+        current Index = 0;
+        document.get Element By Id('timer').inner Text         = 'REVIEW';
+        document.get Element By Id('timer').style.background = '#dbeafe';
+        document.get Element By Id('timer').style.color      = '#1e40af';
+        render Question();
     }
 
-    async function shareQuizResult() {
-        const score   = document.getElementById('finalScoreText').innerText;
-        const section = examSelectionType === 'random' ? 'a random mix' : selectionValue;
-        const text    = `I just scored ${score}% on ${COURSE_CODE} (${section})! ðŸš€\n\nChallenge yourself on the Renance CBT portal! ðŸ“šðŸ”¥\nhttps://renancecbt.vercel.app`;
+    async function share Quiz Result() {
+        const score   = document.get Element By Id('final Score Text').inner Text;
+        const section = exam Selection Type === 'random' ? 'a random mix' : selection Value;
+        const text    = `I just scored ${score}% on ${COURSE_CODE} (${section})! ðŸš€\n\n Challenge yourself on the Renance CBT portal! ðŸ“šðŸ”¥\nhttps://renancecbt.vercel.app`;
         try {
             if (navigator.share) await navigator.share({ title: `My ${COURSE_CODE} Score`, text, url: 'https://renancecbt.vercel.app' });
-            else { await navigator.clipboard.writeText(text); alert('Score copied to clipboard! ðŸ“‹'); }
+            else { await navigator.clipboard.write Text(text); alert('Score copied to clipboard! ðŸ“‹'); }
         } catch (_) {}
     }
 
         // ═════════════════════════════════════════════════════════════════
         // PER-COURSE LEADERBOARD
         // ═════════════════════════════════════════════════════════════════
-        async function loadCourseLeaderboard() {
-            const lbContent = document.getElementById('lb-content');
-            const lbStatus = document.getElementById('lb-status');
-            const lbCourseName = document.getElementById('lb-course-name');
-            if (lbCourseName) lbCourseName.innerText = COURSE_CODE;
-            if (!lbContent) return;
+        async function load Course Leaderboard() {
+            const lb Content = document.get Element By Id('lb-content');
+            const lb Status = document.get Element By Id('lb-status');
+            const lb Course Name = document.get Element By Id('lb-course-name');
+            if (lb Course Name) lb Course Name.inner Text = COURSE_CODE;
+            if (!lb Content) return;
 
             try {
                 // Fetch all test_results for this course
-                const { data: results, error: rErr } = await db
+                const { data: results, error: r Err } = await db
                     .from('test_results')
                     .select('student_id, score')
                     .eq('course_id', COURSE_CODE);
 
-                if (rErr) throw rErr;
+                if (r Err) throw r Err;
                 if (!results || results.length === 0) {
-                    lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
-                    lbStatus.innerText = '0 attempts';
+                    lb Content.inner HTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
+                    lb Status.inner Text = '0 attempts';
                     return;
                 }
 
                 // Aggregate by student: avg score + count
-                const byStudent = {};
-                results.forEach(r => {
-                    if (!byStudent[r.student_id]) {
-                        byStudent[r.student_id] = { total: 0, count: 0 };
+                const by Student = {};
+                results.for Each(r => {
+                    if (!by Student[r.student_id]) {
+                        by Student[r.student_id] = { total: 0, count: 0 };
                     }
-                    byStudent[r.student_id].total += Number(r.score);
-                    byStudent[r.student_id].count += 1;
+                    by Student[r.student_id].total += Number(r.score);
+                    by Student[r.student_id].count += 1;
                 });
 
                 // Fetch student profiles
-                const studentIds = Object.keys(byStudent);
-                const { data: students, error: sErr } = await db
+                const student Ids = Object.keys(by Student);
+                const { data: students, error: s Err } = await db
                     .from('students')
                     .select('id, fullname, department, matric')
-                    .in('id', studentIds);
+                    .in('id', student Ids);
 
                 // Build leaderboard rows
-                const rows = studentIds.map(sid => {
-                    const agg = byStudent[sid];
+                const rows = student Ids.map(sid => {
+                    const agg = by Student[sid];
                     const avg = Math.round(agg.total / agg.count);
                     const student = students ? students.find(s => s.id === sid) : null;
                     return {
@@ -1501,15 +1501,15 @@ async function saveTestScore(pct) {
                 rows.sort((a, b) => b.avg - a.avg || b.tests - a.tests);
 
                 // Get current user id for highlighting
-                let currentUserId = null;
+                let current User Id = null;
                 try {
-                    const { data: { user } } = await db.auth.getUser();
-                    if (user) currentUserId = user.id;
+                    const { data: { user } } = await db.auth.get User();
+                    if (user) current User Id = user.id;
                 } catch (e) {}
 
                 // Render top 20
                 const medals = ['🥇', '🥈', '🥉'];
-                const topRows = rows.slice(0, 20);
+                const top Rows = rows.slice(0, 20);
                 let html = '<table style="width:100%; border-collapse:collapse; font-size:0.88rem;">';
                 html += '<thead><tr style="border-bottom:2px solid var(--border);">';
                 html += '<th style="text-align:left; padding:8px; color:var(--text-muted); font-size:0.78rem;">#</th>';
@@ -1518,10 +1518,10 @@ async function saveTestScore(pct) {
                 html += '<th style="text-align:center; padding:8px; color:var(--text-muted); font-size:0.78rem;">Tests</th>';
                 html += '<th style="text-align:right; padding:8px; color:var(--text-muted); font-size:0.78rem;">Avg Score</th>';
                 html += '</tr></thead><tbody>';
-                topRows.forEach((row, i) => {
+                top Rows.for Each((row, i) => {
                     const rank = i + 1;
                     const medal = medals[i] || '';
-                    const highlight = row.id === currentUserId ? 'background:rgba(124,58,237,0.08);' : '';
+                    const highlight = row.id === current User Id ? 'background:rgba(124,58,237,0.08);' : '';
                     html += `<tr style="border-bottom:1px solid var(--border); ${highlight}">`;
                     html += `<td style="padding:8px; font-weight:700;">${medal || rank}</td>`;
                     html += `<td style="padding:8px;">${row.fullname}<br><span style="font-size:0.72rem; color:var(--text-muted);">${row.matric}</span></td>`;
@@ -1533,47 +1533,47 @@ async function saveTestScore(pct) {
                 html += '</tbody></table>';
 
                 // If current user is not in top 20, show their rank below
-                if (currentUserId) {
-                    const userRowIdx = rows.findIndex(r => r.id === currentUserId);
-                    if (userRowIdx >= 20) {
-                        const userRow = rows[userRowIdx];
+                if (current User Id) {
+                    const user Row Idx = rows.find Index(r => r.id === current User Id);
+                    if (user Row Idx >= 20) {
+                        const user Row = rows[user Row Idx];
                         html += `<div style="margin-top:10px; padding:10px; background:rgba(124,58,237,0.08); border-radius:8px; display:flex; justify-content:space-between; font-size:0.85rem;">
-                            <span><strong>Your Rank: #${userRowIdx + 1}</strong> — ${userRow.fullname}</span>
-                            <span><strong style="color:${userRow.avg >= 70 ? '#10b981' : userRow.avg >= 40 ? '#f59e0b' : '#ef4444'};">${userRow.avg}%</strong> (${userRow.tests} tests)</span>
+                            <span><strong>Your Rank: #${user Row Idx + 1}</strong> — ${user Row.fullname}</span>
+                            <span><strong style="color:${user Row.avg >= 70 ? '#10b981' : user Row.avg >= 40 ? '#f59e0b' : '#ef4444'};">${user Row.avg}%</strong> (${user Row.tests} tests)</span>
                         </div>`;
                     }
                 }
 
-                lbContent.innerHTML = html;
-                lbStatus.innerText = `${rows.length} students · ${results.length} attempts`;
+                lb Content.inner HTML = html;
+                lb Status.inner Text = `${rows.length} students · ${results.length} attempts`;
             } catch (e) {
                 console.error('Leaderboard error:', e);
-                lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
-                lbStatus.innerText = 'Error';
+                lb Content.inner HTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
+                lb Status.inner Text = 'Error';
             }
         }
 
         // Load leaderboard after page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(loadCourseLeaderboard, 500);
+        document.add Event Listener('DOMContent Loaded', function() {
+            set Timeout(load Course Leaderboard, 500);
         });
 
         // ═════════════════════════════════════════════════════════════════
         // AI WEAK AREAS ANALYSIS (runs after exam results are shown)
         // ═════════════════════════════════════════════════════════════════
-        async function analyzeWeakAreasWithAI() {
-            const container = document.getElementById('ai-weak-areas');
-            const textEl = document.getElementById('ai-weak-areas-text');
-            if (!container || !textEl) return;
-            if (typeof currentExamData === 'undefined' || !currentExamData.length) return;
+        async function analyze Weak Areas With AI() {
+            const container = document.get Element By Id('ai-weak-areas');
+            const text El = document.get Element By Id('ai-weak-areas-text');
+            if (!container || !text El) return;
+            if (typeof current Exam Data === 'undefined' || !current Exam Data.length) return;
 
             // Collect wrong answers
             const missed = [];
-            currentExamData.forEach((q, i) => {
-                const student = userAnswers[i];
-                if (q.isTheory) {
-                    const scoreValue = student && typeof student.score === 'number' ? student.score : 0;
-                    if (scoreValue < 70) {
+            current Exam Data.for Each((q, i) => {
+                const student = user Answers[i];
+                if (q.is Theory) {
+                    const score Value = student && typeof student.score === 'number' ? student.score : 0;
+                    if (score Value < 70) {
                         missed.push({ question: q.question, topic: q.topic || 'General' });
                     }
                 } else {
@@ -1585,39 +1585,39 @@ async function saveTestScore(pct) {
 
             if (missed.length === 0) {
                 container.style.display = 'block';
-                container.style.borderColor = '#10b981';
-                container.querySelector('strong').style.color = '#10b981';
-                textEl.innerHTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
+                container.style.border Color = '#10b981';
+                container.query Selector('strong').style.color = '#10b981';
+                text El.inner HTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
                 return;
             }
 
             container.style.display = 'block';
-            textEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
+            text El.inner HTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
 
-            const courseCode = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
-            const config = typeof getAIConfigForCourse === 'function' ? getAIConfigForCourse(courseCode) : {
+            const course Code = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
+            const config = typeof get AIConfig For Course === 'function' ? get AIConfig For Course(course Code) : {
                 provider: 'groq',
                 model: window.env?.AI_MODEL || 'llama-3.1-8b-instant',
-                key: window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy')
+                key: window.env?.AI_API_KEY || ('gsk_71n Ddj9ca C9CGo XD0Qx SW' + 'Gdyb3FYct CCz V6YNHGz Ylj4O9Qpk Qcy')
             };
 
             // Group missed questions by topic if available
-            const topicGroups = {};
-            missed.forEach(m => {
-                if (!topicGroups[m.topic]) topicGroups[m.topic] = 0;
-                topicGroups[m.topic]++;
+            const topic Groups = {};
+            missed.for Each(m => {
+                if (!topic Groups[m.topic]) topic Groups[m.topic] = 0;
+                topic Groups[m.topic]++;
             });
 
-            const missedList = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
-            const topicSummary = Object.entries(topicGroups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
+            const missed List = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
+            const topic Summary = Object.entries(topic Groups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
 
-            const systemPrompt = `You are Renance AI, an academic tutor for FUTA students.
-The student just completed a ${courseCode} quiz and got ${missed.length} question(s) wrong out of ${currentExamData.length}.
+            const system Prompt = `You are Renance AI, an academic tutor for FUTA students.
+The student just completed a ${course Code} quiz and got ${missed.length} question(s) wrong out of ${current Exam Data.length}.
 
 Questions they got wrong:
-${missedList}
+${missed List}
 
-${topicSummary ? 'Breakdown by topic: ' + topicSummary : ''}
+${topic Summary ? 'Breakdown by topic: ' + topic Summary : ''}
 
 Identify 1-3 core topics/concepts the student should focus on revising.
 Respond in 2-4 short bullet points. Be specific and actionable.
@@ -1625,7 +1625,7 @@ Format: • Topic name — brief advice on what to study
 Keep it concise (under 100 words total).`;
 
             try {
-                let resultText = "";
+                let result Text = "";
                 const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: 'POST',
                     headers: {
@@ -1634,26 +1634,26 @@ Keep it concise (under 100 words total).`;
                     },
                     body: JSON.stringify({
                         model: config.model,
-                        messages: [{ role: "system", content: systemPrompt }],
+                        messages: [{ role: "system", content: system Prompt }],
                         temperature: 0.3
                     })
                 });
-                const resData = await response.json();
-                if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
-                resultText = resData.choices[0].message.content;
+                const res Data = await response.json();
+                if (!response.ok) throw new Error(res Data.error?.message || `HTTP ${response.status}`);
+                result Text = res Data.choices[0].message.content;
 
                 // Format the response
-                const formatted = resultText
+                const formatted = result Text
                     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                     .replace(/`(.*?)`/g, '<code>$1</code>')
                     .replace(/\n/g, '<br>');
-                textEl.innerHTML = formatted;
+                text El.inner HTML = formatted;
             } catch (err) {
                 // Fallback: show topic-based analysis without AI
-                if (topicSummary) {
-                    textEl.innerHTML = `Based on your missed questions, focus on: <br><strong>${topicSummary}</strong><br><br>Review these topics in your course materials and try again!`;
+                if (topic Summary) {
+                    text El.inner HTML = `Based on your missed questions, focus on: <br><strong>${topic Summary}</strong><br><br>Review these topics in your course materials and try again!`;
                 } else {
-                    textEl.innerHTML = `You missed ${missed.length} out of ${currentExamData.length} questions. Review the missed questions above and try again!`;
+                    text El.inner HTML = `You missed ${missed.length} out of ${current Exam Data.length} questions. Review the missed questions above and try again!`;
                 }
             }
         }
