@@ -13,23 +13,23 @@
 
     <style>
         :root {
-            --primary: #78716c;
-            --bg: #f5f5f4;
+            --primary: #7c3aed;
+            --bg: #faf5ff;
             --card-bg: #ffffff;
-            --text: #292524;
-            --text-muted: #a8a29e;
+            --text: #2e1065;
+            --text-muted: #7c3aed;
             --success: #10b981;
             --danger: #ef4444;
             --accent: #f59e0b;
-            --border: rgba(120,113,108,0.15);
-            --share-gradient: linear-gradient(135deg, #292524 0%, #78716c 55%, #d6d3d1 100%);
+            --border: rgba(124,58,237,0.15);
+            --share-gradient: linear-gradient(135deg, #2e1065 0%, #7c3aed 55%, #a78bfa 100%);
         }
         .dark-mode {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text: #f1f5f9;
-            --text-muted: #94a3b8;
-            --border: rgba(255,255,255,0.07);
+            --bg: #1e1b4b;
+            --card-bg: #2e1065;
+            --text: #faf5ff;
+            --text-muted: #c084fc;
+            --border: rgba(192,132,252,0.12);
         }
 
         * { box-sizing: border-box; }
@@ -49,7 +49,7 @@
             display: none; background: var(--card-bg);
             border: 1.5px solid var(--success); border-radius: 14px;
             padding: 1rem 1.2rem; margin-bottom: 1.2rem;
-            box-shadow: 0 2px 10px rgba(29,78,216,0.1);
+            box-shadow: 0 2px 10px rgba(124,58,237,0.1);
         }
 
         .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.8rem; margin-bottom: 1.5rem; }
@@ -65,18 +65,18 @@
             border: 1.5px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-        .box:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(29,78,216,0.12); }
+        .box:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(124,58,237,0.12); }
         .box h3 { margin: 10px 0 4px; font-size: 1rem; line-height: 1.4; }
         .box p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
-        .box-random { background: linear-gradient(135deg, #1d4ed8, #60a5fa) !important; color: white !important; border: none !important; }
+        .box-random { background: linear-gradient(135deg, #7c3aed, #a78bfa) !important; color: white !important; border: none !important; }
         .box-random p { color: rgba(255,255,255,0.8) !important; }
 
         #setup-screen { text-align: center; background: var(--card-bg); padding: 3rem 2rem; border-radius: 16px; border: 1.5px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
         .setup-group { margin: 1.5rem auto; text-align: left; max-width: 360px; }
         .setup-group label { font-weight: 600; font-size: 0.88rem; color: var(--text); display: block; margin-bottom: 7px; }
-        .setup-input { width: 100%; padding: 11px 14px; border: 2px solid #bfdbfe; border-radius: 9px; font-size: 0.95rem; background: var(--bg); color: var(--text); outline: none; transition: border-color 0.2s; }
+        .setup-input { width: 100%; padding: 11px 14px; border: 2px solid #ddd6fe; border-radius: 9px; font-size: 0.95rem; background: var(--bg); color: var(--text); outline: none; transition: border-color 0.2s; }
         .setup-input:focus { border-color: var(--primary); }
-        .checkbox-group { display: flex; flex-direction: column; gap: 12px; margin-top: 1rem; background: rgba(29,78,216,0.02); padding: 14px; border-radius: 10px; border: 1px solid #bfdbfe; }
+        .checkbox-group { display: flex; flex-direction: column; gap: 12px; margin-top: 1rem; background: rgba(124,58,237,0.02); padding: 14px; border-radius: 10px; border: 1px solid #ddd6fe; }
         .custom-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; color: var(--text); font-weight: 500; user-select: none; }
         .custom-checkbox input { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; }
 
@@ -125,7 +125,7 @@
         }
         .result-icon { font-size: 3.6rem; margin-bottom: 8px; display: block; animation: float 3s ease-in-out infinite; }
         @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .score-display { background: rgba(29,78,216,0.06); border: 2px dashed rgba(29,78,216,0.25); border-radius: 18px; padding: 18px; margin: 18px 0; }
+        .score-display { background: rgba(124,58,237,0.06); border: 2px dashed rgba(124,58,237,0.25); border-radius: 18px; padding: 18px; margin: 18px 0; }
         .score-big { font-size: 3.5rem; font-weight: 900; color: var(--primary); line-height: 1; }
         .stats-mini { display: flex; justify-content: center; gap: 24px; margin: 10px 0 4px; }
         .stats-mini .sm { text-align: center; }
@@ -135,8 +135,8 @@
         .result-actions { display: flex; flex-direction: column; gap: 11px; }
         .btn-action { width: 100%; padding: 13px; border: none; border-radius: 12px; font-size: 0.97rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s; display: flex; align-items: center; justify-content: center; gap: 9px; }
         .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
-        .btn-share  { background: var(--share-gradient); color: white; box-shadow: 0 4px 16px rgba(29,78,216,0.3); }
-        .btn-review { background: rgba(29,78,216,0.08); color: var(--primary); border: 1.5px solid rgba(29,78,216,0.2); }
+        .btn-share  { background: var(--share-gradient); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3); }
+        .btn-review { background: rgba(124,58,237,0.08); color: var(--primary); border: 1.5px solid rgba(124,58,237,0.2); }
         .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
 
         @media (max-width: 600px) {
@@ -274,7 +274,7 @@
                         <i class="fa-solid fa-brain"></i> Analyze My Weak Areas
                     </button>
 
-            <button class="btn-action" id="explainBtn" onclick="askRenanceAI()" style="background: linear-gradient(135deg, #1d4ed8, #1e40af); color: white; box-shadow: 0 4px 16px rgba(29,78,216,0.3);">
+            <button class="btn-action" id="explainBtn" onclick="askRenanceAI()" style="background: linear-gradient(135deg, #7c3aed, #6d28d9); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
                 <i class="fa-solid fa-robot"></i> Explain Missed Questions
             </button>
             <button class="btn-action btn-share" onclick="shareQuizResult()">
@@ -307,8 +307,884 @@
     sendHeartbeat();
     setInterval(sendHeartbeat, 2 * 60 * 1000);
 
-    const MASTER_POOL = [
-];
+            const MASTER_POOL = [
+        {
+                "id": 1,
+                "question": "Business information refers to:",
+                "options": [
+                        "Only financial data",
+                        "Data and knowledge used by organizations for decision-making",
+                        "Only employee names",
+                        "Only marketing materials"
+                ],
+                "answer": "Data and knowledge used by organizations for decision-making",
+                "explanation": "Business information encompasses all data, knowledge, and experience used in organizational decision-making."
+        },
+        {
+                "id": 2,
+                "question": "Which is a use of business information?",
+                "options": [
+                        "Only decoration",
+                        "Operational efficiency, decision-making, and customer relationship management",
+                        "Only filing papers",
+                        "Only meetings"
+                ],
+                "answer": "Operational efficiency, decision-making, and customer relationship management",
+                "explanation": "Business information improves efficiency, supports decisions, and manages customer relationships."
+        },
+        {
+                "id": 3,
+                "question": "Operational efficiency from business information means:",
+                "options": [
+                        "Working slower",
+                        "Organizations can automate, innovate, and perform activities faster and consistently",
+                        "Hiring more staff",
+                        "Reducing all technology"
+                ],
+                "answer": "Organizations can automate, innovate, and perform activities faster and consistently",
+                "explanation": "Business information enables automation and consistency in operations."
+        },
+        {
+                "id": 4,
+                "question": "Business information helps in decision-making by:",
+                "options": [
+                        "Guessing outcomes",
+                        "Providing relevant data to make informed choices",
+                        "Only using intuition",
+                        "Ignoring data"
+                ],
+                "answer": "Providing relevant data to make informed choices",
+                "explanation": "Data-driven decisions are more accurate than gut-feel decisions."
+        },
+        {
+                "id": 5,
+                "question": "Customer relationship management (CRM) uses business information to:",
+                "options": [
+                        "Delete customer data",
+                        "Track preferences, purchase history, and feedback to improve satisfaction",
+                        "Only store names",
+                        "Only send ads"
+                ],
+                "answer": "Track preferences, purchase history, and feedback to improve satisfaction",
+                "explanation": "CRM systems use customer data to personalize service and anticipate needs."
+        },
+        {
+                "id": 6,
+                "question": "Business information helps in collaboration by:",
+                "options": [
+                        "Isolating departments",
+                        "Facilitating information sharing across departments",
+                        "Only helping IT",
+                        "Only helping management"
+                ],
+                "answer": "Facilitating information sharing across departments",
+                "explanation": "Shared information systems enable cross-functional collaboration and communication."
+        },
+        {
+                "id": 7,
+                "question": "Risk management and fraud prevention use business information to:",
+                "options": [
+                        "Increase risks",
+                        "Identify and prevent fraudulent activities",
+                        "Ignore threats",
+                        "Only report after damage"
+                ],
+                "answer": "Identify and prevent fraudulent activities",
+                "explanation": "Business information systems detect anomalies and patterns that indicate fraud."
+        },
+        {
+                "id": 8,
+                "question": "Transactional data in business refers to:",
+                "options": [
+                        "Only employee salaries",
+                        "Data from day-to-day operations like sales and purchases",
+                        "Only strategic plans",
+                        "Only customer names"
+                ],
+                "answer": "Data from day-to-day operations like sales and purchases",
+                "explanation": "Transactional data is operational data generated from daily business activities."
+        },
+        {
+                "id": 9,
+                "question": "Strategic data in business refers to:",
+                "options": [
+                        "Daily sales records",
+                        "Data used for long-term planning and future direction",
+                        "Only inventory counts",
+                        "Only email logs"
+                ],
+                "answer": "Data used for long-term planning and future direction",
+                "explanation": "Strategic data supports high-level decision-making about the organization's future."
+        },
+        {
+                "id": 10,
+                "question": "Information use is the process of:",
+                "options": [
+                        "Ignoring data",
+                        "Locating, validating, and utilizing information for decision-making",
+                        "Only storing data",
+                        "Only deleting data"
+                ],
+                "answer": "Locating, validating, and utilizing information for decision-making",
+                "explanation": "Information use involves finding, verifying, and applying data to make decisions."
+        },
+        {
+                "id": 11,
+                "question": "Information strategy is:",
+                "options": [
+                        "Only buying computers",
+                        "The process of recognizing what information is needed and how to use it",
+                        "Only hiring IT staff",
+                        "Only buying software"
+                ],
+                "answer": "The process of recognizing what information is needed and how to use it",
+                "explanation": "Information strategy defines what data the organization needs and how it will be used."
+        },
+        {
+                "id": 12,
+                "question": "Key characteristics of information quality include:",
+                "options": [
+                        "Only being expensive",
+                        "Accessibility, accuracy, timeliness, relevance, and completeness",
+                        "Only being digital",
+                        "Only being on paper"
+                ],
+                "answer": "Accessibility, accuracy, timeliness, relevance, and completeness",
+                "explanation": "Quality information must be accessible, accurate, timely, relevant, and complete."
+        },
+        {
+                "id": 13,
+                "question": "Accessibility of information means:",
+                "options": [
+                        "Information is locked away",
+                        "Information can be accessed anytime it's needed by authorized users",
+                        "Only managers can see it",
+                        "Information is public to everyone"
+                ],
+                "answer": "Information can be accessed anytime it's needed by authorized users",
+                "explanation": "Accessible information is available to authorized users when they need it."
+        },
+        {
+                "id": 14,
+                "question": "Accuracy of information means:",
+                "options": [
+                        "Information is approximately correct",
+                        "Information is free from errors and represents reality",
+                        "Information is always positive",
+                        "Information is always short"
+                ],
+                "answer": "Information is free from errors and represents reality",
+                "explanation": "Accurate information correctly represents the real-world facts it describes."
+        },
+        {
+                "id": 15,
+                "question": "Timeliness of information means:",
+                "options": [
+                        "Information is always old",
+                        "Information is available when needed for decision-making",
+                        "Information is never updated",
+                        "Information is only annual"
+                ],
+                "answer": "Information is available when needed for decision-making",
+                "explanation": "Timely information is available at the right time — outdated information may be useless."
+        },
+        {
+                "id": 16,
+                "question": "Relevance of information means:",
+                "options": [
+                        "All information is relevant",
+                        "Information applies to the specific problem or decision at hand",
+                        "Information is always irrelevant",
+                        "Only financial data is relevant"
+                ],
+                "answer": "Information applies to the specific problem or decision at hand",
+                "explanation": "Relevant information directly relates to the question being addressed — irrelevant data wastes time."
+        },
+        {
+                "id": 17,
+                "question": "Primary storage in computers refers to:",
+                "options": [
+                        "External hard drives",
+                        "Temporary storage directly accessible by the CPU (RAM, ROM, Cache)",
+                        "USB drives only",
+                        "Cloud storage"
+                ],
+                "answer": "Temporary storage directly accessible by the CPU (RAM, ROM, Cache)",
+                "explanation": "Primary storage is the main memory directly accessible by the CPU — RAM, ROM, and cache."
+        },
+        {
+                "id": 18,
+                "question": "Secondary storage refers to:",
+                "options": [
+                        "RAM only",
+                        "Permanent storage devices like HDD, SSD, USB, CD",
+                        "Cache memory",
+                        "CPU registers"
+                ],
+                "answer": "Permanent storage devices like HDD, SSD, USB, CD",
+                "explanation": "Secondary storage provides permanent data storage separate from the computer's main memory."
+        },
+        {
+                "id": 19,
+                "question": "RAM stands for:",
+                "options": [
+                        "Read Access Memory",
+                        "Random Access Memory",
+                        "Rapid Access Module",
+                        "Remote Access Memory"
+                ],
+                "answer": "Random Access Memory",
+                "explanation": "RAM is volatile primary storage that temporarily holds programs and data during operation."
+        },
+        {
+                "id": 20,
+                "question": "ROM stands for:",
+                "options": [
+                        "Read Only Memory",
+                        "Random Output Memory",
+                        "Remote Operating Module",
+                        "Rapid Online Memory"
+                ],
+                "answer": "Read Only Memory",
+                "explanation": "ROM is non-volatile memory that stores permanent instructions like the BIOS."
+        },
+        {
+                "id": 21,
+                "question": "Cloud storage is best for:",
+                "options": [
+                        "Only small files",
+                        "Security, backup, and remote access to data",
+                        "Only physical backups",
+                        "Only temporary storage"
+                ],
+                "answer": "Security, backup, and remote access to data",
+                "explanation": "Cloud storage provides secure off-site data storage accessible from anywhere with internet."
+        },
+        {
+                "id": 22,
+                "question": "A con of cloud storage is:",
+                "options": [
+                        "It's always free",
+                        "Requires internet connection to access data",
+                        "It's too secure",
+                        "It stores too little data"
+                ],
+                "answer": "Requires internet connection to access data",
+                "explanation": "Without internet, you cannot access your cloud-stored data."
+        },
+        {
+                "id": 23,
+                "question": "Backup is the process of:",
+                "options": [
+                        "Deleting old data",
+                        "Creating and storing copies of data for recovery",
+                        "Only compressing files",
+                        "Only organizing folders"
+                ],
+                "answer": "Creating and storing copies of data for recovery",
+                "explanation": "Backups ensure data can be recovered in case of loss, corruption, or system failure."
+        },
+        {
+                "id": 24,
+                "question": "Examples of cloud storage services include:",
+                "options": [
+                        "Only physical hard drives",
+                        "Google Drive, Dropbox, OneDrive, Mega",
+                        "Only USB drives",
+                        "Only CDs"
+                ],
+                "answer": "Google Drive, Dropbox, OneDrive, Mega",
+                "explanation": "These are popular cloud storage services that store data on remote servers accessible via internet."
+        },
+        {
+                "id": 25,
+                "question": "Which is a characteristic of good information?",
+                "options": [
+                        "It's always free",
+                        "It's accurate, timely, and relevant",
+                        "It's always long",
+                        "It's always expensive"
+                ],
+                "answer": "It's accurate, timely, and relevant",
+                "explanation": "Good information must be accurate (correct), timely (current), and relevant (applicable to the task)."
+        },
+        {
+                "id": 26,
+                "question": "What is data minimization?",
+                "options": [
+                        "Collecting as much data as possible",
+                        "Collecting only the data necessary for a specific purpose",
+                        "Deleting all data",
+                        "Only collecting names"
+                ],
+                "answer": "Collecting only the data necessary for a specific purpose",
+                "explanation": "Data minimization is a privacy principle — collect only what you need to reduce risk."
+        },
+        {
+                "id": 27,
+                "question": "Business information storage refers to:",
+                "options": [
+                        "Only paper files",
+                        "How data is stored, organized, and retrieved in an organization",
+                        "Only computer hardware",
+                        "Only employee records"
+                ],
+                "answer": "How data is stored, organized, and retrieved in an organization",
+                "explanation": "Business information storage covers all methods of keeping data accessible and organized."
+        },
+        {
+                "id": 28,
+                "question": "Business information retrieval is the process of:",
+                "options": [
+                        "Deleting old data",
+                        "Locating and accessing stored data when needed",
+                        "Only backing up data",
+                        "Only compressing files"
+                ],
+                "answer": "Locating and accessing stored data when needed",
+                "explanation": "Retrieval ensures the right information is available to the right people at the right time."
+        },
+        {
+                "id": 29,
+                "question": "Which is a type of business information?",
+                "options": [
+                        "Only financial data",
+                        "Transactional, strategic, operational, and customer data",
+                        "Only employee names",
+                        "Only marketing materials"
+                ],
+                "answer": "Transactional, strategic, operational, and customer data",
+                "explanation": "Business information includes multiple types: transactional, strategic, operational, and customer-related."
+        },
+        {
+                "id": 30,
+                "question": "Information overload in business means:",
+                "options": [
+                        "Too little information available",
+                        "Having so much information that decision-making becomes difficult",
+                        "Only digital information",
+                        "No information at all"
+                ],
+                "answer": "Having so much information that decision-making becomes difficult",
+                "explanation": "Information overload occurs when excessive data hinders rather than helps decision-making."
+        },
+        {
+                "id": 31,
+                "question": "A database in business information is:",
+                "options": [
+                        "A physical filing cabinet",
+                        "An organized collection of data for easy access and management",
+                        "Only a spreadsheet",
+                        "Only a website"
+                ],
+                "answer": "An organized collection of data for easy access and management",
+                "explanation": "Databases enable efficient storage, retrieval, and management of business information."
+        },
+        {
+                "id": 32,
+                "question": "DBMS stands for:",
+                "options": [
+                        "Data Business Management System",
+                        "Database Management System",
+                        "Digital Business Monitoring Service",
+                        "Data Backup and Maintenance System"
+                ],
+                "answer": "Database Management System",
+                "explanation": "A DBMS is software that manages databases, enabling storage, retrieval, and manipulation of data."
+        },
+        {
+                "id": 33,
+                "question": "Which is a type of database?",
+                "options": [
+                        "Only flat files",
+                        "Relational, hierarchical, and NoSQL databases",
+                        "Only Excel sheets",
+                        "Only text files"
+                ],
+                "answer": "Relational, hierarchical, and NoSQL databases",
+                "explanation": "Databases come in various types depending on how data is structured and accessed."
+        },
+        {
+                "id": 34,
+                "question": "SQL stands for:",
+                "options": [
+                        "Simple Query Language",
+                        "Structured Query Language",
+                        "Standard Quality Language",
+                        "System Query Logic"
+                ],
+                "answer": "Structured Query Language",
+                "explanation": "SQL is the standard language for managing and querying relational databases."
+        },
+        {
+                "id": 35,
+                "question": "A relational database organizes data into:",
+                "options": [
+                        "Random files",
+                        "Tables with rows and columns linked by relationships",
+                        "Only text documents",
+                        "Only images"
+                ],
+                "answer": "Tables with rows and columns linked by relationships",
+                "explanation": "Relational databases use tables (rows=records, columns=fields) connected by keys."
+        },
+        {
+                "id": 36,
+                "question": "A primary key in a database is:",
+                "options": [
+                        "The first key on a keyboard",
+                        "A unique identifier for each record in a table",
+                        "A password",
+                        "A type of index"
+                ],
+                "answer": "A unique identifier for each record in a table",
+                "explanation": "Primary keys ensure each record can be uniquely identified (e.g., student ID, product SKU)."
+        },
+        {
+                "id": 37,
+                "question": "A foreign key is:",
+                "options": [
+                        "A key from another country",
+                        "A field that references a primary key in another table",
+                        "A type of password",
+                        "A duplicate key"
+                ],
+                "answer": "A field that references a primary key in another table",
+                "explanation": "Foreign keys create relationships between tables in a relational database."
+        },
+        {
+                "id": 38,
+                "question": "Data integrity refers to:",
+                "options": [
+                        "Data being interesting",
+                        "Accuracy, consistency, and reliability of data throughout its lifecycle",
+                        "Data being encrypted",
+                        "Data being free"
+                ],
+                "answer": "Accuracy, consistency, and reliability of data throughout its lifecycle",
+                "explanation": "Data integrity ensures data is correct and unaltered during storage, retrieval, and processing."
+        },
+        {
+                "id": 39,
+                "question": "Data security in business information means:",
+                "options": [
+                        "Sharing all data publicly",
+                        "Protecting data from unauthorized access, corruption, or theft",
+                        "Only using passwords",
+                        "Deleting all sensitive data"
+                ],
+                "answer": "Protecting data from unauthorized access, corruption, or theft",
+                "explanation": "Data security involves access controls, encryption, backups, and monitoring to protect business information."
+        },
+        {
+                "id": 40,
+                "question": "A data warehouse is:",
+                "options": [
+                        "A physical storage building",
+                        "A central repository for large-scale data analysis and reporting",
+                        "Only a backup system",
+                        "A type of database"
+                ],
+                "answer": "A central repository for large-scale data analysis and reporting",
+                "explanation": "Data warehouses consolidate data from multiple sources for business intelligence and analytics."
+        },
+        {
+                "id": 41,
+                "question": "Data mining in business is:",
+                "options": [
+                        "Digging for minerals",
+                        "Discovering patterns and insights from large datasets",
+                        "Only deleting data",
+                        "Only backing up data"
+                ],
+                "answer": "Discovering patterns and insights from large datasets",
+                "explanation": "Data mining uses statistical and ML techniques to find hidden patterns in business data."
+        },
+        {
+                "id": 42,
+                "question": "Business intelligence (BI) refers to:",
+                "options": [
+                        "Only intelligence agencies",
+                        "Tools and processes for analyzing data to support business decisions",
+                        "Only financial reporting",
+                        "Only customer surveys"
+                ],
+                "answer": "Tools and processes for analyzing data to support business decisions",
+                "explanation": "BI transforms raw data into actionable insights through dashboards, reports, and analytics."
+        },
+        {
+                "id": 43,
+                "question": "A dashboard in business intelligence is:",
+                "options": [
+                        "A car dashboard",
+                        "A visual interface showing key metrics and KPIs",
+                        "Only a spreadsheet",
+                        "A type of database"
+                ],
+                "answer": "A visual interface showing key metrics and KPIs",
+                "explanation": "Dashboards provide real-time visibility into business performance through charts and graphs."
+        },
+        {
+                "id": 44,
+                "question": "Cloud computing for business information means:",
+                "options": [
+                        "Only weather data",
+                        "Storing and processing data on remote servers via internet",
+                        "Only local storage",
+                        "Only email"
+                ],
+                "answer": "Storing and processing data on remote servers via internet",
+                "explanation": "Cloud computing enables scalable, on-demand access to computing resources without local infrastructure."
+        },
+        {
+                "id": 45,
+                "question": "SaaS stands for:",
+                "options": [
+                        "Storage as a Service",
+                        "Software as a Service",
+                        "Security as a Service",
+                        "System as a Service"
+                ],
+                "answer": "Software as a Service",
+                "explanation": "SaaS delivers software applications via the internet (e.g., Google Workspace, Salesforce)."
+        },
+        {
+                "id": 46,
+                "question": "IaaS stands for:",
+                "options": [
+                        "Internet as a Service",
+                        "Infrastructure as a Service",
+                        "Information as a Service",
+                        "Integration as a Service"
+                ],
+                "answer": "Infrastructure as a Service",
+                "explanation": "IaaS provides virtualized computing resources (servers, storage) over the internet."
+        },
+        {
+                "id": 47,
+                "question": "PaaS stands for:",
+                "options": [
+                        "Product as a Service",
+                        "Platform as a Service",
+                        "Payment as a Service",
+                        "Privacy as a Service"
+                ],
+                "answer": "Platform as a Service",
+                "explanation": "PaaS provides a development platform for building and deploying applications without managing infrastructure."
+        },
+        {
+                "id": 48,
+                "question": "Data backup types include:",
+                "options": [
+                        "Only full backups",
+                        "Full, incremental, and differential backups",
+                        "Only manual copies",
+                        "Only cloud backups"
+                ],
+                "answer": "Full, incremental, and differential backups",
+                "explanation": "Full backups copy everything, incremental copies changes since last backup, differential copies changes since last full backup."
+        },
+        {
+                "id": 49,
+                "question": "Disaster recovery in business information refers to:",
+                "options": [
+                        "Recovering from a natural disaster only",
+                        "Plans and processes to restore data and operations after a disruption",
+                        "Only antivirus software",
+                        "Only backing up data"
+                ],
+                "answer": "Plans and processes to restore data and operations after a disruption",
+                "explanation": "Disaster recovery ensures business continuity by restoring systems and data after failures or disasters."
+        },
+        {
+                "id": 50,
+                "question": "RPO (Recovery Point Objective) is:",
+                "options": [
+                        "How fast data is recovered",
+                        "The maximum acceptable data loss measured in time",
+                        "A type of backup",
+                        "A payment method"
+                ],
+                "answer": "The maximum acceptable data loss measured in time",
+                "explanation": "RPO defines how much data loss is tolerable — e.g., 'RPO of 1 hour' means at most 1 hour of data can be lost."
+        },
+        {
+                "id": 51,
+                "question": "RTO (Recovery Time Objective) is:",
+                "options": [
+                        "The time data is stored",
+                        "The maximum acceptable downtime before systems must be restored",
+                        "A type of backup",
+                        "A payment time"
+                ],
+                "answer": "The maximum acceptable downtime before systems must be restored",
+                "explanation": "RTO defines how quickly systems must be back online — e.g., 'RTO of 4 hours' means restore within 4 hours."
+        },
+        {
+                "id": 52,
+                "question": "Which is a business information system?",
+                "options": [
+                        "Only email",
+                        "ERP, CRM, SCM, and TPS",
+                        "Only a website",
+                        "Only a cash register"
+                ],
+                "answer": "ERP, CRM, SCM, and TPS",
+                "explanation": "Business information systems include Enterprise Resource Planning, Customer Relationship Management, Supply Chain Management, and Transaction Processing Systems."
+        },
+        {
+                "id": 53,
+                "question": "ERP stands for:",
+                "options": [
+                        "Electronic Revenue Processing",
+                        "Enterprise Resource Planning",
+                        "External Resource Provider",
+                        "Enterprise Retail Platform"
+                ],
+                "answer": "Enterprise Resource Planning",
+                "explanation": "ERP integrates core business processes (finance, HR, inventory, sales) into one system."
+        },
+        {
+                "id": 54,
+                "question": "SCM stands for:",
+                "options": [
+                        "Supply Chain Management",
+                        "System Configuration Manager",
+                        "Service Control Module",
+                        "Strategic Customer Management"
+                ],
+                "answer": "Supply Chain Management",
+                "explanation": "SCM manages the flow of goods, data, and finances from supplier to customer."
+        },
+        {
+                "id": 55,
+                "question": "TPS stands for:",
+                "options": [
+                        "Transaction Processing System",
+                        "Total Product Service",
+                        "Technical Processing Standard",
+                        "Team Performance System"
+                ],
+                "answer": "Transaction Processing System",
+                "explanation": "TPS handles day-to-day business transactions like sales, payments, and inventory updates."
+        },
+        {
+                "id": 56,
+                "question": "Knowledge management in business is:",
+                "options": [
+                        "Only storing documents",
+                        "Creating, sharing, and applying organizational knowledge",
+                        "Only employee training",
+                        "Only filing papers"
+                ],
+                "answer": "Creating, sharing, and applying organizational knowledge",
+                "explanation": "Knowledge management captures tacit and explicit knowledge to improve organizational effectiveness."
+        },
+        {
+                "id": 57,
+                "question": "Tacit knowledge is:",
+                "options": [
+                        "Written down knowledge",
+                        "Personal knowledge that is difficult to express (experience, skills)",
+                        "Only in databases",
+                        "Only in manuals"
+                ],
+                "answer": "Personal knowledge that is difficult to express (experience, skills)",
+                "explanation": "Tacit knowledge is experiential and hard to document — it lives in people's heads."
+        },
+        {
+                "id": 58,
+                "question": "Explicit knowledge is:",
+                "options": [
+                        "Only in people's heads",
+                        "Knowledge that is documented and easily shared (manuals, databases)",
+                        "Only verbal",
+                        "Only personal experience"
+                ],
+                "answer": "Knowledge that is documented and easily shared (manuals, databases)",
+                "explanation": "Explicit knowledge is codified — it can be written, stored, and transferred easily."
+        },
+        {
+                "id": 59,
+                "question": "A data dictionary in business information is:",
+                "options": [
+                        "A dictionary of English words",
+                        "A document defining all data elements in a database",
+                        "A type of backup",
+                        "A payment system"
+                ],
+                "answer": "A document defining all data elements in a database",
+                "explanation": "Data dictionaries describe each field, its type, format, and purpose in the database."
+        },
+        {
+                "id": 60,
+                "question": "Metadata is:",
+                "options": [
+                        "Data about data",
+                        "Only large data",
+                        "Only digital data",
+                        "A type of database"
+                ],
+                "answer": "Data about data",
+                "explanation": "Metadata describes the structure, source, format, and properties of data — e.g., file size, author, date created."
+        },
+        {
+                "id": 61,
+                "question": "Big data in business is characterized by:",
+                "options": [
+                        "Small volume only",
+                        "Volume, velocity, variety, and veracity (the 4 Vs)",
+                        "Only structured data",
+                        "Only text files"
+                ],
+                "answer": "Volume, velocity, variety, and veracity (the 4 Vs)",
+                "explanation": "Big data is defined by massive volume, high speed (velocity), diverse formats (variety), and quality (veracity)."
+        },
+        {
+                "id": 62,
+                "question": "Data governance is:",
+                "options": [
+                        "Only data backup",
+                        "The overall management of data availability, usability, integrity, and security",
+                        "Only data deletion",
+                        "Only data entry"
+                ],
+                "answer": "The overall management of data availability, usability, integrity, and security",
+                "explanation": "Data governance defines policies, roles, and standards for managing data as a business asset."
+        },
+        {
+                "id": 63,
+                "question": "A data steward is:",
+                "options": [
+                        "A person who cleans data",
+                        "A person responsible for data quality and governance in their domain",
+                        "A type of software",
+                        "A backup tool"
+                ],
+                "answer": "A person responsible for data quality and governance in their domain",
+                "explanation": "Data stewards ensure data is accurate, compliant, and properly managed within their department."
+        },
+        {
+                "id": 64,
+                "question": "Data lifecycle in business includes:",
+                "options": [
+                        "Only creation and deletion",
+                        "Creation, storage, use, sharing, archiving, and destruction",
+                        "Only backup",
+                        "Only analysis"
+                ],
+                "answer": "Creation, storage, use, sharing, archiving, and destruction",
+                "explanation": "Data lifecycle management covers every stage from data creation to secure destruction."
+        },
+        {
+                "id": 65,
+                "question": "Data archiving means:",
+                "options": [
+                        "Deleting data permanently",
+                        "Moving inactive data to long-term storage",
+                        "Only backing up data",
+                        "Only compressing files"
+                ],
+                "answer": "Moving inactive data to long-term storage",
+                "explanation": "Archiving frees up primary storage while keeping old data accessible if needed for compliance or reference."
+        },
+        {
+                "id": 66,
+                "question": "Data privacy in business means:",
+                "options": [
+                        "Sharing all data openly",
+                        "Controlling who can access personal/sensitive data and how it's used",
+                        "Only encrypting data",
+                        "Only deleting data"
+                ],
+                "answer": "Controlling who can access personal/sensitive data and how it's used",
+                "explanation": "Data privacy ensures personal information is collected, used, and shared only with consent and for legitimate purposes."
+        },
+        {
+                "id": 67,
+                "question": "An information system (IS) consists of:",
+                "options": [
+                        "Only hardware",
+                        "Hardware, software, data, people, and processes",
+                        "Only software",
+                        "Only people"
+                ],
+                "answer": "Hardware, software, data, people, and processes",
+                "explanation": "An IS has five components: hardware, software, data, people (users/IT staff), and processes."
+        },
+        {
+                "id": 68,
+                "question": "The main purpose of a business information system is to:",
+                "options": [
+                        "Replace all employees",
+                        "Collect, process, store, and distribute information to support decision-making",
+                        "Only send emails",
+                        "Only browse the internet"
+                ],
+                "answer": "Collect, process, store, and distribute information to support decision-making",
+                "explanation": "Business IS transforms raw data into useful information for operational, tactical, and strategic decisions."
+        },
+        {
+                "id": 69,
+                "question": "Structured data is:",
+                "options": [
+                        "Random data",
+                        "Organized in a fixed format (tables, spreadsheets, databases)",
+                        "Only images",
+                        "Only videos"
+                ],
+                "answer": "Organized in a fixed format (tables, spreadsheets, databases)",
+                "explanation": "Structured data fits neatly into rows and columns — easy to search, sort, and analyze."
+        },
+        {
+                "id": 70,
+                "question": "Unstructured data is:",
+                "options": [
+                        "Data in databases only",
+                        "Data without a fixed format (emails, videos, social media posts)",
+                        "Only numbers",
+                        "Only structured files"
+                ],
+                "answer": "Data without a fixed format (emails, videos, social media posts)",
+                "explanation": "Unstructured data has no predefined model — it requires specialized tools (NLP, ML) to analyze."
+        },
+        {
+                "id": 71,
+                "question": "Semi-structured data is:",
+                "options": [
+                        "Only databases",
+                        "Data with some organizational structure but not rigid (JSON, XML, HTML)",
+                        "Only text files",
+                        "Only images"
+                ],
+                "answer": "Data with some organizational structure but not rigid (JSON, XML, HTML)",
+                "explanation": "Semi-structured data has tags or markers but isn't as rigid as database tables."
+        },
+        {
+                "id": 72,
+                "question": "An entity-relationship diagram (ERD) is:",
+                "options": [
+                        "A diagram of employees",
+                        "A visual representation of database entities and their relationships",
+                        "A flowchart",
+                        "An organizational chart"
+                ],
+                "answer": "A visual representation of database entities and their relationships",
+                "explanation": "ERDs show tables (entities), fields (attributes), and how they relate before building a database."
+        },
+        {
+                "id": 73,
+                "question": "Normalization in databases is:",
+                "options": [
+                        "Making data normal",
+                        "Organizing data to reduce redundancy and improve integrity",
+                        "Only compressing data",
+                        "Only sorting data"
+                ],
+                "answer": "Organizing data to reduce redundancy and improve integrity",
+                "explanation": "Normalization eliminates duplicate data and ensures dependencies are logical, improving database efficiency."
+        }
+    ];
 
     let currentExamData = [];
     let userAnswers     = {};
@@ -325,7 +1201,7 @@
         dash.innerHTML = '';
 
         const totalQ = MASTER_POOL.length;
-        const partSize = 10;
+        const partSize = 25;
         const numParts = Math.ceil(totalQ / partSize);
 
         const randomBox = document.createElement('div');
@@ -388,8 +1264,8 @@
             const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
             pool = shuffleArray(pool).slice(0, qty);
         } else {
-            const start = (partNum - 1) * 10;
-            pool = pool.slice(start, start + 10);
+            const start = (partNum - 1) * 25;
+            pool = pool.slice(start, start + 25);
         }
 
         if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);
@@ -435,7 +1311,7 @@
         optBox.innerHTML  = '';
         feedArea.innerHTML = '';
 
-        q.options.forEach((val, idx) => {
+        if (q.options && q.options.length) if (q.options && q.options.length) q.options.forEach((val, idx) => {
             const label = labels[idx] || (idx + 1);
             const btn   = document.createElement('button');
             btn.className = 'option-btn';
@@ -458,10 +1334,10 @@
 
                 if (activeMode === 'practice') {
                     const isLast = currentIndex === currentExamData.length - 1;
-                    if (!isLast) {
-                        setTimeout(() => { currentIndex++; renderQuestion(); }, 1200);
-                    } else {
-                        setTimeout(() => showResults(true), 1200);
+                    // Auto-next removed: user must click "Next" manually.
+                    if (isLast) {
+                        const submitBtn = document.getElementById('submit-btn');
+                        if (submitBtn) submitBtn.style.display = 'inline-flex';
                     }
                 }
             };
@@ -483,7 +1359,7 @@
                     ⚠ Not answered. Correct: <strong>${q.answer}</strong>
                 </div>${expHtml}`;
             }
-        } else if (activeMode === 'practice' && hasAnswered) {
+        } else if (activeMode === 'practice' && hasAnswered && !q.isTheory) {
             const ok = userAns === q.answer;
             feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
                 ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
@@ -501,6 +1377,7 @@
         if (n >= 0 && n < currentExamData.length) { currentIndex = n; renderQuestion(); }
     }
 
+    // Save State
     function saveState() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify({
             currentExamData, userAnswers, currentIndex,
@@ -704,8 +1581,8 @@
         isReviewMode = true;
         currentIndex = 0;
         document.getElementById('timer').innerText         = 'REVIEW';
-        document.getElementById('timer').style.background = '#bfdbfe';
-        document.getElementById('timer').style.color      = '#1d4ed8';
+        document.getElementById('timer').style.background = '#ddd6fe';
+        document.getElementById('timer').style.color      = '#7c3aed';
         renderQuestion();
     }
 
@@ -817,6 +1694,7 @@
         document.getElementById('resume-btn').style.display    = 'none';
     }
 
+    // Check Resume
     function checkResume() {
         const saved = localStorage.getItem(STORAGE_KEY);
         if (!saved) { document.getElementById('resume-btn').style.display = 'none'; return; }
@@ -831,6 +1709,167 @@
     loadStatsBar();
     syncLocalResults();
     checkResume();
+
+        // ═════════════════════════════════════════════════════════════════
+        // THEORY QUESTION UI + GROQ AI GRADING (one question at a time)
+        // ═════════════════════════════════════════════════════════════════
+        (function() {
+            const _originalRender = window.renderQuestion;
+            window.renderQuestion = function() {
+                _originalRender.apply(this, arguments);
+                const q = currentExamData && currentExamData[currentIndex];
+                if (q && q.isTheory) {
+                    injectTheoryUI(q);
+                }
+            };
+        })();
+
+        function injectTheoryUI(q) {
+            const feedArea = document.getElementById('feedback-area');
+            if (!feedArea) return;
+            if (feedArea.querySelector('.theory-ui')) return;
+
+            const existing = userAnswers[currentIndex];
+            const hasAnswered = existing && typeof existing === 'object' && 'response' in existing;
+
+            const html = `
+                <div class="theory-ui" style="margin-top:1rem; padding:1rem; background:rgba(124,58,237,0.04); border-left:4px solid #7c3aed; border-radius:10px;">
+                    <label style="font-weight:700; color:var(--primary); display:block; margin-bottom:6px;">
+                        <i class="fa-solid fa-pen-to-square"></i> Your Answer:
+                    </label>
+                    <textarea id="theory-response" rows="6" style="width:100%; padding:10px; border:2px solid #ddd6fe; border-radius:8px; font-family:inherit; font-size:0.95rem; resize:vertical; ${hasAnswered ? 'background:#f5f5f5;' : ''}"
+                        placeholder="Type your detailed answer here..." ${hasAnswered ? 'disabled' : ''}>${hasAnswered ? (existing.response || '').replace(/</g, '&lt;') : ''}</textarea>
+
+                    ${hasAnswered ? `
+                        <div style="margin-top:10px; padding:10px; background:#fff; border-radius:8px; border:1px solid var(--border);">
+                            <strong style="color:var(--primary);">Your Score:</strong>
+                            <span style="font-size:1.1rem; font-weight:800; color:${(existing.score||0) >= 70 ? '#10b981' : (existing.score||0) >= 40 ? '#f59e0b' : '#ef4444'};">${existing.score || 0}%</span>
+                            ${existing.aiFeedback ? `<div style="margin-top:6px; font-size:0.88rem; color:var(--text-muted);"><strong>AI Feedback:</strong> ${existing.aiFeedback}</div>` : ''}
+                        </div>
+                    ` : `
+                        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
+                            <button class="btn" style="background:var(--danger); padding:7px 14px; font-size:0.85rem;" onclick="gradeTheoryAnswer(0)">
+                                <i class="fa-solid fa-xmark"></i> Incorrect (0%)
+                            </button>
+                            <button class="btn" style="background:var(--accent); padding:7px 14px; font-size:0.85rem;" onclick="gradeTheoryAnswer(50)">
+                                <i class="fa-solid fa-circle-half-stroke"></i> Partial (50%)
+                            </button>
+                            <button class="btn" style="background:var(--success); padding:7px 14px; font-size:0.85rem;" onclick="gradeTheoryAnswer(100)">
+                                <i class="fa-solid fa-check"></i> Correct (100%)
+                            </button>
+                            <button class="btn" id="ai-grade-btn" style="background:linear-gradient(135deg, #4f46e5, #818cf8); padding:7px 14px; font-size:0.85rem;" onclick="gradeWithGroqAI()">
+                                <i class="fa-solid fa-robot"></i> Auto-Grade (AI)
+                            </button>
+                        </div>
+                        <div id="ai-feedback-response" style="display:none; margin-top:10px; padding:10px; background:#fff; border-radius:8px; border:1px solid var(--border);">
+                            <div id="ai-feedback-text" style="font-size:0.92rem; line-height:1.5;"></div>
+                        </div>
+                    `}
+                </div>
+            `;
+            feedArea.insertAdjacentHTML('beforeend', html);
+        }
+
+        function gradeTheoryAnswer(scorePct) {
+            const q = currentExamData[currentIndex];
+            const textarea = document.getElementById('theory-response');
+            if (!textarea) return;
+            const response = textarea.value.trim();
+            if (!response) { alert("Please type your answer first."); return; }
+            userAnswers[currentIndex] = {
+                response: response,
+                score: scorePct,
+                aiFeedback: userAnswers[currentIndex] && userAnswers[currentIndex].aiFeedback
+            };
+            saveState();
+            renderQuestion();
+        }
+
+        async function gradeWithGroqAI() {
+            const q = currentExamData[currentIndex];
+            const textarea = document.getElementById('theory-response');
+            if (!textarea) return;
+            const userResponse = textarea.value.trim();
+            if (!userResponse) { alert("Please type your answer first."); return; }
+
+            const aiBtn = document.getElementById('ai-grade-btn');
+            const aiFeedback = document.getElementById('ai-feedback-response');
+            const aiFeedbackText = document.getElementById('ai-feedback-text');
+            aiBtn.disabled = true;
+            aiBtn.innerText = "\u23F3 Grading...";
+
+            const provider = window.env?.AI_PROVIDER || 'groq';
+            const model = window.env?.AI_MODEL || 'llama-3.1-8b-instant';
+            const key = window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy');
+
+            const systemPrompt = `You are a strict, professional academic examiner grading a ${COURSE_CODE} exam question.
+Grade the student's answer against the provided model answer.
+
+Question: "${q.question}"
+Model Answer: "${q.answer}"
+Student's Answer: "${userResponse}"
+
+Rate the response from 0 to 100% accuracy.
+Provide your response strictly in the following JSON format:
+{
+  "score": <integer 0-100>,
+  "feedback": "<A concise 1-2 sentence explanation of what they got correct or missed>"
+}`;
+
+            try {
+                let result = null;
+                if (provider === 'groq') {
+                    if (!key) throw new Error("API Key is missing. Please configure your Groq key in Renance AI page first.");
+                    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+                        body: JSON.stringify({
+                            model: model,
+                            messages: [{ role: "system", content: systemPrompt }],
+                            response_format: { type: "json_object" },
+                            temperature: 0.2
+                        })
+                    });
+                    const resData = await response.json();
+                    if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
+                    result = JSON.parse(resData.choices[0].message.content.trim());
+                } else {
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: systemPrompt }] }],
+                            generationConfig: { responseMimeType: "application/json" }
+                        })
+                    });
+                    const resData = await response.json();
+                    if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
+                    const text = resData.candidates[0].content.parts[0].text;
+                    result = JSON.parse(text.trim());
+                }
+
+                if (result && typeof result.score === 'number') {
+                    aiFeedbackText.innerHTML = `<strong>AI Grade:</strong> ${result.score}%<br><strong>AI Feedback:</strong> ${result.feedback}`;
+                    aiFeedback.style.display = 'block';
+                    userAnswers[currentIndex] = {
+                        response: userResponse,
+                        score: result.score,
+                        aiFeedback: result.feedback
+                    };
+                    saveState();
+                    setTimeout(() => renderQuestion(), 800);
+                } else {
+                    throw new Error("Invalid API response structure");
+                }
+            } catch (e) {
+                console.error("AI Grading Error:", e);
+                alert(`Auto-grading failed: ${e.message || "Please self-grade using the buttons."}`);
+            } finally {
+                aiBtn.disabled = false;
+                aiBtn.innerText = "\uD83E\uDD16 Auto-Grade (AI)";
+            }
+        }
+
 
         // ═════════════════════════════════════════════════════════════════
         // PER-COURSE LEADERBOARD
