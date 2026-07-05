@@ -65,7 +65,7 @@
             border: 1.5px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-        .box:hover { transform: translate Y(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(124,58,237,0.12); }
+        .box:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(124,58,237,0.12); }
         .box h3 { margin: 10px 0 4px; font-size: 1rem; line-height: 1.4; }
         .box p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
         .box-random { background: linear-gradient(135deg, #7c3aed, #a78bfa) !important; color: white !important; border: none !important; }
@@ -99,13 +99,13 @@
         .option-btn.correct  { background: #dcfce7 !important; border-color: #10b981 !important; color: #065f46 !important; font-weight: 700; }
         .option-btn.wrong    { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
 
-        .feedback-msg { margin-top: 1.2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600; animation: fade In 0.3s; line-height: 1.6; }
+        .feedback-msg { margin-top: 1.2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600; animation: fadeIn 0.3s; line-height: 1.6; }
         .explanation-box { margin-top: 1rem; padding: 1rem; border-radius: 10px; background: rgba(0,0,0,0.02); border-left: 4px solid var(--primary); font-size: 0.9rem; line-height: 1.6; }
-        @keyframes fade In { from { opacity: 0; transform: translate Y(8px); } to { opacity: 1; transform: translate Y(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
         .controls { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 1.8rem; }
         .btn { padding: 0.8rem 1.6rem; border: none; border-radius: 9px; cursor: pointer; font-weight: 700; background: var(--primary); color: white; transition: opacity 0.2s, transform 0.2s; font-size: 0.95rem; }
-        .btn:hover { opacity: 0.88; transform: translate Y(-2px); }
+        .btn:hover { opacity: 0.88; transform: translateY(-2px); }
         .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
         .result-modal-overlay {
@@ -117,14 +117,14 @@
             background: var(--card-bg); padding: 40px 28px; border-radius: 24px;
             width: 100%; max-width: 420px; text-align: center; color: var(--text);
             box-shadow: 0 25px 60px rgba(0,0,0,0.45);
-            animation: bounce In 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: bounceIn 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        @keyframes bounce In {
-            0%   { opacity: 0; transform: scale(0.78) translate Y(30px); }
-            100% { opacity: 1; transform: scale(1) translate Y(0); }
+        @keyframes bounceIn {
+            0%   { opacity: 0; transform: scale(0.78) translateY(30px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
         }
         .result-icon { font-size: 3.6rem; margin-bottom: 8px; display: block; animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%,100% { transform: translate Y(0); } 50% { transform: translate Y(-10px); } }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         .score-display { background: rgba(124,58,237,0.06); border: 2px dashed rgba(124,58,237,0.25); border-radius: 18px; padding: 18px; margin: 18px 0; }
         .score-big { font-size: 3.5rem; font-weight: 900; color: var(--primary); line-height: 1; }
         .stats-mini { display: flex; justify-content: center; gap: 24px; margin: 10px 0 4px; }
@@ -134,7 +134,7 @@
         #save-status { font-size: 0.78rem; color: var(--text-muted); margin: 8px 0 14px; }
         .result-actions { display: flex; flex-direction: column; gap: 11px; }
         .btn-action { width: 100%; padding: 13px; border: none; border-radius: 12px; font-size: 0.97rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s; display: flex; align-items: center; justify-content: center; gap: 9px; }
-        .btn-action:hover { opacity: 0.9; transform: translate Y(-1px); }
+        .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
         .btn-share  { background: var(--share-gradient); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3); }
         .btn-review { background: rgba(124,58,237,0.08); color: var(--primary); border: 1.5px solid rgba(124,58,237,0.2); }
         .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
@@ -201,10 +201,10 @@
         </div>
 
         <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
-            <button class="btn" style="background:#64748b;" onclick="go Home()">
+            <button class="btn" style="background:#64748b;" onclick="goHome()">
                 <i class="fa-solid fa-arrow-left"></i> Back
             </button>
-            <button class="btn" onclick="start Exam()" style="min-width:160px;">
+            <button class="btn" onclick="startExam()" style="min-width:160px;">
                 Start Now <i class="fa-solid fa-arrow-right"></i>
             </button>
         </div>
@@ -214,10 +214,10 @@
         <div class="quiz-header">
             <span class="q-counter">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
             <div class="btn-group">
-                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding:8px 15px; font-size:0.87rem;" onclick="show Results()">
+                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding:8px 15px; font-size:0.87rem;" onclick="showResults()">
                     <i class="fa-solid fa-paper-plane"></i> Submit
                 </button>
-                <button class="btn" id="finish-review-btn" style="display:none; padding:8px 15px; font-size:0.87rem;" onclick="go Home()">
+                <button class="btn" id="finish-review-btn" style="display:none; padding:8px 15px; font-size:0.87rem;" onclick="goHome()">
                     <i class="fa-solid fa-house"></i> Exit Review
                 </button>
                 <span id="timer">30:00</span>
@@ -241,21 +241,21 @@
     </div>
 </main>
 
-<div id="quiz Result Modal" class="result-modal-overlay" style="display:none;">
+<div id="quizResultModal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
-        <span class="result-icon" id="result Icon">🏆</span>
-        <h2 id="result Greeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
+        <span class="result-icon" id="resultIcon">🏆</span>
+        <h2 id="resultGreeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
 
         <div class="score-display">
-            <div class="score-big"><span id="final Score Text">0</span>%</div>
+            <div class="score-big"><span id="finalScoreText">0</span>%</div>
             <div class="stats-mini">
-                <div class="sm"><div class="sv" id="modal Correct">0</div><div class="sl">Correct</div></div>
-                <div class="sm"><div class="sv" id="modal Total">0</div><div class="sl">Total</div></div>
-                <div class="sm"><div class="sv" id="modal Avg">—</div><div class="sl">Your Avg</div></div>
+                <div class="sm"><div class="sv" id="modalCorrect">0</div><div class="sl">Correct</div></div>
+                <div class="sm"><div class="sv" id="modalTotal">0</div><div class="sl">Total</div></div>
+                <div class="sm"><div class="sv" id="modalAvg">—</div><div class="sl">Your Avg</div></div>
             </div>
         </div>
 
-        <p id="result Feedback" style="font-size:0.9rem; color:var(--text-muted); margin:0;"></p>
+        <p id="resultFeedback" style="font-size:0.9rem; color:var(--text-muted); margin:0;"></p>
         <p id="save-status"></p>
 
         
@@ -270,20 +270,20 @@
 
                         <div class="result-actions">
 
-                    <button class="btn-action" id="weak Areas Btn" onclick="analyze Weak Areas With AI()" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
+                    <button class="btn-action" id="weakAreasBtn" onclick="analyzeWeakAreasWithAI()" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
                         <i class="fa-solid fa-brain"></i> Analyze My Weak Areas
                     </button>
 
-            <button class="btn-action" id="explain Btn" onclick="ask Renance AI()" style="background: linear-gradient(135deg, #7c3aed, #6d28d9); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
+            <button class="btn-action" id="explainBtn" onclick="askRenanceAI()" style="background: linear-gradient(135deg, #7c3aed, #6d28d9); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
                 <i class="fa-solid fa-robot"></i> Explain Missed Questions
             </button>
-            <button class="btn-action btn-share" onclick="share Quiz Result()">
+            <button class="btn-action btn-share" onclick="shareQuizResult()">
                 <i class="fa-solid fa-share-nodes"></i> Share Score
             </button>
-            <button class="btn-action btn-review" id="modal Review Btn" onclick="enter Review Mode()">
+            <button class="btn-action btn-review" id="modalReviewBtn" onclick="enterReviewMode()">
                 <i class="fa-solid fa-magnifying-glass"></i> Review Answers
             </button>
-            <button class="btn-action btn-home" onclick="go Home()">
+            <button class="btn-action btn-home" onclick="goHome()">
                 <i class="fa-solid fa-house"></i> Dashboard
             </button>
         </div>
@@ -292,20 +292,20 @@
 
 <script>
     const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
-    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'ey Jhb Gci Oi JIUz I1Ni Is In R5c CI6Ikp XVCJ9.ey Jpc3Mi Oi Jzd XBh Ym Fz ZSIs In Jl Zi I6In Vie HN5d2F4ZHZra Glx ZXBjdm1x Iiwicm9s ZSI6Im Fub24i LCJp YXQi Oj E3Nz E5ODcw MDAs Im V4c CI6Mj A4Nz U2Mz Aw MH0.gk R3Aud3LRLNy Nwp DHJTT0v Ir WCn Qk SBk FSa Fj Q5qy4';
-    const db = supabase.create Client(SUPABASE_URL, SUPABASE_KEY);
+    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+    const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const COURSE_CODE = 'DTS 104';
     const STORAGE_KEY = 'saved_dts104_exam';
 
-    async function send Heartbeat() {
+    async function sendHeartbeat() {
         try {
-            const { data: { user } } = await db.auth.get User();
+            const { data: { user } } = await db.auth.getUser();
             if (!user) return;
-            await db.from('students').update({ last_seen: new Date().to ISOString() }).eq('id', user.id);
+            await db.from('students').update({ last_seen: new Date().toISOString() }).eq('id', user.id);
         } catch (e) {  }
     }
-    send Heartbeat();
-    set Interval(send Heartbeat, 2 * 60 * 1000);
+    sendHeartbeat();
+    setInterval(sendHeartbeat, 2 * 60 * 1000);
 
                 const MASTER_POOL = [
         {
@@ -372,13 +372,13 @@
                 "id": 6,
                 "question": "Trying to use an integer larger than the maximum results in:",
                 "options": [
-                        "An Overflow Error",
+                        "An OverflowError",
                         "Silent truncation",
                         "Automatic conversion to float",
-                        "A Syntax Error"
+                        "A SyntaxError"
                 ],
-                "answer": "An Overflow Error",
-                "explanation": "Exceeding integer range raises Overflow Error."
+                "answer": "An OverflowError",
+                "explanation": "Exceeding integer range raises OverflowError."
         },
         {
                 "id": 7,
@@ -570,7 +570,7 @@
                         "Use only spaces of any size"
                 ],
                 "answer": "Consistent in the amount of indentation",
-                "explanation": "Inconsistent indentation raises Indentation Error."
+                "explanation": "Inconsistent indentation raises IndentationError."
         },
         {
                 "id": 23,
@@ -642,7 +642,7 @@
                         "object"
                 ],
                 "answer": "class",
-                "explanation": "class My Class: defines a new class."
+                "explanation": "class MyClass: defines a new class."
         },
         {
                 "id": 29,
@@ -831,10 +831,10 @@
                         "A wide variety of platforms",
                         "Only Windows",
                         "Only Linux",
-                        "Only mac OS"
+                        "Only macOS"
                 ],
                 "answer": "A wide variety of platforms",
-                "explanation": "Python runs on Windows, Linux, mac OS, and many other platforms."
+                "explanation": "Python runs on Windows, Linux, macOS, and many other platforms."
         },
         {
                 "id": 45,
@@ -882,7 +882,7 @@
                         "#"
                 ],
                 "answer": "0x",
-                "explanation": "0x FF is hexadecimal 255."
+                "explanation": "0xFF is hexadecimal 255."
         },
         {
                 "id": 49,
@@ -936,12 +936,12 @@
                 "id": 53,
                 "question": "To create an instance of a class, use:",
                 "options": [
-                        "Class Name()",
-                        "new Class Name()",
-                        "create Class Name()",
-                        "make Class Name()"
+                        "ClassName()",
+                        "new ClassName()",
+                        "create ClassName()",
+                        "make ClassName()"
                 ],
-                "answer": "Class Name()",
+                "answer": "ClassName()",
                 "explanation": "Calling the class like a function creates a new instance."
         },
         {
@@ -1046,7 +1046,7 @@
                 "options": [
                         "str()",
                         "string()",
-                        "to Str()",
+                        "toStr()",
                         "text()"
                 ],
                 "answer": "str()",
@@ -1274,7 +1274,7 @@
                 "options": [
                         "int('42')",
                         "integer('42')",
-                        "to Int('42')",
+                        "toInt('42')",
                         "convert('42')"
                 ],
                 "answer": "int('42')",
@@ -1506,417 +1506,417 @@
                         "panic"
                 ],
                 "answer": "raise",
-                "explanation": "raise Value Error('invalid') raises a Value Error."
+                "explanation": "raise ValueError('invalid') raises a ValueError."
         },
         {
                 "id": 1,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain the difference between shallow copy and deep copy in Python.",
                 "answer": "A shallow copy creates a new compound object (like a list or dict) but inserts references to the same elements found in the original. A deep copy creates a new compound object and recursively inserts copies of the elements found in the original. For a list of immutable elements (like [1, 2, 3]), shallow and deep copy behave the same because the elements can't be modified anyway. The difference matters for nested mutable structures: original = [[1, 2], [3, 4]]; shallow = original[:] (or list(original) or copy.copy(original)) — shallow is a new list, but shallow[0] is the same object as original[0], so shallow[0].append(99) also modifies original[0]. deep = copy.deepcopy(original) — deep is a new list, and deep[0] is a new list, so modifying deep[0] does not affect original. Use copy.copy() for shallow copy and copy.deepcopy() for deep copy from the copy module. Assignment (b = a) is not a copy at all — both names refer to the same object, so b.append(99) is visible via a. Choose shallow copy when the elements are immutable or when you want changes to nested objects to be shared; choose deep copy when you need a fully independent duplicate.",
                 "explanation": "Shallow = new container, same element references; Deep = new container + recursively copied elements; matters for nested mutables; copy.copy/deepcopy; assignment is not a copy."
         },
         {
                 "id": 2,
-                "is Theory": true,
-                "question": "Write a Python class representing a Bank Account with deposit and withdraw methods.",
-                "answer": "class Bank Account:\\n    def __init__(self, owner, initial_balance=0):\\n        self.owner = owner\\n        self.balance = initial_balance\\n\\n    def deposit(self, amount):\\n        if amount <= 0:\\n            raise Value Error('Deposit amount must be positive')\\n        self.balance += amount\\n        return self.balance\\n\\n    def withdraw(self, amount):\\n        if amount <= 0:\\n            raise Value Error('Withdrawal amount must be positive')\\n        if amount > self.balance:\\n            raise Value Error('Insufficient funds')\\n        self.balance -= amount\\n        return self.balance\\n\\n    def __str__(self):\\n        return f'Bank Account(owner={self.owner!r}, balance={self.balance})'\\n\\n# Example usage:\\naccount = Bank Account('Phil', 100)\\nprint(account)              # Bank Account(owner='Phil', balance=100)\\naccount.deposit(50)\\nprint(account.balance)      # 150\\naccount.withdraw(30)\\nprint(account.balance)      # 120\\ntry:\\n    account.withdraw(500)\\nexcept Value Error as e:\\n    print(e)                # Insufficient funds\\n\\n# Explanation:\\n# - __init__ is the constructor, setting owner and balance\\n# - deposit() and withdraw() modify self.balance\\n# - Validation raises Value Error for invalid operations\\n# - __str__ provides a human-readable representation (used by print)\\n# - self refers to the current instance",
-                "explanation": "class with __init__, deposit, withdraw, __str__; validation raises Value Error; self refers to instance; example usage."
+                "isTheory": true,
+                "question": "Write a Python class representing a BankAccount with deposit and withdraw methods.",
+                "answer": "class BankAccount:\\n    def __init__(self, owner, initial_balance=0):\\n        self.owner = owner\\n        self.balance = initial_balance\\n\\n    def deposit(self, amount):\\n        if amount <= 0:\\n            raise ValueError('Deposit amount must be positive')\\n        self.balance += amount\\n        return self.balance\\n\\n    def withdraw(self, amount):\\n        if amount <= 0:\\n            raise ValueError('Withdrawal amount must be positive')\\n        if amount > self.balance:\\n            raise ValueError('Insufficient funds')\\n        self.balance -= amount\\n        return self.balance\\n\\n    def __str__(self):\\n        return f'BankAccount(owner={self.owner!r}, balance={self.balance})'\\n\\n# Example usage:\\naccount = BankAccount('Phil', 100)\\nprint(account)              # BankAccount(owner='Phil', balance=100)\\naccount.deposit(50)\\nprint(account.balance)      # 150\\naccount.withdraw(30)\\nprint(account.balance)      # 120\\ntry:\\n    account.withdraw(500)\\nexcept ValueError as e:\\n    print(e)                # Insufficient funds\\n\\n# Explanation:\\n# - __init__ is the constructor, setting owner and balance\\n# - deposit() and withdraw() modify self.balance\\n# - Validation raises ValueError for invalid operations\\n# - __str__ provides a human-readable representation (used by print)\\n# - self refers to the current instance",
+                "explanation": "class with __init__, deposit, withdraw, __str__; validation raises ValueError; self refers to instance; example usage."
         },
         {
                 "id": 3,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain the concept of variable scope and the global keyword in Python.",
-                "answer": "Variable scope determines where a variable is accessible. Python has four scopes (LEGB rule): Local — inside the current function; Enclosing — in enclosing function scopes (for nested functions); Global — at module level; Built-in — Python's built-in names (len, print, etc.). When you reference a name, Python searches LEGB in order. When you assign to a name inside a function, Python creates a local variable by default — it does NOT modify a global variable with the same name. To modify a global variable from inside a function, declare it with the global keyword: count = 0; def increment(): global count; count += 1. Without 'global count', the assignment 'count += 1' would create a local variable and raise Unbound Local Error (because count is referenced before being assigned locally). Use global sparingly — it makes functions harder to test and reason about. A better pattern is to pass values as arguments and return results. For nested functions, the nonlocal keyword (Python 3) allows modifying an enclosing function's variable.",
+                "answer": "Variable scope determines where a variable is accessible. Python has four scopes (LEGB rule): Local — inside the current function; Enclosing — in enclosing function scopes (for nested functions); Global — at module level; Built-in — Python's built-in names (len, print, etc.). When you reference a name, Python searches LEGB in order. When you assign to a name inside a function, Python creates a local variable by default — it does NOT modify a global variable with the same name. To modify a global variable from inside a function, declare it with the global keyword: count = 0; def increment(): global count; count += 1. Without 'global count', the assignment 'count += 1' would create a local variable and raise UnboundLocalError (because count is referenced before being assigned locally). Use global sparingly — it makes functions harder to test and reason about. A better pattern is to pass values as arguments and return results. For nested functions, the nonlocal keyword (Python 3) allows modifying an enclosing function's variable.",
                 "explanation": "LEGB: Local, Enclosing, Global, Built-in; assignment creates local by default; global keyword to modify global; nonlocal for enclosing; prefer args/returns over global."
         },
         {
                 "id": 4,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Describe list comprehensions in Python and give examples.",
                 "answer": "List comprehensions provide a concise way to create lists. The basic syntax is [expression for item in iterable], which produces a new list by evaluating expression for each item. Examples: [x**2 for x in range(5)] returns [0, 1, 4, 9, 16]; [c.upper() for c in 'hello'] returns ['H', 'E', 'L', 'L', 'O']; [len(word) for word in ['a', 'bb', 'ccc']] returns [1, 2, 3]. You can add a filter with 'if': [x for x in range(10) if x % 2 == 0] returns [0, 2, 4, 6, 8] (even numbers only); [x**2 for x in range(10) if x % 2 == 0] returns [0, 4, 16, 36, 64] (squares of evens). You can have multiple for clauses: [(x, y) for x in [1, 2] for y in ['a', 'b']] returns [(1, 'a'), (1, 'b'), (2, 'a'), (2, 'b')]. List comprehensions often replace map() and filter() calls and are considered more Pythonic: [x**2 for x in lst] instead of map(lambda x: x**2, lst); [x for x in lst if x > 0] instead of filter(lambda x: x > 0, lst). Python also supports dict comprehensions {k: v for ...} and set comprehensions {x for ...}.",
                 "explanation": "[expr for item in iterable]; optional if filter; multiple for clauses; replaces map/filter; dict and set comprehensions too."
         },
         {
                 "id": 5,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain the difference between == and is in Python.",
                 "answer": "In Python, == tests for equality of value, while 'is' tests for identity (same object in memory). Example: a = [1, 2, 3]; b = [1, 2, 3]; a == b returns True (same values) but a is b returns False (different list objects). For small integers and strings, Python may cache objects, so 'is' can unexpectedly return True: a = 256; b = 256; a is b returns True (cached); but a = 257; b = 257; a is b may return False (not cached). Use == for value comparison (almost always what you want). Use 'is' only for: (1) comparing to None (if x is None); (2) comparing to True/False (if x is True — though 'if x:' is more idiomatic); (3) checking if two variables refer to the same mutable object (after aliasing). The id() function returns an object's unique identifier, which is what 'is' compares under the hood: a is b is equivalent to id(a) == id(b). For custom classes, you can override __eq__ to control == behavior, but 'is' cannot be overridden.",
                 "explanation": "== compares values; 'is' compares identity (memory address); use 'is' for None; caching quirk for small ints/strings; id() reveals address."
         },
         {
                 "id": 6,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Summarise the key features of Python that make it suitable for beginners.",
-                "answer": "Python is suitable for beginners because: (1) Clean, readable syntax — Python uses plain English keywords (if, else, for, while, def, return) and indentation instead of curly braces, making code look like pseudocode. (2) Small core language — the core is intentionally small and easy to master; advanced features are in modules you learn as needed. (3) Interpreted — no compilation step; you can type expressions and see results immediately in the interactive interpreter (REPL). (4) Dynamic typing — no need to declare variable types; x = 5 then x = 'hello' works fine. (5) High-level — no manual memory management (no pointers, no malloc/free); garbage collection is automatic. (6) Rich standard library — batteries included; modules for math, strings, files, networking, dates, and more are built-in. (7) Huge ecosystem — third-party packages (Num Py, Pandas, Flask, Django) extend Python for virtually any task. (8) Cross-platform — same code runs on Windows, mac OS, Linux. (9) Strong community — abundant tutorials, documentation, and Stack Overflow answers. (10) Versatile — web development, data science, automation, AI/ML, scripting, education; skills transfer across domains. (11) Forgiving error messages — Python's exceptions clearly describe what went wrong and where. (12) Designed for teaching — Python was originally created as a language that would be easy for beginners to learn yet powerful enough for advanced users.",
+                "answer": "Python is suitable for beginners because: (1) Clean, readable syntax — Python uses plain English keywords (if, else, for, while, def, return) and indentation instead of curly braces, making code look like pseudocode. (2) Small core language — the core is intentionally small and easy to master; advanced features are in modules you learn as needed. (3) Interpreted — no compilation step; you can type expressions and see results immediately in the interactive interpreter (REPL). (4) Dynamic typing — no need to declare variable types; x = 5 then x = 'hello' works fine. (5) High-level — no manual memory management (no pointers, no malloc/free); garbage collection is automatic. (6) Rich standard library — batteries included; modules for math, strings, files, networking, dates, and more are built-in. (7) Huge ecosystem — third-party packages (NumPy, Pandas, Flask, Django) extend Python for virtually any task. (8) Cross-platform — same code runs on Windows, macOS, Linux. (9) Strong community — abundant tutorials, documentation, and Stack Overflow answers. (10) Versatile — web development, data science, automation, AI/ML, scripting, education; skills transfer across domains. (11) Forgiving error messages — Python's exceptions clearly describe what went wrong and where. (12) Designed for teaching — Python was originally created as a language that would be easy for beginners to learn yet powerful enough for advanced users.",
                 "explanation": "Clean syntax; small core; interpreted (REPL); dynamic typing; high-level (GC); rich stdlib; huge ecosystem; cross-platform; strong community; versatile; clear errors; designed for teaching."
         },
         {
                 "id": 7,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python program that reads a file and counts the frequency of each word.",
                 "answer": "def word_frequency(filename):\\n    freq = {}  # empty dictionary\\n    with open(filename, 'r') as f:\\n        for line in f:\\n            words = line.lower().split()  # lowercase + split on whitespace\\n            for word in words:\\n                if word in freq:\\n                    freq[word] += 1\\n                else:\\n                    freq[word] = 1\\n    return freq\\n\\n# Example usage:\\nfreq = word_frequency('sample.txt')\\nfor word, count in sorted(freq.items(), key=lambda x: x[1], reverse=True)[:10]:\\n    print(f'{word}: {count}')\\n\\n# Explanation:\\n# - open() with 'with' ensures the file is closed automatically\\n# - line.lower() makes counting case-insensitive\\n# - split() breaks the line into words on whitespace\\n# - dict stores word -> count mapping\\n# - sorted(freq.items(), key=lambda x: x[1], reverse=True) sorts by count descending\\n# - [:10] takes the top 10\\n\\n# Alternative using collections.Counter (more Pythonic):\\nfrom collections import Counter\\ndef word_frequency_v2(filename):\\n    with open(filename) as f:\\n        return Counter(word for line in f for word in line.lower().split())",
                 "explanation": "open with 'with'; lower() for case-insensitivity; split() for words; dict for counting; sorted with lambda for top-N; Counter for concise version."
         },
         {
                 "id": 8,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Describe how to work with files in Python (open, read, write, close).",
                 "answer": "File operations in Python use the open() function, which returns a file object. To open a file for reading: f = open('myfile.txt', 'r') (the 'r' mode is default). To open for writing: f = open('myfile.txt', 'w') — this overwrites existing content; use 'a' to append. To open for both reading and writing: 'r+' or 'w+'. Binary mode: add 'b' (e.g., 'rb', 'wb') on platforms that distinguish text and binary. Reading methods: f.read() reads the entire file as a string; f.readline() returns the next line (including the trailing newline); f.readlines() returns a list of all lines; iterating over f (for line in f:) reads one line at a time without loading the whole file into memory. Writing methods: f.write(s) writes string s to the file; f.writelines(list) writes each element of a list. Other methods: f.close() closes the file (always do this when done, or use a 'with' statement for automatic closing); f.tell() returns the current position; f.seek(offset) changes the position. Best practice: use 'with open(...) as f:' so the file is automatically closed even if an exception occurs.",
                 "explanation": "open() returns file object; modes r/w/a/r+/b; read methods (read/readline/readlines/iterate); write methods (write/writelines); close or with-statement; seek/tell."
         },
         {
                 "id": 9,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain exception handling in Python.",
-                "answer": "Exceptions are errors that occur during program execution. Python uses try/except blocks to handle them gracefully. The basic form: try: risky_code; except Exception Type: handler_code. If risky_code raises Exception Type, the handler runs; otherwise, the handler is skipped. To catch any exception: except: (bare except, discouraged) or except Exception: (better). To bind the exception to a variable: except Value Error as e: print(e). Multiple except clauses: try: ...; except Value Error: ...; except Type Error: ...; except Exception: .... The else clause runs if no exception occurred: try: ...; except: ...; else: no_exception_code. The finally clause always runs, whether or not an exception occurred (useful for cleanup): try: f = open(...); ...; finally: f.close(). To raise an exception manually: raise Value Error('invalid input'). To re-raise the current exception: raise (bare). Common built-in exceptions: Value Error (wrong value), Type Error (wrong type), Index Error (list index out of range), Key Error (dict key missing), Attribute Error (attribute doesn't exist), File Not Found Error, Zero Division Error, Name Error (variable not defined), Syntax Error (code won't parse). Best practice: catch specific exceptions, not bare except; handle the exception (don't silently pass); use finally for cleanup or 'with' statements.",
+                "answer": "Exceptions are errors that occur during program execution. Python uses try/except blocks to handle them gracefully. The basic form: try: risky_code; except ExceptionType: handler_code. If risky_code raises ExceptionType, the handler runs; otherwise, the handler is skipped. To catch any exception: except: (bare except, discouraged) or except Exception: (better). To bind the exception to a variable: except ValueError as e: print(e). Multiple except clauses: try: ...; except ValueError: ...; except TypeError: ...; except Exception: .... The else clause runs if no exception occurred: try: ...; except: ...; else: no_exception_code. The finally clause always runs, whether or not an exception occurred (useful for cleanup): try: f = open(...); ...; finally: f.close(). To raise an exception manually: raise ValueError('invalid input'). To re-raise the current exception: raise (bare). Common built-in exceptions: ValueError (wrong value), TypeError (wrong type), IndexError (list index out of range), KeyError (dict key missing), AttributeError (attribute doesn't exist), FileNotFoundError, ZeroDivisionError, NameError (variable not defined), SyntaxError (code won't parse). Best practice: catch specific exceptions, not bare except; handle the exception (don't silently pass); use finally for cleanup or 'with' statements.",
                 "explanation": "try/except/else/finally; catch specific types; bind with 'as'; raise manually; common built-in exceptions; use 'with' for cleanup."
         },
         {
                 "id": 10,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python program that implements a simple to-do list using a class.",
-                "answer": "class Todo List:\\n    def __init__(self):\\n        self.tasks = []\\n\\n    def add_task(self, task):\\n        self.tasks.append({'task': task, 'done': False})\\n        print(f'Added: {task}')\\n\\n    def complete_task(self, index):\\n        if 0 <= index < len(self.tasks):\\n            self.tasks[index]['done'] = True\\n            print(f'Completed: {self.tasks[index][\"task\"]}')\\n        else:\\n            print('Invalid task index')\\n\\n    def remove_task(self, index):\\n        if 0 <= index < len(self.tasks):\\n            removed = self.tasks.pop(index)\\n            print(f'Removed: {removed[\"task\"]}')\\n        else:\\n            print('Invalid task index')\\n\\n    def list_tasks(self):\\n        if not self.tasks:\\n            print('No tasks.')\\n            return\\n        for i, t in enumerate(self.tasks):\\n            status = '\\u2713' if t['done'] else '\\u2717'\\n            print(f'{i}. [{status}] {t[\"task\"]}')\\n\\n# Example usage:\\ntodo = Todo List()\\ntodo.add_task('Buy groceries')\\ntodo.add_task('Walk the dog')\\ntodo.add_task('Finish homework')\\ntodo.list_tasks()\\n# 0. [\\u2717] Buy groceries\\n# 1. [\\u2717] Walk the dog\\n# 2. [\\u2717] Finish homework\\ntodo.complete_task(1)\\ntodo.list_tasks()\\n# 0. [\\u2717] Buy groceries\\n# 1. [\\u2713] Walk the dog\\n# 2. [\\u2717] Finish homework\\ntodo.remove_task(0)\\ntodo.list_tasks()\\n# 0. [\\u2713] Walk the dog\\n# 1. [\\u2717] Finish homework\\n\\n# Explanation:\\n# - tasks is a list of dicts, each with 'task' (string) and 'done' (bool)\\n# - add_task appends a new task (not done by default)\\n# - complete_task marks a task as done by index\\n# - remove_task removes by index using pop()\\n# - list_tasks displays with checkmark/cross status",
+                "answer": "class TodoList:\\n    def __init__(self):\\n        self.tasks = []\\n\\n    def add_task(self, task):\\n        self.tasks.append({'task': task, 'done': False})\\n        print(f'Added: {task}')\\n\\n    def complete_task(self, index):\\n        if 0 <= index < len(self.tasks):\\n            self.tasks[index]['done'] = True\\n            print(f'Completed: {self.tasks[index][\"task\"]}')\\n        else:\\n            print('Invalid task index')\\n\\n    def remove_task(self, index):\\n        if 0 <= index < len(self.tasks):\\n            removed = self.tasks.pop(index)\\n            print(f'Removed: {removed[\"task\"]}')\\n        else:\\n            print('Invalid task index')\\n\\n    def list_tasks(self):\\n        if not self.tasks:\\n            print('No tasks.')\\n            return\\n        for i, t in enumerate(self.tasks):\\n            status = '\\u2713' if t['done'] else '\\u2717'\\n            print(f'{i}. [{status}] {t[\"task\"]}')\\n\\n# Example usage:\\ntodo = TodoList()\\ntodo.add_task('Buy groceries')\\ntodo.add_task('Walk the dog')\\ntodo.add_task('Finish homework')\\ntodo.list_tasks()\\n# 0. [\\u2717] Buy groceries\\n# 1. [\\u2717] Walk the dog\\n# 2. [\\u2717] Finish homework\\ntodo.complete_task(1)\\ntodo.list_tasks()\\n# 0. [\\u2717] Buy groceries\\n# 1. [\\u2713] Walk the dog\\n# 2. [\\u2717] Finish homework\\ntodo.remove_task(0)\\ntodo.list_tasks()\\n# 0. [\\u2713] Walk the dog\\n# 1. [\\u2717] Finish homework\\n\\n# Explanation:\\n# - tasks is a list of dicts, each with 'task' (string) and 'done' (bool)\\n# - add_task appends a new task (not done by default)\\n# - complete_task marks a task as done by index\\n# - remove_task removes by index using pop()\\n# - list_tasks displays with checkmark/cross status",
                 "explanation": "Class with tasks list of dicts; add/complete/remove/list methods; status with checkmark; enumerate for indexing."
         },
         {
                 "id": 11,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python function that checks if a string is a palindrome.",
                 "answer": "def is_palindrome(s):\\n    # Normalize: lowercase and remove non-alphanumeric\\n    cleaned = ''.join(c.lower() for c in s if c.isalnum())\\n    # Compare with its reverse\\n    return cleaned == cleaned[::-1]\\n\\n# Example usage:\\nprint(is_palindrome('racecar'))           # True\\nprint(is_palindrome('hello'))             # False\\nprint(is_palindrome('A man a plan a canal Panama'))  # True (ignores spaces and case)\\nprint(is_palindrome('Was it a car or a cat I saw'))  # True\\nprint(is_palindrome('No x in Nixon'))     # True\\n\\n# Explanation:\\n# - c.isalnum() returns True for letters and digits, filtering out spaces and punctuation\\n# - c.lower() makes the check case-insensitive\\n# - ''.join(...) combines the filtered characters back into a string\\n# - cleaned[::-1] reverses the string using slicing\\n# - A palindrome reads the same forwards and backwards\\n\\n# Alternative without slicing (using two pointers):\\ndef is_palindrome_v2(s):\\n    cleaned = ''.join(c.lower() for c in s if c.isalnum())\\n    left, right = 0, len(cleaned) - 1\\n    while left < right:\\n        if cleaned[left] != cleaned[right]:\\n            return False\\n        left += 1\\n        right -= 1\\n    return True",
                 "explanation": "Normalize (lowercase, alnum only); compare with reverse via [::-1]; isalnum filters punctuation; two-pointer alternative."
         },
         {
                 "id": 12,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain the while loop and when to use it instead of for.",
                 "answer": "The while loop repeats a block of code as long as a condition is True. The form: while condition: followed by an indented block. The condition is evaluated before each iteration; if True, the block runs; if False, the loop exits. Example: count = 0; while count < 5: print(count); count += 1. Use while when: (1) you don't know in advance how many iterations are needed (e.g., reading input until a sentinel value, waiting for a condition to become true); (2) the loop is driven by an external condition rather than a sequence. Use for when: (1) you're iterating over a known sequence (list, range, file lines); (2) the number of iterations is known or bounded. The break statement exits the loop immediately; continue skips to the next iteration; else clause (while ... else) runs if the loop completes without break. Beware of infinite loops — if the condition never becomes False, the loop runs forever. Always ensure the loop body makes progress toward the termination condition.",
                 "explanation": "while condition: block; use for unknown iteration count; break/continue; else clause; avoid infinite loops."
         },
         {
                 "id": 13,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Describe the four types of numeric objects Python supports.",
-                "answer": "Python supports four types of numeric objects: (1) Integers — whole numbers, on most computers ranging from about -2 billion to +2 billion (32-bit). Trying to use an integer larger than this raises Overflow Error. (2) Long integers — entered by following an ordinary integer with the letter 'L' (e.g., 27L; uppercase preferred because lowercase l looks like 1). Long integers are 'arbitrary precision' — they can have as many digits as you have patience to type. (3) Floating point numbers — specified by including a decimal point or using exponential notation (e.g., 1e3 = 1000.0). Note that exponential notation always produces a float, even without a decimal point. (4) Complex numbers — Python natively supports complex numbers like 3+4j, with .real and .imag attributes. In general, Python will not automatically convert numbers from one type to another, but provides int(), float(), long(), and complex() functions for explicit conversion.",
+                "answer": "Python supports four types of numeric objects: (1) Integers — whole numbers, on most computers ranging from about -2 billion to +2 billion (32-bit). Trying to use an integer larger than this raises OverflowError. (2) Long integers — entered by following an ordinary integer with the letter 'L' (e.g., 27L; uppercase preferred because lowercase l looks like 1). Long integers are 'arbitrary precision' — they can have as many digits as you have patience to type. (3) Floating point numbers — specified by including a decimal point or using exponential notation (e.g., 1e3 = 1000.0). Note that exponential notation always produces a float, even without a decimal point. (4) Complex numbers — Python natively supports complex numbers like 3+4j, with .real and .imag attributes. In general, Python will not automatically convert numbers from one type to another, but provides int(), float(), long(), and complex() functions for explicit conversion.",
                 "explanation": "Four types: int (±2 billion), long (arbitrary precision, L suffix), float (decimal or exponential), complex (a+bj); explicit conversion via int/float/long/complex."
         },
         {
                 "id": 14,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Describe Python's truth, falsehood, and logical operators.",
                 "answer": "In Python, truth values are represented by the capitalized booleans True and False. The following are considered 'false' in a boolean context: the boolean False; the integer 0; the float 0.0; the empty string ''; the empty list []; the empty tuple (); the empty dictionary {}; the special value None. Everything else is considered 'true'. The logical operators are: 'and' — returns the first false value, or the last value if all are true (short-circuits); 'or' — returns the first true value, or the last value if all are false (short-circuits); 'not' — returns the boolean negation (True becomes False, False becomes True). Examples: True and False returns False; True or False returns True; not True returns False; 0 or 'hello' returns 'hello' (because 0 is false, so 'or' returns the next value); 'a' and 'b' returns 'b' (both true, so 'and' returns the last). These operators do not necessarily return booleans — they return one of their operands, which is useful for default values: name = input_name or 'Anonymous'.",
                 "explanation": "True/False capitalized; falsy: False, 0, '', [], (), {}, None; and/or/not keywords; short-circuit; return operand not boolean."
         },
         {
                 "id": 15,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain the print command and string formatting in Python.",
                 "answer": "The print command is the fastest way to display the value of an object in Python. You provide a comma-separated list of objects, and print displays them with spaces between each object and a newline at the end. The newline can be suppressed by terminating the print command with a comma (Python 2) or using end='' (Python 3). For more control over output appearance, use string formatting. In Python, string formatting is performed through overloading of the percent operator (%) for string values. On the left side of %, you provide a string with formatting codes; each code is matched with an object in a tuple on the right side. Common codes: %s for string, %d for integer, %f for float, %x for hex. Example: 'Name: %s, Age: %d' % ('Phil', 30) produces 'Name: Phil, Age: 30'. Python 3 also supports str.format() ('Name: {}, Age: {}'.format('Phil', 30)) and f-strings (f'Name: {name}, Age: {age}'). For directing output to a file, use file.write(s) or print >> file_obj (Python 2) / print(s, file=file_obj) (Python 3).",
                 "explanation": "print displays objects with newline; % formatting with %s/%d/%f; str.format() and f-strings in Python 3; output to file via file.write or print(file=)."
         },
         {
                 "id": 16,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python program that uses a dictionary to count occurrences of each character in a string.",
                 "answer": "def char_count(s):\\n    counts = {}\\n    for char in s:\\n        if char in counts:\\n            counts[char] += 1\\n        else:\\n            counts[char] = 1\\n    return counts\\n\\n# Example usage:\\nprint(char_count('hello'))\\n# Output: {'h': 1, 'e': 1, 'l': 2, 'o': 1}\\n\\nprint(char_count('mississippi'))\\n# Output: {'m': 1, 'i': 4, 's': 4, 'p': 2}\\n\\n# Alternative using dict.get() with default:\\ndef char_count_v2(s):\\n    counts = {}\\n    for char in s:\\n        counts[char] = counts.get(char, 0) + 1\\n    return counts\\n\\n# Alternative using collections.Counter (most Pythonic):\\nfrom collections import Counter\\ndef char_count_v3(s):\\n    return dict(Counter(s))\\n\\n# Explanation:\\n# - Iterate over each character in the string\\n# - If char is already a key in the dict, increment its count\\n# - Otherwise, add it with count 1\\n# - dict.get(key, default) returns the value if key exists, else default\\n# - Counter from collections does this automatically",
                 "explanation": "Iterate chars; check 'in' dict; increment or initialize; dict.get with default; Counter for concise version."
         },
         {
                 "id": 17,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Briefly describe the history and design philosophy of Python.",
                 "answer": "Python was developed in the early 1990s by Guido van Rossum at CWI in Amsterdam (later at CNRI in Virginia). The name comes from Guido's favorite TV show, 'Monty Python's Flying Circus', not from the snake. Python grew out of a project to design a language that would be easy for beginners to learn yet powerful enough for advanced users. This heritage is reflected in Python's small, clean syntax and the thoroughness of its OO implementation. The design philosophy emphasises readability, simplicity, and consistency — there should be one obvious way to do something. The core language is intentionally small and easy to master, while modules extend it for virtually limitless tasks. This makes Python an excellent first programming language without sacrificing the power advanced users eventually need.",
                 "explanation": "Early 1990s, Guido van Rossum; Monty Python reference; easy for beginners, powerful for advanced; small core + modules."
         },
         {
                 "id": 18,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python function that reverses a string without using the [::-1] slice.",
-                "answer": "def reverse_string(s):\\n    result = ''\\n    for char in s:\\n        result = char + result  # prepend each character\\n    return result\\n\\n# Example usage:\\nprint(reverse_string('hello'))  # Output: 'olleh'\\nprint(reverse_string('Python'))  # Output: 'nohty P'\\nprint(reverse_string(''))        # Output: ''\\n\\n# Alternative using a while loop and index:\\ndef reverse_string_v2(s):\\n    result = ''\\n    i = len(s) - 1\\n    while i >= 0:\\n        result += s[i]\\n        i -= 1\\n    return result\\n\\n# Note: in practice, s[::-1] is the Pythonic way: 'hello'[::-1] returns 'olleh'.",
+                "answer": "def reverse_string(s):\\n    result = ''\\n    for char in s:\\n        result = char + result  # prepend each character\\n    return result\\n\\n# Example usage:\\nprint(reverse_string('hello'))  # Output: 'olleh'\\nprint(reverse_string('Python'))  # Output: 'nohtyP'\\nprint(reverse_string(''))        # Output: ''\\n\\n# Alternative using a while loop and index:\\ndef reverse_string_v2(s):\\n    result = ''\\n    i = len(s) - 1\\n    while i >= 0:\\n        result += s[i]\\n        i -= 1\\n    return result\\n\\n# Note: in practice, s[::-1] is the Pythonic way: 'hello'[::-1] returns 'olleh'.",
                 "explanation": "Prepend each char to result; alternative with while loop and index; note [::-1] is the idiomatic Python way."
         },
         {
                 "id": 19,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python function that checks if a number is prime.",
                 "answer": "def is_prime(n):\\n    if n < 2:\\n        return False  # 0, 1, and negatives are not prime\\n    if n == 2:\\n        return True   # 2 is the only even prime\\n    if n % 2 == 0:\\n        return False  # other evens are not prime\\n    # check odd divisors from 3 up to sqrt(n)\\n    i = 3\\n    while i * i <= n:\\n        if n % i == 0:\\n            return False\\n        i += 2\\n    return True\\n\\n# Example usage:\\nprint(is_prime(2))   # True\\nprint(is_prime(7))   # True\\nprint(is_prime(10))  # False\\nprint(is_prime(17))  # True\\nprint(is_prime(1))   # False\\nprint(is_prime(0))   # False\\n\\n# Explanation:\\n# - Numbers < 2 are not prime by definition\\n# - 2 is the only even prime; other evens are composite\\n# - We only need to check divisors up to sqrt(n) — if n has a divisor larger than sqrt(n),\\n#   it must have a corresponding divisor smaller than sqrt(n)\\n# - We check only odd divisors (3, 5, 7, ...) since we already excluded evens\\n# - i * i <= n is equivalent to i <= sqrt(n) but avoids floating-point math",
                 "explanation": "Handle n<2, n==2, evens; check odd divisors up to sqrt(n); i*i<=n avoids float; examples."
         },
         {
                 "id": 20,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain how to use modules in Python.",
                 "answer": "A module is a file containing Python definitions and statements. To use a module, import it: import math. Then access its contents with dot notation: math.sqrt(16) returns 4.0; math.pi returns 3.14159.... To import specific names directly: from math import sqrt, pi — then sqrt(16) and pi work without the math. prefix. To import all names (not recommended — pollutes namespace): from math import *. To alias a module: import numpy as np — then use np.array(). Python looks for modules in: the same directory as the script; the PYTHONPATH environment variable directories; the standard library; site-packages (installed third-party packages). Common standard library modules: sys (system access — stdin, stdout, argv, exit); os (operating system — files, paths, environment); math (mathematical functions); random (random numbers); datetime (dates and times); json (JSON encoding/decoding); re (regular expressions); collections (specialized containers like defaultdict, Counter). To see what's in a module: dir(math) lists all names. To reload a module after editing (during development): reload(module) (Python 2) or importlib.reload(module) (Python 3).",
                 "explanation": "import module; from module import name; aliasing; search path; common stdlib modules; dir() to inspect; reload for development."
         },
         {
                 "id": 21,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python function that takes a list of numbers and returns the mean (average).",
-                "answer": "def mean(numbers):\\n    if not numbers:\\n        return 0  # avoid division by zero for empty list\\n    return sum(numbers) / len(numbers)\\n\\n# Example usage:\\nprint(mean([1, 2, 3, 4, 5]))  # Output: 3.0\\nprint(mean([10, 20, 30]))     # Output: 20.0\\nprint(mean([]))               # Output: 0 (edge case)\\n\\n# Explanation: sum(numbers) adds all elements; len(numbers) counts them.\\n# Division produces a float in Python 3.\\n# The empty-list check prevents Zero Division Error.",
-                "explanation": "sum() / len(); check empty list to avoid Zero Division Error; Python 3 division returns float."
+                "answer": "def mean(numbers):\\n    if not numbers:\\n        return 0  # avoid division by zero for empty list\\n    return sum(numbers) / len(numbers)\\n\\n# Example usage:\\nprint(mean([1, 2, 3, 4, 5]))  # Output: 3.0\\nprint(mean([10, 20, 30]))     # Output: 20.0\\nprint(mean([]))               # Output: 0 (edge case)\\n\\n# Explanation: sum(numbers) adds all elements; len(numbers) counts them.\\n# Division produces a float in Python 3.\\n# The empty-list check prevents ZeroDivisionError.",
+                "explanation": "sum() / len(); check empty list to avoid ZeroDivisionError; Python 3 division returns float."
         },
         {
                 "id": 22,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python function that computes the factorial of a number using recursion.",
-                "answer": "def factorial(n):\\n    if n < 0:\\n        raise Value Error('Factorial is not defined for negative numbers')\\n    if n <= 1:\\n        return 1  # base case: 0! = 1! = 1\\n    return n * factorial(n - 1)  # recursive case\\n\\n# Example usage:\\nprint(factorial(0))   # 1\\nprint(factorial(1))   # 1\\nprint(factorial(5))   # 120 (5*4*3*2*1)\\nprint(factorial(10))  # 3628800\\n\\n# Explanation:\\n# - Base case: factorial(0) = factorial(1) = 1\\n# - Recursive case: factorial(n) = n * factorial(n-1)\\n# - Each recursive call reduces n by 1 until it reaches the base case\\n# - The call stack unwinds, multiplying as it goes back up\\n\\n# Iterative alternative (avoids recursion depth limits):\\ndef factorial_iterative(n):\\n    if n < 0:\\n        raise Value Error('Factorial is not defined for negative numbers')\\n    result = 1\\n    for i in range(2, n + 1):\\n        result *= i\\n    return result\\n\\n# Note: Python has a default recursion limit of ~1000, so for very large n,\\n# use the iterative version or math.factorial(n).",
-                "explanation": "Base case n<=1 returns 1; recursive case n*factorial(n-1); raises Value Error for negatives; iterative alternative avoids recursion limit."
+                "answer": "def factorial(n):\\n    if n < 0:\\n        raise ValueError('Factorial is not defined for negative numbers')\\n    if n <= 1:\\n        return 1  # base case: 0! = 1! = 1\\n    return n * factorial(n - 1)  # recursive case\\n\\n# Example usage:\\nprint(factorial(0))   # 1\\nprint(factorial(1))   # 1\\nprint(factorial(5))   # 120 (5*4*3*2*1)\\nprint(factorial(10))  # 3628800\\n\\n# Explanation:\\n# - Base case: factorial(0) = factorial(1) = 1\\n# - Recursive case: factorial(n) = n * factorial(n-1)\\n# - Each recursive call reduces n by 1 until it reaches the base case\\n# - The call stack unwinds, multiplying as it goes back up\\n\\n# Iterative alternative (avoids recursion depth limits):\\ndef factorial_iterative(n):\\n    if n < 0:\\n        raise ValueError('Factorial is not defined for negative numbers')\\n    result = 1\\n    for i in range(2, n + 1):\\n        result *= i\\n    return result\\n\\n# Note: Python has a default recursion limit of ~1000, so for very large n,\\n# use the iterative version or math.factorial(n).",
+                "explanation": "Base case n<=1 returns 1; recursive case n*factorial(n-1); raises ValueError for negatives; iterative alternative avoids recursion limit."
         },
         {
                 "id": 23,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain the use of *args and **kwargs in Python functions.",
                 "answer": "*args and **kwargs allow functions to accept variable numbers of arguments. *args collects extra positional arguments into a tuple: def f(*args): print(args) — f(1, 2, 3) prints (1, 2, 3). **kwargs collects extra keyword arguments into a dict: def f(**kwargs): print(kwargs) — f(a=1, b=2) prints {'a': 1, 'b': 2}. They can be combined with regular parameters: def f(required, *args, **kwargs): — f(10, 20, 30, x=40, y=50) binds required=10, args=(20, 30), kwargs={'x': 40, 'y': 50}. Order matters: regular parameters first, then *args, then **kwargs. The names 'args' and 'kwargs' are conventions — only the * and ** matter; you could write *items and **options. Common use cases: (1) writing wrapper functions that pass arguments through to another function; (2) flexible APIs that accept optional configuration; (3) inheritance — calling parent methods with super().method(*args, **kwargs). You can also unpack with * and ** when calling: args = [1, 2, 3]; f(*args) is equivalent to f(1, 2, 3); kwargs = {'a': 1, 'b': 2}; f(**kwargs) is equivalent to f(a=1, b=2). In Python 3, you can also use * to force keyword-only arguments: def f(a, *, b, c): — b and c must be passed as keywords (f(1, b=2, c=3), not f(1, 2, 3)).",
                 "explanation": "*args = positional tuple; **kwargs = keyword dict; order: regular, *args, **kwargs; names are conventions; use for wrappers, flexible APIs, inheritance; unpack with * and **."
         },
         {
                 "id": 24,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python program that simulates a simple calculator using functions.",
-                "answer": "def add(a, b):\\n    return a + b\\n\\ndef subtract(a, b):\\n    return a - b\\n\\ndef multiply(a, b):\\n    return a * b\\n\\ndef divide(a, b):\\n    if b == 0:\\n        raise Value Error('Cannot divide by zero')\\n    return a / b\\n\\ndef calculator():\\n    print('Simple Calculator')\\n    print('Operations: +, -, *, /')\\n    while True:\\n        try:\\n            op = input('Enter operation (or \"quit\"): ').strip()\\n            if op.lower() == 'quit':\\n                print('Goodbye!')\\n                break\\n            if op not in ('+', '-', '*', '/'):\\n                print('Invalid operation. Use +, -, *, /')\\n                continue\\n            a = float(input('Enter first number: '))\\n            b = float(input('Enter second number: '))\\n            if op == '+':\\n                print(f'{a} + {b} = {add(a, b)}')\\n            elif op == '-':\\n                print(f'{a} - {b} = {subtract(a, b)}')\\n            elif op == '*':\\n                print(f'{a} * {b} = {multiply(a, b)}')\\n            elif op == '/':\\n                try:\\n                    print(f'{a} / {b} = {divide(a, b)}')\\n                except Value Error as e:\\n                    print(e)\\n        except Value Error:\\n            print('Please enter a valid number.')\\n\\n# Run the calculator\\nif __name__ == '__main__':\\n    calculator()\\n\\n# Explanation:\\n# - Four arithmetic functions, each with a clear single responsibility\\n# - divide() raises Value Error for division by zero\\n# - calculator() is the main loop, handling user input\\n# - try/except handles non-numeric input gracefully\\n# - if __name__ == '__main__' lets the file be imported without running the loop",
+                "answer": "def add(a, b):\\n    return a + b\\n\\ndef subtract(a, b):\\n    return a - b\\n\\ndef multiply(a, b):\\n    return a * b\\n\\ndef divide(a, b):\\n    if b == 0:\\n        raise ValueError('Cannot divide by zero')\\n    return a / b\\n\\ndef calculator():\\n    print('Simple Calculator')\\n    print('Operations: +, -, *, /')\\n    while True:\\n        try:\\n            op = input('Enter operation (or \"quit\"): ').strip()\\n            if op.lower() == 'quit':\\n                print('Goodbye!')\\n                break\\n            if op not in ('+', '-', '*', '/'):\\n                print('Invalid operation. Use +, -, *, /')\\n                continue\\n            a = float(input('Enter first number: '))\\n            b = float(input('Enter second number: '))\\n            if op == '+':\\n                print(f'{a} + {b} = {add(a, b)}')\\n            elif op == '-':\\n                print(f'{a} - {b} = {subtract(a, b)}')\\n            elif op == '*':\\n                print(f'{a} * {b} = {multiply(a, b)}')\\n            elif op == '/':\\n                try:\\n                    print(f'{a} / {b} = {divide(a, b)}')\\n                except ValueError as e:\\n                    print(e)\\n        except ValueError:\\n            print('Please enter a valid number.')\\n\\n# Run the calculator\\nif __name__ == '__main__':\\n    calculator()\\n\\n# Explanation:\\n# - Four arithmetic functions, each with a clear single responsibility\\n# - divide() raises ValueError for division by zero\\n# - calculator() is the main loop, handling user input\\n# - try/except handles non-numeric input gracefully\\n# - if __name__ == '__main__' lets the file be imported without running the loop",
                 "explanation": "Four arithmetic functions; divide checks zero; main loop with input/try-except; __name__ guard for importability."
         },
         {
                 "id": 25,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain why Python uses indentation to delimit blocks instead of curly braces or keywords.",
                 "answer": "Python uses indentation (the amount of whitespace before a statement) to indicate the presence of loops, conditionals, and function bodies, instead of using delimiters like curly braces ({}) or keywords like 'begin'/'end' as in many other languages. The first statement of a program must start in the very first column, and within each indented block, you must be consistent in the amount of indentation you use. The benefits are: (1) readability — code structure is visually obvious; (2) consistency — programmers cannot format code in misleading ways; (3) fewer syntax characters — no curly braces to match or forget; (4) enforcement of good style — since indentation is mandatory, all Python code tends to be consistently formatted. The trade-off is that copy-pasting code requires care with indentation, and mixing tabs and spaces can cause errors. Most Python-aware editors (emacs, vim, IDLE) handle indentation automatically.",
                 "explanation": "Indentation = block delimiter; consistent whitespace required; benefits: readability, consistency, fewer characters, enforced style; trade-off: copy-paste care needed."
         },
         {
                 "id": 26,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python program that counts the number of lines, words, and characters in a file.",
                 "answer": "def file_stats(filename):\\n    lines = 0\\n    words = 0\\n    chars = 0\\n    with open(filename, 'r', encoding='utf-8') as f:\\n        for line in f:\\n            lines += 1\\n            words += len(line.split())\\n            chars += len(line)\\n    return {'lines': lines, 'words': words, 'characters': chars}\\n\\n# Example usage:\\nstats = file_stats('sample.txt')\\nprint(f'Lines:       {stats[\"lines\"]}')\\nprint(f'Words:       {stats[\"words\"]}')\\nprint(f'Characters:  {stats[\"characters\"]}')\\n\\n# Sample output for a file containing:\\n# Hello world\\n# Python is great\\n# Goodbye\\n# Lines:       3\\n# Words:       6\\n# Characters:  34\\n\\n# Explanation:\\n# - open() with encoding='utf-8' ensures proper text handling\\n# - 'with' ensures the file is closed automatically\\n# - Iterating over a file object yields one line at a time (memory-efficient)\\n# - line.split() splits on whitespace, returning a list of words\\n# - len(line) includes the trailing newline character\\n# - Returns a dict for easy access to each statistic\\n\\n# Compact alternative using read():\\ndef file_stats_v2(filename):\\n    with open(filename, encoding='utf-8') as f:\\n        text = f.read()\\n    return {\\n        'lines': text.count('\\\\n') + (1 if text and not text.endswith('\\\\n') else 0),\\n        'words': len(text.split()),\\n        'characters': len(text)\\n    }",
                 "explanation": "Iterate file line by line (memory-efficient); split() for words; len() for chars; with for auto-close; encoding='utf-8' for proper text handling."
         },
         {
                 "id": 27,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python function that removes duplicates from a list while preserving order.",
                 "answer": "def remove_duplicates(lst):\\n    seen = set()\\n    result = []\\n    for item in lst:\\n        if item not in seen:\\n            seen.add(item)\\n            result.append(item)\\n    return result\\n\\n# Example usage:\\nprint(remove_duplicates([1, 2, 2, 3, 4, 4, 5, 1]))\\n# Output: [1, 2, 3, 4, 5]\\n\\nprint(remove_duplicates(['apple', 'banana', 'apple', 'cherry']))\\n# Output: ['apple', 'banana', 'cherry']\\n\\n# Note: simply converting to a set and back to a list removes duplicates\\n# but does NOT preserve order:\\nlist(set([1, 2, 2, 3, 1]))  # might return [1, 2, 3] but order is not guaranteed\\n\\n# Explanation:\\n# - 'seen' is a set — O(1) membership check\\n# - We iterate through the original list in order\\n# - If we haven't seen an item, add it to 'seen' and append to 'result'\\n# - This preserves the first occurrence of each element in order\\n# - Time complexity: O(n) — much faster than O(n^2) for nested loops\\n\\n# Python 3.7+ alternative (dict preserves insertion order):\\ndef remove_duplicates_v2(lst):\\n    return list(dict.fromkeys(lst))",
                 "explanation": "Use set for O(1) lookup; preserve order by iterating original; set() alone doesn't preserve order; dict.fromkeys trick in 3.7+."
         },
         {
                 "id": 28,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Describe the map(), filter(), and lambda constructs in Python.",
                 "answer": "map(), filter(), and lambda are functional programming tools in Python. lambda creates an anonymous (inline) function: lambda x: x*2 creates a function that doubles its input. Lambda functions are limited to a single expression (no statements). They're useful for short operations passed to higher-order functions. map(function, sequence) applies function to each element of sequence and returns the results. Example: map(lambda x: x**2, [1, 2, 3, 4]) returns [1, 4, 9, 16]. filter(function, sequence) returns only elements for which function returns True. Example: filter(lambda x: x > 0, [-3, 7, 12, -2, 19]) returns [7, 12, 19]. Both map and filter can be replaced by list comprehensions, which many Python programmers prefer for readability: [x**2 for x in [1, 2, 3, 4]] instead of map; [x for x in nums if x > 0] instead of filter. List comprehensions can combine map and filter: [x + 10 for x in nums if x > 0]. Lambda is also useful for sorting keys: sorted(people, key=lambda p: p['age']) sorts by age.",
                 "explanation": "lambda = inline function; map applies function to each; filter keeps where function True; list comprehensions often preferred; lambda for sort keys."
         },
         {
                 "id": 29,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain how Python handles mutable vs immutable arguments in functions.",
                 "answer": "In Python, all arguments are passed by assignment (effectively pass-by-object-reference). The behavior depends on whether the object is mutable or immutable. Immutable objects (int, float, string, tuple) cannot be modified in-place — any 'modification' creates a new object. So inside a function, reassigning an immutable parameter does NOT affect the caller's variable: def f(x): x = 10 — caller's variable is unchanged. Mutable objects (list, dict, set) can be modified in-place — modifications inside a function ARE visible to the caller: def f(lst): lst.append(99) — caller's list now has 99 appended. However, reassigning the parameter to a new object does NOT affect the caller: def f(lst): lst = [1, 2, 3] — caller's list is unchanged (only the local reference changed). To avoid unintended modifications, pass copies: def f(lst): lst = lst[:] (creates a copy); or use immutable types like tuples. The 'is' operator checks if two variables refer to the same object. The copy module provides shallow copy (copy.copy) and deep copy (copy.deepcopy) for nested structures. Understanding this distinction is crucial for writing correct Python functions.",
                 "explanation": "Pass-by-object-reference; immutable reassign = no effect; mutable in-place = visible; mutable reassign = no effect; pass copies to protect."
         },
         {
                 "id": 30,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python function that validates an email address using basic checks.",
-                "answer": "import re\\n\\ndef is_valid_email(email):\\n    # Basic regex for email validation\\n    pattern = r'^[a-z A-Z0-9._%+-]+@[a-z A-Z0-9.-]+\\\\.[a-z A-Z]{2,}$'\\n    if not re.match(pattern, email):\\n        return False\\n    # Additional checks\\n    if len(email) > 254:  # RFC 5321 limit\\n        return False\\n    local, _, domain = email.partition('@')\\n    if len(local) > 64:  # RFC 5321 local part limit\\n        return False\\n    if '..' in email:  # no consecutive dots\\n        return False\\n    return True\\n\\n# Example usage:\\nprint(is_valid_email('user@example.com'))      # True\\nprint(is_valid_email('phil.spector@berkeley.edu'))  # True\\nprint(is_valid_email('invalid'))                # False (no @)\\nprint(is_valid_email('@example.com'))           # False (no local part)\\nprint(is_valid_email('user@'))                  # False (no domain)\\nprint(is_valid_email('user@.com'))              # False (no domain name)\\nprint(is_valid_email('user..name@example.com')) # False (consecutive dots)\\n\\n# Explanation:\\n# - re.match(pattern, string) checks if the string matches the regex from the start\\n# - ^ and $ anchor the pattern to start and end\\n# - [a-z A-Z0-9._%+-] matches valid local-part characters\\n# - @ separates local and domain parts\\n# - [a-z A-Z0-9.-] matches valid domain characters\\n# - \\\\. matches a literal dot\\n# - [a-z A-Z]{2,} matches TLD of at least 2 letters\\n# - Additional length checks per RFC 5321\\n# - Note: full email validation per RFC 5322 is extremely complex;\\n#   this is a practical approximation.",
+                "answer": "import re\\n\\ndef is_valid_email(email):\\n    # Basic regex for email validation\\n    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,}$'\\n    if not re.match(pattern, email):\\n        return False\\n    # Additional checks\\n    if len(email) > 254:  # RFC 5321 limit\\n        return False\\n    local, _, domain = email.partition('@')\\n    if len(local) > 64:  # RFC 5321 local part limit\\n        return False\\n    if '..' in email:  # no consecutive dots\\n        return False\\n    return True\\n\\n# Example usage:\\nprint(is_valid_email('user@example.com'))      # True\\nprint(is_valid_email('phil.spector@berkeley.edu'))  # True\\nprint(is_valid_email('invalid'))                # False (no @)\\nprint(is_valid_email('@example.com'))           # False (no local part)\\nprint(is_valid_email('user@'))                  # False (no domain)\\nprint(is_valid_email('user@.com'))              # False (no domain name)\\nprint(is_valid_email('user..name@example.com')) # False (consecutive dots)\\n\\n# Explanation:\\n# - re.match(pattern, string) checks if the string matches the regex from the start\\n# - ^ and $ anchor the pattern to start and end\\n# - [a-zA-Z0-9._%+-] matches valid local-part characters\\n# - @ separates local and domain parts\\n# - [a-zA-Z0-9.-] matches valid domain characters\\n# - \\\\. matches a literal dot\\n# - [a-zA-Z]{2,} matches TLD of at least 2 letters\\n# - Additional length checks per RFC 5321\\n# - Note: full email validation per RFC 5322 is extremely complex;\\n#   this is a practical approximation.",
                 "explanation": "Regex pattern with anchors and character classes; re.match; additional length checks per RFC; practical approximation (full RFC is very complex)."
         },
         {
                 "id": 31,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Describe how to read command-line arguments in Python.",
-                "answer": "Command-line arguments are accessible via the sys module. import sys; args = sys.argv — sys.argv is a list where sys.argv[0] is the script name, and sys.argv[1:] are the arguments passed by the user. Example: if you run 'python myscript.py foo bar 42', then sys.argv = ['myscript.py', 'foo', 'bar', '42']. Note that all arguments are strings — you must convert numeric arguments with int() or float(). For simple scripts, this is sufficient: import sys; if len(sys.argv) < 2: print('Usage: myscript.py <name>'); sys.exit(1); name = sys.argv[1]; print(f'Hello, {name}'). For more complex argument parsing (flags, options, help text), use the argparse module: import argparse; parser = argparse.Argument Parser(); parser.add_argument('name', help='Your name'); parser.add_argument('--count', type=int, default=1, help='Number of greetings'); args = parser.parse_args(); for _ in range(args.count): print(f'Hello, {args.name}'). argparse automatically generates --help, validates types, handles optional vs required arguments, and provides clear error messages for invalid input. For even more advanced argument parsing, consider third-party libraries like click.",
+                "answer": "Command-line arguments are accessible via the sys module. import sys; args = sys.argv — sys.argv is a list where sys.argv[0] is the script name, and sys.argv[1:] are the arguments passed by the user. Example: if you run 'python myscript.py foo bar 42', then sys.argv = ['myscript.py', 'foo', 'bar', '42']. Note that all arguments are strings — you must convert numeric arguments with int() or float(). For simple scripts, this is sufficient: import sys; if len(sys.argv) < 2: print('Usage: myscript.py <name>'); sys.exit(1); name = sys.argv[1]; print(f'Hello, {name}'). For more complex argument parsing (flags, options, help text), use the argparse module: import argparse; parser = argparse.ArgumentParser(); parser.add_argument('name', help='Your name'); parser.add_argument('--count', type=int, default=1, help='Number of greetings'); args = parser.parse_args(); for _ in range(args.count): print(f'Hello, {args.name}'). argparse automatically generates --help, validates types, handles optional vs required arguments, and provides clear error messages for invalid input. For even more advanced argument parsing, consider third-party libraries like click.",
                 "explanation": "sys.argv[0] is script name, [1:] are args (all strings); argparse for flags/options/help/type validation; click for advanced use cases."
         },
         {
                 "id": 32,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Describe the for loop in Python and the range() function.",
                 "answer": "The for loop in Python iterates over the elements of a sequence (list, tuple, string, dictionary, or range). The basic form: for element in sequence: followed by an indented block. On each iteration, 'element' is bound to the next item from the sequence. Examples: for x in [1, 2, 3]: print(x); for char in 'hello': print(char); for key in mydict: print(key). The range() function generates a sequence of integers for cases where you need a counter. range(n) produces 0, 1, ..., n-1. range(start, stop) produces start, start+1, ..., stop-1. range(start, stop, step) produces start, start+step, start+2*step, ... up to (but not including) stop. To iterate over indices of a list, use: for i in range(len(mylist)): print(mylist[i]). The enumerate() function is a more Pythonic alternative: for i, value in enumerate(mylist): gives both index and value. To iterate over multiple sequences in parallel, use zip(): for a, b in zip(list1, list2):. The range function produces a list in memory; for very large ranges, xrange() (Python 2) or range (Python 3, which is lazy) avoids memory issues.",
                 "explanation": "for element in sequence; range(start, stop, step); enumerate for index+value; zip for parallel iteration; Python 3 range is lazy."
         },
         {
                 "id": 33,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python program that creates a list of 5 integers from user input and prints the largest and smallest.",
-                "answer": "numbers = []\\nfor i in range(5):\\n    while True:\\n        try:\\n            value = int(input(f'Enter integer {i+1}: '))\\n            numbers.append(value)\\n            break\\n        except Value Error:\\n            print('Please enter a valid integer.')\\n\\nprint(f'You entered: {numbers}')\\nprint(f'Largest: {max(numbers)}')\\nprint(f'Smallest: {min(numbers)}')\\nprint(f'Sum: {sum(numbers)}')\\nprint(f'Average: {sum(numbers) / len(numbers)}')\\n\\n# Sample interaction:\\n# Enter integer 1: 23\\n# Enter integer 2: 45\\n# Enter integer 3: 12\\n# Enter integer 4: 67\\n# Enter integer 5: 8\\n# You entered: [23, 45, 12, 67, 8]\\n# Largest: 67\\n# Smallest: 8\\n# Sum: 155\\n# Average: 31.0\\n\\n# Explanation:\\n# - input() reads a string from the user\\n# - int() converts it to an integer (may raise Value Error)\\n# - try/except handles non-numeric input gracefully\\n# - max() and min() are built-in functions\\n# - f-strings (Python 3.6+) allow inline expression evaluation",
+                "answer": "numbers = []\\nfor i in range(5):\\n    while True:\\n        try:\\n            value = int(input(f'Enter integer {i+1}: '))\\n            numbers.append(value)\\n            break\\n        except ValueError:\\n            print('Please enter a valid integer.')\\n\\nprint(f'You entered: {numbers}')\\nprint(f'Largest: {max(numbers)}')\\nprint(f'Smallest: {min(numbers)}')\\nprint(f'Sum: {sum(numbers)}')\\nprint(f'Average: {sum(numbers) / len(numbers)}')\\n\\n# Sample interaction:\\n# Enter integer 1: 23\\n# Enter integer 2: 45\\n# Enter integer 3: 12\\n# Enter integer 4: 67\\n# Enter integer 5: 8\\n# You entered: [23, 45, 12, 67, 8]\\n# Largest: 67\\n# Smallest: 8\\n# Sum: 155\\n# Average: 31.0\\n\\n# Explanation:\\n# - input() reads a string from the user\\n# - int() converts it to an integer (may raise ValueError)\\n# - try/except handles non-numeric input gracefully\\n# - max() and min() are built-in functions\\n# - f-strings (Python 3.6+) allow inline expression evaluation",
                 "explanation": "input() reads string; int() converts; try/except for invalid input; max/min/sum built-ins; f-strings for formatting."
         },
         {
                 "id": 34,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "What is Python, and why is it described as both a scripting language and an object-oriented language?",
                 "answer": "Python is a high-level scripting language that can be used for a wide variety of text processing, system administration, and internet-related tasks. It is described as a scripting language because it is interpreted (no separate compilation step) and is commonly used to glue other programs together. It is described as object-oriented because everything in Python is an object — numbers, strings, lists, functions, and even classes are objects — and the language fully supports OO features like classes, inheritance, polymorphism, and encapsulation. Python was designed from the ground up to support OO programming without eliminating the ability to program in a more traditional procedural style. This dual nature makes Python both a quick scripting tool and a serious application development language.",
                 "explanation": "High-level scripting + true OO; everything is an object; supports both styles."
         },
         {
                 "id": 35,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain string constants in Python and the different quote types available.",
                 "answer": "Strings in Python are collections of characters stored together to represent arbitrary text. You can create a string constant by surrounding text with either: (1) Single quotes (') — e.g., name = 'Phil'; opening and closing quotes must appear on the same line. (2) Double quotes (\") — e.g., value = \"$7.00\"; equivalent to single quotes, choice is stylistic. (3) Triple single quotes (''') or triple double quotes (\"\"\") — e.g., helptext = \"\"\"You can create long strings of text spanning several lines by using triple quotes at the beginning and end of the text\"\"\"; triple-quoted strings can span as many lines as you like, preserving line breaks. The choice between single and double quotes is up to you — both have the same meaning in Python. Triple quotes are useful for multi-line strings, docstrings, and strings containing both single and double quotes. You can also create strings by reading input from a file or by concatenating smaller strings.",
                 "explanation": "Three quote types: single ', double \" (equivalent), triple '''/\"\"\" (multi-line); choice is stylistic; triple preserves line breaks."
         },
         {
                 "id": 36,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain the assignment statement in Python, including chained assignment.",
                 "answer": "The assignment statement associates a variable name with a value. In Python, the equal sign (=) is used: the variable name goes on the left, and the value (any valid Python expression) goes on the right. Examples: x = 3; y = 'This is a string'; z = x + 3; vegies = ['broccoli', 'peas', 'carrots']; meal = vegies (meal now refers to the same list as vegies — assignment does not copy). Assignment statements can be chained: if you need to set several variables to the same value, you can extend the assignment to each variable in a single statement. For example: count = number = check = 0 sets all three variables to 0. Important: in interactive mode, assignment statements don't produce output (you must explicitly print to see values). Python also supports augmented assignment: x += 1 (equivalent to x = x + 1), x -= 5, x *= 2, x /= 3, x %= 10, x **= 2. Multiple assignment (tuple unpacking) is also supported: a, b, c = 1, 2, 3 or a, b = b, a (swaps values).",
                 "explanation": "= assigns; left=name, right=value; chained (a=b=c=0); augmented (+=, -=, etc.); tuple unpacking (a,b=b,a)."
         },
         {
                 "id": 37,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Describe how to use the with statement and why it's preferred for file operations.",
                 "answer": "The 'with' statement (context manager) ensures that resources are properly cleaned up, even if an exception occurs. For files: instead of f = open('file.txt'); try: data = f.read(); finally: f.close(), you write: with open('file.txt') as f: data = f.read(). When the 'with' block exits (normally or via exception), f.close() is called automatically. Benefits: (1) Cleaner code — no explicit try/finally; (2) Safer — no risk of forgetting to close the file; (3) Exception-safe — even if read() raises, the file is closed; (4) Self-documenting — the 'with' clearly scopes the file's lifetime. The 'with' statement works with any object that implements __enter__() and __exit__() methods (the context manager protocol). open() returns a file object that implements this protocol. Other common context managers: threading.Lock() (with lock: critical_section); decimal.localcontext() (for decimal precision); contextlib.closing(thing) (calls .close() on exit). You can write your own context managers using a class with __enter__/__exit__, or using the @contextmanager decorator from contextlib. For multiple resources: with open('a') as fa, open('b') as fb: process(fa, fb).",
                 "explanation": "with ensures cleanup; replaces try/finally; exception-safe; works with __enter__/__exit__ protocol; multiple resources in one with."
         },
         {
                 "id": 38,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain the difference between lists and tuples in Python.",
                 "answer": "Lists and tuples are both ordered sequences that can hold heterogeneous elements, but they differ in mutability. Lists are mutable — you can add, remove, or modify elements after creation using methods like append(), extend(), insert(), remove(), pop(), and via index assignment (mylist[0] = 99). Lists are created with square brackets [ ]. Tuples are immutable — once created, they cannot be modified. You cannot add, remove, or change elements. Tuples are created with parentheses ( ) or with the tuple() constructor. Use lists when the collection will change during the program (e.g., accumulating results, modifying a queue). Use tuples when the collection should not change (e.g., fixed records like coordinates (lat, lon), function return values, dictionary keys — tuples can be dict keys, lists cannot). Tuples are also slightly faster and use less memory than lists. Both support indexing, slicing, len(), in operator, and iteration.",
                 "explanation": "Both ordered sequences; lists mutable [ ], tuples immutable ( ); use cases: lists for changing data, tuples for fixed records and dict keys."
         },
         {
                 "id": 39,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Describe object-oriented programming in Python (classes, instances, methods).",
                 "answer": "Python is a true object-oriented language. A class is defined using the class keyword: class Dog: followed by an indented body. The class body contains attribute definitions and methods. The constructor method __init__ is called when an instance is created: class Dog: def __init__(self, name, age): self.name = name; self.age = age. To create an instance: my_dog = Dog('Rex', 5). Instance methods take 'self' as the first parameter (referring to the instance) and access attributes via self.attr: def bark(self): print(self.name + ' says woof!'). To call: my_dog.bark(). Class attributes (shared by all instances) are defined at class level: class Dog: species = 'Canis familiaris'. Inheritance: class Puppy(Dog): — Puppy inherits all attributes and methods of Dog, and can override or extend them. To call the parent's constructor: super().__init__(...). Python supports multiple inheritance: class Child(Parent1, Parent2):. To check type: isinstance(obj, Dog) returns True if obj is a Dog instance. To access attributes dynamically: getattr(obj, 'name'), setattr(obj, 'name', 'new'). Everything in Python is an object — even classes are objects (instances of type 'type').",
                 "explanation": "class keyword; __init__ constructor; self for instance; class attributes; inheritance (Parent in parens); super(); multiple inheritance; isinstance; everything is an object."
         },
         {
                 "id": 40,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python function that sorts a list of dictionaries by a given key.",
-                "answer": "def sort_dicts(list_of_dicts, key, reverse=False):\\n    return sorted(list_of_dicts, key=lambda d: d.get(key), reverse=reverse)\\n\\n# Example usage:\\npeople = [\\n    {'name': 'Phil', 'age': 30},\\n    {'name': 'Andy', 'age': 25},\\n    {'name': 'Sue', 'age': 35},\\n    {'name': 'Bob', 'age': 28}\\n]\\n\\nprint(sort_dicts(people, 'age'))\\n# Output: [{'name': 'Andy', 'age': 25}, {'name': 'Bob', 'age': 28},\\n#          {'name': 'Phil', 'age': 30}, {'name': 'Sue', 'age': 35}]\\n\\nprint(sort_dicts(people, 'name'))\\n# Output: [{'name': 'Andy', 'age': 25}, {'name': 'Bob', 'age': 28},\\n#          {'name': 'Phil', 'age': 30}, {'name': 'Sue', 'age': 35}]\\n\\nprint(sort_dicts(people, 'age', reverse=True))\\n# Output: [{'name': 'Sue', 'age': 35}, {'name': 'Phil', 'age': 30},\\n#          {'name': 'Bob', 'age': 28}, {'name': 'Andy', 'age': 25}]\\n\\n# Explanation:\\n# - sorted() returns a new sorted list (original is unchanged)\\n# - key parameter accepts a function that extracts the comparison value\\n# - lambda d: d.get(key) extracts the value for 'key' from each dict\\n# - d.get(key) returns None if key is missing (safer than d[key] which raises Key Error)\\n# - reverse=True sorts descending\\n# - list.sort() is an alternative that sorts in-place (modifies the original)",
+                "answer": "def sort_dicts(list_of_dicts, key, reverse=False):\\n    return sorted(list_of_dicts, key=lambda d: d.get(key), reverse=reverse)\\n\\n# Example usage:\\npeople = [\\n    {'name': 'Phil', 'age': 30},\\n    {'name': 'Andy', 'age': 25},\\n    {'name': 'Sue', 'age': 35},\\n    {'name': 'Bob', 'age': 28}\\n]\\n\\nprint(sort_dicts(people, 'age'))\\n# Output: [{'name': 'Andy', 'age': 25}, {'name': 'Bob', 'age': 28},\\n#          {'name': 'Phil', 'age': 30}, {'name': 'Sue', 'age': 35}]\\n\\nprint(sort_dicts(people, 'name'))\\n# Output: [{'name': 'Andy', 'age': 25}, {'name': 'Bob', 'age': 28},\\n#          {'name': 'Phil', 'age': 30}, {'name': 'Sue', 'age': 35}]\\n\\nprint(sort_dicts(people, 'age', reverse=True))\\n# Output: [{'name': 'Sue', 'age': 35}, {'name': 'Phil', 'age': 30},\\n#          {'name': 'Bob', 'age': 28}, {'name': 'Andy', 'age': 25}]\\n\\n# Explanation:\\n# - sorted() returns a new sorted list (original is unchanged)\\n# - key parameter accepts a function that extracts the comparison value\\n# - lambda d: d.get(key) extracts the value for 'key' from each dict\\n# - d.get(key) returns None if key is missing (safer than d[key] which raises KeyError)\\n# - reverse=True sorts descending\\n# - list.sort() is an alternative that sorts in-place (modifies the original)",
                 "explanation": "sorted() with key=lambda; d.get(key) safe access; reverse for descending; sorted returns new list, list.sort is in-place."
         },
         {
                 "id": 41,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Describe how to work with JSON data in Python.",
-                "answer": "Python's json module handles JSON (Java Script Object Notation) encoding and decoding. JSON is a text format for data interchange, supporting strings, numbers, booleans, null, arrays (lists), and objects (dicts). To encode a Python object to a JSON string: import json; data = {'name': 'Phil', 'age': 30, 'active': True, 'scores': [85, 90, 78]}; json_str = json.dumps(data) — produces '{\"name\": \"Phil\", \"age\": 30, \"active\": true, \"scores\": [85, 90, 78]}'. To decode a JSON string to Python: parsed = json.loads(json_str) — returns the equivalent Python dict. To read JSON from a file: with open('data.json') as f: data = json.load(f). To write JSON to a file: with open('data.json', 'w') as f: json.dump(data, f, indent=2). The dumps/dump functions accept formatting options: indent=2 for pretty-printing; sort_keys=True to sort dict keys; separators=(',', ':') for compact output. Type mappings: Python dict ↔ JSON object; list/tuple ↔ JSON array; str ↔ JSON string; int/float ↔ JSON number; True/False ↔ JSON true/false; None ↔ JSON null. Custom objects need custom encoders: class My Encoder(json.JSONEncoder): def default(self, obj): .... Common pitfalls: JSON keys must be strings (Python dict keys are converted); JSON has no tuples (converted to arrays); JSON has no set/datetime (need custom handling).",
+                "answer": "Python's json module handles JSON (JavaScript Object Notation) encoding and decoding. JSON is a text format for data interchange, supporting strings, numbers, booleans, null, arrays (lists), and objects (dicts). To encode a Python object to a JSON string: import json; data = {'name': 'Phil', 'age': 30, 'active': True, 'scores': [85, 90, 78]}; json_str = json.dumps(data) — produces '{\"name\": \"Phil\", \"age\": 30, \"active\": true, \"scores\": [85, 90, 78]}'. To decode a JSON string to Python: parsed = json.loads(json_str) — returns the equivalent Python dict. To read JSON from a file: with open('data.json') as f: data = json.load(f). To write JSON to a file: with open('data.json', 'w') as f: json.dump(data, f, indent=2). The dumps/dump functions accept formatting options: indent=2 for pretty-printing; sort_keys=True to sort dict keys; separators=(',', ':') for compact output. Type mappings: Python dict ↔ JSON object; list/tuple ↔ JSON array; str ↔ JSON string; int/float ↔ JSON number; True/False ↔ JSON true/false; None ↔ JSON null. Custom objects need custom encoders: class MyEncoder(json.JSONEncoder): def default(self, obj): .... Common pitfalls: JSON keys must be strings (Python dict keys are converted); JSON has no tuples (converted to arrays); JSON has no set/datetime (need custom handling).",
                 "explanation": "json.dumps/loads for strings; json.dump/load for files; indent for pretty-print; type mappings; custom encoders for non-standard types."
         },
         {
                 "id": 42,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain Python's approach to string encoding and Unicode.",
-                "answer": "Python handles text using Unicode, which can represent virtually every character from every writing system. In Python 3, all strings are Unicode by default — 'hello' and 'héllo' and '日本語' are all valid string literals. In Python 2, there were two string types: 'byte strings' (ASCII by default) and 'unicode strings' (prefixed with u, like u'hello'). The encoding (UTF-8, UTF-16, ASCII, etc.) matters when strings are converted to bytes for storage or transmission. To encode a string to bytes: 'hello'.encode('utf-8') returns b'hello'. To decode bytes to a string: b'hello'.decode('utf-8') returns 'hello'. UTF-8 is the most common encoding — it uses 1 byte for ASCII characters, 2-4 bytes for others, and can represent all Unicode characters. Common encodings: ASCII (7-bit, English only), UTF-8 (variable length, universal), UTF-16 (2 bytes per char), Latin-1/ISO-8859-1 (Western European). When reading files, specify the encoding: open('file.txt', encoding='utf-8'). If you get a Unicode Decode Error, the file likely uses a different encoding than Python's default. Best practice: always use UTF-8 for new code; explicitly specify encoding when opening files; decode bytes to strings as early as possible and work with strings internally.",
+                "answer": "Python handles text using Unicode, which can represent virtually every character from every writing system. In Python 3, all strings are Unicode by default — 'hello' and 'héllo' and '日本語' are all valid string literals. In Python 2, there were two string types: 'byte strings' (ASCII by default) and 'unicode strings' (prefixed with u, like u'hello'). The encoding (UTF-8, UTF-16, ASCII, etc.) matters when strings are converted to bytes for storage or transmission. To encode a string to bytes: 'hello'.encode('utf-8') returns b'hello'. To decode bytes to a string: b'hello'.decode('utf-8') returns 'hello'. UTF-8 is the most common encoding — it uses 1 byte for ASCII characters, 2-4 bytes for others, and can represent all Unicode characters. Common encodings: ASCII (7-bit, English only), UTF-8 (variable length, universal), UTF-16 (2 bytes per char), Latin-1/ISO-8859-1 (Western European). When reading files, specify the encoding: open('file.txt', encoding='utf-8'). If you get a UnicodeDecodeError, the file likely uses a different encoding than Python's default. Best practice: always use UTF-8 for new code; explicitly specify encoding when opening files; decode bytes to strings as early as possible and work with strings internally.",
                 "explanation": "Python 3 strings are Unicode; encode() to bytes, decode() to string; UTF-8 universal; specify encoding when opening files; decode early, work with strings."
         },
         {
                 "id": 43,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Describe how to define and call functions in Python.",
                 "answer": "Functions are defined using the def keyword, followed by the function name, parentheses containing parameters, a colon, and an indented body. Example: def greet(name): print('Hello, ' + name). To call: greet('Phil'). Functions can have multiple parameters: def add(a, b): return a + b. Parameters can have default values: def greet(name, greeting='Hello'): print(greeting + ', ' + name) — greeting defaults to 'Hello' if not provided. Functions can accept variable arguments using *args (positional) and **kwargs (keyword): def f(*args, **kwargs):. The return statement specifies the return value; if omitted, the function returns None. Functions can return multiple values as a tuple: def min_max(lst): return min(lst), max(lst) — unpacked as lo, hi = min_max([3, 1, 4, 1, 5]). Functions are first-class objects — they can be assigned to variables, passed as arguments, and returned from other functions. A docstring (triple-quoted string as the first statement) documents the function and is accessible via __doc__.",
                 "explanation": "def name(params): body; defaults; *args/**kwargs; return multiple as tuple; first-class; docstring."
         },
         {
                 "id": 44,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python function that generates the Fibonacci sequence up to n terms.",
                 "answer": "def fibonacci(n):\\n    if n <= 0:\\n        return []\\n    if n == 1:\\n        return [0]\\n    seq = [0, 1]\\n    while len(seq) < n:\\n        seq.append(seq[-1] + seq[-2])\\n    return seq\\n\\n# Example usage:\\nprint(fibonacci(0))   # []\\nprint(fibonacci(1))   # [0]\\nprint(fibonacci(2))   # [0, 1]\\nprint(fibonacci(10))  # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]\\n\\n# Recursive alternative (returns nth Fibonacci number, not the sequence):\\ndef fib_recursive(n):\\n    if n < 2:\\n        return n\\n    return fib_recursive(n - 1) + fib_recursive(n - 2)\\n\\n# Note: the naive recursive version is very slow for large n (exponential time)\\n# because it recomputes the same values many times. Use memoization or the\\n# iterative version for production code.\\n\\n# Generator version (memory-efficient for large sequences):\\ndef fibonacci_gen(n):\\n    a, b = 0, 1\\n    for _ in range(n):\\n        yield a\\n        a, b = b, a + b\\n\\n# list(fibonacci_gen(10)) returns [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]\\n\\n# Explanation:\\n# - Iterative: build the list by appending the sum of the last two elements\\n# - Generator: yields values one at a time, avoiding storing the whole list",
                 "explanation": "Iterative builds list; handle edge cases (n<=0, n==1); recursive returns nth only (slow); generator is memory-efficient."
         },
         {
                 "id": 45,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain the if statement and its variants in Python.",
                 "answer": "The if statement executes a block of code only if a condition is true. The basic form: if condition: followed by an indented block. To handle multiple cases, use elif (else if) and else: if condition1: block1 elif condition2: block2 elif condition3: block3 else: block4. Python evaluates conditions in order; the first true condition's block is executed, and the rest are skipped. The else clause is optional and runs only if no condition was true. Conditions can be any expression that evaluates to a truth value (see truth/falsehood rules). Common comparison operators: == (equal), != (not equal), < (less than), > (greater than), <= (less or equal), >= (greater or equal), in (membership), is (identity). Conditions can be combined with and, or, not. Python also supports conditional expressions (ternary): value = true_value if condition else false_value. Note the colon (:) after each if/elif/else — it introduces the indented block.",
                 "explanation": "if/elif/else; colon introduces block; first true condition wins; comparison operators; logical combinations; ternary expression."
         },
         {
                 "id": 46,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Describe list indexing and slicing in Python with examples.",
-                "answer": "Python lists are indexed by integers, starting at 0 (the first element is index 0). Negative indices count from the end: list[-1] is the last element, list[-2] is second-to-last, etc. Slicing extracts a sub-list using the syntax list[start:stop], where start is inclusive and stop is exclusive (half-open). Examples: mylist = [10, 20, 30, 40, 50]; mylist[0] returns 10; mylist[-1] returns 50; mylist[1:4] returns [20, 30, 40] (indices 1, 2, 3 — 4 is exclusive); mylist[:3] returns [10, 20, 30] (omitted start defaults to 0); mylist[2:] returns [30, 40, 50] (omitted stop defaults to end); mylist[::2] returns [10, 30, 50] (step of 2); mylist[::-1] returns [50, 40, 30, 20, 10] (reverses the list). Slicing never raises Index Error — out-of-range indices are clamped to the list boundaries.",
+                "answer": "Python lists are indexed by integers, starting at 0 (the first element is index 0). Negative indices count from the end: list[-1] is the last element, list[-2] is second-to-last, etc. Slicing extracts a sub-list using the syntax list[start:stop], where start is inclusive and stop is exclusive (half-open). Examples: mylist = [10, 20, 30, 40, 50]; mylist[0] returns 10; mylist[-1] returns 50; mylist[1:4] returns [20, 30, 40] (indices 1, 2, 3 — 4 is exclusive); mylist[:3] returns [10, 20, 30] (omitted start defaults to 0); mylist[2:] returns [30, 40, 50] (omitted stop defaults to end); mylist[::2] returns [10, 30, 50] (step of 2); mylist[::-1] returns [50, 40, 30, 20, 10] (reverses the list). Slicing never raises IndexError — out-of-range indices are clamped to the list boundaries.",
                 "explanation": "0-based; negative from end; [start:stop] half-open; defaults; step; reverse with [::-1]."
         },
         {
                 "id": 47,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Describe Python dictionaries and explain when to use them.",
                 "answer": "Dictionaries (sometimes called associative arrays or hashes) are collections that, unlike lists, are indexed by any immutable object (such as strings or tuples) rather than by integers. The index is called the 'key', and the stored value is the 'value'. Dictionaries are created with curly braces: phonedict = {'Fred': '555-1231', 'Andy': '555-1195', 'Sue': '555-2193'}. To look up Sue's number: phonedict['Sue'] returns '555-2193'. Use dictionaries when: (1) you need to look up values by a meaningful key (name, ID) rather than by position; (2) the data is naturally key-value pairs (phonebook, configuration, JSON objects); (3) you need fast O(1) lookups — dict lookups are much faster than searching a list of tuples. Common methods: dict.keys() returns all keys, dict.values() returns all values, dict.items() returns (key, value) pairs, dict.get(key, default) returns value or default if key missing, 'key' in dict checks membership. Dictionaries can be nested to any depth and can contain arbitrary objects as values.",
                 "explanation": "Key-value pairs; indexed by immutable keys (strings/tuples); { }; use for lookups, key-value data, fast O(1) access; common methods."
         },
         {
                 "id": 48,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Write a Python function that finds the area of a triangle using Heron's formula.",
-                "answer": "import math\\n\\ndef triangle_area(a, b, c):\\n    # Validate triangle inequality\\n    if a + b <= c or a + c <= b or b + c <= a:\\n        raise Value Error('Sides do not form a valid triangle')\\n    # Semi-perimeter\\n    s = (a + b + c) / 2\\n    # Heron's formula: area = sqrt(s * (s-a) * (s-b) * (s-c))\\n    area = math.sqrt(s * (s - a) * (s - b) * (s - c))\\n    return area\\n\\n# Example usage:\\nprint(triangle_area(3, 4, 5))   # 6.0\\nprint(triangle_area(5, 12, 13)) # 30.0\\nprint(triangle_area(7, 9, 12))  # 26.83...\\ntry:\\n    triangle_area(1, 1, 5)\\nexcept Value Error as e:\\n    print(e)  # Sides do not form a valid triangle\\n\\n# Explanation:\\n# - Triangle inequality: sum of any two sides must exceed the third\\n# - s = semi-perimeter = (a+b+c)/2\\n# - Heron's formula: A = sqrt(s(s-a)(s-b)(s-c))\\n# - math.sqrt() computes the square root\\n# - The 3-4-5 right triangle has area 6 (matches 0.5 * 3 * 4)",
+                "answer": "import math\\n\\ndef triangle_area(a, b, c):\\n    # Validate triangle inequality\\n    if a + b <= c or a + c <= b or b + c <= a:\\n        raise ValueError('Sides do not form a valid triangle')\\n    # Semi-perimeter\\n    s = (a + b + c) / 2\\n    # Heron's formula: area = sqrt(s * (s-a) * (s-b) * (s-c))\\n    area = math.sqrt(s * (s - a) * (s - b) * (s - c))\\n    return area\\n\\n# Example usage:\\nprint(triangle_area(3, 4, 5))   # 6.0\\nprint(triangle_area(5, 12, 13)) # 30.0\\nprint(triangle_area(7, 9, 12))  # 26.83...\\ntry:\\n    triangle_area(1, 1, 5)\\nexcept ValueError as e:\\n    print(e)  # Sides do not form a valid triangle\\n\\n# Explanation:\\n# - Triangle inequality: sum of any two sides must exceed the third\\n# - s = semi-perimeter = (a+b+c)/2\\n# - Heron's formula: A = sqrt(s(s-a)(s-b)(s-c))\\n# - math.sqrt() computes the square root\\n# - The 3-4-5 right triangle has area 6 (matches 0.5 * 3 * 4)",
                 "explanation": "Validate triangle inequality; s = (a+b+c)/2; A = sqrt(s(s-a)(s-b)(s-c)); math.sqrt; 3-4-5 example gives 6."
         },
         {
                 "id": 49,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Explain how Python's import system works and how to create your own module.",
-                "answer": "A module in Python is simply a file with a .py extension containing Python definitions and statements. To create your own module, write a .py file (e.g., mymath.py) with functions and variables: # mymath.py\\ndef square(x): return x ** 2\\ndef cube(x): return x ** 3\\n PI = 3.14159. To use it from another script in the same directory: import mymath; print(mymath.square(5)) — outputs 25. Or: from mymath import square, cube; print(square(5)) — outputs 25 (no prefix needed). Python's import system searches for modules in this order: (1) the directory containing the script being run; (2) the PYTHONPATH environment variable directories; (3) installation-dependent default paths (including site-packages for third-party packages). You can view the full search path with import sys; print(sys.path). When you import a module, Python compiles it to bytecode (.pyc file in __pycache__) for faster subsequent loads, then executes the module's top-level code in a new namespace. To organise related modules, use packages — a package is a directory containing an __init__.py file (can be empty) and one or more module files. Import from a package: from mypackage.mymodule import myfunction. The import statement is idempotent — importing the same module twice does not re-execute it.",
+                "answer": "A module in Python is simply a file with a .py extension containing Python definitions and statements. To create your own module, write a .py file (e.g., mymath.py) with functions and variables: # mymath.py\\ndef square(x): return x ** 2\\ndef cube(x): return x ** 3\\nPI = 3.14159. To use it from another script in the same directory: import mymath; print(mymath.square(5)) — outputs 25. Or: from mymath import square, cube; print(square(5)) — outputs 25 (no prefix needed). Python's import system searches for modules in this order: (1) the directory containing the script being run; (2) the PYTHONPATH environment variable directories; (3) installation-dependent default paths (including site-packages for third-party packages). You can view the full search path with import sys; print(sys.path). When you import a module, Python compiles it to bytecode (.pyc file in __pycache__) for faster subsequent loads, then executes the module's top-level code in a new namespace. To organise related modules, use packages — a package is a directory containing an __init__.py file (can be empty) and one or more module files. Import from a package: from mypackage.mymodule import myfunction. The import statement is idempotent — importing the same module twice does not re-execute it.",
                 "explanation": "Module = .py file; import/from-import; search path (script dir, PYTHONPATH, site-packages); __pycache__ for bytecode; packages with __init__.py; idempotent imports."
         },
         {
                 "id": 50,
-                "is Theory": true,
+                "isTheory": true,
                 "question": "Describe the role of the if __name__ == '__main__' idiom in Python scripts.",
                 "answer": "The if __name__ == '__main__': idiom allows a Python file to serve dual purposes: as a runnable script and as an importable module. Every Python module has a built-in attribute __name__. When the file is run directly (python myscript.py), __name__ is set to '__main__'. When the file is imported by another script (import myscript), __name__ is set to the module name ('myscript'). The idiom checks this attribute: code inside if __name__ == '__main__': runs only when the file is executed directly, not when imported. Use cases: (1) Putting test code or a main() call inside the guard so that importing the module doesn't trigger the tests. (2) Providing a command-line interface that only activates when the file is run directly. (3) Allowing a module to be both a library (imported by other code) and a standalone tool (run from the command line). Example: # mymodule.py\\ndef add(a, b): return a + b\\n\\nif __name__ == '__main__':\\n    # This only runs when mymodule.py is executed directly\\n    import sys\\n    if len(sys.argv) == 3:\\n        print(add(int(sys.argv[1]), int(sys.argv[2])))\\n    else:\\n        print('Usage: mymodule.py <a> <b>'). When imported (import mymodule), the add() function is available but the command-line code does not run. This idiom is a Python best practice for any file that might be both run and imported.",
                 "explanation": "__name__ is '__main__' when run directly, module name when imported; guard prevents code running on import; use for tests, CLI, dual-purpose files."
         }
     ];
 
-    let current Exam Data = [];
-    let user Answers     = {};
-    let current Index    = 0;
-    let time Remaining   = 0;
-    let timer Id         = null;
-    let active Mode      = 'practice';
-    let exam Selection Type = 'random';
-    let part Num         = 1;
-    let is Review Mode    = false;
+    let currentExamData = [];
+    let userAnswers     = {};
+    let currentIndex    = 0;
+    let timeRemaining   = 0;
+    let timerId         = null;
+    let activeMode      = 'practice';
+    let examSelectionType = 'random';
+    let partNum         = 1;
+    let isReviewMode    = false;
 
-    function build Dashboard() {
-        const dash = document.get Element By Id('dashboard');
-        dash.inner HTML = '';
+    function buildDashboard() {
+        const dash = document.getElementById('dashboard');
+        dash.innerHTML = '';
 
-        const total Q = MASTER_POOL.length;
-        const part Size = 25;
-        const num Parts = Math.ceil(total Q / part Size);
+        const totalQ = MASTER_POOL.length;
+        const partSize = 25;
+        const numParts = Math.ceil(totalQ / partSize);
 
-        const random Box = document.create Element('div');
-        random Box.class Name = 'box box-random';
-        random Box.inner HTML = `<i class="fa-solid fa-shuffle" style="font-size:2rem;"></i><h3>Random Mix</h3><p>${total Q} Questions</p>`;
-        random Box.onclick = () => open Setup('random', 0);
-        dash.append Child(random Box);
+        const randomBox = document.createElement('div');
+        randomBox.className = 'box box-random';
+        randomBox.innerHTML = `<i class="fa-solid fa-shuffle" style="font-size:2rem;"></i><h3>Random Mix</h3><p>${totalQ} Questions</p>`;
+        randomBox.onclick = () => openSetup('random', 0);
+        dash.appendChild(randomBox);
 
-        for (let p = 1; p <= num Parts; p++) {
-            const start = (p - 1) * part Size + 1;
-            const end   = Math.min(p * part Size, total Q);
-            const box   = document.create Element('div');
-            box.class Name = 'box';
-            box.inner HTML = `<i class="fa-solid fa-book-open" style="font-size:2rem; color:var(--primary);"></i><h3>Part ${p}</h3><p>Q${start} – Q${end}</p>`;
-            box.onclick = () => open Setup('part', p);
-            dash.append Child(box);
+        for (let p = 1; p <= numParts; p++) {
+            const start = (p - 1) * partSize + 1;
+            const end   = Math.min(p * partSize, totalQ);
+            const box   = document.createElement('div');
+            box.className = 'box';
+            box.innerHTML = `<i class="fa-solid fa-book-open" style="font-size:2rem; color:var(--primary);"></i><h3>Part ${p}</h3><p>Q${start} – Q${end}</p>`;
+            box.onclick = () => openSetup('part', p);
+            dash.appendChild(box);
         }
     }
 
-    function open Setup(type, part) {
-        exam Selection Type = type;
-        part Num = part;
-        document.get Element By Id('dashboard-wrap').style.display = 'none';
-        document.get Element By Id('setup-screen').style.display   = 'block';
-        document.get Element By Id('setup-title').inner Text = type === 'random' ? 'Randomised Practice' : `${COURSE_CODE} — Part ${part}`;
-        document.get Element By Id('random-settings').style.display = type === 'random' ? 'block' : 'none';
+    function openSetup(type, part) {
+        examSelectionType = type;
+        partNum = part;
+        document.getElementById('dashboard-wrap').style.display = 'none';
+        document.getElementById('setup-screen').style.display   = 'block';
+        document.getElementById('setup-title').innerText = type === 'random' ? 'Randomised Practice' : `${COURSE_CODE} — Part ${part}`;
+        document.getElementById('random-settings').style.display = type === 'random' ? 'block' : 'none';
     }
 
-    function go Home() {
-        clear Interval(timer Id);
-        is Review Mode = false;
-        current Exam Data = []; user Answers = {}; current Index = 0;
-        document.get Element By Id('quiz-interface').style.display  = 'none';
-        document.get Element By Id('setup-screen').style.display    = 'none';
-        document.get Element By Id('quiz Result Modal').style.display = 'none';
-        document.get Element By Id('dashboard-wrap').style.display  = 'block';
-        show Resume Banner();
-        load Stats Bar();
+    function goHome() {
+        clearInterval(timerId);
+        isReviewMode = false;
+        currentExamData = []; userAnswers = {}; currentIndex = 0;
+        document.getElementById('quiz-interface').style.display  = 'none';
+        document.getElementById('setup-screen').style.display    = 'none';
+        document.getElementById('quizResultModal').style.display = 'none';
+        document.getElementById('dashboard-wrap').style.display  = 'block';
+        showResumeBanner();
+        loadStatsBar();
     }
 
-    function shuffle Array(arr) {
+    function shuffleArray(arr) {
         const a = [...arr];
         for (let i = a.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -1925,227 +1925,227 @@
         return a;
     }
 
-    function start Exam() {
-        time Remaining = parse Int(document.get Element By Id('t-limit').value) * 60;
-        active Mode    = document.get Element By Id('quiz-mode').value;
-        is Review Mode  = false;
-        user Answers   = {};
-        current Index  = 0;
+    function startExam() {
+        timeRemaining = parseInt(document.getElementById('t-limit').value) * 60;
+        activeMode    = document.getElementById('quiz-mode').value;
+        isReviewMode  = false;
+        userAnswers   = {};
+        currentIndex  = 0;
 
         let pool = JSON.parse(JSON.stringify(MASTER_POOL));
 
-        if (exam Selection Type === 'random') {
-            const qty = Math.min(parse Int(document.get Element By Id('q-count').value), pool.length);
-            pool = shuffle Array(pool).slice(0, qty);
+        if (examSelectionType === 'random') {
+            const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
+            pool = shuffleArray(pool).slice(0, qty);
         } else {
-            const start = (part Num - 1) * 25;
+            const start = (partNum - 1) * 25;
             pool = pool.slice(start, start + 25);
         }
 
-        if (document.get Element By Id('shuffle-questions').checked) pool = shuffle Array(pool);
+        if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);
 
-        if (document.get Element By Id('shuffle-options').checked) {
-            pool.for Each(q => {
-                q.options = shuffle Array([...q.options]);
+        if (document.getElementById('shuffle-options').checked) {
+            pool.forEach(q => {
+                q.options = shuffleArray([...q.options]);
             });
         }
 
-        current Exam Data = pool;
+        currentExamData = pool;
 
-        document.get Element By Id('setup-screen').style.display  = 'none';
-        document.get Element By Id('quiz-interface').style.display = 'block';
-        document.get Element By Id('total-idx').inner Text = current Exam Data.length;
-        run Timer();
-        render Question();
+        document.getElementById('setup-screen').style.display  = 'none';
+        document.getElementById('quiz-interface').style.display = 'block';
+        document.getElementById('total-idx').innerText = currentExamData.length;
+        runTimer();
+        renderQuestion();
     }
 
-    function run Timer() {
-        clear Interval(timer Id);
-        timer Id = set Interval(() => {
-            time Remaining--;
-            const m = Math.floor(time Remaining / 60);
-            const s = time Remaining % 60;
-            document.get Element By Id('timer').inner Text = `${m}:${s < 10 ? '0'+s : s}`;
-            if (time Remaining <= 0) { clear Interval(timer Id); show Results(true); }
+    function runTimer() {
+        clearInterval(timerId);
+        timerId = setInterval(() => {
+            timeRemaining--;
+            const m = Math.floor(timeRemaining / 60);
+            const s = timeRemaining % 60;
+            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
+            if (timeRemaining <= 0) { clearInterval(timerId); showResults(true); }
         }, 1000);
     }
 
     // Render Question
-    function render Question() {
-        const q          = current Exam Data[current Index];
-        const has Answered = user Answers.has Own Property(current Index);
-        const user Ans    = user Answers[current Index];
+    function renderQuestion() {
+        const q          = currentExamData[currentIndex];
+        const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
+        const userAns    = userAnswers[currentIndex];
         const labels     = ['A','B','C','D'];
 
-        document.get Element By Id('cur-idx').inner Text       = current Index + 1;
-        document.get Element By Id('question-text').inner HTML = q.question;
+        document.getElementById('cur-idx').innerText       = currentIndex + 1;
+        document.getElementById('question-text').innerHTML = q.question;
 
-        const opt Box   = document.get Element By Id('options-box');
-        const feed Area = document.get Element By Id('feedback-area');
-        opt Box.inner HTML  = '';
-        feed Area.inner HTML = '';
+        const optBox   = document.getElementById('options-box');
+        const feedArea = document.getElementById('feedback-area');
+        optBox.innerHTML  = '';
+        feedArea.innerHTML = '';
 
-        if (q.options && q.options.length) q.options.for Each((val, idx) => {
+        if (q.options && q.options.length) q.options.forEach((val, idx) => {
             const label = labels[idx] || (idx + 1);
-            const btn   = document.create Element('button');
-            btn.class Name = 'option-btn';
-            btn.inner HTML = `<strong>${label}.</strong> ${val}`;
+            const btn   = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerHTML = `<strong>${label}.</strong> ${val}`;
 
-            if (is Review Mode || (active Mode === 'practice' && has Answered)) {
-                if (val === q.answer)    btn.class List.add('correct');
-                else if (user Ans === val) btn.class List.add('wrong');
+            if (isReviewMode || (activeMode === 'practice' && hasAnswered)) {
+                if (val === q.answer)    btn.classList.add('correct');
+                else if (userAns === val) btn.classList.add('wrong');
                 btn.disabled = true;
-            } else if (active Mode === 'exam' && has Answered && user Ans === val) {
-                btn.class List.add('selected');
+            } else if (activeMode === 'exam' && hasAnswered && userAns === val) {
+                btn.classList.add('selected');
             }
 
             btn.onclick = () => {
-                if (is Review Mode) return;
-                if (active Mode === 'practice' && has Answered) return;
-                user Answers[current Index] = val;
-                save State();
-                render Question();
+                if (isReviewMode) return;
+                if (activeMode === 'practice' && hasAnswered) return;
+                userAnswers[currentIndex] = val;
+                saveState();
+                renderQuestion();
 
-                if (active Mode === 'practice') {
-                    const is Last = current Index === current Exam Data.length - 1;
+                if (activeMode === 'practice') {
+                    const isLast = currentIndex === currentExamData.length - 1;
                     // Auto-next removed: user must click "Next" manually.
-                    if (is Last) {
-                        const submit Btn = document.get Element By Id('submit-btn');
-                        if (submit Btn) submit Btn.style.display = 'inline-flex';
+                    if (isLast) {
+                        const submitBtn = document.getElementById('submit-btn');
+                        if (submitBtn) submitBtn.style.display = 'inline-flex';
                     }
                 }
             };
-            opt Box.append Child(btn);
+            optBox.appendChild(btn);
         });
 
-        const exp Html = q.explanation
+        const expHtml = q.explanation
             ? `<div class="explanation-box"><strong>Explanation:</strong> ${q.explanation}</div>`
             : '';
 
-        if (is Review Mode) {
-            if (has Answered) {
-                const ok = user Ans === q.answer;
-                feed Area.inner HTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
+        if (isReviewMode) {
+            if (hasAnswered) {
+                const ok = userAns === q.answer;
+                feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
                     ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
-                </div>${exp Html}`;
+                </div>${expHtml}`;
             } else {
-                feed Area.inner HTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
+                feedArea.innerHTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
                     ⚠ Not answered. Correct: <strong>${q.answer}</strong>
-                </div>${exp Html}`;
+                </div>${expHtml}`;
             }
-        } else if (active Mode === 'practice' && has Answered && !q.is Theory) {
-            const ok = user Ans === q.answer;
-            feed Area.inner HTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
+        } else if (activeMode === 'practice' && hasAnswered && !q.isTheory) {
+            const ok = userAns === q.answer;
+            feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#10b981':'#b91c1c'}">
                 ${ok ? '✔ Correct!' : '✘ Incorrect. Answer: <strong>' + q.answer + '</strong>'}
-            </div>${exp Html}`;
+            </div>${expHtml}`;
         }
 
-        const is Last = current Index === current Exam Data.length - 1;
-        document.get Element By Id('next-btn').style.display          = is Last ? 'none' : 'block';
-        document.get Element By Id('submit-btn').style.display        = is Review Mode ? 'none' : 'block';
-        document.get Element By Id('finish-review-btn').style.display = is Review Mode ? 'block' : 'none';
+        const isLast = currentIndex === currentExamData.length - 1;
+        document.getElementById('next-btn').style.display          = isLast ? 'none' : 'block';
+        document.getElementById('submit-btn').style.display        = isReviewMode ? 'none' : 'block';
+        document.getElementById('finish-review-btn').style.display = isReviewMode ? 'block' : 'none';
     }
 
     function move(d) {
-        const n = current Index + d;
-        if (n >= 0 && n < current Exam Data.length) { current Index = n; render Question(); }
+        const n = currentIndex + d;
+        if (n >= 0 && n < currentExamData.length) { currentIndex = n; renderQuestion(); }
     }
 
     // Save State
-    function save State() {
-        local Storage.set Item(STORAGE_KEY, JSON.stringify({
-            current Exam Data, user Answers, current Index,
-            time Remaining, active Mode, exam Selection Type, part Num,
-            saved At: Date.now()
+    function saveState() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            currentExamData, userAnswers, currentIndex,
+            timeRemaining, activeMode, examSelectionType, partNum,
+            savedAt: Date.now()
         }));
     }
 
-    function resume Exam() {
-        const saved = local Storage.get Item(STORAGE_KEY);
+    function resumeExam() {
+        const saved = localStorage.getItem(STORAGE_KEY);
         if (!saved) return;
         const s = JSON.parse(saved);
 
-        current Exam Data   = s.current Exam Data;
-        user Answers       = s.user Answers;
-        current Index      = s.current Index;
-        time Remaining     = s.time Remaining;
-        active Mode        = s.active Mode || 'practice';
-        exam Selection Type = s.exam Selection Type || 'random';
-        part Num           = s.part Num || 1;
-        is Review Mode      = false;
+        currentExamData   = s.currentExamData;
+        userAnswers       = s.userAnswers;
+        currentIndex      = s.currentIndex;
+        timeRemaining     = s.timeRemaining;
+        activeMode        = s.activeMode || 'practice';
+        examSelectionType = s.examSelectionType || 'random';
+        partNum           = s.partNum || 1;
+        isReviewMode      = false;
 
-        document.get Element By Id('dashboard-wrap').style.display  = 'none';
-        document.get Element By Id('resume-banner').style.display   = 'none';
-        document.get Element By Id('setup-screen').style.display    = 'none';
-        document.get Element By Id('quiz Result Modal').style.display = 'none';
-        document.get Element By Id('resume-btn').style.display      = 'none';
-        document.get Element By Id('quiz-interface').style.display  = 'block';
-        document.get Element By Id('total-idx').inner Text           = current Exam Data.length;
+        document.getElementById('dashboard-wrap').style.display  = 'none';
+        document.getElementById('resume-banner').style.display   = 'none';
+        document.getElementById('setup-screen').style.display    = 'none';
+        document.getElementById('quizResultModal').style.display = 'none';
+        document.getElementById('resume-btn').style.display      = 'none';
+        document.getElementById('quiz-interface').style.display  = 'block';
+        document.getElementById('total-idx').innerText           = currentExamData.length;
 
-        const timer El = document.get Element By Id('timer');
-        timer El.style.background = 'rgba(239,68,68,0.08)';
-        timer El.style.color      = 'var(--danger)';
+        const timerEl = document.getElementById('timer');
+        timerEl.style.background = 'rgba(239,68,68,0.08)';
+        timerEl.style.color      = 'var(--danger)';
 
-        run Timer();
-        render Question();
+        runTimer();
+        renderQuestion();
     }
 
-    async function show Results(forced = false) {
-        const answered = Object.keys(user Answers).length;
-        if (!forced && answered < current Exam Data.length) {
-            if (!confirm(`You answered ${answered} of ${current Exam Data.length}. Submit anyway?`)) return;
+    async function showResults(forced = false) {
+        const answered = Object.keys(userAnswers).length;
+        if (!forced && answered < currentExamData.length) {
+            if (!confirm(`You answered ${answered} of ${currentExamData.length}. Submit anyway?`)) return;
         }
 
-        clear Interval(timer Id);
-        local Storage.remove Item(STORAGE_KEY);
+        clearInterval(timerId);
+        localStorage.removeItem(STORAGE_KEY);
 
         let score = 0;
-        current Exam Data.for Each((q, i) => { if (user Answers[i] === q.answer) score++; });
-        const total = current Exam Data.length;
+        currentExamData.forEach((q, i) => { if (userAnswers[i] === q.answer) score++; });
+        const total = currentExamData.length;
         const pct   = Math.round((score / total) * 100);
 
-        document.get Element By Id('final Score Text').inner Text = pct;
-        document.get Element By Id('modal Correct').inner Text   = score;
-        document.get Element By Id('modal Total').inner Text     = total;
-        document.get Element By Id('modal Review Btn').style.display = active Mode === 'practice' ? 'none' : 'flex';
+        document.getElementById('finalScoreText').innerText = pct;
+        document.getElementById('modalCorrect').innerText   = score;
+        document.getElementById('modalTotal').innerText     = total;
+        document.getElementById('modalReviewBtn').style.display = activeMode === 'practice' ? 'none' : 'flex';
 
         if (pct >= 70) {
-            document.get Element By Id('result Icon').inner Text     = '🏆';
-            document.get Element By Id('result Greeting').inner Text = 'Outstanding! 🌟';
-            document.get Element By Id('result Feedback').inner Text = 'Excellent work! Keep it up!';
-            confetti({ particle Count: 160, spread: 70, origin: { y: 0.6 } });
+            document.getElementById('resultIcon').innerText     = '🏆';
+            document.getElementById('resultGreeting').innerText = 'Outstanding! 🌟';
+            document.getElementById('resultFeedback').innerText = 'Excellent work! Keep it up!';
+            confetti({ particleCount: 160, spread: 70, origin: { y: 0.6 } });
         } else if (pct >= 50) {
-            document.get Element By Id('result Icon').inner Text     = '👍';
-            document.get Element By Id('result Greeting').inner Text = 'Good Job!';
-            document.get Element By Id('result Feedback').inner Text = 'Almost there — aim for 70%+!';
+            document.getElementById('resultIcon').innerText     = '👍';
+            document.getElementById('resultGreeting').innerText = 'Good Job!';
+            document.getElementById('resultFeedback').innerText = 'Almost there — aim for 70%+!';
         } else {
-            document.get Element By Id('result Icon').inner Text     = '💪';
-            document.get Element By Id('result Greeting').inner Text = 'Keep Trying!';
-            document.get Element By Id('result Feedback').inner Text = 'Review your notes and try again!';
+            document.getElementById('resultIcon').innerText     = '💪';
+            document.getElementById('resultGreeting').innerText = 'Keep Trying!';
+            document.getElementById('resultFeedback').innerText = 'Review your notes and try again!';
         }
 
-        document.get Element By Id('quiz Result Modal').style.display = 'flex';
-        await save Test Score(pct);
+        document.getElementById('quizResultModal').style.display = 'flex';
+        await saveTestScore(pct);
     }
 
-    async function save Test Score(pct) {
-        const el = document.get Element By Id('save-status');
-        el.inner Text = '⏳ Saving...';
+    async function saveTestScore(pct) {
+        const el = document.getElementById('save-status');
+        el.innerText = '⏳ Saving...';
         try {
-            const { data: { user } } = await db.auth.get User();
-            if (!user) { el.inner Text = ''; return; }
+            const { data: { user } } = await db.auth.getUser();
+            if (!user) { el.innerText = ''; return; }
 
-            // ── 1. ALWAYS save to local Storage as backup (cross-device sync) ──
+            // ── 1. ALWAYS save to localStorage as backup (cross-device sync) ──
             try {
-                const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
-                local Results.push({
+                const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+                localResults.push({
                     student_id: user.id,
                     course_id: COURSE_CODE,
                     score: pct,
                     timestamp: Date.now(),
                     synced: false
                 });
-                local Storage.set Item('renance_local_results', JSON.stringify(local Results));
+                localStorage.setItem('renance_local_results', JSON.stringify(localResults));
             } catch (le) { console.warn('Local save failed:', le); }
 
             // ── 2. Save to Supabase (cloud) ──
@@ -2155,7 +2155,7 @@
             if (prev && prev.length > 0) {
                 const all = [...prev.map(r => r.score), pct];
                 const avg = Math.round(all.reduce((a, b) => a + b, 0) / all.length);
-                document.get Element By Id('modal Avg').inner Text = avg + '%';
+                document.getElementById('modalAvg').innerText = avg + '%';
             }
 
             const { error } = await db.from('test_results').insert([
@@ -2163,55 +2163,55 @@
             ]);
 
             if (error) {
-                el.inner Text = '⚠️ Could not save to cloud (saved locally — will sync later)';
+                el.innerText = '⚠️ Could not save to cloud (saved locally — will sync later)';
             } else {
-                el.inner Text = '✅ Score saved!';
+                el.innerText = '✅ Score saved!';
                 // Mark the just-saved local result as synced
                 try {
-                    const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
+                    const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
                     // Mark the last unsynced result for this course as synced
-                    for (let i = local Results.length - 1; i >= 0; i--) {
-                        if (local Results[i].student_id === user.id &&
-                            local Results[i].course_id === COURSE_CODE &&
-                            !local Results[i].synced) {
-                            local Results[i].synced = true;
+                    for (let i = localResults.length - 1; i >= 0; i--) {
+                        if (localResults[i].student_id === user.id &&
+                            localResults[i].course_id === COURSE_CODE &&
+                            !localResults[i].synced) {
+                            localResults[i].synced = true;
                             break;
                         }
                     }
-                    local Storage.set Item('renance_local_results', JSON.stringify(local Results));
+                    localStorage.setItem('renance_local_results', JSON.stringify(localResults));
                 } catch (e) {}
 
                 // ── Update students table with aggregated stats ──
                 try {
-                    const { data: all Results } = await db.from('test_results')
+                    const { data: allResults } = await db.from('test_results')
                         .select('score').eq('student_id', user.id);
-                    if (all Results && all Results.length > 0) {
-                        const tests Taken = all Results.length;
-                        const avg Score = Math.round(all Results.reduce((s, r) => s + Number(r.score), 0) / tests Taken);
+                    if (allResults && allResults.length > 0) {
+                        const testsTaken = allResults.length;
+                        const avgScore = Math.round(allResults.reduce((s, r) => s + Number(r.score), 0) / testsTaken);
                         await db.from('students').update({
-                            tests_taken: tests Taken,
-                            avg_score: avg Score,
-                            last_seen: new Date().to ISOString()
+                            tests_taken: testsTaken,
+                            avg_score: avgScore,
+                            last_seen: new Date().toISOString()
                         }).eq('id', user.id);
                     }
                 } catch (ue) {}
             }
         } catch (e) {
-            el.inner Text = '⚠️ Offline — saved locally, will sync when online';
+            el.innerText = '⚠️ Offline — saved locally, will sync when online';
         }
     }
 
     // ── Sync queued local results to Supabase (runs on page load) ──
-    async function sync Local Results() {
+    async function syncLocalResults() {
         try {
-            const { data: { user } } = await db.auth.get User();
+            const { data: { user } } = await db.auth.getUser();
             if (!user) return;
 
-            const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
-            const unsynced = local Results.filter(r => !r.synced && r.student_id === user.id);
+            const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+            const unsynced = localResults.filter(r => !r.synced && r.student_id === user.id);
             if (unsynced.length === 0) return;
 
-            let synced Count = 0;
+            let syncedCount = 0;
             for (const r of unsynced) {
                 try {
                     const { error } = await db.from('test_results').insert([
@@ -2219,28 +2219,28 @@
                     ]);
                     if (!error) {
                         r.synced = true;
-                        synced Count++;
+                        syncedCount++;
                     }
                 } catch (e) { /* will retry next time */ }
             }
-            local Storage.set Item('renance_local_results', JSON.stringify(local Results));
-            if (synced Count > 0) {
-                console.log(`Synced ${synced Count} queued result(s) to cloud`);
+            localStorage.setItem('renance_local_results', JSON.stringify(localResults));
+            if (syncedCount > 0) {
+                console.log(`Synced ${syncedCount} queued result(s) to cloud`);
 
             // Update students table after syncing
-            if (synced Count > 0) {
+            if (syncedCount > 0) {
                 try {
-                    const { data: { user } } = await db.auth.get User();
+                    const { data: { user } } = await db.auth.getUser();
                     if (user) {
-                        const { data: all Results } = await db.from('test_results')
+                        const { data: allResults } = await db.from('test_results')
                             .select('score').eq('student_id', user.id);
-                        if (all Results && all Results.length > 0) {
-                            const tests Taken = all Results.length;
-                            const avg Score = Math.round(all Results.reduce((s, r) => s + Number(r.score), 0) / tests Taken);
+                        if (allResults && allResults.length > 0) {
+                            const testsTaken = allResults.length;
+                            const avgScore = Math.round(allResults.reduce((s, r) => s + Number(r.score), 0) / testsTaken);
                             await db.from('students').update({
-                                tests_taken: tests Taken,
-                                avg_score: avg Score,
-                                last_seen: new Date().to ISOString()
+                                tests_taken: testsTaken,
+                                avg_score: avgScore,
+                                last_seen: new Date().toISOString()
                             }).eq('id', user.id);
                         }
                     }
@@ -2250,25 +2250,25 @@
         } catch (e) { /* not logged in or offline — will retry next time */ }
     }
 
-    function enter Review Mode() {
-        document.get Element By Id('quiz Result Modal').style.display = 'none';
-        is Review Mode = true;
-        current Index = 0;
-        document.get Element By Id('timer').inner Text         = 'REVIEW';
-        document.get Element By Id('timer').style.background = '#ddd6fe';
-        document.get Element By Id('timer').style.color      = '#7c3aed';
-        render Question();
+    function enterReviewMode() {
+        document.getElementById('quizResultModal').style.display = 'none';
+        isReviewMode = true;
+        currentIndex = 0;
+        document.getElementById('timer').innerText         = 'REVIEW';
+        document.getElementById('timer').style.background = '#ddd6fe';
+        document.getElementById('timer').style.color      = '#7c3aed';
+        renderQuestion();
     }
 
-    document.add Event Listener('keydown', (e) => {
-        if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.active Element.tag Name)) return;
-        if (document.get Element By Id('quiz-interface').style.display === 'none') return;
+    document.addEventListener('keydown', (e) => {
+        if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+        if (document.getElementById('quiz-interface').style.display === 'none') return;
 
-        const key = e.key.to Upper Case();
+        const key = e.key.toUpperCase();
         if (['A', 'B', 'C', 'D'].includes(key)) {
-            const buttons = document.query Selector All('.option-btn');
-            buttons.for Each(btn => {
-                if (btn.inner Text.trim().starts With(key + '.')) {
+            const buttons = document.querySelectorAll('.option-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText.trim().startsWith(key + '.')) {
                     btn.click();
                 }
             });
@@ -2279,47 +2279,47 @@
         if (key === 'P') { move(-1); return; }
     });
 
-    async function share Quiz Result() {
-        const score   = document.get Element By Id('final Score Text').inner Text;
-        const section = exam Selection Type === 'random' ? 'a random mix' : `Part ${part Num}`;
-        const text    = `I just scored ${score}% on ${COURSE_CODE} (${section})! 🚀\n\n Challenge yourself on the Renance CBT portal! 📚🔥\nhttps://renancecbt.vercel.app`;
+    async function shareQuizResult() {
+        const score   = document.getElementById('finalScoreText').innerText;
+        const section = examSelectionType === 'random' ? 'a random mix' : `Part ${partNum}`;
+        const text    = `I just scored ${score}% on ${COURSE_CODE} (${section})! 🚀\n\nChallenge yourself on the Renance CBT portal! 📚🔥\nhttps://renancecbt.vercel.app`;
         try {
             if (navigator.share) await navigator.share({ title: `My ${COURSE_CODE} Score`, text, url: 'https://renancecbt.vercel.app' });
-            else { await navigator.clipboard.write Text(text); alert('Score copied to clipboard! 📋'); }
+            else { await navigator.clipboard.writeText(text); alert('Score copied to clipboard! 📋'); }
         } catch (_) {}
     }
 
-    function ask Renance AI() {
-        send To AI(COURSE_CODE, current Exam Data, user Answers);
+    function askRenanceAI() {
+        sendToAI(COURSE_CODE, currentExamData, userAnswers);
     }
 
-    async function load Stats Bar() {
-        const bar = document.get Element By Id('stats-bar');
+    async function loadStatsBar() {
+        const bar = document.getElementById('stats-bar');
         try {
-            const { data: { user } } = await db.auth.get User();
+            const { data: { user } } = await db.auth.getUser();
             if (!user) return;
 
             // Fetch from cloud
             const { data } = await db.from('test_results')
                 .select('score').eq('student_id', user.id).eq('course_id', COURSE_CODE);
-            const cloud Scores = data ? data.map(r => r.score) : [];
+            const cloudScores = data ? data.map(r => r.score) : [];
 
             // Merge with local (unsynced) results
-            let local Scores = [];
+            let localScores = [];
             try {
-                const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
-                local Scores = local Results
+                const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+                localScores = localResults
                     .filter(r => r.student_id === user.id && r.course_id === COURSE_CODE && !r.synced)
                     .map(r => r.score);
             } catch (e) {}
 
-            const all Scores = [...cloud Scores, ...local Scores];
-            if (all Scores.length === 0) return;
+            const allScores = [...cloudScores, ...localScores];
+            if (allScores.length === 0) return;
 
-            const taken = all Scores.length;
-            const avg  = Math.round(all Scores.reduce((s, r) => s + r, 0) / taken);
-            const best = Math.max(...all Scores);
-            bar.inner HTML = `
+            const taken = allScores.length;
+            const avg  = Math.round(allScores.reduce((s, r) => s + r, 0) / taken);
+            const best = Math.max(...allScores);
+            bar.innerHTML = `
                 <div class="stat-card"><div class="stat-val">${taken}</div><div class="stat-lbl">Tests Taken</div></div>
                 <div class="stat-card"><div class="stat-val">${avg}%</div><div class="stat-lbl">Average Score</div></div>
                 <div class="stat-card"><div class="stat-val">${best}%</div><div class="stat-lbl">Best Score</div></div>`;
@@ -2327,33 +2327,33 @@
         } catch (e) {  }
     }
 
-    function show Resume Banner() {
-        const saved  = local Storage.get Item(STORAGE_KEY);
-        const banner = document.get Element By Id('resume-banner');
+    function showResumeBanner() {
+        const saved  = localStorage.getItem(STORAGE_KEY);
+        const banner = document.getElementById('resume-banner');
         if (!saved || !banner) return;
 
         const s        = JSON.parse(saved);
-        const answered = Object.keys(s.user Answers).length;
-        const total    = s.current Exam Data.length;
-        const label    = s.exam Selection Type === 'random' ? 'Random Mix' : `Part ${s.part Num}`;
-        const m Left    = Math.floor(s.time Remaining / 60);
-        const s Left    = s.time Remaining % 60;
-        const time Str  = `${m Left}:${s Left < 10 ? '0'+s Left : s Left}`;
+        const answered = Object.keys(s.userAnswers).length;
+        const total    = s.currentExamData.length;
+        const label    = s.examSelectionType === 'random' ? 'Random Mix' : `Part ${s.partNum}`;
+        const mLeft    = Math.floor(s.timeRemaining / 60);
+        const sLeft    = s.timeRemaining % 60;
+        const timeStr  = `${mLeft}:${sLeft < 10 ? '0'+sLeft : sLeft}`;
         const pct      = Math.round((answered / total) * 100);
 
-        banner.inner HTML = `
+        banner.innerHTML = `
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
                 <div>
                     <div style="font-weight:700;font-size:0.95rem;">📌 Resume Saved Exam</div>
                     <div style="font-size:0.82rem;color:var(--text-muted);margin-top:3px;">
-                        <strong>${label}</strong> &nbsp;·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;·&nbsp; ⏳ ${time Str} left
+                        <strong>${label}</strong> &nbsp;·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;·&nbsp; ⏳ ${timeStr} left
                     </div>
                 </div>
                 <div style="display:flex;gap:8px;flex-shrink:0;">
-                    <button class="btn" style="background:var(--success);padding:8px 16px;font-size:0.87rem;" onclick="resume Exam()">
+                    <button class="btn" style="background:var(--success);padding:8px 16px;font-size:0.87rem;" onclick="resumeExam()">
                         <i class="fa-solid fa-rotate-right"></i> Continue
                     </button>
-                    <button class="btn" style="background:#64748b;padding:8px 16px;font-size:0.87rem;" onclick="discard Saved()">
+                    <button class="btn" style="background:#64748b;padding:8px 16px;font-size:0.87rem;" onclick="discardSaved()">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
@@ -2361,77 +2361,77 @@
         banner.style.display = 'block';
     }
 
-    function discard Saved() {
+    function discardSaved() {
         if (!confirm('Discard your saved exam progress?')) return;
-        local Storage.remove Item(STORAGE_KEY);
-        document.get Element By Id('resume-banner').style.display = 'none';
-        document.get Element By Id('resume-btn').style.display    = 'none';
+        localStorage.removeItem(STORAGE_KEY);
+        document.getElementById('resume-banner').style.display = 'none';
+        document.getElementById('resume-btn').style.display    = 'none';
     }
 
     // Check Resume
-    function check Resume() {
-        const saved = local Storage.get Item(STORAGE_KEY);
-        if (!saved) { document.get Element By Id('resume-btn').style.display = 'none'; return; }
+    function checkResume() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (!saved) { document.getElementById('resume-btn').style.display = 'none'; return; }
         const s = JSON.parse(saved);
-        const mins = Math.floor((Date.now() - s.saved At) / 60000);
-        if (mins > 180) { local Storage.remove Item(STORAGE_KEY); return; }
-        document.get Element By Id('resume-btn').style.display = 'inline-flex';
-        show Resume Banner();
+        const mins = Math.floor((Date.now() - s.savedAt) / 60000);
+        if (mins > 180) { localStorage.removeItem(STORAGE_KEY); return; }
+        document.getElementById('resume-btn').style.display = 'inline-flex';
+        showResumeBanner();
     }
 
-    build Dashboard();
-    load Stats Bar();
-    sync Local Results();
-    check Resume();
+    buildDashboard();
+    loadStatsBar();
+    syncLocalResults();
+    checkResume();
 
         // ═════════════════════════════════════════════════════════════════
         // THEORY QUESTION UI + GROQ AI GRADING (one question at a time)
         // ═════════════════════════════════════════════════════════════════
         (function() {
-            const _original Render = window.render Question;
-            window.render Question = function() {
-                _original Render.apply(this, arguments);
-                const q = current Exam Data && current Exam Data[current Index];
-                if (q && q.is Theory) {
-                    inject Theory UI(q);
+            const _originalRender = window.renderQuestion;
+            window.renderQuestion = function() {
+                _originalRender.apply(this, arguments);
+                const q = currentExamData && currentExamData[currentIndex];
+                if (q && q.isTheory) {
+                    injectTheoryUI(q);
                 }
             };
         })();
 
-        function inject Theory UI(q) {
-            const feed Area = document.get Element By Id('feedback-area');
-            if (!feed Area) return;
-            if (feed Area.query Selector('.theory-ui')) return;
+        function injectTheoryUI(q) {
+            const feedArea = document.getElementById('feedback-area');
+            if (!feedArea) return;
+            if (feedArea.querySelector('.theory-ui')) return;
 
-            const existing = user Answers[current Index];
-            const has Answered = existing && typeof existing === 'object' && 'response' in existing;
+            const existing = userAnswers[currentIndex];
+            const hasAnswered = existing && typeof existing === 'object' && 'response' in existing;
 
             const html = `
                 <div class="theory-ui" style="margin-top:1rem; padding:1rem; background:rgba(124,58,237,0.04); border-left:4px solid #7c3aed; border-radius:10px;">
                     <label style="font-weight:700; color:var(--primary); display:block; margin-bottom:6px;">
                         <i class="fa-solid fa-pen-to-square"></i> Your Answer:
                     </label>
-                    <textarea id="theory-response" rows="6" style="width:100%; padding:10px; border:2px solid #ddd6fe; border-radius:8px; font-family:inherit; font-size:0.95rem; resize:vertical; ${has Answered ? 'background:#f5f5f5;' : ''}"
-                        placeholder="Type your detailed answer here..." ${has Answered ? 'disabled' : ''}>${has Answered ? (existing.response || '').replace(/</g, '&lt;') : ''}</textarea>
+                    <textarea id="theory-response" rows="6" style="width:100%; padding:10px; border:2px solid #ddd6fe; border-radius:8px; font-family:inherit; font-size:0.95rem; resize:vertical; ${hasAnswered ? 'background:#f5f5f5;' : ''}"
+                        placeholder="Type your detailed answer here..." ${hasAnswered ? 'disabled' : ''}>${hasAnswered ? (existing.response || '').replace(/</g, '&lt;') : ''}</textarea>
 
-                    ${has Answered ? `
+                    ${hasAnswered ? `
                         <div style="margin-top:10px; padding:10px; background:#fff; border-radius:8px; border:1px solid var(--border);">
                             <strong style="color:var(--primary);">Your Score:</strong>
                             <span style="font-size:1.1rem; font-weight:800; color:${(existing.score||0) >= 70 ? '#10b981' : (existing.score||0) >= 40 ? '#f59e0b' : '#ef4444'};">${existing.score || 0}%</span>
-                            ${existing.ai Feedback ? `<div style="margin-top:6px; font-size:0.88rem; color:var(--text-muted);"><strong>AI Feedback:</strong> ${existing.ai Feedback}</div>` : ''}
+                            ${existing.aiFeedback ? `<div style="margin-top:6px; font-size:0.88rem; color:var(--text-muted);"><strong>AI Feedback:</strong> ${existing.aiFeedback}</div>` : ''}
                         </div>
                     ` : `
                         <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
-                            <button class="btn" style="background:var(--danger); padding:7px 14px; font-size:0.85rem;" onclick="grade Theory Answer(0)">
+                            <button class="btn" style="background:var(--danger); padding:7px 14px; font-size:0.85rem;" onclick="gradeTheoryAnswer(0)">
                                 <i class="fa-solid fa-xmark"></i> Incorrect (0%)
                             </button>
-                            <button class="btn" style="background:var(--accent); padding:7px 14px; font-size:0.85rem;" onclick="grade Theory Answer(50)">
+                            <button class="btn" style="background:var(--accent); padding:7px 14px; font-size:0.85rem;" onclick="gradeTheoryAnswer(50)">
                                 <i class="fa-solid fa-circle-half-stroke"></i> Partial (50%)
                             </button>
-                            <button class="btn" style="background:var(--success); padding:7px 14px; font-size:0.85rem;" onclick="grade Theory Answer(100)">
+                            <button class="btn" style="background:var(--success); padding:7px 14px; font-size:0.85rem;" onclick="gradeTheoryAnswer(100)">
                                 <i class="fa-solid fa-check"></i> Correct (100%)
                             </button>
-                            <button class="btn" id="ai-grade-btn" style="background:linear-gradient(135deg, #4f46e5, #818cf8); padding:7px 14px; font-size:0.85rem;" onclick="grade With Groq AI()">
+                            <button class="btn" id="ai-grade-btn" style="background:linear-gradient(135deg, #4f46e5, #818cf8); padding:7px 14px; font-size:0.85rem;" onclick="gradeWithGroqAI()">
                                 <i class="fa-solid fa-robot"></i> Auto-Grade (AI)
                             </button>
                         </div>
@@ -2441,47 +2441,47 @@
                     `}
                 </div>
             `;
-            feed Area.insert Adjacent HTML('beforeend', html);
+            feedArea.insertAdjacentHTML('beforeend', html);
         }
 
-        function grade Theory Answer(score Pct) {
-            const q = current Exam Data[current Index];
-            const textarea = document.get Element By Id('theory-response');
+        function gradeTheoryAnswer(scorePct) {
+            const q = currentExamData[currentIndex];
+            const textarea = document.getElementById('theory-response');
             if (!textarea) return;
             const response = textarea.value.trim();
             if (!response) { alert("Please type your answer first."); return; }
-            user Answers[current Index] = {
+            userAnswers[currentIndex] = {
                 response: response,
-                score: score Pct,
-                ai Feedback: user Answers[current Index] && user Answers[current Index].ai Feedback
+                score: scorePct,
+                aiFeedback: userAnswers[currentIndex] && userAnswers[currentIndex].aiFeedback
             };
-            save State();
-            render Question();
+            saveState();
+            renderQuestion();
         }
 
-        async function grade With Groq AI() {
-            const q = current Exam Data[current Index];
-            const textarea = document.get Element By Id('theory-response');
+        async function gradeWithGroqAI() {
+            const q = currentExamData[currentIndex];
+            const textarea = document.getElementById('theory-response');
             if (!textarea) return;
-            const user Response = textarea.value.trim();
-            if (!user Response) { alert("Please type your answer first."); return; }
+            const userResponse = textarea.value.trim();
+            if (!userResponse) { alert("Please type your answer first."); return; }
 
-            const ai Btn = document.get Element By Id('ai-grade-btn');
-            const ai Feedback = document.get Element By Id('ai-feedback-response');
-            const ai Feedback Text = document.get Element By Id('ai-feedback-text');
-            ai Btn.disabled = true;
-            ai Btn.inner Text = "\u23F3 Grading...";
+            const aiBtn = document.getElementById('ai-grade-btn');
+            const aiFeedback = document.getElementById('ai-feedback-response');
+            const aiFeedbackText = document.getElementById('ai-feedback-text');
+            aiBtn.disabled = true;
+            aiBtn.innerText = "\u23F3 Grading...";
 
             const provider = window.env?.AI_PROVIDER || 'groq';
             const model = window.env?.AI_MODEL || 'llama-3.1-8b-instant';
-            const key = window.env?.AI_API_KEY || ('gsk_71n Ddj9ca C9CGo XD0Qx SW' + 'Gdyb3FYct CCz V6YNHGz Ylj4O9Qpk Qcy');
+            const key = window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy');
 
-            const system Prompt = `You are a strict, professional academic examiner grading a ${COURSE_CODE} exam question.
+            const systemPrompt = `You are a strict, professional academic examiner grading a ${COURSE_CODE} exam question.
 Grade the student's answer against the provided model answer.
 
 Question: "${q.question}"
 Model Answer: "${q.answer}"
-Student's Answer: "${user Response}"
+Student's Answer: "${userResponse}"
 
 Rate the response from 0 to 100% accuracy.
 Provide your response strictly in the following JSON format:
@@ -2499,39 +2499,39 @@ Provide your response strictly in the following JSON format:
                         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
                         body: JSON.stringify({
                             model: model,
-                            messages: [{ role: "system", content: system Prompt }],
+                            messages: [{ role: "system", content: systemPrompt }],
                             response_format: { type: "json_object" },
                             temperature: 0.2
                         })
                     });
-                    const res Data = await response.json();
-                    if (!response.ok) throw new Error(res Data.error?.message || `HTTP ${response.status}`);
-                    result = JSON.parse(res Data.choices[0].message.content.trim());
+                    const resData = await response.json();
+                    if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
+                    result = JSON.parse(resData.choices[0].message.content.trim());
                 } else {
-                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generate Content?key=${key}`, {
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
                         method: 'POST',
                         headers: {'Content-Type': 'application/json'},
                         body: JSON.stringify({
-                            contents: [{ parts: [{ text: system Prompt }] }],
-                            generation Config: { response Mime Type: "application/json" }
+                            contents: [{ parts: [{ text: systemPrompt }] }],
+                            generationConfig: { responseMimeType: "application/json" }
                         })
                     });
-                    const res Data = await response.json();
-                    if (!response.ok) throw new Error(res Data.error?.message || `HTTP ${response.status}`);
-                    const text = res Data.candidates[0].content.parts[0].text;
+                    const resData = await response.json();
+                    if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
+                    const text = resData.candidates[0].content.parts[0].text;
                     result = JSON.parse(text.trim());
                 }
 
                 if (result && typeof result.score === 'number') {
-                    ai Feedback Text.inner HTML = `<strong>AI Grade:</strong> ${result.score}%<br><strong>AI Feedback:</strong> ${result.feedback}`;
-                    ai Feedback.style.display = 'block';
-                    user Answers[current Index] = {
-                        response: user Response,
+                    aiFeedbackText.innerHTML = `<strong>AI Grade:</strong> ${result.score}%<br><strong>AI Feedback:</strong> ${result.feedback}`;
+                    aiFeedback.style.display = 'block';
+                    userAnswers[currentIndex] = {
+                        response: userResponse,
                         score: result.score,
-                        ai Feedback: result.feedback
+                        aiFeedback: result.feedback
                     };
-                    save State();
-                    set Timeout(() => render Question(), 800);
+                    saveState();
+                    setTimeout(() => renderQuestion(), 800);
                 } else {
                     throw new Error("Invalid API response structure");
                 }
@@ -2539,8 +2539,8 @@ Provide your response strictly in the following JSON format:
                 console.error("AI Grading Error:", e);
                 alert(`Auto-grading failed: ${e.message || "Please self-grade using the buttons."}`);
             } finally {
-                ai Btn.disabled = false;
-                ai Btn.inner Text = "\u D83E\u DD16 Auto-Grade (AI)";
+                aiBtn.disabled = false;
+                aiBtn.innerText = "\uD83E\uDD16 Auto-Grade (AI)";
             }
         }
 
@@ -2548,47 +2548,47 @@ Provide your response strictly in the following JSON format:
         // ═════════════════════════════════════════════════════════════════
         // PER-COURSE LEADERBOARD
         // ═════════════════════════════════════════════════════════════════
-        async function load Course Leaderboard() {
-            const lb Content = document.get Element By Id('lb-content');
-            const lb Status = document.get Element By Id('lb-status');
-            const lb Course Name = document.get Element By Id('lb-course-name');
-            if (lb Course Name) lb Course Name.inner Text = COURSE_CODE;
-            if (!lb Content) return;
+        async function loadCourseLeaderboard() {
+            const lbContent = document.getElementById('lb-content');
+            const lbStatus = document.getElementById('lb-status');
+            const lbCourseName = document.getElementById('lb-course-name');
+            if (lbCourseName) lbCourseName.innerText = COURSE_CODE;
+            if (!lbContent) return;
 
             try {
                 // Fetch all test_results for this course
-                const { data: results, error: r Err } = await db
+                const { data: results, error: rErr } = await db
                     .from('test_results')
                     .select('student_id, score')
                     .eq('course_id', COURSE_CODE);
 
-                if (r Err) throw r Err;
+                if (rErr) throw rErr;
                 if (!results || results.length === 0) {
-                    lb Content.inner HTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
-                    lb Status.inner Text = '0 attempts';
+                    lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
+                    lbStatus.innerText = '0 attempts';
                     return;
                 }
 
                 // Aggregate by student: avg score + count
-                const by Student = {};
-                results.for Each(r => {
-                    if (!by Student[r.student_id]) {
-                        by Student[r.student_id] = { total: 0, count: 0 };
+                const byStudent = {};
+                results.forEach(r => {
+                    if (!byStudent[r.student_id]) {
+                        byStudent[r.student_id] = { total: 0, count: 0 };
                     }
-                    by Student[r.student_id].total += Number(r.score);
-                    by Student[r.student_id].count += 1;
+                    byStudent[r.student_id].total += Number(r.score);
+                    byStudent[r.student_id].count += 1;
                 });
 
                 // Fetch student profiles
-                const student Ids = Object.keys(by Student);
-                const { data: students, error: s Err } = await db
+                const studentIds = Object.keys(byStudent);
+                const { data: students, error: sErr } = await db
                     .from('students')
                     .select('id, fullname, department, matric')
-                    .in('id', student Ids);
+                    .in('id', studentIds);
 
                 // Build leaderboard rows
-                const rows = student Ids.map(sid => {
-                    const agg = by Student[sid];
+                const rows = studentIds.map(sid => {
+                    const agg = byStudent[sid];
                     const avg = Math.round(agg.total / agg.count);
                     const student = students ? students.find(s => s.id === sid) : null;
                     return {
@@ -2604,15 +2604,15 @@ Provide your response strictly in the following JSON format:
                 rows.sort((a, b) => b.avg - a.avg || b.tests - a.tests);
 
                 // Get current user id for highlighting
-                let current User Id = null;
+                let currentUserId = null;
                 try {
-                    const { data: { user } } = await db.auth.get User();
-                    if (user) current User Id = user.id;
+                    const { data: { user } } = await db.auth.getUser();
+                    if (user) currentUserId = user.id;
                 } catch (e) {}
 
                 // Render top 20
                 const medals = ['🥇', '🥈', '🥉'];
-                const top Rows = rows.slice(0, 20);
+                const topRows = rows.slice(0, 20);
                 let html = '<table style="width:100%; border-collapse:collapse; font-size:0.88rem;">';
                 html += '<thead><tr style="border-bottom:2px solid var(--border);">';
                 html += '<th style="text-align:left; padding:8px; color:var(--text-muted); font-size:0.78rem;">#</th>';
@@ -2621,10 +2621,10 @@ Provide your response strictly in the following JSON format:
                 html += '<th style="text-align:center; padding:8px; color:var(--text-muted); font-size:0.78rem;">Tests</th>';
                 html += '<th style="text-align:right; padding:8px; color:var(--text-muted); font-size:0.78rem;">Avg Score</th>';
                 html += '</tr></thead><tbody>';
-                top Rows.for Each((row, i) => {
+                topRows.forEach((row, i) => {
                     const rank = i + 1;
                     const medal = medals[i] || '';
-                    const highlight = row.id === current User Id ? 'background:rgba(124,58,237,0.08);' : '';
+                    const highlight = row.id === currentUserId ? 'background:rgba(124,58,237,0.08);' : '';
                     html += `<tr style="border-bottom:1px solid var(--border); ${highlight}">`;
                     html += `<td style="padding:8px; font-weight:700;">${medal || rank}</td>`;
                     html += `<td style="padding:8px;">${row.fullname}<br><span style="font-size:0.72rem; color:var(--text-muted);">${row.matric}</span></td>`;
@@ -2636,47 +2636,47 @@ Provide your response strictly in the following JSON format:
                 html += '</tbody></table>';
 
                 // If current user is not in top 20, show their rank below
-                if (current User Id) {
-                    const user Row Idx = rows.find Index(r => r.id === current User Id);
-                    if (user Row Idx >= 20) {
-                        const user Row = rows[user Row Idx];
+                if (currentUserId) {
+                    const userRowIdx = rows.findIndex(r => r.id === currentUserId);
+                    if (userRowIdx >= 20) {
+                        const userRow = rows[userRowIdx];
                         html += `<div style="margin-top:10px; padding:10px; background:rgba(124,58,237,0.08); border-radius:8px; display:flex; justify-content:space-between; font-size:0.85rem;">
-                            <span><strong>Your Rank: #${user Row Idx + 1}</strong> — ${user Row.fullname}</span>
-                            <span><strong style="color:${user Row.avg >= 70 ? '#10b981' : user Row.avg >= 40 ? '#f59e0b' : '#ef4444'};">${user Row.avg}%</strong> (${user Row.tests} tests)</span>
+                            <span><strong>Your Rank: #${userRowIdx + 1}</strong> — ${userRow.fullname}</span>
+                            <span><strong style="color:${userRow.avg >= 70 ? '#10b981' : userRow.avg >= 40 ? '#f59e0b' : '#ef4444'};">${userRow.avg}%</strong> (${userRow.tests} tests)</span>
                         </div>`;
                     }
                 }
 
-                lb Content.inner HTML = html;
-                lb Status.inner Text = `${rows.length} students · ${results.length} attempts`;
+                lbContent.innerHTML = html;
+                lbStatus.innerText = `${rows.length} students · ${results.length} attempts`;
             } catch (e) {
                 console.error('Leaderboard error:', e);
-                lb Content.inner HTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
-                lb Status.inner Text = 'Error';
+                lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
+                lbStatus.innerText = 'Error';
             }
         }
 
         // Load leaderboard after page loads
-        document.add Event Listener('DOMContent Loaded', function() {
-            set Timeout(load Course Leaderboard, 500);
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(loadCourseLeaderboard, 500);
         });
 
         // ═════════════════════════════════════════════════════════════════
         // AI WEAK AREAS ANALYSIS (runs after exam results are shown)
         // ═════════════════════════════════════════════════════════════════
-        async function analyze Weak Areas With AI() {
-            const container = document.get Element By Id('ai-weak-areas');
-            const text El = document.get Element By Id('ai-weak-areas-text');
-            if (!container || !text El) return;
-            if (typeof current Exam Data === 'undefined' || !current Exam Data.length) return;
+        async function analyzeWeakAreasWithAI() {
+            const container = document.getElementById('ai-weak-areas');
+            const textEl = document.getElementById('ai-weak-areas-text');
+            if (!container || !textEl) return;
+            if (typeof currentExamData === 'undefined' || !currentExamData.length) return;
 
             // Collect wrong answers
             const missed = [];
-            current Exam Data.for Each((q, i) => {
-                const student = user Answers[i];
-                if (q.is Theory) {
-                    const score Value = student && typeof student.score === 'number' ? student.score : 0;
-                    if (score Value < 70) {
+            currentExamData.forEach((q, i) => {
+                const student = userAnswers[i];
+                if (q.isTheory) {
+                    const scoreValue = student && typeof student.score === 'number' ? student.score : 0;
+                    if (scoreValue < 70) {
                         missed.push({ question: q.question, topic: q.topic || 'General' });
                     }
                 } else {
@@ -2688,39 +2688,39 @@ Provide your response strictly in the following JSON format:
 
             if (missed.length === 0) {
                 container.style.display = 'block';
-                container.style.border Color = '#10b981';
-                container.query Selector('strong').style.color = '#10b981';
-                text El.inner HTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
+                container.style.borderColor = '#10b981';
+                container.querySelector('strong').style.color = '#10b981';
+                textEl.innerHTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
                 return;
             }
 
             container.style.display = 'block';
-            text El.inner HTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
+            textEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
 
-            const course Code = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
-            const config = typeof get AIConfig For Course === 'function' ? get AIConfig For Course(course Code) : {
+            const courseCode = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
+            const config = typeof getAIConfigForCourse === 'function' ? getAIConfigForCourse(courseCode) : {
                 provider: 'groq',
                 model: window.env?.AI_MODEL || 'llama-3.1-8b-instant',
-                key: window.env?.AI_API_KEY || ('gsk_71n Ddj9ca C9CGo XD0Qx SW' + 'Gdyb3FYct CCz V6YNHGz Ylj4O9Qpk Qcy')
+                key: window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy')
             };
 
             // Group missed questions by topic if available
-            const topic Groups = {};
-            missed.for Each(m => {
-                if (!topic Groups[m.topic]) topic Groups[m.topic] = 0;
-                topic Groups[m.topic]++;
+            const topicGroups = {};
+            missed.forEach(m => {
+                if (!topicGroups[m.topic]) topicGroups[m.topic] = 0;
+                topicGroups[m.topic]++;
             });
 
-            const missed List = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
-            const topic Summary = Object.entries(topic Groups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
+            const missedList = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
+            const topicSummary = Object.entries(topicGroups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
 
-            const system Prompt = `You are Renance AI, an academic tutor for FUTA students.
-The student just completed a ${course Code} quiz and got ${missed.length} question(s) wrong out of ${current Exam Data.length}.
+            const systemPrompt = `You are Renance AI, an academic tutor for FUTA students.
+The student just completed a ${courseCode} quiz and got ${missed.length} question(s) wrong out of ${currentExamData.length}.
 
 Questions they got wrong:
-${missed List}
+${missedList}
 
-${topic Summary ? 'Breakdown by topic: ' + topic Summary : ''}
+${topicSummary ? 'Breakdown by topic: ' + topicSummary : ''}
 
 Identify 1-3 core topics/concepts the student should focus on revising.
 Respond in 2-4 short bullet points. Be specific and actionable.
@@ -2728,7 +2728,7 @@ Format: • Topic name — brief advice on what to study
 Keep it concise (under 100 words total).`;
 
             try {
-                let result Text = "";
+                let resultText = "";
                 const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: 'POST',
                     headers: {
@@ -2737,26 +2737,26 @@ Keep it concise (under 100 words total).`;
                     },
                     body: JSON.stringify({
                         model: config.model,
-                        messages: [{ role: "system", content: system Prompt }],
+                        messages: [{ role: "system", content: systemPrompt }],
                         temperature: 0.3
                     })
                 });
-                const res Data = await response.json();
-                if (!response.ok) throw new Error(res Data.error?.message || `HTTP ${response.status}`);
-                result Text = res Data.choices[0].message.content;
+                const resData = await response.json();
+                if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
+                resultText = resData.choices[0].message.content;
 
                 // Format the response
-                const formatted = result Text
+                const formatted = resultText
                     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                     .replace(/`(.*?)`/g, '<code>$1</code>')
                     .replace(/\n/g, '<br>');
-                text El.inner HTML = formatted;
+                textEl.innerHTML = formatted;
             } catch (err) {
                 // Fallback: show topic-based analysis without AI
-                if (topic Summary) {
-                    text El.inner HTML = `Based on your missed questions, focus on: <br><strong>${topic Summary}</strong><br><br>Review these topics in your course materials and try again!`;
+                if (topicSummary) {
+                    textEl.innerHTML = `Based on your missed questions, focus on: <br><strong>${topicSummary}</strong><br><br>Review these topics in your course materials and try again!`;
                 } else {
-                    text El.inner HTML = `You missed ${missed.length} out of ${current Exam Data.length} questions. Review the missed questions above and try again!`;
+                    textEl.innerHTML = `You missed ${missed.length} out of ${currentExamData.length} questions. Review the missed questions above and try again!`;
                 }
             }
         }

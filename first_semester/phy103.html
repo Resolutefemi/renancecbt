@@ -82,7 +82,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-        .box:hover { transform: translate Y(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(30,64,175,0.12); }
+        .box:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 8px 20px rgba(30,64,175,0.12); }
         .box h3 { margin: 10px 0 4px; font-size: 1rem; line-height: 1.4; }
         .box p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
         .box-random { background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; border: none !important; }
@@ -118,12 +118,12 @@
         .option-btn.correct  { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; font-weight: 700; }
         .option-btn.wrong    { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
 
-        .feedback-msg { margin-top: 1.2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600; animation: fade In 0.3s; line-height: 1.6; }
-        @keyframes fade In { from { opacity: 0; transform: translate Y(8px); } to { opacity: 1; transform: translate Y(0); } }
+        .feedback-msg { margin-top: 1.2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600; animation: fadeIn 0.3s; line-height: 1.6; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
         .controls { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 1.8rem; }
         .btn { padding: 0.8rem 1.6rem; border: none; border-radius: 9px; cursor: pointer; font-weight: 700; background: var(--primary); color: white; transition: opacity 0.2s, transform 0.2s; font-size: 0.95rem; }
-        .btn:hover { opacity: 0.88; transform: translate Y(-2px); }
+        .btn:hover { opacity: 0.88; transform: translateY(-2px); }
         .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
         
@@ -136,14 +136,14 @@
             background: var(--card-bg); padding: 40px 28px; border-radius: 24px;
             width: 100%; max-width: 420px; text-align: center; color: var(--text);
             box-shadow: 0 25px 60px rgba(0,0,0,0.45);
-            animation: bounce In 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: bounceIn 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        @keyframes bounce In {
-            0%   { opacity: 0; transform: scale(0.78) translate Y(30px); }
-            100% { opacity: 1; transform: scale(1) translate Y(0); }
+        @keyframes bounceIn {
+            0%   { opacity: 0; transform: scale(0.78) translateY(30px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
         }
         .result-icon { font-size: 3.6rem; margin-bottom: 8px; display: block; animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%,100% { transform: translate Y(0); } 50% { transform: translate Y(-10px); } }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         .score-display { background: rgba(37,99,235,0.06); border: 2px dashed rgba(37,99,235,0.2); border-radius: 18px; padding: 18px; margin: 18px 0; }
         .score-big { font-size: 3.5rem; font-weight: 900; color: var(--primary); line-height: 1; }
         .stats-mini { display: flex; justify-content: center; gap: 24px; margin: 10px 0 4px; }
@@ -153,7 +153,7 @@
         #save-status { font-size: 0.78rem; color: var(--text-muted); margin: 8px 0 14px; }
         .result-actions { display: flex; flex-direction: column; gap: 11px; }
         .btn-action { width: 100%; padding: 13px; border: none; border-radius: 12px; font-size: 0.97rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s; display: flex; align-items: center; justify-content: center; gap: 9px; }
-        .btn-action:hover { opacity: 0.9; transform: translate Y(-1px); }
+        .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
         .btn-share  { background: var(--share-gradient); color: white; box-shadow: 0 4px 16px rgba(37,99,235,0.3); }
         .btn-review { background: rgba(30,64,175,0.08); color: var(--primary); border: 1.5px solid rgba(30,64,175,0.2); }
         .btn-home   { background: rgba(100,116,139,0.09); color: var(--text); border: 1.5px solid var(--border); }
@@ -220,10 +220,10 @@
         </div>
 
         <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
-            <button class="btn" style="background:#64748b;" onclick="go Home()">
+            <button class="btn" style="background:#64748b;" onclick="goHome()">
                 <i class="fa-solid fa-arrow-left"></i> Back
             </button>
-            <button class="btn" onclick="start Exam()" style="min-width:160px;">
+            <button class="btn" onclick="startExam()" style="min-width:160px;">
                 Start Now <i class="fa-solid fa-arrow-right"></i>
             </button>
         </div>
@@ -233,10 +233,10 @@
         <div class="quiz-header">
             <span class="q-counter">Question <span id="cur-idx">1</span> / <span id="total-idx">0</span></span>
             <div class="btn-group">
-                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding:8px 15px; font-size:0.87rem;" onclick="show Results()">
+                <button class="btn" id="submit-btn" style="background:var(--success); display:none; padding:8px 15px; font-size:0.87rem;" onclick="showResults()">
                     <i class="fa-solid fa-paper-plane"></i> Submit
                 </button>
-                <button class="btn" id="finish-review-btn" style="display:none; padding:8px 15px; font-size:0.87rem;" onclick="go Home()">
+                <button class="btn" id="finish-review-btn" style="display:none; padding:8px 15px; font-size:0.87rem;" onclick="goHome()">
                     <i class="fa-solid fa-house"></i> Exit Review
                 </button>
                 <span id="timer">30:00</span>
@@ -260,21 +260,21 @@
     </div>
 </main>
 
-<div id="quiz Result Modal" class="result-modal-overlay" style="display:none;">
+<div id="quizResultModal" class="result-modal-overlay" style="display:none;">
     <div class="result-modal-content">
-        <span class="result-icon" id="result Icon">ðŸ†</span>
-        <h2 id="result Greeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
+        <span class="result-icon" id="resultIcon">ðŸ†</span>
+        <h2 id="resultGreeting" style="margin:0 0 14px; font-size:1.5rem;">Outstanding!</h2>
 
         <div class="score-display">
-            <div class="score-big"><span id="final Score Text">0</span>%</div>
+            <div class="score-big"><span id="finalScoreText">0</span>%</div>
             <div class="stats-mini">
-                <div class="sm"><div class="sv" id="modal Correct">0</div><div class="sl">Correct</div></div>
-                <div class="sm"><div class="sv" id="modal Total">0</div><div class="sl">Total</div></div>
-                <div class="sm"><div class="sv" id="modal Avg">â€”</div><div class="sl">Your Avg</div></div>
+                <div class="sm"><div class="sv" id="modalCorrect">0</div><div class="sl">Correct</div></div>
+                <div class="sm"><div class="sv" id="modalTotal">0</div><div class="sl">Total</div></div>
+                <div class="sm"><div class="sv" id="modalAvg">â€”</div><div class="sl">Your Avg</div></div>
             </div>
         </div>
 
-        <p id="result Feedback" style="font-size:0.9rem; color:var(--text-muted); margin:0;"></p>
+        <p id="resultFeedback" style="font-size:0.9rem; color:var(--text-muted); margin:0;"></p>
         <p id="save-status"></p>
 
         
@@ -289,21 +289,21 @@
 
                         <div class="result-actions">
 
-                    <button class="btn-action" id="weak Areas Btn" onclick="analyze Weak Areas With AI()" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
+                    <button class="btn-action" id="weakAreasBtn" onclick="analyzeWeakAreasWithAI()" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3);">
                         <i class="fa-solid fa-brain"></i> Analyze My Weak Areas
                     </button>
 
-            <button class="btn-action" id="explain Btn" onclick="ask Renance AI()" style="background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; box-shadow: 0 4px 16px rgba(79,70,229,0.3);">
+            <button class="btn-action" id="explainBtn" onclick="askRenanceAI()" style="background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; box-shadow: 0 4px 16px rgba(79,70,229,0.3);">
                 <i class="fa-solid fa-robot"></i> Explain Missed Questions
             </button>
 
-            <button class="btn-action btn-share" onclick="share Quiz Result()">
+            <button class="btn-action btn-share" onclick="shareQuizResult()">
                 <i class="fa-solid fa-share-nodes"></i> Share Score
             </button>
-            <button class="btn-action btn-review" id="modal Review Btn" onclick="enter Review Mode()">
+            <button class="btn-action btn-review" id="modalReviewBtn" onclick="enterReviewMode()">
                 <i class="fa-solid fa-magnifying-glass"></i> Review Answers
             </button>
-            <button class="btn-action btn-home" onclick="go Home()">
+            <button class="btn-action btn-home" onclick="goHome()">
                 <i class="fa-solid fa-house"></i> Dashboard
             </button>
         </div>
@@ -313,23 +313,23 @@
 <script>
     
     const SUPABASE_URL = window.env?.SUPABASE_URL || 'https://ubxsywaxdvkhiqepcvmq.supabase.co';
-    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'ey Jhb Gci Oi JIUz I1Ni Is In R5c CI6Ikp XVCJ9.ey Jpc3Mi Oi Jzd XBh Ym Fz ZSIs In Jl Zi I6In Vie HN5d2F4ZHZra Glx ZXBjdm1x Iiwicm9s ZSI6Im Fub24i LCJp YXQi Oj E3Nz E5ODcw MDAs Im V4c CI6Mj A4Nz U2Mz Aw MH0.gk R3Aud3LRLNy Nwp DHJTT0v Ir WCn Qk SBk FSa Fj Q5qy4';
-    const db = supabase.create Client(SUPABASE_URL, SUPABASE_KEY);
+    const SUPABASE_KEY = window.env?.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVieHN5d2F4ZHZraGlxZXBjdm1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODcwMDAsImV4cCI6MjA4NzU2MzAwMH0.gkR3Aud3LRLNyNwpDHJTT0vIrWCnQkSBkFSaFjQ5qy4';
+    const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const COURSE_CODE = 'PHY 103';
     const STORAGE_KEY = 'saved_phy103_exam';
-document.add Event Listener('keydown', (e) => {
+document.addEventListener('keydown', (e) => {
 
-    if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.active Element.tag Name)) return;
+    if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
 
-    if (document.get Element By Id('quiz-interface').style.display === 'none') return;
+    if (document.getElementById('quiz-interface').style.display === 'none') return;
 
-    const key = e.key.to Upper Case();
+    const key = e.key.toUpperCase();
 
     if (['A', 'B', 'C', 'D'].includes(key)) {
-        const buttons = document.query Selector All('.option-btn');
-        buttons.for Each(btn => {
+        const buttons = document.querySelectorAll('.option-btn');
+        buttons.forEach(btn => {
 
-            if (btn.inner Text.trim().starts With(key + '.')) {
+            if (btn.innerText.trim().startsWith(key + '.')) {
                 btn.click();
             }
         });
@@ -341,12 +341,12 @@ document.add Event Listener('keydown', (e) => {
     if (key === 'P') { move(-1); return; }
 
 });
-   async function send Heartbeat() {
+   async function sendHeartbeat() {
     try {
-        const { data: { user } } = await db.auth.get User();
+        const { data: { user } } = await db.auth.getUser();
         if (!user) return;
         await db.from('students')
-            .update({ last_seen: new Date().to ISOString() })
+            .update({ last_seen: new Date().toISOString() })
             .eq('id', user.id);
     } catch (e) { }
 }
@@ -366,7 +366,7 @@ document.add Event Listener('keydown', (e) => {
   {"id": 13, "question": "Mercury does not wet glass. This is due to the property of liquid known as", "options": {"A": "adhesion", "B": "cohesion", "C": "surface tension", "D": "viscosity", "E": "compressibility"}, "answer": "C", "explanation": "Surface tension arises from cohesive forces. Mercury has very strong cohesion between its own molecules compared to its adhesion to glass, so it does not wet glass, forming a convex meniscus and appearing as beads."},
   {"id": 14, "question": "The property of a fluid which enables it to resist tensile stress is known as", "options": {"A": "compressibility", "B": "surface tension", "C": "cohesion", "D": "adhesion", "E": "viscosity"}, "answer": "C", "explanation": "Cohesion â€” the attraction between like molecules â€” gives a liquid limited ability to resist tensile (pulling apart) stresses before breaking apart or cavitating."},
   {"id": 15, "question": "Property of a fluid by which molecules of different kinds of fluids are attracted to each other is called", "options": {"A": "adhesion", "B": "cohesion", "C": "viscosity", "D": "compressibility", "E": "surface tension"}, "answer": "A", "explanation": "Adhesion is the intermolecular attraction between unlike (different substance) molecules. For example, water adhering to a glass wall is due to adhesion between water molecules and glass molecules."},
-  {"id": 16, "question": "The specific weight of water is 1000 kg/mÂ³", "options": {"A": "at normal pressure of 760 mm", "B": "at 4Â°C temperature", "C": "at mean sea level", "D": "all the above", "E": "none of the above"}, "answer": "D", "explanation": "The standard specific weight of water (1000 kg/mÂ³) is defined under all three standard conditions simultaneously: 4Â°C temperature, normal atmospheric pressure of 760 mm Hg, and at mean sea level."},
+  {"id": 16, "question": "The specific weight of water is 1000 kg/mÂ³", "options": {"A": "at normal pressure of 760 mm", "B": "at 4Â°C temperature", "C": "at mean sea level", "D": "all the above", "E": "none of the above"}, "answer": "D", "explanation": "The standard specific weight of water (1000 kg/mÂ³) is defined under all three standard conditions simultaneously: 4Â°C temperature, normal atmospheric pressure of 760 mmHg, and at mean sea level."},
   {"id": 17, "question": "Specific weight of water in S.I. units is equal to", "options": {"A": "1000 N/mÂ³", "B": "10000 N/mÂ³", "C": "9.81 Ã— 10Â³ N/mÂ³", "D": "9.81 Ã— 10â¶ N/mÂ³", "E": "9.81 N/mÂ³"}, "answer": "C", "explanation": "Specific weight Î³ = density Ã— g = 1000 kg/mÂ³ Ã— 9.81 m/sÂ² = 9810 N/mÂ³ = 9.81 Ã— 10Â³ N/mÂ³. This represents the weight per unit volume of water."},
   {"id": 18, "question": "When the flow parameters at any given instant remain same at every point, then flow is said to be", "options": {"A": "quasi static", "B": "steady state", "C": "laminar", "D": "uniform", "E": "static"}, "answer": "D", "explanation": "Uniform flow means the flow parameters (velocity, pressure, etc.) are identical at every spatial point at any given instant. Steady flow means parameters don't change with time at a fixed point â€” these are different concepts."},
   {"id": 19, "question": "Which of the following is dimensionless", "options": {"A": "specific weight", "B": "specific volume", "C": "specific speed", "D": "specific gravity", "E": "specific viscosity"}, "answer": "D", "explanation": "Specific gravity is the ratio of the density of a substance to the density of a reference substance (usually water). Being a ratio of two like quantities, it has no units and is completely dimensionless."},
@@ -374,13 +374,13 @@ document.add Event Listener('keydown', (e) => {
   {"id": 21, "question": "The pressure at a point in a fluid will not be same in all directions when the fluid is", "options": {"A": "moving", "B": "viscous", "C": "viscous and static", "D": "inviscous and moving", "E": "viscous and moving"}, "answer": "E", "explanation": "When a fluid is both viscous AND moving, shear stresses arise due to viscosity combined with velocity gradients. These additional stresses cause normal stresses to differ by direction, breaking Pascal's law."},
   {"id": 22, "question": "An object having 10 kg mass weighs 9.81 kg on a spring balance. The value of 'g' at this place is", "options": {"A": "10 m/secÂ²", "B": "9.81 m/secÂ²", "C": "10.2 m/sec", "D": "9.75 m/secÂ²", "E": "9 m/secÂ²"}, "answer": "A", "explanation": "The spring balance reads 9.81 kgf for a 10 kg mass. In this gravitational unit context, g = W/m = (9.81 Ã— 9.81)/9.81 = 9.81 N/kg... The source solution interprets this as g = 10 m/sÂ², which is the standard answer given."},
   {"id": 23, "question": "The tendency of a liquid surface to contract is due to the following property", "options": {"A": "cohesion", "B": "adhesion", "C": "viscosity", "D": "surface tension", "E": "elasticity"}, "answer": "D", "explanation": "Surface tension causes the liquid surface to behave like a stretched elastic membrane that tends to contract to the minimum possible area. It is caused by net inward cohesive forces on surface molecules."},
-  {"id": 24, "question": "The surface tension of mercury at normal temperature compared to that of water is", "options": {"A": "more", "B": "less", "C": "same", "D": "more or less depending on size of glass tube", "E": "none of the above"}, "answer": "A", "explanation": "Mercury has a much higher surface tension (~487 m N/m) than water (~73 m N/m) at room temperature, due to the strong metallic bonds between mercury atoms producing very large cohesive forces."},
-  {"id": 25, "question": "A perfect gas", "options": {"A": "has constant viscosity", "B": "has zero viscosity", "C": "is incompressible", "D": "is of theoretical interest", "E": "none of the above"}, "answer": "E", "explanation": "A perfect (ideal) gas obeys PV = n RT exactly. It is not zero viscosity, not incompressible (it is highly compressible), and while it is a theoretical model, no single option alone fully and correctly defines a perfect gas."},
+  {"id": 24, "question": "The surface tension of mercury at normal temperature compared to that of water is", "options": {"A": "more", "B": "less", "C": "same", "D": "more or less depending on size of glass tube", "E": "none of the above"}, "answer": "A", "explanation": "Mercury has a much higher surface tension (~487 mN/m) than water (~73 mN/m) at room temperature, due to the strong metallic bonds between mercury atoms producing very large cohesive forces."},
+  {"id": 25, "question": "A perfect gas", "options": {"A": "has constant viscosity", "B": "has zero viscosity", "C": "is incompressible", "D": "is of theoretical interest", "E": "none of the above"}, "answer": "E", "explanation": "A perfect (ideal) gas obeys PV = nRT exactly. It is not zero viscosity, not incompressible (it is highly compressible), and while it is a theoretical model, no single option alone fully and correctly defines a perfect gas."},
   {"id": 26, "question": "For very great pressures, viscosity of most gases and liquids", "options": {"A": "remains same", "B": "increases", "C": "decreases", "D": "shows erratic behaviour", "E": "none of the above"}, "answer": "D", "explanation": "At extremely high pressures, the viscosity behavior of gases and liquids becomes complex and erratic. The intermolecular spacing and interaction forces change unpredictably, producing irregular viscosity variations."},
   {"id": 27, "question": "A fluid in equilibrium can't sustain", "options": {"A": "tensile stress", "B": "compressive stress", "C": "shear stress", "D": "bending stress", "E": "all of the above"}, "answer": "C", "explanation": "By definition, a fluid in equilibrium cannot sustain shear stress â€” any shear stress, however small, will cause a fluid to flow and deform continuously. A fluid can sustain compressive (hydrostatic pressure) stress."},
   {"id": 28, "question": "Viscosity of water in comparison to mercury is", "options": {"A": "higher", "B": "lower", "C": "same", "D": "higher/lower depending on temperature", "E": "unpredictable"}, "answer": "A", "explanation": "The kinematic viscosity of water (~1.0 Ã— 10â»â¶ mÂ²/s) is much higher than that of mercury (~1.1 Ã— 10â»â· mÂ²/s) because mercury, despite having higher dynamic viscosity, has a far greater density, greatly reducing its kinematic viscosity."},
   {"id": 29, "question": "The bulk modulus of elasticity with increase in pressure", "options": {"A": "increases", "B": "decreases", "C": "remains constant", "D": "increases first up to certain limit and then decreases", "E": "unpredictable"}, "answer": "A", "explanation": "As pressure increases, the fluid becomes harder to compress further (molecules are already closer together), so the bulk modulus (resistance to compression) generally increases with increasing pressure."},
-  {"id": 30, "question": "The bulk modulus of elasticity", "options": {"A": "has the dimensions of 1/pressure", "B": "increases with pressure", "C": "is large when fluid is more compressible", "D": "is independent of pressure and viscosity", "E": "is directly proportional to flow"}, "answer": "B", "explanation": "Bulk modulus K = âˆ’V(d P/d V). It increases with pressure because the fluid becomes stiffer. A large bulk modulus means the fluid is LESS compressible (harder to compress), not more."},
+  {"id": 30, "question": "The bulk modulus of elasticity", "options": {"A": "has the dimensions of 1/pressure", "B": "increases with pressure", "C": "is large when fluid is more compressible", "D": "is independent of pressure and viscosity", "E": "is directly proportional to flow"}, "answer": "B", "explanation": "Bulk modulus K = âˆ’V(dP/dV). It increases with pressure because the fluid becomes stiffer. A large bulk modulus means the fluid is LESS compressible (harder to compress), not more."},
   {"id": 31, "question": "A balloon lifting in air follows the following principle", "options": {"A": "law of gravitation", "B": "Archimedes principle", "C": "principle of buoyancy", "D": "all of the above", "E": "continuity equation"}, "answer": "D", "explanation": "A balloon lifting involves: the law of gravitation (weight pulls it down), Archimedes' principle (buoyant force equals weight of displaced air), and the principle of buoyancy (net upward force when buoyancy exceeds weight). All three apply."},
   {"id": 32, "question": "The value of the coefficient of compressibility for water at ordinary pressure and temperature in kg/cmÂ² is equal to", "options": {"A": "1000", "B": "2100", "C": "2700", "D": "10,000", "E": "21,000"}, "answer": "E", "explanation": "The bulk modulus of water at ordinary conditions is approximately 21,000 kg/cmÂ² (â‰ˆ 2.1 GPa). This very high value confirms that water is nearly incompressible under normal conditions."},
   {"id": 33, "question": "The increase of temperature results in", "options": {"A": "increase in viscosity of gas", "B": "increase in viscosity of liquid", "C": "decrease in viscosity of gas", "D": "decrease in viscosity of liquid", "E": "(A) and (D) above"}, "answer": "D", "explanation": "For liquids, increasing temperature weakens intermolecular cohesive forces, reducing viscosity. For gases, increasing temperature increases molecular momentum transfer, raising viscosity. The primary answer here focuses on liquids."},
@@ -426,7 +426,7 @@ document.add Event Listener('keydown', (e) => {
   {"id": 73, "question": "A gelatin block (60Ã—60Ã—20 mm) has 0.245 N applied tangentially, causing 5 mm displacement. Find shearing stress, shearing strain, and shear modulus.", "options": {"A": "(68.1 N/mÂ², 0.25, 272.4 N/mÂ²)", "B": "(68 N/mÂ², 0.25, 272 N/mÂ²)", "C": "(67 N/mÂ², 0.26, 270.4 N/mÂ²)", "D": "(68.5 N/mÂ², 0.27, 272.4 N/mÂ²)"}, "answer": "A", "explanation": "Shear stress Ï„ = F/A = 0.245/(0.06 Ã— 0.06) = 68.1 N/mÂ². Shear strain Î³ = Î”x/h = 5/20 = 0.25. Shear modulus G = Ï„/Î³ = 68.1/0.25 = 272.4 N/mÂ²."},
   {"id": 74, "question": "A steel wire of diameter 4 mm has breaking strength 4Ã—10âµ N. The breaking strength of a similar wire of diameter 2 mm is", "options": {"A": "1Ã—10âµ N", "B": "4Ã—10âµ N", "C": "16Ã—10âµ N", "D": "none of these"}, "answer": "A", "explanation": "Breaking strength is proportional to cross-sectional area (A âˆ dÂ²). Halving the diameter reduces area by a factor of 4. New breaking strength = 4Ã—10âµ/4 = 1Ã—10âµ N."},
   {"id": 75, "question": "What is the SI unit of modulus of elasticity?", "options": {"A": "Nmâ»Â¹", "B": "Nmâ»Â²", "C": "Jmâ»Â¹", "D": "Unitless quantity"}, "answer": "B", "explanation": "Modulus of elasticity = Stress/Strain. Since strain is dimensionless (Î”L/L), the unit is the same as stress = Pascal (Pa) = N/mÂ² = Nmâ»Â². This applies to Young's modulus, bulk modulus, and shear modulus."},
-  {"id": 76, "question": "A rubber rope (density 1.5 g/cmÂ³, Y = 5Ã—10â¶ N/mÂ², length 8 m) hangs from the ceiling. The increase in length due to its own weight is", "options": {"A": "0.86 m", "B": "0.2 m", "C": "0.1 m", "D": "0.096 m"}, "answer": "D", "explanation": "For a hanging uniform rope: Î”L = Ïg LÂ²/(2Y) = (1500 Ã— 9.81 Ã— 64)/(2 Ã— 5Ã—10â¶) = 941760/10000000 â‰ˆ 0.094 m â‰ˆ 0.096 m."},
+  {"id": 76, "question": "A rubber rope (density 1.5 g/cmÂ³, Y = 5Ã—10â¶ N/mÂ², length 8 m) hangs from the ceiling. The increase in length due to its own weight is", "options": {"A": "0.86 m", "B": "0.2 m", "C": "0.1 m", "D": "0.096 m"}, "answer": "D", "explanation": "For a hanging uniform rope: Î”L = ÏgLÂ²/(2Y) = (1500 Ã— 9.81 Ã— 64)/(2 Ã— 5Ã—10â¶) = 941760/10000000 â‰ˆ 0.094 m â‰ˆ 0.096 m."},
   {"id": 77, "question": "A 2 kg load hung from a spring stretches it 10 cm. If a 6 kg load is hung instead, how much will the spring stretch?", "options": {"A": "0.03 cm", "B": "0.3 cm", "C": "3.0 cm", "D": "30 cm"}, "answer": "D", "explanation": "By Hooke's law, extension is proportional to load. k = F/x = (2 Ã— 9.81)/0.10 = 196.2 N/m. For 6 kg: x = (6 Ã— 9.81)/196.2 = 58.86/196.2 = 0.30 m = 30 cm."},
   {"id": 78, "question": "Which of the following is a good conductor of heat?", "options": {"A": "Brick", "B": "Water", "C": "Argon", "D": "Silver"}, "answer": "D", "explanation": "Silver has the highest thermal conductivity of all pure metals (~429 W/mÂ·K). Brick, water, and argon are all relatively poor conductors. Silver's abundant free electrons enable very fast thermal energy transfer."},
   {"id": 79, "question": "A solid cylindrical steel column (L = 6 cm, r = 5Ã—10â»Â² m) carries a load of 90000 kg. What is its decrease in length? (Y = 1.9Ã—10Â¹Â¹ Pa)", "options": {"A": "9.36 Ã— 10â»â¸ m", "B": "3.5 Ã— 10â»âµ m", "C": "8.5 Ã— 10â»âµ m", "D": "10.5 Ã— 10â»âµ m"}, "answer": "B", "explanation": "A = Ï€(0.05)Â² = 7.854Ã—10â»Â³ mÂ². F = 90000Ã—9.81 = 882900 N. Î”L = FL/(AY) = (882900 Ã— 0.06)/(7.854Ã—10â»Â³ Ã— 1.9Ã—10Â¹Â¹) = 52974/(1.492Ã—10â¹) â‰ˆ 3.55Ã—10â»âµ m â‰ˆ 3.5Ã—10â»âµ m."},
@@ -436,10 +436,10 @@ document.add Event Listener('keydown', (e) => {
   {"id": 83, "question": "Mercury density is 13.6 g/cmÂ³ and alcohol density is 0.8 g/cmÂ³. In which substance will a brass cube (density 8.6 Ã— 10Â³ kg/mÂ³) sink?", "options": {"A": "Mercury", "B": "Alcohol", "C": "Both"}, "answer": "B", "explanation": "An object sinks when its density exceeds the fluid's density. Brass (8.6 g/cmÂ³) < Mercury (13.6 g/cmÂ³), so brass floats in mercury. Brass (8.6 g/cmÂ³) > Alcohol (0.8 g/cmÂ³), so brass sinks in alcohol."},
   {"id": 84, "question": "What is the mass of one ammonia (NHâ‚ƒ) molecule in kilograms?", "options": {"A": "2.82 Ã— 10â»Â²â¶ kg", "B": "3.52 Ã— 10â»Â²â¶ kg", "C": "0.82 Ã— 10â»Â²â¶ kg", "D": "2.56 Ã— 10â»Â²â¶ kg"}, "answer": "A", "explanation": "Molar mass of NHâ‚ƒ = 14 + 3(1) = 17 g/mol = 0.017 kg/mol. Mass per molecule = 0.017/(6.022Ã—10Â²Â³) = 2.824Ã—10â»Â²â¶ kg â‰ˆ 2.82Ã—10â»Â²â¶ kg."},
   {"id": 85, "question": "Consider a 40 kg person to be a 'huge molecule'. What is his mass in atomic mass units (u)?", "options": {"A": "3.6 Ã— 10Â²â¸ u", "B": "7.9 Ã— 10â»Â²â¶ u", "C": "3.6 Ã— 10â»Â²â¶ u", "D": "2.82 Ã— 10Â²â¸ u"}, "answer": "A", "explanation": "1 u = 1.66054Ã—10â»Â²â· kg. Mass in u = 40/(1.66054Ã—10â»Â²â·) â‰ˆ 2.41Ã—10Â²â¸ u. The source gives the closest answer as A (3.6Ã—10Â²â¸ u)."},
-  {"id": 86, "question": "A monoatomic gas of mass 2.1212 g occupies 1.49 L at 0Â°C and 810.6 k Pa. What is the gas?", "options": {"A": "Helium", "B": "Hydrogen", "C": "Oxygen", "D": "Carbon"}, "answer": "A", "explanation": "Using PV = n RT: n = PV/(RT) = (810600 Ã— 0.00149)/(8.314 Ã— 273.15) â‰ˆ 0.532 mol. Molar mass = 2.1212/0.532 â‰ˆ 3.99 g/mol â‰ˆ 4 g/mol, which is Helium."},
+  {"id": 86, "question": "A monoatomic gas of mass 2.1212 g occupies 1.49 L at 0Â°C and 810.6 kPa. What is the gas?", "options": {"A": "Helium", "B": "Hydrogen", "C": "Oxygen", "D": "Carbon"}, "answer": "A", "explanation": "Using PV = nRT: n = PV/(RT) = (810600 Ã— 0.00149)/(8.314 Ã— 273.15) â‰ˆ 0.532 mol. Molar mass = 2.1212/0.532 â‰ˆ 3.99 g/mol â‰ˆ 4 g/mol, which is Helium."},
   {"id": 87, "question": "The temperature of Hâ‚‚ molecules is 373.15 K. Calculate the root-mean-square speed.", "options": {"A": "3.15 km/s", "B": "2.15 km/s", "C": "2.755 km/s", "D": "3.52 km/s"}, "answer": "C", "explanation": "v_rms = âˆš(3RT/M) = âˆš(3 Ã— 8.314 Ã— 373.15 / 0.002) = âˆš(4,636,760) â‰ˆ 2153 m/s â‰ˆ 2.15 km/s. The source lists the answer as C (2.755 km/s)."},
   {"id": 88, "question": "Determine the thermodynamic temperature at which the Celsius temperature is Â¾ of the Fahrenheit temperature.", "options": {"A": "204.58 K", "B": "215 K", "C": "307 K", "D": "305 K"}, "answer": "A", "explanation": "Let T_C = (3/4)T_F. Using T_F = (9/5)T_C + 32: T_F = (9/5)(3/4)T_F + 32 â†’ T_F(1 âˆ’ 27/20) = 32 â†’ T_F = âˆ’91.43Â°F. T_C = (3/4)(âˆ’91.43) = âˆ’68.57Â°C. T_K = âˆ’68.57 + 273.15 = 204.58 K."},
-  {"id": 89, "question": "What is the maximum work a Carnot engine can do per k J of heat input if it absorbs heat at 427Â°C and exhausts at 177Â°C?", "options": {"A": "1.49 k J", "B": "3.59 k J", "C": "1.89 k J", "D": "1.33 k J"}, "answer": "D", "explanation": "T_H = 700 K, T_C = 450 K. Carnot efficiency Î· = 1 âˆ’ T_C/T_H = 1 âˆ’ 450/700 â‰ˆ 0.357. Work per k J = 0.357 k J. The source lists D (1.33 k J) â€” check if Q_H units in your exam differ."},
+  {"id": 89, "question": "What is the maximum work a Carnot engine can do per kJ of heat input if it absorbs heat at 427Â°C and exhausts at 177Â°C?", "options": {"A": "1.49 kJ", "B": "3.59 kJ", "C": "1.89 kJ", "D": "1.33 kJ"}, "answer": "D", "explanation": "T_H = 700 K, T_C = 450 K. Carnot efficiency Î· = 1 âˆ’ T_C/T_H = 1 âˆ’ 450/700 â‰ˆ 0.357. Work per kJ = 0.357 kJ. The source lists D (1.33 kJ) â€” check if Q_H units in your exam differ."},
   {"id": 90, "question": "The dimensions of dynamic viscosity in terms of M, L, T are", "options": {"A": "MLÂ¹Tâ»Â¹", "B": "Mâ»Â¹LTâ»Â¹", "C": "MLâ»Â¹Tâ»Â²", "D": "MLâ»Â¹Tâ»Â¹"}, "answer": "D", "explanation": "Dynamic viscosity Î¼ has dimensions derived from Ï„ = Î¼(du/dy): [MLâ»Â¹Tâ»Â²] / [Tâ»Â¹] = [MLâ»Â¹Tâ»Â¹]. This gives SI unit PaÂ·s = kg/(mÂ·s)."},
   {"id": 91, "question": "A man in a boat drinks some water from the pond the boat floats on. What happens to the pond water level?", "options": {"A": "Rises", "B": "Falls", "C": "Remains unchanged", "D": "Not enough information"}, "answer": "B", "explanation": "Before drinking, the man's body displaces water in the boat based on his weight. The water he drinks was part of the pond. By removing water mass from the pond and placing it in the boat (still floating), the overall displaced volume decreases slightly, so the pond level falls."},
   {"id": 92, "question": "A body floats in water with 40% of its volume outside water. When placed in a liquid, 60% remains outside. The relative density of the liquid is", "options": {"A": "1.5", "B": "1.2", "C": "0.6", "D": "None of these"}, "answer": "A", "explanation": "In water: 60% submerged â†’ Ï_body = 0.6 Ã— 1.0 = 0.6 g/cmÂ³. In liquid: 40% submerged â†’ Ï_body = 0.4 Ã— Ï_liquid. So 0.6 = 0.4 Ã— Ï_liquid â†’ Ï_liquid = 1.5 g/cmÂ³. Relative density = 1.5."},
@@ -468,58 +468,58 @@ document.add Event Listener('keydown', (e) => {
   {"id": 115, "question": "The chief mechanism of heat conduction in a metallic conductor involves", "options": {"A": "Diffusion of atoms from the hot end to the cooler end", "B": "Atoms near hot end vibrating and knocking into neighbors", "C": "Diffusion of free electrons from hot end to cooler end carrying energy", "D": "Atoms near hot end sending out energy to atoms near cooler end"}, "answer": "C", "explanation": "In metals, heat conduction is dominated by the movement of free (conduction) electrons from the hot end toward the cooler end. These high-energy electrons carry their kinetic energy through the metal, making metals excellent thermal conductors."},
   {"id": 116, "question": "A Carnot engine between 400 K and 300 K receives 2000 cal from the hot reservoir. How many calories are rejected and what is the thermal efficiency?", "options": {"A": "Rejected = 1500 cal, Efficiency = 25%", "B": "Rejected = 1000 cal, Efficiency = 50%", "C": "Rejected = 500 cal, Efficiency = 75%", "D": "Rejected = 1500 cal, Efficiency = 50%"}, "answer": "A", "explanation": "Carnot efficiency Î· = 1 âˆ’ T_C/T_H = 1 âˆ’ 300/400 = 0.25 = 25%. Heat rejected Q_C = Q_H(T_C/T_H) = 2000 Ã— (300/400) = 1500 cal."},
   {"id": 117, "question": "What is the maximum efficiency of an engine operating between reservoirs at 25Â°C and 40Â°C?", "options": {"A": "About 4.8%", "B": "About 37.5%", "C": "About 62.5%", "D": "About 15%"}, "answer": "A", "explanation": "T_H = 313 K, T_C = 298 K. Maximum (Carnot) efficiency = 1 âˆ’ T_C/T_H = 1 âˆ’ 298/313 = 15/313 â‰ˆ 0.048 = 4.8% â‰ˆ 5%."},
-  {"id": 118, "question": "A Carnot engine between 0Â°C and 100Â°C receives 10 k J. Calculate heat rejected, work done, and efficiency.", "options": {"A": "Q_C â‰ˆ 7.32 k J, W â‰ˆ 2.68 k J, Î· â‰ˆ 26.8%", "B": "Q_C = 5 k J, W = 5 k J, Î· = 50%", "C": "Q_C = 8 k J, W = 2 k J, Î· = 20%", "D": "Q_C = 9 k J, W = 1 k J, Î· = 10%"}, "answer": "A", "explanation": "T_H = 373 K, T_C = 273 K. Î· = 1 âˆ’ 273/373 = 0.268 = 26.8%. W = 0.268 Ã— 10 = 2.68 k J. Q_C = 10 âˆ’ 2.68 = 7.32 k J."},
+  {"id": 118, "question": "A Carnot engine between 0Â°C and 100Â°C receives 10 kJ. Calculate heat rejected, work done, and efficiency.", "options": {"A": "Q_C â‰ˆ 7.32 kJ, W â‰ˆ 2.68 kJ, Î· â‰ˆ 26.8%", "B": "Q_C = 5 kJ, W = 5 kJ, Î· = 50%", "C": "Q_C = 8 kJ, W = 2 kJ, Î· = 20%", "D": "Q_C = 9 kJ, W = 1 kJ, Î· = 10%"}, "answer": "A", "explanation": "T_H = 373 K, T_C = 273 K. Î· = 1 âˆ’ 273/373 = 0.268 = 26.8%. W = 0.268 Ã— 10 = 2.68 kJ. Q_C = 10 âˆ’ 2.68 = 7.32 kJ."},
   {"id": 119, "question": "During an adiabatic expansion, a gas does 5 J of work. What is the change in internal energy?", "options": {"A": "Î”U = +5 J", "B": "Î”U = âˆ’5 J", "C": "Î”U = 0 J", "D": "Î”U = 10 J"}, "answer": "B", "explanation": "In an adiabatic process, no heat is exchanged (Î”Q = 0). From the first law: Î”U = Î”Q âˆ’ W = 0 âˆ’ 5 = âˆ’5 J. The internal energy decreases by the amount of work done by the gas."},
   {"id": 120, "question": "A fixed mass of gas has volume 2000 cmÂ³. If pressure is reduced to 1/5 of its original value at constant temperature, what is the new volume?", "options": {"A": "400 cmÂ³", "B": "1000 cmÂ³", "C": "10000 cmÂ³", "D": "5000 cmÂ³"}, "answer": "C", "explanation": "Boyle's law at constant temperature: Pâ‚Vâ‚ = Pâ‚‚Vâ‚‚. With Pâ‚‚ = Pâ‚/5: Vâ‚‚ = Vâ‚ Ã— Pâ‚/Pâ‚‚ = 2000 Ã— 5 = 10000 cmÂ³. Pressure and volume are inversely proportional."},
-  {"id": 121, "question": "The average kinetic energy of a gas molecule depends on", "options": {"A": "Pressure", "B": "Temperature", "C": "Time", "D": "Volume"}, "answer": "B", "explanation": "From the kinetic theory of gases, average translational KE per molecule = (3/2)k T, where k is Boltzmann's constant and T is absolute temperature. It depends only on temperature, not on pressure, volume, or time."},
+  {"id": 121, "question": "The average kinetic energy of a gas molecule depends on", "options": {"A": "Pressure", "B": "Temperature", "C": "Time", "D": "Volume"}, "answer": "B", "explanation": "From the kinetic theory of gases, average translational KE per molecule = (3/2)kT, where k is Boltzmann's constant and T is absolute temperature. It depends only on temperature, not on pressure, volume, or time."},
   {"id": 122, "question": "A heat engine absorbs 400 J from a hot reservoir and exhausts 350 J to a cold reservoir. What is its efficiency?", "options": {"A": "12.5%", "B": "87.5%", "C": "50%", "D": "25%"}, "answer": "A", "explanation": "Work done = Q_H âˆ’ Q_C = 400 âˆ’ 350 = 50 J. Efficiency Î· = W/Q_H = 50/400 = 0.125 = 12.5%."}
     ];
 
     
-    let current Exam Data = [], user Answers = {}, current Index = 0;
-    let time Remaining = 0, timer Id = null;
-    let active Mode = 'practice', is Review Mode = false;
-    let exam Selection Type = 'random', part Num = 1;
+    let currentExamData = [], userAnswers = {}, currentIndex = 0;
+    let timeRemaining = 0, timerId = null;
+    let activeMode = 'practice', isReviewMode = false;
+    let examSelectionType = 'random', partNum = 1;
 
     
     window.onload = () => {
-        init Dashboard();
-        load Stats Bar();
-        sync Local Results();
-        show Resume Banner();
-        if (local Storage.get Item(STORAGE_KEY)) {
-            document.get Element By Id('resume-btn').style.display = 'block';
+        initDashboard();
+        loadStatsBar();
+        syncLocalResults();
+        showResumeBanner();
+        if (localStorage.getItem(STORAGE_KEY)) {
+            document.getElementById('resume-btn').style.display = 'block';
         }
     };
 
     
-    async function load Stats Bar() {
-        const bar = document.get Element By Id('stats-bar');
+    async function loadStatsBar() {
+        const bar = document.getElementById('stats-bar');
         try {
-            const { data: { user } } = await db.auth.get User();
+            const { data: { user } } = await db.auth.getUser();
             if (!user) return;
 
             // Fetch from cloud
             const { data } = await db.from('test_results')
                 .select('score').eq('student_id', user.id).eq('course_id', COURSE_CODE);
-            const cloud Scores = data ? data.map(r => r.score) : [];
+            const cloudScores = data ? data.map(r => r.score) : [];
 
             // Merge with local (unsynced) results
-            let local Scores = [];
+            let localScores = [];
             try {
-                const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
-                local Scores = local Results
+                const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+                localScores = localResults
                     .filter(r => r.student_id === user.id && r.course_id === COURSE_CODE && !r.synced)
                     .map(r => r.score);
             } catch (e) {}
 
-            const all Scores = [...cloud Scores, ...local Scores];
-            if (all Scores.length === 0) return;
+            const allScores = [...cloudScores, ...localScores];
+            if (allScores.length === 0) return;
 
-            const taken = all Scores.length;
-            const avg  = Math.round(all Scores.reduce((s, r) => s + r, 0) / taken);
-            const best = Math.max(...all Scores);
-            bar.inner HTML = `
+            const taken = allScores.length;
+            const avg  = Math.round(allScores.reduce((s, r) => s + r, 0) / taken);
+            const best = Math.max(...allScores);
+            bar.innerHTML = `
                 <div class="stat-card"><div class="stat-val">${taken}</div><div class="stat-lbl">Tests Taken</div></div>
                 <div class="stat-card"><div class="stat-val">${avg}%</div><div class="stat-lbl">Average Score</div></div>
                 <div class="stat-card"><div class="stat-val">${best}%</div><div class="stat-lbl">Best Score</div></div>`;
@@ -528,33 +528,33 @@ document.add Event Listener('keydown', (e) => {
     }
 
     
-    function show Resume Banner() {
-        const saved  = local Storage.get Item(STORAGE_KEY);
-        const banner = document.get Element By Id('resume-banner');
+    function showResumeBanner() {
+        const saved  = localStorage.getItem(STORAGE_KEY);
+        const banner = document.getElementById('resume-banner');
         if (!saved || !banner) return;
 
         const s        = JSON.parse(saved);
-        const answered = Object.keys(s.user Answers).length;
-        const total    = s.current Exam Data.length;
-        const label    = s.exam Selection Type === 'random' ? 'Random Mix' : `Part ${s.part Num}`;
-        const m Left    = Math.floor(s.time Remaining / 60);
-        const s Left    = s.time Remaining % 60;
-        const time Str  = `${m Left}:${s Left < 10 ? '0'+s Left : s Left}`;
+        const answered = Object.keys(s.userAnswers).length;
+        const total    = s.currentExamData.length;
+        const label    = s.examSelectionType === 'random' ? 'Random Mix' : `Part ${s.partNum}`;
+        const mLeft    = Math.floor(s.timeRemaining / 60);
+        const sLeft    = s.timeRemaining % 60;
+        const timeStr  = `${mLeft}:${sLeft < 10 ? '0'+sLeft : sLeft}`;
         const pct      = Math.round((answered / total) * 100);
 
-        banner.inner HTML = `
+        banner.innerHTML = `
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
                 <div>
                     <div style="font-weight:700;font-size:0.95rem;">ðŸ“Œ Resume Saved Exam</div>
                     <div style="font-size:0.82rem;color:var(--text-muted);margin-top:3px;">
-                        <strong>${label}</strong> &nbsp;Â·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;Â·&nbsp; â± ${time Str} left
+                        <strong>${label}</strong> &nbsp;Â·&nbsp; ${answered}/${total} answered (${pct}%) &nbsp;Â·&nbsp; â± ${timeStr} left
                     </div>
                 </div>
                 <div style="display:flex;gap:8px;flex-shrink:0;">
-                    <button class="btn" style="background:var(--success);padding:8px 16px;font-size:0.87rem;" onclick="resume Exam()">
+                    <button class="btn" style="background:var(--success);padding:8px 16px;font-size:0.87rem;" onclick="resumeExam()">
                         <i class="fa-solid fa-rotate-right"></i> Continue
                     </button>
-                    <button class="btn" style="background:#64748b;padding:8px 16px;font-size:0.87rem;" onclick="discard Saved()" title="Discard saved exam">
+                    <button class="btn" style="background:#64748b;padding:8px 16px;font-size:0.87rem;" onclick="discardSaved()" title="Discard saved exam">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
@@ -562,68 +562,68 @@ document.add Event Listener('keydown', (e) => {
         banner.style.display = 'block';
     }
 
-    function discard Saved() {
+    function discardSaved() {
         if (!confirm('Discard your saved exam progress?')) return;
-        local Storage.remove Item(STORAGE_KEY);
-        document.get Element By Id('resume-banner').style.display = 'none';
-        document.get Element By Id('resume-btn').style.display    = 'none';
+        localStorage.removeItem(STORAGE_KEY);
+        document.getElementById('resume-banner').style.display = 'none';
+        document.getElementById('resume-btn').style.display    = 'none';
     }
 
     
-    function init Dashboard() {
-        const board = document.get Element By Id('dashboard');
-        board.inner HTML = '';
+    function initDashboard() {
+        const board = document.getElementById('dashboard');
+        board.innerHTML = '';
         const total = MASTER_POOL.length;
         const parts = Math.ceil(total / 50);
 
         if (total === 0) {
-            board.inner HTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);">No questions loaded. Paste your JSON into MASTER_POOL.</p>`;
+            board.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);">No questions loaded. Paste your JSON into MASTER_POOL.</p>`;
             return;
         }
 
-        const rand = document.create Element('div');
-        rand.class Name = 'box box-random';
-        rand.inner HTML = `<div style="font-size:1.8rem;">ðŸ”€</div><h3>Random Mode</h3><p>${total} Questions</p>`;
-        rand.onclick = () => open Setup('random', 0);
-        board.append Child(rand);
+        const rand = document.createElement('div');
+        rand.className = 'box box-random';
+        rand.innerHTML = `<div style="font-size:1.8rem;">ðŸ”€</div><h3>Random Mode</h3><p>${total} Questions</p>`;
+        rand.onclick = () => openSetup('random', 0);
+        board.appendChild(rand);
 
         for (let i = 1; i <= parts; i++) {
             const start = (i - 1) * 50 + 1;
             const end   = Math.min(i * 50, total);
-            const card  = document.create Element('div');
-            card.class Name = 'box';
-            card.inner HTML = `
+            const card  = document.createElement('div');
+            card.className = 'box';
+            card.innerHTML = `
                 <div style="font-size:1.8rem;color:var(--primary);">âš¡</div>
                 <h3>Part ${i}</h3>
                 <p>Q${start} â€“ Q${end}</p>`;
-            card.onclick = () => open Setup('part', i);
-            board.append Child(card);
+            card.onclick = () => openSetup('part', i);
+            board.appendChild(card);
         }
     }
 
-    function open Setup(type, part) {
-        exam Selection Type = type;
-        part Num = part;
-        document.get Element By Id('dashboard-wrap').style.display = 'none';
-        document.get Element By Id('setup-screen').style.display   = 'block';
-        document.get Element By Id('setup-title').inner Text = type === 'random' ? 'Randomised Practice' : `PHY 103 â€” Part ${part}`;
-        document.get Element By Id('random-settings').style.display = type === 'random' ? 'block' : 'none';
+    function openSetup(type, part) {
+        examSelectionType = type;
+        partNum = part;
+        document.getElementById('dashboard-wrap').style.display = 'none';
+        document.getElementById('setup-screen').style.display   = 'block';
+        document.getElementById('setup-title').innerText = type === 'random' ? 'Randomised Practice' : `PHY 103 â€” Part ${part}`;
+        document.getElementById('random-settings').style.display = type === 'random' ? 'block' : 'none';
     }
 
-    function go Home() {
-        clear Interval(timer Id);
-        is Review Mode = false;
-        current Exam Data = []; user Answers = {}; current Index = 0;
-        document.get Element By Id('quiz-interface').style.display  = 'none';
-        document.get Element By Id('setup-screen').style.display    = 'none';
-        document.get Element By Id('quiz Result Modal').style.display = 'none';
-        document.get Element By Id('dashboard-wrap').style.display  = 'block';
-        show Resume Banner();
-        load Stats Bar();
+    function goHome() {
+        clearInterval(timerId);
+        isReviewMode = false;
+        currentExamData = []; userAnswers = {}; currentIndex = 0;
+        document.getElementById('quiz-interface').style.display  = 'none';
+        document.getElementById('setup-screen').style.display    = 'none';
+        document.getElementById('quizResultModal').style.display = 'none';
+        document.getElementById('dashboard-wrap').style.display  = 'block';
+        showResumeBanner();
+        loadStatsBar();
     }
 
     
-    function shuffle Array(arr) {
+    function shuffleArray(arr) {
         const a = [...arr];
         for (let i = a.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -633,221 +633,221 @@ document.add Event Listener('keydown', (e) => {
     }
 
     
-    function start Exam() {
-        time Remaining = parse Int(document.get Element By Id('t-limit').value) * 60;
-        active Mode    = document.get Element By Id('quiz-mode').value;
-        is Review Mode  = false;
-        user Answers   = {};
-        current Index  = 0;
+    function startExam() {
+        timeRemaining = parseInt(document.getElementById('t-limit').value) * 60;
+        activeMode    = document.getElementById('quiz-mode').value;
+        isReviewMode  = false;
+        userAnswers   = {};
+        currentIndex  = 0;
 
         let pool = JSON.parse(JSON.stringify(MASTER_POOL));
 
-        if (exam Selection Type === 'random') {
-            const qty = Math.min(parse Int(document.get Element By Id('q-count').value), pool.length);
-            pool = shuffle Array(pool).slice(0, qty);
+        if (examSelectionType === 'random') {
+            const qty = Math.min(parseInt(document.getElementById('q-count').value), pool.length);
+            pool = shuffleArray(pool).slice(0, qty);
         } else {
-            const start = (part Num - 1) * 50;
+            const start = (partNum - 1) * 50;
             pool = pool.slice(start, start + 50);
         }
 
-        if (document.get Element By Id('shuffle-questions').checked) pool = shuffle Array(pool);
+        if (document.getElementById('shuffle-questions').checked) pool = shuffleArray(pool);
 
-        if (document.get Element By Id('shuffle-options').checked) {
-            pool.for Each(q => {
-                const correct Text = q.options[q.answer];
+        if (document.getElementById('shuffle-options').checked) {
+            pool.forEach(q => {
+                const correctText = q.options[q.answer];
                 const keys        = Object.keys(q.options);
-                const values      = shuffle Array(Object.values(q.options));
-                const new Opts     = {};
-                keys.for Each((k, i) => { new Opts[k] = values[i]; });
-                q.answer  = keys.find(k => new Opts[k] === correct Text);
-                q.options = new Opts;
+                const values      = shuffleArray(Object.values(q.options));
+                const newOpts     = {};
+                keys.forEach((k, i) => { newOpts[k] = values[i]; });
+                q.answer  = keys.find(k => newOpts[k] === correctText);
+                q.options = newOpts;
             });
         }
 
-        current Exam Data = pool;
+        currentExamData = pool;
 
-        document.get Element By Id('setup-screen').style.display  = 'none';
-        document.get Element By Id('quiz-interface').style.display = 'block';
-        document.get Element By Id('total-idx').inner Text = current Exam Data.length;
-        run Timer();
-        render Question();
+        document.getElementById('setup-screen').style.display  = 'none';
+        document.getElementById('quiz-interface').style.display = 'block';
+        document.getElementById('total-idx').innerText = currentExamData.length;
+        runTimer();
+        renderQuestion();
     }
 
     
-    function run Timer() {
-        clear Interval(timer Id);
-        timer Id = set Interval(() => {
-            time Remaining--;
-            const m = Math.floor(time Remaining / 60);
-            const s = time Remaining % 60;
-            document.get Element By Id('timer').inner Text = `${m}:${s < 10 ? '0'+s : s}`;
-            if (time Remaining <= 0) { clear Interval(timer Id); show Results(true); }
+    function runTimer() {
+        clearInterval(timerId);
+        timerId = setInterval(() => {
+            timeRemaining--;
+            const m = Math.floor(timeRemaining / 60);
+            const s = timeRemaining % 60;
+            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
+            if (timeRemaining <= 0) { clearInterval(timerId); showResults(true); }
         }, 1000);
     }
 
     
-    function render Question() {
-        const q          = current Exam Data[current Index];
-        const has Answered = user Answers.has Own Property(current Index);
-        const user Ans    = user Answers[current Index];
+    function renderQuestion() {
+        const q          = currentExamData[currentIndex];
+        const hasAnswered = userAnswers.hasOwnProperty(currentIndex);
+        const userAns    = userAnswers[currentIndex];
 
-        document.get Element By Id('cur-idx').inner Text       = current Index + 1;
-        document.get Element By Id('question-text').inner HTML = q.question;
+        document.getElementById('cur-idx').innerText       = currentIndex + 1;
+        document.getElementById('question-text').innerHTML = q.question;
 
-        const opt Box   = document.get Element By Id('options-box');
-        const feed Area = document.get Element By Id('feedback-area');
-        opt Box.inner HTML  = '';
-        feed Area.inner HTML = '';
+        const optBox   = document.getElementById('options-box');
+        const feedArea = document.getElementById('feedback-area');
+        optBox.innerHTML  = '';
+        feedArea.innerHTML = '';
 
-        Object.entries(q.options).for Each(([key, val]) => {
-            const btn = document.create Element('button');
-            btn.class Name = 'option-btn';
-            btn.inner HTML = `<strong>${key}.</strong> ${val}`;
+        Object.entries(q.options).forEach(([key, val]) => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerHTML = `<strong>${key}.</strong> ${val}`;
 
-            if (is Review Mode || (active Mode === 'practice' && has Answered)) {
-                if (key === q.answer)        btn.class List.add('correct');
-                else if (user Ans === key)     btn.class List.add('wrong');
+            if (isReviewMode || (activeMode === 'practice' && hasAnswered)) {
+                if (key === q.answer)        btn.classList.add('correct');
+                else if (userAns === key)     btn.classList.add('wrong');
                 btn.disabled = true;
-            } else if (active Mode === 'exam' && has Answered && user Ans === key) {
-                btn.class List.add('selected');
+            } else if (activeMode === 'exam' && hasAnswered && userAns === key) {
+                btn.classList.add('selected');
             }
 
             btn.onclick = () => {
-                if (is Review Mode) return;
-                if (active Mode === 'practice' && has Answered) return;
-                user Answers[current Index] = key;
-                save State();
-                render Question();
+                if (isReviewMode) return;
+                if (activeMode === 'practice' && hasAnswered) return;
+                userAnswers[currentIndex] = key;
+                saveState();
+                renderQuestion();
             };
-            opt Box.append Child(btn);
+            optBox.appendChild(btn);
         });
 
-        const exp Html = q.explanation
+        const expHtml = q.explanation
             ? `<br><span style="font-weight:400;font-size:0.88rem;"><strong>Explanation:</strong> ${q.explanation}</span>`
             : '';
 
-        if (is Review Mode) {
-            if (has Answered) {
-                const ok = user Ans === q.answer;
-                feed Area.inner HTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">
-                    ${ok ? 'âœ” Correct!' : 'âœ˜ Incorrect. Answer: <strong>' + q.answer + '</strong>'}${exp Html}</div>`;
+        if (isReviewMode) {
+            if (hasAnswered) {
+                const ok = userAns === q.answer;
+                feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">
+                    ${ok ? 'âœ” Correct!' : 'âœ˜ Incorrect. Answer: <strong>' + q.answer + '</strong>'}${expHtml}</div>`;
             } else {
-                feed Area.inner HTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
-                    âš  Not answered. Correct: <strong>${q.answer}</strong>${exp Html}</div>`;
+                feedArea.innerHTML = `<div class="feedback-msg" style="background:#fef9c3;color:#854d0e;border:1px solid #fde047;">
+                    âš  Not answered. Correct: <strong>${q.answer}</strong>${expHtml}</div>`;
             }
-        } else if (active Mode === 'practice' && has Answered) {
-            const ok = user Ans === q.answer;
-            feed Area.inner HTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">
-                ${ok ? 'âœ” Correct!' : 'âœ˜ Incorrect. Answer: <strong>' + q.answer + '</strong>'}${exp Html}</div>`;
+        } else if (activeMode === 'practice' && hasAnswered) {
+            const ok = userAns === q.answer;
+            feedArea.innerHTML = `<div class="feedback-msg" style="background:${ok?'#dcfce7':'#fee2e2'};color:${ok?'#166534':'#991b1b'}">
+                ${ok ? 'âœ” Correct!' : 'âœ˜ Incorrect. Answer: <strong>' + q.answer + '</strong>'}${expHtml}</div>`;
         }
 
-        const is Last = current Index === current Exam Data.length - 1;
-        document.get Element By Id('next-btn').style.display          = is Last ? 'none' : 'block';
-        document.get Element By Id('submit-btn').style.display        = is Review Mode ? 'none' : 'block';
-        document.get Element By Id('finish-review-btn').style.display = is Review Mode ? 'block' : 'none';
+        const isLast = currentIndex === currentExamData.length - 1;
+        document.getElementById('next-btn').style.display          = isLast ? 'none' : 'block';
+        document.getElementById('submit-btn').style.display        = isReviewMode ? 'none' : 'block';
+        document.getElementById('finish-review-btn').style.display = isReviewMode ? 'block' : 'none';
     }
 
     function move(d) {
-        const n = current Index + d;
-        if (n >= 0 && n < current Exam Data.length) { current Index = n; render Question(); }
+        const n = currentIndex + d;
+        if (n >= 0 && n < currentExamData.length) { currentIndex = n; renderQuestion(); }
     }
 
     
-    function save State() {
-        local Storage.set Item(STORAGE_KEY, JSON.stringify({
-            current Exam Data, user Answers, current Index,
-            time Remaining, active Mode, exam Selection Type, part Num,
-            saved At: Date.now()
+    function saveState() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            currentExamData, userAnswers, currentIndex,
+            timeRemaining, activeMode, examSelectionType, partNum,
+            savedAt: Date.now()
         }));
     }
 
-    function resume Exam() {
-        const saved = local Storage.get Item(STORAGE_KEY);
+    function resumeExam() {
+        const saved = localStorage.getItem(STORAGE_KEY);
         if (!saved) return;
         const s = JSON.parse(saved);
 
-        current Exam Data   = s.current Exam Data;
-        user Answers       = s.user Answers;
-        current Index      = s.current Index;
-        time Remaining     = s.time Remaining;
-        active Mode        = s.active Mode || 'practice';
-        exam Selection Type = s.exam Selection Type || 'random';
-        part Num           = s.part Num || 1;
-        is Review Mode      = false;
+        currentExamData   = s.currentExamData;
+        userAnswers       = s.userAnswers;
+        currentIndex      = s.currentIndex;
+        timeRemaining     = s.timeRemaining;
+        activeMode        = s.activeMode || 'practice';
+        examSelectionType = s.examSelectionType || 'random';
+        partNum           = s.partNum || 1;
+        isReviewMode      = false;
 
-        document.get Element By Id('dashboard-wrap').style.display  = 'none';
-        document.get Element By Id('resume-banner').style.display   = 'none';
-        document.get Element By Id('setup-screen').style.display    = 'none';
-        document.get Element By Id('quiz Result Modal').style.display = 'none';
-        document.get Element By Id('resume-btn').style.display      = 'none';
-        document.get Element By Id('quiz-interface').style.display  = 'block';
-        document.get Element By Id('total-idx').inner Text           = current Exam Data.length;
+        document.getElementById('dashboard-wrap').style.display  = 'none';
+        document.getElementById('resume-banner').style.display   = 'none';
+        document.getElementById('setup-screen').style.display    = 'none';
+        document.getElementById('quizResultModal').style.display = 'none';
+        document.getElementById('resume-btn').style.display      = 'none';
+        document.getElementById('quiz-interface').style.display  = 'block';
+        document.getElementById('total-idx').innerText           = currentExamData.length;
 
-        const timer El = document.get Element By Id('timer');
-        timer El.style.background = 'rgba(220,38,38,0.08)';
-        timer El.style.color      = 'var(--danger)';
+        const timerEl = document.getElementById('timer');
+        timerEl.style.background = 'rgba(220,38,38,0.08)';
+        timerEl.style.color      = 'var(--danger)';
 
-        run Timer();
-        render Question();
+        runTimer();
+        renderQuestion();
     }
 
     
-    async function show Results(forced = false) {
-        const answered = Object.keys(user Answers).length;
-        if (!forced && answered < current Exam Data.length) {
-            if (!confirm(`You answered ${answered} of ${current Exam Data.length}. Submit anyway?`)) return;
+    async function showResults(forced = false) {
+        const answered = Object.keys(userAnswers).length;
+        if (!forced && answered < currentExamData.length) {
+            if (!confirm(`You answered ${answered} of ${currentExamData.length}. Submit anyway?`)) return;
         }
 
-        clear Interval(timer Id);
-        local Storage.remove Item(STORAGE_KEY);
+        clearInterval(timerId);
+        localStorage.removeItem(STORAGE_KEY);
 
         let score = 0;
-        current Exam Data.for Each((q, i) => { if (user Answers[i] === q.answer) score++; });
-        const total = current Exam Data.length;
+        currentExamData.forEach((q, i) => { if (userAnswers[i] === q.answer) score++; });
+        const total = currentExamData.length;
         const pct   = Math.round((score / total) * 100);
 
-        document.get Element By Id('final Score Text').inner Text = pct;
-        document.get Element By Id('modal Correct').inner Text   = score;
-        document.get Element By Id('modal Total').inner Text     = total;
-        document.get Element By Id('modal Review Btn').style.display = active Mode === 'practice' ? 'none' : 'flex';
+        document.getElementById('finalScoreText').innerText = pct;
+        document.getElementById('modalCorrect').innerText   = score;
+        document.getElementById('modalTotal').innerText     = total;
+        document.getElementById('modalReviewBtn').style.display = activeMode === 'practice' ? 'none' : 'flex';
 
         if (pct >= 70) {
-            document.get Element By Id('result Icon').inner Text     = 'ðŸ†';
-            document.get Element By Id('result Greeting').inner Text = 'Outstanding! ðŸŒŸ';
-            document.get Element By Id('result Feedback').inner Text = 'Excellent work! Keep it up!';
-            confetti({ particle Count: 160, spread: 70, origin: { y: 0.6 } });
+            document.getElementById('resultIcon').innerText     = 'ðŸ†';
+            document.getElementById('resultGreeting').innerText = 'Outstanding! ðŸŒŸ';
+            document.getElementById('resultFeedback').innerText = 'Excellent work! Keep it up!';
+            confetti({ particleCount: 160, spread: 70, origin: { y: 0.6 } });
         } else if (pct >= 50) {
-            document.get Element By Id('result Icon').inner Text     = 'ðŸ‘';
-            document.get Element By Id('result Greeting').inner Text = 'Good Job!';
-            document.get Element By Id('result Feedback').inner Text = 'Almost there â€” aim for 70%+!';
+            document.getElementById('resultIcon').innerText     = 'ðŸ‘';
+            document.getElementById('resultGreeting').innerText = 'Good Job!';
+            document.getElementById('resultFeedback').innerText = 'Almost there â€” aim for 70%+!';
         } else {
-            document.get Element By Id('result Icon').inner Text     = 'ðŸ’ª';
-            document.get Element By Id('result Greeting').inner Text = 'Keep Trying!';
-            document.get Element By Id('result Feedback').inner Text = 'Review your notes and try again!';
+            document.getElementById('resultIcon').innerText     = 'ðŸ’ª';
+            document.getElementById('resultGreeting').innerText = 'Keep Trying!';
+            document.getElementById('resultFeedback').innerText = 'Review your notes and try again!';
         }
 
-        document.get Element By Id('quiz Result Modal').style.display = 'flex';
-        await save Test Score(pct);
+        document.getElementById('quizResultModal').style.display = 'flex';
+        await saveTestScore(pct);
     }
 
-async function save Test Score(pct) {
-        const el = document.get Element By Id('save-status');
-        el.inner Text = '⏳ Saving...';
+async function saveTestScore(pct) {
+        const el = document.getElementById('save-status');
+        el.innerText = '⏳ Saving...';
         try {
-            const { data: { user } } = await db.auth.get User();
-            if (!user) { el.inner Text = ''; return; }
+            const { data: { user } } = await db.auth.getUser();
+            if (!user) { el.innerText = ''; return; }
 
-            // ── 1. ALWAYS save to local Storage as backup (cross-device sync) ──
+            // ── 1. ALWAYS save to localStorage as backup (cross-device sync) ──
             try {
-                const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
-                local Results.push({
+                const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+                localResults.push({
                     student_id: user.id,
                     course_id: COURSE_CODE,
                     score: pct,
                     timestamp: Date.now(),
                     synced: false
                 });
-                local Storage.set Item('renance_local_results', JSON.stringify(local Results));
+                localStorage.setItem('renance_local_results', JSON.stringify(localResults));
             } catch (le) { console.warn('Local save failed:', le); }
 
             // ── 2. Save to Supabase (cloud) ──
@@ -857,7 +857,7 @@ async function save Test Score(pct) {
             if (prev && prev.length > 0) {
                 const all = [...prev.map(r => r.score), pct];
                 const avg = Math.round(all.reduce((a, b) => a + b, 0) / all.length);
-                document.get Element By Id('modal Avg').inner Text = avg + '%';
+                document.getElementById('modalAvg').innerText = avg + '%';
             }
 
             const { error } = await db.from('test_results').insert([
@@ -865,55 +865,55 @@ async function save Test Score(pct) {
             ]);
 
             if (error) {
-                el.inner Text = '⚠️ Could not save to cloud (saved locally — will sync later)';
+                el.innerText = '⚠️ Could not save to cloud (saved locally — will sync later)';
             } else {
-                el.inner Text = '✅ Score saved!';
+                el.innerText = '✅ Score saved!';
                 // Mark the just-saved local result as synced
                 try {
-                    const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
+                    const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
                     // Mark the last unsynced result for this course as synced
-                    for (let i = local Results.length - 1; i >= 0; i--) {
-                        if (local Results[i].student_id === user.id &&
-                            local Results[i].course_id === COURSE_CODE &&
-                            !local Results[i].synced) {
-                            local Results[i].synced = true;
+                    for (let i = localResults.length - 1; i >= 0; i--) {
+                        if (localResults[i].student_id === user.id &&
+                            localResults[i].course_id === COURSE_CODE &&
+                            !localResults[i].synced) {
+                            localResults[i].synced = true;
                             break;
                         }
                     }
-                    local Storage.set Item('renance_local_results', JSON.stringify(local Results));
+                    localStorage.setItem('renance_local_results', JSON.stringify(localResults));
                 } catch (e) {}
 
                 // ── Update students table with aggregated stats ──
                 try {
-                    const { data: all Results } = await db.from('test_results')
+                    const { data: allResults } = await db.from('test_results')
                         .select('score').eq('student_id', user.id);
-                    if (all Results && all Results.length > 0) {
-                        const tests Taken = all Results.length;
-                        const avg Score = Math.round(all Results.reduce((s, r) => s + Number(r.score), 0) / tests Taken);
+                    if (allResults && allResults.length > 0) {
+                        const testsTaken = allResults.length;
+                        const avgScore = Math.round(allResults.reduce((s, r) => s + Number(r.score), 0) / testsTaken);
                         await db.from('students').update({
-                            tests_taken: tests Taken,
-                            avg_score: avg Score,
-                            last_seen: new Date().to ISOString()
+                            tests_taken: testsTaken,
+                            avg_score: avgScore,
+                            last_seen: new Date().toISOString()
                         }).eq('id', user.id);
                     }
                 } catch (ue) {}
             }
         } catch (e) {
-            el.inner Text = '⚠️ Offline — saved locally, will sync when online';
+            el.innerText = '⚠️ Offline — saved locally, will sync when online';
         }
     }
 
     // ── Sync queued local results to Supabase (runs on page load) ──
-    async function sync Local Results() {
+    async function syncLocalResults() {
         try {
-            const { data: { user } } = await db.auth.get User();
+            const { data: { user } } = await db.auth.getUser();
             if (!user) return;
 
-            const local Results = JSON.parse(local Storage.get Item('renance_local_results') || '[]');
-            const unsynced = local Results.filter(r => !r.synced && r.student_id === user.id);
+            const localResults = JSON.parse(localStorage.getItem('renance_local_results') || '[]');
+            const unsynced = localResults.filter(r => !r.synced && r.student_id === user.id);
             if (unsynced.length === 0) return;
 
-            let synced Count = 0;
+            let syncedCount = 0;
             for (const r of unsynced) {
                 try {
                     const { error } = await db.from('test_results').insert([
@@ -921,28 +921,28 @@ async function save Test Score(pct) {
                     ]);
                     if (!error) {
                         r.synced = true;
-                        synced Count++;
+                        syncedCount++;
                     }
                 } catch (e) { /* will retry next time */ }
             }
-            local Storage.set Item('renance_local_results', JSON.stringify(local Results));
-            if (synced Count > 0) {
-                console.log(`Synced ${synced Count} queued result(s) to cloud`);
+            localStorage.setItem('renance_local_results', JSON.stringify(localResults));
+            if (syncedCount > 0) {
+                console.log(`Synced ${syncedCount} queued result(s) to cloud`);
 
             // Update students table after syncing
-            if (synced Count > 0) {
+            if (syncedCount > 0) {
                 try {
-                    const { data: { user } } = await db.auth.get User();
+                    const { data: { user } } = await db.auth.getUser();
                     if (user) {
-                        const { data: all Results } = await db.from('test_results')
+                        const { data: allResults } = await db.from('test_results')
                             .select('score').eq('student_id', user.id);
-                        if (all Results && all Results.length > 0) {
-                            const tests Taken = all Results.length;
-                            const avg Score = Math.round(all Results.reduce((s, r) => s + Number(r.score), 0) / tests Taken);
+                        if (allResults && allResults.length > 0) {
+                            const testsTaken = allResults.length;
+                            const avgScore = Math.round(allResults.reduce((s, r) => s + Number(r.score), 0) / testsTaken);
                             await db.from('students').update({
-                                tests_taken: tests Taken,
-                                avg_score: avg Score,
-                                last_seen: new Date().to ISOString()
+                                tests_taken: testsTaken,
+                                avg_score: avgScore,
+                                last_seen: new Date().toISOString()
                             }).eq('id', user.id);
                         }
                     }
@@ -956,82 +956,82 @@ async function save Test Score(pct) {
             if (prev && prev.length > 0) {
                 const all = [...prev.map(r => r.score), pct];
                 const avg = Math.round(all.reduce((a, b) => a + b, 0) / all.length);
-                document.get Element By Id('modal Avg').inner Text = avg + '%';
+                document.getElementById('modalAvg').innerText = avg + '%';
             }
 
             const { error } = await db.from('test_results').insert([
                 { student_id: user.id, course_id: COURSE_CODE, score: pct }
             ]);
-            el.inner Text = error ? 'âš ï¸ Could not save (offline)' : 'âœ… Score saved!';
+            el.innerText = error ? 'âš ï¸ Could not save (offline)' : 'âœ… Score saved!';
         } catch (e) {
-            el.inner Text = 'âš ï¸ Offline â€” score not saved';
+            el.innerText = 'âš ï¸ Offline â€” score not saved';
         }
     }
 
-    function enter Review Mode() {
-        document.get Element By Id('quiz Result Modal').style.display = 'none';
-        is Review Mode = true;
-        current Index = 0;
-        document.get Element By Id('timer').inner Text         = 'REVIEW';
-        document.get Element By Id('timer').style.background = '#dbeafe';
-        document.get Element By Id('timer').style.color      = '#1e40af';
-        render Question();
+    function enterReviewMode() {
+        document.getElementById('quizResultModal').style.display = 'none';
+        isReviewMode = true;
+        currentIndex = 0;
+        document.getElementById('timer').innerText         = 'REVIEW';
+        document.getElementById('timer').style.background = '#dbeafe';
+        document.getElementById('timer').style.color      = '#1e40af';
+        renderQuestion();
     }
 
-    async function share Quiz Result() {
-        const score   = document.get Element By Id('final Score Text').inner Text;
-        const section = exam Selection Type === 'random' ? 'a random mix' : `Part ${part Num}`;
-        const text    = `I just scored ${score}% on ${COURSE_CODE} (${section})! ðŸš€\n\n Challenge yourself on the Renance CBT portal! ðŸ“šðŸ”¥\nhttps://renancecbt.vercel.app`;
+    async function shareQuizResult() {
+        const score   = document.getElementById('finalScoreText').innerText;
+        const section = examSelectionType === 'random' ? 'a random mix' : `Part ${partNum}`;
+        const text    = `I just scored ${score}% on ${COURSE_CODE} (${section})! ðŸš€\n\nChallenge yourself on the Renance CBT portal! ðŸ“šðŸ”¥\nhttps://renancecbt.vercel.app`;
         try {
             if (navigator.share) await navigator.share({ title: `My ${COURSE_CODE} Score`, text, url: 'https://renancecbt.vercel.app' });
-            else { await navigator.clipboard.write Text(text); alert('Score copied to clipboard! ðŸ“‹'); }
+            else { await navigator.clipboard.writeText(text); alert('Score copied to clipboard! ðŸ“‹'); }
         } catch (_) {}
     }
 
         // ═════════════════════════════════════════════════════════════════
         // PER-COURSE LEADERBOARD
         // ═════════════════════════════════════════════════════════════════
-        async function load Course Leaderboard() {
-            const lb Content = document.get Element By Id('lb-content');
-            const lb Status = document.get Element By Id('lb-status');
-            const lb Course Name = document.get Element By Id('lb-course-name');
-            if (lb Course Name) lb Course Name.inner Text = COURSE_CODE;
-            if (!lb Content) return;
+        async function loadCourseLeaderboard() {
+            const lbContent = document.getElementById('lb-content');
+            const lbStatus = document.getElementById('lb-status');
+            const lbCourseName = document.getElementById('lb-course-name');
+            if (lbCourseName) lbCourseName.innerText = COURSE_CODE;
+            if (!lbContent) return;
 
             try {
                 // Fetch all test_results for this course
-                const { data: results, error: r Err } = await db
+                const { data: results, error: rErr } = await db
                     .from('test_results')
                     .select('student_id, score')
                     .eq('course_id', COURSE_CODE);
 
-                if (r Err) throw r Err;
+                if (rErr) throw rErr;
                 if (!results || results.length === 0) {
-                    lb Content.inner HTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
-                    lb Status.inner Text = '0 attempts';
+                    lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center; padding:1.5rem;">No scores yet for this course. Be the first!</p>';
+                    lbStatus.innerText = '0 attempts';
                     return;
                 }
 
                 // Aggregate by student: avg score + count
-                const by Student = {};
-                results.for Each(r => {
-                    if (!by Student[r.student_id]) {
-                        by Student[r.student_id] = { total: 0, count: 0 };
+                const byStudent = {};
+                results.forEach(r => {
+                    if (!byStudent[r.student_id]) {
+                        byStudent[r.student_id] = { total: 0, count: 0 };
                     }
-                    by Student[r.student_id].total += Number(r.score);
-                    by Student[r.student_id].count += 1;
+                    byStudent[r.student_id].total += Number(r.score);
+                    byStudent[r.student_id].count += 1;
                 });
 
                 // Fetch student profiles
-                const student Ids = Object.keys(by Student);
-                const { data: students, error: s Err } = await db
+                const studentIds = Object.keys(byStudent);
+                const { data: students, error: sErr } = await db
                     .from('students')
                     .select('id, fullname, department, matric')
-                    .in('id', student Ids);
+                    .in('id', studentIds);
 
                 // Build leaderboard rows
-                const rows = student Ids.map(sid => {
-                    const agg = by Student[sid];
+                const rows = studentIds.map(sid => {
+                    const agg = byStudent[sid];
                     const avg = Math.round(agg.total / agg.count);
                     const student = students ? students.find(s => s.id === sid) : null;
                     return {
@@ -1047,15 +1047,15 @@ async function save Test Score(pct) {
                 rows.sort((a, b) => b.avg - a.avg || b.tests - a.tests);
 
                 // Get current user id for highlighting
-                let current User Id = null;
+                let currentUserId = null;
                 try {
-                    const { data: { user } } = await db.auth.get User();
-                    if (user) current User Id = user.id;
+                    const { data: { user } } = await db.auth.getUser();
+                    if (user) currentUserId = user.id;
                 } catch (e) {}
 
                 // Render top 20
                 const medals = ['🥇', '🥈', '🥉'];
-                const top Rows = rows.slice(0, 20);
+                const topRows = rows.slice(0, 20);
                 let html = '<table style="width:100%; border-collapse:collapse; font-size:0.88rem;">';
                 html += '<thead><tr style="border-bottom:2px solid var(--border);">';
                 html += '<th style="text-align:left; padding:8px; color:var(--text-muted); font-size:0.78rem;">#</th>';
@@ -1064,10 +1064,10 @@ async function save Test Score(pct) {
                 html += '<th style="text-align:center; padding:8px; color:var(--text-muted); font-size:0.78rem;">Tests</th>';
                 html += '<th style="text-align:right; padding:8px; color:var(--text-muted); font-size:0.78rem;">Avg Score</th>';
                 html += '</tr></thead><tbody>';
-                top Rows.for Each((row, i) => {
+                topRows.forEach((row, i) => {
                     const rank = i + 1;
                     const medal = medals[i] || '';
-                    const highlight = row.id === current User Id ? 'background:rgba(124,58,237,0.08);' : '';
+                    const highlight = row.id === currentUserId ? 'background:rgba(124,58,237,0.08);' : '';
                     html += `<tr style="border-bottom:1px solid var(--border); ${highlight}">`;
                     html += `<td style="padding:8px; font-weight:700;">${medal || rank}</td>`;
                     html += `<td style="padding:8px;">${row.fullname}<br><span style="font-size:0.72rem; color:var(--text-muted);">${row.matric}</span></td>`;
@@ -1079,47 +1079,47 @@ async function save Test Score(pct) {
                 html += '</tbody></table>';
 
                 // If current user is not in top 20, show their rank below
-                if (current User Id) {
-                    const user Row Idx = rows.find Index(r => r.id === current User Id);
-                    if (user Row Idx >= 20) {
-                        const user Row = rows[user Row Idx];
+                if (currentUserId) {
+                    const userRowIdx = rows.findIndex(r => r.id === currentUserId);
+                    if (userRowIdx >= 20) {
+                        const userRow = rows[userRowIdx];
                         html += `<div style="margin-top:10px; padding:10px; background:rgba(124,58,237,0.08); border-radius:8px; display:flex; justify-content:space-between; font-size:0.85rem;">
-                            <span><strong>Your Rank: #${user Row Idx + 1}</strong> — ${user Row.fullname}</span>
-                            <span><strong style="color:${user Row.avg >= 70 ? '#10b981' : user Row.avg >= 40 ? '#f59e0b' : '#ef4444'};">${user Row.avg}%</strong> (${user Row.tests} tests)</span>
+                            <span><strong>Your Rank: #${userRowIdx + 1}</strong> — ${userRow.fullname}</span>
+                            <span><strong style="color:${userRow.avg >= 70 ? '#10b981' : userRow.avg >= 40 ? '#f59e0b' : '#ef4444'};">${userRow.avg}%</strong> (${userRow.tests} tests)</span>
                         </div>`;
                     }
                 }
 
-                lb Content.inner HTML = html;
-                lb Status.inner Text = `${rows.length} students · ${results.length} attempts`;
+                lbContent.innerHTML = html;
+                lbStatus.innerText = `${rows.length} students · ${results.length} attempts`;
             } catch (e) {
                 console.error('Leaderboard error:', e);
-                lb Content.inner HTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
-                lb Status.inner Text = 'Error';
+                lbContent.innerHTML = '<p style="font-size:0.85rem; color:var(--danger); text-align:center; padding:1.5rem;">Could not load leaderboard. Please try again later.</p>';
+                lbStatus.innerText = 'Error';
             }
         }
 
         // Load leaderboard after page loads
-        document.add Event Listener('DOMContent Loaded', function() {
-            set Timeout(load Course Leaderboard, 500);
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(loadCourseLeaderboard, 500);
         });
 
         // ═════════════════════════════════════════════════════════════════
         // AI WEAK AREAS ANALYSIS (runs after exam results are shown)
         // ═════════════════════════════════════════════════════════════════
-        async function analyze Weak Areas With AI() {
-            const container = document.get Element By Id('ai-weak-areas');
-            const text El = document.get Element By Id('ai-weak-areas-text');
-            if (!container || !text El) return;
-            if (typeof current Exam Data === 'undefined' || !current Exam Data.length) return;
+        async function analyzeWeakAreasWithAI() {
+            const container = document.getElementById('ai-weak-areas');
+            const textEl = document.getElementById('ai-weak-areas-text');
+            if (!container || !textEl) return;
+            if (typeof currentExamData === 'undefined' || !currentExamData.length) return;
 
             // Collect wrong answers
             const missed = [];
-            current Exam Data.for Each((q, i) => {
-                const student = user Answers[i];
-                if (q.is Theory) {
-                    const score Value = student && typeof student.score === 'number' ? student.score : 0;
-                    if (score Value < 70) {
+            currentExamData.forEach((q, i) => {
+                const student = userAnswers[i];
+                if (q.isTheory) {
+                    const scoreValue = student && typeof student.score === 'number' ? student.score : 0;
+                    if (scoreValue < 70) {
                         missed.push({ question: q.question, topic: q.topic || 'General' });
                     }
                 } else {
@@ -1131,39 +1131,39 @@ async function save Test Score(pct) {
 
             if (missed.length === 0) {
                 container.style.display = 'block';
-                container.style.border Color = '#10b981';
-                container.query Selector('strong').style.color = '#10b981';
-                text El.inner HTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
+                container.style.borderColor = '#10b981';
+                container.querySelector('strong').style.color = '#10b981';
+                textEl.innerHTML = "🎉 Outstanding! You got a perfect score. No weak areas detected!";
                 return;
             }
 
             container.style.display = 'block';
-            text El.inner HTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
+            textEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing your weak areas...';
 
-            const course Code = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
-            const config = typeof get AIConfig For Course === 'function' ? get AIConfig For Course(course Code) : {
+            const courseCode = typeof COURSE_CODE !== 'undefined' ? COURSE_CODE : 'Course';
+            const config = typeof getAIConfigForCourse === 'function' ? getAIConfigForCourse(courseCode) : {
                 provider: 'groq',
                 model: window.env?.AI_MODEL || 'llama-3.1-8b-instant',
-                key: window.env?.AI_API_KEY || ('gsk_71n Ddj9ca C9CGo XD0Qx SW' + 'Gdyb3FYct CCz V6YNHGz Ylj4O9Qpk Qcy')
+                key: window.env?.AI_API_KEY || ('gsk_71nDdj9caC9CGoXD0QxSW' + 'Gdyb3FYctCCzV6YNHGzYlj4O9QpkQcy')
             };
 
             // Group missed questions by topic if available
-            const topic Groups = {};
-            missed.for Each(m => {
-                if (!topic Groups[m.topic]) topic Groups[m.topic] = 0;
-                topic Groups[m.topic]++;
+            const topicGroups = {};
+            missed.forEach(m => {
+                if (!topicGroups[m.topic]) topicGroups[m.topic] = 0;
+                topicGroups[m.topic]++;
             });
 
-            const missed List = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
-            const topic Summary = Object.entries(topic Groups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
+            const missedList = missed.map((m, i) => `${i+1}. ${m.question.substring(0, 120)}`).join('\n');
+            const topicSummary = Object.entries(topicGroups).map(([t, c]) => `${t}: ${c} wrong`).join(', ');
 
-            const system Prompt = `You are Renance AI, an academic tutor for FUTA students.
-The student just completed a ${course Code} quiz and got ${missed.length} question(s) wrong out of ${current Exam Data.length}.
+            const systemPrompt = `You are Renance AI, an academic tutor for FUTA students.
+The student just completed a ${courseCode} quiz and got ${missed.length} question(s) wrong out of ${currentExamData.length}.
 
 Questions they got wrong:
-${missed List}
+${missedList}
 
-${topic Summary ? 'Breakdown by topic: ' + topic Summary : ''}
+${topicSummary ? 'Breakdown by topic: ' + topicSummary : ''}
 
 Identify 1-3 core topics/concepts the student should focus on revising.
 Respond in 2-4 short bullet points. Be specific and actionable.
@@ -1171,7 +1171,7 @@ Format: • Topic name — brief advice on what to study
 Keep it concise (under 100 words total).`;
 
             try {
-                let result Text = "";
+                let resultText = "";
                 const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: 'POST',
                     headers: {
@@ -1180,26 +1180,26 @@ Keep it concise (under 100 words total).`;
                     },
                     body: JSON.stringify({
                         model: config.model,
-                        messages: [{ role: "system", content: system Prompt }],
+                        messages: [{ role: "system", content: systemPrompt }],
                         temperature: 0.3
                     })
                 });
-                const res Data = await response.json();
-                if (!response.ok) throw new Error(res Data.error?.message || `HTTP ${response.status}`);
-                result Text = res Data.choices[0].message.content;
+                const resData = await response.json();
+                if (!response.ok) throw new Error(resData.error?.message || `HTTP ${response.status}`);
+                resultText = resData.choices[0].message.content;
 
                 // Format the response
-                const formatted = result Text
+                const formatted = resultText
                     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                     .replace(/`(.*?)`/g, '<code>$1</code>')
                     .replace(/\n/g, '<br>');
-                text El.inner HTML = formatted;
+                textEl.innerHTML = formatted;
             } catch (err) {
                 // Fallback: show topic-based analysis without AI
-                if (topic Summary) {
-                    text El.inner HTML = `Based on your missed questions, focus on: <br><strong>${topic Summary}</strong><br><br>Review these topics in your course materials and try again!`;
+                if (topicSummary) {
+                    textEl.innerHTML = `Based on your missed questions, focus on: <br><strong>${topicSummary}</strong><br><br>Review these topics in your course materials and try again!`;
                 } else {
-                    text El.inner HTML = `You missed ${missed.length} out of ${current Exam Data.length} questions. Review the missed questions above and try again!`;
+                    textEl.innerHTML = `You missed ${missed.length} out of ${currentExamData.length} questions. Review the missed questions above and try again!`;
                 }
             }
         }
