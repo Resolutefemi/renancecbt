@@ -2,7 +2,7 @@
   {
     "id": 1,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "The word history was derived from the Greek word ________.",
+    "question": "The word history was derived from the Greek word________.",
     "answers": [
       "historia",
       "HISTORIA"
@@ -11,7 +11,7 @@
   {
     "id": 2,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "Historia means ________.",
+    "question": "Historia means________.",
     "answers": [
       "inquiry, investigation, knowledge gotten by enquiry",
       "INQUIRY, INVESTIGATION, KNOWLEDGE GOTTEN BY ENQUIRY"
@@ -20,16 +20,16 @@
   {
     "id": 3,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "History can be seen as a record of ________.",
+    "question": "History can beseen as a record of________.",
     "answers": [
-      "events of man's past",
-      "EVENTS OF MAN'S PAST"
+      "events ofman'spast",
+      "EVENTS OFMAN'SPAST"
     ]
   },
   {
     "id": 4,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "John Jacob Anderson said history is the ________ of events among mankind.",
+    "question": "John Jacob Anderson said history is the________of events among mankind.",
     "answers": [
       "narration",
       "NARRATION"
@@ -38,7 +38,7 @@
   {
     "id": 5,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "History includes accounts of the ________ and ________ of nations.",
+    "question": "History includes accounts of the________and________of nations.",
     "answers": [
       "rise, fall",
       "RISE, FALL"
@@ -47,7 +47,7 @@
   {
     "id": 6,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "History is also a ________ that studies past events.",
+    "question": "History is also a________that studies past events.",
     "answers": [
       "field of study",
       "FIELD OF STUDY"
@@ -56,7 +56,7 @@
   {
     "id": 7,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "History is an inquiry into the events of man's past that ________ his future.",
+    "question": "History is an inquiry into the events ofman'spast that________his future.",
     "answers": [
       "shape",
       "SHAPE"
@@ -65,7 +65,7 @@
   {
     "id": 8,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "The first comprehensively documented account of history was by ________.",
+    "question": "The first comprehensively documented account of history was by________.",
     "answers": [
       "Herodotus",
       "herodotus",
@@ -75,7 +75,7 @@
   {
     "id": 9,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "Herodotus lived in the ________ century BC.",
+    "question": "Herodotus lived in the________century BC.",
     "answers": [
       "5th",
       "5TH"
@@ -84,17 +84,17 @@
   {
     "id": 10,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "Herodotus wrote the book ________.",
+    "question": "Herodotus wrote the book________.",
     "answers": [
-      "Istoria / Histories",
-      "istoria / histories",
-      "ISTORIA / HISTORIES"
+      "Istoria/Histories",
+      "istoria/histories",
+      "ISTORIA/HISTORIES"
     ]
   },
   {
     "id": 11,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "Herodotus is regarded as the ________ of history.",
+    "question": "Herodotus is regarded as the________of history.",
     "answers": [
       "father",
       "FATHER"
@@ -103,7 +103,7 @@
   {
     "id": 12,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "His work was wide in scope but contained ________.",
+    "question": "His work was wide in scope but contained________.",
     "answers": [
       "fables and myths",
       "FABLES AND MYTHS"
@@ -112,7 +112,7 @@
   {
     "id": 13,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "Thucydides was a ________ of Herodotus.",
+    "question": "Thucydides was a________of Herodotus.",
     "answers": [
       "contemporary",
       "CONTEMPORARY"
@@ -121,7 +121,7 @@
   {
     "id": 14,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "Thucydides wrote the ________.",
+    "question": "Thucydides wrote the________.",
     "answers": [
       "History of the Peloponnesian War",
       "history of the peloponnesian war",
@@ -131,7 +131,7 @@
   {
     "id": 15,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "The Peloponnesian War was between ________ and ________.",
+    "question": "The Peloponnesian War was between________and________.",
     "answers": [
       "Athens, Sparta",
       "athens, sparta",
@@ -141,7 +141,7 @@
   {
     "id": 16,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "Thucydides' work is regarded as ________.",
+    "question": "Thucydides'work is regarded as________.",
     "answers": [
       "scientific account of history",
       "SCIENTIFIC ACCOUNT OF HISTORY"
@@ -150,7 +150,7 @@
   {
     "id": 17,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "Long before Herodotus, history existed in ________.",
+    "question": "Long before Herodotus, history existed in________.",
     "answers": [
       "oral, written, archaeological records",
       "ORAL, WRITTEN, ARCHAEOLOGICAL RECORDS"
@@ -159,7 +159,7 @@
   {
     "id": 18,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "Documented records existed in ________.",
+    "question": "Documented records existed in________.",
     "answers": [
       "Egypt, China, India, Africa",
       "egypt, china, india, africa",
@@ -169,7 +169,7 @@
   {
     "id": 19,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "Primary sources are ________ sources of history.",
+    "question": "Primary sources are________sources of history.",
     "answers": [
       "original",
       "ORIGINAL"
@@ -178,7 +178,7 @@
   {
     "id": 20,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "Examples of primary sources include ________.",
+    "question": "Examples of primary sources include________.",
     "answers": [
       "diaries, drawings, speeches, autobiographies, artefacts, newspaper articles, memoirs, documents, video recordings, photographs, audio recordings, interviews, oral histories, TV broadcasts, family records, letters, legislative documents, court records",
       "diaries, drawings, speeches, autobiographies, artefacts, newspaper articles, memoirs, documents, video recordings, photographs, audio recordings, interviews, oral histories, tv broadcasts, family records, letters, legislative documents, court records",
@@ -188,7 +188,7 @@
   {
     "id": 21,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "Secondary sources are ________ from primary sources.",
+    "question": "Secondary sources are________from primary sources.",
     "answers": [
       "derived",
       "DERIVED"
@@ -197,7 +197,7 @@
   {
     "id": 22,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "They ________ and give meaning to primary sources.",
+    "question": "They________and give meaning to primary sources.",
     "answers": [
       "describe, explain, analyse",
       "DESCRIBE, EXPLAIN, ANALYSE"
@@ -206,7 +206,7 @@
   {
     "id": 23,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "Examples of secondary sources include ________.",
+    "question": "Examples of secondary sources include________.",
     "answers": [
       "biographies, textbooks, reports, magazines, journal articles, book reviews, encyclopaedias, commentaries, monographs, bibliographies, theses/dissertations, dictionaries, handbooks, family history, websites",
       "BIOGRAPHIES, TEXTBOOKS, REPORTS, MAGAZINES, JOURNAL ARTICLES, BOOK REVIEWS, ENCYCLOPAEDIAS, COMMENTARIES, MONOGRAPHS, BIBLIOGRAPHIES, THESES/DISSERTATIONS, DICTIONARIES, HANDBOOKS, FAMILY HISTORY, WEBSITES"
@@ -215,7 +215,7 @@
   {
     "id": 24,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "Tertiary sources are ________ on secondary sources.",
+    "question": "Tertiary sources are________on secondary sources.",
     "answers": [
       "dependent",
       "DEPENDENT"
@@ -224,7 +224,7 @@
   {
     "id": 25,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "They present ________ of materials.",
+    "question": "They present________of materials.",
     "answers": [
       "compilations, summaries",
       "COMPILATIONS, SUMMARIES"
@@ -233,7 +233,7 @@
   {
     "id": 26,
     "chapter": "HISTORY AND ITS SOURCES",
-    "question": "Examples of tertiary sources include ________.",
+    "question": "Examples of tertiary sources include________.",
     "answers": [
       "dictionaries, textbooks, directories, guidebooks, handbooks, bibliographies, journal articles, summaries, encyclopaedias, commentaries",
       "DICTIONARIES, TEXTBOOKS, DIRECTORIES, GUIDEBOOKS, HANDBOOKS, BIBLIOGRAPHIES, JOURNAL ARTICLES, SUMMARIES, ENCYCLOPAEDIAS, COMMENTARIES"
@@ -242,7 +242,7 @@
   {
     "id": 27,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The millions of years before 600 BC are called the ___ period.",
+    "question": "The millions of years before600BC are called the___period.",
     "answers": [
       "Prehistoric",
       "prehistoric",
@@ -252,17 +252,17 @@
   {
     "id": 28,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Stone Age lasted from ___ to ___.",
+    "question": "The Stone Age lasted from___to___.",
     "answers": [
-      "2.5 million - 3000 BC",
-      "2.5 million - 3000 bc",
-      "2.5 MILLION - 3000 BC"
+      "2.5million-3000BC",
+      "2.5million-3000bc",
+      "2.5MILLION-3000BC"
     ]
   },
   {
     "id": 29,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Stone Age has three stages: ___, ___, ___.",
+    "question": "The Stone Age has three stages:___,___,___.",
     "answers": [
       "Palaeolithic, Mesolithic, Neolithic",
       "palaeolithic, mesolithic, neolithic",
@@ -272,16 +272,16 @@
   {
     "id": 30,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Palaeolithic era lasted from around ___ to ___.",
+    "question": "The Palaeolithic era lasted from around___to___.",
     "answers": [
-      "700,000 - 10,000 BC",
-      "700,000 - 10,000 bc"
+      "700,000-10,000BC",
+      "700,000-10,000bc"
     ]
   },
   {
     "id": 31,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "In the Palaeolithic era, humans used ___ and ___ as tools.",
+    "question": "In the Palaeolithic era, humans used___and___as tools.",
     "answers": [
       "stones, wood",
       "STONES, WOOD"
@@ -290,34 +290,34 @@
   {
     "id": 32,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Mesolithic era lasted from around ___ to ___.",
+    "question": "The Mesolithic era lasted from around___to___.",
     "answers": [
-      "10,000 - 4,000 BC",
-      "10,000 - 4,000 bc"
+      "10,000-4,000BC",
+      "10,000-4,000bc"
     ]
   },
   {
     "id": 33,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "In the Mesolithic era, humans started ___.",
+    "question": "In the Mesolithic era, humans started___.",
     "answers": [
-      "domesticating plants / planting food crops",
-      "DOMESTICATING PLANTS / PLANTING FOOD CROPS"
+      "domesticating plants/planting food crops",
+      "DOMESTICATING PLANTS/PLANTING FOOD CROPS"
     ]
   },
   {
     "id": 34,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Neolithic age lasted from around ___ to ___.",
+    "question": "The Neolithic age lasted from around___to___.",
     "answers": [
-      "9,000 - 2,000 BC",
-      "9,000 - 2,000 bc"
+      "9,000-2,000BC",
+      "9,000-2,000bc"
     ]
   },
   {
     "id": 35,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "In the Neolithic age, humans started erecting ___.",
+    "question": "In the Neolithic age, humans started erecting___.",
     "answers": [
       "buildings",
       "BUILDINGS"
@@ -326,7 +326,7 @@
   {
     "id": 36,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "They also made ___ for food storage and cooking.",
+    "question": "They also made___for food storage and cooking.",
     "answers": [
       "pots, earthen items",
       "POTS, EARTHEN ITEMS"
@@ -335,7 +335,7 @@
   {
     "id": 37,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "Humans in the Neolithic age fought among themselves over ___.",
+    "question": "Humans in the Neolithic age fought among themselves over___.",
     "answers": [
       "leadership",
       "LEADERSHIP"
@@ -344,7 +344,7 @@
   {
     "id": 38,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "They made ___ to fight one another.",
+    "question": "They made___to fight oneanother.",
     "answers": [
       "weapons",
       "WEAPONS"
@@ -353,34 +353,34 @@
   {
     "id": 39,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Bronze Age lasted from ___ to ___.",
+    "question": "The Bronze Age lasted from___to___.",
     "answers": [
-      "3000 - 1300 BC",
-      "3000 - 1300 bc"
+      "3000-1300BC",
+      "3000-1300bc"
     ]
   },
   {
     "id": 40,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Iron Age lasted from ___ to ___.",
+    "question": "The Iron Age lasted from___to___.",
     "answers": [
-      "1300 - 600 BC",
-      "1300 - 600 bc"
+      "1300-600BC",
+      "1300-600bc"
     ]
   },
   {
     "id": 41,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Classical era covered several centuries from around ___ to ___.",
+    "question": "The Classical era covered several centuries from around___to___.",
     "answers": [
-      "500 BC - 1500 AD",
-      "500 bc - 1500 ad"
+      "500BC-1500AD",
+      "500bc-1500ad"
     ]
   },
   {
     "id": 42,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "In the Classical era, people mixed ___ and ___ to produce stronger metals.",
+    "question": "In the Classical era, people mixed___and___to produce stronger metals.",
     "answers": [
       "copper, tin",
       "COPPER, TIN"
@@ -389,7 +389,7 @@
   {
     "id": 43,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "During the Classical era, ___ and ___ advanced.",
+    "question": "During the Classical era,___and___advanced.",
     "answers": [
       "agriculture, kingdoms/empires",
       "AGRICULTURE, KINGDOMS/EMPIRES"
@@ -398,7 +398,7 @@
   {
     "id": 44,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "Knowledge expanded and many works of ___ were produced.",
+    "question": "Knowledge expanded and many works of___were produced.",
     "answers": [
       "genius",
       "GENIUS"
@@ -407,7 +407,7 @@
   {
     "id": 45,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "Examples of Classical works include the ___ and ___ by Homer.",
+    "question": "Examples of Classical works include the___and___by Homer.",
     "answers": [
       "Iliad, Odyssey",
       "iliad, odyssey",
@@ -417,7 +417,7 @@
   {
     "id": 46,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "Hesiod wrote ___, ___, and ___.",
+    "question": "Hesiod wrote___,___, and___.",
     "answers": [
       "Works and Days, Theogony, Shield of Heracles",
       "works and days, theogony, shield of heracles",
@@ -427,7 +427,7 @@
   {
     "id": 47,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "Plato wrote ___.",
+    "question": "Plato wrote___.",
     "answers": [
       "Dialogues",
       "dialogues",
@@ -437,7 +437,7 @@
   {
     "id": 48,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "Augustine of Hippo wrote ___.",
+    "question": "Augustine of Hippo wrote___.",
     "answers": [
       "City of God",
       "city of god",
@@ -447,16 +447,16 @@
   {
     "id": 49,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Middle Ages lasted from ___ to ___.",
+    "question": "The Middle Ages lasted from___to___.",
     "answers": [
-      "476 - 1450 AD",
-      "476 - 1450 ad"
+      "476-1450AD",
+      "476-1450ad"
     ]
   },
   {
     "id": 50,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Middle Ages are also called the ___.",
+    "question": "The Middle Ages are also called the___.",
     "answers": [
       "Dark Ages",
       "dark ages",
@@ -466,16 +466,16 @@
   {
     "id": 51,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The collapse of the Roman Empire occurred in ___.",
+    "question": "The collapse of the Roman Empire occurred in___.",
     "answers": [
-      "AD 476",
-      "ad 476"
+      "AD476",
+      "ad476"
     ]
   },
   {
     "id": 52,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The collapse led to more ___.",
+    "question": "The collapse led to more___.",
     "answers": [
       "wars",
       "WARS"
@@ -484,7 +484,7 @@
   {
     "id": 53,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "Citizens became more loyal to their ___.",
+    "question": "Citizens became more loyal to their___.",
     "answers": [
       "nations",
       "NATIONS"
@@ -493,7 +493,7 @@
   {
     "id": 54,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Middle Ages witnessed the rise of the ___.",
+    "question": "The Middle Ages witnessed the rise of the___.",
     "answers": [
       "Church",
       "church",
@@ -503,34 +503,34 @@
   {
     "id": 55,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Early Middle Ages lasted from ___ to ___.",
+    "question": "The Early Middle Ages lasted from___to___.",
     "answers": [
-      "476 - 1000 AD",
-      "476 - 1000 ad"
+      "476-1000AD",
+      "476-1000ad"
     ]
   },
   {
     "id": 56,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The High Middle Ages lasted from ___ to ___.",
+    "question": "The High Middle Ages lasted from___to___.",
     "answers": [
-      "1000 - 1250 AD",
-      "1000 - 1250 ad"
+      "1000-1250AD",
+      "1000-1250ad"
     ]
   },
   {
     "id": 57,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Late Middle Ages lasted from ___ to ___.",
+    "question": "The Late Middle Ages lasted from___to___.",
     "answers": [
-      "1250 - 1450 AD",
-      "1250 - 1450 ad"
+      "1250-1450AD",
+      "1250-1450ad"
     ]
   },
   {
     "id": 58,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Early Modern era covered the ___ period.",
+    "question": "The Early Modern era covered the___period.",
     "answers": [
       "Renaissance",
       "renaissance",
@@ -540,34 +540,34 @@
   {
     "id": 59,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Renaissance lasted from ___ to ___.",
+    "question": "The Renaissance lasted from___to___.",
     "answers": [
-      "1400 - 1600 AD",
-      "1400 - 1600 ad"
+      "1400-1600AD",
+      "1400-1600ad"
     ]
   },
   {
     "id": 60,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "Protestantism lasted from ___ to ___.",
+    "question": "Protestantism lasted from___to___.",
     "answers": [
-      "1517 - 1648 AD",
-      "1517 - 1648 ad"
+      "1517-1648AD",
+      "1517-1648ad"
     ]
   },
   {
     "id": 61,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Enlightenment Age lasted from ___ to ___.",
+    "question": "The Enlightenment Age lasted from___to___.",
     "answers": [
-      "1650 - 1800 AD",
-      "1650 - 1800 ad"
+      "1650-1800AD",
+      "1650-1800ad"
     ]
   },
   {
     "id": 62,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Late Modern era saw progress in ___.",
+    "question": "The Late Modern era saw progress in___.",
     "answers": [
       "technology",
       "TECHNOLOGY"
@@ -576,7 +576,7 @@
   {
     "id": 63,
     "chapter": "TIMELINES OR PERIODS IN HISTORY",
-    "question": "The Late Modern era includes the ___ and ___.",
+    "question": "The Late Modern era includes the___and___.",
     "answers": [
       "Industrial Age, Information Age",
       "industrial age, information age",
@@ -586,7 +586,7 @@
   {
     "id": 64,
     "chapter": "NIGERIAN HISTORY AND ITS SOURCES",
-    "question": "Nigeria has over ___ ethnic groups.",
+    "question": "Nigeria has over___ethnic groups.",
     "answers": [
       "250"
     ]
@@ -594,7 +594,7 @@
   {
     "id": 65,
     "chapter": "NIGERIAN HISTORY AND ITS SOURCES",
-    "question": "The three dominant tribes in Nigeria are ___, ___, and ___.",
+    "question": "The three dominant tribes in Nigeria are___,___, and___.",
     "answers": [
       "Hausa, Yoruba, Igbo",
       "hausa, yoruba, igbo",
@@ -604,16 +604,16 @@
   {
     "id": 66,
     "chapter": "NIGERIAN HISTORY AND ITS SOURCES",
-    "question": "Nigeria's history spans the ___, ___, and ___ eras.",
+    "question": "Nigeria'shistory spans the___,___, and___eras.",
     "answers": [
-      "pre-colonial, colonial, post- colonial",
-      "PRE-COLONIAL, COLONIAL, POST- COLONIAL"
+      "pre-colonial, colonial, post-colonial",
+      "PRE-COLONIAL, COLONIAL, POST-COLONIAL"
     ]
   },
   {
     "id": 67,
     "chapter": "NIGERIAN HISTORY AND ITS SOURCES",
-    "question": "The sources of Nigerian history include ___.",
+    "question": "The sources of Nigerian history include___.",
     "answers": [
       "oral/verbal, written, artworks/artefacts, archaeological, geographical, socio-cultural/ethnographical, linguistic",
       "ORAL/VERBAL, WRITTEN, ARTWORKS/ARTEFACTS, ARCHAEOLOGICAL, GEOGRAPHICAL, SOCIO-CULTURAL/ETHNOGRAPHICAL, LINGUISTIC"
@@ -622,7 +622,7 @@
   {
     "id": 68,
     "chapter": "NIGERIAN HISTORY AND ITS SOURCES",
-    "question": "Oral history in Nigeria can be known through ___.",
+    "question": "Oral history in Nigeria can beknown through___.",
     "answers": [
       "storytelling, songs, proverbs, traditions",
       "STORYTELLING, SONGS, PROVERBS, TRADITIONS"
@@ -631,16 +631,16 @@
   {
     "id": 69,
     "chapter": "NIGERIAN HISTORY AND ITS SOURCES",
-    "question": "Written Nigerian history can be found in ___.",
+    "question": "Written Nigerian history can be found in___.",
     "answers": [
-      "pre-colonial, colonial, post-colonial documents",
-      "PRE-COLONIAL, COLONIAL, POST-COLONIAL DOCUMENTS"
+      "pre-colonial, colonial, post-colonialdocuments",
+      "PRE-COLONIAL, COLONIAL, POST-COLONIALDOCUMENTS"
     ]
   },
   {
     "id": 70,
     "chapter": "NIGERIAN HISTORY AND ITS SOURCES",
-    "question": "Artworks and artefacts serve as ___ of Nigeria's past.",
+    "question": "Artworks and artefacts serve as___ofNigeria'spast.",
     "answers": [
       "evidence",
       "EVIDENCE"
@@ -649,7 +649,7 @@
   {
     "id": 71,
     "chapter": "NIGERIAN HISTORY AND ITS SOURCES",
-    "question": "Archaeological sources of Nigerian history include ___.",
+    "question": "Archaeological sources of Nigerian history include___.",
     "answers": [
       "excavations, relics, ancient sites",
       "EXCAVATIONS, RELICS, ANCIENT SITES"
@@ -658,7 +658,7 @@
   {
     "id": 72,
     "chapter": "NIGERIAN HISTORY AND ITS SOURCES",
-    "question": "Geographical sources of Nigerian history can be seen in ___.",
+    "question": "Geographical sources of Nigerian history can beseen in___.",
     "answers": [
       "landforms, rivers, mountains, settlement patterns",
       "LANDFORMS, RIVERS, MOUNTAINS, SETTLEMENT PATTERNS"
@@ -667,7 +667,7 @@
   {
     "id": 73,
     "chapter": "NIGERIAN HISTORY AND ITS SOURCES",
-    "question": "Socio-cultural/ethnographical sources of Nigerian history are found in ___.",
+    "question": "Socio-cultural/ethnographicalsources of Nigerian history are found in___.",
     "answers": [
       "customs, traditions, festivals, social practices",
       "CUSTOMS, TRADITIONS, FESTIVALS, SOCIAL PRACTICES"
@@ -676,7 +676,7 @@
   {
     "id": 74,
     "chapter": "NIGERIAN HISTORY AND ITS SOURCES",
-    "question": "Linguistic sources of Nigerian history are found in ___.",
+    "question": "Linguistic sources of Nigerian history are found in___.",
     "answers": [
       "languages, dialects, oral traditions",
       "LANGUAGES, DIALECTS, ORAL TRADITIONS"
@@ -685,17 +685,17 @@
   {
     "id": 75,
     "chapter": "NIGERIAN HISTORY AND ITS SOURCES",
-    "question": "National archives play a role in preserving ___.",
+    "question": "National archives playa role in preserving___.",
     "answers": [
-      "written records of Nigeria's history",
-      "written records of nigeria's history",
-      "WRITTEN RECORDS OF NIGERIA'S HISTORY"
+      "written records ofNigeria'shistory",
+      "written records ofnigeria'shistory",
+      "WRITTEN RECORDS OFNIGERIA'SHISTORY"
     ]
   },
   {
     "id": 76,
     "chapter": "CULTURE AND PRIMITIVE TECHNOLOGY",
-    "question": "_________ defined culture as \"the totality of knowledge and behaviours, ideas and objects, that constitute the common heritage of a people.\"",
+    "question": "_________defined culture as\"the totality of knowledge and behaviours, ideas and objects, that constitute the common heritage of a people.\"",
     "answers": [
       "Ibanga Ikpe",
       "ibanga ikpe",
@@ -705,17 +705,17 @@
   {
     "id": 77,
     "chapter": "CULTURE AND PRIMITIVE TECHNOLOGY",
-    "question": "_________ understood culture as \"the way of life of a given society, or the universe of values and artefacts in which a given people live.\"",
+    "question": "_________understood culture as\"the way of life of a given society, or the universe of values and artefacts in which a given people live.\"",
     "answers": [
-      "L.A. Thompson",
-      "l.a. thompson",
-      "L.A. THOMPSON"
+      "L.A.Thompson",
+      "l.a.thompson",
+      "L.A.THOMPSON"
     ]
   },
   {
     "id": 78,
     "chapter": "CULTURE AND PRIMITIVE TECHNOLOGY",
-    "question": "_________ defined culture as a means of creating order in society.",
+    "question": "_________defined culture as a means of creating order in society.",
     "answers": [
       "William Abraham",
       "william abraham",
@@ -725,7 +725,7 @@
   {
     "id": 79,
     "chapter": "CULTURE AND PRIMITIVE TECHNOLOGY",
-    "question": "_________ advanced that culture is an instrument for the achievement of social integration.",
+    "question": "_________advanced that culture is an instrument for the achievement of social integration.",
     "answers": [
       "Oladipo",
       "oladipo",
@@ -735,7 +735,7 @@
   {
     "id": 80,
     "chapter": "CULTURE AND PRIMITIVE TECHNOLOGY",
-    "question": "_________ maintained that culture is not merely traditional but contemporary; not constricting but free; not just transient and changing but a control of change.",
+    "question": "_________maintained that culture is not merely traditional but contemporary; not constricting but free; not just transient and changing but a control of change.",
     "answers": [
       "Richmond Kwesi",
       "richmond kwesi",
@@ -745,7 +745,7 @@
   {
     "id": 81,
     "chapter": "CULTURE AND PRIMITIVE TECHNOLOGY",
-    "question": "_________ identified culture as symbolic, helping people to develop complex thought and exchange communication.",
+    "question": "_________identified culture as symbolic, helping people to develop complex thought and exchange communication.",
     "answers": [
       "Ukpokolo",
       "ukpokolo",
@@ -755,7 +755,7 @@
   {
     "id": 82,
     "chapter": "CULTURE AND PRIMITIVE TECHNOLOGY",
-    "question": "Culture is a product of _________.",
+    "question": "Culture is a product of_________.",
     "answers": [
       "human experience",
       "HUMAN EXPERIENCE"
@@ -764,7 +764,7 @@
   {
     "id": 83,
     "chapter": "CULTURE AND PRIMITIVE TECHNOLOGY",
-    "question": "Because human problems differ from one place to another, there are bound to be multiple _________.",
+    "question": "Because human problems differ from one place to another, there are bound to be multiple_________.",
     "answers": [
       "cultures",
       "CULTURES"
@@ -773,7 +773,7 @@
   {
     "id": 84,
     "chapter": "CULTURE AND PRIMITIVE TECHNOLOGY",
-    "question": "Culture provides _________ in society.",
+    "question": "Culture provides_________in society.",
     "answers": [
       "order",
       "ORDER"
@@ -782,7 +782,7 @@
   {
     "id": 85,
     "chapter": "CULTURE AND PRIMITIVE TECHNOLOGY",
-    "question": "Culture creates standards of _________ and criteria of right and wrong.",
+    "question": "Culture creates standards of_________and criteria of right and wrong.",
     "answers": [
       "evaluation",
       "EVALUATION"
@@ -791,7 +791,7 @@
   {
     "id": 86,
     "chapter": "CULTURE AND PRIMITIVE TECHNOLOGY",
-    "question": "Culture is a regulator of _________.",
+    "question": "Culture is a regulator of_________.",
     "answers": [
       "change",
       "CHANGE"
@@ -800,7 +800,7 @@
   {
     "id": 87,
     "chapter": "CULTURE AND PRIMITIVE TECHNOLOGY",
-    "question": "Culture is _________ from people and transmitted across generations.",
+    "question": "Culture is_________from people and transmitted across generations.",
     "answers": [
       "learned",
       "LEARNED"
@@ -809,7 +809,7 @@
   {
     "id": 88,
     "chapter": "CULTURE AND PRIMITIVE TECHNOLOGY",
-    "question": "Culture is _________ and not genetically transmitted.",
+    "question": "Culture is_________and not genetically transmitted.",
     "answers": [
       "shared",
       "SHARED"
@@ -818,7 +818,7 @@
   {
     "id": 89,
     "chapter": "CULTURE AND PRIMITIVE TECHNOLOGY",
-    "question": "Through culture, people share common _________ such as language, dressing, values.",
+    "question": "Through culture, people share common_________such as language, dressing, values.",
     "answers": [
       "behavior and ways of thinking",
       "BEHAVIOR AND WAYS OF THINKING"
@@ -827,7 +827,7 @@
   {
     "id": 90,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Culture as a concept has been divided into ___ components.",
+    "question": "Culture as a concept has been divided into___components.",
     "answers": [
       "two",
       "TWO"
@@ -836,7 +836,7 @@
   {
     "id": 91,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "The two components of culture are ___ and ___.",
+    "question": "The two components of culture are___and___.",
     "answers": [
       "material, non-material",
       "MATERIAL, NON-MATERIAL"
@@ -845,7 +845,7 @@
   {
     "id": 92,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "The ___ aspect of culture emphasizes tools, craft, arts and artefacts for survival.",
+    "question": "The___aspect of culture emphasizes tools, craft, arts and artefacts for survival.",
     "answers": [
       "material",
       "MATERIAL"
@@ -854,7 +854,7 @@
   {
     "id": 93,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "The ___ aspect of culture includes values, ceremonies, music, dance, drama, festivals, religion, literature.",
+    "question": "The___aspect of culture includes values, ceremonies, music, dance, drama, festivals, religion, literature.",
     "answers": [
       "non-material",
       "NON-MATERIAL"
@@ -863,7 +863,7 @@
   {
     "id": 94,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "The material aspect is ___ and visible to all.",
+    "question": "The material aspect is___and visible to all.",
     "answers": [
       "tangible",
       "TANGIBLE"
@@ -872,7 +872,7 @@
   {
     "id": 95,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "The non-material aspect is ___ but learned through socialization.",
+    "question": "Thenon-materialaspect is___but learned through socialization.",
     "answers": [
       "intangible",
       "INTANGIBLE"
@@ -881,7 +881,7 @@
   {
     "id": 96,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "___ is essentially the application of knowledge for practical use.",
+    "question": "___is essentially the application of knowledge for practical use.",
     "answers": [
       "Technology",
       "technology",
@@ -891,7 +891,7 @@
   {
     "id": 97,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Technology is regarded as one of the earliest ___ of human society.",
+    "question": "Technology is regarded as one of the earliest___of human society.",
     "answers": [
       "creations",
       "CREATIONS"
@@ -900,7 +900,7 @@
   {
     "id": 98,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Human survival depended largely on the ability to make ___.",
+    "question": "Human survival depended largely on the ability to make___.",
     "answers": [
       "simple tools and equipment",
       "SIMPLE TOOLS AND EQUIPMENT"
@@ -909,7 +909,7 @@
   {
     "id": 99,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "From pre-modern times, African people developed simple technologies such as ___.",
+    "question": "Frompre-moderntimes, African people developed simple technologies such as___.",
     "answers": [
       "cutlass, hoe, axe",
       "CUTLASS, HOE, AXE"
@@ -918,7 +918,7 @@
   {
     "id": 100,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "The ___ produced bracelets, necklaces, and rings.",
+    "question": "The___produced bracelets, necklaces, and rings.",
     "answers": [
       "goldsmith",
       "GOLDSMITH"
@@ -927,7 +927,7 @@
   {
     "id": 101,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "The ___ produced wire for ornaments.",
+    "question": "The___produced wire for ornaments.",
     "answers": [
       "coppersmith",
       "COPPERSMITH"
@@ -936,16 +936,16 @@
   {
     "id": 102,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Archaeologists found ___ used in wire-making.",
+    "question": "Archaeologists found___used inwire-making.",
     "answers": [
-      "draw-plates and tools",
-      "DRAW-PLATES AND TOOLS"
+      "draw-platesand tools",
+      "DRAW-PLATESAND TOOLS"
     ]
   },
   {
     "id": 103,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "The ___ people are reputed for their human heads cast in bronze.",
+    "question": "The___people are reputed for their human heads cast in bronze.",
     "answers": [
       "Edo",
       "edo",
@@ -955,7 +955,7 @@
   {
     "id": 104,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "The ___ in Plateau State are noted for terra-cotta of Nok culture.",
+    "question": "The___in Plateau State are noted forterra-cottaof Nok culture.",
     "answers": [
       "Berom",
       "berom",
@@ -965,7 +965,7 @@
   {
     "id": 105,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "The ___ and ___ people of Cross River are known for arts and crafts.",
+    "question": "The___and___people of Cross River are known for arts and crafts.",
     "answers": [
       "Ikom, Oron",
       "ikom, oron",
@@ -975,7 +975,7 @@
   {
     "id": 106,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "The ___ part of Nigeria is noted for beautiful leather works.",
+    "question": "The___part of Nigeria is noted for beautiful leatherworks.",
     "answers": [
       "Northern",
       "northern",
@@ -985,7 +985,7 @@
   {
     "id": 107,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "The ___ are known for pottery and Abada-ba cloth made of raffia.",
+    "question": "The___are known for pottery andAbada-bacloth made of raffia.",
     "answers": [
       "Igbo",
       "igbo",
@@ -995,7 +995,7 @@
   {
     "id": 108,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "The ___ bronze is known all over the world.",
+    "question": "The___bronze is known all over the world.",
     "answers": [
       "Ife",
       "ife",
@@ -1005,7 +1005,7 @@
   {
     "id": 109,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "The ___ people of Ondo State have works of art found in different museums.",
+    "question": "The___people of Ondo State have works of art found indifferent museums.",
     "answers": [
       "Owo",
       "owo",
@@ -1015,16 +1015,16 @@
   {
     "id": 110,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Yoruba culture dates back as early as ___.",
+    "question": "Yoruba culture dates back as early as___.",
     "answers": [
-      "4500 BC",
-      "4500 bc"
+      "4500BC",
+      "4500bc"
     ]
   },
   {
     "id": 111,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "West African peoples developed ___ as early as 4500 BC.",
+    "question": "West African peoples developed___as early as4500BC.",
     "answers": [
       "agriculture",
       "AGRICULTURE"
@@ -1033,7 +1033,7 @@
   {
     "id": 112,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Tools such as ___ were produced by Yoruba blacksmiths.",
+    "question": "Tools such as___were produced by Yoruba blacksmiths.",
     "answers": [
       "hoes, cutlasses, axes",
       "HOES, CUTLASSES, AXES"
@@ -1042,7 +1042,7 @@
   {
     "id": 113,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Techniques for food ___ and ___ were developed.",
+    "question": "Techniques for food___and___were developed.",
     "answers": [
       "processing, preservation",
       "PROCESSING, PRESERVATION"
@@ -1051,7 +1051,7 @@
   {
     "id": 114,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Preservation techniques included ___, ___, and ___.",
+    "question": "Preservation techniques included___,___, and___.",
     "answers": [
       "drying, smoking, salting, fermenting",
       "DRYING, SMOKING, SALTING, FERMENTING"
@@ -1060,7 +1060,7 @@
   {
     "id": 115,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "___ aimed at killing bacteria.",
+    "question": "___aimed at killing bacteria.",
     "answers": [
       "Drying",
       "drying",
@@ -1070,7 +1070,7 @@
   {
     "id": 116,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "___ and ___ prevented micro-organism infection.",
+    "question": "___and___preventedmicro-organisminfection.",
     "answers": [
       "Smoking, Salting",
       "smoking, salting",
@@ -1080,7 +1080,7 @@
   {
     "id": 117,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "___ reduced acidity content for healthy consumption.",
+    "question": "___reduced acidity content for healthy consumption.",
     "answers": [
       "Fermentation",
       "fermentation",
@@ -1090,16 +1090,16 @@
   {
     "id": 118,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Indigenous Yoruba foods include ___, ___, ___, ___.",
+    "question": "Indigenous Yoruba foods include___,___,___,___.",
     "answers": [
-      "adun, kokoro, bean cakes, melon seed cakes",
-      "ADUN, KOKORO, BEAN CAKES, MELON SEED CAKES"
+      "adun, kokoro, bean cakes, melon seedcakes",
+      "ADUN, KOKORO, BEAN CAKES, MELON SEEDCAKES"
     ]
   },
   {
     "id": 119,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Textile industry advancement is seen in ___ and ___.",
+    "question": "Textile industry advancement is seen in___and___.",
     "answers": [
       "Aso-Oke, Adire",
       "aso-oke, adire",
@@ -1109,7 +1109,7 @@
   {
     "id": 120,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "___ exemplifies Yoruba expertise in dyeing technology.",
+    "question": "___exemplifies Yoruba expertise in dyeing technology.",
     "answers": [
       "Adire",
       "adire",
@@ -1119,7 +1119,7 @@
   {
     "id": 121,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Pot-making was common where there was abundant ___.",
+    "question": "Pot-makingwas common where there was abundant___.",
     "answers": [
       "clay soil",
       "CLAY SOIL"
@@ -1128,7 +1128,7 @@
   {
     "id": 122,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Wood-work was common where there were ___.",
+    "question": "Wood-workwas common where there were___.",
     "answers": [
       "trees",
       "TREES"
@@ -1137,7 +1137,7 @@
   {
     "id": 123,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Traditional medicines were extracted from ___.",
+    "question": "Traditional medicines were extracted from___.",
     "answers": [
       "plants and herbs",
       "PLANTS AND HERBS"
@@ -1146,7 +1146,7 @@
   {
     "id": 124,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Traditional healers carried out ___ and administered therapies.",
+    "question": "Traditional healers carried out___and administered therapies.",
     "answers": [
       "diagnosis",
       "DIAGNOSIS"
@@ -1155,7 +1155,7 @@
   {
     "id": 125,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Local industries in Nigeria depended on ___, ___, and ___.",
+    "question": "Local industries in Nigeria depended on___,___, and___.",
     "answers": [
       "minerals, plants, animal products",
       "MINERALS, PLANTS, ANIMAL PRODUCTS"
@@ -1164,7 +1164,7 @@
   {
     "id": 126,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Mineral-based industries produced ___.",
+    "question": "Mineral-basedindustries produced___.",
     "answers": [
       "pottery, iron melting, smithing",
       "POTTERY, IRON MELTING, SMITHING"
@@ -1173,7 +1173,7 @@
   {
     "id": 127,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Plant-based industries produced items like ___.",
+    "question": "Plant-basedindustries produced items like___.",
     "answers": [
       "cutlasses, axes, pestle, mortar, mats, cloth weaving",
       "CUTLASSES, AXES, PESTLE, MORTAR, MATS, CLOTH WEAVING"
@@ -1182,7 +1182,7 @@
   {
     "id": 128,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Animal-based industries produced items like ___.",
+    "question": "Animal-basedindustries produced items like___.",
     "answers": [
       "bags, purses, slippers from skins",
       "BAGS, PURSES, SLIPPERS FROM SKINS"
@@ -1191,7 +1191,7 @@
   {
     "id": 129,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Animal products also provided ___.",
+    "question": "Animal products also provided___.",
     "answers": [
       "milk and consumables",
       "MILK AND CONSUMABLES"
@@ -1200,16 +1200,16 @@
   {
     "id": 130,
     "chapter": "CULTURE AND ITS COMPONENTS",
-    "question": "Primitive technology and techniques grew into what is now called ___.",
+    "question": "Primitive technology and techniques grew into what is now called___.",
     "answers": [
-      "small- scale industries",
-      "SMALL- SCALE INDUSTRIES"
+      "small-scale industries",
+      "SMALL-SCALE INDUSTRIES"
     ]
   },
   {
     "id": 131,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "At a time within development discourses, culture was thought to be an ___ to development.",
+    "question": "At a time within development discourses, culture was thought to bean___to development.",
     "answers": [
       "obstacle",
       "OBSTACLE"
@@ -1218,7 +1218,7 @@
   {
     "id": 132,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Presently, culture is recognised to be at the ___ of every human civilization and development.",
+    "question": "Presently, culture is recognised to be at the___of every human civilization and development.",
     "answers": [
       "heart",
       "HEART"
@@ -1227,7 +1227,7 @@
   {
     "id": 133,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Development means growth plus ___.",
+    "question": "Development means growth plus___.",
     "answers": [
       "change",
       "CHANGE"
@@ -1236,7 +1236,7 @@
   {
     "id": 134,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Ogunkola and Egwaikhide defined development as requiring significant ___ within a country.",
+    "question": "Ogunkola and Egwaikhide defined development as requiring significant___within a country.",
     "answers": [
       "structural transformation",
       "STRUCTURAL TRANSFORMATION"
@@ -1245,27 +1245,27 @@
   {
     "id": 135,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "_________ said in 2013, \"Culture is associated with traditions and customs that were sometimes seen as obstacles to development …\".",
+    "question": "_________said in2013,\"Culture is associated with traditions and customs that were sometimes seen as obstacles to development…\".",
     "answers": [
-      "Irina Bokova, Director- General of UNESCO",
-      "irina bokova, director- general of unesco",
-      "IRINA BOKOVA, DIRECTOR- GENERAL OF UNESCO"
+      "Irina Bokova, Director-General of UNESCO",
+      "irina bokova, director-general of unesco",
+      "IRINA BOKOVA, DIRECTOR-GENERAL OF UNESCO"
     ]
   },
   {
     "id": 136,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "_________ defined culture as \"the way of life of a given society, or the universe of values and artefacts in which a given people live.\".",
+    "question": "_________defined culture as\"the way of life of a given society, or the universe of values and artefacts in which a given people live.\".",
     "answers": [
-      "L.A. Thompson",
-      "l.a. thompson",
-      "L.A. THOMPSON"
+      "L.A.Thompson",
+      "l.a.thompson",
+      "L.A.THOMPSON"
     ]
   },
   {
     "id": 137,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "_________ elucidated culture as \"the totality of the way of life evolved by a people in their attempt to meet the challenges of living in their environment …\".",
+    "question": "_________elucidated culture as\"the totality of the way of life evolved by a people in their attempt to meet the challenges of living in their environment…\".",
     "answers": [
       "Aret Adams",
       "aret adams",
@@ -1275,7 +1275,7 @@
   {
     "id": 138,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "_________ explained culture as the phenomenon which creates the \"weness\" and \"theyness\" syndrome distinguishing a people from others.",
+    "question": "_________explained culture as the phenomenon which creates the\"weness\"and\"theyness\"syndrome distinguishing a people from others.",
     "answers": [
       "Uroh",
       "uroh",
@@ -1285,7 +1285,7 @@
   {
     "id": 139,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "_________ defined culture as \"the way people live in given tempo-spatial contexts and with respect to their stable or changing social and physical environments.\".",
+    "question": "_________defined culture as\"the way people live in giventempo-spatialcontexts and with respect to their stable or changing social and physical environments.\".",
     "answers": [
       "Abdi",
       "abdi",
@@ -1295,7 +1295,7 @@
   {
     "id": 140,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "_________ defined culture as \"the set of distinctive, spiritual, material, intellectual and emotional features of a society … encompassing lifestyles, ways of life, value systems, traditions and beliefs.\".",
+    "question": "_________defined culture as\"the set of distinctive, spiritual, material, intellectual and emotional features of a society…encompassing lifestyles, ways of life, value systems, traditions and beliefs.\".",
     "answers": [
       "UNESCO",
       "unesco"
@@ -1304,7 +1304,7 @@
   {
     "id": 141,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Elements of culture include ___.",
+    "question": "Elements of culture include___.",
     "answers": [
       "beliefs, rules of behaviour, language, rituals, arts, technology, styles of dress, ways of producing and cooking food, religion, political and economic systems",
       "BELIEFS, RULES OF BEHAVIOUR, LANGUAGE, RITUALS, ARTS, TECHNOLOGY, STYLES OF DRESS, WAYS OF PRODUCING AND COOKING FOOD, RELIGION, POLITICAL AND ECONOMIC SYSTEMS"
@@ -1313,16 +1313,16 @@
   {
     "id": 142,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "The ability of people to have culture comes in large part from their ___.",
+    "question": "The ability of people to have culture comes in large part from their___.",
     "answers": [
-      "big brains, upright posture, free hands, vocal tract",
-      "BIG BRAINS, UPRIGHT POSTURE, FREE HANDS, VOCAL TRACT"
+      "big brains, upright posture, freehands, vocal tract",
+      "BIG BRAINS, UPRIGHT POSTURE, FREEHANDS, VOCAL TRACT"
     ]
   },
   {
     "id": 143,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Characteristics of culture are ___, ___, ___, and ___.",
+    "question": "Characteristics of culture are___,___,___, and___.",
     "answers": [
       "symbolism, learned, shared, adaptive",
       "SYMBOLISM, LEARNED, SHARED, ADAPTIVE"
@@ -1331,7 +1331,7 @@
   {
     "id": 144,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Development is conceived as a process of ___.",
+    "question": "Development is conceived as a process of___.",
     "answers": [
       "change",
       "CHANGE"
@@ -1340,7 +1340,7 @@
   {
     "id": 145,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Culture is increasingly recognised as a force for ___ in development.",
+    "question": "Culture is increasingly recognised as a force for___in development.",
     "answers": [
       "sustainability",
       "SUSTAINABILITY"
@@ -1349,7 +1349,7 @@
   {
     "id": 146,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Culture is perceived as both a ___ and an ___ of development.",
+    "question": "Culture is perceived as both a___and an___of development.",
     "answers": [
       "driver, enabler",
       "DRIVER, ENABLER"
@@ -1358,7 +1358,7 @@
   {
     "id": 147,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Culture carries inherent value as a source of ___ and a wellspring for ___.",
+    "question": "Culture carries inherent value as a source of___and a wellspring for___.",
     "answers": [
       "belonging, creativity",
       "BELONGING, CREATIVITY"
@@ -1367,7 +1367,7 @@
   {
     "id": 148,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Culture is a bridge to ___ and ___.",
+    "question": "Culture is abridge to___and___.",
     "answers": [
       "sustainable development, social cohesion",
       "SUSTAINABLE DEVELOPMENT, SOCIAL COHESION"
@@ -1376,7 +1376,7 @@
   {
     "id": 149,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Culture is important for inclusive ___ and ___ development.",
+    "question": "Culture is important for inclusive___and___development.",
     "answers": [
       "social, economic",
       "SOCIAL, ECONOMIC"
@@ -1385,7 +1385,7 @@
   {
     "id": 150,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Culture is essential for ___ sustainability.",
+    "question": "Culture is essential for___sustainability.",
     "answers": [
       "environmental",
       "ENVIRONMENTAL"
@@ -1394,7 +1394,7 @@
   {
     "id": 151,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Culture provides materials for ___ innovations.",
+    "question": "Culture provides materials for___innovations.",
     "answers": [
       "scientific and technological",
       "SCIENTIFIC AND TECHNOLOGICAL"
@@ -1403,7 +1403,7 @@
   {
     "id": 152,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Cultural challenges to development in Africa include ___.",
+    "question": "Cultural challenges to development in Africa include___.",
     "answers": [
       "globalisation, colonialism, supernaturalism, anachronism, authoritarianism, self-aggrandizement, corruption",
       "GLOBALISATION, COLONIALISM, SUPERNATURALISM, ANACHRONISM, AUTHORITARIANISM, SELF-AGGRANDIZEMENT, CORRUPTION"
@@ -1412,7 +1412,7 @@
   {
     "id": 153,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Culture has been posited to be at the heart of ___.",
+    "question": "Culture has been posited to be at the heart of___.",
     "answers": [
       "civilization",
       "CIVILIZATION"
@@ -1421,7 +1421,7 @@
   {
     "id": 154,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "The degree of development in any society is a function of the dynamism of the ___.",
+    "question": "The degree of development in any society is afunction of the dynamism of the___.",
     "answers": [
       "culture",
       "CULTURE"
@@ -1430,7 +1430,7 @@
   {
     "id": 155,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "___ constitutes both a physical reality and a state of mind.",
+    "question": "___constitutes both a physical reality and a state of mind.",
     "answers": [
       "Culture",
       "culture",
@@ -1440,7 +1440,7 @@
   {
     "id": 156,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Development means growth plus ___.",
+    "question": "Development means growth plus___.",
     "answers": [
       "change",
       "CHANGE"
@@ -1449,7 +1449,7 @@
   {
     "id": 157,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Man developed technologies and learned how to cope with nature through ___.",
+    "question": "Man developed technologies and learned how to cope with nature through___.",
     "answers": [
       "culture",
       "CULTURE"
@@ -1458,7 +1458,7 @@
   {
     "id": 158,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "___ allow people to develop complex thoughts and to exchange those thoughts.",
+    "question": "___allow people to develop complex thoughts and to exchange those thoughts.",
     "answers": [
       "Symbols",
       "symbols",
@@ -1468,7 +1468,7 @@
   {
     "id": 159,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Culture is not a mode of communication. ___.",
+    "question": "Culture is not a mode of communication.___.",
     "answers": [
       "False",
       "false",
@@ -1478,7 +1478,7 @@
   {
     "id": 160,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "\"Culture is adaptive\" means that culture is capable of ___.",
+    "question": "\"Culture is adaptive\"means that culture is capable of___.",
     "answers": [
       "change",
       "CHANGE"
@@ -1487,17 +1487,17 @@
   {
     "id": 161,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "___ is the phenomenon that unites the \"weness\" and \"theyness\" syndrome.",
+    "question": "___is the phenomenon that unites the\"weness\"and\"theyness\"syndrome.",
     "answers": [
-      "Culture - True",
-      "culture - true",
-      "CULTURE - TRUE"
+      "Culture-True",
+      "culture-true",
+      "CULTURE-TRUE"
     ]
   },
   {
     "id": 162,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "The change that brings development requires significant structural transformation within a country. ___.",
+    "question": "The change that brings development requires significant structural transformation within a country.___.",
     "answers": [
       "True",
       "true",
@@ -1507,17 +1507,17 @@
   {
     "id": 163,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "There is a relationship between culture and development. ___.",
+    "question": "There is a relationship between culture and development.___.",
     "answers": [
-      "Yes - culture drives and enables development",
-      "yes - culture drives and enables development",
-      "YES - CULTURE DRIVES AND ENABLES DEVELOPMENT"
+      "Yes-culture drives and enables development",
+      "yes-culture drives and enables development",
+      "YES-CULTURE DRIVES AND ENABLES DEVELOPMENT"
     ]
   },
   {
     "id": 164,
     "chapter": "THE ROLE OF CULTURE IN DEVELOPMENT",
-    "question": "Change in development requires some elements. These include ___.",
+    "question": "Change in development requires some elements.These include___.",
     "answers": [
       "reorganization, reorientation of social systems, rearrangements in structures, reorientation in attitudes, customs, beliefs",
       "REORGANIZATION, REORIENTATION OF SOCIAL SYSTEMS, REARRANGEMENTS IN STRUCTURES, REORIENTATION IN ATTITUDES, CUSTOMS, BELIEFS"
@@ -1526,7 +1526,7 @@
   {
     "id": 165,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "_________ is the scientific study of languages.",
+    "question": "_________is the scientific study of languages.",
     "answers": [
       "Linguistics",
       "linguistics",
@@ -1536,7 +1536,7 @@
   {
     "id": 166,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "A ___ refers to a family of languages that share common origin.",
+    "question": "A___refers to a family of languages that share common origin.",
     "answers": [
       "linguistic stock",
       "LINGUISTIC STOCK"
@@ -1545,7 +1545,7 @@
   {
     "id": 167,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "The study of the distribution of languages is called ___.",
+    "question": "The study of the distribution of languages is called___.",
     "answers": [
       "dialect geography",
       "DIALECT GEOGRAPHY"
@@ -1554,7 +1554,7 @@
   {
     "id": 168,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Nigerian languages such as Igbo, Yoruba, and Edo belong to the ___ group.",
+    "question": "Nigerian languages such as Igbo, Yoruba, and Edo belong to the___group.",
     "answers": [
       "Kwa",
       "kwa",
@@ -1564,7 +1564,7 @@
   {
     "id": 169,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Hausa belongs to the ___ group.",
+    "question": "Hausa belongs to the___group.",
     "answers": [
       "Chadic",
       "chadic",
@@ -1574,7 +1574,7 @@
   {
     "id": 170,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Kanuri belongs to the ___ group.",
+    "question": "Kanuri belongs to the___group.",
     "answers": [
       "Nilo-Saharan",
       "nilo-saharan",
@@ -1584,7 +1584,7 @@
   {
     "id": 171,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Tiv belongs to the ___ group.",
+    "question": "Tiv belongs to the___group.",
     "answers": [
       "Benue-Congo",
       "benue-congo",
@@ -1594,7 +1594,7 @@
   {
     "id": 172,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Efik belongs to the ___ group.",
+    "question": "Efik belongs to the___group.",
     "answers": [
       "Kwa",
       "kwa",
@@ -1604,7 +1604,7 @@
   {
     "id": 173,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Glottochronology is the science of ___.",
+    "question": "Glottochronology is the science of___.",
     "answers": [
       "dating languages",
       "DATING LANGUAGES"
@@ -1613,7 +1613,7 @@
   {
     "id": 174,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Language is the major tool for ___.",
+    "question": "Language is the major tool for___.",
     "answers": [
       "transmitting culture",
       "TRANSMITTING CULTURE"
@@ -1622,7 +1622,7 @@
   {
     "id": 175,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Through language, people are able to ___.",
+    "question": "Through language, people areable to___.",
     "answers": [
       "communicate, interact, transmit thoughts",
       "COMMUNICATE, INTERACT, TRANSMIT THOUGHTS"
@@ -1631,7 +1631,7 @@
   {
     "id": 176,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Language differentiates humans from ___.",
+    "question": "Language differentiates humans from___.",
     "answers": [
       "other animals",
       "OTHER ANIMALS"
@@ -1640,7 +1640,7 @@
   {
     "id": 177,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Symbolic language is based on ___.",
+    "question": "Symbolic language is based on___.",
     "answers": [
       "human linguistic expression",
       "HUMAN LINGUISTIC EXPRESSION"
@@ -1649,7 +1649,7 @@
   {
     "id": 178,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Culture is transmitted from one generation to another mainly through ___.",
+    "question": "Culture is transmitted from one generation to another mainly through___.",
     "answers": [
       "language",
       "LANGUAGE"
@@ -1658,7 +1658,7 @@
   {
     "id": 179,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Language is a key instrument of ___.",
+    "question": "Language is a key instrument of___.",
     "answers": [
       "socialisation",
       "SOCIALISATION"
@@ -1667,7 +1667,7 @@
   {
     "id": 180,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Socialisation is the process by which individuals learn ___.",
+    "question": "Socialisation is the process by which individuals learn___.",
     "answers": [
       "values, norms, behaviours of society",
       "VALUES, NORMS, BEHAVIOURS OF SOCIETY"
@@ -1676,7 +1676,7 @@
   {
     "id": 181,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Socialisation helps individuals to become ___.",
+    "question": "Socialisation helps individuals to become___.",
     "answers": [
       "functional members of society",
       "FUNCTIONAL MEMBERS OF SOCIETY"
@@ -1685,7 +1685,7 @@
   {
     "id": 182,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "The family is the primary agent of ___.",
+    "question": "The family is the primary agent of___.",
     "answers": [
       "socialisation",
       "SOCIALISATION"
@@ -1694,7 +1694,7 @@
   {
     "id": 183,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Other agents of socialisation include ___.",
+    "question": "Other agents of socialisation include___.",
     "answers": [
       "school, peer group, religion, media",
       "SCHOOL, PEER GROUP, RELIGION, MEDIA"
@@ -1703,7 +1703,7 @@
   {
     "id": 184,
     "chapter": "CULTURE, LANGUAGE AND SOCIALISATION",
-    "question": "Language serves as a means of preserving ___.",
+    "question": "Language serves as a means of preserving___.",
     "answers": [
       "history and traditions",
       "HISTORY AND TRADITIONS"
@@ -1712,7 +1712,7 @@
   {
     "id": 185,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "_________ has been identified by scholars as one of the unique characteristics that differentiate not only human cultures, but also human beings from other animate beings",
+    "question": "_________has been identified by scholars as one of the unique characteristics that differentiate not only human cultures, but also human beings from other animate beings",
     "answers": [
       "Language",
       "language",
@@ -1722,7 +1722,7 @@
   {
     "id": 186,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "It is only through ___ that human beings can communicate, interact and transmit to others their thoughts, intents and purposes through symbolic expression",
+    "question": "It is only through___that human beings can communicate, interact and transmit toothers their thoughts, intents and purposes through symbolic expression",
     "answers": [
       "language",
       "LANGUAGE"
@@ -1731,7 +1731,7 @@
   {
     "id": 187,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "Symbolic language is based on human ___ and ability to use and understand symbols, arbitrary meaningful units, or models that humans use to represent reality",
+    "question": "Symbolic language is based on human___and ability to use and understand symbols, arbitrary meaningful units, or models that humans use to represent reality",
     "answers": [
       "linguistic capacity",
       "LINGUISTIC CAPACITY"
@@ -1740,7 +1740,7 @@
   {
     "id": 188,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "_________ observes that \"language, like all activities of human beings, generates solidarity, by uniting people together in groups.\"",
+    "question": "_________observes that\"language, like all activities of human beings, generates solidarity, by uniting people together in groups.\"",
     "answers": [
       "Madubuike",
       "madubuike",
@@ -1750,7 +1750,7 @@
   {
     "id": 189,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "Madubuike, citing Khaldum, argues that \"the sense of living together with common ties and in common endeavour is necessarily dependent on ___.\"",
+    "question": "Madubuike, citing Khaldum, argues that\"the sense of living together with commonties and in common endeavour is necessarily dependent on___.\"",
     "answers": [
       "language",
       "LANGUAGE"
@@ -1759,7 +1759,7 @@
   {
     "id": 190,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "Language is a complex ___ through which other aspects of human activities are known",
+    "question": "Language is a complex___through which other aspects of human activities are known",
     "answers": [
       "cultural symbol",
       "CULTURAL SYMBOL"
@@ -1768,17 +1768,17 @@
   {
     "id": 191,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "_________ observes that human linguistic capacity is designed to serve a variety of functions and notes that its usage falls into two general categories: whether the primary purpose is to change conditions in ourselves (S) or in another (O), and whether the specific usage is designed to promote emotional results (E) or rational/intellectual results (R).",
+    "question": "_________observes that human linguistic capacity is designed to serve a variety of functions and notes that its usage falls into two general categories: whether the primary purpose is to change conditions in ourselves(S)or in another(O), and whether the specific usage is designed to promote emotional results(E)orrational/intellectualresults(R).",
     "answers": [
-      "James L. Christian",
-      "james l. christian",
-      "JAMES L. CHRISTIAN"
+      "James L.Christian",
+      "james l.christian",
+      "JAMES L.CHRISTIAN"
     ]
   },
   {
     "id": 192,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "_________ sums up the unique functions of language as: serving as an avenue to express a particular culture, used for record purposes to ensure continuity, used to set matters in motion for social justice, cooperation and peace in group relationships, and used as an instrument of logical and scientific reasoning.",
+    "question": "_________sums up the unique functions of language as: serving as an avenue to express a particular culture, used for record purposes to ensure continuity, used to set matters in motion for social justice, cooperation and peace in group relationships, and used as an instrument of logical and scientific reasoning.",
     "answers": [
       "Madubuike",
       "madubuike",
@@ -1788,7 +1788,7 @@
   {
     "id": 193,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "Language is an important vehicle of cultural transmission technically referred to as ___",
+    "question": "Language is an important vehicle of cultural transmission technically referred to as___",
     "answers": [
       "socialisation",
       "SOCIALISATION"
@@ -1797,7 +1797,7 @@
   {
     "id": 194,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "Socialisation helps in the development of ___ and ___ of individuals",
+    "question": "Socialisation helps in the development of___and___of individuals",
     "answers": [
       "identity, personality",
       "IDENTITY, PERSONALITY"
@@ -1806,7 +1806,7 @@
   {
     "id": 195,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "_________ emphasised the importance of language in self‑ development through socialisation when he observed: \"it is not arguable that it is language that differentiates man from other animals. The essential factor in language and symbolic communication is that a symbol arouses in oneself the meaning it arouses in another. Through language, man is able to develop shared social meaning, to take the role of his object and evaluate his own behaviour as he/she thinks others do. In summary, language makes possible the development of mind and self.\"",
+    "question": "_________emphasised the importance of language in self‑development through socialisation when he observed:\"it is not arguable that it is language that differentiates man from other animals.The essential factor in language and symbolic communication is that a symbol arouses in oneself the meaning it arouses in another.Through language, man isable to develop shared social meaning, to take the role of his object and evaluate his own behaviour ashe/shethinks others do.In summary, language makes possible the development of mind and self.\"",
     "answers": [
       "Mead",
       "mead",
@@ -1816,7 +1816,7 @@
   {
     "id": 196,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "Social scientists are more concerned about the process of ___ that takes place in society",
+    "question": "Social scientists are more concerned about the process of___that takes place in society",
     "answers": [
       "socialisation",
       "SOCIALISATION"
@@ -1825,7 +1825,7 @@
   {
     "id": 197,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "Language enables human beings to ___ and communicate their thoughts; it is the matrix within which thinking takes place",
+    "question": "Language enables human beings to___and communicate their thoughts; it is the matrix within which thinking takes place",
     "answers": [
       "think",
       "THINK"
@@ -1834,7 +1834,7 @@
   {
     "id": 198,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "Socialisation can be socio‑ culturally described as the learning of expectations like ___, ___, ___, ___, and other requirements necessary for effective participation in social groups",
+    "question": "Socialisation can be socio‑culturally described as the learning of expectations like___,___,___,___, and other requirements necessary for effective participation insocial groups",
     "answers": [
       "habits, skills, values, beliefs",
       "HABITS, SKILLS, VALUES, BELIEFS"
@@ -1843,17 +1843,17 @@
   {
     "id": 199,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "_________ observe that \"we may understand that the idea that we are born into a society that has certain rules of behaviour and we as human beings, learn these rules through a process of socialisation.\"",
+    "question": "_________observe that\"we may understand that the idea that we are born into a society that has certain rules of behaviour and we as human beings, learn these rules through a process of socialisation.\"",
     "answers": [
-      "Goodman & Clemow",
-      "goodman & clemow",
-      "GOODMAN & CLEMOW"
+      "Goodman&Clemow",
+      "goodman&clemow",
+      "GOODMAN&CLEMOW"
     ]
   },
   {
     "id": 200,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "Socialisation simply means the various ways we learn how to be ___ and are taught the basic rules of the society we live in",
+    "question": "Socialisation simply means the various ways we learn how to be___and are taught the basic rules of the society we live in",
     "answers": [
       "human",
       "HUMAN"
@@ -1862,26 +1862,26 @@
   {
     "id": 201,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "Some scientists suggest that socialisation provides only a partial explanation for the acquisition of culture, that people are not ___",
+    "question": "Some scientists suggest that socialisation provides only a partial explanation for the acquisition of culture, that people are not___",
     "answers": [
-      "blank slates/tabula rasa",
-      "BLANK SLATES/TABULA RASA"
+      "blankslates/tabularasa",
+      "BLANKSLATES/TABULARASA"
     ]
   },
   {
     "id": 202,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "_________ observed that a person's environment (socialisation) interacts with their genotype to influence behavioural outcomes",
+    "question": "_________observed that aperson'senvironment(socialisation)interacts with their genotype to influence behavioural outcomes",
     "answers": [
-      "Ridley & Carlson",
-      "ridley & carlson",
-      "RIDLEY & CARLSON"
+      "Ridley&Carlson",
+      "ridley&carlson",
+      "RIDLEY&CARLSON"
     ]
   },
   {
     "id": 203,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "Socialisation occurs through ___",
+    "question": "Socialisation occurs through___",
     "answers": [
       "social interaction",
       "SOCIAL INTERACTION"
@@ -1890,16 +1890,16 @@
   {
     "id": 204,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "Social interaction means being aware of others, acting and modifying behaviour in response to ___",
+    "question": "Social interaction means being aware of others, acting and modifying behaviour in response to___",
     "answers": [
-      "others' responses",
-      "OTHERS' RESPONSES"
+      "others'responses",
+      "OTHERS'RESPONSES"
     ]
   },
   {
     "id": 205,
     "chapter": "LANGUAGE, CULTURE AND SOCIALISATION",
-    "question": "Socialisation occurs in three stages namely: ___, ___, and ___",
+    "question": "Socialisation occurs in three stages namely:___,___, and___",
     "answers": [
       "primary, secondary, anticipatory",
       "PRIMARY, SECONDARY, ANTICIPATORY"
@@ -1908,7 +1908,7 @@
   {
     "id": 206,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "Long before Europeans occupied Africa, ___ had already existed",
+    "question": "Long before Europeans occupied Africa,___had already existed",
     "answers": [
       "slavery",
       "SLAVERY"
@@ -1917,7 +1917,7 @@
   {
     "id": 207,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "Africans also participated in slavery; they bought, owned, and ___",
+    "question": "Africans also participated in slavery; they bought, owned, and___",
     "answers": [
       "sold slaves",
       "SOLD SLAVES"
@@ -1926,16 +1926,16 @@
   {
     "id": 208,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "Reasons for enslavement included ___, ___, and ___",
+    "question": "Reasons for enslavement included___,___, and___",
     "answers": [
-      "wars, debts, self‑ slavery",
-      "WARS, DEBTS, SELF‑ SLAVERY"
+      "wars, debts, self‑slavery",
+      "WARS, DEBTS, SELF‑SLAVERY"
     ]
   },
   {
     "id": 209,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "The slaves from Africa were usually ___",
+    "question": "The slaves from Africa were usually___",
     "answers": [
       "domestic slaves",
       "DOMESTIC SLAVES"
@@ -1944,37 +1944,37 @@
   {
     "id": 210,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "Slavery in Africa became more serious with the ___",
+    "question": "Slavery in Africa became more serious with the___",
     "answers": [
-      "trans‑ Atlantic slave trade",
-      "trans‑ atlantic slave trade",
-      "TRANS‑ ATLANTIC SLAVE TRADE"
+      "trans‑Atlantic slave trade",
+      "trans‑atlantic slave trade",
+      "TRANS‑ATLANTIC SLAVE TRADE"
     ]
   },
   {
     "id": 211,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "There were four major slave trades: ___, ___, ___, and ___",
+    "question": "There were four major slave trades:___,___,___, and___",
     "answers": [
-      "Trans‑ Atlantic, Trans‑ Sahara, Red Sea, Indian Ocean",
-      "trans‑ atlantic, trans‑ sahara, red sea, indian ocean",
-      "TRANS‑ ATLANTIC, TRANS‑ SAHARA, RED SEA, INDIAN OCEAN"
+      "Trans‑Atlantic, Trans‑Sahara, Red Sea, Indian Ocean",
+      "trans‑atlantic, trans‑sahara, red sea, indian ocean",
+      "TRANS‑ATLANTIC, TRANS‑SAHARA, RED SEA, INDIAN OCEAN"
     ]
   },
   {
     "id": 212,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "The ___ and ___ slave trades affected Africa directly",
+    "question": "The___and___slave trades affected Africa directly",
     "answers": [
-      "Trans‑ Atlantic, Trans‑ Sahara",
-      "trans‑ atlantic, trans‑ sahara",
-      "TRANS‑ ATLANTIC, TRANS‑ SAHARA"
+      "Trans‑Atlantic, Trans‑Sahara",
+      "trans‑atlantic, trans‑sahara",
+      "TRANS‑ATLANTIC, TRANS‑SAHARA"
     ]
   },
   {
     "id": 213,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "The ___ and ___ slave trades affected Africa indirectly",
+    "question": "The___and___slave trades affected Africa indirectly",
     "answers": [
       "Red Sea, Indian Ocean",
       "red sea, indian ocean",
@@ -1984,7 +1984,7 @@
   {
     "id": 214,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "The Trans‑ Atlantic and Trans‑ Sahara slave trades were significant in the spread of ___ and ___ in Nigeria",
+    "question": "The Trans‑Atlantic and Trans‑Sahara slave trades were significant in the spread of___and___in Nigeria",
     "answers": [
       "Christianity, Islam",
       "christianity, islam",
@@ -1994,17 +1994,17 @@
   {
     "id": 215,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "Before British colonial dominance, the ___ slave trade had ushered in Islamic rule",
+    "question": "Before British colonial dominance, the___slave trade had ushered in Islamic rule",
     "answers": [
-      "Trans‑ Sahara",
-      "trans‑ sahara",
-      "TRANS‑ SAHARA"
+      "Trans‑Sahara",
+      "trans‑sahara",
+      "TRANS‑SAHARA"
     ]
   },
   {
     "id": 216,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "The British eventually subdued the ___ rulers",
+    "question": "The British eventually subdued the___rulers",
     "answers": [
       "Islamic",
       "islamic",
@@ -2014,7 +2014,7 @@
   {
     "id": 217,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "At the end of the trans‑ Atlantic slave trade, ___ gained ascendancy",
+    "question": "At the end of the trans‑Atlantic slave trade,___gained ascendancy",
     "answers": [
       "colonialism",
       "COLONIALISM"
@@ -2023,7 +2023,7 @@
   {
     "id": 218,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "On 8th January 1897, ___ named the area around the Niger the \"Niger Area\"",
+    "question": "On8th January1897,___named the area around the Niger the\"Niger Area\"",
     "answers": [
       "Flora Shaw",
       "flora shaw",
@@ -2033,7 +2033,7 @@
   {
     "id": 219,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "Flora Shaw later married ___ who administered Nigeria",
+    "question": "Flora Shaw later married___who administered Nigeria",
     "answers": [
       "Lord Lugard",
       "lord lugard",
@@ -2043,7 +2043,7 @@
   {
     "id": 220,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "The name ___ originated from \"Niger Area\"",
+    "question": "The name___originated from\"Niger Area\"",
     "answers": [
       "Nigeria",
       "nigeria",
@@ -2053,7 +2053,7 @@
   {
     "id": 221,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "The ___ Company controlled Nigeria until 1900",
+    "question": "The___Company controlled Nigeria until1900",
     "answers": [
       "Royal Niger Company",
       "royal niger company",
@@ -2063,7 +2063,7 @@
   {
     "id": 222,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "In 1914, Lugard amalgamated the ___ and ___ Protectorates",
+    "question": "In1914, Lugard amalgamated the___and___Protectorates",
     "answers": [
       "Northern, Southern",
       "northern, southern",
@@ -2073,7 +2073,7 @@
   {
     "id": 223,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "In the North, ___ conquest and missionary activities spread Islam",
+    "question": "In the North,___conquest and missionary activities spread Islam",
     "answers": [
       "Islamic",
       "islamic",
@@ -2083,7 +2083,7 @@
   {
     "id": 224,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "In the South, ___ dominance and missionary activities spread Christianity",
+    "question": "In the South,___dominance and missionary activities spread Christianity",
     "answers": [
       "colonial",
       "COLONIAL"
@@ -2092,7 +2092,7 @@
   {
     "id": 225,
     "chapter": "SLAVERY, COLONIALISM AND THE SPREAD OF",
-    "question": "Christianity came through the ___ while Islam came through the ___",
+    "question": "Christianity came through the___while Islam came through the___",
     "answers": [
       "Atlantic, Sahara desert",
       "atlantic, sahara desert",
@@ -2101,8 +2101,8 @@
   },
   {
     "id": 226,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Nigeria operates a ___ political system",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Nigeria operates a___political system",
     "answers": [
       "federal",
       "FEDERAL"
@@ -2110,8 +2110,8 @@
   },
   {
     "id": 227,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "The Executive is made up of the ___, ___, and his cabinet",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "The Executive is made up of the___,___, and his cabinet",
     "answers": [
       "President, Vice President",
       "president, vice president",
@@ -2120,8 +2120,8 @@
   },
   {
     "id": 228,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "The Legislature is bicameral, consisting of the ___ and ___",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "The Legislature is bicameral, consisting of the___and___",
     "answers": [
       "Senate, House of Representatives",
       "senate, house of representatives",
@@ -2130,8 +2130,8 @@
   },
   {
     "id": 229,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "The Judiciary includes the ___, ___, and ___",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "The Judiciary includes the___,___, and___",
     "answers": [
       "Supreme Court, Court of Appeal, High Courts",
       "supreme court, court of appeal, high courts",
@@ -2140,24 +2140,24 @@
   },
   {
     "id": 230,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Nigeria has ___ Governors, each with a State House of Assembly and Judiciary branch",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Nigeria has___Governors, each with a StateHouse of Assembly and Judiciary branch",
     "answers": [
       "36"
     ]
   },
   {
     "id": 231,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "There are ___ Local Government Areas in Nigeria",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "There are___Local Government Areas in Nigeria",
     "answers": [
       "774"
     ]
   },
   {
     "id": 232,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Traditional rulers include ___, ___, ___, and ___",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Traditional rulers include___,___,___, and___",
     "answers": [
       "Emirs, Obas, Obis, Ezes",
       "emirs, obas, obis, ezes",
@@ -2166,18 +2166,18 @@
   },
   {
     "id": 233,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Electoral types include ___, ___, ___, and ___ elections",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Electoral types include___,___,___, and___elections",
     "answers": [
-      "Presidential, Gubernatorial, National Assembly, State House of Assembly",
-      "presidential, gubernatorial, national assembly, state house of assembly",
-      "PRESIDENTIAL, GUBERNATORIAL, NATIONAL ASSEMBLY, STATE HOUSE OF ASSEMBLY"
+      "Presidential, Gubernatorial, National Assembly, StateHouse of Assembly",
+      "presidential, gubernatorial, national assembly, statehouse of assembly",
+      "PRESIDENTIAL, GUBERNATORIAL, NATIONAL ASSEMBLY, STATEHOUSE OF ASSEMBLY"
     ]
   },
   {
     "id": 234,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Voting systems involve ___, ___, ___, ___, and ___",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Voting systems involve___,___,___,___, and___",
     "answers": [
       "primaries, campaigns, election day, collation/results, petitions",
       "PRIMARIES, CAMPAIGNS, ELECTION DAY, COLLATION/RESULTS, PETITIONS"
@@ -2185,8 +2185,8 @@
   },
   {
     "id": 235,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Nigerian parties often align around ___ interests",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Nigerian parties often align around___interests",
     "answers": [
       "regional",
       "REGIONAL"
@@ -2194,17 +2194,17 @@
   },
   {
     "id": 236,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Other alignments include ___, ___, and ___",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Other alignments include___,___, and___",
     "answers": [
-      "ethno‑ religious coalitions, economic priorities, constitutional reforms",
-      "ETHNO‑ RELIGIOUS COALITIONS, ECONOMIC PRIORITIES, CONSTITUTIONAL REFORMS"
+      "ethno‑religious coalitions, economic priorities, constitutional reforms",
+      "ETHNO‑RELIGIOUS COALITIONS, ECONOMIC PRIORITIES, CONSTITUTIONAL REFORMS"
     ]
   },
   {
     "id": 237,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Governance challenges include ___, ___, ___, and ___",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Governance challenges include___,___,___, and___",
     "answers": [
       "bureaucratic inefficiency, corruption, fiscal imbalance, civil service reform",
       "BUREAUCRATIC INEFFICIENCY, CORRUPTION, FISCAL IMBALANCE, CIVIL SERVICE REFORM"
@@ -2212,8 +2212,8 @@
   },
   {
     "id": 238,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Major political issues include ___, ___, ___, ___, and ___",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Major political issues include___,___,___,___, and___",
     "answers": [
       "resource allocation, security, ethnic balancing, economic reform, youth inclusion",
       "RESOURCE ALLOCATION, SECURITY, ETHNIC BALANCING, ECONOMIC REFORM, YOUTH INCLUSION"
@@ -2221,26 +2221,26 @@
   },
   {
     "id": 239,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Nigeria has over ___ ethnic groups",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Nigeria has over___ethnic groups",
     "answers": [
       "250"
     ]
   },
   {
     "id": 240,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Major groups include ___, ___, and ___",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Major groups include___,___, and___",
     "answers": [
-      "Hausa‑ Fulani, Yoruba, Igbo",
-      "hausa‑ fulani, yoruba, igbo",
-      "HAUSA‑ FULANI, YORUBA, IGBO"
+      "Hausa‑Fulani, Yoruba, Igbo",
+      "hausa‑fulani, yoruba, igbo",
+      "HAUSA‑FULANI, YORUBA, IGBO"
     ]
   },
   {
     "id": 241,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Other groups include ___, ___, ___, ___, and many more",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Other groups include___,___,___,___, and many more",
     "answers": [
       "Tiv, Nupe, Jukun, Kanuri, Edo, Itshekiri, Urhobo, Efik, Ibibio, Ijaw",
       "tiv, nupe, jukun, kanuri, edo, itshekiri, urhobo, efik, ibibio, ijaw",
@@ -2249,8 +2249,8 @@
   },
   {
     "id": 242,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Each group has its own ___, ___, ___, ___, and ___",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Each group has its own___,___,___,___, and___",
     "answers": [
       "language, attire, festivals, governance structures, marriage customs",
       "LANGUAGE, ATTIRE, FESTIVALS, GOVERNANCE STRUCTURES, MARRIAGE CUSTOMS"
@@ -2258,8 +2258,8 @@
   },
   {
     "id": 243,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Cultural values include ___, ___, ___, ___, and ___",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Cultural values include___,___,___,___, and___",
     "answers": [
       "hospitality, respect for authority, family importance, community solidarity, religious devotion",
       "HOSPITALITY, RESPECT FOR AUTHORITY, FAMILY IMPORTANCE, COMMUNITY SOLIDARITY, RELIGIOUS DEVOTION"
@@ -2267,8 +2267,8 @@
   },
   {
     "id": 244,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Festivals serve as a means of ___",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Festivals serve as a means of___",
     "answers": [
       "celebration",
       "CELEBRATION"
@@ -2276,8 +2276,8 @@
   },
   {
     "id": 245,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Culture influences ___, ___, ___, ___, and ___",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Culture influences___,___,___,___, and___",
     "answers": [
       "voting behaviour, leadership legitimacy, alliances, policy acceptance, identity politics",
       "VOTING BEHAVIOUR, LEADERSHIP LEGITIMACY, ALLIANCES, POLICY ACCEPTANCE, IDENTITY POLITICS"
@@ -2285,8 +2285,8 @@
   },
   {
     "id": 246,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Traditional rulers play stabilizing roles in ___",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Traditional rulers play stabilizing roles in___",
     "answers": [
       "conflict resolution",
       "CONFLICT RESOLUTION"
@@ -2294,8 +2294,8 @@
   },
   {
     "id": 247,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Challenges include ___, ___, ___, ___, and ___",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Challenges include___,___,___,___, and___",
     "answers": [
       "ethnic tensions, religious conflicts, uneven development, corruption, youth unemployment",
       "ETHNIC TENSIONS, RELIGIOUS CONFLICTS, UNEVEN DEVELOPMENT, CORRUPTION, YOUTH UNEMPLOYMENT"
@@ -2303,8 +2303,8 @@
   },
   {
     "id": 248,
-    "chapter": "SOCIO‑ POLITICAL AND CULTURAL DEVELOPMENTS IN",
-    "question": "Opportunities include ___, ___, ___, ___, and ___",
+    "chapter": "SOCIO‑POLITICAL AND CULTURAL DEVELOPMENTS IN",
+    "question": "Opportunities include___,___,___,___, and___",
     "answers": [
       "creative industries, technological innovation, diaspora contributions, democratic participation, cultural tourism",
       "CREATIVE INDUSTRIES, TECHNOLOGICAL INNOVATION, DIASPORA CONTRIBUTIONS, DEMOCRATIC PARTICIPATION, CULTURAL TOURISM"
@@ -2313,7 +2313,7 @@
   {
     "id": 249,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The evolution of Nigeria as a political entity was a product of ___ intervention and persistent efforts of Nigerians",
+    "question": "The evolution of Nigeria as a political entity was a product of___intervention and persistent efforts of Nigerians",
     "answers": [
       "colonial",
       "COLONIAL"
@@ -2322,7 +2322,7 @@
   {
     "id": 250,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "Nigeria was amalgamated in ___ by ___",
+    "question": "Nigeria was amalgamated in___by___",
     "answers": [
       "1914, Lord Frederick Lugard",
       "1914, lord frederick lugard",
@@ -2332,7 +2332,7 @@
   {
     "id": 251,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "Before 1914, Nigeria was administered as ___ Colony, ___ Protectorate, and ___ Protectorate",
+    "question": "Before1914, Nigeria was administered as___Colony,___Protectorate, and___Protectorate",
     "answers": [
       "Lagos, Southern, Northern",
       "lagos, southern, northern",
@@ -2342,7 +2342,7 @@
   {
     "id": 252,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The amalgamation was done for ___ efficiency, ___ convenience, and ___ control",
+    "question": "The amalgamation was done for___efficiency,___convenience, and___control",
     "answers": [
       "administrative, economic, political",
       "ADMINISTRATIVE, ECONOMIC, POLITICAL"
@@ -2351,7 +2351,7 @@
   {
     "id": 253,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The amalgamation allowed for unified ___ policies and coordinated ___",
+    "question": "The amalgamation allowed for unified___policies and coordinated___",
     "answers": [
       "taxation, trade",
       "TAXATION, TRADE"
@@ -2360,7 +2360,7 @@
   {
     "id": 254,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The boundaries imposed by the British were largely ___",
+    "question": "The boundaries imposed by the British were largely___",
     "answers": [
       "arbitrary",
       "ARBITRARY"
@@ -2369,7 +2369,7 @@
   {
     "id": 255,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The amalgamation laid the foundation for Nigeria's ___ system",
+    "question": "The amalgamation laid the foundation forNigeria's___system",
     "answers": [
       "federal",
       "FEDERAL"
@@ -2378,7 +2378,7 @@
   {
     "id": 256,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The first political party in Nigeria was ___ formed in 1923 by ___",
+    "question": "The first political party in Nigeria was___formed in1923by___",
     "answers": [
       "NNDP, Herbert Macaulay",
       "nndp, herbert macaulay",
@@ -2388,7 +2388,7 @@
   {
     "id": 257,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "NNDP stands for ___",
+    "question": "NNDP stands for___",
     "answers": [
       "Nigerian National Democratic Party",
       "nigerian national democratic party",
@@ -2398,7 +2398,7 @@
   {
     "id": 258,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The NNDP represented ___ interests",
+    "question": "The NNDP represented___interests",
     "answers": [
       "Lagos",
       "lagos",
@@ -2408,7 +2408,7 @@
   {
     "id": 259,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The ___ was formed in 1934",
+    "question": "The___was formed in1934",
     "answers": [
       "Nigerian Youth Movement, NYM",
       "nigerian youth movement, nym",
@@ -2418,7 +2418,7 @@
   {
     "id": 260,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "NYM stands for ___",
+    "question": "NYM stands for___",
     "answers": [
       "Nigerian Youth Movement",
       "nigerian youth movement",
@@ -2428,7 +2428,7 @@
   {
     "id": 261,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The NYM advocated for ___ reform and inclusion of educated ___",
+    "question": "The NYM advocated for___reform and inclusion of educated___",
     "answers": [
       "political, elites",
       "POLITICAL, ELITES"
@@ -2437,7 +2437,7 @@
   {
     "id": 262,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "By the 1940s and 1950s, Nigeria witnessed the rise of major political parties reflecting ___ alignments",
+    "question": "By the1940sand1950s, Nigeria witnessed the rise of major political parties reflecting___alignments",
     "answers": [
       "regional/ethnic",
       "REGIONAL/ETHNIC"
@@ -2446,7 +2446,7 @@
   {
     "id": 263,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The ___, led by ___, championed nationalism and self‑ government",
+    "question": "The___, led by___, championed nationalism and self‑government",
     "answers": [
       "NCNC, Nnamdi Azikiwe",
       "ncnc, nnamdi azikiwe",
@@ -2456,7 +2456,7 @@
   {
     "id": 264,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "NCNC stands for ___",
+    "question": "NCNC stands for___",
     "answers": [
       "National Council of Nigeria and the Cameroons",
       "national council of nigeria and the cameroons",
@@ -2466,7 +2466,7 @@
   {
     "id": 265,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The ___, under ___, represented northern interests and traditional authority",
+    "question": "The___, under___, represented northern interests and traditional authority",
     "answers": [
       "NPC, Sir Ahmadu Bello",
       "npc, sir ahmadu bello",
@@ -2476,17 +2476,17 @@
   {
     "id": 266,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "NPC stands for ___",
+    "question": "NPC stands for___",
     "answers": [
-      "Northern People's Congress",
-      "northern people's congress",
-      "NORTHERN PEOPLE'S CONGRESS"
+      "NorthernPeople'sCongress",
+      "northernpeople'scongress",
+      "NORTHERNPEOPLE'SCONGRESS"
     ]
   },
   {
     "id": 267,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The ___, led by ___, emphasised Yoruba aspirations and Western education",
+    "question": "The___, led by___, emphasised Yoruba aspirations and Western education",
     "answers": [
       "AG, Obafemi Awolowo",
       "ag, obafemi awolowo",
@@ -2496,7 +2496,7 @@
   {
     "id": 268,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "AG stands for ___",
+    "question": "AG stands for___",
     "answers": [
       "Action Group",
       "action group",
@@ -2506,7 +2506,7 @@
   {
     "id": 269,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "These parties reflected ___ alignments and set the stage for debates on ___",
+    "question": "These parties reflected___alignments and set the stage for debates on___",
     "answers": [
       "regional, federalism",
       "REGIONAL, FEDERALISM"
@@ -2515,7 +2515,7 @@
   {
     "id": 270,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "Nationalist movements emerged as a response to ___, ___, and ___",
+    "question": "Nationalist movements emerged as a response to___,___, and___",
     "answers": [
       "colonial exploitation, social inequalities, political marginalisation",
       "COLONIAL EXPLOITATION, SOCIAL INEQUALITIES, POLITICAL MARGINALISATION"
@@ -2524,7 +2524,7 @@
   {
     "id": 271,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "Economic grievances included excessive ___ and limited ___",
+    "question": "Economic grievances included excessive___and limited___",
     "answers": [
       "taxation, opportunities",
       "TAXATION, OPPORTUNITIES"
@@ -2533,16 +2533,16 @@
   {
     "id": 272,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "Western ideas such as ___ and ___ inspired Nigerians",
+    "question": "Western ideas such as___and___inspired Nigerians",
     "answers": [
-      "democracy, self‑ determination",
-      "DEMOCRACY, SELF‑ DETERMINATION"
+      "democracy, self‑determination",
+      "DEMOCRACY, SELF‑DETERMINATION"
     ]
   },
   {
     "id": 273,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "Key nationalist figures included ___, ___, ___, and ___",
+    "question": "Key nationalist figures included___,___,___, and___",
     "answers": [
       "Herbert Macaulay, Nnamdi Azikiwe, Obafemi Awolowo, Sir Ahmadu Bello",
       "herbert macaulay, nnamdi azikiwe, obafemi awolowo, sir ahmadu bello",
@@ -2552,7 +2552,7 @@
   {
     "id": 274,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "These leaders used ___, ___, ___, and ___ to mobilise people",
+    "question": "These leaders used___,___,___, and___to mobilise people",
     "answers": [
       "newspapers, petitions, protests, meetings",
       "NEWSPAPERS, PETITIONS, PROTESTS, MEETINGS"
@@ -2561,7 +2561,7 @@
   {
     "id": 275,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "After World War II, Britain's global ___ policies created opportunities for reforms",
+    "question": "AfterWorld War II, Britain'sglobal___policies created opportunities for reforms",
     "answers": [
       "decolonisation",
       "DECOLONISATION"
@@ -2570,7 +2570,7 @@
   {
     "id": 276,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The ___ Constitution of 1946 introduced limited elective representation",
+    "question": "The___Constitution of1946introduced limited elective representation",
     "answers": [
       "Richards",
       "richards",
@@ -2580,7 +2580,7 @@
   {
     "id": 277,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The ___ Constitution of 1951 established regional governments",
+    "question": "The___Constitution of1951established regional governments",
     "answers": [
       "Macpherson",
       "macpherson",
@@ -2590,7 +2590,7 @@
   {
     "id": 278,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The ___ Constitution of 1954 formalised federalism",
+    "question": "The___Constitution of1954formalised federalism",
     "answers": [
       "Lyttleton",
       "lyttleton",
@@ -2600,7 +2600,7 @@
   {
     "id": 279,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "These reforms expanded ___ participation",
+    "question": "These reforms expanded___participation",
     "answers": [
       "political",
       "POLITICAL"
@@ -2609,7 +2609,7 @@
   {
     "id": 280,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "They provided the framework for negotiating ___",
+    "question": "They provided the framework for negotiating___",
     "answers": [
       "independence",
       "INDEPENDENCE"
@@ -2618,7 +2618,7 @@
   {
     "id": 281,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "By the late 1940s and 1950s, nationalist leaders had built strong ___",
+    "question": "By the late1940sand1950s, nationalist leaders had built strong___",
     "answers": [
       "political parties",
       "POLITICAL PARTIES"
@@ -2627,7 +2627,7 @@
   {
     "id": 282,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "They leveraged ___ and ___ to push for self‑ governance",
+    "question": "They leveraged___and___to push for self‑governance",
     "answers": [
       "regional assemblies, national conferences",
       "REGIONAL ASSEMBLIES, NATIONAL CONFERENCES"
@@ -2636,7 +2636,7 @@
   {
     "id": 283,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "Nigeria achieved independence in ___",
+    "question": "Nigeria achieved independence in___",
     "answers": [
       "1960"
     ]
@@ -2644,7 +2644,7 @@
   {
     "id": 284,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "Independence was under a ___ system modelled on Britain",
+    "question": "Independence was under a___system modelled on Britain",
     "answers": [
       "parliamentary",
       "PARLIAMENTARY"
@@ -2653,7 +2653,7 @@
   {
     "id": 285,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The first Prime Minister was ___",
+    "question": "The first Prime Minister was___",
     "answers": [
       "Abubakar Tafawa Balewa",
       "abubakar tafawa balewa",
@@ -2663,17 +2663,17 @@
   {
     "id": 286,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "The first President was ___",
+    "question": "The first President was___",
     "answers": [
-      "Dr. Nnamdi Azikiwe",
-      "dr. nnamdi azikiwe",
-      "DR. NNAMDI AZIKIWE"
+      "Dr.Nnamdi Azikiwe",
+      "dr.nnamdi azikiwe",
+      "DR.NNAMDI AZIKIWE"
     ]
   },
   {
     "id": 287,
     "chapter": "EVOLUTION OF NIGERIA AS A POLITICAL UNIT",
-    "question": "Independence revealed underlying ___ and ___ divisions",
+    "question": "Independence revealed underlying___and___divisions",
     "answers": [
       "regional, ethnic",
       "REGIONAL, ETHNIC"
@@ -2681,17 +2681,17 @@
   },
   {
     "id": 288,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Colonial rule in Nigeria lasted from the mid‑ ___ century to ___",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Colonial rule in Nigeria lasted from the mid‑___century to___",
     "answers": [
-      "19th, 1960",
-      "19TH, 1960"
+      "19th,1960",
+      "19TH,1960"
     ]
   },
   {
     "id": 289,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Before colonialism, societies such as the ___ Caliphate, ___ Empire, ___ Kingdom, and ___ communities had established governance systems",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Before colonialism, societies such as the___Caliphate,___Empire,___Kingdom, and___communities had established governance systems",
     "answers": [
       "Sokoto, Oyo, Benin, Igbo",
       "sokoto, oyo, benin, igbo",
@@ -2700,18 +2700,18 @@
   },
   {
     "id": 290,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "European contact began with ___ trade in the ___ century",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "European contact began with___trade in the___century",
     "answers": [
-      "Portuguese, 15th",
-      "portuguese, 15th",
-      "PORTUGUESE, 15TH"
+      "Portuguese,15th",
+      "portuguese,15th",
+      "PORTUGUESE,15TH"
     ]
   },
   {
     "id": 291,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "British influence expanded in the ___ century after the abolition of the ___ trade",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "British influence expanded in the___century after the abolition of the___trade",
     "answers": [
       "19th, slave",
       "19TH, SLAVE"
@@ -2719,8 +2719,8 @@
   },
   {
     "id": 292,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Britain focused on \"legitimate commerce\" such as ___",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Britain focused on\"legitimate commerce\"such as___",
     "answers": [
       "palm oil",
       "PALM OIL"
@@ -2728,8 +2728,8 @@
   },
   {
     "id": 293,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Missionaries promoted ___ and ___ education",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Missionaries promoted___and___education",
     "answers": [
       "Christianity, Western",
       "christianity, western",
@@ -2738,8 +2738,8 @@
   },
   {
     "id": 294,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Britain annexed ___ in 1861 through the Treaty of Cession",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Britain annexed___in1861through the Treaty of Cession",
     "answers": [
       "Lagos",
       "lagos",
@@ -2748,8 +2748,8 @@
   },
   {
     "id": 295,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Lagos became a major ___ and ___ centre",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Lagos became a major___and___centre",
     "answers": [
       "administrative, commercial",
       "ADMINISTRATIVE, COMMERCIAL"
@@ -2757,8 +2757,8 @@
   },
   {
     "id": 296,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "The ___ Company expanded British influence inland",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "The___Company expanded British influence inland",
     "answers": [
       "Royal Niger",
       "royal niger",
@@ -2767,16 +2767,16 @@
   },
   {
     "id": 297,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "In ___, Britain revoked the charter of the Royal Niger Company",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "In___, Britain revoked the charter of the Royal Niger Company",
     "answers": [
       "1900"
     ]
   },
   {
     "id": 298,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "British expansion met resistance from local societies such as the ___ Expedition of 1897, the ___ Expedition of 1901, and the ___ campaigns",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "British expansion met resistance from local societies such as the___Expedition of1897, the___Expedition of1901, and the___campaigns",
     "answers": [
       "Benin, Aro, Ijebu",
       "benin, aro, ijebu",
@@ -2785,18 +2785,18 @@
   },
   {
     "id": 299,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Resistance in the ___ Caliphate was subdued by ___",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Resistance in the___Caliphate was subdued by___",
     "answers": [
-      "Sokoto, 1903",
-      "sokoto, 1903",
-      "SOKOTO, 1903"
+      "Sokoto,1903",
+      "sokoto,1903",
+      "SOKOTO,1903"
     ]
   },
   {
     "id": 300,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Following conquest, Britain established the ___ and ___ Nigeria Protectorates in 1900",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Following conquest, Britain established the___and___Nigeria Protectorates in1900",
     "answers": [
       "Northern, Southern",
       "northern, southern",
@@ -2805,8 +2805,8 @@
   },
   {
     "id": 301,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "The protectorates allowed for ___ control and facilitated ___ rule",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "The protectorates allowed for___control and facilitated___rule",
     "answers": [
       "administrative, indirect",
       "ADMINISTRATIVE, INDIRECT"
@@ -2814,8 +2814,8 @@
   },
   {
     "id": 302,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "The protectorates were politically separate but ___ and ___ interdependent",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "The protectorates were politically separate but___and___interdependent",
     "answers": [
       "economically, strategically",
       "ECONOMICALLY, STRATEGICALLY"
@@ -2823,8 +2823,8 @@
   },
   {
     "id": 303,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "In ___, Lord ___ amalgamated Northern and Southern Nigeria with Lagos Colony",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "In___, Lord___amalgamated Northern and Southern Nigeria with Lagos Colony",
     "answers": [
       "1914, Lugard",
       "1914, lugard",
@@ -2833,8 +2833,8 @@
   },
   {
     "id": 304,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Colonial administration was ___ and ___",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Colonial administration was___and___",
     "answers": [
       "hierarchical, centralised",
       "HIERARCHICAL, CENTRALISED"
@@ -2842,18 +2842,18 @@
   },
   {
     "id": 305,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "The ___ exercised supreme authority, reporting to the British Colonial Office",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "The___exercised supreme authority, reporting to the British Colonial Office",
     "answers": [
-      "Governor‑ General",
-      "governor‑ general",
-      "GOVERNOR‑ GENERAL"
+      "Governor‑General",
+      "governor‑general",
+      "GOVERNOR‑GENERAL"
     ]
   },
   {
     "id": 306,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Below him were ___ Governors, ___, and ___ Officers",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Below him were___Governors,___, and___Officers",
     "answers": [
       "Lieutenant, Residents, District",
       "lieutenant, residents, district",
@@ -2862,8 +2862,8 @@
   },
   {
     "id": 307,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "At the grassroots level, ___ Authorities were co‑ opted to implement policies",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "At the grassroots level,___Authorities were co‑opted to implement policies",
     "answers": [
       "Native",
       "native",
@@ -2872,8 +2872,8 @@
   },
   {
     "id": 308,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Indirect rule retained ___ rulers to administer local affairs",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Indirect rule retained___rulers to administer local affairs",
     "answers": [
       "traditional",
       "TRADITIONAL"
@@ -2881,8 +2881,8 @@
   },
   {
     "id": 309,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Indirect rule was most successful in ___ Nigeria due to the ___ system",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Indirect rule was most successful in___Nigeria due to the___system",
     "answers": [
       "Northern, emirate",
       "northern, emirate",
@@ -2891,8 +2891,8 @@
   },
   {
     "id": 310,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "In the ___, indirect rule worked reasonably well due to kingship institutions",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "In the___, indirect rule worked reasonably well due to kingship institutions",
     "answers": [
       "West",
       "west",
@@ -2901,8 +2901,8 @@
   },
   {
     "id": 311,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "In the ___, indirect rule failed because of decentralised authority",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "In the___, indirect rule failed because of decentralised authority",
     "answers": [
       "East",
       "east",
@@ -2911,8 +2911,8 @@
   },
   {
     "id": 312,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "The British imposed ___ chiefs in the East, leading to corruption and resistance",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "The British imposed___chiefs in the East, leading to corruption and resistance",
     "answers": [
       "warrant",
       "WARRANT"
@@ -2920,8 +2920,8 @@
   },
   {
     "id": 313,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Customary law was recognised only when it did not conflict with ___ interests",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Customary law was recognised only when it did not conflict with___interests",
     "answers": [
       "colonial",
       "COLONIAL"
@@ -2929,8 +2929,8 @@
   },
   {
     "id": 314,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Politically, colonialism ___ power and weakened indigenous ___",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Politically, colonialism___power and weakened indigenous___",
     "answers": [
       "centralised, autonomy",
       "CENTRALISED, AUTONOMY"
@@ -2938,8 +2938,8 @@
   },
   {
     "id": 315,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Economically, Nigeria's economy was oriented toward ___ exports",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Economically, Nigeria'seconomy was oriented toward___exports",
     "answers": [
       "cash crop",
       "CASH CROP"
@@ -2947,8 +2947,8 @@
   },
   {
     "id": 316,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Infrastructure served ___ trade interests",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Infrastructure served___trade interests",
     "answers": [
       "British",
       "british",
@@ -2957,8 +2957,8 @@
   },
   {
     "id": 317,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Socially, ___ and ___ produced an educated elite",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Socially,___and___produced an educated elite",
     "answers": [
       "Western education, Christianity",
       "western education, christianity",
@@ -2967,8 +2967,8 @@
   },
   {
     "id": 318,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "This elite later led ___ movements",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "This elite later led___movements",
     "answers": [
       "nationalist",
       "NATIONALIST"
@@ -2976,8 +2976,8 @@
   },
   {
     "id": 319,
-    "chapter": "NIGERIA'S COLONIAL EXPERIENCE (EARLY YEARS)",
-    "question": "Colonialism disrupted ___ systems and made ___ dominant",
+    "chapter": "NIGERIA'SCOLONIAL EXPERIENCE(EARLY YEARS)",
+    "question": "Colonialism disrupted___systems and made___dominant",
     "answers": [
       "traditional, English",
       "traditional, english",
@@ -2987,7 +2987,7 @@
   {
     "id": 320,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Norms are established rules that govern human ___ and ___ for peaceful co‑ existence",
+    "question": "Norms are established rules that govern human___and___for peaceful co‑existence",
     "answers": [
       "behaviour, conduct",
       "BEHAVIOUR, CONDUCT"
@@ -2996,7 +2996,7 @@
   {
     "id": 321,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Man learns norms and values from childhood through ___",
+    "question": "Man learns norms and values from childhood through___",
     "answers": [
       "socialisation",
       "SOCIALISATION"
@@ -3005,7 +3005,7 @@
   {
     "id": 322,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Norms and values differ among individuals due to ___, ___, ___, and ___",
+    "question": "Norms and values differ among individuals due to___,___,___, and___",
     "answers": [
       "cultural background, upbringing, education, personal experiences",
       "CULTURAL BACKGROUND, UPBRINGING, EDUCATION, PERSONAL EXPERIENCES"
@@ -3014,7 +3014,7 @@
   {
     "id": 323,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "The word value is derived from the French word ___ meaning worth or merit",
+    "question": "The word value is derived from the French word___meaning worth or merit",
     "answers": [
       "valior",
       "VALIOR"
@@ -3023,7 +3023,7 @@
   {
     "id": 324,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Values are traits or qualities considered ___",
+    "question": "Values are traits or qualities considered___",
     "answers": [
       "valuable",
       "VALUABLE"
@@ -3032,7 +3032,7 @@
   {
     "id": 325,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Values serve as a ___ for human behaviour",
+    "question": "Values serve as a___for human behaviour",
     "answers": [
       "guide",
       "GUIDE"
@@ -3041,7 +3041,7 @@
   {
     "id": 326,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Nigerian common values centre on ___ ties and ___, respect for elders, ___ together with national ideals like honesty, ___, discipline, ___, and ___, as enshrined in the constitution and cultural practices",
+    "question": "Nigerian common values centre on___ties and___, respect for elders,___together with national ideals like honesty,___, discipline,___, and___, as enshrined in the constitution and cultural practices",
     "answers": [
       "family, communalism, hospitality, hard work, justice, patriotism",
       "FAMILY, COMMUNALISM, HOSPITALITY, HARD WORK, JUSTICE, PATRIOTISM"
@@ -3050,7 +3050,7 @@
   {
     "id": 327,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Respect for ___ is a key Nigerian value",
+    "question": "Respect for___is a key Nigerian value",
     "answers": [
       "elders",
       "ELDERS"
@@ -3059,7 +3059,7 @@
   {
     "id": 328,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Other Nigerian values include ___, ___, ___, ___, and ___",
+    "question": "Other Nigerian values include___,___,___,___, and___",
     "answers": [
       "hospitality, honesty, hard work, discipline, justice",
       "HOSPITALITY, HONESTY, HARD WORK, DISCIPLINE, JUSTICE"
@@ -3068,7 +3068,7 @@
   {
     "id": 329,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "National ideals like ___, ___, and ___ are enshrined in the constitution",
+    "question": "National ideals like___,___, and___are enshrined in the constitution",
     "answers": [
       "patriotism, integrity, fairness",
       "PATRIOTISM, INTEGRITY, FAIRNESS"
@@ -3077,7 +3077,7 @@
   {
     "id": 330,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Nigerian national and cultural values are embodied in the ___, ___, ___, and ___",
+    "question": "Nigerian national and cultural values are embodied in the___,___,___, and___",
     "answers": [
       "constitution, laws, national anthem, customs",
       "CONSTITUTION, LAWS, NATIONAL ANTHEM, CUSTOMS"
@@ -3086,17 +3086,17 @@
   {
     "id": 331,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "The first Nigerian national anthem was ___ written by ___ and composed by ___",
+    "question": "The first Nigerian national anthem was___written by___and composed by___",
     "answers": [
-      "\"Nigeria, We Hail Thee\"; Lillian Jean Williams; Frances Benda",
-      "\"nigeria, we hail thee\"; lillian jean williams; frances benda",
-      "\"NIGERIA, WE HAIL THEE\"; LILLIAN JEAN WILLIAMS; FRANCES BENDA"
+      "\"Nigeria, We Hail Thee\";Lillian Jean Williams;Frances Benda",
+      "\"nigeria, we hail thee\";lillian jean williams;frances benda",
+      "\"NIGERIA, WE HAIL THEE\";LILLIAN JEAN WILLIAMS;FRANCES BENDA"
     ]
   },
   {
     "id": 332,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Nigeria first used this anthem upon independence in ___",
+    "question": "Nigeria first used this anthem upon independence in___",
     "answers": [
       "1960"
     ]
@@ -3104,7 +3104,7 @@
   {
     "id": 333,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "In ___, the anthem was replaced for political reasons",
+    "question": "In___, the anthem was replaced for political reasons",
     "answers": [
       "1978"
     ]
@@ -3112,17 +3112,17 @@
   {
     "id": 334,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "It was officially re‑ adopted again on ___ after a bill was passed by the National Assembly and signed by ___",
+    "question": "It was officially re‑adopted again on___after a bill was passed by the National Assembly and signed by___",
     "answers": [
-      "29 May 2024, President Bola Ahmed Tinubu",
-      "29 may 2024, president bola ahmed tinubu",
-      "29 MAY 2024, PRESIDENT BOLA AHMED TINUBU"
+      "29May2024, President Bola Ahmed Tinubu",
+      "29may2024, president bola ahmed tinubu",
+      "29MAY2024, PRESIDENT BOLA AHMED TINUBU"
     ]
   },
   {
     "id": 335,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "The anthem signifies the strength of the nation in ___",
+    "question": "The anthem signifies the strength of the nation in___",
     "answers": [
       "diversity",
       "DIVERSITY"
@@ -3131,7 +3131,7 @@
   {
     "id": 336,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "It also reflects the bond shared beyond ___ and ___",
+    "question": "It also reflects the bond shared beyond___and___",
     "answers": [
       "tribe, religion",
       "TRIBE, RELIGION"
@@ -3140,7 +3140,7 @@
   {
     "id": 337,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "The anthem emphasizes ___, ___, ___, and ___",
+    "question": "The anthem emphasizes___,___,___, and___",
     "answers": [
       "sovereignty, love, fairness, justice",
       "SOVEREIGNTY, LOVE, FAIRNESS, JUSTICE"
@@ -3149,7 +3149,7 @@
   {
     "id": 338,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Nigerian values include responsibility, ___, and ___",
+    "question": "Nigerian values include responsibility,___, and___",
     "answers": [
       "accountability, transparency",
       "ACCOUNTABILITY, TRANSPARENCY"
@@ -3158,7 +3158,7 @@
   {
     "id": 339,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "The reality of value expression in Nigeria shows difficulty in upholding the meanings of the ___, ___, and ___",
+    "question": "The reality of value expression in Nigeria shows difficulty in upholding the meanings of the___,___, and___",
     "answers": [
       "national anthem, pledge, constitution",
       "NATIONAL ANTHEM, PLEDGE, CONSTITUTION"
@@ -3167,7 +3167,7 @@
   {
     "id": 340,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Values like ___, ___, and ___ have become eroded",
+    "question": "Values like___,___, and___have become eroded",
     "answers": [
       "honesty, freedom, respect",
       "HONESTY, FREEDOM, RESPECT"
@@ -3176,7 +3176,7 @@
   {
     "id": 341,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Challenges to values include political ___, religious ___, and ___",
+    "question": "Challenges to values include political___, religious___, and___",
     "answers": [
       "polarisation, bigotry, corruption",
       "POLARISATION, BIGOTRY, CORRUPTION"
@@ -3185,7 +3185,7 @@
   {
     "id": 342,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Nigerians used to value ___ and ___ in governance",
+    "question": "Nigerians used to value___and___in governance",
     "answers": [
       "accountability, transparency",
       "ACCOUNTABILITY, TRANSPARENCY"
@@ -3194,7 +3194,7 @@
   {
     "id": 343,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Today, ___ and ___ of public funds are common occurrences",
+    "question": "Today,___and___of public funds are common occurrences",
     "answers": [
       "embezzlement, misappropriation",
       "EMBEZZLEMENT, MISAPPROPRIATION"
@@ -3203,7 +3203,7 @@
   {
     "id": 344,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Truth has become very ___ in every sector",
+    "question": "Truth has become very___in every sector",
     "answers": [
       "scarce",
       "SCARCE"
@@ -3212,7 +3212,7 @@
   {
     "id": 345,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Upholding both individual and national values has become very ___",
+    "question": "Upholding both individual and national values has become very___",
     "answers": [
       "difficult",
       "DIFFICULT"
@@ -3221,7 +3221,7 @@
   {
     "id": 346,
     "chapter": "NORMS AND VALUES IN THE NIGERIAN SOCIETY",
-    "question": "Norms, ___, and ___ will be discussed further in detail",
+    "question": "Norms,___, and___will be discussed further in detail",
     "answers": [
       "folkways, mores",
       "FOLKWAYS, MORES"
@@ -3230,7 +3230,7 @@
   {
     "id": 347,
     "chapter": "SOCIAL VICES",
-    "question": "The word vice is derived from the Latin word ___ meaning defect or failing",
+    "question": "The word vice is derived from the Latin word___meaning defector failing",
     "answers": [
       "Vitium",
       "vitium",
@@ -3240,7 +3240,7 @@
   {
     "id": 348,
     "chapter": "SOCIAL VICES",
-    "question": "Vice is defined as ___ habits or ___ activities",
+    "question": "Vice is defined as___habits or___activities",
     "answers": [
       "bad, immoral",
       "BAD, IMMORAL"
@@ -3249,7 +3249,7 @@
   {
     "id": 349,
     "chapter": "SOCIAL VICES",
-    "question": "Social literally refers to ___ interaction",
+    "question": "Social literally refers to___interaction",
     "answers": [
       "communal",
       "COMMUNAL"
@@ -3258,7 +3258,7 @@
   {
     "id": 350,
     "chapter": "SOCIAL VICES",
-    "question": "Social vices can therefore be seen as ___ habits and ___ behaviours against the morality of society",
+    "question": "Social vices can therefore beseen as___habits and___behaviours against the morality of society",
     "answers": [
       "bad, unwholesome",
       "BAD, UNWHOLESOME"
@@ -3267,7 +3267,7 @@
   {
     "id": 351,
     "chapter": "SOCIAL VICES",
-    "question": "Social vices are also defined as deviating from normal standards of society's ___ rules",
+    "question": "Social vices are also defined as deviating from normal standards ofsociety's___rules",
     "answers": [
       "behavioural",
       "BEHAVIOURAL"
@@ -3276,7 +3276,7 @@
   {
     "id": 352,
     "chapter": "SOCIAL VICES",
-    "question": "People who engage in such acts are referred to as ___",
+    "question": "People who engage in such acts are referred to as___",
     "answers": [
       "deviants",
       "DEVIANTS"
@@ -3285,7 +3285,7 @@
   {
     "id": 353,
     "chapter": "SOCIAL VICES",
-    "question": "Social vices are ___ behaviours that violate cultural norms and values",
+    "question": "Social vices are___behaviours that violate cultural norms and values",
     "answers": [
       "antisocial",
       "ANTISOCIAL"
@@ -3294,7 +3294,7 @@
   {
     "id": 354,
     "chapter": "SOCIAL VICES",
-    "question": "They are direct results of ___ in society",
+    "question": "They are direct results of___in society",
     "answers": [
       "moral decadence",
       "MORAL DECADENCE"
@@ -3303,7 +3303,7 @@
   {
     "id": 355,
     "chapter": "SOCIAL VICES",
-    "question": "Social vices affect the ___, ___, ___, and ___",
+    "question": "Social vices affect the___,___,___, and___",
     "answers": [
       "individual, family, school, society",
       "INDIVIDUAL, FAMILY, SCHOOL, SOCIETY"
@@ -3312,7 +3312,7 @@
   {
     "id": 356,
     "chapter": "SOCIAL VICES",
-    "question": "Common social vices among Nigerian students include ___, ___, ___, ___, ___, and ___",
+    "question": "Common social vices among Nigerian students include___,___,___,___,___, and___",
     "answers": [
       "cultism, internet fraud, examination malpractice, indecent dressing, drug use disorder, kidnapping",
       "CULTISM, INTERNET FRAUD, EXAMINATION MALPRACTICE, INDECENT DRESSING, DRUG USE DISORDER, KIDNAPPING"
@@ -3321,16 +3321,16 @@
   {
     "id": 357,
     "chapter": "SOCIAL VICES",
-    "question": "Causes of social vices include ___, ___, ___, ___, and ___",
+    "question": "Causes of social vices include___,___,___,___, and___",
     "answers": [
-      "parental/home factor, peer group influence, use of force, poverty, mass media/internet influence",
-      "PARENTAL/HOME FACTOR, PEER GROUP INFLUENCE, USE OF FORCE, POVERTY, MASS MEDIA/INTERNET INFLUENCE"
+      "parental/homefactor, peer group influence, use of force, poverty, massmedia/internetinfluence",
+      "PARENTAL/HOMEFACTOR, PEER GROUP INFLUENCE, USE OF FORCE, POVERTY, MASSMEDIA/INTERNETINFLUENCE"
     ]
   },
   {
     "id": 358,
     "chapter": "SOCIAL VICES",
-    "question": "Cultism is a social vice that has ___ and ___",
+    "question": "Cultism is asocial vice that has___and___",
     "answers": [
       "emergence, characteristics",
       "EMERGENCE, CHARACTERISTICS"
@@ -3339,7 +3339,7 @@
   {
     "id": 359,
     "chapter": "SOCIAL VICES",
-    "question": "Examination malpractice exists in various ___",
+    "question": "Examination malpractice exists in various___",
     "answers": [
       "forms",
       "FORMS"
@@ -3348,7 +3348,7 @@
   {
     "id": 360,
     "chapter": "SOCIAL VICES",
-    "question": "Drug use disorder also exists in various ___",
+    "question": "Drug use disorder also exists in various___",
     "answers": [
       "forms",
       "FORMS"
@@ -3357,7 +3357,7 @@
   {
     "id": 361,
     "chapter": "SOCIAL VICES",
-    "question": "Indecent dressing has negative ___",
+    "question": "Indecent dressing has negative___",
     "answers": [
       "effects",
       "EFFECTS"
@@ -3366,7 +3366,7 @@
   {
     "id": 362,
     "chapter": "SOCIAL VICES",
-    "question": "Internet fraud and ___ are also common",
+    "question": "Internet fraud and___are also common",
     "answers": [
       "kidnapping",
       "KIDNAPPING"
@@ -3375,7 +3375,7 @@
   {
     "id": 363,
     "chapter": "SOCIAL VICES",
-    "question": "The practice of social vices is ___ together among young people",
+    "question": "The practice of social vices is___together among young people",
     "answers": [
       "knitted",
       "KNITTED"
@@ -3384,7 +3384,7 @@
   {
     "id": 364,
     "chapter": "SOCIAL VICES",
-    "question": "It is not unlikely for someone who ___ or ___ to also be involved in cultism or examination malpractice",
+    "question": "It is not unlikely for someone who___or___to also be involved incultism or examination malpractice",
     "answers": [
       "smokes, uses drugs",
       "SMOKES, USES DRUGS"
@@ -3393,7 +3393,7 @@
   {
     "id": 365,
     "chapter": "SOCIAL VICES",
-    "question": "Social vices have eaten deep into the fabric of Nigeria and are a major setback to ___",
+    "question": "Social vices have eaten deep into the fabric of Nigeria and are a major setback to___",
     "answers": [
       "nation building",
       "NATION BUILDING"
@@ -3402,7 +3402,7 @@
   {
     "id": 366,
     "chapter": "SOCIAL VICES",
-    "question": "In any nation, the ___ are the most important group in nation building",
+    "question": "In any nation, the___are the most important group innation building",
     "answers": [
       "youths",
       "YOUTHS"
@@ -3411,7 +3411,7 @@
   {
     "id": 367,
     "chapter": "SOCIAL VICES",
-    "question": "Nigeria has more ___ and ___ in her population pyramid",
+    "question": "Nigeria has more___and___in her population pyramid",
     "answers": [
       "adolescents, young people",
       "ADOLESCENTS, YOUNG PEOPLE"
@@ -3420,7 +3420,7 @@
   {
     "id": 368,
     "chapter": "SOCIAL VICES",
-    "question": "Parents of children involved in social vices often ___ themselves",
+    "question": "Parents of children involved insocial vices often___themselves",
     "answers": [
       "blame",
       "BLAME"
@@ -3429,7 +3429,7 @@
   {
     "id": 369,
     "chapter": "SOCIAL VICES",
-    "question": "This can lead to ___ between parents",
+    "question": "This can lead to___between parents",
     "answers": [
       "separation",
       "SEPARATION"
@@ -3438,7 +3438,7 @@
   {
     "id": 370,
     "chapter": "SOCIAL VICES",
-    "question": "The health of parents with wayward children is badly affected due to ___",
+    "question": "The health of parents with wayward children is badly affected due to___",
     "answers": [
       "anxiety",
       "ANXIETY"
@@ -3447,7 +3447,7 @@
   {
     "id": 371,
     "chapter": "SOCIAL VICES",
-    "question": "Anxiety can lead to ___, ___, ___, and even ___",
+    "question": "Anxiety can lead to___,___,___, and even___",
     "answers": [
       "depression, high blood pressure, stroke, death",
       "DEPRESSION, HIGH BLOOD PRESSURE, STROKE, DEATH"
@@ -3456,7 +3456,7 @@
   {
     "id": 372,
     "chapter": "SOCIAL VICES",
-    "question": "Social vices also affect the ___ in many ways",
+    "question": "Social vices also affect the___in manyways",
     "answers": [
       "school",
       "SCHOOL"
@@ -3465,7 +3465,7 @@
   {
     "id": 373,
     "chapter": "SOCIAL VICES",
-    "question": "Issues such as ___, ___, and ___ have occurred on campuses",
+    "question": "Issues such as___,___, and___have occurred on campuses",
     "answers": [
       "killing, maiming, rape",
       "KILLING, MAIMING, RAPE"
@@ -3474,7 +3474,7 @@
   {
     "id": 374,
     "chapter": "SOCIAL VICES",
-    "question": "Students involved in social vices constitute a ___ with their life‑ threatening activities",
+    "question": "Students involved insocial vices constitute a___with their life‑threatening activities",
     "answers": [
       "menace",
       "MENACE"
@@ -3483,7 +3483,7 @@
   {
     "id": 375,
     "chapter": "SOCIAL VICES",
-    "question": "At the societal level, such students who cannot be tamed or rehabilitated become ___ to society",
+    "question": "At the societal level, such students who cannot be tamed or rehabilitated become___to society",
     "answers": [
       "problems",
       "PROBLEMS"
@@ -3492,7 +3492,7 @@
   {
     "id": 376,
     "chapter": "SOCIAL VICES",
-    "question": "Common practices of such individuals include ___, ___, ___, and ___",
+    "question": "Common practices of such individuals include___,___,___, and___",
     "answers": [
       "highway robbery, kidnapping, thuggery, cultism",
       "HIGHWAY ROBBERY, KIDNAPPING, THUGGERY, CULTISM"
@@ -3501,7 +3501,7 @@
   {
     "id": 377,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Citizenship is defined as a ___ and ___ status in which an individual enjoys full, legally endorsed membership in a state",
+    "question": "Citizenship is defined as a___and___status in which an individual enjoys full, legally endorsed membership in a state",
     "answers": [
       "jural, political",
       "JURAL, POLITICAL"
@@ -3510,7 +3510,7 @@
   {
     "id": 378,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Citizenship means an individual owes full ___ to the state",
+    "question": "Citizenship means an individual owes full___to the state",
     "answers": [
       "allegiance",
       "ALLEGIANCE"
@@ -3519,7 +3519,7 @@
   {
     "id": 379,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Citizenship is legally granted by a ___",
+    "question": "Citizenship is legally granted by a___",
     "answers": [
       "state",
       "STATE"
@@ -3528,7 +3528,7 @@
   {
     "id": 380,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "The Nigerian Constitution in Section ___ explains who is eligible for citizenship",
+    "question": "The Nigerian Constitution inSection___explains who is eligible for citizenship",
     "answers": [
       "25"
     ]
@@ -3536,7 +3536,7 @@
   {
     "id": 381,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "There are ___ categories of Nigerian citizenship",
+    "question": "There are___categories of Nigerian citizenship",
     "answers": [
       "three",
       "THREE"
@@ -3545,7 +3545,7 @@
   {
     "id": 382,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "The three categories are citizenship by ___, ___, and ___",
+    "question": "The three categories are citizenship by___,___, and___",
     "answers": [
       "birth, registration, naturalization",
       "BIRTH, REGISTRATION, NATURALIZATION"
@@ -3554,7 +3554,7 @@
   {
     "id": 383,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Citizenship by birth applies to individuals born in Nigeria to ___ or ___ parents",
+    "question": "Citizenship by birth applies to individuals born in Nigeria to___or___parents",
     "answers": [
       "Nigerian, indigenous",
       "nigerian, indigenous",
@@ -3564,7 +3564,7 @@
   {
     "id": 384,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Citizenship by registration applies to individuals who marry ___ citizens or have strong ties to Nigeria",
+    "question": "Citizenship by registration applies to individuals who marry___citizens or have strong ties to Nigeria",
     "answers": [
       "Nigerian",
       "nigerian",
@@ -3574,7 +3574,7 @@
   {
     "id": 385,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Citizenship by naturalization applies to foreigners who meet ___ requirements",
+    "question": "Citizenship by naturalization applies to foreigners who meet___requirements",
     "answers": [
       "constitutional",
       "CONSTITUTIONAL"
@@ -3583,7 +3583,7 @@
   {
     "id": 386,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "The Nigerian Constitution does not prohibit ___ citizenship",
+    "question": "The Nigerian Constitution does not prohibit___citizenship",
     "answers": [
       "dual",
       "DUAL"
@@ -3592,7 +3592,7 @@
   {
     "id": 387,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Acquiring citizenship in Nigeria is ___ stressful compared to other jurisdictions",
+    "question": "Acquiring citizenship in Nigeria is___stressful compared to other jurisdictions",
     "answers": [
       "less",
       "LESS"
@@ -3601,7 +3601,7 @@
   {
     "id": 388,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Other countries often require ___ steps and huge ___",
+    "question": "Other countries often require___steps and huge___",
     "answers": [
       "rigorous, money",
       "RIGOROUS, MONEY"
@@ -3610,7 +3610,7 @@
   {
     "id": 389,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Nigerian civic responsibility refers to the ___ and ___ individuals have as members of a community",
+    "question": "Nigerian civic responsibility refers to the___and___individuals have as members of a community",
     "answers": [
       "duties, obligations",
       "DUTIES, OBLIGATIONS"
@@ -3619,16 +3619,16 @@
   {
     "id": 390,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Civic responsibility includes actions that contribute to the ___ and ___ of the community",
+    "question": "Civic responsibility includes actions that contribute to the___and___of the community",
     "answers": [
-      "welfare, well‑ being",
-      "WELFARE, WELL‑ BEING"
+      "welfare, well‑being",
+      "WELFARE, WELL‑BEING"
     ]
   },
   {
     "id": 391,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Civic responsibility goes beyond ___ obligations",
+    "question": "Civic responsibility goes beyond___obligations",
     "answers": [
       "legal",
       "LEGAL"
@@ -3637,7 +3637,7 @@
   {
     "id": 392,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Civic responsibility also includes ___ and ___ considerations",
+    "question": "Civic responsibility also includes___and___considerations",
     "answers": [
       "moral, ethical",
       "MORAL, ETHICAL"
@@ -3646,7 +3646,7 @@
   {
     "id": 393,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Examples of civic responsibilities include ___, ___, ___, ___, ___, ___, and ___",
+    "question": "Examples of civic responsibilities include___,___,___,___,___,___, and___",
     "answers": [
       "voting, volunteering, paying taxes, obeying laws, civil discourse, serving on juries, respecting rights of others",
       "VOTING, VOLUNTEERING, PAYING TAXES, OBEYING LAWS, CIVIL DISCOURSE, SERVING ON JURIES, RESPECTING RIGHTS OF OTHERS"
@@ -3655,7 +3655,7 @@
   {
     "id": 394,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Performing civic responsibilities promotes the ___ good",
+    "question": "Performing civic responsibilities promotes the___good",
     "answers": [
       "common",
       "COMMON"
@@ -3664,16 +3664,16 @@
   {
     "id": 395,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Performing civic responsibilities contributes to the ___ of society",
+    "question": "Performing civic responsibilities contributes to the___of society",
     "answers": [
-      "well‑ being",
-      "WELL‑ BEING"
+      "well‑being",
+      "WELL‑BEING"
     ]
   },
   {
     "id": 396,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "When individuals perform civic duties, they play an active role in shaping the ___ of their communities",
+    "question": "When individuals perform civic duties, they play an active role in shaping the___of their communities",
     "answers": [
       "future",
       "FUTURE"
@@ -3682,7 +3682,7 @@
   {
     "id": 397,
     "chapter": "NIGERIAN CITIZENSHIP AND OBLIGATIONS",
-    "question": "Civic responsibility upholds the principles of ___, ___, and ___",
+    "question": "Civic responsibility upholds the principles of___,___, and___",
     "answers": [
       "democracy, justice, equality",
       "DEMOCRACY, JUSTICE, EQUALITY"
