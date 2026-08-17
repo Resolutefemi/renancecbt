@@ -575,15 +575,6 @@
                 userAnswers[currentIndex] = val;
                 saveState();
                 renderQuestion();
-
-                if (activeMode === 'practice') {
-                    const isLast = currentIndex === currentExamData.length - 1;
-                    if (!isLast) {
-                        setTimeout(() => { currentIndex++; renderQuestion(); }, 1200);
-                    } else {
-                        setTimeout(() => showResults(true), 1200);
-                    }
-                }
             };
             optBox.appendChild(btn);
         });

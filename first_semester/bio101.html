@@ -856,15 +856,6 @@ function handleAnswer(key) {
     userAnswers[currentIndex] = key;
     renderQuestion();
     saveState();
-
-    if (activeMode === 'practice') {
-        const isLast = currentIndex === currentExamData.length - 1;
-        if (!isLast) {
-            setTimeout(() => { currentIndex++; renderQuestion(); }, 1000);
-        } else {
-            setTimeout(() => showResults(true), 1200);
-        }
-    }
 }
 
 function move(d) {

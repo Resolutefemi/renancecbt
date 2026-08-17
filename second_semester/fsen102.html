@@ -3223,15 +3223,6 @@
                     userAnswers[currentIndex] = val;
                     saveState();
                     renderQuestion();
-
-                    if (activeMode === 'practice') {
-                        const isLast = currentIndex === currentExamData.length - 1;
-                        if (!isLast) {
-                            setTimeout(() => { currentIndex++; renderQuestion(); }, 1200);
-                        } else {
-                            setTimeout(() => showResults(true), 1200);
-                        }
-                    }
                 };
                 optBox.appendChild(btn);
             });
@@ -3362,13 +3353,6 @@
             document.getElementById('finalScoreText').innerText = pct;
             document.getElementById('modalCorrect').innerText   = tempScore.toFixed(1);
             saveTestScore(pct);
-        } else if (activeMode === 'practice') {
-            const isLast = currentIndex === currentExamData.length - 1;
-            if (!isLast) {
-                setTimeout(() => { currentIndex++; renderQuestion(); }, 1500);
-            } else {
-                setTimeout(() => showResults(true), 1500);
-            }
         }
     }
 
