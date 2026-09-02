@@ -1,0 +1,6 @@
+# robots.txt — Built by Resolute Femi (Ariyo Oluwafemi Stephen)
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin.html
+Sitemap: https://renancecbt2.vercel.app/sitemap.xml

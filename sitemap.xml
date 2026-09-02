@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- sitemap.xml — Built by Resolute Femi (Ariyo Oluwafemi Stephen) -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://renancecbt2.vercel.app/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://renancecbt2.vercel.app/login.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://renancecbt2.vercel.app/about.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://renancecbt2.vercel.app/ai.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://renancecbt2.vercel.app/gpa.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://renancecbt2.vercel.app/leaderboard.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://renancecbt2.vercel.app/pdf.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://renancecbt2.vercel.app/quiz.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://renancecbt2.vercel.app/Tips.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://renancecbt2.vercel.app/live-quizzes.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+</urlset>
